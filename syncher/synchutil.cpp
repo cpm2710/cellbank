@@ -5,7 +5,7 @@
 using namespace std;
 class synchutil{
 public: 
-unsigned char* md5(char origin[],int size){
+unsigned char* md5(unsigned char origin[],int size){
 	printf("%d\n",MD5_DIGEST_LENGTH);
 	MD5_CTX    ctx,ctx1;
 	unsigned char *final=new unsigned char[MD5_DIGEST_LENGTH];
