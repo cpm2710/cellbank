@@ -2,9 +2,8 @@
 #include "synchutil.cpp"
 using namespace std;
 int main(){
-cout<<"abcdefg"<<endl;
 synchutil util;
 char *buf=new char[100];
-util.md5(buf);
+util.md5(buf,100);
 return 1;
 }
