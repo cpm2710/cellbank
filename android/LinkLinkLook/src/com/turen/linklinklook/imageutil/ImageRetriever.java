@@ -6,11 +6,13 @@ import java.net.URL;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 public class ImageRetriever {
 	public static Bitmap getImage(String headurl){
 		URL url;
 		try {
+			Log.v("llk", "retreiving "+headurl);
 			url = new URL(headurl);
 			Bitmap bmp = BitmapFactory.decodeStream(url.openStream());
 			return bmp;
