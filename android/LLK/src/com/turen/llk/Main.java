@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -36,6 +38,10 @@ public class Main extends Activity implements OnCheckedChangeListener{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE); //隐藏标题
+	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+
+	WindowManager.LayoutParams.FLAG_FULLSCREEN); //设置全屏
 		setHeaderImages(new HashMap<String,Bitmap>());
 		if (apiKey == null || apiSecret == null) {
 			Util.showAlert(this, "警告", "人人应用的apiKey和apiSecret必须提供！");
@@ -55,14 +61,16 @@ public class Main extends Activity implements OnCheckedChangeListener{
 	public void onClick(View v) {
 		if (v.getId() == R.id.startGame) {
 			// simpleRequestListener.showProgress("获取图片元素等等");
-			Bundle params = new Bundle();
+			/*Bundle params = new Bundle();
 			params.putString("method", "friends.getFriends");
 			params.putString("page", "1");
 			params.putString("count", "10");
 			FriendRequestListener listener = new FriendRequestListener(this,
 					dataFormat);
 			this.asyncRenren.request(params, listener, dataFormat);
-		}
+			*/
+			/*
+*/		}
 	}
 
 	@Override
