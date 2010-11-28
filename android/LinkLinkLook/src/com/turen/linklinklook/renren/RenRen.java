@@ -96,6 +96,7 @@ public class RenRen {
             Util.showAlert(context, "没有权限", "应用需要访问互联网的权限");
         } else {
         	Log.v("a","trying to login ");
+        	
             /*RenrenDialogListenerHelper helper = new RenrenDialogListenerHelper();
             helper.addDialogListener(new RenrenDialogListenerHelper.DefaultRenrenDialogListener() {// 耗时的流氓监听器
 

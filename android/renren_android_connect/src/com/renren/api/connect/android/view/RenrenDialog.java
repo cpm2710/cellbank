@@ -131,6 +131,7 @@ public class RenrenDialog extends Dialog {
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			Log.d(Util.LOG_TAG, "Redirect URL: " + url);
 			if (url.startsWith(Renren.REDIRECT_URI)) {
+				Log.v(Util.LOG_TAG,url);
 				Bundle values = Util.parseUrl(url);
 				String error = values.getString("error_reason");
 				if (error == null) {

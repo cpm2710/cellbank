@@ -37,17 +37,17 @@ public class Grid extends Picture {
 	private Animation animation;
 
 	private int type, xpos, ypos;
-
+	private String headerUrl;
+	private String friendName;
 	public Grid(LImage img) {
 		super(img,0,0);
 	}
 
-	/*public Grid(int x, int y) {
-		super(x, y);
+	public Grid(LImage img,int x, int y) {
+		super(img,x,y);
 		xpos = x;
 		ypos = y;
-
-	}*/
+	}
 
 	public int getXpos() {
 		return xpos;
@@ -96,6 +96,22 @@ public class Grid extends Picture {
 		default:
 			break;
 		}
+	}
+
+	public void setFriendName(String friendName) {
+		this.friendName = friendName;
+	}
+
+	public String getFriendName() {
+		return friendName;
+	}
+
+	public void setHeaderUrl(String headerUrl) {
+		this.headerUrl = headerUrl;
+	}
+
+	public String getHeaderUrl() {
+		return headerUrl;
 	}
 
 }

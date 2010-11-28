@@ -1,8 +1,11 @@
 package com.turen.linklinklook;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.loon.framework.android.game.LGameAndroid2DActivity;
+import org.loon.framework.android.game.core.graphics.LImage;
 
 import com.turen.linklinklook.renren.RenRen;
 
@@ -10,7 +13,8 @@ import android.graphics.Bitmap;
 
 
 public class Main extends LGameAndroid2DActivity{
-	private HashMap<String,Bitmap> headerImages=null;
+	private HashMap<String,LImage> headerImages=null;
+	private List<String> headerUrls=null;
 	private String apiKey = "6c5eb56d05ab4bcd860dce8c05e0a474";// your apiKey
 
 	private String apiSecret = "bfc868eaca1c44ffaaae887494ede11c";// your apiSecret
@@ -28,12 +32,20 @@ public class Main extends LGameAndroid2DActivity{
 		this.showScreen();
 		
 		
-		headerImages=new HashMap<String,Bitmap>();
+		headerImages=new HashMap<String,LImage>();
+		headerUrls=new ArrayList<String>();
 	}
-	public void setHeaderImages(HashMap<String,Bitmap> headerImages) {
+	public List<String> getHeaderUrls() {
+		return headerUrls;
+	}
+	public void setHeaderUrls(List<String> headerUrls) {
+		this.headerUrls = headerUrls;
+	}
+	public void setHeaderImages(HashMap<String,LImage> headerImages) {
 		this.headerImages = headerImages;
+		this.headerUrls.addAll(headerImages.keySet());
 	}
-	public HashMap<String,Bitmap> getHeaderImages() {
+	public HashMap<String,LImage> getHeaderImages() {
 		return headerImages;
 	}
 	

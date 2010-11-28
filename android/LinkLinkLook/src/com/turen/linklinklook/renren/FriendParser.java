@@ -8,6 +8,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.loon.framework.android.game.core.graphics.LImage;
 
 import com.turen.linklinklook.imageutil.ImageRetriever;
 
@@ -49,6 +50,28 @@ public class FriendParser {
 			String headerUrl=friend.get("headurl");
 			Bitmap headerImage=ImageRetriever.getImage(headerUrl);
 			headerImages.put(headerUrl, headerImage);
+		}
+		return headerImages;
+	}
+	public static HashMap<String,LImage> parseHeaderLImages(RenRen renren){
+		HashMap<String,LImage> headerImages=new HashMap<String,LImage>();
+		Bundle params = new Bundle();
+        params.putString("method", "friends.getFriends");
+        params.putString("page", "1");
+        params.putString("count", "10");
+        String dataFormat = "json";
+        String resp = renren.request(params, dataFormat);
+        Log.v("a",resp);
+		RenrenError rrError = Util.parseRenrenError(resp, dataFormat);
+		List<Map<String, String>> datas = null;
+		datas = FriendParser.parseFriendJson(resp);
+		int imageId=0;
+		for(Map<String,String> friend : datas){
+			String headerUrl=friend.get("headurl");
+			LImage headerImage=ImageRetriever.getLImage(headerUrl);
+			if(headerImage!=null){
+			headerImages.put(headerUrl, headerImage);
+			}
 		}
 		return headerImages;
 	}
