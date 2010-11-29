@@ -19,7 +19,7 @@ public class HeaderImageCacher {
 	public HeaderImageCacher(Activity activity) {
 		this.activity = activity;
 	}
-	public ArrayList<NameBitmapPair> getNameBitmap(ArrayList<NameHeaderUrlPair> nameHeaderUrls){
+	public ArrayList<NameBitmapPair> getNameBitmapList(ArrayList<NameHeaderUrlPair> nameHeaderUrls){
 		ArrayList<NameBitmapPair> pairs=new ArrayList<NameBitmapPair>();
 		for(NameHeaderUrlPair pair : nameHeaderUrls){
 			NameBitmapPair p=new NameBitmapPair();
@@ -29,6 +29,7 @@ public class HeaderImageCacher {
 				p.setHeaderImage(fetched);
 			}else{
 			Bitmap map=ImageRetriever.getImage(pair.getHeaderUrl());
+			p.setHeaderImage(map);
 			this.writeImage(pair.getName(), map);
 			}
 			pairs.add(p);
@@ -37,16 +38,15 @@ public class HeaderImageCacher {
 	}
 	public void writeImage(String name,Bitmap bitmap){
 		try {
-			//GraphicsUtil.saveAsPNG(bitmap, name);
-			bitmap.compress(Bitmap.CompressFormat.PNG, 1,
-					activity.openFileOutput(name,activity.MODE_APPEND));
+			activity.deleteFile(name);
+			bitmap.compress(Bitmap.CompressFormat.PNG, 80,
+					activity.openFileOutput(name,activity.MODE_WORLD_WRITEABLE));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	public Bitmap fetchImage(String name) {
-
 		try {
 			FileInputStream fis = activity.openFileInput(name);
 			Bitmap map=GraphicsUtil.loadBitmap(fis, true);

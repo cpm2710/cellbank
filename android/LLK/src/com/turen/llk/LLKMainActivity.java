@@ -38,13 +38,14 @@ public class LLKMainActivity extends Activity{
 		WindowManager.LayoutParams.FLAG_FULLSCREEN); // 设置全屏
 		setContentView(R.layout.llkmain);
 		retrieveHeaderImages();
+		
 		createGame();
 	}
 	public void retrieveHeaderImages(){
 		if(headerImageList==null){	
 		Bundle bundle=this.getIntent().getExtras();
 		ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
-		headerImageList=cacher.getNameBitmap(nameHeaderUrlList);
+		headerImageList=cacher.getNameBitmapList(nameHeaderUrlList);
 		}
 	}
 	public void createGame(){		
@@ -52,16 +53,19 @@ public class LLKMainActivity extends Activity{
 		
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
-		int width = display.getWidth();
-		int height = display.getHeight();
+		double width = display.getWidth();
+		double height = display.getHeight();
 		int division=(int)Math.sqrt(headerImageList.size());
 		gv.setNumColumns(division+1);
+		double widHeight=width/height;
+		
 		width/=division;
 		height/=division;
+		height=height*widHeight;
 		
 		ImageAdapter adapter = new ImageAdapter(this,headerImageList);
-		adapter.setWidth(width);
-		adapter.setHeight(height);
+		adapter.setWidth((int)width);
+		adapter.setHeight((int)height);
 		gv.setAdapter(adapter);		
 	}
 }
