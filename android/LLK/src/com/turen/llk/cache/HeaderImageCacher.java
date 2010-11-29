@@ -12,6 +12,7 @@ import com.turen.llk.util.ImageRetriever;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 public class HeaderImageCacher {
 	private Activity activity;
@@ -38,6 +39,7 @@ public class HeaderImageCacher {
 	}
 	public void writeImage(String name,Bitmap bitmap){
 		try {
+			Log.v("myllk","writing file"+name);
 			activity.deleteFile(name);
 			bitmap.compress(Bitmap.CompressFormat.PNG, 80,
 					activity.openFileOutput(name,activity.MODE_WORLD_WRITEABLE));
