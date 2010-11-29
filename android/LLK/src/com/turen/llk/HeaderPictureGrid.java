@@ -6,7 +6,11 @@ public class HeaderPictureGrid {
 	private Bitmap headerImage;
 	private int x;
 	private int y;
+	private boolean removed;
 	private String name;
+	public HeaderPictureGrid(){
+		removed=false;
+	}
 	public Bitmap getHeaderImage() {
 		return headerImage;
 	}
@@ -30,5 +34,11 @@ public class HeaderPictureGrid {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setRemoved(boolean removed) {
+		this.removed = removed;
+	}
+	public boolean isRemoved() {
+		return removed;
 	}
 }

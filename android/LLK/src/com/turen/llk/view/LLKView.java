@@ -93,7 +93,7 @@ public class LLKView extends SurfaceView implements SurfaceHolder.Callback{
 		int eventaction = event.getAction();
 		int dx = (int) event.getX();
 		int dy = (int) event.getY();
-		Log.v("myllk", ""+dx+" "+dy);
+		Log.v("myllk2", ""+dx+" "+dy);
 		switch (eventaction) {
 		case MotionEvent.ACTION_DOWN:
 			thread.onTouchEvent(event);
