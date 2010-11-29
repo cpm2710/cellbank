@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.renren.api.connect.android.view.ConnectButton;
+import com.turen.llk.cache.GraphicsUtil;
+import com.turen.llk.cache.HeaderImageCacher;
 import com.turen.llk.domain.NameBitmapPair;
 import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.util.ImageRetriever;
@@ -24,9 +26,11 @@ import android.widget.ListView;
 public class LLKMainActivity extends Activity{
 	LLKMainActivity main;
 	ArrayList<NameBitmapPair> headerImageList=null;
+	HeaderImageCacher cacher;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		main=this;
+		this.cacher=new HeaderImageCacher(main);
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // 隐藏标题
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -37,19 +41,11 @@ public class LLKMainActivity extends Activity{
 		createGame();
 	}
 	public void retrieveHeaderImages(){
-		if(headerImageList==null){
-		headerImageList=new ArrayList<NameBitmapPair>();
-		
+		if(headerImageList==null){	
 		Bundle bundle=this.getIntent().getExtras();
 		ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
-		
-		for(NameHeaderUrlPair pair : nameHeaderUrlList){
-			NameBitmapPair p=new NameBitmapPair();
-			p.setName(pair.getName());
-			Bitmap map=ImageRetriever.getImage(pair.getHeaderUrl());
-			p.setHeaderImage(map);
-			headerImageList.add(p);
-		}}
+		headerImageList=cacher.getNameBitmap(nameHeaderUrlList);
+		}
 	}
 	public void createGame(){		
 		GridView gv= (GridView) findViewById(R.id.llkGrid);
