@@ -1,8 +1,9 @@
-package com.turen.llk;
+package com.turen.llk.resources;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.turen.llk.LLKMainActivity;
 import com.turen.llk.domain.NameBitmapPair;
 
 import android.graphics.Bitmap;

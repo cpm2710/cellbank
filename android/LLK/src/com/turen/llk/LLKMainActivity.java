@@ -8,7 +8,9 @@ import com.turen.llk.cache.GraphicsUtil;
 import com.turen.llk.cache.HeaderImageCacher;
 import com.turen.llk.domain.NameBitmapPair;
 import com.turen.llk.domain.NameHeaderUrlPair;
+import com.turen.llk.resources.ImageAdapter;
 import com.turen.llk.util.ImageRetriever;
+import com.turen.llk.view.LLKView;
 
 
 import android.app.Activity;
@@ -27,28 +29,36 @@ public class LLKMainActivity extends Activity{
 	LLKMainActivity main;
 	ArrayList<NameBitmapPair> headerImageList=null;
 	HeaderImageCacher cacher;
+	private LLKView myView;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		main=this;
-		this.cacher=new HeaderImageCacher(main);
 		super.onCreate(savedInstanceState);
+		main=this;
+		
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // 隐藏标题
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 
 		WindowManager.LayoutParams.FLAG_FULLSCREEN); // 设置全屏
-		setContentView(R.layout.llkmain);
-		retrieveHeaderImages();
-		
-		createGame();
+		int screenWidth;
+	    int screenHeight;
+	    	
+	    //获得手机屏幕对象
+	    WindowManager windowManager = getWindowManager();
+	        
+	    //获得手机屏幕显示对象
+	    Display display = windowManager.getDefaultDisplay();
+	        
+	    //获得有效像素
+	    screenWidth = display.getWidth();
+	    screenHeight = display.getHeight();
+	    Bundle bundle=this.getIntent().getExtras();
+	    ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
+	    myView = new LLKView(this,new HeaderImageCacher(main),nameHeaderUrlList);
+        myView.setScreenWidth(screenWidth);
+        myView.setScreenHeight(screenHeight);
+        setContentView(myView);
 	}
-	public void retrieveHeaderImages(){
-		if(headerImageList==null){	
-		Bundle bundle=this.getIntent().getExtras();
-		ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
-		headerImageList=cacher.getNameBitmapList(nameHeaderUrlList);
-		}
-	}
-	public void createGame(){		
+	/*public void createGame(){		
 		GridView gv= (GridView) findViewById(R.id.llkGrid);
 		
 		WindowManager windowManager = getWindowManager();
@@ -67,7 +77,7 @@ public class LLKMainActivity extends Activity{
 		adapter.setWidth((int)width);
 		adapter.setHeight((int)height);
 		gv.setAdapter(adapter);		
-	}
+	}*/
 	public void initialGame(){
 		
 	}
