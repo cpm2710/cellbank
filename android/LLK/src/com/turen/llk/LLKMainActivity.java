@@ -68,4 +68,7 @@ public class LLKMainActivity extends Activity{
 		adapter.setHeight((int)height);
 		gv.setAdapter(adapter);		
 	}
+	public void initialGame(){
+		
+	}
 }
