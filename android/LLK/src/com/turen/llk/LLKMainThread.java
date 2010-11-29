@@ -54,7 +54,7 @@ public class LLKMainThread extends Thread {
 			mRun = b;
 		}
 		public void onTouchEvent(MotionEvent event){
-			ArrayList<HeaderPictureGrid> pictureGrids=this.mGame.getHeaderPictureGrids();
+			/*ArrayList<HeaderPictureGrid> pictureGrids=this.mGame.getHeaderPictureGrids();
 			int x=((int)event.getX())/pictureGrids.get(0).getHeaderImage().getWidth();
 			int y=((int)event.getY())/pictureGrids.get(0).getHeaderImage().getHeight();
 			//pictureGrids.get(0).getHeaderImage().getWidth();
@@ -64,7 +64,7 @@ public class LLKMainThread extends Thread {
 					g.setRemoved(true);
 					break;
 				}
-			}
+			}*/
 		}
 		private void drawBackground(Canvas canvas){
 			canvas.drawBitmap(mBackgroundImage, 0, 0, null);
@@ -76,7 +76,7 @@ public class LLKMainThread extends Thread {
 		 */
 		private void doDraw(Canvas canvas) {
 			drawBackground(canvas);
-			ArrayList<HeaderPictureGrid> pictureGrids=this.mGame.getHeaderPictureGrids();
+			/*ArrayList<HeaderPictureGrid> pictureGrids=this.mGame.getHeaderPictureGrids();
 			for(int i=0;i<pictureGrids.size();i++){
 				HeaderPictureGrid grid=pictureGrids.get(i);
 				if(!grid.isRemoved()){
@@ -85,6 +85,12 @@ public class LLKMainThread extends Thread {
 				canvas.drawBitmap(grid.getHeaderImage(), grid.getX()*width, grid.getY()*height, null);
 				}else{
 					//canvas.draw
+				}
+			}*/
+			HeaderPictureGrid[][] grid=this.mGame.getGrid();
+			for(int i=0;i<this.mGame.getLefelInfo().x;i++){
+				for(int j=0;j<this.mGame.getLefelInfo().y;j++){
+					canvas.drawBitmap(grid[i][j].getHeaderImage(), i*this.mGame.getGridWidth(), j*this.mGame.getGridHeight(), null);
 				}
 			}
 		}

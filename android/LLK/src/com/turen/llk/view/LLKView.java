@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.turen.llk.LLKMainGame;
 import com.turen.llk.LLKMainThread;
 import com.turen.llk.cache.HeaderImageCacher;
+import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameBitmapPair;
 import com.turen.llk.domain.NameHeaderUrlPair;
 
@@ -36,7 +37,10 @@ public class LLKView extends SurfaceView implements SurfaceHolder.Callback{
 		super(context);
 		this.cacher=cacher;
 		ArrayList<NameBitmapPair> headerImageList=this.cacher.getNameBitmapList(nameHeaderUrlList);
-		this.llkGame=new LLKMainGame(headerImageList,screenWidth,screenHeight);
+		LevelInfo levelInfo=new LevelInfo();
+		levelInfo.x=5;
+		levelInfo.y=5;
+		this.llkGame=new LLKMainGame(headerImageList,screenWidth,screenHeight,levelInfo);
 		
 		SurfaceHolder holder = this.getHolder();// 获取holder
 		holder.addCallback(this);
