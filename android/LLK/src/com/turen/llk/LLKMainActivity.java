@@ -58,26 +58,6 @@ public class LLKMainActivity extends Activity{
         myView.setScreenHeight(screenHeight);
         setContentView(myView);
 	}
-	/*public void createGame(){		
-		GridView gv= (GridView) findViewById(R.id.llkGrid);
-		
-		WindowManager windowManager = getWindowManager();
-		Display display = windowManager.getDefaultDisplay();
-		double width = display.getWidth();
-		double height = display.getHeight();
-		int division=(int)Math.sqrt(headerImageList.size());
-		gv.setNumColumns(division+1);
-		double widHeight=width/height;
-		
-		width/=division;
-		height/=division;
-		height=height*widHeight;
-		
-		ImageAdapter adapter = new ImageAdapter(this,headerImageList);
-		adapter.setWidth((int)width);
-		adapter.setHeight((int)height);
-		gv.setAdapter(adapter);		
-	}*/
 	public void initialGame(){
 		
 	}
