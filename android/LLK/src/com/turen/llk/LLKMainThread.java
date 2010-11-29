@@ -33,7 +33,8 @@ public class LLKMainThread extends Thread {
 		private boolean mRun = false;
 		private int mMode;
 		private Bitmap mBackgroundImage;
-		
+		HeaderPictureGrid pre=null;
+		HeaderPictureGrid current=null;
 		public LLKMainThread(SurfaceHolder surfaceHolder, Context context,
 				Handler handler,LLKMainGame game,Bitmap mBackgroundImage) {
 			mSurfaceHolder = surfaceHolder;
@@ -73,7 +74,19 @@ public class LLKMainThread extends Thread {
 			//LevelInfo levelInfo=this.mGame.getLevelInfo();
 			//int gridSize=levelInfo.x*levelInfo.y;
 			//int j=0;
-			grid[x][y].setRemoved(true);
+			//grid[x][y].setRemoved(true);
+			current=grid[x][y];
+			if(pre==null){
+				pre=current;//grid[x][y];
+				current=null;
+			}else{
+				if(this.mGame.findPath(pre, current)){
+					pre.setRemoved(true);
+					current.setRemoved(true);
+					pre=null;
+					current=null;
+				}
+			}
 		}
 		private void drawBackground(Canvas canvas){
 			canvas.drawBitmap(mBackgroundImage, 0, 0, null);

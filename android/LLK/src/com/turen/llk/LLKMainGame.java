@@ -12,6 +12,7 @@ public class LLKMainGame {
 	private ArrayList<HeaderPictureGrid> headerPictureGrids;
 	private ArrayList<NameBitmapPair> headerImageList=null;
 	private HeaderPictureGrid[][]grid;
+
 	private int gridWidth=40;
 	private int gridHeight=40;
 	private LevelInfo levelInfo;
@@ -39,7 +40,10 @@ public class LLKMainGame {
 		this.grid = grid;
 	}
 
-	
+	public boolean findPath(HeaderPictureGrid g1,HeaderPictureGrid g2){
+		
+		return true;
+	}
 	public LLKMainGame(ArrayList<NameBitmapPair> headerImageList,int screenWidth,int screenHeight,LevelInfo levelInfo){
 		this.levelInfo=levelInfo;
 		this.headerImageList=headerImageList;
