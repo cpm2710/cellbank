@@ -13,6 +13,8 @@ public class LLKMainGame {
 	private ArrayList<NameBitmapPair> headerImageList=null;
 	private HeaderPictureGrid[][]grid;
 	private int gridWidth=40;
+	private int gridHeight=40;
+	private LevelInfo levelInfo;
 	public int getGridWidth() {
 		return gridWidth;
 	}
@@ -28,8 +30,7 @@ public class LLKMainGame {
 	public void setGridHeight(int gridHeight) {
 		this.gridHeight = gridHeight;
 	}
-
-	private int gridHeight=40;
+	
 	public HeaderPictureGrid[][] getGrid() {
 		return grid;
 	}
@@ -38,9 +39,9 @@ public class LLKMainGame {
 		this.grid = grid;
 	}
 
-	private LevelInfo lefelInfo;
+	
 	public LLKMainGame(ArrayList<NameBitmapPair> headerImageList,int screenWidth,int screenHeight,LevelInfo levelInfo){
-		this.lefelInfo=levelInfo;
+		this.levelInfo=levelInfo;
 		this.headerImageList=headerImageList;
 		headerPictureGrids=new ArrayList<HeaderPictureGrid>();
 		grid=new HeaderPictureGrid[levelInfo.x][levelInfo.y];
@@ -91,11 +92,11 @@ public class LLKMainGame {
 		return headerPictureGrids;
 	}
 
-	public void setLefelInfo(LevelInfo lefelInfo) {
-		this.lefelInfo = lefelInfo;
+	public void setLevelInfo(LevelInfo lefelInfo) {
+		this.levelInfo = lefelInfo;
 	}
 
-	public LevelInfo getLefelInfo() {
-		return lefelInfo;
+	public LevelInfo getLevelInfo() {
+		return levelInfo;
 	}
 }

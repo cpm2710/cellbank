@@ -5,12 +5,17 @@ import java.util.ArrayList;
 
 import com.turen.llk.LLKMainGame;
 import com.turen.llk.LLKMainThread;
+import com.turen.llk.R;
+import com.turen.llk.cache.GraphicsUtil;
 import com.turen.llk.cache.HeaderImageCacher;
 import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameBitmapPair;
 import com.turen.llk.domain.NameHeaderUrlPair;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,14 +49,17 @@ public class LLKView extends SurfaceView implements SurfaceHolder.Callback{
 		
 		SurfaceHolder holder = this.getHolder();// 获取holder
 		holder.addCallback(this);
-		
+		Resources res = context.getResources();
+		Bitmap mBackgroundImage=BitmapFactory.decodeResource(res,
+				R.drawable.blackground);
+		mBackgroundImage=GraphicsUtil.getResize(mBackgroundImage, screenWidth, screenHeight);
 		thread = new LLKMainThread(holder, context,new Handler() {
 			@Override
 			public void handleMessage(Message m) {
 				//mStatusText.setVisibility(m.getData().getInt("viz"));
 				//mStatusText.setText(m.getData().getString("text"));
 			}
-		},llkGame);
+		},llkGame,mBackgroundImage);
 		setFocusable(true);
 	}
 	

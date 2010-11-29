@@ -2,6 +2,9 @@ package com.turen.llk;
 
 import java.util.ArrayList;
 
+import com.turen.llk.cache.GraphicsUtil;
+import com.turen.llk.domain.LevelInfo;
+
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -32,14 +35,12 @@ public class LLKMainThread extends Thread {
 		private Bitmap mBackgroundImage;
 		
 		public LLKMainThread(SurfaceHolder surfaceHolder, Context context,
-				Handler handler,LLKMainGame game) {
+				Handler handler,LLKMainGame game,Bitmap mBackgroundImage) {
 			mSurfaceHolder = surfaceHolder;
 			mHandler = handler;
 			mContext = context;
 			mGame=game;
-			Resources res = mContext.getResources();
-			mBackgroundImage = BitmapFactory.decodeResource(res,
-					R.drawable.blackground);
+			this.mBackgroundImage = mBackgroundImage;
 		}
 		public boolean onKeyDown(int keyCode, KeyEvent msg) {
 			synchronized (mSurfaceHolder) {
@@ -65,6 +66,14 @@ public class LLKMainThread extends Thread {
 					break;
 				}
 			}*/
+			int x=((int)event.getX())/this.mGame.getGridWidth();
+			int y=((int)event.getY())/this.mGame.getGridHeight();
+			Log.v("llktouch",""+x+" "+y);
+			HeaderPictureGrid[][] grid=this.mGame.getGrid();
+			//LevelInfo levelInfo=this.mGame.getLevelInfo();
+			//int gridSize=levelInfo.x*levelInfo.y;
+			//int j=0;
+			grid[x][y].setRemoved(true);
 		}
 		private void drawBackground(Canvas canvas){
 			canvas.drawBitmap(mBackgroundImage, 0, 0, null);
@@ -76,21 +85,14 @@ public class LLKMainThread extends Thread {
 		 */
 		private void doDraw(Canvas canvas) {
 			drawBackground(canvas);
-			/*ArrayList<HeaderPictureGrid> pictureGrids=this.mGame.getHeaderPictureGrids();
-			for(int i=0;i<pictureGrids.size();i++){
-				HeaderPictureGrid grid=pictureGrids.get(i);
-				if(!grid.isRemoved()){
-				int width=grid.getHeaderImage().getWidth();
-				int height=grid.getHeaderImage().getHeight();
-				canvas.drawBitmap(grid.getHeaderImage(), grid.getX()*width, grid.getY()*height, null);
-				}else{
-					//canvas.draw
-				}
-			}*/
+			
 			HeaderPictureGrid[][] grid=this.mGame.getGrid();
-			for(int i=0;i<this.mGame.getLefelInfo().x;i++){
-				for(int j=0;j<this.mGame.getLefelInfo().y;j++){
+			LevelInfo levelInfo=this.mGame.getLevelInfo();
+			for(int i=0;i<levelInfo.x;i++){
+				for(int j=0;j<levelInfo.y;j++){
+					if(!grid[i][j].isRemoved()){
 					canvas.drawBitmap(grid[i][j].getHeaderImage(), i*this.mGame.getGridWidth(), j*this.mGame.getGridHeight(), null);
+					}
 				}
 			}
 		}
