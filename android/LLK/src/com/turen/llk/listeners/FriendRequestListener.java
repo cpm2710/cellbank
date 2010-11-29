@@ -27,10 +27,11 @@ import android.widget.TextView;
 
 import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.RequestListenerHelper.DefaultRequestListener;
-import com.turen.llk.xml.FriendHandler;
-import com.turen.llk.xml.RestSaxParser;
+import com.turen.llk.renren.FriendHandler;
+import com.turen.llk.renren.RestSaxParser;
 import com.renren.api.connect.android.exception.RenrenError;
 import com.turen.llk.Main;
+import com.turen.llk.R;
 
 /**
  * @author 李勇(yong.li@opi-corp.com) 2010-9-3
@@ -151,15 +152,15 @@ class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        /*if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.friend, null);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.friendllk, null);
             viewHolder = new ViewHolder();
             viewHolder.image = (ImageView) convertView.findViewById(R.id.head);
             viewHolder.text = (TextView) convertView.findViewById(R.id.name);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-        }*/
+        }
         Map<String, String> friend = this.datas.get(position);
         viewHolder.text.setText(friend.get("name"));
         this.setViewImage(viewHolder.image, friend.get("headurl"));

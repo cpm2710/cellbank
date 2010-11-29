@@ -1,4 +1,4 @@
-package com.turen.llk.xml;
+package com.turen.llk.renren;
 
 import java.io.ByteArrayInputStream;
 

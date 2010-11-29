@@ -5,13 +5,20 @@
     android:layout_height="fill_parent"
     >
     <com.renren.api.connect.android.view.ConnectButton
-				android:id="@+id/login" android:layout_width="fill_parent"
+				android:id="@+id/connectRenRen" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:layout_marginTop="5dp"
 				android:layout_marginBottom="5dp" android:layout_marginLeft="60dp"
 				android:layout_marginRight="60dp" />
-	<Button android:id="@+id/startGame" android:text="startGame"
+				
+	<Button android:id="@+id/connectFacebook" android:text="连接到Facebook"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
 				android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
 				android:onClick="onClick" />
+	<Button android:id="@+id/startGame" android:text="开始游戏"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
+				android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
+				android:onClick="onClick" />
+
 </LinearLayout>
