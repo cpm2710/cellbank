@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.renren.api.connect.android.view.ConnectButton;
+import com.turen.llk.domain.NameBitmapPair;
+import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.util.ImageRetriever;
 
 
@@ -12,6 +14,7 @@ import android.app.AlertDialog.Builder;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.GridView;
@@ -50,23 +53,19 @@ public class LLKMainActivity extends Activity{
 	}
 	public void createGame(){		
 		GridView gv= (GridView) findViewById(R.id.llkGrid);
-		ListAdapter adapter = new ImageAdapter(this,headerImageList);
-		gv.setAdapter(adapter);
-		//gv.refreshDrawableState();
-		/*
 		
-        final GridView lv = new GridView(this);
-        lv.setAdapter(adapter);
-        this.runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                Builder alertBuilder = new Builder(main);
-                alertBuilder.setTitle("My Friends");
-                alertBuilder.setView(lv);
-                alertBuilder.setNeutralButton("确定", null);
-                alertBuilder.create().show();
-            }
-        });*/
+		WindowManager windowManager = getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		int width = display.getWidth();
+		int height = display.getHeight();
+		int division=(int)Math.sqrt(headerImageList.size());
+		gv.setNumColumns(division+1);
+		width/=division;
+		height/=division;
+		
+		ImageAdapter adapter = new ImageAdapter(this,headerImageList);
+		adapter.setWidth(width);
+		adapter.setHeight(height);
+		gv.setAdapter(adapter);		
 	}
 }

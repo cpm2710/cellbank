@@ -1,4 +1,4 @@
-package com.turen.llk;
+package com.turen.llk.domain;
 
 import java.io.Serializable;
 

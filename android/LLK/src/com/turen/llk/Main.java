@@ -18,6 +18,7 @@ import com.renren.api.connect.android.AsyncRenren;
 import com.renren.api.connect.android.Renren;
 import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.view.ConnectButton;
+import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.listeners.FriendParser;
 import com.turen.llk.listeners.RenRenConnectButtonListener;
 import com.turen.llk.listeners.SimpleRequestListener;

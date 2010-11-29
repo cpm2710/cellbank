@@ -10,8 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.renren.api.connect.android.Renren;
-import com.turen.llk.NameBitmapPair;
-import com.turen.llk.NameHeaderUrlPair;
+import com.turen.llk.domain.NameBitmapPair;
+import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.util.ImageRetriever;
 
 import android.graphics.Bitmap;
@@ -29,10 +29,8 @@ public class FriendParser {
 		Bundle params = new Bundle();
 		params.putString("method", "friends.getFriends");
 		params.putString("page", "1");
-		params.putString("count", "5");
-		//FriendRequestListener listener = new FriendRequestListener(this,
-		//		dataFormat);
-		String response=this.renren.request(params, dataFormat);//.request(params, listener, dataFormat);
+		params.putString("count", "16");
+		String response=this.renren.request(params, dataFormat);
 		List<Map<String, String>> datas = null;
       
         datas = this.parseFriendJson(response);
