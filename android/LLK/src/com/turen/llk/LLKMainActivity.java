@@ -53,7 +53,7 @@ public class LLKMainActivity extends Activity{
 	    screenHeight = display.getHeight();
 	    Bundle bundle=this.getIntent().getExtras();
 	    ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
-	    myView = new LLKView(this,new HeaderImageCacher(main),nameHeaderUrlList);
+	    myView = new LLKView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight);
         myView.setScreenWidth(screenWidth);
         myView.setScreenHeight(screenHeight);
         setContentView(myView);

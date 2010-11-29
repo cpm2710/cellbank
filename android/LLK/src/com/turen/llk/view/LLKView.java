@@ -28,11 +28,15 @@ public class LLKView extends SurfaceView implements SurfaceHolder.Callback{
 	//private ArrayList<NameBitmapPair> headerImageList=null;
 	private LLKMainGame llkGame=null;
 	private HeaderImageCacher cacher=null;
-	public LLKView(Context context,HeaderImageCacher cacher,ArrayList<NameHeaderUrlPair> nameHeaderUrlList) {
+	public LLKView(Context context,
+			HeaderImageCacher cacher,
+			ArrayList<NameHeaderUrlPair> nameHeaderUrlList,
+			int screenWidth,
+			int screenHeight) {
 		super(context);
 		this.cacher=cacher;
 		ArrayList<NameBitmapPair> headerImageList=this.cacher.getNameBitmapList(nameHeaderUrlList);
-		this.llkGame=new LLKMainGame(headerImageList);
+		this.llkGame=new LLKMainGame(headerImageList,screenWidth,screenHeight);
 		
 		SurfaceHolder holder = this.getHolder();// 获取holder
 		holder.addCallback(this);
@@ -92,6 +96,7 @@ public class LLKView extends SurfaceView implements SurfaceHolder.Callback{
 		Log.v("myllk", ""+dx+" "+dy);
 		switch (eventaction) {
 		case MotionEvent.ACTION_DOWN:
+			thread.onTouchEvent(event);
 			break;
 		case MotionEvent.ACTION_MOVE:
 			break;

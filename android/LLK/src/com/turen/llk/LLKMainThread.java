@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
 public class LLKMainThread extends Thread {
@@ -43,6 +45,9 @@ public class LLKMainThread extends Thread {
 		public void setRunning(boolean b) {
 			mRun = b;
 		}
+		public void onTouchEvent(MotionEvent event){
+			
+		}
 		/**
 		 * 画面处理
 		 * 
@@ -52,7 +57,10 @@ public class LLKMainThread extends Thread {
 			ArrayList<HeaderPictureGrid> pictureGrids=this.mGame.getHeaderPictureGrids();
 			for(int i=0;i<pictureGrids.size();i++){
 				HeaderPictureGrid grid=pictureGrids.get(i);
-				canvas.drawBitmap(grid.getHeaderImage(), grid.getX()*40, grid.getY()*40, null);
+				int width=grid.getHeaderImage().getWidth();
+				int height=grid.getHeaderImage().getHeight();
+				//Log.v("llksize", ""+width+"  "+height);
+				canvas.drawBitmap(grid.getHeaderImage(), grid.getX()*width, grid.getY()*height, null);
 			}
 		}
 		/**
