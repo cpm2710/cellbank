@@ -43,9 +43,10 @@ public class LLKMainGame {
 	}
 	public void findAll(HeaderPictureGrid current,ArrayList<HeaderPictureGrid> T){
 		HeaderPictureGrid now=null;
-		for(int y=current.getY();y>-1;y--){
+		for(int y=current.getY()-1;y>-1;y--){
 			now=grid[current.getX()][y];
 			if(now.isRemoved()){
+				Log.v("llkadd","added "+now.getName());
 				T.add(now);
 			}else{
 				Log.v("llkadd","added "+now.getName());
@@ -53,9 +54,10 @@ public class LLKMainGame {
 				break;
 			}
 		}
-		for(int y=current.getY();y<levelInfo.y;y++){
+		for(int y=current.getY()+1;y<levelInfo.y;y++){
 			now=grid[current.getX()][y];
 			if(now.isRemoved()){
+				Log.v("llkadd","added "+now.getName());
 				T.add(now);
 			}else{
 				Log.v("llkadd","added "+now.getName());
@@ -63,9 +65,10 @@ public class LLKMainGame {
 				break;
 			}
 		}
-		for(int x=current.getX();x>-1;x--){
+		for(int x=current.getX()-1;x>-1;x--){
 			now=grid[x][current.getY()];
 			if(now.isRemoved()){
+				Log.v("llkadd","added "+now.getName());
 				T.add(now);
 			}else{
 				Log.v("llkadd","added "+now.getName());
@@ -73,9 +76,10 @@ public class LLKMainGame {
 				break;
 			}
 		}
-		for(int x=current.getX();x<levelInfo.x;x++){
+		for(int x=current.getX()+1;x<levelInfo.x;x++){
 			now=grid[x][current.getY()];
 			if(now.isRemoved()){
+				Log.v("llkadd","added "+now.getName());
 				T.add(now);
 			}else{
 				Log.v("llkadd","added "+now.getName());
@@ -86,11 +90,14 @@ public class LLKMainGame {
 	}
 	
 	public boolean findPath(HeaderPictureGrid g1,HeaderPictureGrid g2){
+		Log.v("headerName","g1"+g1.getName());
+		Log.v("headerName","g2"+g2.getName());
+		
 		ArrayList<HeaderPictureGrid> S=new ArrayList<HeaderPictureGrid>();
 		ArrayList<HeaderPictureGrid> T=new ArrayList<HeaderPictureGrid>();
 		S.add(g1);		
 		int crossNum = 0 ;		
-		while(!S.contains(g2)&&crossNum<3){
+		while(!S.contains(g2)&&crossNum<1){
 			for(HeaderPictureGrid g : S){
 				//if(g.isRemoved()){
 				findAll(g,T);

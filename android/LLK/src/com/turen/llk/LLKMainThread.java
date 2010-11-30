@@ -84,10 +84,10 @@ public class LLKMainThread extends Thread {
 			pre = current;// grid[x][y];
 			current = null;
 		} else {
-			Log.v("myllk", "pre name:"+pre.getName());
-			Log.v("myllk", "current name:"+current.getName());
+			//Log.v("myllk", "pre name:"+pre.getName());
+			//Log.v("myllk", "current name:"+current.getName());
 			if (pre.getName().equals(current.getName())) {
-				Log.v("myllk"," match "+pre.getName());
+				//Log.v("myllk"," match "+pre.getName());
 				if (this.mGame.findPath(pre, current)) {
 					pre.setRemoved(true);
 					current.setRemoved(true);
