@@ -56,7 +56,11 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		if (apiKey == null || apiSecret == null) {
 			Util.showAlert(this, "警告", "人人应用的apiKey和apiSecret必须提供！");
 		}
+		
 		setContentView(R.layout.main);
+		RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
+		ratingBar.setNumStars(20);
+		ratingBar.setRating(5);
 		initialRenRen();
 	}
 
@@ -98,7 +102,9 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 @Override
 				                         public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-						ratingBar.setNumStars(ratingBar.getNumStars()+1);
+						ratingBar.setRating(ratingBar.getRating()+1);
+						//ratingBar.setNumStars(ratingBar.getNumStars()+1);
+						//ratingBar.refreshDrawableState();
 				 }
 			});
 		}
@@ -107,7 +113,8 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 @Override
 				                         public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-						ratingBar.setNumStars(ratingBar.getNumStars()-1);
+						ratingBar.setRating(ratingBar.getRating()-1);
+						//ratingBar.setNumStars(ratingBar.getNumStars()-1);
 				 }
 			});
 		
