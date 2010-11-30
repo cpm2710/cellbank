@@ -43,7 +43,7 @@ public class LLKMainGame {
 	}
 	public void findAll(HeaderPictureGrid current,ArrayList<HeaderPictureGrid> T){
 		HeaderPictureGrid now=null;
-		for(int y=current.getY()-1;y>-1;y--){
+		for(int y=current.getY()-1;y>0;y--){
 			now=grid[current.getX()][y];
 			if(now.isRemoved()){
 				Log.v("llkadd","added "+now.getName());
@@ -97,7 +97,7 @@ public class LLKMainGame {
 		ArrayList<HeaderPictureGrid> T=new ArrayList<HeaderPictureGrid>();
 		S.add(g1);		
 		int crossNum = 0 ;		
-		while(!S.contains(g2)&&crossNum<1){
+		while(!S.contains(g2)&&crossNum<3){
 			for(HeaderPictureGrid g : S){
 				//if(g.isRemoved()){
 				findAll(g,T);
@@ -118,15 +118,17 @@ public class LLKMainGame {
 		this.levelInfo=levelInfo;
 		this.headerImageList=headerImageList;
 		headerPictureGrids=new ArrayList<HeaderPictureGrid>();
-		grid=new HeaderPictureGrid[levelInfo.x][levelInfo.y];
+		grid=new HeaderPictureGrid[levelInfo.x+2][levelInfo.y+2];
 		
-		gridWidth=(int)(screenWidth/levelInfo.x);
-		gridHeight=(int)(screenHeight/levelInfo.y);
+		gridWidth=(int)(screenWidth/(levelInfo.x+2));
+		gridHeight=(int)(screenHeight/(levelInfo.y+2));
 		
 		Random r=new Random();
-		for(int i=0;i<levelInfo.x;i++)
+		
+		for(int i=0;i<levelInfo.x+1;i++)
 		{
-			for(int j=0;j<levelInfo.y;j++){
+			for(int j=0;j<levelInfo.y+1;j++){
+				
 				grid[i][j]=new HeaderPictureGrid();
 				int index=r.nextInt(headerImageList.size());
 				NameBitmapPair nbp=headerImageList.get(index);
@@ -134,6 +136,9 @@ public class LLKMainGame {
 				grid[i][j].setName(nbp.getName());
 				grid[i][j].setX(i);
 				grid[i][j].setY(j);
+				if(i==0||j==0){
+					grid[i][j].setRemoved(true);
+				}
 			}
 		}		
 	}

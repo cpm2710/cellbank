@@ -59,27 +59,18 @@ public class LLKMainThread extends Thread {
 	}
 
 	public void onTouchEvent(MotionEvent event) {
-		/*
-		 * ArrayList<HeaderPictureGrid>
-		 * pictureGrids=this.mGame.getHeaderPictureGrids(); int
-		 * x=((int)event.getX
-		 * ())/pictureGrids.get(0).getHeaderImage().getWidth(); int
-		 * y=((int)event
-		 * .getY())/pictureGrids.get(0).getHeaderImage().getHeight();
-		 * //pictureGrids.get(0).getHeaderImage().getWidth();
-		 * for(HeaderPictureGrid g:pictureGrids){ if(g.getX()==x&&g.getY()==y){
-		 * Log.v("llkremove","removed "+g.getName()); g.setRemoved(true); break;
-		 * } }
-		 */
 		int x = ((int) event.getX()) / this.mGame.getGridWidth();
 		int y = ((int) event.getY()) / this.mGame.getGridHeight();
-		// Log.v("llktouch",""+x+" "+y);
+		Log.v("llktouch",""+x+" "+y);
 		HeaderPictureGrid[][] grid = this.mGame.getGrid();
 		// LevelInfo levelInfo=this.mGame.getLevelInfo();
 		// int gridSize=levelInfo.x*levelInfo.y;
 		// int j=0;
 		// grid[x][y].setRemoved(true);
 		current = grid[x][y];
+		if(current==null){
+			pre=null;
+		}
 		if (pre == null) {
 			pre = current;// grid[x][y];
 			current = null;
@@ -112,8 +103,8 @@ public class LLKMainThread extends Thread {
 
 		HeaderPictureGrid[][] grid = this.mGame.getGrid();
 		LevelInfo levelInfo = this.mGame.getLevelInfo();
-		for (int i = 0; i < levelInfo.x; i++) {
-			for (int j = 0; j < levelInfo.y; j++) {
+		for (int i = 1; i < levelInfo.x+1; i++) {
+			for (int j = 1; j < levelInfo.y+1; j++) {
 				if (!grid[i][j].isRemoved()) {
 					canvas.drawBitmap(grid[i][j].getHeaderImage(), i
 							* this.mGame.getGridWidth(), j
