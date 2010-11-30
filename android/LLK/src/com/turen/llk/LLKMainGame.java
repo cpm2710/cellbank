@@ -42,7 +42,7 @@ public class LLKMainGame {
 		this.grid = grid;
 	}
 	int times=0;
-	public void findAll(HeaderPictureGrid current,ArrayList<HeaderPictureGrid> T){
+	public boolean findAll(HeaderPictureGrid current,HeaderPictureGrid target,ArrayList<HeaderPictureGrid> T){
 		Log.v("llkadd","find the nodes connected to "+current.getX()+" "+current.getY());
 		HeaderPictureGrid now=null;
 		for(int y=current.getY()-1;y>-1;y--){
@@ -51,6 +51,9 @@ public class LLKMainGame {
 				Log.v("llkadd","up added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
+				if(target==now){
+					return true;
+				}
 				break;
 			}
 		}
@@ -60,6 +63,9 @@ public class LLKMainGame {
 				Log.v("llkadd","down added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
+				if(target==now){
+					return true;
+				}
 				break;
 			}
 		}
@@ -69,6 +75,9 @@ public class LLKMainGame {
 				Log.v("llkadd","left added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
+				if(target==now){
+					return true;
+				}
 				break;
 			}
 		}
@@ -78,9 +87,13 @@ public class LLKMainGame {
 				Log.v("llkadd","right added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
+				if(target==now){
+					return true;
+				}
 				break;
 			}
 		}
+		return false;
 	}
 	
 	public boolean findPath(HeaderPictureGrid g1,HeaderPictureGrid g2){
@@ -89,18 +102,21 @@ public class LLKMainGame {
 		
 		ArrayList<HeaderPictureGrid> S=new ArrayList<HeaderPictureGrid>();
 		ArrayList<HeaderPictureGrid> T=new ArrayList<HeaderPictureGrid>();
-		S.add(g1);		
+		S.add(g1);
 		int crossNum = 0 ;		
 		while(!S.contains(g2)&&crossNum<3){
 			for(HeaderPictureGrid g : S){
 				//if(g.isRemoved()){
 				times=crossNum;
-				findAll(g,T);
+				if(findAll(g,g2,T)){
+					return true;
+				}
 				//if(T.contains(g2)){
 				//	return true;
 				//}
 				//S.addAll(T);}
 			}
+			S.addAll(T);
 			T.clear();
 			crossNum++;
 		}
@@ -119,13 +135,12 @@ public class LLKMainGame {
 		gridHeight=(int)(screenHeight/(levelInfo.y+2));
 		
 		Random r=new Random();
-		int index=r.nextInt(headerImageList.size());
 		for(int i=0;i<levelInfo.x+1;i++)
 		{
 			for(int j=0;j<levelInfo.y+1;j++){
 				
 				grid[i][j]=new HeaderPictureGrid();
-				
+				int index=r.nextInt(headerImageList.size());				
 				NameBitmapPair nbp=headerImageList.get(index);
 				grid[i][j].setHeaderImage(GraphicsUtil.getResize(nbp.getHeaderImage(), gridWidth, gridHeight));
 				grid[i][j].setName(nbp.getName());
