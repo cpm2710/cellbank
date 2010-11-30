@@ -3,6 +3,8 @@ package com.turen.llk;
 import java.util.ArrayList;
 import java.util.Random;
 
+import android.util.Log;
+
 import com.turen.llk.cache.GraphicsUtil;
 import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameBitmapPair;
@@ -39,10 +41,71 @@ public class LLKMainGame {
 	public void setGrid(HeaderPictureGrid[][] grid) {
 		this.grid = grid;
 	}
-
+	public void findAll(HeaderPictureGrid current,ArrayList<HeaderPictureGrid> T){
+		HeaderPictureGrid now=null;
+		for(int y=current.getY();y>-1;y--){
+			now=grid[current.getX()][y];
+			if(now.isRemoved()){
+				T.add(now);
+			}else{
+				Log.v("llkadd","added "+now.getName());
+				T.add(now);
+				break;
+			}
+		}
+		for(int y=current.getY();y<levelInfo.y;y++){
+			now=grid[current.getX()][y];
+			if(now.isRemoved()){
+				T.add(now);
+			}else{
+				Log.v("llkadd","added "+now.getName());
+				T.add(now);
+				break;
+			}
+		}
+		for(int x=current.getX();x>-1;x--){
+			now=grid[x][current.getY()];
+			if(now.isRemoved()){
+				T.add(now);
+			}else{
+				Log.v("llkadd","added "+now.getName());
+				T.add(now);
+				break;
+			}
+		}
+		for(int x=current.getX();x<levelInfo.x;x++){
+			now=grid[x][current.getY()];
+			if(now.isRemoved()){
+				T.add(now);
+			}else{
+				Log.v("llkadd","added "+now.getName());
+				T.add(now);
+				break;
+			}
+		}
+	}
+	
 	public boolean findPath(HeaderPictureGrid g1,HeaderPictureGrid g2){
-		
-		return true;
+		ArrayList<HeaderPictureGrid> S=new ArrayList<HeaderPictureGrid>();
+		ArrayList<HeaderPictureGrid> T=new ArrayList<HeaderPictureGrid>();
+		S.add(g1);		
+		int crossNum = 0 ;		
+		while(!S.contains(g2)&&crossNum<3){
+			for(HeaderPictureGrid g : S){
+				//if(g.isRemoved()){
+				findAll(g,T);
+				if(T.contains(g2)){
+					return true;
+				}
+				//S.addAll(T);}
+			}
+			T.clear();
+			crossNum++;
+		}
+		if(S.contains(g2)){
+			return true;
+		}		
+		return false;
 	}
 	public LLKMainGame(ArrayList<NameBitmapPair> headerImageList,int screenWidth,int screenHeight,LevelInfo levelInfo){
 		this.levelInfo=levelInfo;
@@ -65,28 +128,7 @@ public class LLKMainGame {
 				grid[i][j].setX(i);
 				grid[i][j].setY(j);
 			}
-		}
-		/*float division=(int)Math.sqrt(headerImageList.size());
-		float horizonSize=division+1;
-		float verticalSize=headerImageList.size()/horizonSize;
-		
-		int gridWidth=(int)(screenWidth/horizonSize);
-		int gridHeight=gridWidth;
-		
-		int horizonSizeInt=(int)horizonSize;
-		int verticalSizeInt=(int)verticalSize;*/
-		//main.get
-		/*for(int i=0;i<headerImageList.size();i++){
-			HeaderPictureGrid grid=new HeaderPictureGrid();
-			NameBitmapPair nbp=headerImageList.get(i);
-			
-			grid.setX(i/horizonSizeInt);
-			grid.setY(i%horizonSizeInt);
-			grid.setName(nbp.getName());
-			grid.setHeaderImage(GraphicsUtil.getResize(nbp.getHeaderImage(), gridWidth, gridHeight));
-			// (nbp.getHeaderImage());
-			headerPictureGrids.add(grid);
-		}	*/	
+		}		
 	}
 	
 	public void setHeaderPictureGrids(ArrayList<HeaderPictureGrid> headerPictureGrids) {

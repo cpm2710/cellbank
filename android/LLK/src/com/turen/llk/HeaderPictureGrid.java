@@ -8,7 +8,9 @@ public class HeaderPictureGrid {
 	private int y;
 	private boolean removed;
 	private String name;
+	private int crossNum;
 	public HeaderPictureGrid(){
+		crossNum=4;
 		removed=false;
 	}
 	public Bitmap getHeaderImage() {
@@ -40,5 +42,11 @@ public class HeaderPictureGrid {
 	}
 	public boolean isRemoved() {
 		return removed;
+	}
+	public void setCrossNum(int crossNum) {
+		this.crossNum = crossNum;
+	}
+	public int getCrossNum() {
+		return crossNum;
 	}
 }
