@@ -41,49 +41,43 @@ public class LLKMainGame {
 	public void setGrid(HeaderPictureGrid[][] grid) {
 		this.grid = grid;
 	}
+	int times=0;
 	public void findAll(HeaderPictureGrid current,ArrayList<HeaderPictureGrid> T){
+		Log.v("llkadd","find the nodes connected to "+current.getX()+" "+current.getY());
 		HeaderPictureGrid now=null;
-		for(int y=current.getY()-1;y>0;y--){
+		for(int y=current.getY()-1;y>-1;y--){
 			now=grid[current.getX()][y];
 			if(now.isRemoved()){
-				Log.v("llkadd","added "+now.getName());
+				Log.v("llkadd","up added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
-				Log.v("llkadd","added "+now.getName());
-				T.add(now);
 				break;
 			}
 		}
-		for(int y=current.getY()+1;y<levelInfo.y;y++){
+		for(int y=current.getY()+1;y<levelInfo.y+1;y++){
 			now=grid[current.getX()][y];
 			if(now.isRemoved()){
-				Log.v("llkadd","added "+now.getName());
+				Log.v("llkadd","down added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
-				Log.v("llkadd","added "+now.getName());
-				T.add(now);
 				break;
 			}
 		}
 		for(int x=current.getX()-1;x>-1;x--){
 			now=grid[x][current.getY()];
 			if(now.isRemoved()){
-				Log.v("llkadd","added "+now.getName());
+				Log.v("llkadd","left added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
-				Log.v("llkadd","added "+now.getName());
-				T.add(now);
 				break;
 			}
 		}
-		for(int x=current.getX()+1;x<levelInfo.x;x++){
+		for(int x=current.getX()+1;x<levelInfo.x+1;x++){
 			now=grid[x][current.getY()];
 			if(now.isRemoved()){
-				Log.v("llkadd","added "+now.getName());
+				Log.v("llkadd","right added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
-				Log.v("llkadd","added "+now.getName());
-				T.add(now);
 				break;
 			}
 		}
@@ -100,10 +94,11 @@ public class LLKMainGame {
 		while(!S.contains(g2)&&crossNum<3){
 			for(HeaderPictureGrid g : S){
 				//if(g.isRemoved()){
+				times=crossNum;
 				findAll(g,T);
-				if(T.contains(g2)){
-					return true;
-				}
+				//if(T.contains(g2)){
+				//	return true;
+				//}
 				//S.addAll(T);}
 			}
 			T.clear();
@@ -116,7 +111,7 @@ public class LLKMainGame {
 	}
 	public LLKMainGame(ArrayList<NameBitmapPair> headerImageList,int screenWidth,int screenHeight,LevelInfo levelInfo){
 		this.levelInfo=levelInfo;
-		this.headerImageList=headerImageList;
+		this.setHeaderImageList(headerImageList);
 		headerPictureGrids=new ArrayList<HeaderPictureGrid>();
 		grid=new HeaderPictureGrid[levelInfo.x+2][levelInfo.y+2];
 		
@@ -124,13 +119,13 @@ public class LLKMainGame {
 		gridHeight=(int)(screenHeight/(levelInfo.y+2));
 		
 		Random r=new Random();
-		
+		int index=r.nextInt(headerImageList.size());
 		for(int i=0;i<levelInfo.x+1;i++)
 		{
 			for(int j=0;j<levelInfo.y+1;j++){
 				
 				grid[i][j]=new HeaderPictureGrid();
-				int index=r.nextInt(headerImageList.size());
+				
 				NameBitmapPair nbp=headerImageList.get(index);
 				grid[i][j].setHeaderImage(GraphicsUtil.getResize(nbp.getHeaderImage(), gridWidth, gridHeight));
 				grid[i][j].setName(nbp.getName());
@@ -138,6 +133,7 @@ public class LLKMainGame {
 				grid[i][j].setY(j);
 				if(i==0||j==0){
 					grid[i][j].setRemoved(true);
+					grid[i][j].setName("狗剩");
 				}
 			}
 		}		
@@ -156,5 +152,13 @@ public class LLKMainGame {
 
 	public LevelInfo getLevelInfo() {
 		return levelInfo;
+	}
+
+	public void setHeaderImageList(ArrayList<NameBitmapPair> headerImageList) {
+		this.headerImageList = headerImageList;
+	}
+
+	public ArrayList<NameBitmapPair> getHeaderImageList() {
+		return headerImageList;
 	}
 }
