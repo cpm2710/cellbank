@@ -11,7 +11,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Handler;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -30,7 +29,6 @@ public class LLKMainThread extends Thread {
 	public static final int STATE_OVER = 4;
 	/** 线程启动 开关 */
 	private boolean mRun = false;
-	private int mMode;
 	private Bitmap mBackgroundImage;
 	HeaderPictureGrid pre = null;
 	HeaderPictureGrid current = null;
@@ -61,24 +59,16 @@ public class LLKMainThread extends Thread {
 	public void onTouchEvent(MotionEvent event) {
 		int x = ((int) event.getX()) / this.mGame.getGridWidth();
 		int y = ((int) event.getY()) / this.mGame.getGridHeight();
-		Log.v("llktouch",""+x+" "+y);
 		HeaderPictureGrid[][] grid = this.mGame.getGrid();
-		// LevelInfo levelInfo=this.mGame.getLevelInfo();
-		// int gridSize=levelInfo.x*levelInfo.y;
-		// int j=0;
-		// grid[x][y].setRemoved(true);
 		current = grid[x][y];
 		if(current==null){
 			pre=null;
 		}
 		if (pre == null) {
-			pre = current;// grid[x][y];
+			pre = current;
 			current = null;
 		} else {
-			//Log.v("myllk", "pre name:"+pre.getName());
-			//Log.v("myllk", "current name:"+current.getName());
 			if (pre.getName().equals(current.getName())) {
-				//Log.v("myllk"," match "+pre.getName());
 				if (this.mGame.findPath(pre, current)) {
 					pre.setRemoved(true);
 					current.setRemoved(true);
@@ -122,6 +112,7 @@ public class LLKMainThread extends Thread {
 			Canvas c = null;
 			try {
 				c = mSurfaceHolder.lockCanvas(null);
+				if(c!=null)
 				synchronized (mSurfaceHolder) {
 					doDraw(c);
 				}
