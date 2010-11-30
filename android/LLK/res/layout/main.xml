@@ -21,4 +21,23 @@
 				android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
 				android:onClick="onClick" />
 
+	
+<ImageButton android:id="@+id/levelUpButton" android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:src="@drawable/up"
+				android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
+				android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
+				android:onClick="onClick"></ImageButton>
+<RatingBar android:id="@+id/levelBar" android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
+				android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
+				android:onClick="onClick">
+	</RatingBar>
+	<ImageButton android:id="@+id/levelDownButton" android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+				android:src="@drawable/down"
+				android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
+				android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
+				android:onClick="onClick"></ImageButton>
 </LinearLayout>

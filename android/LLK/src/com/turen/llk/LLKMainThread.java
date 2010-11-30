@@ -68,6 +68,11 @@ public class LLKMainThread extends Thread {
 			pre = current;
 			current = null;
 		} else {
+			if(pre==current){
+				pre = null;
+				current = null;
+				return;
+			}
 			if (pre.getName().equals(current.getName())) {
 				if (this.mGame.findPath(pre, current)) {
 					pre.setRemoved(true);

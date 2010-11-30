@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.renren.api.connect.android.AsyncRenren;
@@ -88,6 +89,28 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		}
 		if (v.getId() == R.id.connectFacebook) {
 			
+		}
+		if(v.getId()==R.id.levelBar){
+			
+		}
+		if(v.getId()==R.id.levelUpButton){
+			this.runOnUiThread(new Runnable(){
+				 @Override
+				                         public void run() { 
+						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
+						ratingBar.setNumStars(ratingBar.getNumStars()+1);
+				 }
+			});
+		}
+		if(v.getId()==R.id.levelDownButton){
+			this.runOnUiThread(new Runnable(){
+				 @Override
+				                         public void run() { 
+						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
+						ratingBar.setNumStars(ratingBar.getNumStars()-1);
+				 }
+			});
+		
 		}
 	}
 
