@@ -1,24 +1,23 @@
 package com.turen.llk.imageviewedition;
 
-import com.turen.llk.HeaderPictureGrid;
-import com.turen.llk.LLKMainGame;
-
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.turen.llk.HeaderPictureGrid;
+import com.turen.llk.LLKMainGame;
+
 public class HeaderImageAdapter extends BaseAdapter {
 	LLKMainGame mGame;
 	Context mContext;
+	LLKHeaderGridOnClickListener clickListener=null;
 	public HeaderImageAdapter(Context c,LLKMainGame mGame){
 		this.mContext=c;
 		this.mGame=mGame;
-		
+		clickListener=new LLKHeaderGridOnClickListener(mGame);
 	}
 	@Override
 	public int getCount() {
@@ -57,7 +56,7 @@ public class HeaderImageAdapter extends BaseAdapter {
         	imageView.setVisibility(imageView.INVISIBLE);
         }
         imageView.setImageBitmap(grid.getHeaderImage());
-        imageView.setOnClickListener(new LLKHeaderGridOnClickListener(mGame));
+        imageView.setOnClickListener(this.clickListener);
         return imageView;
 
 	}
