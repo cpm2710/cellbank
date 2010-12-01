@@ -9,8 +9,8 @@ import com.turen.llk.Main;
 
 public class StartGameListener {
 	private ProgressDialog progress;
-	public void showProgress(Main context,String title){
-		progress = ProgressDialog.show(context, title, "Loading...");
+	public void showProgress(Main context,String title,String text){
+		progress = ProgressDialog.show(context, title, text);
 		progress.show();
 	}
 	public void gameStarted(){

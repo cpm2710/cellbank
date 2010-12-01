@@ -96,16 +96,11 @@ public class Main extends Activity implements OnCheckedChangeListener {
 
 	public void onClick(View v) {
 		if (v.getId() == R.id.startGame) {
-			/*StartGameListener startGameListener=new StartGameListener();
-			
-			ProgressDialog progress = ProgressDialog.show(this, "", "Loading...");
-			progress.show();*/
 			StartGameListener startGameListener=new StartGameListener();
-			startGameListener.showProgress(this, "Loading");
+			startGameListener.showProgress(this, "加载好友头像资源...","请耐心等待...");
 			
 			GameStarter gameStarter=new GameStarter();
 			gameStarter.startGame(this, startGameListener);
-			//progress.dismiss();
 		}
 		if (v.getId() == R.id.connectFacebook) {
 			
@@ -116,7 +111,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		if(v.getId()==R.id.levelUpButton){
 			this.runOnUiThread(new Runnable(){
 				 @Override
-				                         public void run() { 
+				 public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
 						if(ratingBar.getRating()<3){
 						ratingBar.setRating(ratingBar.getRating()+1);}
@@ -126,7 +121,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		if(v.getId()==R.id.levelDownButton){
 			this.runOnUiThread(new Runnable(){
 				 @Override
-				                         public void run() { 
+				 public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
 						if(ratingBar.getRating()>0){
 						ratingBar.setRating(ratingBar.getRating()-1);}
