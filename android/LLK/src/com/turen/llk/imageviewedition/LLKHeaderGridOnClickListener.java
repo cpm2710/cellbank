@@ -29,9 +29,11 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			pre=null;
 		}
 		if (pre == null) {
+			Log.v("pre null","pre is null");
 			pre = current;
 			current = null;
 		} else {
+			Log.v("pre is not null","pre is not null");
 			if(pre==current){
 				pre = null;
 				current = null;
