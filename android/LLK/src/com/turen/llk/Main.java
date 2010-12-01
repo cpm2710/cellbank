@@ -56,6 +56,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		}
 		
 		setContentView(R.layout.main);
+		
 		RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
 		ratingBar.setNumStars(20);
 		ratingBar.setRating(5);

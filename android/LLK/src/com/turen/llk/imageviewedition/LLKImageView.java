@@ -6,6 +6,7 @@ import android.content.Context;
 import android.widget.GridView;
 
 import com.turen.llk.LLKMainGame;
+import com.turen.llk.R;
 import com.turen.llk.cache.HeaderImageCacher;
 import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameBitmapPair;
@@ -30,6 +31,7 @@ public class LLKImageView extends GridView{
 		
 		HeaderImageAdapter adapter=new HeaderImageAdapter(context,llkGame);
 		this.setAdapter(adapter);
+		this.setBackgroundResource(R.drawable.bg);
 		/*for(NameBitmapPair nbp : headerImageList){
 		HeaderGridImageView headerImage=new HeaderGridImageView(context);
 		headerImage.setImageBitmap(nbp.getHeaderImage());

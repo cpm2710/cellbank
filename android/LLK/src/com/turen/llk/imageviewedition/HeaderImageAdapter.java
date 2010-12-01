@@ -17,7 +17,7 @@ public class HeaderImageAdapter extends BaseAdapter {
 	public HeaderImageAdapter(Context c,LLKMainGame mGame){
 		this.mContext=c;
 		this.mGame=mGame;
-		clickListener=new LLKHeaderGridOnClickListener(mGame);
+		clickListener=new LLKHeaderGridOnClickListener(mContext,mGame);
 	}
 	@Override
 	public int getCount() {

@@ -2,19 +2,25 @@ package com.turen.llk.imageviewedition;
 
 import com.turen.llk.HeaderPictureGrid;
 import com.turen.llk.LLKMainGame;
+import com.turen.llk.R;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class LLKHeaderGridOnClickListener implements OnClickListener {
+	Context mContext;
 	HeaderGridImageView pre=null;
 	//private HeaderPictureGrid pre=null;
 	HeaderGridImageView current=null;
 	//private HeaderPictureGrid current=null;
 	
 	LLKMainGame mGame=null;
-	public LLKHeaderGridOnClickListener(LLKMainGame game){
+	public LLKHeaderGridOnClickListener(Context c,LLKMainGame game){
+		this.mContext=c;
 		this.mGame=game;
 	}
 	@Override
@@ -47,6 +53,11 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 					Log.v("remove","removed "+pre.getGrid().getName()+" "+pre.getGrid().getName());
 					pre.setVisibility(pre.INVISIBLE);
 					current.setVisibility(current.INVISIBLE);
+					Animation Anim_Alpha = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
+					pre.startAnimation(Anim_Alpha); 
+					Animation Anim_Alpha2 = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
+					current.startAnimation(Anim_Alpha); 
+					
 				}
 			}
 			pre = null;
