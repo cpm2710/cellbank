@@ -42,6 +42,5 @@ public class LLKImageViewActivity extends Activity{
 	    
 	    LLKImageView imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight,levelInfo);
 	    this.setContentView(imageView);
-	    
 	}
 }

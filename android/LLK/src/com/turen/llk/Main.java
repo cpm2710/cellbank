@@ -67,7 +67,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		ratingBar.setMax(6);
 		ratingBar.setNumStars(3);
 		ratingBar.setStepSize((float) 0.5);
-		ratingBar.setRating(3);
+		ratingBar.setRating((float)1.5);
 		initialRenRen();
 		Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
 		String []friendNumber=new String[]{"10","20","50","All"};
