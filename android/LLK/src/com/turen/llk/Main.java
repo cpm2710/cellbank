@@ -3,6 +3,7 @@ package com.turen.llk;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,10 +22,12 @@ import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.view.ConnectButton;
 import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameHeaderUrlPair;
+import com.turen.llk.imageviewedition.GameStarter;
 import com.turen.llk.imageviewedition.LLKImageViewActivity;
 import com.turen.llk.listeners.FriendParser;
 import com.turen.llk.listeners.RenRenConnectButtonListener;
 import com.turen.llk.listeners.SimpleRequestListener;
+import com.turen.llk.listeners.StartGameListener;
 
 public class Main extends Activity implements OnCheckedChangeListener {
 	private String apiKey = "6c5eb56d05ab4bcd860dce8c05e0a474";// your apiKey
@@ -85,7 +88,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		this.simpleRequestListener = new SimpleRequestListener(this);
 	}
 
-	private void initialFriendResources(int friendNumber) {
+	public void initialFriendResources(int friendNumber) {
 		FriendParser parser = new FriendParser(this.renren);
 		
 		this.nameHeaderUrlList = parser.getFriendNameHeaderUrl(friendNumber);
@@ -93,28 +96,16 @@ public class Main extends Activity implements OnCheckedChangeListener {
 
 	public void onClick(View v) {
 		if (v.getId() == R.id.startGame) {
-			Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
-			String friendNumber=(String)s.getSelectedItem();
-			if(friendNumber.equalsIgnoreCase("all")){
-				initialFriendResources(99999);
-			}else{
-				initialFriendResources(Integer.parseInt(friendNumber));
-			}			
-			LevelInfo levelInfo=new LevelInfo();
-			RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-			float rating=ratingBar.getRating();
-			Log.v("rating",""+rating);
-			levelInfo.x=(int)(rating*5);
-			levelInfo.y=(int)(rating*5);
+			/*StartGameListener startGameListener=new StartGameListener();
 			
+			ProgressDialog progress = ProgressDialog.show(this, "", "Loading...");
+			progress.show();*/
+			StartGameListener startGameListener=new StartGameListener();
+			startGameListener.showProgress(this, "Loading");
 			
-			Intent intent=new Intent();
-			intent.setClass(Main.this,LLKImageViewActivity.class);
-			Bundle bundle=new Bundle();
-			bundle.putSerializable("nameHeaderUrlList", nameHeaderUrlList);
-			bundle.putSerializable("levelInfo", levelInfo);
-			intent.putExtras(bundle);
-			startActivity(intent);
+			GameStarter gameStarter=new GameStarter();
+			gameStarter.startGame(this, startGameListener);
+			//progress.dismiss();
 		}
 		if (v.getId() == R.id.connectFacebook) {
 			
