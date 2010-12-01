@@ -24,12 +24,12 @@ public class FriendParser {
 	public FriendParser(Renren renren){
 		this.renren=renren;
 	}
-	public ArrayList<NameHeaderUrlPair> getFriendNameHeaderUrl(){
+	public ArrayList<NameHeaderUrlPair> getFriendNameHeaderUrl(int friendNumber){
 		ArrayList<NameHeaderUrlPair> pairs=new ArrayList<NameHeaderUrlPair>();
 		Bundle params = new Bundle();
 		params.putString("method", "friends.getFriends");
 		params.putString("page", "1");
-		params.putString("count", "16");
+		params.putString("count", ""+friendNumber);
 		String response=this.renren.request(params, dataFormat);
 		List<Map<String, String>> datas = null;
       

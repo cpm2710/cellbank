@@ -19,13 +19,12 @@ public class LLKImageView extends GridView{
 	public LLKImageView(Context context,HeaderImageCacher cacher,
 			ArrayList<NameHeaderUrlPair> nameHeaderUrlList,
 			int screenWidth,
-			int screenHeight) {
+			int screenHeight,
+			LevelInfo levelInfo) {
 		super(context);
 		this.cacher=cacher;
 		ArrayList<NameBitmapPair> headerImageList=this.cacher.getNameBitmapList(nameHeaderUrlList);
-		LevelInfo levelInfo=new LevelInfo();
-		levelInfo.x=5;
-		levelInfo.y=5;
+		
 		this.llkGame=new LLKMainGame(headerImageList,screenWidth,screenHeight,levelInfo);
 		this.setNumColumns(llkGame.getLevelInfo().x+2);
 		

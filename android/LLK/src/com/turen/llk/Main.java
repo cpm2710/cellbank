@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.renren.api.connect.android.AsyncRenren;
 import com.renren.api.connect.android.Renren;
 import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.view.ConnectButton;
+import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.imageviewedition.LLKImageViewActivity;
 import com.turen.llk.listeners.FriendParser;
@@ -47,7 +51,6 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 
 		WindowManager.LayoutParams.FLAG_FULLSCREEN); // 设置全屏
-		//setHeaderImages(new HashMap<String, Bitmap>());
 		
 		nameHeaderUrlList=new ArrayList<NameHeaderUrlPair>();
 		
@@ -58,9 +61,16 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		setContentView(R.layout.main);
 		
 		RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-		ratingBar.setNumStars(20);
-		ratingBar.setRating(5);
+		ratingBar.setMax(6);
+		ratingBar.setNumStars(3);
+		ratingBar.setStepSize((float) 0.5);
+		ratingBar.setRating(3);
 		initialRenRen();
+		Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
+		String []friendNumber=new String[]{"10","20","50","All"};
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, friendNumber);
+		s.setAdapter(adapter);		
 	}
 
 	private void initialRenRen() {
@@ -75,18 +85,34 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		this.simpleRequestListener = new SimpleRequestListener(this);
 	}
 
-	private void initialFriendResources() {
+	private void initialFriendResources(int friendNumber) {
 		FriendParser parser = new FriendParser(this.renren);
-		this.nameHeaderUrlList = parser.getFriendNameHeaderUrl();
+		
+		this.nameHeaderUrlList = parser.getFriendNameHeaderUrl(friendNumber);
 	}
 
 	public void onClick(View v) {
 		if (v.getId() == R.id.startGame) {
-			initialFriendResources();
+			Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
+			String friendNumber=(String)s.getSelectedItem();
+			if(friendNumber.equalsIgnoreCase("all")){
+				initialFriendResources(99999);
+			}else{
+				initialFriendResources(Integer.parseInt(friendNumber));
+			}			
+			LevelInfo levelInfo=new LevelInfo();
+			RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
+			float rating=ratingBar.getRating();
+			Log.v("rating",""+rating);
+			levelInfo.x=(int)(rating*5);
+			levelInfo.y=(int)(rating*5);
+			
+			
 			Intent intent=new Intent();
 			intent.setClass(Main.this,LLKImageViewActivity.class);
 			Bundle bundle=new Bundle();
 			bundle.putSerializable("nameHeaderUrlList", nameHeaderUrlList);
+			bundle.putSerializable("levelInfo", levelInfo);
 			intent.putExtras(bundle);
 			startActivity(intent);
 		}
@@ -101,9 +127,8 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 @Override
 				                         public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-						ratingBar.setRating(ratingBar.getRating()+1);
-						//ratingBar.setNumStars(ratingBar.getNumStars()+1);
-						//ratingBar.refreshDrawableState();
+						if(ratingBar.getRating()<3){
+						ratingBar.setRating(ratingBar.getRating()+1);}
 				 }
 			});
 		}
@@ -112,8 +137,8 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 @Override
 				                         public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-						ratingBar.setRating(ratingBar.getRating()-1);
-						//ratingBar.setNumStars(ratingBar.getNumStars()-1);
+						if(ratingBar.getRating()>0){
+						ratingBar.setRating(ratingBar.getRating()-1);}
 				 }
 			});
 		

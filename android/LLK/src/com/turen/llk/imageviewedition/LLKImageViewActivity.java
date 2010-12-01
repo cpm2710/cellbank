@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.turen.llk.cache.HeaderImageCacher;
+import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameHeaderUrlPair;
 
 public class LLKImageViewActivity extends Activity{
@@ -37,7 +38,9 @@ public class LLKImageViewActivity extends Activity{
 	    Bundle bundle=this.getIntent().getExtras();
 	    ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
 	          
-	    LLKImageView imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight);
+	    LevelInfo levelInfo=(LevelInfo)bundle.get("levelInfo");
+	    
+	    LLKImageView imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight,levelInfo);
 	    this.setContentView(imageView);
 	    
 	}
