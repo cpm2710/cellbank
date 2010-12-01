@@ -1,10 +1,9 @@
-package com.turen.llk.view;
+package com.turen.llk.surfaceedition;
 
 
 import java.util.ArrayList;
 
 import com.turen.llk.LLKMainGame;
-import com.turen.llk.LLKMainThread;
 import com.turen.llk.R;
 import com.turen.llk.cache.GraphicsUtil;
 import com.turen.llk.cache.HeaderImageCacher;

@@ -1,7 +1,9 @@
-package com.turen.llk;
+package com.turen.llk.surfaceedition;
 
 import java.util.ArrayList;
 
+import com.turen.llk.HeaderPictureGrid;
+import com.turen.llk.LLKMainGame;
 import com.turen.llk.cache.GraphicsUtil;
 import com.turen.llk.domain.LevelInfo;
 

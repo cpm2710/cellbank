@@ -1,4 +1,4 @@
-package com.turen.llk;
+package com.turen.llk.surfaceedition;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +8,7 @@ import com.turen.llk.cache.GraphicsUtil;
 import com.turen.llk.cache.HeaderImageCacher;
 import com.turen.llk.domain.NameBitmapPair;
 import com.turen.llk.domain.NameHeaderUrlPair;
-import com.turen.llk.resources.ImageAdapter;
 import com.turen.llk.util.ImageRetriever;
-import com.turen.llk.view.LLKView;
 
 
 import android.app.Activity;

@@ -1,12 +1,9 @@
 package com.turen.llk;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +17,7 @@ import com.renren.api.connect.android.Renren;
 import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.view.ConnectButton;
 import com.turen.llk.domain.NameHeaderUrlPair;
+import com.turen.llk.imageviewedition.LLKImageViewActivity;
 import com.turen.llk.listeners.FriendParser;
 import com.turen.llk.listeners.RenRenConnectButtonListener;
 import com.turen.llk.listeners.SimpleRequestListener;
@@ -85,7 +83,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		if (v.getId() == R.id.startGame) {
 			initialFriendResources();
 			Intent intent=new Intent();
-			intent.setClass(Main.this,LLKMainActivity.class);
+			intent.setClass(Main.this,LLKImageViewActivity.class);
 			Bundle bundle=new Bundle();
 			bundle.putSerializable("nameHeaderUrlList", nameHeaderUrlList);
 			intent.putExtras(bundle);
