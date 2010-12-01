@@ -24,6 +24,8 @@ import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.imageviewedition.GameStarter;
 import com.turen.llk.imageviewedition.LLKImageViewActivity;
+import com.turen.llk.imageviewedition.PaiHangBangListener;
+import com.turen.llk.imageviewedition.PaiHangBangStarter;
 import com.turen.llk.listeners.FriendParser;
 import com.turen.llk.listeners.RenRenConnectButtonListener;
 import com.turen.llk.listeners.SimpleRequestListener;
@@ -84,7 +86,6 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		this.connectRenRen.init(renren);
 		this.connectRenRen
 				.setConnectButtonListener(new RenRenConnectButtonListener(this));
-
 		this.simpleRequestListener = new SimpleRequestListener(this);
 	}
 
@@ -128,6 +129,13 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 }
 			});
 		
+		}
+		if(v.getId()==R.id.statistics){
+			PaiHangBangListener startGameListener=new PaiHangBangListener(this);
+			startGameListener.showProgress(this, "跳转到排行榜","请耐心等待...");
+			
+			PaiHangBangStarter gameStarter=new PaiHangBangStarter();
+			gameStarter.startPaiHangBang(startGameListener);
 		}
 	}
 
