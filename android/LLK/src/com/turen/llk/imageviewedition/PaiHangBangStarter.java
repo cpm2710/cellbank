@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.renren.api.connect.android.Util;
 import com.turen.llk.Main;
 import com.turen.llk.domain.ChengJi;
@@ -19,13 +21,14 @@ public class PaiHangBangStarter {
 			@Override
 			public void run() {
 				String result=Util.openUrl("http://turenllm.appspot.com/friendllkserver/getPaiHangBangServlet", "GET", null);
+				Log.v("result",result);
 				ArrayList<ChengJi> chengJis=new ArrayList<ChengJi>();
 				
 				try {
 		            JSONArray chengJiJSON = new JSONArray(result);
 		            for (int i = 0; i < chengJiJSON.length(); i++) {
 		            	ChengJi chengJi=new ChengJi();
-		            	Object obj = chengJis.get(i);
+		            	Object obj = chengJiJSON.get(i);
 		                JSONObject jobj = new JSONObject(obj.toString());
 		            	chengJi.setEmail(jobj.getString("email"));
 		            	chengJi.setUsername(jobj.getString("userName"));

@@ -61,7 +61,7 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 					Animation Anim_Alpha2 = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
 					current.startAnimation(Anim_Alpha);
 					Log.v("removed",""+mGame.getGridRemoved()+" "+(mGame.getGridSize()-10));
-					if(mGame.getGridRemoved()==(mGame.getGridSize()-10)){
+					if(mGame.getGridRemoved()>0){//==(mGame.getGridSize()-10)){
 						ChengJiUploaderListener listener=new ChengJiUploaderListener();
 						listener.showProgress(mContext, "上传您的成绩", "请耐心等待");
 						ChengJiUploader uploader=new ChengJiUploader();
