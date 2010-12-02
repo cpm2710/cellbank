@@ -31,6 +31,10 @@ public class AddChengJiServlet extends HttpServlet{
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException,ServletException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+	    resp.setContentType("text/plain");
+
 		userId=req.getParameter("userId");
 		userName=req.getParameter("userName");
 		email=req.getParameter("email");

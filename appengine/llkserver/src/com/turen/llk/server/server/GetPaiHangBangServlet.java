@@ -27,7 +27,10 @@ public class GetPaiHangBangServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException,ServletException {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+	    resp.setContentType("text/plain");
+	    PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi " +
                               "order by seconds asc");

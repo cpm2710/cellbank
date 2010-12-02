@@ -9,7 +9,7 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ChengJi {
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.UUIDSTRING)
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private String id;
 
 	@Persistent

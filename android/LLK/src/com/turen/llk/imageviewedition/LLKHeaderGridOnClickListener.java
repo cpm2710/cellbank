@@ -1,5 +1,7 @@
 package com.turen.llk.imageviewedition;
 
+import java.util.UUID;
+
 import com.turen.llk.HeaderPictureGrid;
 import com.turen.llk.LLKMainGame;
 import com.turen.llk.R;
@@ -64,6 +66,7 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 						listener.showProgress(mContext, "上传您的成绩", "请耐心等待");
 						ChengJiUploader uploader=new ChengJiUploader();
 						Bundle params=new Bundle();
+						params.putString("id", UUID.randomUUID().toString());
 						params.putString("userId", "1");
 						params.putString("userName", "a");
 						params.putString("email", "a");
