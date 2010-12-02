@@ -1,9 +1,13 @@
 package com.turen.llk.imageviewedition;
 
+import java.util.Date;
 import java.util.UUID;
+
+import org.json.JSONObject;
 
 import com.turen.llk.HeaderPictureGrid;
 import com.turen.llk.LLKMainGame;
+import com.turen.llk.Main;
 import com.turen.llk.R;
 import com.turen.llk.listeners.ChengJiUploaderListener;
 
@@ -61,16 +65,24 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 					Animation Anim_Alpha2 = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
 					current.startAnimation(Anim_Alpha);
 					Log.v("removed",""+mGame.getGridRemoved()+" "+(mGame.getGridSize()-10));
-					if(mGame.getGridRemoved()>0){//==(mGame.getGridSize()-10)){
+					if(mGame.getGridRemoved()==(mGame.getGridSize())){
 						ChengJiUploaderListener listener=new ChengJiUploaderListener();
 						listener.showProgress(mContext, "上传您的成绩", "请耐心等待");
 						ChengJiUploader uploader=new ChengJiUploader();
 						Bundle params=new Bundle();
-						//params.putString("id", UUID.randomUUID().toString());
-						params.putString("userId", "1");
-						params.putString("userName", "a");
-						params.putString("email", "a");
-						params.putString("seconds", "1");
+						LLKImageViewActivity m=(LLKImageViewActivity)mContext;
+						
+						
+						params.putString("userName", m.getCurrentUser().getUsername());
+						params.putString("headUrl", m.getCurrentUser().getHeadurl());
+						params.putString("email", "N/A");
+						
+						params.putString("xiaoNeiId", m.getCurrentUser().getXiaoNeiId());
+						long now=new Date().getTime();
+						long miniSeconds=(now-m.getgStartTime());
+						params.putString("miniSeconds", String.valueOf(miniSeconds));
+						
+						
 						uploader.uploadChengJi(listener,params);
 					}
 				}

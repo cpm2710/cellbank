@@ -1,16 +1,24 @@
 package com.turen.llk.domain;
 
-public class ChengJi {
-	private String id;
+import java.io.Serializable;
+
+public class CurrentUser implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long id;
 	private String username;
 	private String email;
 	private Integer seconds;
-	private String headerUrl;
-	public void setId(String id) {
+	private String xiaoNeiId;
+	private String headurl;
+	
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -38,11 +46,19 @@ public class ChengJi {
 		this.seconds = seconds;
 	}
 
-	public void setHeaderUrl(String headerUrl) {
-		this.headerUrl = headerUrl;
+	public void setXiaoNeiId(String xiaoNeiId) {
+		this.xiaoNeiId = xiaoNeiId;
 	}
 
-	public String getHeaderUrl() {
-		return headerUrl;
+	public String getXiaoNeiId() {
+		return xiaoNeiId;
+	}
+
+	public void setHeadurl(String headurl) {
+		this.headurl = headurl;
+	}
+
+	public String getHeadurl() {
+		return headurl;
 	}
 }

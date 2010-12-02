@@ -1,6 +1,7 @@
 package com.turen.llk.imageviewedition;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,11 +10,33 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.turen.llk.cache.HeaderImageCacher;
+import com.turen.llk.domain.CurrentUser;
 import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameHeaderUrlPair;
 
 public class LLKImageViewActivity extends Activity{
 	LLKImageViewActivity main;
+	LLKImageView imageView;
+	CurrentUser currentUser;
+	public CurrentUser getCurrentUser() {
+		return currentUser;
+	}
+	public void setCurrentUser(CurrentUser currentUser) {
+		this.currentUser = currentUser;
+	}
+	long gStartTime;
+	public long getgStartTime() {
+		return gStartTime;
+	}
+	public void setgStartTime(long gStartTime) {
+		this.gStartTime = gStartTime;
+	}
+	public LLKImageView getImageView() {
+		return imageView;
+	}
+	public void setImageView(LLKImageView imageView) {
+		this.imageView = imageView;
+	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,8 +62,9 @@ public class LLKImageViewActivity extends Activity{
 	    ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
 	          
 	    LevelInfo levelInfo=(LevelInfo)bundle.get("levelInfo");
-	    
-	    LLKImageView imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight,levelInfo);
+	    currentUser=(CurrentUser)bundle.get("currentUser");
+	    imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight,levelInfo);
 	    this.setContentView(imageView);
+	    gStartTime=new Date().getTime();
 	}
 }

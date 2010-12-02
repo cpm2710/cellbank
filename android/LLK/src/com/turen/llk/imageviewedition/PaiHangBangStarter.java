@@ -32,6 +32,7 @@ public class PaiHangBangStarter {
 		                JSONObject jobj = new JSONObject(obj.toString());
 		            	chengJi.setEmail(jobj.getString("email"));
 		            	chengJi.setUsername(jobj.getString("userName"));
+		            	chengJi.setHeaderUrl(jobj.getString("headUrl"));
 		            	chengJi.setSeconds(Integer.parseInt(jobj.getString("seconds")));
 		            	chengJis.add(chengJi);
 		            }

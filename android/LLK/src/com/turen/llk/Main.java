@@ -2,6 +2,10 @@ package com.turen.llk;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,6 +24,7 @@ import com.renren.api.connect.android.AsyncRenren;
 import com.renren.api.connect.android.Renren;
 import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.view.ConnectButton;
+import com.turen.llk.domain.CurrentUser;
 import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameHeaderUrlPair;
 import com.turen.llk.imageviewedition.GameStarter;
@@ -38,11 +43,19 @@ public class Main extends Activity implements OnCheckedChangeListener {
 	// apiSecret
 	String dataFormat = "json";
 	private Renren renren;
-	
-	
+	private long gStartTime;
 	private ArrayList<NameHeaderUrlPair> nameHeaderUrlList=null;
 	
 	private AsyncRenren asyncRenren;
+	private CurrentUser currentUser;
+	
+	public CurrentUser getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(CurrentUser currentUser) {
+		this.currentUser = currentUser;
+	}
 
 	private SimpleRequestListener simpleRequestListener;
 
@@ -75,7 +88,9 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		String []friendNumber=new String[]{"10","20","50","All"};
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, friendNumber);
-		s.setAdapter(adapter);		
+		s.setAdapter(adapter);
+		
+		
 	}
 
 	private void initialRenRen() {
@@ -97,6 +112,35 @@ public class Main extends Activity implements OnCheckedChangeListener {
 
 	public void onClick(View v) {
 		if (v.getId() == R.id.startGame) {
+			if(currentUser==null){
+				currentUser=new CurrentUser();
+			}
+			Bundle getUserInfoBundle=new Bundle();
+			getUserInfoBundle.putString("method", "users.getLoggedInUser");
+			String uIdResponse=getRenren().request(getUserInfoBundle,"json");
+			JSONObject uIdObj;
+			try {
+				uIdObj = new JSONObject(uIdResponse);
+				String uid=uIdObj.get("uid").toString();
+				currentUser.setXiaoNeiId(uid);
+				
+				getUserInfoBundle=new Bundle();
+				getUserInfoBundle.putString("method", "users.getInfo");
+				String infoResponse=getRenren().request(getUserInfoBundle,"json");
+				JSONArray infoJobj = new JSONArray(infoResponse);
+				JSONObject obj=(JSONObject) infoJobj.get(0);
+				String userName=(String)obj.get("name");
+				String headerUrl=(String)obj.get("headurl");
+				currentUser.setUsername(userName);
+				currentUser.setHeadurl(headerUrl);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			
+			
+			
 			StartGameListener startGameListener=new StartGameListener();
 			startGameListener.showProgress(this, "加载好友头像资源...","请耐心等待...");
 			
@@ -109,7 +153,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		if(v.getId()==R.id.levelBar){
 			
 		}
-		if(v.getId()==R.id.levelUpButton){
+		/*if(v.getId()==R.id.levelUpButton){
 			this.runOnUiThread(new Runnable(){
 				 @Override
 				 public void run() { 
@@ -129,7 +173,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 }
 			});
 		
-		}
+		}*/
 		if(v.getId()==R.id.statistics){
 			PaiHangBangListener startGameListener=new PaiHangBangListener(this);
 			startGameListener.showProgress(this, "跳转到排行榜","请耐心等待...");
@@ -138,7 +182,13 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			gameStarter.startPaiHangBang(startGameListener);
 		}
 	}
+	public Renren getRenren() {
+		return renren;
+	}
 
+	public void setRenren(Renren renren) {
+		this.renren = renren;
+	}
 	@Override
 	public void onCheckedChanged(RadioGroup arg0, int arg1) {
 		// TODO Auto-generated method stub
@@ -151,5 +201,13 @@ public class Main extends Activity implements OnCheckedChangeListener {
 
 	public ArrayList<NameHeaderUrlPair> getNameHeaderUrlList() {
 		return nameHeaderUrlList;
+	}
+
+	public void setgStartTime(long gStartTime) {
+		this.gStartTime = gStartTime;
+	}
+
+	public long getgStartTime() {
+		return gStartTime;
 	}
 }

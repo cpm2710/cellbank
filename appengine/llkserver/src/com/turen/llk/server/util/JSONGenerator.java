@@ -17,14 +17,16 @@ public class JSONGenerator {
 			sb.append("{id:'"+cj.getId()+"',");
 			sb.append("userName:'"+cj.getUsername()+"',");
 			sb.append("email:'"+cj.getEmail()+"',");
-			sb.append("seconds:'"+cj.getSeconds()+"'},");
+			sb.append("xiaoNeiId:'"+cj.getXiaoNeiId()+"',");
+			sb.append("miniSeconds:'"+cj.getMiniSeconds()+"'},");
 		}
 		ChengJi cj=chengJis.get(chengJis.size()-1);
 		
 		sb.append("{id:'"+cj.getId()+"',");
 		sb.append("userName:'"+cj.getUsername()+"',");
 		sb.append("email:'"+cj.getEmail()+"',");
-		sb.append("seconds:'"+cj.getSeconds()+"'}]");
+		sb.append("xiaoNeiId:'"+cj.getXiaoNeiId()+"',");
+		sb.append("miniSeconds:'"+cj.getMiniSeconds()+"'}]");
 		return sb.toString();
 	}
 }

@@ -42,6 +42,7 @@ public class GameStarter {
 				Bundle bundle=new Bundle();
 				bundle.putSerializable("nameHeaderUrlList", main.getNameHeaderUrlList());
 				bundle.putSerializable("levelInfo", levelInfo);
+				bundle.putSerializable("currentUser", main.getCurrentUser());
 				intent.putExtras(bundle);
 				main.startActivity(intent);
 				listener.gameStarted();

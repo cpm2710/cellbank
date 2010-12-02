@@ -15,9 +15,13 @@ public class ChengJi {
 	@Persistent
 	private String username;
 	@Persistent
+	private String xiaoNeiId;
+	@Persistent
 	private String email;
 	@Persistent
-	private Integer seconds;
+	private String headUrl;	
+	@Persistent
+	private Long miniSeconds;//it's miniseconds actually
 
 	public void setId(Long id) {
 		this.id = id;
@@ -42,12 +46,27 @@ public class ChengJi {
 	public String getEmail() {
 		return email;
 	}
-
-	public Integer getSeconds() {
-		return seconds;
+	public String getHeadUrl() {
+		return headUrl;
 	}
 
-	public void setSeconds(Integer seconds) {
-		this.seconds = seconds;
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
+	}
+
+	public void setXiaoNeiId(String xiaoNeiId) {
+		this.xiaoNeiId = xiaoNeiId;
+	}
+
+	public String getXiaoNeiId() {
+		return xiaoNeiId;
+	}
+
+	public void setMiniSeconds(Long miniSeconds) {
+		this.miniSeconds = miniSeconds;
+	}
+
+	public Long getMiniSeconds() {
+		return miniSeconds;
 	}
 }

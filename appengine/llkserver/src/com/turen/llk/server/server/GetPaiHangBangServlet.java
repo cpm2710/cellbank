@@ -33,7 +33,7 @@ public class GetPaiHangBangServlet extends HttpServlet {
 	    PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi " +
-                              "order by seconds asc");
+                              "order by miniSeconds asc");
 			query.setRange(0, 10);
 			List<ChengJi> results = (List<ChengJi>) query.execute();
 			String json=JSONGenerator.generate(results);

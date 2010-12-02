@@ -10,7 +10,7 @@ import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.domain.NameBitmapPair;
 
 public class LLKMainGame {
-	//LLKMainActivity main;
+	public long startTime;
 	public int gridRemoved;
 	public int getGridRemoved() {
 		return gridRemoved;

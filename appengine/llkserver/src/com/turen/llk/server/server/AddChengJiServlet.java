@@ -19,11 +19,11 @@ public class AddChengJiServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(AddChengJiServlet.class.getName());
-	private String userId;
 	private String userName;
 	private String email;
 	private String seconds;
-
+	private String xiaoNeiId;
+	private String headUrl;
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException,ServletException {
 		
@@ -35,23 +35,21 @@ public class AddChengJiServlet extends HttpServlet{
 		resp.setCharacterEncoding("UTF-8");
 	    resp.setContentType("text/plain");
 
-		userId=req.getParameter("userId");
 		userName=req.getParameter("userName");
 		email=req.getParameter("email");
-		seconds=req.getParameter("seconds");
+		seconds=req.getParameter("miniSeconds");
+		headUrl=req.getParameter("headUrl");
+		if(req.getParameter("xiaoNeiId")!=null){
+			xiaoNeiId=req.getParameter("xiaoNeiId");			
+		}
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		ChengJi chengJi=new ChengJi();
 		chengJi.setEmail(email);
 		chengJi.setUsername(userName);
-		chengJi.setSeconds(Integer.parseInt(seconds));
+		chengJi.setMiniSeconds(Long.parseLong(seconds));
+		chengJi.setXiaoNeiId(xiaoNeiId);
+		chengJi.setHeadUrl(headUrl);
 		pm.makePersistent(chengJi);
-		//this.doGet(req, resp);
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;
