@@ -1,8 +1,8 @@
 package com.turen.llk.server.server;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.turen.llk.server.domain.ChengJi;
+import com.turen.llk.server.util.JSONGenerator;
 import com.turen.llk.server.util.PMF;
 
 
@@ -27,15 +29,15 @@ public class GetPaiHangBangServlet extends HttpServlet {
 			throws IOException,ServletException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			/*Query query = pm.newQuery(User.class);
-			query.setFilter("username == lastNameParam");
-			query.declareParameters("String lastNameParam");
-			List<User> results = (List<User>) query.execute(username);
-			if (results.iterator().hasNext()) {
-				user = results.get(0);
-			} else {
-				user = pm.makePersistent(user);
-			}*/
+			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi " +
+                              "order by seconds asc");
+			query.setRange(0, 10);
+			List<ChengJi> results = (List<ChengJi>) query.execute();
+			String json=JSONGenerator.generate(results);
+			PrintWriter writer=resp.getWriter();
+			writer.write(json);
+			writer.flush();
+			writer.close();
 		} finally {
 			pm.close();
 		}		
