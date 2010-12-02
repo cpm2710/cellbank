@@ -10,7 +10,7 @@ import javax.jdo.annotations.PrimaryKey;
 public class ChengJi {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private String id;
+	private Long id;
 
 	@Persistent
 	private String username;
@@ -19,11 +19,11 @@ public class ChengJi {
 	@Persistent
 	private Integer seconds;
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
