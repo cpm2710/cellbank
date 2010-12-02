@@ -18,11 +18,13 @@ public class GameStarter {
 			public void run() {
 				Spinner s = (Spinner) main.findViewById(R.id.friendNumerSpin);
 				String friendNumber=(String)s.getSelectedItem();
-				if(friendNumber.equalsIgnoreCase("all")){
+				if(friendNumber.equalsIgnoreCase("所有好友")){
 					main.initialFriendResources(99999);
 				}else{
+					friendNumber=friendNumber.substring(friendNumber.indexOf(":")+1);
+					Log.v("friendNumber",friendNumber);
 					main.initialFriendResources(Integer.parseInt(friendNumber));
-				}			
+				}		
 				LevelInfo levelInfo=new LevelInfo();
 				RatingBar ratingBar=(RatingBar)main.findViewById(R.id.levelBar);
 				float rating=ratingBar.getRating();

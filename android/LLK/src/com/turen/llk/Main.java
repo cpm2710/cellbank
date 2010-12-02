@@ -85,7 +85,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		ratingBar.setRating((float)1.5);
 		initialRenRen();
 		Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
-		String []friendNumber=new String[]{"10","20","50","All"};
+		String []friendNumber=new String[]{"好友人数:10","好友人数:20","好友人数:50","所有好友"};
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, friendNumber);
 		s.setAdapter(adapter);

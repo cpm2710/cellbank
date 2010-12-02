@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 
 public class LLKHeaderGridOnClickListener implements OnClickListener {
 	Context mContext;
@@ -64,12 +65,34 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 					current.getGrid().setRemoved(true);
 					mGame.setGridRemoved(mGame.getGridRemoved()+2);
 					Log.v("remove","removed "+pre.getGrid().getName()+" "+pre.getGrid().getName());
-					pre.setVisibility(pre.INVISIBLE);
-					current.setVisibility(current.INVISIBLE);
-					Animation Anim_Alpha = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
+					//pre.setVisibility(pre.INVISIBLE);
+					//current.setVisibility(current.INVISIBLE);
+					/*Animation Anim_Alpha = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
 					pre.startAnimation(Anim_Alpha); 
 					Animation Anim_Alpha2 = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
-					current.startAnimation(Anim_Alpha);
+					current.startAnimation(Anim_Alpha2);*/
+					
+					int fromloc[] = new int[2];
+					int toloc[]=new int[2];
+			        pre.getLocationOnScreen(fromloc);
+			        // Just used to print out the images position
+			        //Toast.makeText(ctx, "Position on screen: x = " + loc[0] + " y = " + loc[1], 5000).show();
+			        int fromXDelta =fromloc[0];
+			        int fromYDelta = fromloc[1];
+			        current.getLocationOnScreen(toloc);
+			        int toXDelta = toloc[0];
+			        int toYDelta = toloc[1];
+
+			        TranslateAnimation translateAnimation = new TranslateAnimation(
+			                -fromXDelta,- toXDelta, -fromYDelta,-toYDelta);
+			        translateAnimation.setDuration(800);
+			        translateAnimation.setFillEnabled(true);
+
+			        pre.startAnimation(translateAnimation);
+			        pre.setVisibility(View.INVISIBLE);
+			        current.setVisibility(View.INVISIBLE);
+					
+					
 					Log.v("removed",""+mGame.getGridRemoved()+" "+(mGame.getGridSize()-10));
 					if(mGame.getGridRemoved()==(mGame.getGridSize())){
 						ChengJiUploaderListener listener=new ChengJiUploaderListener();
