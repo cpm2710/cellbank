@@ -39,6 +39,12 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 		current = view;
 		if(current==null){
 			pre=null;
+			return;
+		}
+		if(current.getGrid().isRemoved()){
+			pre=null;
+			current=null;
+			return;
 		}
 		if (pre == null) {
 			Log.v("pre null","pre is null");
