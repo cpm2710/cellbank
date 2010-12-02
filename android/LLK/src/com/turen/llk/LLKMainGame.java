@@ -1,6 +1,7 @@
 package com.turen.llk;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 
 import android.util.Log;
@@ -128,6 +129,95 @@ public class LLKMainGame {
 		if(S.contains(g2)){
 			return true;
 		}		
+		return false;
+	}
+	
+	public boolean findAll2(HeaderPictureGrid current,HeaderPictureGrid target,HashSet<HeaderPictureGrid> T){
+		Log.v("llkadd","find the nodes connected to "+current.getX()+" "+current.getY());
+		HeaderPictureGrid now=null;
+		for(int y=current.getY()-1;y>-1;y--){
+			now=grid[y][current.getX()];
+			if(now.isRemoved()){
+				//Log.v("llkadd","up added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				T.add(now);
+			}else{
+				if(target==now){
+					return true;
+				}
+				break;
+			}
+		}
+		for(int y=current.getY()+1;y<levelInfo.y+2;y++){
+			now=grid[y][current.getX()];
+			if(now.isRemoved()){
+				//Log.v("llkadd","down added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				T.add(now);
+			}else{
+				if(target==now){
+					return true;
+				}
+				break;
+			}
+		}
+		for(int x=current.getX()-1;x>-1;x--){
+			now=grid[current.getY()][x];
+			if(now.isRemoved()){
+				//Log.v("llkadd","left added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				T.add(now);
+			}else{
+				if(target==now){
+					return true;
+				}
+				break;
+			}
+		}
+		for(int x=current.getX()+1;x<levelInfo.x+2;x++){
+			Log.v("",""+x+" "+current.getY());
+			now=grid[current.getY()][x];
+			if(now.isRemoved()){
+				//Log.v("llkadd","right added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				T.add(now);
+			}else{
+				if(target==now){
+					return true;
+				}
+				break;
+			}
+		}
+		return false;
+	}
+	public boolean findPath2(HeaderPictureGrid g1,HeaderPictureGrid g2){
+		Log.v("headerName","g1"+g1.getName());
+		Log.v("headerName","g2"+g2.getName());
+		
+		HashSet<HeaderPictureGrid> S=new HashSet<HeaderPictureGrid>();
+		HashSet<HeaderPictureGrid> T=new HashSet<HeaderPictureGrid>();
+		S.add(g1);
+		int crossNum = 0 ;		
+		while(!S.contains(g2)&&crossNum<2){
+			for(HeaderPictureGrid g : S){
+				times=crossNum;
+				if(findAll2(g,g2,T)){
+					return true;
+				}
+			}
+			S.addAll(T);
+			T.clear();
+			crossNum++;
+		}
+		//find the grids g2 can connected to directly
+		HashSet<HeaderPictureGrid> X=new HashSet<HeaderPictureGrid>();
+		
+		if(findAll2(g2,g1,X)){
+			return true;
+		}
+		for(HeaderPictureGrid gg : X){
+			if(S.contains(gg)){
+				return true;
+			}
+		}
+		
+		
 		return false;
 	}
 	public LLKMainGame(ArrayList<NameBitmapPair> headerImageList,int screenWidth,int screenHeight,LevelInfo levelInfo){

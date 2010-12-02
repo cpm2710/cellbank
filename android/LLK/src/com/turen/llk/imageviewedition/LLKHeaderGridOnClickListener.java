@@ -53,7 +53,7 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 				return;
 			}
 			if (pre.getGrid().getName().equals(current.getGrid().getName())) {
-				if (this.mGame.findPath(pre.getGrid(), current.getGrid())) {
+				if (this.mGame.findPath2(pre.getGrid(), current.getGrid())) {
 					pre.getGrid().setRemoved(true);
 					current.getGrid().setRemoved(true);
 					mGame.setGridRemoved(mGame.getGridRemoved()+2);
