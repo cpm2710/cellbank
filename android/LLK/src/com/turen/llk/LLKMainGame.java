@@ -11,6 +11,14 @@ import com.turen.llk.domain.NameBitmapPair;
 
 public class LLKMainGame {
 	//LLKMainActivity main;
+	public int gridRemoved;
+	public int getGridRemoved() {
+		return gridRemoved;
+	}
+
+	public void setGridRemoved(int gridRemoved) {
+		this.gridRemoved = gridRemoved;
+	}
 	private ArrayList<HeaderPictureGrid> headerPictureGrids;
 	private ArrayList<NameBitmapPair> headerImageList=null;
 	private HeaderPictureGrid[][]grid;
@@ -18,6 +26,7 @@ public class LLKMainGame {
 	private int gridWidth=40;
 	private int gridHeight=40;
 	private LevelInfo levelInfo;
+	private int gridSize;
 	public int getGridWidth() {
 		return gridWidth;
 	}
@@ -46,9 +55,9 @@ public class LLKMainGame {
 		Log.v("llkadd","find the nodes connected to "+current.getX()+" "+current.getY());
 		HeaderPictureGrid now=null;
 		for(int y=current.getY()-1;y>-1;y--){
-			now=grid[current.getX()][y];
+			now=grid[y][current.getX()];
 			if(now.isRemoved()){
-				Log.v("llkadd","up added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				//Log.v("llkadd","up added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
 				if(target==now){
@@ -58,9 +67,9 @@ public class LLKMainGame {
 			}
 		}
 		for(int y=current.getY()+1;y<levelInfo.y+2;y++){
-			now=grid[current.getX()][y];
+			now=grid[y][current.getX()];
 			if(now.isRemoved()){
-				Log.v("llkadd","down added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				//Log.v("llkadd","down added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
 				if(target==now){
@@ -70,9 +79,9 @@ public class LLKMainGame {
 			}
 		}
 		for(int x=current.getX()-1;x>-1;x--){
-			now=grid[x][current.getY()];
+			now=grid[current.getY()][x];
 			if(now.isRemoved()){
-				Log.v("llkadd","left added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				//Log.v("llkadd","left added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
 				if(target==now){
@@ -83,9 +92,9 @@ public class LLKMainGame {
 		}
 		for(int x=current.getX()+1;x<levelInfo.x+2;x++){
 			Log.v("",""+x+" "+current.getY());
-			now=grid[x][current.getY()];
+			now=grid[current.getY()][x];
 			if(now.isRemoved()){
-				Log.v("llkadd","right added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
+				//Log.v("llkadd","right added "+now.getX()+" "+now.getY()+" "+now.getName()+" in "+times);
 				T.add(now);
 			}else{
 				if(target==now){
@@ -122,27 +131,28 @@ public class LLKMainGame {
 		return false;
 	}
 	public LLKMainGame(ArrayList<NameBitmapPair> headerImageList,int screenWidth,int screenHeight,LevelInfo levelInfo){
+		this.gridRemoved=0;
 		this.levelInfo=levelInfo;
 		this.setHeaderImageList(headerImageList);
 		headerPictureGrids=new ArrayList<HeaderPictureGrid>();
-		grid=new HeaderPictureGrid[levelInfo.x+2][levelInfo.y+2];
-		
+		grid=new HeaderPictureGrid[levelInfo.y+2][levelInfo.x+2];//第一个是y轴
+		this.gridSize=levelInfo.x*levelInfo.y;
 		gridWidth=(int)(screenWidth/(levelInfo.x+2));
 		gridHeight=(int)(screenHeight/(levelInfo.y+2));
 		
 		Random r=new Random();
-		for(int i=0;i<levelInfo.x+2;i++)
+		for(int i=0;i<levelInfo.y+2;i++)
 		{
-			for(int j=0;j<levelInfo.y+2;j++){
+			for(int j=0;j<levelInfo.x+2;j++){
 				
 				grid[i][j]=new HeaderPictureGrid();
 				int index=r.nextInt(headerImageList.size());				
 				NameBitmapPair nbp=headerImageList.get(index);
 				grid[i][j].setHeaderImage(GraphicsUtil.getResize(nbp.getHeaderImage(), gridWidth, gridHeight));
 				grid[i][j].setName(nbp.getName());
-				grid[i][j].setX(i);
-				grid[i][j].setY(j);
-				if(i==0||j==0||i==levelInfo.x+1||j==levelInfo.y+1){
+				grid[i][j].setX(j);
+				grid[i][j].setY(i);
+				if(i==0||j==0||i==levelInfo.y+1||j==levelInfo.x+1){
 					grid[i][j].setRemoved(true);
 					grid[i][j].setName("狗剩");
 				}
@@ -171,5 +181,13 @@ public class LLKMainGame {
 
 	public ArrayList<NameBitmapPair> getHeaderImageList() {
 		return headerImageList;
+	}
+
+	public void setGridSize(int gridSize) {
+		this.gridSize = gridSize;
+	}
+
+	public int getGridSize() {
+		return gridSize;
 	}
 }

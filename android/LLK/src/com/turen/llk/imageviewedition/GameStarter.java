@@ -26,10 +26,16 @@ public class GameStarter {
 				LevelInfo levelInfo=new LevelInfo();
 				RatingBar ratingBar=(RatingBar)main.findViewById(R.id.levelBar);
 				float rating=ratingBar.getRating();
-				Log.v("rating",""+rating);
+				//Log.v("rating",""+rating);
 				levelInfo.x=(int)(rating*5);
 				levelInfo.y=(int)(rating*5);
-				
+				//Log.v("x==",""+levelInfo.x);
+				//Log.v("y==",""+levelInfo.y);
+				if(levelInfo.x%2!=0&&levelInfo.y%2!=0){
+					levelInfo.y=levelInfo.y+1;
+				}
+				//Log.v("x==",""+levelInfo.x);
+				//Log.v("y==",""+levelInfo.y);
 				
 				Intent intent=new Intent();
 				intent.setClass(main,LLKImageViewActivity.class);

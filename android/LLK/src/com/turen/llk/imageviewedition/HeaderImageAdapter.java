@@ -1,6 +1,7 @@
 package com.turen.llk.imageviewedition;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -50,6 +51,9 @@ public class HeaderImageAdapter extends BaseAdapter {
         
         int x=position%(mGame.getLevelInfo().x+2);
         int y=position/(mGame.getLevelInfo().x+2);
+        Log.v("position==",""+position);
+        Log.v("x==",""+x);
+		Log.v("y==",""+y);
         HeaderPictureGrid grid=mGame.getGrid()[y][x];
         imageView.setGrid(grid);
         if(grid.isRemoved()){

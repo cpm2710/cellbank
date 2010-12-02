@@ -115,7 +115,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
 						if(ratingBar.getRating()<3){
-						ratingBar.setRating(ratingBar.getRating()+1);}
+						ratingBar.setRating((float) (ratingBar.getRating()+0.5));}
 				 }
 			});
 		}
@@ -124,8 +124,8 @@ public class Main extends Activity implements OnCheckedChangeListener {
 				 @Override
 				 public void run() { 
 						RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
-						if(ratingBar.getRating()>0){
-						ratingBar.setRating(ratingBar.getRating()-1);}
+						if(ratingBar.getRating()>0){							
+						ratingBar.setRating((float) (ratingBar.getRating()-0.5));}
 				 }
 			});
 		
