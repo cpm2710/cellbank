@@ -8,6 +8,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.turen.llk.Main;
+import com.turen.llk.domain.ChengJi;
 
 public class PaiHangBangListener {
 	private Main main;
@@ -20,13 +21,9 @@ public class PaiHangBangListener {
 		progress = ProgressDialog.show(context, title, text);
 		progress.show();
 	}
-	public void paiHangBangOnComplete(){
+	public void paiHangBangOnComplete(ArrayList<ChengJi> chengJis){
 		
-		ArrayList<String>names=new ArrayList<String>();
-		names.add("wendy");
-		names.add("andy");
-		
-		ListAdapter adapter = new PaiHangBangAdapter(this.main, names);
+		ListAdapter adapter = new PaiHangBangAdapter(this.main, chengJis);
         ListView lv = new ListView(this.main);
         
         lv.setAdapter(adapter);

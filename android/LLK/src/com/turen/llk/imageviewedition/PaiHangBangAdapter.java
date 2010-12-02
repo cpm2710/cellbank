@@ -3,6 +3,7 @@ package com.turen.llk.imageviewedition;
 import java.util.ArrayList;
 
 import com.turen.llk.Main;
+import com.turen.llk.domain.ChengJi;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +11,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class PaiHangBangAdapter extends BaseAdapter {
-	ArrayList<String> names;
+	ArrayList<ChengJi> chengJis;
 	Main main;
-	public PaiHangBangAdapter(Main main,ArrayList<String> names){
-		this.names=names;
+	public PaiHangBangAdapter(Main main,ArrayList<ChengJi> chengJis){
+		this.chengJis=chengJis;
 		this.main=main;
 	}
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return names.size();
+		return chengJis.size();
 	}
 
 	@Override
@@ -39,7 +40,8 @@ public class PaiHangBangAdapter extends BaseAdapter {
 		TextView view=null;
 		if (convertView == null) {
 			view=new TextView(main);
-			view.setText(names.get(position));
+			ChengJi chengJi=chengJis.get(position);
+			view.setText(chengJi.getUsername()+chengJi.getEmail());
 		}else{
 			view = (TextView) convertView;
 		}		
