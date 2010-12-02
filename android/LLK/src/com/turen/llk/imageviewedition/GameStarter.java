@@ -31,8 +31,11 @@ public class GameStarter {
 				levelInfo.y=(int)(rating*5);
 				//Log.v("x==",""+levelInfo.x);
 				//Log.v("y==",""+levelInfo.y);
-				if(levelInfo.x%2!=0&&levelInfo.y%2!=0){
+				if(levelInfo.y%2!=0){
 					levelInfo.y=levelInfo.y+1;
+				}
+				if(levelInfo.x%2!=0){
+					levelInfo.x=levelInfo.x+1;
 				}
 				//Log.v("x==",""+levelInfo.x);
 				//Log.v("y==",""+levelInfo.y);

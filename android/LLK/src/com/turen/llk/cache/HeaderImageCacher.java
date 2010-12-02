@@ -39,7 +39,8 @@ public class HeaderImageCacher {
 	}
 	public void writeImage(String name,Bitmap bitmap){
 		try {
-			Log.v("myllk","writing file"+name);
+			name=name.replaceAll("/", "_");
+			Log.v("myllk","writing file:"+name);
 			activity.deleteFile(name);
 			bitmap.compress(Bitmap.CompressFormat.PNG, 80,
 					activity.openFileOutput(name,activity.MODE_WORLD_WRITEABLE));
@@ -49,7 +50,11 @@ public class HeaderImageCacher {
 		}
 	}
 	public Bitmap fetchImage(String name) {
+		
+		
 		try {
+			name=name.replaceAll("/", "_");
+			Log.v("myllk","fetching file:"+name);
 			FileInputStream fis = activity.openFileInput(name);
 			Bitmap map=GraphicsUtil.loadBitmap(fis, true);
 			fis.close();

@@ -51,9 +51,9 @@ public class HeaderImageAdapter extends BaseAdapter {
         
         int x=position%(mGame.getLevelInfo().x+2);
         int y=position/(mGame.getLevelInfo().x+2);
-        Log.v("position==",""+position);
-        Log.v("x==",""+x);
-		Log.v("y==",""+y);
+        //Log.v("position==",""+position);
+        //Log.v("x==",""+x);
+		//Log.v("y==",""+y);
         HeaderPictureGrid grid=mGame.getGrid()[y][x];
         imageView.setGrid(grid);
         if(grid.isRemoved()){

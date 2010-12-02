@@ -1,6 +1,7 @@
 package com.turen.llk;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -230,24 +231,59 @@ public class LLKMainGame {
 		gridWidth=(int)(screenWidth/(levelInfo.x+2));
 		gridHeight=(int)(screenHeight/(levelInfo.y+2));
 		
-		Random r=new Random();
+		
 		for(int i=0;i<levelInfo.y+2;i++)
 		{
 			for(int j=0;j<levelInfo.x+2;j++){
 				
-				grid[i][j]=new HeaderPictureGrid();
+				/*grid[i][j]=new HeaderPictureGrid();
 				int index=r.nextInt(headerImageList.size());				
 				NameBitmapPair nbp=headerImageList.get(index);
 				grid[i][j].setHeaderImage(GraphicsUtil.getResize(nbp.getHeaderImage(), gridWidth, gridHeight));
 				grid[i][j].setName(nbp.getName());
 				grid[i][j].setX(j);
-				grid[i][j].setY(i);
+				grid[i][j].setY(i);*/
 				if(i==0||j==0||i==levelInfo.y+1||j==levelInfo.x+1){
+					grid[i][j]=new HeaderPictureGrid();
+					grid[i][j].setX(j);
+					grid[i][j].setY(i);
 					grid[i][j].setRemoved(true);
 					grid[i][j].setName("狗剩");
 				}
 			}
-		}		
+		}
+		
+		Random r=new Random();
+		ArrayList<NameBitmapPair> nbps=new ArrayList<NameBitmapPair>();
+		int size=levelInfo.x*levelInfo.y;
+		int imgIndex=0;
+		Log.v("headerImageListSize:",""+headerImageList.size());
+		for(int i=0;i<size;){
+			if(i%4==0){
+				imgIndex=r.nextInt(headerImageList.size());	
+			}
+			nbps.add(headerImageList.get(imgIndex));
+			i++;
+		}
+		Collections.shuffle(nbps);
+		
+		for(int i=1;i<levelInfo.y+1;i++)
+		{
+			for(int j=1;j<levelInfo.x+1;j++){
+				
+				grid[i][j]=new HeaderPictureGrid();
+				//int index=r.nextInt(headerImageList.size());				
+				NameBitmapPair nbp=nbps.get((i-1)*levelInfo.x+j-1);//headerImageList.get(index);
+				grid[i][j].setHeaderImage(GraphicsUtil.getResize(nbp.getHeaderImage(), gridWidth, gridHeight));
+				grid[i][j].setName(nbp.getName());
+				grid[i][j].setX(j);
+				grid[i][j].setY(i);
+				/*if(i==0||j==0||i==levelInfo.y+1||j==levelInfo.x+1){
+					grid[i][j].setRemoved(true);
+					grid[i][j].setName("狗剩");
+				}*/
+			}
+		}	
 	}
 	
 	public void setHeaderPictureGrids(ArrayList<HeaderPictureGrid> headerPictureGrids) {
