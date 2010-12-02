@@ -33,7 +33,7 @@ public class PaiHangBangStarter {
 		            	chengJi.setEmail(jobj.getString("email"));
 		            	chengJi.setUsername(jobj.getString("userName"));
 		            	chengJi.setHeaderUrl(jobj.getString("headUrl"));
-		            	chengJi.setSeconds(Integer.parseInt(jobj.getString("seconds")));
+		            	chengJi.setSeconds(Integer.parseInt(jobj.getString("miniSeconds")));
 		            	chengJis.add(chengJi);
 		            }
 		        } catch (JSONException e) {
