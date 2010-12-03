@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.turen.llk.Main;
 import com.turen.llk.R;
@@ -18,13 +19,15 @@ public class GameStarter {
 			public void run() {
 				Spinner s = (Spinner) main.findViewById(R.id.friendNumerSpin);
 				String friendNumber=(String)s.getSelectedItem();
-				if(friendNumber.equalsIgnoreCase("所有好友")){
+				try{if(friendNumber.equalsIgnoreCase("所有好友")){
 					main.initialFriendResources(99999);
 				}else{
 					friendNumber=friendNumber.substring(friendNumber.indexOf(":")+1);
 					Log.v("friendNumber",friendNumber);
 					main.initialFriendResources(Integer.parseInt(friendNumber));
-				}		
+				}}catch(Exception e){
+					Toast.makeText(main, e.getMessage(), 100).show();
+				}
 				LevelInfo levelInfo=new LevelInfo();
 				RatingBar ratingBar=(RatingBar)main.findViewById(R.id.levelBar);
 				float rating=ratingBar.getRating();

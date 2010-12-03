@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.renren.api.connect.android.AsyncRenren;
@@ -145,9 +146,8 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			startGameListener.showProgress(this, "加载好友头像资源...","请耐心等待...");
 			
 			GameStarter gameStarter=new GameStarter();
+			
 			gameStarter.startGame(this, startGameListener);
-		}
-		if (v.getId() == R.id.connectFacebook) {
 			
 		}
 		if(v.getId()==R.id.levelBar){

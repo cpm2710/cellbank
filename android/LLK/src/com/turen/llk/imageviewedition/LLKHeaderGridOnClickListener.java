@@ -11,9 +11,13 @@ import com.turen.llk.Main;
 import com.turen.llk.R;
 import com.turen.llk.listeners.ChengJiUploaderListener;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -21,6 +25,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class LLKHeaderGridOnClickListener implements OnClickListener {
 	Context mContext;
@@ -28,7 +33,44 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 	//private HeaderPictureGrid pre=null;
 	HeaderGridImageView current=null;
 	//private HeaderPictureGrid current=null;
-	
+	private android.content.DialogInterface.OnClickListener yesListener=new android.content.DialogInterface.OnClickListener(){
+
+		@Override
+		public void onClick(DialogInterface arg0, int arg1) {
+			// TODO Auto-generated method stub
+			ChengJiUploaderListener listener=new ChengJiUploaderListener();
+			listener.showProgress(mContext, "上传您的成绩", "请耐心等待");
+			ChengJiUploader uploader=new ChengJiUploader();
+			Bundle params=new Bundle();
+			LLKImageViewActivity m=(LLKImageViewActivity)mContext;
+			
+			
+			params.putString("userName", m.getCurrentUser().getUsername());
+			params.putString("headUrl", m.getCurrentUser().getHeadurl());
+			params.putString("email", "N/A");
+			
+			params.putString("xiaoNeiId", m.getCurrentUser().getXiaoNeiId());
+			long now=new Date().getTime();
+			long miniSeconds=(now-m.getgStartTime());
+			params.putString("miniSeconds", String.valueOf(miniSeconds));
+			
+			
+			uploader.uploadChengJi(listener,params);
+		}
+
+		
+	};
+	private android.content.DialogInterface.OnClickListener noListener=new android.content.DialogInterface.OnClickListener(){
+
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// TODO Auto-generated method stub
+			dialog.dismiss();
+		}
+
+		
+		
+	};
 	LLKMainGame mGame=null;
 	public LLKHeaderGridOnClickListener(Context c,LLKMainGame game){
 		this.mContext=c;
@@ -98,29 +140,30 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			        //current.bringToFront();
 			        pre.setVisibility(View.INVISIBLE);
 			        //current.setVisibility(View.INVISIBLE);
-					
+			        Toast toast=Toast.makeText(mContext, "~~~~"+pre.getGrid().getName()+"~~~~",1);
+			        toast.setGravity(Gravity.BOTTOM, 0, 0);
+			        toast.show();
+			        toast.getView().bringToFront();
 					Log.v("removed",""+mGame.getGridRemoved()+" "+(mGame.getGridSize()-10));
+					
 					if(mGame.getGridRemoved()==(mGame.getGridSize())){
-						ChengJiUploaderListener listener=new ChengJiUploaderListener();
-						listener.showProgress(mContext, "上传您的成绩", "请耐心等待");
-						ChengJiUploader uploader=new ChengJiUploader();
-						Bundle params=new Bundle();
-						LLKImageViewActivity m=(LLKImageViewActivity)mContext;
+						 Dialog dialog = new AlertDialog.Builder(mContext).setTitle("是否上传您的成绩")  
+						                 .setIcon(R.drawable.icon).setMessage("请选择")  
+						                 // .setItems(str, Test_Dialog.this)// 设置对话框要显示的一个list  
+						                 // .setSingleChoiceItems(str, 0, Test_Dialog.this)//  
+						                 // 设置对话框显示一个单选的list  
+						                 .setPositiveButton("确定", this.yesListener)  
+						 //              .setNegativeButton("取消", Test_Dialog.this)  
+						                 .setNeutralButton("退出",this.noListener)  
+						                 .create();  
+						dialog.show();  
 						
-						
-						params.putString("userName", m.getCurrentUser().getUsername());
-						params.putString("headUrl", m.getCurrentUser().getHeadurl());
-						params.putString("email", "N/A");
-						
-						params.putString("xiaoNeiId", m.getCurrentUser().getXiaoNeiId());
-						long now=new Date().getTime();
-						long miniSeconds=(now-m.getgStartTime());
-						params.putString("miniSeconds", String.valueOf(miniSeconds));
-						
-						
-						uploader.uploadChengJi(listener,params);
 					}
 				}
+			}else{
+				pre = current;
+				current = null;
+				return;
 			}
 			pre = null;
 			current = null;

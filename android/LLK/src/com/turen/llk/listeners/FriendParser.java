@@ -1,6 +1,7 @@
 package com.turen.llk.listeners;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,18 +30,25 @@ public class FriendParser {
 		Bundle params = new Bundle();
 		params.putString("method", "friends.getFriends");
 		params.putString("page", "1");
-		params.putString("count", ""+friendNumber);
+		params.putString("count", "9999");
 		String response=this.renren.request(params, dataFormat);
 		List<Map<String, String>> datas = null;
       
         datas = this.parseFriendJson(response);
-        int id=0;
-        for(Map<String,String> friend : datas){
+        Collections.shuffle(datas);
+        
+        for(int i=0;i<friendNumber;i++){
+        	String headerUrl=datas.get(i).get("headurl");
+			String name=datas.get(i).get("name");
+			pairs.add(new NameHeaderUrlPair(name,headerUrl));
+        }
+       /* for(Map<String,String> friend : datas){
 			String headerUrl=friend.get("headurl");
 			String name=friend.get("name");
 			pairs.add(new NameHeaderUrlPair(name,headerUrl));
 			
-		}
+		}*/
+        
         return pairs;
 	}
 	public  ArrayList<NameBitmapPair> getFriendImageList(){
