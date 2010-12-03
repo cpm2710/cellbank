@@ -72,10 +72,9 @@ public class LLKImageViewActivity extends Activity{
 	    currentUser=(CurrentUser)bundle.get("currentUser");
 	    
 	    LinearLayout layout=new LinearLayout(this);
-	    layout.setBackgroundResource(R.drawable.bg);
+	    layout.setBackgroundResource(R.drawable.lianzhang2);
 	    layout.setPadding(0, 0, 0, 0);
 	    layout.setOrientation(LinearLayout.VERTICAL);
-	    //layout.setLayoutParams()
 	    imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight,levelInfo);
 	    layout.addView(imageView);
 	    

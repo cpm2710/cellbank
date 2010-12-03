@@ -167,7 +167,7 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 					
 					if(mGame.getGridRemoved()==(mGame.getGridSize())){
 						 Dialog dialog = new AlertDialog.Builder(mContext).setTitle("是否上传您的成绩")  
-						                 //.setIcon(R.drawable.icon)
+						                 .setIcon(R.drawable.lianzhangicon)
 						                 .setMessage("请选择")  
 						                 // .setItems(str, Test_Dialog.this)// 设置对话框要显示的一个list  
 						                 // .setSingleChoiceItems(str, 0, Test_Dialog.this)//  

@@ -150,7 +150,8 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				 Dialog dialog = new AlertDialog.Builder(this).setTitle("请先点击连接登录人人网")  
+				 Dialog dialog = new AlertDialog.Builder(this).setTitle("请先点击连接登录人人网")
+				 .setIcon(R.drawable.lianzhangicon)
                  .setMessage("请先点击连接登录人人网")  
                  // .setItems(str, Test_Dialog.this)// 设置对话框要显示的一个list  
                  // .setSingleChoiceItems(str, 0, Test_Dialog.this)//  
