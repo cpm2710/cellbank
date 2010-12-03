@@ -5,10 +5,15 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Chronometer;
+import android.widget.LinearLayout;
 
+import com.turen.llk.R;
 import com.turen.llk.cache.HeaderImageCacher;
 import com.turen.llk.domain.CurrentUser;
 import com.turen.llk.domain.LevelInfo;
@@ -58,13 +63,27 @@ public class LLKImageViewActivity extends Activity{
 	    //获得有效像素
 	    screenWidth = display.getWidth();
 	    screenHeight = display.getHeight();
+	    screenHeight=screenHeight-50;
 	    Bundle bundle=this.getIntent().getExtras();
 	    ArrayList<NameHeaderUrlPair> nameHeaderUrlList=(ArrayList<NameHeaderUrlPair>)bundle.get("nameHeaderUrlList");
 	          
 	    LevelInfo levelInfo=(LevelInfo)bundle.get("levelInfo");
 	    currentUser=(CurrentUser)bundle.get("currentUser");
+	    
+	    LinearLayout layout=new LinearLayout(this);
+	    layout.setBackgroundResource(R.drawable.bg);
+	    layout.setPadding(0, 0, 0, 0);
+	    layout.setOrientation(LinearLayout.VERTICAL);
+	    //layout.setLayoutParams()
 	    imageView=new LLKImageView(this,new HeaderImageCacher(main),nameHeaderUrlList,screenWidth,screenHeight,levelInfo);
-	    this.setContentView(imageView);
+	    layout.addView(imageView);
+	    
+	    Chronometer meter=new Chronometer(this);
+	    meter.setBase(SystemClock.elapsedRealtime());
+	    meter.start();
+	    meter.bringToFront();
+	    layout.addView(meter);
+	    this.setContentView(layout);
 	    gStartTime=new Date().getTime();
 	}
 }

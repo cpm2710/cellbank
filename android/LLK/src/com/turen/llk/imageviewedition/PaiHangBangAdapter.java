@@ -95,7 +95,7 @@ public class PaiHangBangAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         ChengJi friend = this.chengJis.get(position);
-        viewHolder.text.setText(friend.getUsername());
+        viewHolder.text.setText(friend.getUsername()+"\n"+friend.getSeconds()+"ms");
         this.setViewImage(viewHolder.image, friend.getHeaderUrl());
         return convertView;
     }

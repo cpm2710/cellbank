@@ -19,6 +19,8 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 public class LLKHeaderGridOnClickListener implements OnClickListener {
 	Context mContext;
@@ -72,6 +74,7 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 					Animation Anim_Alpha2 = AnimationUtils.loadAnimation(mContext, R.anim.alpha_action);  
 					current.startAnimation(Anim_Alpha2);*/
 					
+					
 					int fromloc[] = new int[2];
 					int toloc[]=new int[2];
 			        pre.getLocationOnScreen(fromloc);
@@ -80,18 +83,21 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			        int fromXDelta =fromloc[0];
 			        int fromYDelta = fromloc[1];
 			        current.getLocationOnScreen(toloc);
-			        int toXDelta = toloc[0];
-			        int toYDelta = toloc[1];
-
+			        
+			        int xDelta=toloc[0]-fromloc[0];
+			        int yDelta=toloc[1]-fromloc[1];
 			        TranslateAnimation translateAnimation = new TranslateAnimation(
-			                -fromXDelta,- toXDelta, -fromYDelta,-toYDelta);
-			        translateAnimation.setDuration(800);
-			        translateAnimation.setFillEnabled(true);
+			                0, xDelta,0,yDelta);
+			        translateAnimation.setDuration(250);
+			        //translateAnimation.setFillEnabled(true);
+			        //translateAnimation.setFillAfter(true);
+			        translateAnimation.setAnimationListener(new MoveAnimation(current));
 
 			        pre.startAnimation(translateAnimation);
+			        pre.bringToFront();
+			        //current.bringToFront();
 			        pre.setVisibility(View.INVISIBLE);
-			        current.setVisibility(View.INVISIBLE);
-					
+			        //current.setVisibility(View.INVISIBLE);
 					
 					Log.v("removed",""+mGame.getGridRemoved()+" "+(mGame.getGridSize()-10));
 					if(mGame.getGridRemoved()==(mGame.getGridSize())){
@@ -120,5 +126,28 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			current = null;
 		}
 	}
+class MoveAnimation implements AnimationListener{
+	ImageView iv;
+	public MoveAnimation(ImageView iv){
+		this.iv=iv;
+	}
+	@Override
+	public void onAnimationEnd(Animation arg0) {
+		// TODO Auto-generated method stub
+		iv.setVisibility(View.INVISIBLE);
+	}
 
+	@Override
+	public void onAnimationRepeat(Animation arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationStart(Animation arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
 }
