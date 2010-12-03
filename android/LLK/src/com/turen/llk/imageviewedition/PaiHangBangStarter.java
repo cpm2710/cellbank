@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import com.renren.api.connect.android.Util;
@@ -16,11 +17,13 @@ import com.turen.llk.domain.ChengJi;
 import com.turen.llk.listeners.StartGameListener;
 
 public class PaiHangBangStarter {
-	public void startPaiHangBang(final PaiHangBangListener listener) {
+	public void startPaiHangBang(final PaiHangBangListener listener,final int level) {
 		new Thread() {
 			@Override
 			public void run() {
-				String result=Util.openUrl("http://turenllm.appspot.com/friendllkserver/getPaiHangBangServlet", "GET", null);
+				Bundle bundle=new Bundle();
+				bundle.putString("level", String.valueOf(level));
+				String result=Util.openUrl("http://turenllm.appspot.com/friendllkserver/getPaiHangBangServlet", "GET", bundle);
 				Log.v("result",result);
 				ArrayList<ChengJi> chengJis=new ArrayList<ChengJi>();
 				
@@ -40,7 +43,7 @@ public class PaiHangBangStarter {
 		            e.printStackTrace();
 		        }
 				
-				listener.paiHangBangOnComplete(chengJis);
+				listener.paiHangBangOnComplete(level,chengJis);
 			}
 		}.start();
 	}

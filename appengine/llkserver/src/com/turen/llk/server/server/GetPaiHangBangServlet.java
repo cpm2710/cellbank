@@ -37,7 +37,7 @@ public class GetPaiHangBangServlet extends HttpServlet {
 		level=Integer.parseInt(rating);
 	    PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi where level="+level +
+			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi where level=="+level +
                               " order by miniSeconds asc");
 			query.setRange(0, 10);
 			List<ChengJi> results = (List<ChengJi>) query.execute();

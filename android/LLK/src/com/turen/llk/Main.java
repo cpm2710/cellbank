@@ -190,7 +190,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			float rating=ratingBar.getRating();
 			
 			PaiHangBangStarter paiHangBangStarter=new PaiHangBangStarter();
-			paiHangBangStarter.startPaiHangBang(paiHangBangListener);
+			paiHangBangStarter.startPaiHangBang(paiHangBangListener,(int)(rating*2));
 		}
 	}
 	public Renren getRenren() {

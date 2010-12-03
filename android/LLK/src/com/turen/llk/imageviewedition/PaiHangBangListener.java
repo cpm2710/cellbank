@@ -21,25 +21,46 @@ public class PaiHangBangListener {
 		progress = ProgressDialog.show(context, title, text);
 		progress.show();
 	}
-	public void paiHangBangOnComplete(ArrayList<ChengJi> chengJis){
+	public void paiHangBangOnComplete(int level,ArrayList<ChengJi> chengJis){
 		
 		ListAdapter adapter = new PaiHangBangAdapter(this.main, chengJis);
         ListView lv = new ListView(this.main);
         
-        lv.setAdapter(adapter);
-
-        
-        this.showResult(lv);
+        lv.setAdapter(adapter);        
+        this.showResult(lv,level);
         this.progress.dismiss();
     }
 
-    private void showResult(final ListView lv) {
+    private void showResult(final ListView lv,final int level) {
         this.main.runOnUiThread(new Runnable() {
 
             @Override
             public void run() {
                 Builder alertBuilder = new Builder(main);
-                alertBuilder.setTitle("排行榜");
+                switch(level){
+                case 1:
+                	alertBuilder.setTitle("练习排行榜");
+                	break;
+                case 2:
+                	alertBuilder.setTitle("初等新手排行榜");
+                	break;
+                case 3:
+                	alertBuilder.setTitle("新手排行榜");
+                	break;
+                case 4:
+                	alertBuilder.setTitle("老手排行榜");
+                	break;
+                case 5:
+                	alertBuilder.setTitle("高手排行榜");
+                	break;
+                case 6:
+                	alertBuilder.setTitle("高高手排行榜");
+                	break;
+                	default:
+                		alertBuilder.setTitle("排行榜");
+                		
+                }
+                //alertBuilder.setTitle("排行榜");
                 alertBuilder.setView(lv);
                 alertBuilder.setNeutralButton("确定", null);
                 alertBuilder.create().show();
