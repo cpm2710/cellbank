@@ -185,11 +185,12 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		
 		}*/
 		if(v.getId()==R.id.statistics){
-			PaiHangBangListener startGameListener=new PaiHangBangListener(this);
-			startGameListener.showProgress(this, "跳转到排行榜","请耐心等待...");
+			PaiHangBangListener paiHangBangListener=new PaiHangBangListener(this);
+			paiHangBangListener.showProgress(this, "跳转到排行榜","请耐心等待...");
+			float rating=ratingBar.getRating();
 			
-			PaiHangBangStarter gameStarter=new PaiHangBangStarter();
-			gameStarter.startPaiHangBang(startGameListener);
+			PaiHangBangStarter paiHangBangStarter=new PaiHangBangStarter();
+			paiHangBangStarter.startPaiHangBang(paiHangBangListener);
 		}
 	}
 	public Renren getRenren() {

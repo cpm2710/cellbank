@@ -34,6 +34,7 @@ public class GameStarter {
 				LevelInfo levelInfo=new LevelInfo();
 				RatingBar ratingBar=(RatingBar)main.findViewById(R.id.levelBar);
 				rating=ratingBar.getRating();
+				levelInfo.level=(int) (rating*2);
 				//Log.v("rating",""+rating);
 				levelInfo.x=(int)(rating*5);
 				levelInfo.y=(int)(rating*5);

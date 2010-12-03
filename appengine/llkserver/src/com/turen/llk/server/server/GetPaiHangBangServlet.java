@@ -24,16 +24,21 @@ public class GetPaiHangBangServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(GetPaiHangBangServlet.class.getName());
+	private String rating;
+	private int level;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException,ServletException {
+		
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 	    resp.setContentType("text/plain");
+	    rating=req.getParameter("level");
+		level=Integer.parseInt(rating);
 	    PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi " +
-                              "order by miniSeconds asc");
+			Query query = pm.newQuery("select from com.turen.llk.server.domain.ChengJi where level="+level +
+                              " order by miniSeconds asc");
 			query.setRange(0, 10);
 			List<ChengJi> results = (List<ChengJi>) query.execute();
 			String json=JSONGenerator.generate(results);
@@ -71,6 +76,7 @@ public class GetPaiHangBangServlet extends HttpServlet {
 		}		
 		req.getSession().setAttribute("username", username);
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);*/
+		
 		this.doGet(req, resp);
 	}
 }
