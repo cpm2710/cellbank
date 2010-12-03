@@ -28,11 +28,11 @@
 		android:src="@drawable/down" android:layout_marginLeft="60dp"
 		android:layout_marginTop="5dp" android:layout_marginRight="60dp"
 		android:layout_marginBottom="5dp" android:onClick="onClick"></ImageButton>
-	--><Spinner android:id="@+id/friendNumerSpin"
+	--><!--<Spinner android:id="@+id/friendNumerSpin"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
 		android:layout_marginRight="60dp" android:layout_marginBottom="5dp"></Spinner>
-	<Button android:id="@+id/startGame" android:text="开始游戏"
+	--><Button android:id="@+id/startGame" android:text="开始游戏"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
 		android:layout_marginRight="60dp" android:layout_marginBottom="5dp"

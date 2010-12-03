@@ -62,6 +62,16 @@ public class Main extends Activity implements OnCheckedChangeListener {
 
 	private ConnectButton connectRenRen;
 
+	private RatingBar ratingBar;
+
+	public RatingBar getRatingBar() {
+		return ratingBar;
+	}
+
+	public void setRatingBar(RatingBar ratingBar) {
+		this.ratingBar = ratingBar;
+	}
+
 	// ** Called when the activity is first created. *//*
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -79,17 +89,17 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		
 		setContentView(R.layout.main);
 		
-		RatingBar ratingBar=(RatingBar)findViewById(R.id.levelBar);
+		ratingBar=(RatingBar)findViewById(R.id.levelBar);
 		ratingBar.setMax(6);
 		ratingBar.setNumStars(3);
 		ratingBar.setStepSize((float) 0.5);
 		ratingBar.setRating((float)1.5);
 		initialRenRen();
-		Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
+		/*Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
 		String []friendNumber=new String[]{"好友人数:10","好友人数:20","好友人数:50","所有好友"};
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, friendNumber);
-		s.setAdapter(adapter);
+		s.setAdapter(adapter);*/
 		
 		
 	}

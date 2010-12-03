@@ -17,7 +17,10 @@ public class GameStarter {
 		new Thread() {
 			@Override
 			public void run() {
-				Spinner s = (Spinner) main.findViewById(R.id.friendNumerSpin);
+				float rating=main.getRatingBar().getRating();
+				int friendNumber=(int)rating*10;
+				main.initialFriendResources(friendNumber);
+				/*Spinner s = (Spinner) main.findViewById(R.id.friendNumerSpin);
 				String friendNumber=(String)s.getSelectedItem();
 				try{if(friendNumber.equalsIgnoreCase("所有好友")){
 					main.initialFriendResources(99999);
@@ -27,10 +30,10 @@ public class GameStarter {
 					main.initialFriendResources(Integer.parseInt(friendNumber));
 				}}catch(Exception e){
 					Toast.makeText(main, e.getMessage(), 100).show();
-				}
+				}*/
 				LevelInfo levelInfo=new LevelInfo();
 				RatingBar ratingBar=(RatingBar)main.findViewById(R.id.levelBar);
-				float rating=ratingBar.getRating();
+				rating=ratingBar.getRating();
 				//Log.v("rating",""+rating);
 				levelInfo.x=(int)(rating*5);
 				levelInfo.y=(int)(rating*5);
