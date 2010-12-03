@@ -19,9 +19,18 @@ public class ChengJi {
 	@Persistent
 	private String email;
 	@Persistent
-	private String headUrl;	
+	private String headUrl;
 	@Persistent
 	private Long miniSeconds;//it's miniseconds actually
+	@Persistent
+	private Long gridSize;
+	public Long getGridSize() {
+		return gridSize;
+	}
+
+	public void setGridSize(Long gridSize) {
+		this.gridSize = gridSize;
+	}
 
 	public void setId(Long id) {
 		this.id = id;

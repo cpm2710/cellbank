@@ -16,6 +16,12 @@ public class LLKImageView extends GridView{
 
 	private HeaderImageCacher cacher;
 	private LLKMainGame llkGame;
+	public LLKMainGame getLlkGame() {
+		return llkGame;
+	}
+	public void setLlkGame(LLKMainGame llkGame) {
+		this.llkGame = llkGame;
+	}
 	public LLKImageView(Context context,HeaderImageCacher cacher,
 			ArrayList<NameHeaderUrlPair> nameHeaderUrlList,
 			int screenWidth,

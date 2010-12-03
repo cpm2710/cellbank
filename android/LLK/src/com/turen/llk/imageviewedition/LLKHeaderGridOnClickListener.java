@@ -48,7 +48,8 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			params.putString("userName", m.getCurrentUser().getUsername());
 			params.putString("headUrl", m.getCurrentUser().getHeadurl());
 			params.putString("email", "N/A");
-			
+			int size=m.getImageView().getLlkGame().getLevelInfo().x*m.getImageView().getLlkGame().getLevelInfo().x;
+			params.putString("gridSize", ""+size);
 			params.putString("xiaoNeiId", m.getCurrentUser().getXiaoNeiId());
 			long now=new Date().getTime();
 			long miniSeconds=(now-m.getgStartTime());
@@ -72,6 +73,7 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 		
 	};
 	LLKMainGame mGame=null;
+	Toast preToast;
 	public LLKHeaderGridOnClickListener(Context c,LLKMainGame game){
 		this.mContext=c;
 		this.mGame=game;
@@ -140,10 +142,18 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			        //current.bringToFront();
 			        pre.setVisibility(View.INVISIBLE);
 			        //current.setVisibility(View.INVISIBLE);
-			        Toast toast=Toast.makeText(mContext, "~~~~"+pre.getGrid().getName()+"~~~~",1);
-			        toast.setGravity(Gravity.BOTTOM, 0, 0);
-			        toast.show();
-			        toast.getView().bringToFront();
+			        if(preToast!=null){
+			        	preToast.cancel();
+			        preToast=Toast.makeText(mContext, "~~~~"+pre.getGrid().getName()+"~~~~",Toast.LENGTH_SHORT);
+			        preToast.setGravity(Gravity.BOTTOM, 0, 0);
+			        preToast.show();
+			        preToast.getView().bringToFront();
+			        }else{
+			        	preToast=Toast.makeText(mContext, "~~~~"+pre.getGrid().getName()+"~~~~",Toast.LENGTH_SHORT);
+				        preToast.setGravity(Gravity.BOTTOM, 0, 0);
+				        preToast.show();
+				        preToast.getView().bringToFront();
+			        }
 					Log.v("removed",""+mGame.getGridRemoved()+" "+(mGame.getGridSize()-10));
 					
 					if(mGame.getGridRemoved()==(mGame.getGridSize())){
