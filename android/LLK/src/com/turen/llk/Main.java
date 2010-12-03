@@ -7,7 +7,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -147,6 +150,22 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				 Dialog dialog = new AlertDialog.Builder(this).setTitle("请先点击连接登录人人网")  
+                 .setMessage("请先点击连接登录人人网")  
+                 // .setItems(str, Test_Dialog.this)// 设置对话框要显示的一个list  
+                 // .setSingleChoiceItems(str, 0, Test_Dialog.this)//  
+                 // 设置对话框显示一个单选的list  
+                 .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener (){
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						// TODO Auto-generated method stub
+						arg0.dismiss();
+					}
+                	 
+                 })
+                 .create();  
+				 dialog.show();  
 				return;
 			}
 			
