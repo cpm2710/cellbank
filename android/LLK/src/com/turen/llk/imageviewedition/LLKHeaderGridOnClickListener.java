@@ -9,6 +9,7 @@ import com.turen.llk.HeaderPictureGrid;
 import com.turen.llk.LLKMainGame;
 import com.turen.llk.Main;
 import com.turen.llk.R;
+import com.turen.llk.domain.LevelInfo;
 import com.turen.llk.listeners.ChengJiUploaderListener;
 
 import android.app.AlertDialog;
@@ -48,8 +49,10 @@ public class LLKHeaderGridOnClickListener implements OnClickListener {
 			params.putString("userName", m.getCurrentUser().getUsername());
 			params.putString("headUrl", m.getCurrentUser().getHeadurl());
 			params.putString("email", "N/A");
-			int size=m.getImageView().getLlkGame().getLevelInfo().x*m.getImageView().getLlkGame().getLevelInfo().x;
+			LevelInfo levelInfo=m.getImageView().getLlkGame().getLevelInfo();
+			int size=levelInfo.x*levelInfo.y;
 			params.putString("gridSize", ""+size);
+			params.putString("level",levelInfo.level+"" );
 			params.putString("xiaoNeiId", m.getCurrentUser().getXiaoNeiId());
 			long now=new Date().getTime();
 			long miniSeconds=(now-m.getgStartTime());
