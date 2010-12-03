@@ -1,10 +1,10 @@
-package com.turen.llk.imageviewedition;
+package com.turen.lianzhang;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.renren.api.connect.android.Util;
-import com.turen.llk.listeners.ChengJiUploaderListener;
+import com.turen.lianzhang.listeners.ChengJiUploaderListener;
 
 public class ChengJiUploader {
 	public void uploadChengJi(final LLKImageViewActivity activity,final ChengJiUploaderListener listener,final Bundle params) {

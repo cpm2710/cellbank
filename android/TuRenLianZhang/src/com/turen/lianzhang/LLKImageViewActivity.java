@@ -1,4 +1,4 @@
-package com.turen.llk.imageviewedition;
+package com.turen.lianzhang;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,11 +14,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Chronometer;
 import android.widget.LinearLayout;
 
-import com.turen.llk.R;
-import com.turen.llk.cache.HeaderImageCacher;
-import com.turen.llk.domain.CurrentUser;
-import com.turen.llk.domain.LevelInfo;
-import com.turen.llk.domain.NameHeaderUrlPair;
+import com.turen.lianzhang.R;
+import com.turen.lianzhang.util.HeaderImageCacher;
+import com.turen.lianzhang.domain.CurrentUser;
+import com.turen.lianzhang.domain.LevelInfo;
+import com.turen.lianzhang.domain.NameHeaderUrlPair;
 
 public class LLKImageViewActivity extends Activity{
 	LLKImageViewActivity main;

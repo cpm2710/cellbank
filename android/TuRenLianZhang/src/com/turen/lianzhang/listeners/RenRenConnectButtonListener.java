@@ -1,11 +1,11 @@
-package com.turen.llk.listeners;
+package com.turen.lianzhang.listeners;
 
 import android.os.Bundle;
 
 import com.renren.api.connect.android.Util;
 import com.renren.api.connect.android.exception.RenrenError;
 import com.renren.api.connect.android.view.ConnectButtonListener;
-import com.turen.llk.Main;
+import com.turen.lianzhang.Main;
 
 /**
  * @author 李勇(yong.li@opi-corp.com) 2010-7-15

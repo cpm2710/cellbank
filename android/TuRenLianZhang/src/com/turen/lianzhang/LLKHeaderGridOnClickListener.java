@@ -1,16 +1,16 @@
-package com.turen.llk.imageviewedition;
+package com.turen.lianzhang;
 
 import java.util.Date;
 import java.util.UUID;
 
 import org.json.JSONObject;
 
-import com.turen.llk.HeaderPictureGrid;
-import com.turen.llk.LLKMainGame;
-import com.turen.llk.Main;
-import com.turen.llk.R;
-import com.turen.llk.domain.LevelInfo;
-import com.turen.llk.listeners.ChengJiUploaderListener;
+import com.turen.lianzhang.HeaderPictureGrid;
+import com.turen.lianzhang.LLKMainGame;
+import com.turen.lianzhang.Main;
+import com.turen.lianzhang.R;
+import com.turen.lianzhang.domain.LevelInfo;
+import com.turen.lianzhang.listeners.ChengJiUploaderListener;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
