@@ -26,6 +26,7 @@ public class AddChengJiServlet extends HttpServlet {
 	private String xiaoNeiId;
 	private String headUrl;
 	private String gridSize;
+	private String level;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
@@ -43,6 +44,7 @@ public class AddChengJiServlet extends HttpServlet {
 		seconds = req.getParameter("miniSeconds");
 		headUrl = req.getParameter("headUrl");
 		gridSize = req.getParameter("gridSize");
+		level=req.getParameter("level");
 
 		if (req.getParameter("xiaoNeiId") != null) {
 			xiaoNeiId = req.getParameter("xiaoNeiId");
@@ -57,6 +59,9 @@ public class AddChengJiServlet extends HttpServlet {
 		chengJi.setHeadUrl(headUrl);
 		if (gridSize != null) {
 			chengJi.setGridSize(Long.parseLong(gridSize));
+		}
+		if(level!=null){
+			chengJi.setLevel(Long.parseLong(level));
 		}
 		pm.makePersistent(chengJi);
 	}

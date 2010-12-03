@@ -24,6 +24,8 @@ public class ChengJi {
 	private Long miniSeconds;//it's miniseconds actually
 	@Persistent
 	private Long gridSize;
+	@Persistent
+	private Long level;
 	public Long getGridSize() {
 		return gridSize;
 	}
@@ -77,5 +79,13 @@ public class ChengJi {
 
 	public Long getMiniSeconds() {
 		return miniSeconds;
+	}
+
+	public void setLevel(Long level) {
+		this.level = level;
+	}
+
+	public Long getLevel() {
+		return level;
 	}
 }

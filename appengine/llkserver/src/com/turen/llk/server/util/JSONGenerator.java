@@ -19,6 +19,7 @@ public class JSONGenerator {
 			sb.append("email:'"+cj.getEmail()+"',");
 			sb.append("xiaoNeiId:'"+cj.getXiaoNeiId()+"',");
 			sb.append("headUrl:'"+cj.getHeadUrl()+"',");
+			sb.append("level:'"+cj.getLevel()+"',");
 			sb.append("miniSeconds:'"+cj.getMiniSeconds()+"'},");
 		}
 		ChengJi cj=chengJis.get(chengJis.size()-1);
@@ -28,6 +29,7 @@ public class JSONGenerator {
 		sb.append("email:'"+cj.getEmail()+"',");
 		sb.append("xiaoNeiId:'"+cj.getXiaoNeiId()+"',");
 		sb.append("headUrl:'"+cj.getHeadUrl()+"',");
+		sb.append("level:'"+cj.getLevel()+"',");
 		sb.append("miniSeconds:'"+cj.getMiniSeconds()+"'}]");
 		return sb.toString();
 	}
