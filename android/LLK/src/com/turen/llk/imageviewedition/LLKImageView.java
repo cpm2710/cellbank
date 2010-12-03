@@ -36,7 +36,7 @@ public class LLKImageView extends GridView{
 		
 		HeaderImageAdapter adapter=new HeaderImageAdapter(context,llkGame);
 		this.setAdapter(adapter);
-		this.setBackgroundResource(R.drawable.lianzhang2);
+		this.setBackgroundResource(R.drawable.guilie);
 	}
 
 }
