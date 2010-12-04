@@ -25,9 +25,10 @@ public class FriendParser {
 	public FriendParser(Renren renren){
 		this.renren=renren;
 	}
-	public ArrayList<NameHeaderUrlPair> getFriendNameHeaderUrl(int friendNumber){
-		ArrayList<NameHeaderUrlPair> pairs=new ArrayList<NameHeaderUrlPair>();
-		Bundle params = new Bundle();
+	public ArrayList<NameHeaderUrlPair> getAllFriendNameHeaderUrl(){
+		ArrayList<NameHeaderUrlPair> all=new ArrayList<NameHeaderUrlPair>();
+    	
+    	Bundle params = new Bundle();
 		params.putString("method", "friends.getFriends");
 		params.putString("page", "1");
 		params.putString("count", "9999");
@@ -35,21 +36,27 @@ public class FriendParser {
 		List<Map<String, String>> datas = null;
       
         datas = this.parseFriendJson(response);
-        Collections.shuffle(datas);
-        
-        for(int i=0;i<friendNumber;i++){
+        for(int  i=0;i<datas.size();i++){
         	String headerUrl=datas.get(i).get("headurl");
-			String name=datas.get(i).get("name");
-			pairs.add(new NameHeaderUrlPair(name,headerUrl));
+ 			String name=datas.get(i).get("name");
+ 			all.add(new NameHeaderUrlPair(name,headerUrl));
         }
-       /* for(Map<String,String> friend : datas){
-			String headerUrl=friend.get("headurl");
-			String name=friend.get("name");
-			pairs.add(new NameHeaderUrlPair(name,headerUrl));
-			
-		}*/
-        
+        return all;
+	}
+	public ArrayList<NameHeaderUrlPair> getFriendNameHeaderUrl(int friendNumber,ArrayList<NameHeaderUrlPair> all){
+		ArrayList<NameHeaderUrlPair> pairs=new ArrayList<NameHeaderUrlPair>();
+		
+      
+        	Collections.shuffle(all);
+        	friendNumber=Math.min(friendNumber, all.size());
+        	 for(int i=0;i<friendNumber;i++){
+             	String headerUrl=all.get(i).getHeaderUrl();//.get("headurl");
+     			String name=all.get(i).getName();//.get("name");
+     			pairs.add(new NameHeaderUrlPair(name,headerUrl));
+           //  }
+        }
         return pairs;
+       
 	}
 	public  ArrayList<NameBitmapPair> getFriendImageList(){
 		HashMap<String,Bitmap> headerImages=new HashMap<String,Bitmap>();

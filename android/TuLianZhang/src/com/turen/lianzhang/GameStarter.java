@@ -4,11 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RatingBar;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.turen.lianzhang.Main;
-import com.turen.lianzhang.R;
 import com.turen.lianzhang.domain.LevelInfo;
 import com.turen.lianzhang.listeners.StartGameListener;
 
@@ -18,7 +14,7 @@ public class GameStarter {
 			@Override
 			public void run() {
 				float rating=main.getRatingBar().getRating();
-				int friendNumber=(int)rating*10;
+				int friendNumber=(int)(rating*10);
 				main.initialFriendResources(friendNumber);
 				/*Spinner s = (Spinner) main.findViewById(R.id.friendNumerSpin);
 				String friendNumber=(String)s.getSelectedItem();
@@ -35,11 +31,11 @@ public class GameStarter {
 				RatingBar ratingBar=(RatingBar)main.findViewById(R.id.levelBar);
 				rating=ratingBar.getRating();
 				levelInfo.level=(int) (rating*2);
-				//Log.v("rating",""+rating);
+				Log.v("rating",""+rating);
 				levelInfo.x=(int)(rating*5);
 				levelInfo.y=(int)(rating*5);
-				//Log.v("x==",""+levelInfo.x);
-				//Log.v("y==",""+levelInfo.y);
+				Log.v("x==",""+levelInfo.x);
+				Log.v("y==",""+levelInfo.y);
 				if(levelInfo.y%2!=0){
 					levelInfo.y=levelInfo.y+1;
 				}

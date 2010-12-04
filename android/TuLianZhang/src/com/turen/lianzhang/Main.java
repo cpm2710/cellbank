@@ -49,7 +49,17 @@ public class Main extends Activity implements OnCheckedChangeListener {
 	private Renren renren;
 	private long gStartTime;
 	private ArrayList<NameHeaderUrlPair> nameHeaderUrlList=null;
+	private ArrayList<NameHeaderUrlPair> allNameHeaderUrlList=null;
 	
+	public ArrayList<NameHeaderUrlPair> getAllNameHeaderUrlList() {
+		return allNameHeaderUrlList;
+	}
+
+	public void setAllNameHeaderUrlList(
+			ArrayList<NameHeaderUrlPair> allNameHeaderUrlList) {
+		this.allNameHeaderUrlList = allNameHeaderUrlList;
+	}
+
 	private AsyncRenren asyncRenren;
 	private CurrentUser currentUser;
 	
@@ -119,9 +129,15 @@ public class Main extends Activity implements OnCheckedChangeListener {
 	}
 
 	public void initialFriendResources(int friendNumber) {
+		//if(allNameHeaderUrlList==null){
 		FriendParser parser = new FriendParser(this.renren);
+		if(allNameHeaderUrlList==null){
+		allNameHeaderUrlList=parser.getAllFriendNameHeaderUrl();
+		}
 		
-		this.nameHeaderUrlList = parser.getFriendNameHeaderUrl(friendNumber);
+		
+		this.nameHeaderUrlList = parser.getFriendNameHeaderUrl(friendNumber,allNameHeaderUrlList);
+		//}
 	}
 
 	public void onClick(View v) {
