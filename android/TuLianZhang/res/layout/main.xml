@@ -20,7 +20,7 @@
 		android:layout_marginBottom="5dp" android:onClick="onClick"></ImageButton>
 	--><RatingBar android:id="@+id/levelBar" android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:layout_marginLeft="60dp"
-		android:layout_marginTop="5dp" android:layout_marginRight="60dp"
+		android:layout_marginTop="50dp" android:layout_marginRight="60dp"
 		android:layout_marginBottom="5dp">
 	</RatingBar>
 	<!--<ImageButton android:id="@+id/levelDownButton"
@@ -34,13 +34,13 @@
 		android:layout_marginRight="60dp" android:layout_marginBottom="5dp"></Spinner>
 	--><Button android:id="@+id/startGame" android:text="开始游戏"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
+		android:layout_marginLeft="60dp" android:layout_marginTop="50dp"
 		android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
 		android:onClick="onClick" />
 
 	<Button android:id="@+id/statistics" android:text="在线排行榜"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:layout_marginLeft="60dp" android:layout_marginTop="5dp"
+		android:layout_marginLeft="60dp" android:layout_marginTop="50dp"
 		android:layout_marginRight="60dp" android:layout_marginBottom="5dp"
 		android:onClick="onClick"></Button>
 </LinearLayout>
