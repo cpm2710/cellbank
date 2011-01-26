@@ -48,6 +48,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 	String dataFormat = "json";
 	private Renren renren;
 	private long gStartTime;
+	public static Main m;
 	private ArrayList<NameHeaderUrlPair> nameHeaderUrlList=null;
 	private ArrayList<NameHeaderUrlPair> allNameHeaderUrlList=null;
 	
@@ -89,6 +90,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		m=this;
 		requestWindowFeature(Window.FEATURE_NO_TITLE); // 隐藏标题
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 
@@ -107,14 +109,7 @@ public class Main extends Activity implements OnCheckedChangeListener {
 		ratingBar.setNumStars(3);
 		ratingBar.setStepSize((float) 0.5);
 		ratingBar.setRating((float)1.5);
-		initialRenRen();
-		/*Spinner s = (Spinner) findViewById(R.id.friendNumerSpin);
-		String []friendNumber=new String[]{"好友人数:10","好友人数:20","好友人数:50","所有好友"};
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, friendNumber);
-		s.setAdapter(adapter);*/
-		
-		
+		initialRenRen();		
 	}
 
 	private void initialRenRen() {
@@ -147,9 +142,10 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			}
 			Bundle getUserInfoBundle=new Bundle();
 			getUserInfoBundle.putString("method", "users.getLoggedInUser");
-			String uIdResponse=getRenren().request(getUserInfoBundle,"json");
-			JSONObject uIdObj;
 			try {
+				String uIdResponse=getRenren().request(getUserInfoBundle,"json");
+				JSONObject uIdObj;
+			
 				uIdObj = new JSONObject(uIdResponse);
 				String uid=uIdObj.get("uid").toString();
 				currentUser.setXiaoNeiId(uid);
@@ -181,13 +177,30 @@ public class Main extends Activity implements OnCheckedChangeListener {
 					}
                 	 
                  })
-                 .create();  
+                 .create();
 				 dialog.show();  
 				return;
-			}
-			
-			
-			
+			}catch(Exception e){
+				e.printStackTrace();
+				Dialog dialog = new AlertDialog.Builder(this).setTitle("出现了网络故障!")
+				 .setIcon(R.drawable.lianzhangicon)
+                .setMessage("这有可能是人人网无法连接造成的,请先连接网络并确保您的网络通畅!")  
+                // .setItems(str, Test_Dialog.this)// 设置对话框要显示的一个list  
+                // .setSingleChoiceItems(str, 0, Test_Dialog.this)//  
+                // 设置对话框显示一个单选的list  
+                .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener (){
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						// TODO Auto-generated method stub
+						arg0.dismiss();
+					}
+               	 
+                })
+                .create();
+				 dialog.show();  
+				 return;
+			}			
 			StartGameListener startGameListener=new StartGameListener();
 			startGameListener.showProgress(this, "加载好友头像资源...","请耐心等待...");
 			
@@ -220,14 +233,32 @@ public class Main extends Activity implements OnCheckedChangeListener {
 			});
 		
 		}*/
-		if(v.getId()==R.id.statistics){
-			PaiHangBangListener paiHangBangListener=new PaiHangBangListener(this);
+		/*if(v.getId()==R.id.statistics){
+			try{
+				PaiHangBangListener paiHangBangListener=new PaiHangBangListener(this);
 			paiHangBangListener.showProgress(this, "跳转到排行榜","请耐心等待...");
 			float rating=ratingBar.getRating();
 			
 			PaiHangBangStarter paiHangBangStarter=new PaiHangBangStarter();
 			paiHangBangStarter.startPaiHangBang(paiHangBangListener,(int)(rating*2));
-		}
+			}catch(Exception e){
+				e.printStackTrace();
+				Dialog dialog = new AlertDialog.Builder(this).setTitle("出现了网络故障!")
+				 .setIcon(R.drawable.lianzhangicon)
+               .setMessage("这有可能是google appspot 无法连接造成的,请先连接网络并确保您的网络通畅!")  
+                .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener (){
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						// TODO Auto-generated method stub
+						arg0.dismiss();
+					}
+              	 
+               })
+               .create();
+				 dialog.show();  
+			}
+		}*/
 	}
 	public Renren getRenren() {
 		return renren;

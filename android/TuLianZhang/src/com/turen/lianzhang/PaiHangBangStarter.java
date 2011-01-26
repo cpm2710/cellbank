@@ -8,6 +8,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -41,6 +44,25 @@ public class PaiHangBangStarter {
 		            }
 		        } catch (JSONException e) {
 		            e.printStackTrace();
+		        }catch(Exception e){
+		        	e.printStackTrace();
+					Dialog dialog = new AlertDialog.Builder(Main.m).setTitle("出现了网络故障!")
+					 .setIcon(R.drawable.lianzhangicon)
+	               .setMessage("这有可能是google appspot 无法连接造成的,请先连接网络并确保您的网络通畅!")  
+	               // .setItems(str, Test_Dialog.this)// 设置对话框要显示的一个list  
+	               // .setSingleChoiceItems(str, 0, Test_Dialog.this)//  
+	               // 设置对话框显示一个单选的list  
+	               .setPositiveButton("确定", new android.content.DialogInterface.OnClickListener (){
+
+						@Override
+						public void onClick(DialogInterface arg0, int arg1) {
+							// TODO Auto-generated method stub
+							arg0.dismiss();
+						}
+	              	 
+	               })
+	               .create();
+					 dialog.show(); 
 		        }
 				
 				listener.paiHangBangOnComplete(level,chengJis);
