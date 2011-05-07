@@ -1,0 +1,7 @@
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\obj\x86\Debug\BPACheck.exe
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\obj\x86\Debug\BPACheck.pdb
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\bin\Debug\BPACheck.exe
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\bin\Debug\BPACheck.pdb
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\bin\Debug\wx.NET.dll
+D:\WorkSpace\CSharpPractise\BPACheck\BPACheck\bin\Debug\wx.NET.xml

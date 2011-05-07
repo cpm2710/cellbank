@@ -1,0 +1,4 @@
+REFERENCES="mscorlib.dll","Microsoft.CSharp.dll","System.core.dll","System.Data.DataSetExtensions.dll","System.Data.dll","System.dll","System.Drawing.dll","System.Xml.dll","System.Xml.Linq.dll"
+LIBS_HOME=D:\\WorkSpace\\CSharpPractise\\libs
+REFERENCES=$(REFERENCES),$(LIBS_HOME)/wx.NET.dll
+COMPILE_FLAGS=/platform:x86 /nostdlib+ /noconfig

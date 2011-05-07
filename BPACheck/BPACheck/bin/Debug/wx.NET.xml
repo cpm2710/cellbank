@@ -1,0 +1,1972 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>wx.NET</name>
+  </assembly>
+  <members>
+    <!-- Nicht wohlgeformter XML-Kommentar wurde für den Member "T:wx.Object" ignoriert -->
+    <member name="F:wx.Object.objects">
+      <summary>Hashtable to associate C++ objects with C# references</summary>
+    </member>
+    <member name="F:wx.Object.memOwn">
+      <summary>memOwn is true when we create a new instance with the wrapper ctor
+or if a call to a wrapper function returns new c++ instance.
+Otherwise the created c++ object won't be deleted by the Dispose member.
+
+This member will now usually be set explicitely or depending on the StorageMode.</summary>
+    </member>
+    <member name="M:wx.Object.#ctor(System.IntPtr,wx.Object.StorageMode)">
+      <summary>Default construction for objects of defined storage mode but with default memory ownership.
+wx.Object.StorageMode.VolatileObject will be allocated with memory ownership.
+Registered Objects will usually be allocated without memory ownership.</summary>
+    </member>
+    <member name="M:wx.Object.AddObject(wx.Object)">
+      <summary>Registers an Object, so that it can be referenced using a C++ object
+pointer.</summary>
+    </member>
+    <member name="M:wx.Object.FindObject(System.IntPtr,System.Type)">
+      <summary>Locates the registered object that references the given C++ object pointer.
+
+If the pointer is not found, a reference to the object is created
+using type.
+
+Wrappers created by this method will not own the memory allocated by  ptr.</summary>
+    </member>
+    <member name="M:wx.Object.FindObject(System.IntPtr,System.Type,System.Boolean)">
+      <summary>Locates the registered object that references the given C++ object pointer.
+
+If the pointer is not found, a reference to the object is created
+using type.
+
+Argument  memOwn defines, whether a fresh created wrapper owns
+the memory allcoated by  ptr.</summary>
+    </member>
+    <member name="M:wx.Object.FindObject(System.IntPtr)">
+      <summary>Locates the registered object that references the given C++ object
+pointer.</summary>
+    </member>
+    <member name="M:wx.Object.RemoveObject(System.IntPtr)">
+      <summary>Removes a registered object.
+returns true if the object is found in the
+Hashtable and is removed (for Dispose)</summary>
+    </member>
+    <member name="M:wx.Object.VirtualDispose">
+      <summary>called when an C++ (wx)Object dtor gets invoked
+This method may be passed to native objects that can use a
+Virtual_Dispose method that will be called on deleting the native
+object.</summary>
+    </member>
+    <member name="P:wx.Object.SavedInstancesCount">
+      <summary>Use this to get the number of valid/undisposed instances of  wxWidgets objects.</summary>
+    </member>
+    <member name="P:wx.Object.InstancesCount">
+      <summary>Use this to read the number of valid instances.
+This will return the number of generated and undisposed instances of this class
+regardless whether these objects have been saved in the static container for
+instances or not.</summary>
+    </member>
+    <member name="T:wx.Object.StorageMode">
+      <summary>Use constants of this kind to tell the CTor whether to hold the newly created object into the static container of instances or not.</summary>
+    </member>
+    <member name="F:wx.Event.wxEVT_LOAD_HTML_PAGE">
+      <summary>This is a new event type which is used in wx.HtmlWindow for deferred loading of HTML pages.</summary>
+    </member>
+    <member name="T:wx.EvtHandler">
+      <summary>Interface to the event handler.
+Main methods: wx.EvtHandler.AddCommandListener() and wx.EvtHandler.AddEventListener().</summary>
+    </member>
+    <member name="M:wx.EvtHandler.AddCommandListener(System.Int32,System.Int32,wx.EventListener,System.Object)">
+      <summary>Use this form of adding a listener for a command event if the owner, who implements  listener, might be accidentally disposed by the garbage collection.</summary>
+    </member>
+    <member name="M:wx.EvtHandler.AddCommandRangeListener(System.Int32,System.Int32,System.Int32,wx.EventListener,System.Object)">
+      <summary>Use this form of adding a listener for a command event if the owner, who implements  listener, might be accidentally disposed by the garbage collection.</summary>
+    </member>
+    <member name="M:wx.EvtHandler.AddEventListener(System.Int32,wx.EventListener,System.Object)">
+      <summary>Use this form of adding a listener for a command event if the owner, who implements  listener, might be accidentally disposed by the garbage collection.</summary>
+    </member>
+    <member name="M:wx.Window.Dispose(System.Boolean)">
+      <summary>Overriden disposition.
+Even if we do not own the memory, we have to delete the window, since this
+is apparently intended by the user calling this method.</summary>
+    </member>
+    <member name="M:wx.Window.FindWindow(System.Int32,System.Type)">
+      <summary>This will find the window of the provided  id and or create one of class  type.</summary>
+    </member>
+    <member name="P:wx.Window.MinWidth">
+      <summary>This is a read-only property. Use wx.Window.MinSize to change this.</summary>
+    </member>
+    <member name="P:wx.Window.MinHeight">
+      <summary>This is a read-only property. Use wx.Window.MinSize to change this.</summary>
+    </member>
+    <member name="P:wx.Window.MinSize">
+      <summary>Read and set the minimum size of the window.
+This should be set after changing the size for instance after construction and before
+adding this to tha parent sizer.
+However, you should consider to set size hints instead of using this method.</summary>
+    </member>
+    <member name="P:wx.Window.MaxWidth">
+      <summary>This is a read-only property. Use wx.Window.MaxSize to change this.</summary>
+    </member>
+    <member name="P:wx.Window.MaxSize">
+      <summary>Read and set the maximum size of the window.
+This should be set after changing the size for instance after construction and before
+adding this to tha parent sizer.
+However, you should consider to set size hints instead of using this method.</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.SetString(System.Int32,System.String)">
+      <summary>Set the label of the entry of index  n.
+Refer also to the indexer of this class.</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.GetString(System.Int32)">
+      <summary>Get the label of the entry of index  n.
+Refer also to the indexer of this class.</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.FindString(System.String)">
+      <summary>Finds an item whose label matches the given string.
+\return The zero-based position of the item, or -1 if the string was not found.</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.SetStringSelection(System.String)">
+      <summary>Select the designated label. Return  true on success and  false otherwise.
+Refer also to property  StringSelection().</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.GetClientObject(System.Int32)">
+      <summary>Reads client data for item  n.</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.Append(System.String[])">
+      <summary>\name Maintaining items.</summary>
+    </member>
+    <member name="M:wx.ControlWithItems.Append(System.String,wx.ClientData)">
+      <summary>This will append  item to the end of the item list and associate it with the provided client data.
+The client data may be  null.</summary>
+      <result>The index of the new item.</result>
+    </member>
+    <member name="M:wx.ControlWithItems.Insert(System.String,System.Int32,wx.ClientData)">
+      <summary>Inserts the item into the list before pos, associating the given, typed or untyped, client data pointer with the item.
+Not valid for ListBox.wxLB_SORT or ComboBox.wxCB_SORT styles, use Append() instead.</summary>
+      <result>The return value is the index of the newly inserted item. If the insertion failed for some reason, -1 is returned.</result>
+    </member>
+    <member name="M:wx.ControlWithItems.Clear">
+      <summary>Deletes all items.</summary>
+    </member>
+    <member name="P:wx.ControlWithItems.StringSelection">
+      <summary>Also refer to method SetStringSelection() that returns a Boolean that is true on success and false otherwise.</summary>
+    </member>
+    <member name="P:wx.ControlWithItems.Count">
+      <summary>Returns the number of items.</summary>
+    </member>
+    <member name="P:wx.ControlWithItems.IsEmpty">
+      <summary>True iff this is empty.</summary>
+    </member>
+    <member name="P:wx.ControlWithItems.Strings">
+      <summary>All the currently known labels.
+Read only property. Alternatively, use the indexer of this class.</summary>
+    </member>
+    <member name="P:wx.ControlWithItems.Item(System.Int32)">
+      <summary>This is equivalent to the methods GetString() and SetString().</summary>
+    </member>
+    <member name="M:wx.CommandEvent.#ctor(System.Int32,System.Int32)">
+      <summary>Refer to wx.Event for available values for  evtType.</summary>
+    </member>
+    <member name="M:wx.CommandEvent.#ctor(System.Int32)">
+      <summary>Refer to wx.Event for available values for  evtType.</summary>
+    </member>
+    <member name="M:wx.HtmlWindow.RegisterWidgetCell(wx.HtmlWidgetCell)">
+      <summary>A .NET wx.HtmlWidgetCell will register itself here.
+Reason: ClearWidgetCells().</summary>
+    </member>
+    <member name="M:wx.HtmlWindow.SetInvisibleWidgetCells">
+      <summary>This will make all widgets in cells invisible and clear the list of registered cells.
+This is a work around a bug in the HTML framework: If we load an existing wx.HtmlWindow
+with a new page with new instances of wx.HtmlWidgetCell, all the old instances of
+wx.HtmlWidgetCell not be destroyed immediately. This usually disturbs the event chain.
+So, the  wx.NET system will make widget cells invisible as soon as they will be
+replaced.</summary>
+    </member>
+    <member name="M:wx.HtmlWindow.OnLoadPageEvent(System.Object,wx.Event)">
+      <summary>Call this only on wx.CommandEvent().
+This will load the page URL retrieved from the client string wx.CommandEvent.String.</summary>
+    </member>
+    <member name="M:wx.HtmlWindow.LoadPage(System.String)">
+      <summary>Overload this to change the behaviour on loading a page from the designated location.
+Refer to FSFile and FileSystemHandler for remarks on available locations.</summary>
+    </member>
+    <member name="M:wx.HtmlWindow.LoadFile(System.String)">
+      <summary>Overload this to change the behaviour on loading a file.
+The argument is a file name in native style.</summary>
+    </member>
+    <member name="T:wx.HtmlWidgetCell">
+      <summary>The wrapper for the  wxHtmlWidgetCell of  wxWidgets.
+Please note, that the  wx.NET system uses a specialization of  wxHtmlWidgetCell
+that contains some fixes.</summary>
+    </member>
+    <member name="M:wx.HtmlParser.FindObject(System.IntPtr)">
+      <summary>A virtual construction of a  wx.NET parser object from a pointer to a  wxWidgets parser object.
+Use this method to ensure existance of an appropriate wrapper for a HTML parser object.
+Problem:  wxWidgets knows 2 classes: The general  wxHtmlParser and the  wxHtmlWinParser.
+This will return (and create of not existing) an instance of wx.HtmlWinParser iff the
+argument is a pointer to a  wxHtmlWinParser instance. This method will use the internal
+run time type information built into  wxWidgets.
+
+Consider this as a specialization of method wx.Object.FindObject().
+
+IntPtr.Zero will always result into  null.</summary>
+    </member>
+    <member name="P:wx.HtmlParser.FS">
+      <summary>.NET form of  wxHtmlParser::GetFS() and  wxHtmlParser::SetFS().</summary>
+    </member>
+    <member name="T:wx.HtmlTagHandler">
+      <summary>Overload this and add this to an HtmlParser to define new tags.
+The typical use of tag handlers is the definition of new tags that designate
+forms which have been implemented as  wxWidgets panels. Refer to wx.HtmlHelpFrame.OnAboutBox()
+for a simple example.
+
+Refer to HtmlButtonTagHandler for a tag presenting a button that raises a CommandEvent.</summary>
+    </member>
+    <member name="M:wx.HtmlTagHandler.GetSupportedTags">
+      <summary>Use this to define the tags that this handler implements.
+Return a comma-separated list of tag names like "I,B,FONT,P".
+
+Please note, that in contrast to modern XML-compatible conventions  wxWidgets
+uses upper case letters as standard form for tag names. For this reason,  wx.NET
+will convert th result of this method automatically into upper case form. However,
+analogous code in C++ will probably not run with the original  wxWidgets in C++ if
+this result contains lower case letters.</summary>
+    </member>
+    <member name="M:wx.HtmlTagHandler.HandleTag(wx.HtmlTag)">
+      <summary>Implement the tags as defined by GetSupportedTags().</summary>
+    </member>
+    <!-- Nicht wohlgeformter XML-Kommentar wurde für den Member "T:wx.HtmlButtonTagHandler" ignoriert -->
+    <member name="M:wx.HtmlButtonTagHandler.GetSupportedTags">
+      <summary>"WXBUTTON"
+Please note, that in contrast to modern XML-compatible conventions  wxWidgets
+uses upper case letters as standard form for tag names. So, use upper class letters
+here exclusively.</summary>
+    </member>
+    <member name="M:wx.HtmlButtonTagHandler.HandleTag(wx.HtmlTag)">
+      <summary>This generates a window with a single button to be placed into the HTML page.
+Return value is false to enable inner parsing.</summary>
+    </member>
+    <member name="T:wx.HtmlButtonTagHandler.CmdClosure">
+      <summary>This contains the  eventstr if one is specified and this implements the addition of the event string to the event.</summary>
+    </member>
+    <member name="M:wx.HtmlButtonTagHandler.CmdClosure.OnButtonSelect(System.Object,wx.Event)">
+      <summary>This will complete the button event if an event string has been specified by the hyperlink.</summary>
+    </member>
+    <!-- Nicht wohlgeformter XML-Kommentar wurde für den Member "T:wx.HtmlChoiceTagHandler" ignoriert -->
+    <member name="M:wx.HtmlChoiceTagHandler.Append(System.String)">
+      <summary>Adds an item to the control without any command associated.</summary>
+    </member>
+    <member name="M:wx.HtmlChoiceTagHandler.Append(System.String,System.Int32)">
+      <summary>Add an item to the control.
+Selecting the item will cause a command event that may be processed in surrounding
+windows.</summary>
+    </member>
+    <member name="M:wx.HtmlChoiceTagHandler.Append(System.String,System.String)">
+      <summary>Add an item to the control loading a URL on selection.</summary>
+    </member>
+    <member name="M:wx.HtmlChoiceTagHandler.FindItem(System.String)">
+      <summary>Find the provided item string and return its index on success or -1 otherwise.</summary>
+    </member>
+    <member name="M:wx.HtmlChoiceTagHandler.FindCmd(System.Int32)">
+      <summary>Find the first item of the provided command ID and return its index on success or -1 otherwise.
+Items are often subject of localization/translation. A neutral designator for
+selecting item is a representation of the action issued by the item. Therefore,
+this method enables a user to select an item issueing a certain command.</summary>
+    </member>
+    <member name="M:wx.HtmlChoiceTagHandler.FindHyperref(System.String)">
+      <summary>Find the first item of the provided hyperref and return its index on success or -1 otherwise.
+Items are often subject of localization/translation. A neutral designator for
+selecting item is a representation of the action issued by the item. Therefore,
+this method enables a user to select an item issueing a new page to be displayed.</summary>
+    </member>
+    <member name="P:wx.HtmlChoiceTagHandler.SelectionString">
+      <summary>Returns or sets the label of the selected item.
+This is an empty string if nothing is selected.
+Please refer to SelectCmd() and SelectHyperref() for alternative methods
+of selecting items.
+
+Assignments trying to select an unknown item will be ignored silently.
+Refer to SelectItem() for an alternative method.</summary>
+    </member>
+    <member name="M:wx.VListBox.GetEnumerator">
+      <summary>This returns a new instance of EnumerateSelections on this list box.</summary>
+    </member>
+    <member name="T:wx.VListBox.EnumerateSelections">
+      <summary>This will enumerate all selections in the argument list passed to the constructor.
+This is more convenient and comprehensable than using the original calls to
+GetFirstSelected()/GetNextSelected().</summary>
+    </member>
+    <member name="P:wx.VListBox.EnumerateSelections.Cookie">
+      <summary>To whom it may concern.
+This is the cookie used for reading the selections. Nothing users need to know.</summary>
+    </member>
+    <member name="M:wx.Bitmap.#ctor(System.String)">
+      <summary>Be careful: Create an wx.Image first before creating a bitmap from a file.
+In fact I don't know why, but this works better for  wxGTK.</summary>
+    </member>
+    <member name="M:wx.Bitmap.#ctor(System.String,System.Reflection.Assembly)">
+      <summary>Convenience CTor for reading the resource of the provided name from the provided assembly.</summary>
+    </member>
+    <member name="P:wx.Bitmap.Size">
+      <summary>Get or set the size of the bitmap.
+Equivalent to sequential use of Width() and Height().</summary>
+    </member>
+    <member name="M:wx.Icon.#ctor(System.String,System.String)">
+      <summary>CTor for ZipResource support.
+* This will load an image  resourceName from ZipResource file or directory  archiveName.
+* ode
+wx.ZipResource.AddCatalogLookupPrefix(@"..\Utils\MemLogDisplay");
+wx.Icon icon=new wx.Icon("archiveName.zrs", "iconname.png");
+ndcode</summary>
+    </member>
+    <member name="M:wx.Icon.#ctor(System.String)">
+      <summary>This loads the icon from a local file.
+Add a BitmapType to specify alternative ways of loading.</summary>
+    </member>
+    <member name="M:wx.Icon.#ctor(System.String,wx.BitmapType)">
+      <summary>Loads a bitmap of the provided type.
+Use wx.BitmapType.wxBITMAP_TYPE_ANY if you have no information on the type
+of the bitmap. Use wx.BitmapType.wxBITMAP_TYPE_RESOURCE to load a bitmap
+from the .NET resource named  name.</summary>
+    </member>
+    <member name="M:wx.Icon.#ctor(System.String,System.Reflection.Assembly)">
+      <summary>Convenience CTor for reading the resource of the provided name from the provided assembly.</summary>
+    </member>
+    <member name="M:wx.Sizer.Add(wx.Window,System.Int32,System.Int32)">
+      <summary>Adds a component to the sizer</summary>
+    </member>
+    <member name="M:wx.Sizer.Add(wx.Window,System.Int32,System.Int32,System.Int32)">
+      <summary>Adds a component to the sizer</summary>
+    </member>
+    <member name="M:wx.BoxSizer.#ctor(System.Int32)">
+      <summary>Refer to class wx.Orientation for applicable flags.</summary>
+    </member>
+    <member name="M:wx.wxDateTime.ToString">
+      <summary>Comprehensable output.</summary>
+    </member>
+    <member name="M:wx.wxDateTime.FromWxWeekDay(System.Int32)">
+      <summary>Converts the int into a DayOfWeek assuming the argumetn to be an index in  wxWidgets enumeration  WeekDay.
+This will throw an System.ArgumentOutOfRangeException on negative arguments.</summary>
+    </member>
+    <member name="T:wx.ClientData">
+      <summary>Base class of all classes encapsulating client data.
+All classes deriving from wx.EvtHandler (such as all controls and App)
+can hold arbitrary data which is here referred to as "client data". This
+is useful e.g. for scripting languages which need to handle shadow objects
+for most of wxWidgets' classes and which store a handle to such a shadow
+class as client data in that class. This data can either be of type void
+- in which case the data container does not take care of freeing the data
+again or it is of type wxClientData or its derivatives. In that case the
+container (e.g. a control) will free the memory itself later. Note that
+you must not assign both void data and data derived from the
+ClientData class to a container.
+
+Some controls can hold various items and these controls can additionally
+hold client data for each item. This is the case for Choice, ComboBox</summary>
+    </member>
+    <member name="T:wx.TreeCtrl">
+      <summary>This is the wrapper of the tree control  wxTreeCtrl.</summary>
+    </member>
+    <member name="M:wx.TreeCtrl.AddRoot(System.String,System.Int32,System.Int32,wx.TreeItemData)">
+      <summary>This method reflects the  wxWidgets 2.6 requirement that  data must not be  null on hidden roots.</summary>
+    </member>
+    <member name="T:wx.ReflectConfig">
+      <summary>Class providing some methods to check availability of conditional code and compatiblity of  wx.NET.dll and  wx-c.dll.
+
+This class provides some static methods but is also an attribute of the assembly.
+So, laoders of this assembly may analyse this before use.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.#ctor">
+      <summary>This generates an attribute where the provided text is followed by a description of the conditional compilation.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxWinCompatibility26">
+      <summary>Test configuration according to  WXWIN_COMPATIBILITY_2_6.
+This tests whether compatiblity features are provided by this assembly
+as well as the  wx-c.dll.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxWinCompatibility24">
+      <summary>Test configuration according to  WXWIN_COMPATIBILITY_2_4.
+This tests whether compatiblity features are provided by this assembly
+as well as the  wx-c.dll.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxWinVersion28">
+      <summary>Tests whether the features introduced with  wxWidgets 2.8.0 are available.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxGTK">
+      <summary>Test for availability of code particular for  __WXGTK__.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxMSW">
+      <summary>Test for availability of code particular for  __WXMSW__.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxMAC">
+      <summary>Test for availability of code particular for  __WXMAC__.
+This is in fact rather a query whether code shall be avoided that cannot be provided
+for Apple Macintosh computers.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckWxNetDisplay">
+      <summary>Test for availability of  WXNET_DISPLAY code.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckStyledTextCtrl">
+      <summary>This tests for the availability of STC ( define  WXNET_STYLEDTEXTCTRL ).</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckDbGrid">
+      <summary>This is  true iff  wx.NET implements the namespace  wx.DataAccess.
+This feature is currently not directly supported by  Portable.NET (cscc).</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckUseTabDialog">
+      <summary>Checks for the availability of the TabCtrl class.
+This class is currently only available with CheckWxMSW().</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckUseUnicode">
+      <summary>Checks for the availability of Unicode support in the linked  wxWidgets library.
+Currently, native Unicode support in  wxString will not be used for conditional
+compilation but might be interest for if-then conditions in some code.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckCompatibility">
+      <summary>Runtime-check: Tests whether  wx.NET does not require more features than  wx-c.dll provides.
+Please note that unfortunately this cannot be tested for defines of  wx.NET that do not have
+an equivalent in  wxWidgets. These defines have the prefix  WXNET_ .</summary>
+      <summary>If this is  false then several classes cannot be used since they
+require functions in the  wx-c.dll according to the  wx.NET configuration
+that have not been compiled due to the configuration of the used  wxWidgets
+system.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.CheckInternalUseUTF8">
+      <summary>This is  true iff the  wx.NET is configured for internal use of UTF 8 strings.
+This option is for instance relevant to the PNET implementation of the .NET framework.</summary>
+    </member>
+    <member name="M:wx.ReflectConfig.ConfigurationString">
+      <summary>Returns an english string describing the configuration.</summary>
+    </member>
+    <member name="P:wx.ReflectConfig.Compatibility26">
+      <summary>\name These are the properties that one can read from the attribute.
+Instances of this class provide possibles attributes of this assembly.
+These properties define the information rovided by this attribute.
+Additionally, we have a ToString() method here that returns the
+ConfigurationString().</summary>
+    </member>
+    <member name="T:wx.RadioBox">
+      <summary>This control throws exceptions on generating / creating instances without choices.
+According to the \w wxWidgets documentation, this is a control with items but it is not.
+You can neither add items dynamically not associate items with client data.</summary>
+    </member>
+    <member name="M:wx.ImageHandler.CanRead(System.Byte[])">
+      <summary>Returns true iff this handler can read the provided stream.</summary>
+    </member>
+    <member name="M:wx.ImageHandler.CanRead(System.String)">
+      <summary>Returns true iff this handler can read the file of teh provided name.</summary>
+    </member>
+    <member name="M:wx.Image.RemoveHandler(System.String)">
+      <summary>Removes the image handler of the provided name.
+The handler is not deleted. So, please ensure that the designated
+handler has a wx.NET wrapper for instancestoring a reference to
+FindHandler().</summary>
+    </member>
+    <member name="T:wx.GridCellEnumRenderer">
+      <summary>Renders an enumeration.
+Enumerations are specified either as comma separated list or as an array of strings.
+However, also this array will be passed to the renderer as comma separated list so avoid
+comma in items.</summary>
+    </member>
+    <member name="M:wx.GridCellEnumRenderer.#ctor(System.String)">
+      <summary>Argument is a comma separated list.</summary>
+    </member>
+    <member name="M:wx.GridCellEnumRenderer.#ctor(wx.wxString)">
+      <summary>Argument is a comma separated list.</summary>
+    </member>
+    <member name="M:wx.GridCellEnumRenderer.SetParameters(System.String)">
+      <summary>The  parameter is a comma separated list of the items to be rendered.</summary>
+    </member>
+    <member name="T:wx.GridCellEnumEditor">
+      <summary>Editor for an enumeration.
+Enumerations are specified either as comma separated list or as an array of strings.
+However, also this array will be passed to the renderer as comma separated list so avoid
+comma in items.</summary>
+    </member>
+    <member name="M:wx.GridCellEditor.Create(wx.Window,System.Int32,wx.EvtHandler)">
+      <summary>Do not forget to set the generated control (SetControl())</summary>
+    </member>
+    <member name="M:wx.GridCellEditor.SetControl(wx.Control)">
+      <summary>Sets the control to be raised on edit a cell.
+Setting this is a prerequisite for several methods and shall be done in Create().</summary>
+    </member>
+    <member name="M:wx.GridCellEditor.GetControl">
+      <summary>Gets the control that is used for editing cells.
+Note: This only works if the control has been generated from the wx.net side.
+If this editor is a native implementation like for instance GridCellTextEditor,
+this method returns  null.</summary>
+    </member>
+    <member name="M:wx.GridCellEnumEditor.#ctor(System.String)">
+      <summary>Argument is a comma separated list of items.</summary>
+    </member>
+    <member name="M:wx.GridCellEnumEditor.#ctor(wx.wxString)">
+      <summary>Argument is a comma separated list of items.</summary>
+    </member>
+    <member name="T:wx.GridCellAutoWrapStringEditor">
+      <summary>String editor for potentially longer strings containing blanks.
+You may input explicit line breaks using the CTRL key in conjunctions
+with the return or enter key.</summary>
+    </member>
+    <member name="T:wx.GridCellTextEditor">
+      <summary>Editor for string.
+You may use the wx.GridCellAutoWrapStringEditor alternatively.</summary>
+    </member>
+    <member name="T:wx.GridCellAutoWrapStringRenderer">
+      <summary>String renderer for potentially longer strings containing blanks.
+Texts rendered by instances of this class will not overlap into empty cells
+in the neighbourhood. Longer strings will be displayed wrapped instead.</summary>
+    </member>
+    <member name="P:wx.PrintDialogData.EnablePrintToFile">
+      <summary>Using this property requires compatibility mode with  wxWidgets 2.4.</summary>
+    </member>
+    <member name="P:wx.PrintData.PrintMode">
+      <summary>Setting this property requires compatibility mode with  wxWidgets 2.4.</summary>
+    </member>
+    <member name="T:wx.GridTableRequest">
+      <summary>IDs for messages sent from grid table to view.
+Refer to class GridTableMessage.</summary>
+    </member>
+    <member name="T:wx.GridTableMessage">
+      <summary>Class to inform displaying Grid controls of any changes in the displayed GridTableBase.
+* This method implements an often vital directions of passing information in data binding that
+* is often missing: The data model can use this method to inform displaying controls of changes.
+* Refer to Grid.ProcessTableMessage().
+*
+* Instances of this class combine a request for an action or message ID with two integer
+* arguments. The best waay to exemplify the effect of such messages is to list their use
+* in the standard  wxWidgets table model as given by class  wxStringTable.
+* The following items list modifying methods of this table model followed by the
+* table message that is used to communicate the effect to the grid.
+*
+* ode wxGridStringTable::InsertRows( size_t pos, size_t numRows ) ndcode generates
+* ode
+wxGridTableMessage msg( this,</summary>
+    </member>
+    <member name="M:wx.Grid.ProcessTableMessage(wx.GridTableMessage)">
+      <summary>Method for instances of GridTableBase to inform displaying grid controls of any changes.
+This method implements an often vital directions of passing information in data binding that
+is often missing: The data model can use this method to inform displaying controls of changes.</summary>
+    </member>
+    <member name="M:wx.Grid.DeleteAllRows">
+      <summary>Deletes all rows.</summary>
+    </member>
+    <member name="M:wx.Grid.DeleteRows">
+      <summary>Deletes row 0.</summary>
+    </member>
+    <member name="M:wx.Grid.DeleteRows(System.Int32)">
+      <summary>Deletes row at pos  pos.</summary>
+    </member>
+    <member name="M:wx.Grid.SetCellRenderer(System.Int32,System.Int32,wx.GridCellRenderer)">
+      <summary>This will set the editor for a particular cell.
+Alternatively, you may set the editor to be used by a wx.GridCellAttr or
+you may assign a value to property wx.Grid.DefaultEditor.</summary>
+    </member>
+    <member name="P:wx.Grid.DefaultRowSize">
+      <summary>Gets or sets the default row size.
+Setting a value to this property always disables resizing (also
+the default in wxWidgets). Use SetDefaultRowSize() to enable resizing
+of rows.</summary>
+    </member>
+    <member name="P:wx.Grid.DefaultColSize">
+      <summary>Gets or sets the default column size.
+Setting a value to this property always disables resizing (also
+the default in wxWidgets). Use SetDefaultColSize() to enable resizing
+of rows.</summary>
+    </member>
+    <member name="T:wx.GridTableBase">
+      <summary>Abstract data model for grids.
+Refer also to class GridTableMessage.</summary>
+    </member>
+    <member name="M:wx.GridTableBase.SetRowAttr(wx.GridCellAttr,System.Int32)">
+      <summary>The standard implementation simply calls the  wxWidgets implementation and passes memory ownership to  wxWidgets.</summary>
+    </member>
+    <member name="M:wx.GridTableBase.SetColAttr(wx.GridCellAttr,System.Int32)">
+      <summary>The standard implementation simply calls the  wxWidgets implementation and passes memory ownership to  wxWidgets.</summary>
+    </member>
+    <member name="T:wx.DC">
+      <summary>A device context for painting.
+Please note, that you have to dispose this context as soon as you
+stop drawing explicitely. In C++  wxWidgets this is done explicitely
+when creating objects of this class in a local scope. The object will
+be deleted when leaving this scope implicitely. However, .NET implements
+an implicit destruction of objects using a garbage collector. So,
+you have either to use the key word  using or the ethod wx.Object.Dispose()
+to delete a DC immediately after using it.</summary>
+    </member>
+    <member name="M:wx.DC.GetTextExtent(System.String,System.Int32@,System.Int32@,System.Int32@,System.Int32@,wx.Font)">
+      <summary>Gets the dimensions of the string using the currently selected font.
+str is the text string to measure,  w and  h are the total width and height
+respectively,  descent is the dimension from the baseline of the font to the bottom of the descender,
+and  externalLeading is any extra vertical space added to the font by the font designer (usually is zero).
+The parameter font specifies an alternative to the currently selected font:
+but note that this does not yet work under Windows, so you need to set a font for the device context first.</summary>
+    </member>
+    <member name="M:wx.DC.GetTextExtend(System.String)">
+      <summary>Returns width and height of string  str using the font of the  this.</summary>
+    </member>
+    <member name="T:wx.ClientDC">
+      <summary>A device context for the region of a window.
+Please note, that you have to dispose this context as soon as you
+stop drawing explicitely. In C++  wxWidgets this is done explicitely
+when creating objects of this class in a local scope. The object will
+be deleted when leaving this scope implicitely. However, .NET implements
+an implicit destruction of objects using a garbage collector. So,
+you have either to use the key word  using or the ethod wx.Object.Dispose()
+to delete a DC immediately after using it.</summary>
+    </member>
+    <member name="T:wx.PaintDC">
+      <summary>A device context for painting.
+Please note, that you have to dispose this context as soon as you
+stop drawing explicitely. In C++  wxWidgets this is done explicitely
+when creating objects of this class in a local scope. The object will
+be deleted when leaving this scope implicitely. However, .NET implements
+an implicit destruction of objects using a garbage collector. So,
+you have either to use the key word  using or the ethod wx.Object.Dispose()
+to delete a DC immediately after using it.</summary>
+    </member>
+    <member name="M:wx.HtmlHelpController.AddBook(System.String)">
+      <summary>Adds the book at the provided file name.
+In contrast to the  wxWidgets version, this method
+silently installs the  wx file handler for zip file
+entries. The file system is currently not wrapped since
+the .NET framework implements most of the provided functions.
+However, handling of zip-archives is required to deal with
+hyper text books (HTB), so this ability will be installed on
+using it.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpController.TitleFormat">
+      <summary>This property is for writing only and set the title format.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpController.TempDir">
+      <summary>Write-only property to set the directory for temporary files (option for better performance).</summary>
+    </member>
+    <member name="T:wx.PenList">
+      <summary>Wrapper for  wxPenList.
+* Whenever possible use static property  ThePenList().
+*</summary>
+    </member>
+    <member name="M:wx.PenList.Dispose">
+      <summary>\internal HMaH: Needs to be disposed explcitley since non-virtual but also non-trivial DTor.</summary>
+    </member>
+    <member name="P:wx.PenList.ThePenList">
+      <summary>The global font list.
+Use this whenever possible to retrieve fonts.</summary>
+    </member>
+    <member name="T:wx.BrushList">
+      <summary>Wrapper for  wxBrushList.
+Whenever possible use static property  TheBrushList().</summary>
+    </member>
+    <member name="M:wx.BrushList.Dispose">
+      <summary>\internal HMaH: Needs to be disposed explcitley since non-virtual but also non-trivial DTor.</summary>
+    </member>
+    <member name="P:wx.BrushList.TheBrushList">
+      <summary>The global font list.
+Use this whenever possible to retrieve fonts.</summary>
+    </member>
+    <member name="T:wx.FontList">
+      <summary>Wrapper for  wxFontList.
+Whenever possible use property TheFontList() to retrieve fonts.</summary>
+    </member>
+    <member name="M:wx.FontList.Dispose">
+      <summary>\internal HMaH: Needs to be disposed explcitley since non-virtual but also non-trivial DTor.</summary>
+    </member>
+    <member name="M:wx.FontList.FindOrCreateWithWeight(wx.Font,wx.FontWeight)">
+      <summary>Get a font with all properties from  prototype but of the given  weight.</summary>
+    </member>
+    <member name="M:wx.FontList.FindOrCreateWithStyle(wx.Font,wx.FontStyle)">
+      <summary>Get a font with all properties from  prototype but of the given  style.</summary>
+    </member>
+    <member name="M:wx.FontList.FindOrCreateWithSize(wx.Font,System.Int32)">
+      <summary>Get a font with all properties from  prototype but of the given  size.</summary>
+    </member>
+    <member name="M:wx.FontList.FindOrCreateUnderlined(wx.Font,System.Boolean)">
+      <summary>Get a font with all properties from  prototype but underlined according to  isUnderlined.</summary>
+    </member>
+    <member name="P:wx.FontList.TheFontList">
+      <summary>The global font list.
+Use this whenever possible to retrieve fonts.</summary>
+    </member>
+    <member name="M:wx.BitmapList.Dispose">
+      <summary>\internal HMaH: Needs to be disposed explcitley since non-virtual but also non-trivial DTor.</summary>
+    </member>
+    <member name="T:wx.Config">
+      <summary>This is the class for writing and reading configuration parameters via  wxWidgets  wxConfigBase implementations.
+
+The idea of  wxWidgets configuration class is to provide an interface that allows
+applications to manage configuration data without regard to the mathod of storing the
+information. Configurations may either be stored in a global or local file, or into the
+registry database. The syntax of the files is according to the good old Ini-files as
+common to 16-Bit Windows.
+
+This interface might be extended in the future to provide some additional styles that
+implement the standard way of configuring .NET applications (XML file  myApp.exe.config for
+application  myApp.exe read by class System.Configuration.Configuration).
+
+Although  wxConfig is not derived from  wxObject, this class is derived from wx.Object since
+the main concern of wx.Object is to manage pointers to C++ objects.</summary>
+    </member>
+    <member name="M:wx.Config.Get(System.Boolean)">
+      <summary>This will get the current configuration of the application.
+If the argument is  true, this method will wx.Config.Create() a new configuration
+is required.</summary>
+    </member>
+    <member name="M:wx.Config.Get">
+      <summary>Equivalent to wx.Config.Get(true).</summary>
+    </member>
+    <member name="M:wx.Config.Create">
+      <summary>Create a new configuration according to properties of the application.
+On Windows, the configuration will preferably recorded in the registry database
+within the  HKEY_CURRENT_USER section using the vendor's name and the application's name
+to create subkeys. However, this depends on whether  wxUSE_CONFIG_NATIVE has been defined
+on compiling  wxWidgets or not. In most other cases, this will use a file of the application
+name in the current working directory. Refer also to wx.App.AppName and wx.App.VendorName.</summary>
+    </member>
+    <member name="M:wx.Config.WithEnvVarsExpanded(System.String)">
+      <summary>This is the equivalent to  wxConfig::EnvVarsExpanded().
+This has to be renamed since  EnvVarsExpanded is required as name of the property
+for automatic expansion.</summary>
+    </member>
+    <member name="P:wx.Config.ExpandEnvVars">
+      <summary>This read/write property defines automatic expansion of environment variables.
+Use WithEnvVarsExpanded() to read a string with expanded environment variables.</summary>
+    </member>
+    <member name="P:wx.Choice.CurrentSelection">
+      <summary>Read-only property returning the index of the current selection.
+Unlike ControlWithItems.Selection() which only returns the accepted selection value,
+i.e. the selection in the control once the user closes the dropdown
+list, this function returns the current selection. That is, while
+the dropdown list is shown, it returns the currently selected item
+in it. When it is not shown, its result is the same as for the other
+function.</summary>
+    </member>
+    <member name="M:wx.XmlResource.SetSubclassDefaults">
+      <summary>Sets the default assembly/namespace based on the assembly from
+which this method is called (i.e. your assembly!).
+
+Determines these by walking a stack trace. Normally
+Assembly.GetCallingAssembly should work but in my tests it
+returned the current assembly in the static constructor above.</summary>
+    </member>
+    <member name="M:wx.ListItem.#ctor(System.String)">
+      <summary>Generating an item representing the following text.</summary>
+    </member>
+    <member name="M:wx.ListItem.#ctor(System.String,System.Int32)">
+      <summary>Generating an item of the provided text and the specified alignment.</summary>
+    </member>
+    <member name="P:wx.ListItem.Align">
+      <summary>A constant like wx.ListCtrl.wxLIST_FORMAT_CENTRE.</summary>
+    </member>
+    <member name="M:wx.ListCtrl.OnGetItemText(System.Int32,System.Int32)">
+      <summary>Overload this to provide the name of a virtually represented item.
+The default implementation returns an empty string. So, don't be surprised if
+you get an empty list because you didn't implement this.</summary>
+    </member>
+    <member name="M:wx.ListCtrl.OnGetItemImage(System.Int32)">
+      <summary>Return the index of the icon of the designated item in the used image list.
+Overload this for virtual lists.
+
+This standard implementation will return an undefined index (-1)
+for "do no show any item image".</summary>
+    </member>
+    <member name="M:wx.ListCtrl.OnGetItemColumnImage(System.Int32,System.Int32)">
+      <summary>Return the index of the icon of the designated item and the designated column in the used image list.
+Overload this for virtual lists.
+
+This standard implementation will return an undefined index (-1)
+for "do no show any item image".</summary>
+    </member>
+    <member name="M:wx.ListCtrl.SetImageList(wx.ImageList,System.Int32)">
+      <summary>Defines the image list to be used by instances of wx.ImageItem added to this list.</summary>
+    </member>
+    <member name="T:wx.ListCtrl.wxListCtrlCompare">
+      <summary>The corresponding  wxWidgets function type uses  int data to designate items and sort data.
+However, C typically identifies  int and  long on 32 bit architectures. Apparently, C# does not so.
+It is apparently unwise to use  long in native C interfaces since this data type does not have
+a standard size_t.</summary>
+    </member>
+    <member name="T:wx.SystemObjectClientData">
+      <summary>Generate an instance of this class to use an System.Object as client data of choices etc.
+This simply generates an instance of ClientData, which hods a new instance of  wxClientData.
+Of course, that  wxClientData does not hold any data, but when .NET code refers to client data
+of a Choice or another control, the selector will use this pointer to a  wxClientData to
+identify this instance via  Object.FindObject().</summary>
+    </member>
+    <member name="T:wx.ZipStream">
+      <summary>Internal base class for writing or reading into a ZIP stream.</summary>
+    </member>
+    <member name="M:wx.ZipStream.Seek(System.Int64,System.IO.SeekOrigin)">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="M:wx.ZipStream.SetLength(System.Int64)">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="P:wx.ZipStream.Length">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="P:wx.ZipStream.Position">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="T:wx.ArchiveEntry">
+      <summary>Describes an entry of an archive.
+An entry is a file included into an archive. Instances of this class
+are used as a key to denote particular files for reading and on the
+other hand provide meta information on the file as far as this
+information has been accessable.
+
+Generate instances by wx.ArchiveInput.
+
+\ref archive_formats_such_as_zip</summary>
+    </member>
+    <member name="M:wx.ArchiveEntry.TypeFromName(System.String)">
+      <summary>Conludes the archive type from the file name.
+Uses Zip by default.</summary>
+    </member>
+    <member name="M:wx.ArchiveEntry.TypeFromName(System.Uri)">
+      <summary>Conludes the archive type from the file name.
+Uses Zip by default.</summary>
+    </member>
+    <member name="P:wx.ArchiveEntry.DateTime">
+      <summary>Modifcation time.</summary>
+    </member>
+    <member name="P:wx.ArchiveEntry.InternalName">
+      <summary>The internal representation of the file name of this entry.
+Use this to implement portable comparisons.</summary>
+    </member>
+    <member name="P:wx.ArchiveEntry.Name">
+      <summary>The file name of this entry in native format.
+This can be read and set.
+
+If this is a directory entry, (i.e. if IsDir() is true) then
+Name() returns the name with a trailing path separator.
+Similarly, setting a name with a trailing path separator
+sets IsDir().</summary>
+    </member>
+    <member name="P:wx.ArchiveEntry.IsDir">
+      <summary>True iff this represents a directory.</summary>
+    </member>
+    <member name="P:wx.ArchiveEntry.Offset">
+      <summary>Returns a numeric value unique to the entry within the archive.</summary>
+    </member>
+    <member name="P:wx.ArchiveEntry.Size">
+      <summary>The size of the entry's data in bytes.</summary>
+    </member>
+    <member name="T:wx.ArchiveOutput">
+      <summary>Writing into an archive file type supported by  wxWidgets.
+wxWidgets supports reading, analyzing, and writing archive files. Currently
+only ZIP archives are supported. Corresponding features are only partially
+supported by the standard .NET framework since 2.0.
+
+The interface of this class differs strongly from the  wxWidgets API since
+this API shall be extendable to use standard .NET framework classes where
+possible. Additionally, we cannot inherit from both, wx.Object and Stream.
+
+\ref archive_formats_such_as_zip</summary>
+    </member>
+    <member name="F:wx.ArchiveOutput._streamOnEntry">
+      <summary>Stream for writing into an entry.
+This is  null if entry is closed.</summary>
+    </member>
+    <member name="M:wx.ArchiveOutput.#ctor(System.Uri)">
+      <summary>This consumes an URI pointing at a local file.
+Raises currently an  ArgumentException if the argument is not a local file name.</summary>
+    </member>
+    <member name="M:wx.ArchiveOutput.#ctor(System.Uri,wx.ArchiveEntry.ArchiveType)">
+      <summary>This consumes an URI pointing at a local file.
+Raises currently an  ArgumentException if the argument is not a local file name.</summary>
+    </member>
+    <member name="M:wx.ArchiveOutput.PutNextEntry(System.String)">
+      <summary>Sets Out() to a fill a new entry of the provided name.
+If Out() has been already non-null before, the previous stream
+on the entry will be closed.</summary>
+    </member>
+    <member name="M:wx.ArchiveOutput.CopyEntry(wx.ArchiveEntry,wx.ArchiveInput)">
+      <summary>Takes ownership of entry and uses it to create a new entry in the archive. Entry is then opened in the input stream stream and its contents copied to this stream.
+For archive types which compress entry data, CopyEntry() is likely to be much more efficient than transferring the data using Read() and Write() since it will copy them without decompressing and recompressing them.
+entry must be from the same archive file that stream is accessing. For non-seekable streams, entry must also be the last thing read from stream.</summary>
+    </member>
+    <member name="M:wx.ArchiveOutput.CopyArchiveMetaData(wx.ArchiveInput)">
+      <summary>Some archive formats have additional meta-data that applies to the
+archive as a whole. For example in the case of zip there is a
+comment, which is stored at the end of the zip file.
+CopyArchiveMetaData() can be used to transfer such information
+when writing a modified copy of an archive.
+
+Since the position of the meta-data can vary between the various
+archive formats, it is best to call CopyArchiveMetaData() before
+transferring the entries. The wx.ArchiveOutput will then
+hold on to the meta-data and write it at the correct point in the
+output file.
+
+When the input archive is being read from a non-seekable stream,
+the meta-data may not be available when CopyArchiveMetaData()</summary>
+    </member>
+    <member name="M:wx.ArchiveOutput.Close">
+      <summary>This closes the whole archive and returns true in case of success.</summary>
+    </member>
+    <member name="P:wx.ArchiveOutput.Out">
+      <summary>This is the stream to write into the current entry of the archive.
+This is  null if we do not have an opened entry.
+Entries can be opened by PutNextEntry().</summary>
+    </member>
+    <member name="T:wx.ArchiveOutput.ZipOutStream">
+      <summary>Internal class for writing into a ZIP stream on an entry in the archive.</summary>
+    </member>
+    <member name="T:wx.ArchiveInput">
+      <summary>Reading from an archive file type supported by  wxWidgets.
+wxWidgets supports reading, analyzing, and writing archive files. Currently
+only ZIP archives are supported. Corresponding features are only partially
+supported by the standard .NET framework since 2.0.
+
+The interface of this class differs strongly from the  wxWidgets API since
+this API shall be extendable to use standard .NET framework classes where
+possible.</summary>
+    </member>
+    <member name="F:wx.ArchiveInput._streamOnEntry">
+      <summary>Stream for writing into an entry.
+This is  null if entry is closed.</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.#ctor(System.IO.Stream,wx.ArchiveEntry.ArchiveType)">
+      <summary>Generate an instance reading compressed data from the provided stream.</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.#ctor(System.IO.Stream)">
+      <summary>Generate an instance reading compressed data from the provided stream.
+By default this will interpret the data as a ZIP archive.</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.#ctor(System.Uri)">
+      <summary>This consumes an URI pointing at a local file.
+Raises currently an  ArgumentException if the argument is not a local file name.</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.#ctor(System.Uri,wx.ArchiveEntry.ArchiveType)">
+      <summary>This consumes an URI pointing at a local file.
+Raises currently an  ArgumentException if the argument is not a local file name.</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.GetNextEntry">
+      <summary>* Closes the current entry if one is open, then reads the meta-data for
+* the next entry and returns it in a wxArchiveEntry object, giving away
+* ownership. Reading this wx.ArchiveInput.In then returns the entry's
+* data.
+*</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.OpenEntry(wx.ArchiveEntry)">
+      <summary>Closes the current entry if one is open, then opens the entry specified
+by the wxArchiveEntry object.
+
+entry must be from the same archive file that this wx.ArchiveInput is reading,
+and it must be reading it from a seekable stream.
+
+\ref looking_up_an_archive_entry_by_name</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.Close">
+      <summary>This closes In() if we have an open entry.</summary>
+    </member>
+    <member name="M:wx.ArchiveInput.GetInternalName(System.String)">
+      <summary>Returns the internal representation of  localFilename in the current type of archive.
+Note, that instances of this class may wrap archives of different type, so the internal
+representation depends on the archive type.</summary>
+    </member>
+    <member name="P:wx.ArchiveInput.In">
+      <summary>This is the stream to read the current entry from.
+This is  null if all entries are closed (none has been opened).</summary>
+    </member>
+    <member name="T:wx.ArchiveInput.ZipInStream">
+      <summary>Internal class for writing into a ZIP stream on an entry in the archive.</summary>
+    </member>
+    <member name="P:wx.ArchiveInput.ZipInStream.CanSeek">
+      <summary>Returns   true iff you may seek this stream.
+This method currently relies on  IsSeekable() if the archive
+stream. Apparently, the ZIP streams do not implement this method
+although they implement  Seek(). Anyway, this will return  false
+to enable particular heuristics in the IOStreamFSHandler.
+
+Image handlers of  wxWidgets want to seek.</summary>
+    </member>
+    <!-- Nicht wohlgeformter XML-Kommentar wurde für den Member "T:wx.ZipResource" ignoriert -->
+    <member name="F:wx.ZipResource._archiveNameToDerivates">
+      <summary>This maps a KeyArchiveName to a list of derived archive names on the mentioned locale.</summary>
+    </member>
+    <member name="F:wx.ZipResource._archives">
+      <summary>This maps the local file name to the resource archive.</summary>
+    </member>
+    <member name="M:wx.ZipResource.ComputeDerivates(System.String,System.String,System.String)">
+      <summary>Searches all derivates of  archiveName whether they are an archive or a directory.
+Returns the name of the first existing derivate.
+
+Extends _archiveNameToDerivates() in such a way that it containes all derivates if the provided  archiveName.</summary>
+    </member>
+    <member name="M:wx.ZipResource.InitFromArchive(System.String,System.IO.Stream)">
+      <summary>Initializes _dirName() or _src() and _internalNameToEntry() from the archive returned by FindArchive().
+Main purpose: Cache archive entries if required. Possibly, resources cannot be loaded because
+the archive has not been found. In this case, do not throw an exception put set all
+possible sources  _dirName() and  _src() to  null.
+srcStream may be  null. Then it will e generated from the name that will
+be interpreted as a file name.</summary>
+    </member>
+    <member name="M:wx.ZipResource.#ctor(System.String,System.IO.Stream)">
+      <summary>Loads an archive.
+This will call InitFromArchive(). All entries will be read and cached.
+srcStream may be  null. Then it will be generated from the  archiveName that will
+be interpreted as a file name. If read from the local file system (with  srcStream equals
+null),  archiveName may either be a filename of a directory.</summary>
+    </member>
+    <member name="M:wx.ZipResource.AddCatalogLookupPrefix(System.String)">
+      <summary>Add a prefix to be lookup path for loading archives with resources.
+Similar to wx.Locale.AddCatalogLookupPrefix().
+The message catalog files will be looked up under</summary>
+      <summary>prefix/LANG/zrs</summary>
+      <summary>,</summary>
+      <summary>prefix/LANG</summary>
+      <summary>, and  prefix
+(in this order) where LANG is the canonical name of a locale.
+
+This only applies to subsequent instance creations.</summary>
+    </member>
+    <member name="M:wx.ZipResource.GetDerivatedArchiveNames(System.String)">
+      <summary>Returns the file names derivated from  archiveName of the current  wx.Locale.</summary>
+    </member>
+    <member name="M:wx.ZipResource.GetDerivatedArchiveNames(System.String,System.String)">
+      <summary>Returns the file names derivated from  archiveName assuming the locale  canonicalName.
+Use the empty string to denote the neutral locale.</summary>
+    </member>
+    <member name="M:wx.ZipResource.GetDerivatedResourceNames(System.String)">
+      <summary>Returns the resource names derivated from  resourceName of the current  wx.Locale.</summary>
+    </member>
+    <member name="M:wx.ZipResource.GetDerivatedResourceNames(System.String,System.String)">
+      <summary>Returns the resource names derivated from  resourceName assuming locale  canonicalName.
+Use the empty string to denote the neutral locale.</summary>
+    </member>
+    <member name="M:wx.ZipResource.FindResource(System.String,System.String)">
+      <summary>Finds a stream containing a resource of the provided name from the provided archive.
+Refer to FindResource(string, string, string) for details.</summary>
+    </member>
+    <member name="M:wx.ZipResource.ResourceFileCanSeek(System.String,System.String)">
+      <summary>Some kinds of data, especially images, require data sources that can seek positions in the stream.
+This will call ResourceFile() and then, if the result cannot seek, load the source directly into
+a memory stream.</summary>
+    </member>
+    <member name="M:wx.ZipResource.ResourceFileAppropriateType(System.String,System.String)">
+      <summary>This method will produce a stream that can seek (cf. ResourceFileCanSeek) if this seems to be appropriate referring to the mime type.
+At least images need streams as data source that can seek. This method will call ResourceFile() and analyze
+the mime type of the result. If considered to be appropriate, the content of the resource stream will
+be copied into a System.IO.MemoryStream in order to get a stream that can seek positions.
+Refer also to ResourceFileCanSeek().</summary>
+    </member>
+    <member name="M:wx.ZipResource.FindResourceFile(System.String,System.String)">
+      <summary>Finds a FSFile instance containing a resource of the provided name from the provided archive.
+Refer to FindResource(string, string, string) for details.</summary>
+    </member>
+    <member name="M:wx.ZipResource.FindResource(System.String,System.String,System.String)">
+      <summary>Finds a stream containing a resource of the provided name suitable for the specified locale from the provided archive.
+
+If the resources cannot be found, the manifest of the calling assembly will be searched.
+
+This method will return a  null if the desired resource cannot be find.</summary>
+    </member>
+    <member name="M:wx.ZipResource.FindResourceFile(System.String,System.String,System.String)">
+      <summary>Finds a FSFile instance containing a resource of the provided name from the provided archive of a provided locale (culture).
+Refer to FindResource(string, string, string) for details.</summary>
+    </member>
+    <member name="P:wx.ZipResource.LastSearchedResourceName">
+      <summary>The last name of a resource that has been tried to be loaded by FindResource().
+This may be  null.</summary>
+    </member>
+    <member name="P:wx.ZipResource.LastFoundResourceName">
+      <summary>The last name of a resource that has been found by FindResource().
+This may be  null.</summary>
+    </member>
+    <member name="P:wx.ZipResource.LastSearchedArchiveName">
+      <summary>The last name of a resource that has been tried to be loaded by FindResource().
+This may be  null.</summary>
+    </member>
+    <member name="P:wx.ZipResource.LastFoundArchiveName">
+      <summary>The last name of a resource that has been found by FindResource().
+This may be  null.</summary>
+    </member>
+    <member name="P:wx.ZipResource.LastFoundArchive">
+      <summary>The last ZipResource found by FindResource().</summary>
+    </member>
+    <member name="M:wx.ZipResource.KeyArchiveName.#ctor(System.String,System.String)">
+      <summary>Generates a key for the archive and the neutral locale.</summary>
+    </member>
+    <member name="M:wx.ZipResource.KeyArchiveName.#ctor(System.String,System.String,System.String)">
+      <summary>Generates a key for the derivatives of  archiveName with the specified locale.</summary>
+    </member>
+    <member name="T:wx.HtmlBookRecord">
+      <summary>Instances of this class represent hyper text books to be read from a file system.
+Refer to class HtmlHelpData.
+Instances of this class shall never be generated by the user.  wx.NET generates
+them if necessary. All instances will be deleted virtually by their containers.</summary>
+    </member>
+    <member name="M:wx.HtmlBookRecord.GetFullPath(wx.wxString)">
+      <summary>Returns full filename of  page (which is part of the book),
+i.e. with book's  BasePath prepended. If page is already absolute
+path,  BasePath is  not prepended.</summary>
+    </member>
+    <member name="P:wx.HtmlBookRecord.Title">
+      <summary>Get and Set the title.</summary>
+    </member>
+    <member name="P:wx.HtmlBookRecord.Start">
+      <summary>Get and set the start.</summary>
+    </member>
+    <member name="P:wx.HtmlBookRecord.BasePath">
+      <summary>Get and set the base path.</summary>
+    </member>
+    <member name="P:wx.HtmlBookRecord.ContentsStart">
+      <summary>Use SetContentsRange() to set this property.</summary>
+    </member>
+    <member name="P:wx.HtmlBookRecord.ContentsEnd">
+      <summary>Use SetContentsRange() to set this property.</summary>
+    </member>
+    <member name="T:wx.IConstList">
+      <summary>A simple interface characterizing constant lists.
+This interface IList declares a subset of the methods of IList.</summary>
+    </member>
+    <member name="T:wx.ConstListIterator">
+      <summary>A simple enumerator for read-only instances of IList.
+This simply iterates incrementing an index.</summary>
+    </member>
+    <member name="T:wx.HtmlBookRecords">
+      <summary>This is simply a collection of instance of HtmlBookRecord.
+This is a particular class for some technical reasons.
+Avoid to use empty arrays of this kind.
+
+As wx.HtmlBookRecord, this is a const class that does not allow
+to modify the value.</summary>
+    </member>
+    <member name="M:wx.HtmlBookRecords.#ctor(System.IntPtr)">
+      <summary>Instances of this type will typically generated by Object.FindObject().
+Reason: Instances of this class appear as output of a selector of HtmlHelpData.
+
+Although an implementor of IList, this class does not support making changes
+(adding or removing items).</summary>
+    </member>
+    <member name="M:wx.HtmlBookRecords.HasFile(System.String)">
+      <summary>Returns  true iff this set of bookmarks contains an entry of the provided file.</summary>
+    </member>
+    <member name="M:wx.HtmlBookRecords.FindPage(System.String)">
+      <summary>Finds the index of the provided page (URL) in the list of bookmarks.
+This will return -1 if the provided page does not have a bookmark.</summary>
+    </member>
+    <member name="T:wx.HtmlHelpDataItem">
+      <summary>Instances of this class are used to represent items of content or index.
+Refer to class HtmlHelpData.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpDataItem.Name">
+      <summary>The name of the item.
+Remark on the implementation: This method currently always returns the same instance.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpDataItem.Page">
+      <summary>The page containing this item.
+Remark on the implementation: This method currently always returns the same instance.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpDataItem.FullPath">
+      <summary>The full path of the page containing this item.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpDataItem.IndentedName">
+      <summary>Returns the item's name indented with spaces (if it has level larger than 1, the first level).</summary>
+    </member>
+    <member name="T:wx.HtmlHelpDataItems">
+      <summary>This is simply a collection of instance of HtmlHelpDataItem.
+This is a particular class for some technical reasons.
+Avoid to use empty arrays of this kind.</summary>
+    </member>
+    <member name="M:wx.HtmlHelpDataItems.#ctor(System.IntPtr,System.Boolean)">
+      <summary>Instances of this type will be copied on generation.
+Although an implementor of IList, this class does not support making changes
+(adding or removing items).</summary>
+    </member>
+    <member name="T:wx.HtmlSearchStatus">
+      <summary>State information of a search action.</summary>
+    </member>
+    <member name="M:wx.HtmlSearchStatus.#ctor(wx.HtmlHelpData,System.String,System.Boolean,System.Boolean)">
+      <summary>Constructor: Supply HtmlHelpData instance, the keyword and (optionally) the title of the book to search.
+By default, all books are searched.</summary>
+    </member>
+    <member name="M:wx.HtmlSearchStatus.#ctor(wx.HtmlHelpData,System.String,System.Boolean,System.Boolean,System.String)">
+      <summary>Constructor: Supply HtmlHelpData instance, the keyword and (optionally) the title of the book to search.
+By default, all books are searched.</summary>
+    </member>
+    <member name="M:wx.HtmlSearchStatus.Search">
+      <summary>do the next iteration.</summary>
+    </member>
+    <member name="T:wx.HtmlHelpData">
+      <summary>This class represents the content of a help controller.
+This class is required for all alternative implementations of HTB-browsers (extending HtmlHelpController).</summary>
+    </member>
+    <!-- Nicht wohlgeformter XML-Kommentar wurde für den Member "M:wx.HtmlHelpData.SetTempDir(System.String)" ignoriert -->
+    <member name="M:wx.HtmlHelpData.AddBook(System.String)">
+      <summary>Adds new book.  book is the location (filename) of an  .htb file (stands for "html book").
+See documentation for details. The  wxWidgets documentation claims  book to be
+a URL. Do not take this too serious. This means a URL in the sence of  wxWidget's file
+handlers. Consider the following example running with 2.6.4:
+-  @"c:\\directory\file.htb" is not a URL but will work.
+-  @"file:///directory/file.htb" is a URL but will fail.
+Returns success.</summary>
+    </member>
+    <member name="M:wx.HtmlHelpData.FindPageByName(System.String)">
+      <summary>returns URL of page on basis of (file)name</summary>
+    </member>
+    <member name="M:wx.HtmlHelpData.FindPageById(System.Int32)">
+      <summary>returns URL of page on basis of MS id</summary>
+    </member>
+    <member name="P:wx.HtmlHelpData.BookRecords">
+      <summary>Public read-only property to get an array of descriptors for contained books.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpData.ContentsArray">
+      <summary>Public read-only property to get an array of descriptors for items of the table of contents.</summary>
+    </member>
+    <member name="P:wx.HtmlHelpData.IndexArray">
+      <summary>Public read-only property to get an array of descriptors for items of the index.</summary>
+    </member>
+    <member name="T:wx.FileSelector">
+      <summary>Convert a generated instance into a string to start the dialog.
+Refer to class FileDialogStyle for styles of this dialog beside FileSelector.wxCHANGE_DIR.</summary>
+    </member>
+    <member name="T:wx.ArrayIntPtr">
+      <summary>This is a wrapper for a simple  void** array.
+This will be used for instance to pass client data to choice dialogs.</summary>
+    </member>
+    <member name="M:wx.ArrayString.#ctor(System.Collections.IEnumerable)">
+      <summary>Generates an instance comprising the items of the argument.
+All items of the argument shall be strings. Otherwise, this method
+will throw an dynamic type error.
+The argument may also be  null. In this case, this is equivalent to
+the default constructor (generate an instance of size 0).</summary>
+    </member>
+    <member name="M:wx.ArrayString.SafeNewFrom(System.Collections.IEnumerable)">
+      <summary>This is a safe alternative for the corresponding CTor.
+Safe means here: If the argument is  null, the result is also  null without
+any exceptions.</summary>
+    </member>
+    <member name="M:wx.ArrayString.Sort(System.Boolean)">
+      <summary>Sorts the entry (optionally in reversed order).</summary>
+    </member>
+    <member name="M:wx.ArrayString.Add(System.Collections.IEnumerable)">
+      <summary>This will add the elements of the collection.
+This will throw an exception of the collection contains non-strings.</summary>
+    </member>
+    <member name="M:wx.ArrayString.Index(System.String)">
+      <summary>This will return the first index of string  lookForThisEntry or -1 is this string is not in the array.</summary>
+    </member>
+    <member name="M:wx.ArrayString.Index(wx.wxString,System.Boolean,System.Boolean)">
+      <summary>Search the element in the array, starting from the beginning if  bFromEnd is false or from end otherwise.
+If  bCase, comparison is case sensitive (default), otherwise the case is ignored.
+
+This function uses linear search for  ArrayString and binary search for  SortedArrayString,
+but it ignores the  bCase and  bFromEnd parameters in the latter case.
+
+Returns index of the first item matched or -1 if there is no match.</summary>
+    </member>
+    <member name="P:wx.ArrayString.Item(System.Int32)">
+      <summary>Access string  num of the array.
+Will cause an assert error on illegal indices.</summary>
+    </member>
+    <member name="T:wx.wxSize">
+      <summary>This will produce or wrap a  wxSize object.
+Use instances of this class, to pass  wxSize objects to the C DLL.</summary>
+    </member>
+    <member name="M:wx.wxSize.#ctor(System.Drawing.Size)">
+      <summary>Convert an instance from a C# standard size.
+This will throw an exception on a  null argument. You may use SafeNew() instead.</summary>
+    </member>
+    <member name="M:wx.wxSize.SafeNew(System.Drawing.Size)">
+      <summary>This will generate an instance from a C# standard rectangle without throwing exception on a  null argument.
+In that case this will also return a  null.</summary>
+    </member>
+    <member name="T:wx.wxRect">
+      <summary>This will produce or wrap instances of  wxWidgets  wxRect.
+Never use  System.Drawing.Rectangle with  wx-c.dll. Always rely to instances of this class instead.</summary>
+    </member>
+    <member name="M:wx.wxRect.#ctor(System.Drawing.Rectangle)">
+      <summary>Convert an instance from a C# standard rectangle.
+This will throw an exception on a  null argument. You may use SafeNew() instead.</summary>
+    </member>
+    <member name="M:wx.wxRect.SafeNew(System.Drawing.Rectangle)">
+      <summary>This will generate an instance from a C# standard rectangle without throwing exception on a  null argument.
+In that case this will also return a  null.</summary>
+    </member>
+    <member name="T:wx.wxPoint">
+      <summary>This will produce or wrap instances of  wxWidgets  wxPoint.
+Never use  System.Drawing.Point with  wx-c.dll. Always rely to instances of this class instead.</summary>
+    </member>
+    <member name="M:wx.wxPoint.#ctor(System.Drawing.Point)">
+      <summary>Convert an instance from a C# standard rectangle.
+This will throw an exception on a  null argument. You may use SafeNew() instead.</summary>
+    </member>
+    <member name="M:wx.wxPoint.SafeNew(System.Drawing.Point)">
+      <summary>This will generate an instance from a C# standard rectangle without throwing exception on a  null argument.
+In that case this will also return a  null.</summary>
+    </member>
+    <member name="T:wx.LocaleInitFlags">
+      <summary>Flags for initializing instances of Locale.
+Please note that wxLOCALE_CONV_ENCODING() shall be avoided on unicode builds.</summary>
+    </member>
+    <member name="T:wx.Locale">
+      <summary>This class wrapps  wxLocale.
+Please refer</summary>
+    </member>
+    <member name="T:wx.ByteBuffer">
+      <summary>This is an internal class representing a byte buffer.
+This class is applied sometimes when  wxWidgets expects a void* buffer.</summary>
+    </member>
+    <member name="M:wx.ByteBuffer.#ctor(System.Int32)">
+      <summary>Generates an instance capable of holding at most  size bytes.</summary>
+    </member>
+    <member name="M:wx.ByteBuffer.#ctor(System.IntPtr,wx.Object.StorageMode,System.Boolean)">
+      <summary>This is a CTor where callers can set memOwn.
+This is for the construction of temporarily needed wrappers.</summary>
+    </member>
+    <member name="P:wx.ByteBuffer.Item(System.Int32)">
+      <summary>Generates the filled byte at the provided index or 0 if the index is too large.</summary>
+    </member>
+    <member name="P:wx.ByteBuffer.SizeReserved">
+      <summary>This is the number of bytes that can be stored within this index.</summary>
+    </member>
+    <member name="P:wx.ByteBuffer.SizeFilled">
+      <summary>This is the number of bytes that have been written into this instance.</summary>
+    </member>
+    <member name="T:wx.wxInputStreamWrapper">
+      <summary>Analogously to class wxString, this class wraps wxInputStream.
+Anatomy: This inherits from wx.Object and is, thus, a wx.NET wrapper class.
+Constructors either are required by wx.Object to implement the FindObject service
+or they pass a System.IO.Stream. This instance then serves as a wxWidgets fassade
+to the stream that you originally provided. On instance creation, this instance
+sets callback to implement a wxInputStream using the framework stream as source.
+
+However, instances of this class may occur in another state: Without a framework
+stream as source. In that case, the instance simply wrapps a fully functional
+wxWidgets input stream without setting callbacks.</summary>
+    </member>
+    <member name="M:wx.wxInputStreamWrapper.#ctor(System.IO.Stream)">
+      <summary>Generates a new  wxWidgets  wxInputStream instance whose basic functions refer to methods of  src.</summary>
+    </member>
+    <member name="M:wx.wxInputStreamWrapper.#ctor(System.IntPtr)">
+      <summary>Generates an instance wrapping a fully functional  wxWidgets  wxInputStream.</summary>
+    </member>
+    <member name="M:wx.wxInputStreamWrapper.Seek(System.Int64,System.IO.SeekOrigin)">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="M:wx.wxInputStreamWrapper.LastReadFromSrc">
+      <summary>\name Implementations of Delegates</summary>
+    </member>
+    <member name="M:wx.wxInputStreamWrapper.GetLength">
+      <summary>In contrast to property Length this does not throw exceptions but returns -1.</summary>
+    </member>
+    <member name="P:wx.wxInputStreamWrapper.Src">
+      <summary>This is the C# stream that is used as data source.
+Depending of the mode of this implementation this may either be a standard System.IO.Stream
+providing data for an internal  wxInputStream or an instance of class wxInputStream
+wrapping a  wxWidgets input stream.</summary>
+    </member>
+    <member name="P:wx.wxInputStreamWrapper.CanSeek">
+      <summary>This returns whether a seek operation failed in the past or the wrapped stream does not provide a current position.</summary>
+    </member>
+    <member name="P:wx.wxInputStreamWrapper.Length">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="P:wx.wxInputStreamWrapper.Position">
+      <summary>This will throw an  NotSupportedException iff the wrapped  wxInputStream does not support the analogous operation.</summary>
+    </member>
+    <member name="T:wx.wxInputStream">
+      <summary>This is a .NET framework stream wrapping a  wxWidgets  wxInputStream.
+The wrapper of a  wxInputStream falls into 2 parts. This is the instance that directly
+inherits from Stream and, thus, provides a fassades compliant to the standard .NET framework.
+Class  wxInputStreamWrapper inherits from  wx.Object instead and wrapps the pointer
+to a  wxWidgets stream.</summary>
+    </member>
+    <member name="M:wx.wxInputStream.#ctor(System.IntPtr)">
+      <summary>Receives an IntPtr to a  wxInputStream.</summary>
+    </member>
+    <member name="M:wx.wxInputStream.Seek(System.Int64,System.IO.SeekOrigin)">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="M:wx.wxInputStream.SetLength(System.Int64)">
+      <summary>This is not supported.</summary>
+    </member>
+    <member name="M:wx.wxInputStream.Write(System.Byte[],System.Int32,System.Int32)">
+      <summary>This is not implemented.</summary>
+    </member>
+    <member name="P:wx.wxInputStream.CanSeek">
+      <summary>Tests whether this can tell and</summary>
+    </member>
+    <member name="P:wx.wxInputStream.CanWrite">
+      <summary>This is false.</summary>
+    </member>
+    <member name="P:wx.wxInputStream.Length">
+      <summary>This typically returns the length of the stream in position units.</summary>
+    </member>
+    <member name="P:wx.wxInputStream.Position">
+      <summary>This is supported if the source supports  TellI and  SeekI.</summary>
+    </member>
+    <member name="T:wx.FSFile">
+      <summary>This is a wrapper to  wxFSFile.
+Purpose: Provide some additional information on a file read through
+the  wxWidgets file system. Unfortunately, the known characteristics of a  wxWidgets file
+differ strongly from the  FileInfo class: Instances of this class know s stream</summary>
+    </member>
+    <member name="M:wx.FSFile.#ctor(System.IntPtr)">
+      <summary>This CTor receives an IntPtr of a  wxFSFile.</summary>
+    </member>
+    <member name="M:wx.FSFile.ToString">
+      <summary>A comprehensable text description of this file.</summary>
+    </member>
+    <member name="P:wx.FSFile.Anchor">
+      <summary>The "anchor" part of a hyper link.
+Refer to the  wxWidgets documentation for details.</summary>
+    </member>
+    <member name="P:wx.FSFile.Location">
+      <summary>The "location" of the source of the stream data.
+* This is the full location description of the file, e.g.
+*
+
+http://www.wxwidgets.org
+http://www.ms.mff.cuni.cz/~vsla8348/wxhtml/archive.zip#zip:info.txt
+file:/home/vasek/index.htm
+relative-file.htm
+ndverbatim
+*</summary>
+    </member>
+    <member name="P:wx.FSFile.MimeType">
+      <summary>The mime type description (in text form).</summary>
+    </member>
+    <member name="P:wx.FSFile.Stream">
+      <summary>A stream for receiving the data.</summary>
+    </member>
+    <member name="F:wx.KindOfFile.Indifferent">
+      <summary>Either a directory or usual data file, I don't mind.</summary>
+    </member>
+    <member name="F:wx.KindOfFile.wxFILE">
+      <summary>Operate on data files only.</summary>
+    </member>
+    <member name="F:wx.KindOfFile.wxDIR">
+      <summary>Operate on directories only.</summary>
+    </member>
+    <member name="T:wx.FileSystemHandler">
+      <summary>This class wrapps  wxWidgets class  wxFileSystemHandler and all inheritors.
+Investigate the documetnation of subclasses for details on predefined file system
+handlers. For instance class IOStreamFSHandler enables the implementation of  wxWidgets
+file system handlers as streams of the .NET framework.</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.OpenFile(wx.FileSystem,System.String)">
+      <summary>Returns an instance of FSFile that provides a stream over the data as denoted by  location.</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.CanOpen(System.String)">
+      <summary>The handler identifies himself with result  true to be appropriate to deal with a file at the provided location.
+* Example: A handler for the HTTP protocol over the internet could answer here with
+* ode
+return this.GetProtocol(location) == "http";
+ndcode
+*
+* Please note, that this method should also work with the allowed wildcards, since this method
+* also works as a filter for FindFirst().
+*</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.FindFirst(System.String,wx.KindOfFile)">
+      <summary>Returns the first matching filename or an empty string if nothing matches.
+This will only be called if the  wildcard can be opened (CanOpen()).</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.FindNext">
+      <summary>Returns the next filename matching with the constraints of the previous FindFirst() or an empty string if nothing matches.</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.GetAnchor(System.String)">
+      <summary>Returns the anchor if present in the location.
+* Example:</summary>
+      <summary>GetAnchor("index.htm#chapter2") == "chapter2"</summary>
+      <summary>*
+* Note: the anchor is NOT part of the left location.
+*</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.GetProtocol(System.String)">
+      <summary>Returns the protocol string extracted from location.
+*</summary>
+      <summary>Example: GetProtocol("file:myzipfile.zip#zip:index.htm") == "zip"</summary>
+      <summary>*</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.GetLeftLocation(System.String)">
+      <summary>Returns the left location string extracted from location.
+* Example:</summary>
+      <summary>GetLeftLocation("file:myzipfile.zip#zip:index.htm") == "file:myzipfile.zip"</summary>
+      <summary>*</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.GetRightLocation(System.String)">
+      <summary>Returns the right location string extracted from location.
+* Example :</summary>
+      <summary>GetRightLocation("file:myzipfile.zip#zip:/index.htm") == "/index.htm"</summary>
+      <summary>*</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.GetMimeTypeFromExt(System.String)">
+      <summary>Returns the MIME type based on extension of location.
+(While FSFile.MimeType returns real MIME type - either extension-based or queried
+from HTTP.) However, particular handlers may use this to generate an FSFile of
+an appropriate mime type if nothing particular is known on such things.
+
+Example :</summary>
+      <summary>this.GetMimeTypeFromExt("index.htm") == "text/html"</summary>
+    </member>
+    <member name="M:wx.FileSystemHandler.MimeTypeFromExt(System.String)">
+      <summary>A static public version of GetMimeTypeFromExt() running on a particular, transparently generated instance.
+This method may be changed in order to add some support for additional types.</summary>
+    </member>
+    <member name="T:wx.FileSystem">
+      <summary>This wrapps  wxFileSystem but concentrates on the methods that are not already implemented in the .NET framework.</summary>
+    </member>
+    <member name="M:wx.FileSystem.#ctor">
+      <summary>The  wxWidgets file system uses instances created by the default constructor as handles for accessing files systems of various types through something like an URL.
+File system are implemented by a handler (refer to class FileSystemHandler). This wrapper to the .NET framework also
+allows file system handlers to be written in C# or another CRL language.</summary>
+    </member>
+    <member name="M:wx.FileSystem.AddHandler(wx.FileSystemHandler)">
+      <summary>Adds the provided instance as a handler to the handler list.
+Refer for instance to  MemoryFSHandler for a wrapper to a standard
+wxWidgets resource handler. Note, that all inheritors of FileSystemHandler may
+be used here.
+
+Please refer also to CleanUpHandlers().</summary>
+    </member>
+    <member name="M:wx.FileSystem.CleanUpHandlers">
+      <summary>Clean up all installed file handlers.
+Calling this method is unfortunately necessary on shutting down applications
+installing some kinds of file system handlers by using AddHandler(). The reason
+is:  wxWidgets will delete the C++ instances of installed file system handlers
+on shutting down. However,  wxWidgets can of course not delete the corresponding
+.NET instances. These may also try to delete C++ instances on being disposed. So,
+we will likely to get access violations.</summary>
+    </member>
+    <member name="M:wx.FileSystem.ChangePathTo(System.String,System.Boolean)">
+      <summary>Sets the current location.
+*  location parameter passed to OpenFile is relative to this path.
+*  Caution!
+* Unless  is_dir is true the location parameter is not the directory name but
+* the name of the file in this directory. All these commands change the path to
+* "dir/subdir/":
+* ode
+FileSystem fs=new FileSystem();
+fs.ChangePathTo("dir/subdir/xh.htm");
+fs.ChangePathTo("dir/subdir", true);
+fs.ChangePathTo("dir/subdir/", true);
+ndcode
+* \param location the new location. Its meaning depends on the value of  is_dir
+* \param is_dir if  true location is new directory. If false (default) location</summary>
+    </member>
+    <member name="M:wx.FileSystem.FindFirst(System.String,wx.KindOfFile)">
+      <summary>Returns name of the first filename (within filesystem's current path) that matches wildcard.
+flags may be one of KindOfFile.wxFILE (only files), KindOfFile.wxDIR (only directories)
+or KindOfFile.Indifferent (both).
+
+Returns filename or empty string if no more matching file exists.</summary>
+    </member>
+    <member name="M:wx.FileSystem.FindNext">
+      <summary>Finds the next filename matching constraints of the previous FindFirst().
+Returns filename or empty string if no more matching file exists.</summary>
+    </member>
+    <member name="M:wx.FileSystem.OpenFile(System.String)">
+      <summary>Opens the file and returns a  FSFile object or  null if failed.
+It first tries to open the file in relative scope (based on value passed to
+ChangePathTo() method) and then as an absolute path.</summary>
+    </member>
+    <member name="P:wx.FileSystem.Path">
+      <summary>Returns the path according to ChangePathTo().
+Setting this value is synonym to ChangePathTo().</summary>
+    </member>
+    <member name="T:wx.ZipFSHandler">
+      <summary>A wrapper to  wxZipFSHandler.
+This is a handler for FileSystem that can deal with Zip archives.
+In contrast to most other handlers, this one uses first and second part locations where
+the first part describes the archive file and the second part describes the archived file.
+Example: ode"file:ZipFile.zip#anHTMLIndex.htm#aChapterInThisIndex"ndcode.</summary>
+    </member>
+    <member name="T:wx.InternetFSHandler">
+      <summary>A wrapper to  wxInternetFSHandler.
+Instances of this class provide a handler for FileSystem to deal with FTP and HTTP files.</summary>
+    </member>
+    <member name="T:wx.MemoryFSHandler">
+      <summary>This FileSystem handler can store arbitrary data in memory stream and make them
+accessible via URL. It is particularly suitable for storing bitmaps from resources
+or included XPM files so that they can be used with wxHTML.
+
+Filenames are prefixed with  "memory:", e.g.  "memory:myfile.html".
+
+*</summary>
+    </member>
+    <member name="M:wx.MemoryFSHandler.Add(System.String,wx.Image,wx.BitmapType)">
+      <summary>Adds an image as a file of the specified type.
+Please note, that the type argument shall be something like
+wx.BitmapType.wxBITMAP_TYPE_PNG that  wxWidgets can save.</summary>
+    </member>
+    <member name="M:wx.MemoryFSHandler.Add(System.String,wx.Bitmap,wx.BitmapType)">
+      <summary>Adds an image as a file of the specified type.
+Please note, that the type argument shall be something like
+wx.BitmapType.wxBITMAP_TYPE_PNG that  wxWidgets can save.</summary>
+    </member>
+    <member name="T:wx.IOStreamFSHandler">
+      <summary>Class of  wxWidgets file system handlers that are implemented by a  System.IO.Stream.
+Generate an instance of this class and install this (call FileSystemHandler.AddHandler)
+to provide the ability to deal with the following protocols:
+- ode file:file ndcode and ode dotnetfile:file ndcode implemented by a FileStream.
+- ode rs:file ndcode or ode rs:assembly.filename//file ndcode tries to find the provided file name in the manifest
+and returns (if possible) a stream over the data of a resource file. Source assembly  assembly.filename will be loaded by
+Assembly.LoadFile(). If the source assembly is omitted,
+this will refer to the entry assembly. You may also use the long protocol name  resource:.
+- ode zrs:archivefile//resourcefile ndcode loads resource  resourcefile from
+the ZRS archive  archivefile (refer to class ZipResource). Long protocol name  zipresource: also works.</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.GetFirstFilename(System.String)">
+      <summary>Returns the primary file.
+First and second file names complete standard  wxWidgets elements of
+file system names (protocol, left location, right location, anchor).
+Both filenames are subelements of the right location spanning over the filename
+right from the protocol and left from the (optional) anchor.
+If this filename contains a double slash (//), the filename left from this separator
+is called first filename and the filename on the right is called second filename.
+The first name is optional (i.e. is empty if the whole file name is without
+a double slash).</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.DoFindFirst(System.IntPtr,wx.KindOfFile)">
+      <summary>Currently not supported.</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.DoFindNext">
+      <summary>Currently not supported.</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.OpenFile(wx.FileSystem,System.String)">
+      <summary>Returns an instance of FSFile that provides a stream over the data as denoted by  location.</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.CanOpen(System.String)">
+      <summary>The handler identifies himself with result  true to be appropriate to deal with a file at the provided location.</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.FindFirst(System.String,wx.KindOfFile)">
+      <summary>Returns the first matching filename or an empty string if nothing matches.
+This will only be called if the  wildcard can be opened (CanOpen()).</summary>
+    </member>
+    <member name="M:wx.IOStreamFSHandler.FindNext">
+      <summary>Returns the next filename matching with the constraints of the previous FindFirst() or an empty string if nothing matches.</summary>
+    </member>
+    <member name="T:wx.wxString">
+      <summary>Wrapper for the  wxWidgets string class  wxString.
+
+Objectives:
+- Several  wx.NET implementations interchange string data with the used  wxWidgets library.
+Conversion from .NET strings to  wxWidgets strings shall be hidden. .NET implementations shall
+be able to use something like a lazy conversion: Simply getting a string from one method of
+wxWidgets and sending it to another shall be possible without conversion to .NET strings.
+-  wxWidgets class might be compiled in Unicode or ANSI mode. This shall be hidden completely to
+the  wx.NET implementation.
+
+The changed implementation follows the guidelines of the  wxWidgets manual for implementations.
+The internal character encoding within the .NET framework is uniquely defined to UTF 16.
+The used constructors and selectors use an explicit conversion as argument (on the  wx-c side)
+to convert from or to this encoding. So, the interface provided by  wx-c is always UTF 16 whether</summary>
+    </member>
+    <member name="M:wx.wxString.SafeNew(System.String)">
+      <summary>This will safely create an instance of wx.wxString without throwing exceptions on argument  null.
+Instead the method will return result  null on argument  null.</summary>
+    </member>
+    <member name="M:wx.wxString.ToString">
+      <summary>Conversion of  wxString into a string.
+This method works different on Unicode- and ANSI-builds of  wxWidgets.
+On Unicode builds we can directly refer to the internal buffer using
+the indexer of this class. Otherwise we read a wxWCharBuffer and convert this.
+
+Special case: PNET with internal UTF8 character encoding if  WXNET_INTERNAL_USE_UTF8.
+In this case, we always have to decode.</summary>
+    </member>
+    <member name="P:wx.wxString.Item(System.Int32)">
+      <summary>Get the n-th character.
+Returns a 2 byte UTF16 character. Only  get implemented.
+Undefined positions will result in a 0.
+This works perfect on a Unicode build (ReflectConfig.CheckUseUnicode)
+since internal characer encoding of  wxString is the same as the encoding
+in C#. On ANSI builds this will return blanks as replacemetns of non-ascii
+characters.
+
+Correction: Microsoft and Mono use UTF16 as internal string representation just
+like  wxWidgets with wide character Unicode support compiled in. However, PNET
+seems to use UTF 8 instead. If this assumes internal UTF 8 strings, this method
+will return ASCII only.</summary>
+    </member>
+    <member name="P:wx.wxString.Length">
+      <summary>Returns the length of the encapsulated string.</summary>
+    </member>
+    <member name="T:wx.wxWCharBuffer">
+      <summary>This is a wrapper for the  wxWidgets class of the same type.
+This class is required for interchanging strings with ANSI builds of  wxWidgets.
+In such situations, we have to request the  wxString, that internally holds an
+ANSI representation, into a wide character UTF-16 string buffer.</summary>
+    </member>
+    <member name="M:wx.wxWCharBuffer.ToString">
+      <summary>Conversion into a string.
+Copies character by character into a .NET string.</summary>
+    </member>
+    <member name="T:wx.DisposableStringBox">
+      <summary>This is a box for instances of wxString that calls wxString.Dispose() on deletion of the box and deletes the string instance.
+Use this class to pass instances of wxString from C# callbacks implementing virtual methods.
+Refer to  wx.ListCtrl.OnDoGetItemText() for an example.</summary>
+    </member>
+    <member name="P:wx.DisposableStringBox.InstancesCount">
+      <summary>This is the number of valid string instances.</summary>
+    </member>
+    <member name="M:wx.PageSetupDialog.ShowModal">
+      <summary>Shows the dialog, returning wx.Window.wxID_OK if the user pressed OK, and wx.Window.wxID_CANCEL otherwise.
+Please note, that this is not a wx.Dialog.</summary>
+    </member>
+    <member name="M:wx.PrintDialog.ShowModal">
+      <summary>Shows the dialog, returning wx.Window.wxID_OK if the user pressed OK, and wx.Window.wxID_CANCEL otherwise.
+Please note, that this is not a wx.Dialog.</summary>
+    </member>
+    <member name="T:wx.MiniFrame">
+      <summary>A miniframe is a frame with a small title bar.
+It is suitable for floating toolbars that must not take up too much screen area.</summary>
+    </member>
+    <member name="T:wx.Log">
+      <summary>Wrapper of the  wxWidgets log class.
+Refer to LogTraceListener for System.Diagnostics.Trace support.</summary>
+    </member>
+    <member name="M:wx.Log.SetActiveTarget(wx.TextCtrl)">
+      <summary>at the moment only TextCtrl</summary>
+    </member>
+    <member name="M:wx.Log.AddTraceMask(System.String)">
+      <summary>Add the mask to the list of allowed masks for LogTrace().</summary>
+    </member>
+    <member name="M:wx.Log.RemoveTraceMask(System.String)">
+      <summary>Remove the mask from the list of allowed masks for LogTrace().
+See also: AddTraceMask().</summary>
+    </member>
+    <member name="M:wx.Log.IsAllowedTraceMask(System.String)">
+      <summary>True if mask  tmask is in TraceMasks().
+This means that output with this mask will be logged.</summary>
+    </member>
+    <member name="M:wx.Log.LogTrace(System.String,System.String,System.Object[])">
+      <summary>Trace functions only do something in debug build and expand to nothing in the release one.
+The reason for making it a separate function from it is that usually there are a lot of trace
+messages, so it might make sense to separate them from other debug messages.
+
+For the second function (taking a string mask), the message is logged only if the mask has been previously enabled by the call to AddTraceMask or by setting WXTRACE environment variable. The predefined string trace masks used by wxWidgets are:
+-  wxTRACE_MemAlloc: trace memory allocation (new/delete)
+-  wxTRACE_Messages: trace window messages/X callbacks
+-  wxTRACE_ResAlloc: trace GDI resource allocation
+-  wxTRACE_RefCount: trace various ref counting operations
+-  wxTRACE_OleCalls: trace OLE method calls (Win32 only)</summary>
+    </member>
+    <member name="P:wx.Log.IsEnabled">
+      <summary>Read whether this is enabled or not and enable or disable assigning  true or  false respectively.</summary>
+    </member>
+    <member name="P:wx.Log.Timestamp">
+      <summary>Gets or sets the timestamp format prepended by the default log targets to all messages.
+The string may contain any normal characters as well as % prefixed
+format specificators, see strftime() manual for details.
+Passing a  null value (not empty string) to this function disables
+message timestamping.</summary>
+    </member>
+    <member name="T:wx.LogTraceListener">
+      <summary>This class integrates  wxWidget's Log into .NET's trace capability.
+Add an instance of this listener to the Trace and all output to the Trace log
+will also appear in listeners to  wxWidget's Log.</summary>
+    </member>
+    <member name="M:wx.LogTraceListener.#ctor">
+      <summary>This will post all messages to the Trace as Log.eLogLevel.xLOGMESSAGE().</summary>
+    </member>
+    <member name="P:wx.LogTraceListener.Level">
+      <summary>Returns the log level.</summary>
+    </member>
+    <member name="T:wx.Display">
+      <summary>Use static method GetDisplay() to generate instances.
+Please note, that this method will generate at most on instance for each display.</summary>
+    </member>
+    <member name="F:wx.Display.wxNOT_FOUND">
+      <summary>Symbolic constant used by all Find()-like functions returning positive
+* integer on success as failure indicator. While this is global in
+* wxWidgets it makes more sense to be in each class that uses it???
+* Or maybe move it to Window.cs.
+*</summary>
+    </member>
+    <member name="M:wx.Display.GetDisplays">
+      <summary>The array of all Displays indexed by display number.
+These are all instance of this class that should ever live.</summary>
+    </member>
+    <member name="M:wx.Display.GetDisplay(System.Int32)">
+      <summary>Returns the representation of the desired display.
+\return null iff the index is too large.</summary>
+    </member>
+    <member name="M:wx.ComboBox.SetSelection(System.Int32,System.Int32)">
+      <summary>Refer to ControlWithItems for the method receiving only one index.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_START">
+      <summary>\name Define start of Scintilla messages to be greater than all edit (EM_*) messages
+as many EM_ messages can be used although that use is deprecated.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CP_UTF8">
+      <summary>The SC_CP_UTF8 value can be used to enter Unicode mode.
+* This is the same value as CP_UTF8 in Windows
+*</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_MARK_VLINE">
+      <summary>\name Shapes used for outlining column.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_MARK_BACKGROUND">
+      <summary>\name Invisible mark that only sets the line background color.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_MARKNUM_FOLDEREND">
+      <summary>Markers used for outlining column.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_STYLE_DEFAULT">
+      <summary>\name Styles in range 32..37 are predefined for parts of the UI and are not used as normal styles.
+Styles 38 and 39 are for future use.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CHARSET_ANSI">
+      <summary>Character set identifiers are used in StyleSetCharacterSet.
+The values are the same as the Windows *_CHARSET values.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_VISIBLE_SLOP">
+      <summary>\name Constants for use with SetVisiblePolicy, similar to SetCaretPolicy.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CARET_SLOP">
+      <summary>Caret policy, used by SetXCaretPolicy and SetYCaretPolicy.
+If CARET_SLOP is set, we can define a slop value: caretSlop.
+This value defines an unwanted zone (UZ) where the caret is... unwanted.
+This zone is defined as a number of pixels near the vertical margins,
+and as a number of lines near the horizontal margins.
+By keeping the caret away from the edges, it is seen within its context,
+so it is likely that the identifier that the caret is on can be completely seen,
+and that the current line is seen with some of the lines following it which are
+often dependent on that line.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CARET_STRICT">
+      <summary>If CARET_STRICT is set, the policy is enforced... strictly.
+The caret is centred on the display if slop is not set,
+and cannot go in the UZ if slop is set.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CARET_EVEN">
+      <summary>If CARET_EVEN is not set, instead of having symmetrical UZs,
+the left and bottom UZs are extended up to right and top UZs respectively.
+This way, we favour the displaying of useful information: the begining of lines,
+where most code reside, and the lines after the caret, eg. the body of a function.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_MOD_INSERTTEXT">
+      <summary>\name Notifications
+Type of modification and the action which caused the modification.
+These are defined as a bit mask to make it easy to specify which notifications are wanted.
+One bit is set from each of SC_MOD_* and SC_PERFORMED_*.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_KEY_DOWN">
+      <summary>\name Symbolic key codes and modifier flags.
+ASCII and other printable characters below 256.
+Extended keys above 300.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_LEX_CONTAINER">
+      <summary>\name For SciLexer.h: specifying lexicographic states</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_P_DEFAULT">
+      <summary>\name Lexical states for SCLEX_PYTHON</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_C_DEFAULT">
+      <summary>\name Lexical states for SCLEX_CPP</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_H_DEFAULT">
+      <summary>\name Lexical states for SCLEX_HTML, SCLEX_XML</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_H_TAGEND">
+      <summary>\name XML and ASP</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_H_SGML_DEFAULT">
+      <summary>\name SGML</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HJ_START">
+      <summary>\name Embedded Javascript</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HJA_START">
+      <summary>\name ASP Javascript</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HB_START">
+      <summary>\name Embedded VBScript</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HBA_START">
+      <summary>\name ASP VBScript</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HP_START">
+      <summary>\name Embedded Python</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HPA_START">
+      <summary>\name ASP Python</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_HPHP_DEFAULT">
+      <summary>\name PHP</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_PL_DEFAULT">
+      <summary>\name Lexical states for SCLEX_PERL</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_B_DEFAULT">
+      <summary>\name Lexical states for SCLEX_VB, SCLEX_VBSCRIPT</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_PROPS_DEFAULT">
+      <summary>\name Lexical states for SCLEX_PROPERTIE</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_L_DEFAULT">
+      <summary>\name Lexical states for SCLEX_LATEX</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_LUA_DEFAULT">
+      <summary>\name Lexical states for SCLEX_LUA</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_ERR_DEFAULT">
+      <summary>\name Lexical states for SCLEX_ERRORLIST</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_BAT_DEFAULT">
+      <summary>\name Lexical states for SCLEX_BATCH</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_MAKE_DEFAULT">
+      <summary>\name Lexical states for SCLEX_MAKEFILE</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_DIFF_DEFAULT">
+      <summary>\name Lexical states for SCLEX_DIFF</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CONF_DEFAULT">
+      <summary>\name Lexical states for SCLEX_CONF (Apache Configuration Files Lexer)</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_AVE_DEFAULT">
+      <summary>\name Lexical states for SCLEX_AVE, Avenue</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_ADA_DEFAULT">
+      <summary>\name Lexical states for SCLEX_ADA</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_BAAN_DEFAULT">
+      <summary>\name Lexical states for SCLEX_BAAN</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_LISP_DEFAULT">
+      <summary>\name Lexical states for SCLEX_LISP</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_EIFFEL_DEFAULT">
+      <summary>\name Lexical states for SCLEX_EIFFEL and SCLEX_EIFFELKW</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_NNCRONTAB_DEFAULT">
+      <summary>\name Lexical states for SCLEX_NNCRONTAB (nnCron crontab Lexer)</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_MATLAB_DEFAULT">
+      <summary>\name Lexical states for SCLEX_MATLAB</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_SCRIPTOL_DEFAULT">
+      <summary>\name  Lexical states for SCLEX_SCRIPTOL</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_ASM_DEFAULT">
+      <summary>\name Lexical states for SCLEX_ASM</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_F_DEFAULT">
+      <summary>\name Lexical states for SCLEX_FORTRAN</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CSS_DEFAULT">
+      <summary>\name Lexical states for SCLEX_CSS</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_POV_DEFAULT">
+      <summary>\name Lexical states for SCLEX_POV</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CMD_REDO">
+      <summary>\name Commands that can be bound to keystrokes.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CMD_HOMEWRAP">
+      <summary>\name These are like their namesakes Home(Extend)?, LineEnd(Extend)?, VCHome(Extend)?
+except they behave differently when word-wrap is enabled:
+They go first to the start / end of the display line, like (Home|LineEnd)Display
+The difference is that, the cursor is already at the point, it goes on to the start
+or end of the document line, as appropriate for (Home|LineEnd|VCHome)Extend.</summary>
+    </member>
+    <member name="F:wx.StyledTextCtrl.wxSTC_CMD_PARADOWN">
+      <summary>\name Move caret between paragraphs (delimited by empty lines)</summary>
+    </member>
+  </members>
+</doc>
