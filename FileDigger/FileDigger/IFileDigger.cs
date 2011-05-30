@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ServiceModel;
+using System.IO;
 
 namespace FileDigger
 {
@@ -14,8 +15,7 @@ namespace FileDigger
         [OperationContract]
         void addFolder(String folder);
         [OperationContract]
-        List<String> findFile(String name);
-
+        List<String> findFile(String name);        
     }
     public class FileDiggerModel
     {
@@ -49,27 +49,52 @@ namespace FileDigger
             }
             return m;
         }
+        public List<String> findFile(String name)
+        {
+            List<String> result = new List<string>();
+            foreach(String folder in FileDiggerModel.getInstance().OwnFolders)
+            {
+                DirectoryInfo di = new DirectoryInfo(folder);
+               result.AddRange(this.findFile(name, di));
+            }
+            return result;
+        }
+        private List<String> findFile(String name, DirectoryInfo d)
+        {
+            List<String> result = new List<string>();
+            FileInfo [] fis=d.GetFiles();
+            foreach (FileInfo f in fis)
+            {
+                if (f.FullName.Contains(name))
+                {
+                    result.Add(f.FullName);
+                }
+            }
+            DirectoryInfo [] dis=d.GetDirectories();
+            foreach(DirectoryInfo di in dis)
+            {
+                result.AddRange(findFile(name, di));
+            }            
+            return result;
+        }
         private FileDiggerModel()
         {
             peers = new List<int>();
             ownFolders = new List<string>();
         }
     }
-    public class FileDiggerService : IFileDigger
+    public class FileDigger : IFileDigger
     {
-       
-        // Implement the ICalculator methods.
         public void ReportLive(int ip)
         {
             FileDiggerModel.getInstance().Peers.Add(ip);
         }
         public void addFolder(String folder){
-
+            FileDiggerModel.getInstance().OwnFolders.Add(folder);
         }
         public List<String> findFile(String name)
         {
-
-            List<String> rslt = new List<string>();
+            List<String> rslt = FileDiggerModel.getInstance().findFile(name);
             return rslt;
         }
     }

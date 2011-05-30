@@ -14,10 +14,10 @@ namespace FileDigger
 {
     
 
-    public partial class Service1 : ServiceBase
+    public partial class FileDiggerAgentService : ServiceBase
     {
         public ServiceHost serviceHost = null;
-        public Service1()
+        public FileDiggerAgentService()
         {
             InitializeComponent();
         }
@@ -28,9 +28,8 @@ namespace FileDigger
             {
                 serviceHost.Close();
             }
-            serviceHost = new ServiceHost(typeof(FileDiggerService));
-            serviceHost.Open();
-            
+            serviceHost = new ServiceHost(typeof(FileDigger));
+            serviceHost.Open();            
         }
 
         protected override void OnStop()
