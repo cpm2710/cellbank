@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDiggerTest", "FileDigge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDiggerC", "FileDiggerC\FileDiggerC.csproj", "{9D568514-AECC-4DBC-9E28-1B58E80C2954}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FileDiggerSetup", "FileDiggerSetup\FileDiggerSetup.vdproj", "{345BF76D-0996-4E0D-BEE1-22FC60CC5655}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -51,6 +53,12 @@ Global
 		{9D568514-AECC-4DBC-9E28-1B58E80C2954}.Release|Mixed Platforms.Build.0 = Release|x86
 		{9D568514-AECC-4DBC-9E28-1B58E80C2954}.Release|x86.ActiveCfg = Release|x86
 		{9D568514-AECC-4DBC-9E28-1B58E80C2954}.Release|x86.Build.0 = Release|x86
+		{345BF76D-0996-4E0D-BEE1-22FC60CC5655}.Debug|Any CPU.ActiveCfg = Debug
+		{345BF76D-0996-4E0D-BEE1-22FC60CC5655}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{345BF76D-0996-4E0D-BEE1-22FC60CC5655}.Debug|x86.ActiveCfg = Debug
+		{345BF76D-0996-4E0D-BEE1-22FC60CC5655}.Release|Any CPU.ActiveCfg = Release
+		{345BF76D-0996-4E0D-BEE1-22FC60CC5655}.Release|Mixed Platforms.ActiveCfg = Release
+		{345BF76D-0996-4E0D-BEE1-22FC60CC5655}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

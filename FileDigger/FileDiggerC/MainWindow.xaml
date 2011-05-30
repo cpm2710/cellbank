@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="79,38,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" />
+        <Button Content="搜索" Height="23" HorizontalAlignment="Right" Margin="0,38,205,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Label Content="文件名:" Height="28" HorizontalAlignment="Left" Margin="20,38,0,0" Name="label1" VerticalAlignment="Top" />
+        <ListView Height="100" HorizontalAlignment="Left" Margin="20,72,0,0" Name="listView1" VerticalAlignment="Top" Width="278" />
     </Grid>
 </Window>
