@@ -18,6 +18,7 @@ namespace FileDiggerTest
             {
                 Console.WriteLine(a);
             }
+            c.fetchFile("s");
         }
     }
 }

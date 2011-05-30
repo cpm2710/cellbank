@@ -25,6 +25,12 @@
   <wsdl:message name="IFileDigger_findFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:findFileResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileDigger_fetchFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:fetchFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileDigger_fetchFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:fetchFileResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFileDigger">
     <wsdl:operation name="ReportLive">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLive" message="tns:IFileDigger_ReportLive_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="findFile">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile" message="tns:IFileDigger_findFile_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFileResponse" message="tns:IFileDigger_findFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="fetchFile">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFile" message="tns:IFileDigger_fetchFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFileResponse" message="tns:IFileDigger_fetchFile_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

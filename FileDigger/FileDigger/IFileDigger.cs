@@ -15,7 +15,9 @@ namespace FileDigger
         [OperationContract]
         void addFolder(String folder);
         [OperationContract]
-        List<String> findFile(String name);        
+        List<String> findFile(String name);
+        [OperationContract]
+        byte[] fetchFile(String fullName);
     }
     public class FileDiggerModel
     {
@@ -96,6 +98,10 @@ namespace FileDigger
         {
             List<String> rslt = FileDiggerModel.getInstance().findFile(name);
             return rslt;
+        }
+        public byte[] fetchFile(String fullName)
+        {
+            return null;
         }
     }
 

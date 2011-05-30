@@ -23,6 +23,9 @@ namespace FileDiggerC.FileDiggerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findFileResponse")]
         string[] findFile(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFile", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFileResponse")]
+        byte[] fetchFile(string fullName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -62,6 +65,10 @@ namespace FileDiggerC.FileDiggerService {
         
         public string[] findFile(string name) {
             return base.Channel.findFile(name);
+        }
+        
+        public byte[] fetchFile(string fullName) {
+            return base.Channel.fetchFile(fullName);
         }
     }
 }

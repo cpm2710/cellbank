@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
 using System.ServiceModel;
+using System.Net.NetworkInformation;
 
 namespace FileDiggerC
 {
@@ -38,16 +39,23 @@ namespace FileDiggerC
                 {
                     String localIp = address.ToString();
                     localIp=localIp.Substring(0,localIp.LastIndexOf(".")+1);
-                    for (int i = 0; i < 255; i++)
+                    Ping p = new Ping();
+                    for (int i = 100; i < 101; i++)
                     {
                         String ip = localIp + i;
-                        FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
-                       // System.ServiceModel.EndpointAddress endAddress = c.Endpoint.Address;
-                        c.Endpoint.Address = new EndpointAddress("http://"+ip+":8000/ServiceModelSamples/service";
-                        string[] files= c.findFile("shit");
-                        if(files!=null&&files.Length>0){
-
-                            break;
+                        IPAddress addr = IPAddress.Parse(ip);
+                        PingReply reply = p.Send(addr);
+                        if (reply.Status != IPStatus.TimedOut)
+                        {
+                            FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
+                            c.Endpoint.Address = new EndpointAddress("http://" + ip + ":8000/ServiceModelSamples/service");
+                            c.addFolder("d:\\Extra\\FRIENDS");
+                            string[] files = c.findFile("Friend");
+                            if (files != null && files.Length > 0)
+                            {
+                                this.listView1.Items.Add(files[0]);
+                                break;
+                            }
                         }
                     }
                 }
