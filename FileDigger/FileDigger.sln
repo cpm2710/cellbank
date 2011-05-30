@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDigger", "FileDigger\FileDigger.csproj", "{69C8612C-9588-4FAF-8359-915381B356C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDiggerTest", "FileDiggerTest\FileDiggerTest.csproj", "{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -27,6 +29,16 @@ Global
 		{69C8612C-9588-4FAF-8359-915381B356C2}.Release|Mixed Platforms.Build.0 = Release|x86
 		{69C8612C-9588-4FAF-8359-915381B356C2}.Release|x86.ActiveCfg = Release|x86
 		{69C8612C-9588-4FAF-8359-915381B356C2}.Release|x86.Build.0 = Release|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Debug|x86.ActiveCfg = Debug|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Debug|x86.Build.0 = Debug|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Release|Any CPU.ActiveCfg = Release|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Release|Mixed Platforms.Build.0 = Release|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Release|x86.ActiveCfg = Release|x86
+		{8C5EBB29-EDEA-477F-AEA9-B6DE29B0B238}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

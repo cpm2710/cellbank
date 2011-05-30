@@ -6,9 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
-using System.ComponentModel;
 using System.ServiceModel;
-using System.ServiceProcess;
 using System.Configuration;
 using System.Configuration.Install;
 
@@ -30,7 +28,7 @@ namespace FileDigger
             {
                 serviceHost.Close();
             }
-            serviceHost = new ServiceHost(typeof(CalculatorService));
+            serviceHost = new ServiceHost(typeof(FileDiggerService));
             serviceHost.Open();
             
         }
