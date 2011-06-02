@@ -16,6 +16,7 @@ using System.ServiceModel;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace FileDiggerC
 {
@@ -154,6 +155,13 @@ namespace FileDiggerC
 
         private void button8_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog o = new SaveFileDialog();
+            o.ShowDialog();
+            string saveAsFullName=o.FileName;
+            FileStream fs = File.Open(saveAsFullName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+
+            //StreamWriter sw=new StreamWriter(saveAsFullName);
+
             string fileDescription=(string)this.搜到的文件.SelectedItem;
             string []fda=fileDescription.Split(new char[2]{'-','-'});
             string ip = fda[0].Trim();
@@ -161,12 +169,13 @@ namespace FileDiggerC
             FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
             c.Endpoint.Address = new EndpointAddress("http://" + ip + ":8000/ServiceModelSamples/service");
             long size=c.fetchFileSize(fullName);
-            int times = (int)(size / 1024);
+            int times = (int)(size / (1024*1024));
             for (int i = 0; i < times; i++)
             {
-                c.fetchFile(fullName, i);
+                byte[] fetched=c.fetchFile(fullName, i);
+                fs.Write(fetched, 0, fetched.Length);
             }
-            
+            fs.Close();
         }
     }
 }

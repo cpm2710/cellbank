@@ -237,8 +237,9 @@ namespace FileDigger
         public byte[] fetchFile(String fullName,int i)
         {
             FileStream fs=File.Open(fullName,FileMode.Open);
-            byte []content=new byte[1024];
-            fs.Read(content, i* 1024,1024);
+            fs.Seek(i * 1024*1024, SeekOrigin.Begin);
+            byte []content=new byte[1024*1024];
+            fs.Read(content, 0,1024*1024);
             fs.Close();
             return content;
         }
