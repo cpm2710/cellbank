@@ -21,6 +21,9 @@ namespace FileDiggerC.FileDiggerService {
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolderResponse")]
         void addFolder(string folder);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deleteSharedFolder", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/deleteSharedFolderResponse")]
+        void deleteSharedFolder(string folder);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findFileResponse")]
         string[] findFile(string name);
         
@@ -64,6 +67,10 @@ namespace FileDiggerC.FileDiggerService {
         
         public void addFolder(string folder) {
             base.Channel.addFolder(folder);
+        }
+        
+        public void deleteSharedFolder(string folder) {
+            base.Channel.deleteSharedFolder(folder);
         }
         
         public string[] findFile(string name) {

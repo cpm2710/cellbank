@@ -25,6 +25,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="deleteSharedFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="folder" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteSharedFolderResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="findFile">
     <xs:complexType>
       <xs:sequence>

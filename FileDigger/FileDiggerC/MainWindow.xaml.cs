@@ -103,5 +103,16 @@ namespace FileDiggerC
                 this.我的共享目录.Items.Add(sf);
             }
         }
+
+        private void fileDoubleClicked(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            string folder=(string)this.我的共享目录.SelectedItem;
+            localClient.deleteSharedFolder(folder);
+        }
     }
 }

@@ -19,6 +19,12 @@
   <wsdl:message name="IFileDigger_addFolder_OutputMessage">
     <wsdl:part name="parameters" element="tns:addFolderResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileDigger_deleteSharedFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteSharedFolder" />
+  </wsdl:message>
+  <wsdl:message name="IFileDigger_deleteSharedFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteSharedFolderResponse" />
+  </wsdl:message>
   <wsdl:message name="IFileDigger_findFile_InputMessage">
     <wsdl:part name="parameters" element="tns:findFile" />
   </wsdl:message>
@@ -45,6 +51,10 @@
     <wsdl:operation name="addFolder">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder" message="tns:IFileDigger_addFolder_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolderResponse" message="tns:IFileDigger_addFolder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSharedFolder">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deleteSharedFolder" message="tns:IFileDigger_deleteSharedFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deleteSharedFolderResponse" message="tns:IFileDigger_deleteSharedFolder_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="findFile">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile" message="tns:IFileDigger_findFile_InputMessage" />

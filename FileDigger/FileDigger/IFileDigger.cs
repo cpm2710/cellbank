@@ -46,23 +46,57 @@ namespace FileDigger
             List<String> result = new List<string>();
             foreach (String folder in FileDiggerModel.getInstance().OwnFolders)
             {
-                DirectoryInfo di = new DirectoryInfo(folder);
-                result.AddRange(this.findFile(name, di));
+                try
+                {
+                    DirectoryInfo di = new DirectoryInfo(folder);
+                    result.AddRange(this.findFile(name, di));
+                }
+                catch (Exception openException)
+                {
+
+                }
+                
             }
             return result;
         }
-        public void addFolder(String folder)
+        public void deleteSharedFolder(String folder)
         {
+            string folderInRegular = folder.Replace("\\\\", "\\");
+            folderInRegular = folderInRegular.Replace("\\", "\\\\");
+            this.ownFolders.Remove(folderInRegular);
+            if (File.Exists(sharedFolderConfig))
+            {
+                File.Delete(sharedFolderConfig);
+                File.Create(sharedFolderConfig);
+            }
+            StreamWriter sw = new StreamWriter(sharedFolderConfig,false);
             foreach (string flder in this.ownFolders)
             {
-                if (flder.Equals(folder, StringComparison.InvariantCultureIgnoreCase))
+                sw.WriteLine(flder);
+            }
+            sw.Close();
+            //foreach (string flder in this.ownFolders)
+            //{
+            //    if (flder.Equals(folderInRegular, StringComparison.InvariantCultureIgnoreCase))
+            //    {
+            //        this.ownFolders.Remove(flder);
+            //    }
+            //}
+        }
+        public void addFolder(String folder)
+        {
+            string folderInRegular = folder.Replace("\\\\", "\\");
+            folderInRegular = folderInRegular.Replace("\\", "\\\\");
+            foreach (string flder in this.ownFolders)
+            {
+                if (flder.Equals(folderInRegular, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return;
                 }
             }
-            this.ownFolders.Add(folder);
+            this.ownFolders.Add(folderInRegular);
             StreamWriter sw = new StreamWriter(sharedFolderConfig,true);
-            sw.WriteLine(folder);
+            sw.WriteLine(folderInRegular);
             sw.Close();
         }
         private List<String> findFile(String name, DirectoryInfo d)
@@ -99,6 +133,8 @@ namespace FileDigger
             {
                 if (!line.Trim().Equals(""))
                 {
+                    line = line.Replace("\\\\", "\\");
+                    line = line.Replace("\\", "\\\\");
                     ownFolders.Add(line);
                 }
             }
@@ -113,6 +149,8 @@ namespace FileDigger
         void ReportLive(int ip);
         [OperationContract]
         void addFolder(String folder);
+        [OperationContract]
+        void deleteSharedFolder(String folder);
         [OperationContract]
         List<String> findFile(String name);
         [OperationContract]
@@ -141,6 +179,10 @@ namespace FileDigger
         {
             List<String> rslt = FileDiggerModel.getInstance().findFile(name);
             return rslt;
+        }
+        public void deleteSharedFolder(String folder)
+        {
+            FileDiggerModel.getInstance().deleteSharedFolder(folder);
         }
         public byte[] fetchFile(String fullName,int i)
         {
