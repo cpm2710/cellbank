@@ -37,6 +37,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="fetchFileSize">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fullName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fetchFileSizeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fetchFileSizeResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="addFolder">
     <xs:complexType>
       <xs:sequence>

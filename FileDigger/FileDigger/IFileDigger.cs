@@ -188,6 +188,8 @@ namespace FileDigger
         [OperationContract]
         List<String> findPeers();
         [OperationContract]
+        long fetchFileSize(String fullName);
+        [OperationContract]
         void addFolder(String folder);
         [OperationContract]
         void deleteSharedFolder(String folder);
@@ -239,6 +241,11 @@ namespace FileDigger
             fs.Read(content, i* 1024,1024);
             fs.Close();
             return content;
+        }
+        public long fetchFileSize(String fullName)
+        {
+            FileInfo f = new FileInfo(fullName);
+            return f.Length;
         }
     }
 

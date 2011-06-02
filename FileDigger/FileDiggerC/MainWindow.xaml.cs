@@ -28,6 +28,8 @@ namespace FileDiggerC
         public MainWindow()
         {
             InitializeComponent();
+            this.refreshFolders();
+            this.refreshPeers();
         }
        
 
@@ -90,12 +92,7 @@ namespace FileDiggerC
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            this.我的共享目录.Items.Clear();
-            string[] sharedFolders = localClient.findSharedFolders();
-            foreach (string sf in sharedFolders)
-            {
-                this.我的共享目录.Items.Add(sf);
-            }
+            refreshFolders();
         }
 
         private void fileDoubleClicked(object sender, MouseButtonEventArgs e)
@@ -114,7 +111,24 @@ namespace FileDiggerC
             string peer=(string)this.我的伙伴.SelectedItem;
             localClient.deletePeer(peer);
         }
-        
+        private void refreshPeers()
+        {
+            this.我的伙伴.Items.Clear();
+            string[] peers = localClient.findPeers();
+            foreach (string p in peers)
+            {
+                this.我的伙伴.Items.Add(p);
+            }
+        }
+        private void refreshFolders()
+        {
+            this.我的共享目录.Items.Clear();
+            string[] sharedFolders = localClient.findSharedFolders();
+            foreach (string sf in sharedFolders)
+            {
+                this.我的共享目录.Items.Add(sf);
+            }
+        }
         private void button5_Click(object sender, RoutedEventArgs e)
         {
             ipStruct p = new ipStruct();
@@ -134,13 +148,8 @@ namespace FileDiggerC
         }
 
         private void button7_Click(object sender, RoutedEventArgs e)
-        {           
-            this.我的伙伴.Items.Clear();
-            string[] peers = localClient.findPeers();
-            foreach (string p in peers)
-            {
-                this.我的伙伴.Items.Add(p);
-            }
+        {
+            refreshPeers();
         }
 
         private void button8_Click(object sender, RoutedEventArgs e)
@@ -151,7 +160,13 @@ namespace FileDiggerC
             string fullName = fda[2].Trim();
             FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
             c.Endpoint.Address = new EndpointAddress("http://" + ip + ":8000/ServiceModelSamples/service");
-            c.fetchFile(fullName, 0);
+            long size=c.fetchFileSize(fullName);
+            int times = (int)(size / 1024);
+            for (int i = 0; i < times; i++)
+            {
+                c.fetchFile(fullName, i);
+            }
+            
         }
     }
 }
