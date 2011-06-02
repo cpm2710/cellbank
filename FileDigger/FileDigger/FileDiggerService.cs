@@ -9,6 +9,7 @@ using System.Text;
 using System.ServiceModel;
 using System.Configuration;
 using System.Configuration.Install;
+using System.Net;
 
 namespace FileDigger
 {
@@ -28,7 +29,23 @@ namespace FileDigger
             {
                 serviceHost.Close();
             }
-            serviceHost = new ServiceHost(typeof(FileDigger));
+            String hostString = Dns.GetHostName();
+            IPHostEntry hostinfo = Dns.GetHostEntry(hostString);
+            System.Net.IPAddress[] addresses = hostinfo.AddressList;
+            String localIp=null;
+            foreach (IPAddress address in addresses)
+            {
+                if (!address.IsIPv6LinkLocal)
+                {
+                    localIp = address.ToString();
+                    break;
+                }
+            }
+            WSHttpBinding ws = new WSHttpBinding();
+            Uri baseAddress = new Uri("http://" + localIp + ":8000/ServiceModelSamples/service");
+            
+            serviceHost = new ServiceHost(typeof(FileDigger), baseAddress);
+            
             serviceHost.Open();            
         }
 
