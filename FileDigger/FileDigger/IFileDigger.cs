@@ -64,11 +64,7 @@ namespace FileDigger
             string folderInRegular = folder.Replace("\\\\", "\\");
             folderInRegular = folderInRegular.Replace("\\", "\\\\");
             this.ownFolders.Remove(folderInRegular);
-            if (File.Exists(sharedFolderConfig))
-            {
-                File.Delete(sharedFolderConfig);
-                File.Create(sharedFolderConfig);
-            }
+            
             StreamWriter sw = new StreamWriter(sharedFolderConfig,false);
             foreach (string flder in this.ownFolders)
             {
