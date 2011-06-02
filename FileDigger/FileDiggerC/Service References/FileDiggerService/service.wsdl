@@ -7,11 +7,17 @@
       <xsd:import schemaLocation="http://localhost:8000/ServiceModelSamples/service?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IFileDigger_ReportLive_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReportLive" />
+  <wsdl:message name="IFileDigger_addPeer_InputMessage">
+    <wsdl:part name="parameters" element="tns:addPeer" />
   </wsdl:message>
-  <wsdl:message name="IFileDigger_ReportLive_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReportLiveResponse" />
+  <wsdl:message name="IFileDigger_addPeer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addPeerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileDigger_deletePeer_InputMessage">
+    <wsdl:part name="parameters" element="tns:deletePeer" />
+  </wsdl:message>
+  <wsdl:message name="IFileDigger_deletePeer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deletePeerResponse" />
   </wsdl:message>
   <wsdl:message name="IFileDigger_addFolder_InputMessage">
     <wsdl:part name="parameters" element="tns:addFolder" />
@@ -44,9 +50,13 @@
     <wsdl:part name="parameters" element="tns:fetchFileResponse" />
   </wsdl:message>
   <wsdl:portType name="IFileDigger">
-    <wsdl:operation name="ReportLive">
-      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLive" message="tns:IFileDigger_ReportLive_InputMessage" />
-      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLiveResponse" message="tns:IFileDigger_ReportLive_OutputMessage" />
+    <wsdl:operation name="addPeer">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addPeer" message="tns:IFileDigger_addPeer_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addPeerResponse" message="tns:IFileDigger_addPeer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePeer">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeer" message="tns:IFileDigger_deletePeer_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeerResponse" message="tns:IFileDigger_deletePeer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="addFolder">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder" message="tns:IFileDigger_addFolder_InputMessage" />

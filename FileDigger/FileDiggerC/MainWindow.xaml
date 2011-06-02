@@ -15,7 +15,7 @@
         <Button Content="刷新我的共享目录" Height="23" Margin="700,15,77,0" Name="button3" VerticalAlignment="Top" Click="button3_Click" />
         <Button Content="移除共享目录" Height="23" Margin="772,93,12,0" Name="button4" VerticalAlignment="Top" Width="96" Click="button4_Click" />
         <ListView Height="95" HorizontalAlignment="Left" Margin="477,196,0,0" Name="我的伙伴" VerticalAlignment="Top" Width="289" />
-        <Button Content="添加伙伴" Height="23"  Margin="772,196,12,0" Name="button5" VerticalAlignment="Top" Width="96" />
-        <Button Content="移除伙伴" Height="23"  Margin="772,225,12,0" Name="button6" VerticalAlignment="Top" Width="96" />
+        <Button Content="添加伙伴" Height="23"  Margin="772,196,12,0" Name="button5" VerticalAlignment="Top" Width="96" Click="button5_Click" />
+        <Button Content="移除伙伴" Height="23"  Margin="772,225,12,0" Name="button6" VerticalAlignment="Top" Width="96" Click="button6_Click" />
     </Grid>
 </Window>

@@ -15,8 +15,11 @@ namespace FileDiggerC.FileDiggerService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://Microsoft.ServiceModel.Samples", ConfigurationName="FileDiggerService.IFileDigger")]
     public interface IFileDigger {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLive", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLiveResponse")]
-        void ReportLive(int ip);
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addPeer", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/addPeerResponse")]
+        void addPeer(string peer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeer", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeerResponse")]
+        void deletePeer(string peer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolderResponse")]
         void addFolder(string folder);
@@ -61,8 +64,12 @@ namespace FileDiggerC.FileDiggerService {
                 base(binding, remoteAddress) {
         }
         
-        public void ReportLive(int ip) {
-            base.Channel.ReportLive(ip);
+        public void addPeer(string peer) {
+            base.Channel.addPeer(peer);
+        }
+        
+        public void deletePeer(string peer) {
+            base.Channel.deletePeer(peer);
         }
         
         public void addFolder(string folder) {

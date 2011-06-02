@@ -72,6 +72,31 @@ namespace FileDigger
             }
             sw.Close();
         }
+        public void deletePeer(String peer)
+        {
+            this.peers.Remove(peer);
+
+            StreamWriter sw = new StreamWriter(peerConfig, false);
+            foreach (string p in this.peers)
+            {
+                sw.WriteLine(p);
+            }
+            sw.Close();
+        }
+        public void addPeer(String peer)
+        {            
+            foreach (string flder in this.peers)
+            {
+                if (flder.Equals(peer, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return;
+                }
+            }
+            this.peers.Add(peer);
+            StreamWriter sw = new StreamWriter(this.peerConfig, true);
+            sw.WriteLine(peer);
+            sw.Close();
+        }
         public void addFolder(String folder)
         {
             string folderInRegular = folder.Replace("\\\\", "\\");
@@ -152,7 +177,9 @@ namespace FileDigger
     interface IFileDigger
     {
         [OperationContract]
-        void ReportLive(int ip);
+        void addPeer(String peer);
+        [OperationContract]
+        void deletePeer(String peer);
         [OperationContract]
         void addFolder(String folder);
         [OperationContract]
@@ -167,13 +194,17 @@ namespace FileDigger
    
     public class FileDigger : IFileDigger
     {
+        public void addPeer(String peer)
+        {
+            FileDiggerModel.getInstance().addPeer(peer);
+        }
+        public void deletePeer(String peer)
+        {
+            FileDiggerModel.getInstance().deletePeer(peer);
+        }
         public List<String> findSharedFolders()
         {           
             return FileDiggerModel.getInstance().OwnFolders;
-        }
-        public void ReportLive(int ip)
-        {
-            FileDiggerModel.getInstance().Peers.Add(ip);
         }
         public void addFolder(String folder){
             if (!FileDiggerModel.getInstance().OwnFolders.Contains(folder))

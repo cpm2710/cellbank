@@ -112,5 +112,16 @@ namespace FileDiggerC
             string folder=(string)this.我的共享目录.SelectedItem;
             localClient.deleteSharedFolder(folder);
         }
+
+        private void button6_Click(object sender, RoutedEventArgs e)
+        {
+            string peer=(string)this.我的伙伴.SelectedItem;
+            localClient.deletePeer(peer);
+        }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
