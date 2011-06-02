@@ -23,11 +23,17 @@ namespace FileDiggerC
     /// </summary>
     public partial class MainWindow : Window
     {
+        FileDiggerService.FileDiggerClient localClient = new FileDiggerService.FileDiggerClient();
         public MainWindow()
         {
             InitializeComponent();
+            //string[] sharedFolders=localClient.findSharedFolders();
+            //foreach (string sf in sharedFolders)
+            //{
+            //    this.我的共享目录.Items.Add(sf);
+            //}
         }
-        FileDiggerService.FileDiggerClient localClient = new FileDiggerService.FileDiggerClient();
+       
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
@@ -85,6 +91,16 @@ namespace FileDiggerC
             if (selectedPath != null)
             {
                 localClient.addFolder(selectedPath);
+            }
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            this.我的共享目录.Items.Clear();
+            string[] sharedFolders = localClient.findSharedFolders();
+            foreach (string sf in sharedFolders)
+            {
+                this.我的共享目录.Items.Add(sf);
             }
         }
     }

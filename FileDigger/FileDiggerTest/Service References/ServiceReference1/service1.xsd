@@ -39,10 +39,23 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="findSharedFolders">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findSharedFoldersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="findSharedFoldersResult" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="fetchFile">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="fullName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="i" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

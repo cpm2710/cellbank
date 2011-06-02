@@ -25,6 +25,12 @@
   <wsdl:message name="IFileDigger_findFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:findFileResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileDigger_findSharedFolders_InputMessage">
+    <wsdl:part name="parameters" element="tns:findSharedFolders" />
+  </wsdl:message>
+  <wsdl:message name="IFileDigger_findSharedFolders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findSharedFoldersResponse" />
+  </wsdl:message>
   <wsdl:message name="IFileDigger_fetchFile_InputMessage">
     <wsdl:part name="parameters" element="tns:fetchFile" />
   </wsdl:message>
@@ -43,6 +49,10 @@
     <wsdl:operation name="findFile">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile" message="tns:IFileDigger_findFile_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFileResponse" message="tns:IFileDigger_findFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findSharedFolders">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findSharedFolders" message="tns:IFileDigger_findSharedFolders_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findSharedFoldersResponse" message="tns:IFileDigger_findSharedFolders_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="fetchFile">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFile" message="tns:IFileDigger_fetchFile_InputMessage" />

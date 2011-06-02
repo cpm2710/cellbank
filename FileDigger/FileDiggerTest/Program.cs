@@ -10,15 +10,7 @@ namespace FileDiggerTest
         static void Main(string[] args)
         {
             ServiceReference1.FileDiggerClient c = new ServiceReference1.FileDiggerClient();
-            EndpointAddress dynamicAddress = new EndpointAddress("http://localhost:8000/ServiceModelSamples/service");
-            c.Endpoint.Address = dynamicAddress;
-            c.addFolder("d:\\Extra\\FRIENDS");
-            String[] abc=c.findFile("Friend");
-            foreach (String a in abc)
-            {
-                Console.WriteLine(a);
-            }
-            c.fetchFile("s");
+            c.findSharedFolders();
         }
     }
 }

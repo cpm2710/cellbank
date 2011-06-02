@@ -24,8 +24,11 @@ namespace FileDiggerTest.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findFileResponse")]
         string[] findFile(string name);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findSharedFolders", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findSharedFoldersResponse")]
+        string[] findSharedFolders();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFile", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/fetchFileResponse")]
-        byte[] fetchFile(string fullName);
+        byte[] fetchFile(string fullName, int i);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -67,8 +70,12 @@ namespace FileDiggerTest.ServiceReference1 {
             return base.Channel.findFile(name);
         }
         
-        public byte[] fetchFile(string fullName) {
-            return base.Channel.fetchFile(fullName);
+        public string[] findSharedFolders() {
+            return base.Channel.findSharedFolders();
+        }
+        
+        public byte[] fetchFile(string fullName, int i) {
+            return base.Channel.fetchFile(fullName, i);
         }
     }
 }

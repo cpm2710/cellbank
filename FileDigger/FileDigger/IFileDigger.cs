@@ -9,18 +9,6 @@ using System.Diagnostics;
 
 namespace FileDigger
 {
-    [ServiceContract(Namespace = "http://Microsoft.ServiceModel.Samples")]
-    interface IFileDigger
-    {
-        [OperationContract]
-        void ReportLive(int ip);
-        [OperationContract]
-        void addFolder(String folder);
-        [OperationContract]
-        List<String> findFile(String name);
-        [OperationContract]
-        byte[] fetchFile(String fullName,int i);
-    }
     public class FileDiggerModel
     {
         private static System.Object lockThis = new System.Object();
@@ -56,10 +44,10 @@ namespace FileDigger
         public List<String> findFile(String name)
         {
             List<String> result = new List<string>();
-            foreach(String folder in FileDiggerModel.getInstance().OwnFolders)
+            foreach (String folder in FileDiggerModel.getInstance().OwnFolders)
             {
                 DirectoryInfo di = new DirectoryInfo(folder);
-               result.AddRange(this.findFile(name, di));
+                result.AddRange(this.findFile(name, di));
             }
             return result;
         }
@@ -73,20 +61,14 @@ namespace FileDigger
                 }
             }
             this.ownFolders.Add(folder);
-            Configuration config =
-            ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-            config.AppSettings.Settings.Add("folder"+(ownFolders.Count+1),folder);
-            config.Save(ConfigurationSaveMode.Modified);
-            //EventLog eLog=new EventLog();
-            //eLog.
-            // Force a reload of a changed section.
-            ConfigurationManager.RefreshSection("appSettings");
+            StreamWriter sw = new StreamWriter(sharedFolderConfig,true);
+            sw.WriteLine(folder);
+            sw.Close();
         }
         private List<String> findFile(String name, DirectoryInfo d)
         {
             List<String> result = new List<string>();
-            FileInfo [] fis=d.GetFiles();
+            FileInfo[] fis = d.GetFiles();
             foreach (FileInfo f in fis)
             {
                 if (f.FullName.Contains(name))
@@ -94,28 +76,57 @@ namespace FileDigger
                     result.Add(f.FullName);
                 }
             }
-            DirectoryInfo [] dis=d.GetDirectories();
-            foreach(DirectoryInfo di in dis)
+            DirectoryInfo[] dis = d.GetDirectories();
+            foreach (DirectoryInfo di in dis)
             {
                 result.AddRange(findFile(name, di));
-            }            
+            }
             return result;
         }
+        private String sharedFolderConfig="sharedfolders.txt";
         private FileDiggerModel()
         {
             peers = new List<int>();
             ownFolders = new List<string>();
-            foreach (string flder in ConfigurationManager.AppSettings)
+
+            if (!File.Exists(sharedFolderConfig))
             {
-                if (flder.StartsWith("folder"))
+                File.Create(sharedFolderConfig);
+            }
+            StreamReader sr = new StreamReader(sharedFolderConfig);
+            string line = null;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (!line.Trim().Equals(""))
                 {
-                    this.ownFolders.Add(ConfigurationManager.AppSettings[flder]);
+                    ownFolders.Add(line);
                 }
-            }            
+            }
+            sr.Close();
         }
     }
+    
+    [ServiceContract(Namespace = "http://Microsoft.ServiceModel.Samples")]
+    interface IFileDigger
+    {
+        [OperationContract]
+        void ReportLive(int ip);
+        [OperationContract]
+        void addFolder(String folder);
+        [OperationContract]
+        List<String> findFile(String name);
+        [OperationContract]
+        List<String> findSharedFolders();
+        [OperationContract]
+        byte[] fetchFile(String fullName,int i);
+    }
+   
     public class FileDigger : IFileDigger
     {
+        public List<String> findSharedFolders()
+        {           
+            return FileDiggerModel.getInstance().OwnFolders;
+        }
         public void ReportLive(int ip)
         {
             FileDiggerModel.getInstance().Peers.Add(ip);
@@ -123,7 +134,7 @@ namespace FileDigger
         public void addFolder(String folder){
             if (!FileDiggerModel.getInstance().OwnFolders.Contains(folder))
             {
-                FileDiggerModel.getInstance().OwnFolders.Add(folder);
+                FileDiggerModel.getInstance().addFolder(folder);
             }
         }
         public List<String> findFile(String name)
