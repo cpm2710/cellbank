@@ -13,6 +13,18 @@
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_57F40350F6754A75ACBCDBDE9931CAF6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_57F40350F6754A75ACBCDBDE9931CAF6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -62,6 +74,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -80,6 +105,14 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_31035779944240B6A96B73A2C3448680"
+                {
+                "Name" = "8:.NET Framework"
+                "Message" = "8:[VSDNETMSG]"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
+                }
             }
         }
         "File"
@@ -152,7 +185,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FileDiggerSetup"
         "ProductCode" = "8:{FF4A8445-EFB2-47ED-BE33-B3EE9DBF5439}"
-        "PackageCode" = "8:{55674F8A-6534-403D-BCE8-30C664DE10AC}"
+        "PackageCode" = "8:{CF9FB128-26FE-4C93-81BC-65F3517A4804}"
         "UpgradeCode" = "8:{55A10719-8F08-4589-A2D1-DE5C6A5448FD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -671,9 +704,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_96F424C621944AE7AF8F5D2E7AB15AED"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_57F40350F6754A75ACBCDBDE9931CAF6"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\FileDigger\\obj\\x86\\Release\\FileDigger.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D2C28FAE48144FF8B2E616777F646D81"
@@ -692,7 +725,7 @@
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:Release|x86"
-            "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{69C8612C-9588-4FAF-8359-915381B356C2}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"

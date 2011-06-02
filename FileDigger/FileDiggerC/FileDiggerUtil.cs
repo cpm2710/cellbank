@@ -34,7 +34,7 @@ namespace FileDiggerC
         public void digFiles()
         {
             Ping p = new Ping();
-            List<String> files = new List<string>();
+            files = new List<string>();
             IPAddress addr = IPAddress.Parse(ip);
             PingReply reply = p.Send(addr);
             FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
