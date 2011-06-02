@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel;
 using System.IO;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace FileDigger
 {
@@ -17,7 +19,7 @@ namespace FileDigger
         [OperationContract]
         List<String> findFile(String name);
         [OperationContract]
-        byte[] fetchFile(String fullName);
+        byte[] fetchFile(String fullName,int i);
     }
     public class FileDiggerModel
     {
@@ -61,6 +63,26 @@ namespace FileDigger
             }
             return result;
         }
+        public void addFolder(String folder)
+        {
+            foreach (string flder in this.ownFolders)
+            {
+                if (flder.Equals(folder, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return;
+                }
+            }
+            this.ownFolders.Add(folder);
+            Configuration config =
+            ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            config.AppSettings.Settings.Add("folder"+(ownFolders.Count+1),folder);
+            config.Save(ConfigurationSaveMode.Modified);
+            //EventLog eLog=new EventLog();
+            //eLog.
+            // Force a reload of a changed section.
+            ConfigurationManager.RefreshSection("appSettings");
+        }
         private List<String> findFile(String name, DirectoryInfo d)
         {
             List<String> result = new List<string>();
@@ -83,6 +105,13 @@ namespace FileDigger
         {
             peers = new List<int>();
             ownFolders = new List<string>();
+            foreach (string flder in ConfigurationManager.AppSettings)
+            {
+                if (flder.StartsWith("folder"))
+                {
+                    this.ownFolders.Add(ConfigurationManager.AppSettings[flder]);
+                }
+            }            
         }
     }
     public class FileDigger : IFileDigger
@@ -92,16 +121,23 @@ namespace FileDigger
             FileDiggerModel.getInstance().Peers.Add(ip);
         }
         public void addFolder(String folder){
-            FileDiggerModel.getInstance().OwnFolders.Add(folder);
+            if (!FileDiggerModel.getInstance().OwnFolders.Contains(folder))
+            {
+                FileDiggerModel.getInstance().OwnFolders.Add(folder);
+            }
         }
         public List<String> findFile(String name)
         {
             List<String> rslt = FileDiggerModel.getInstance().findFile(name);
             return rslt;
         }
-        public byte[] fetchFile(String fullName)
+        public byte[] fetchFile(String fullName,int i)
         {
-            return null;
+            FileStream fs=File.Open(fullName,FileMode.Open);
+            byte []content=new byte[1024*1024];
+            fs.Read(content, i*1024 * 1024,1024*1024);
+            fs.Close();
+            return content;
         }
     }
 

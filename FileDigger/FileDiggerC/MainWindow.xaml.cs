@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Net;
 using System.ServiceModel;
 using System.Net.NetworkInformation;
+using System.Windows.Forms;
 
 namespace FileDiggerC
 {
@@ -26,6 +27,7 @@ namespace FileDiggerC
         {
             InitializeComponent();
         }
+        FileDiggerService.FileDiggerClient localClient = new FileDiggerService.FileDiggerClient();
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
@@ -45,22 +47,45 @@ namespace FileDiggerC
                         String ip = localIp + i;
                         IPAddress addr = IPAddress.Parse(ip);
                         PingReply reply = p.Send(addr);
+                        FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
+
                         if (reply.Status != IPStatus.TimedOut)
-                        {
-                            FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
+                        {                            
                             c.Endpoint.Address = new EndpointAddress("http://" + ip + ":8000/ServiceModelSamples/service");
-                            c.addFolder("d:\\Extra\\FRIENDS");
-                            string[] files = c.findFile("Friend");
-                            if (files != null && files.Length > 0)
+                            try
                             {
-                                this.listView1.Items.Add(files[0]);
-                                break;
+                                string[] files = c.findFile(this.textBox1.Text);
+                                if (files != null && files.Length > 0)
+                                {
+                                    foreach (string f in files)
+                                    {
+                                        this.listView1.Items.Add(ip + "--" + f);
+                                    }
+                                    break;
+                                }
+                                c.Close();
+                            }
+                            catch (Exception exception)
+                            {
+                                this.textBox2.Text = this.textBox2.Text + exception + "\n";
                             }
                         }
                     }
+                    break;
                 }
             }
 
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog d = new FolderBrowserDialog();
+            d.ShowDialog();
+            string selectedPath=d.SelectedPath;
+            if (selectedPath != null)
+            {
+                localClient.addFolder(selectedPath);
+            }
         }
     }
 }
