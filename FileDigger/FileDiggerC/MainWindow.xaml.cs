@@ -28,11 +28,6 @@ namespace FileDiggerC
         public MainWindow()
         {
             InitializeComponent();
-            //string[] sharedFolders = localClient.findSharedFolders();
-            //foreach (string sf in sharedFolders)
-            //{
-            //    this.我的共享目录.Items.Add(sf);
-            //}
         }
        
 
@@ -76,7 +71,7 @@ namespace FileDiggerC
                 {
                     foreach(String f in util.Files)
                     {
-                        this.listView1.Items.Add(util.Ip + "--" + f);
+                        this.搜到的文件.Items.Add(util.Ip + "--" + f);
                     }
                 }
             }
@@ -122,7 +117,6 @@ namespace FileDiggerC
         
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-
             ipStruct p = new ipStruct();
             AddPeer ap = new AddPeer();
             ap.Peer = p;
@@ -147,6 +141,17 @@ namespace FileDiggerC
             {
                 this.我的伙伴.Items.Add(p);
             }
+        }
+
+        private void button8_Click(object sender, RoutedEventArgs e)
+        {
+            string fileDescription=(string)this.搜到的文件.SelectedItem;
+            string []fda=fileDescription.Split(new char[2]{'-','-'});
+            string ip = fda[0].Trim();
+            string fullName = fda[2].Trim();
+            FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
+            c.Endpoint.Address = new EndpointAddress("http://" + ip + ":8000/ServiceModelSamples/service");
+            c.fetchFile(fullName, 0);
         }
     }
 }

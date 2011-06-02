@@ -77,22 +77,26 @@ namespace FileDigger
             this.peers.Remove(peer);
 
             StreamWriter sw = new StreamWriter(peerConfig, false);
-            foreach (string p in this.peers)
+            foreach (string p in FileDiggerModel.getInstance().Peers)
             {
                 sw.WriteLine(p);
             }
             sw.Close();
         }
         public void addPeer(String peer)
-        {            
-            foreach (string flder in this.peers)
+        {
+            if (peer == null||peer.Trim().Equals(""))
             {
-                if (flder.Equals(peer, StringComparison.InvariantCultureIgnoreCase))
+                return;
+            }
+            foreach (string p in FileDiggerModel.getInstance().Peers)
+            {
+                if (p.Equals(peer, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return;
                 }
             }
-            this.peers.Add(peer);
+            FileDiggerModel.getInstance().Peers.Add(peer);
             StreamWriter sw = new StreamWriter(this.peerConfig, true);
             sw.WriteLine(peer);
             sw.Close();
@@ -140,8 +144,10 @@ namespace FileDigger
 
             if (!File.Exists(sharedFolderConfig))
             {
-                File.Create(sharedFolderConfig);
+               FileStream fs= File.Create(sharedFolderConfig);
+               fs.Close();
             }
+
             StreamReader sr = new StreamReader(sharedFolderConfig);
             string line = null;
             while ((line = sr.ReadLine()) != null)
@@ -156,7 +162,8 @@ namespace FileDigger
             sr.Close();
             if (!File.Exists(peerConfig))
             {
-                File.Create(peerConfig);
+                FileStream fs=File.Create(peerConfig);
+                fs.Close();
             }
             StreamReader peerSr = new StreamReader(peerConfig);
             string peerLine = null;
@@ -164,9 +171,7 @@ namespace FileDigger
             {
                 if (!peerLine.Trim().Equals(""))
                 {
-                    peerLine = peerLine.Replace("\\\\", "\\");
-                    peerLine = peerLine.Replace("\\", "\\\\");
-                    peers.Add(line);
+                    peers.Add(peerLine);
                 }
             }
             peerSr.Close();
@@ -230,8 +235,8 @@ namespace FileDigger
         public byte[] fetchFile(String fullName,int i)
         {
             FileStream fs=File.Open(fullName,FileMode.Open);
-            byte []content=new byte[1024*1024];
-            fs.Read(content, i*1024 * 1024,1024*1024);
+            byte []content=new byte[1024];
+            fs.Read(content, i* 1024,1024);
             fs.Close();
             return content;
         }

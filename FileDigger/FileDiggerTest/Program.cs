@@ -10,10 +10,11 @@ namespace FileDiggerTest
     {
         static void Main(string[] args)
         {
+            //FileDigger.FileDiggerModel.getInstance().addPeer("ss");
             ServiceReference1.FileDiggerClient c = new ServiceReference1.FileDiggerClient();
-            c.findSharedFolders();
-            c.addPeer("192.168.0.100");
-            string[] xx = c.findPeers();
+            string[] ss=c.findSharedFolders();
+            //c.addPeer("192.168.0.100");
+           string[] xx = c.findPeers();
 
 
         }
