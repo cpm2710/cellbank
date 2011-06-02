@@ -15,6 +15,7 @@ using System.Net;
 using System.ServiceModel;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace FileDiggerC
 {
@@ -27,11 +28,11 @@ namespace FileDiggerC
         public MainWindow()
         {
             InitializeComponent();
-            //string[] sharedFolders=localClient.findSharedFolders();
-            //foreach (string sf in sharedFolders)
-            //{
-            //    this.我的共享目录.Items.Add(sf);
-            //}
+            string[] sharedFolders = localClient.findSharedFolders();
+            foreach (string sf in sharedFolders)
+            {
+                this.我的共享目录.Items.Add(sf);
+            }
         }
        
 
@@ -41,46 +42,43 @@ namespace FileDiggerC
             String hostString=Dns.GetHostName();
             IPHostEntry hostinfo = Dns.GetHostEntry(hostString);
             System.Net.IPAddress[] addresses = hostinfo.AddressList;
+            List<Thread> threads = new List<Thread>();
+            List<FileDiggerUtil> diggerUtils = new List<FileDiggerUtil>();
+
             foreach(IPAddress address in addresses)
             {
                 if (!address.IsIPv6LinkLocal)
                 {
                     String localIp = address.ToString();
                     localIp=localIp.Substring(0,localIp.LastIndexOf(".")+1);
-                    Ping p = new Ping();
-                    for (int i = 100; i < 101; i++)
+                    
+                    for (int i = 1; i < 255; i++)
                     {
                         String ip = localIp + i;
-                        IPAddress addr = IPAddress.Parse(ip);
-                        PingReply reply = p.Send(addr);
-                        FileDiggerService.FileDiggerClient c = new FileDiggerService.FileDiggerClient();
-
-                        if (reply.Status != IPStatus.TimedOut)
-                        {                            
-                            c.Endpoint.Address = new EndpointAddress("http://" + ip + ":8000/ServiceModelSamples/service");
-                            try
-                            {
-                                string[] files = c.findFile(this.textBox1.Text);
-                                if (files != null && files.Length > 0)
-                                {
-                                    foreach (string f in files)
-                                    {
-                                        this.listView1.Items.Add(ip + "--" + f);
-                                    }
-                                    break;
-                                }
-                                c.Close();
-                            }
-                            catch (Exception exception)
-                            {
-                                this.textBox2.Text = this.textBox2.Text + exception + "\n";
-                            }
-                        }
+                        FileDiggerUtil util = new FileDiggerUtil();
+                        diggerUtils.Add(util);
+                        util.Ip = ip;
+                        util.FileName = this.textBox1.Text;
+                        ThreadStart ts = new ThreadStart(util.digFiles);
+                        Thread t = new Thread(ts);
+                        t.Start();
+                        threads.Add(t);
+                    }
+                    foreach(Thread t in threads){
+                        t.Join();
                     }
                     break;
                 }
             }
-
+            foreach(FileDiggerUtil util in diggerUtils){
+                if (util.Files != null)
+                {
+                    foreach(String f in util.Files)
+                    {
+                        this.listView1.Items.Add(util.Ip + "--" + f);
+                    }
+                }
+            }
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
