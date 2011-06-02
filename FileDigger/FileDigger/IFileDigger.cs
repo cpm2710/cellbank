@@ -13,15 +13,15 @@ namespace FileDigger
     {
         private static System.Object lockThis = new System.Object();
         private static FileDiggerModel m;
-        private List<int> peers;
         private List<String> ownFolders;
+        private List<String> peers;
 
         public List<String> OwnFolders
         {
             get { return ownFolders; }
             set { ownFolders = value; }
         }
-        public List<int> Peers
+        public List<String>Peers
         {
             get { return peers; }
             set { peers = value; }
@@ -71,13 +71,6 @@ namespace FileDigger
                 sw.WriteLine(flder);
             }
             sw.Close();
-            //foreach (string flder in this.ownFolders)
-            //{
-            //    if (flder.Equals(folderInRegular, StringComparison.InvariantCultureIgnoreCase))
-            //    {
-            //        this.ownFolders.Remove(flder);
-            //    }
-            //}
         }
         public void addFolder(String folder)
         {
@@ -113,10 +106,11 @@ namespace FileDigger
             }
             return result;
         }
+        private String peerConfig = "peerConfig.txt";
         private String sharedFolderConfig="sharedfolders.txt";
         private FileDiggerModel()
         {
-            peers = new List<int>();
+            peers = new List<string>();
             ownFolders = new List<string>();
 
             if (!File.Exists(sharedFolderConfig))
@@ -135,6 +129,22 @@ namespace FileDigger
                 }
             }
             sr.Close();
+            if (!File.Exists(peerConfig))
+            {
+                File.Create(peerConfig);
+            }
+            StreamReader peerSr = new StreamReader(peerConfig);
+            string peerLine = null;
+            while ((peerLine = peerSr.ReadLine()) != null)
+            {
+                if (!peerLine.Trim().Equals(""))
+                {
+                    peerLine = peerLine.Replace("\\\\", "\\");
+                    peerLine = peerLine.Replace("\\", "\\\\");
+                    peers.Add(line);
+                }
+            }
+            peerSr.Close();
         }
     }
     

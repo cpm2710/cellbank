@@ -7,12 +7,15 @@
         <Button Content="搜索" Height="23" HorizontalAlignment="Left" Margin="477,17,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
         <Label Content="文件名:" Height="28" HorizontalAlignment="Left" Margin="12,15,0,0" Name="label1" VerticalAlignment="Top" />
         <ListView Height="227" HorizontalAlignment="Left" Margin="26,64,0,0" Name="listView1" VerticalAlignment="Top" Width="433" ItemsSource="{Binding}" MouseDoubleClick="fileDoubleClicked"></ListView>
-        <Button Content="添加共享目录" Height="23" HorizontalAlignment="Right" Margin="0,16,198,0" Name="button2" VerticalAlignment="Top" Width="114" Click="button2_Click" />
+        <Button Content="添加共享目录" Height="23" HorizontalAlignment="Right" Margin="0,64,12,0" Name="button2" VerticalAlignment="Top" Width="96" Click="button2_Click" />
         <TextBox Height="176" ScrollViewer.HorizontalScrollBarVisibility="Auto"
              ScrollViewer.VerticalScrollBarVisibility="Auto"
              ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Margin="26,330,0,0" Name="textBox2" VerticalAlignment="Top" Width="777" />
-        <ListView Height="227" HorizontalAlignment="Left" Margin="477,64,0,0" Name="我的共享目录" VerticalAlignment="Top" Width="289" />
+        <ListView Height="95" HorizontalAlignment="Left" Margin="477,64,0,0" Name="我的共享目录" VerticalAlignment="Top" Width="289" />
         <Button Content="刷新我的共享目录" Height="23" Margin="700,15,77,0" Name="button3" VerticalAlignment="Top" Click="button3_Click" />
-        <Button Content="移除" Height="23" HorizontalAlignment="Left" Margin="772,64,0,0" Name="button4" VerticalAlignment="Top" Width="75" Click="button4_Click" />
+        <Button Content="移除共享目录" Height="23" Margin="772,93,12,0" Name="button4" VerticalAlignment="Top" Width="96" Click="button4_Click" />
+        <ListView Height="95" HorizontalAlignment="Left" Margin="477,196,0,0" Name="我的伙伴" VerticalAlignment="Top" Width="289" />
+        <Button Content="添加伙伴" Height="23"  Margin="772,196,12,0" Name="button5" VerticalAlignment="Top" Width="96" />
+        <Button Content="移除伙伴" Height="23"  Margin="772,225,12,0" Name="button6" VerticalAlignment="Top" Width="96" />
     </Grid>
 </Window>
