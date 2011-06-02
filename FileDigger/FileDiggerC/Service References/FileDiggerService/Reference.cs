@@ -21,6 +21,9 @@ namespace FileDiggerC.FileDiggerService {
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeer", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeerResponse")]
         void deletePeer(string peer);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findPeers", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findPeersResponse")]
+        string[] findPeers();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolderResponse")]
         void addFolder(string folder);
         
@@ -70,6 +73,10 @@ namespace FileDiggerC.FileDiggerService {
         
         public void deletePeer(string peer) {
             base.Channel.deletePeer(peer);
+        }
+        
+        public string[] findPeers() {
+            return base.Channel.findPeers();
         }
         
         public void addFolder(string folder) {

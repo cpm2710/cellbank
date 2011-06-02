@@ -181,6 +181,8 @@ namespace FileDigger
         [OperationContract]
         void deletePeer(String peer);
         [OperationContract]
+        List<String> findPeers();
+        [OperationContract]
         void addFolder(String folder);
         [OperationContract]
         void deleteSharedFolder(String folder);
@@ -201,6 +203,10 @@ namespace FileDigger
         public void deletePeer(String peer)
         {
             FileDiggerModel.getInstance().deletePeer(peer);
+        }
+        public List<String> findPeers()
+        {
+            return FileDiggerModel.getInstance().Peers;
         }
         public List<String> findSharedFolders()
         {           

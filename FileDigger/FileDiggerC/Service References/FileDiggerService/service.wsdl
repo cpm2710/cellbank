@@ -19,6 +19,12 @@
   <wsdl:message name="IFileDigger_deletePeer_OutputMessage">
     <wsdl:part name="parameters" element="tns:deletePeerResponse" />
   </wsdl:message>
+  <wsdl:message name="IFileDigger_findPeers_InputMessage">
+    <wsdl:part name="parameters" element="tns:findPeers" />
+  </wsdl:message>
+  <wsdl:message name="IFileDigger_findPeers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findPeersResponse" />
+  </wsdl:message>
   <wsdl:message name="IFileDigger_addFolder_InputMessage">
     <wsdl:part name="parameters" element="tns:addFolder" />
   </wsdl:message>
@@ -57,6 +63,10 @@
     <wsdl:operation name="deletePeer">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeer" message="tns:IFileDigger_deletePeer_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeerResponse" message="tns:IFileDigger_deletePeer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findPeers">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findPeers" message="tns:IFileDigger_findPeers_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findPeersResponse" message="tns:IFileDigger_findPeers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="addFolder">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder" message="tns:IFileDigger_addFolder_InputMessage" />

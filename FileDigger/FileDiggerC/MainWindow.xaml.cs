@@ -28,11 +28,11 @@ namespace FileDiggerC
         public MainWindow()
         {
             InitializeComponent();
-            string[] sharedFolders = localClient.findSharedFolders();
-            foreach (string sf in sharedFolders)
-            {
-                this.我的共享目录.Items.Add(sf);
-            }
+            //string[] sharedFolders = localClient.findSharedFolders();
+            //foreach (string sf in sharedFolders)
+            //{
+            //    this.我的共享目录.Items.Add(sf);
+            //}
         }
        
 
@@ -51,10 +51,11 @@ namespace FileDiggerC
                 {
                     String localIp = address.ToString();
                     localIp=localIp.Substring(0,localIp.LastIndexOf(".")+1);
-                    
-                    for (int i = 1; i < 255; i++)
+
+                    string[] peerIps=localClient.findPeers();
+                    foreach (string peerIp in peerIps)
                     {
-                        String ip = localIp + i;
+                        String ip = peerIp;
                         FileDiggerUtil util = new FileDiggerUtil();
                         diggerUtils.Add(util);
                         util.Ip = ip;
@@ -118,10 +119,34 @@ namespace FileDiggerC
             string peer=(string)this.我的伙伴.SelectedItem;
             localClient.deletePeer(peer);
         }
-
+        
         private void button5_Click(object sender, RoutedEventArgs e)
         {
 
+            ipStruct p = new ipStruct();
+            AddPeer ap = new AddPeer();
+            ap.Peer = p;
+            ap.ShowDialog();
+            String ip=p.Ip;
+            try
+            {
+                IPAddress addr = IPAddress.Parse(ip);
+                localClient.addPeer(ip);
+            }
+            catch (Exception parseExce)
+            {
+
+            }           
+        }
+
+        private void button7_Click(object sender, RoutedEventArgs e)
+        {           
+            this.我的伙伴.Items.Clear();
+            string[] peers = localClient.findPeers();
+            foreach (string p in peers)
+            {
+                this.我的伙伴.Items.Add(p);
+            }
         }
     }
 }

@@ -12,9 +12,10 @@ namespace FileDiggerTest
         {
             ServiceReference1.FileDiggerClient c = new ServiceReference1.FileDiggerClient();
             c.findSharedFolders();
-            String abc = "d:\\Extra\\FRIENDS";
-            DirectoryInfo di = new DirectoryInfo(abc);
-            Console.WriteLine(di.FullName);
+            c.addPeer("192.168.0.100");
+            string[] xx = c.findPeers();
+
+
         }
     }
 }

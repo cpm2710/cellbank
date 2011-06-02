@@ -15,11 +15,20 @@ namespace FileDiggerTest.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://Microsoft.ServiceModel.Samples", ConfigurationName="ServiceReference1.IFileDigger")]
     public interface IFileDigger {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLive", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/ReportLiveResponse")]
-        void ReportLive(int ip);
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addPeer", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/addPeerResponse")]
+        void addPeer(string peer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeer", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/deletePeerResponse")]
+        void deletePeer(string peer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findPeers", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findPeersResponse")]
+        string[] findPeers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolder", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/addFolderResponse")]
         void addFolder(string folder);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/deleteSharedFolder", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/deleteSharedFolderResponse")]
+        void deleteSharedFolder(string folder);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IFileDigger/findFile", ReplyAction="http://Microsoft.ServiceModel.Samples/IFileDigger/findFileResponse")]
         string[] findFile(string name);
@@ -58,12 +67,24 @@ namespace FileDiggerTest.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public void ReportLive(int ip) {
-            base.Channel.ReportLive(ip);
+        public void addPeer(string peer) {
+            base.Channel.addPeer(peer);
+        }
+        
+        public void deletePeer(string peer) {
+            base.Channel.deletePeer(peer);
+        }
+        
+        public string[] findPeers() {
+            return base.Channel.findPeers();
         }
         
         public void addFolder(string folder) {
             base.Channel.addFolder(folder);
+        }
+        
+        public void deleteSharedFolder(string folder) {
+            base.Channel.deleteSharedFolder(folder);
         }
         
         public string[] findFile(string name) {
