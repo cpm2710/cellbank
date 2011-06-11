@@ -42,6 +42,13 @@
       <RoleType>Web</RoleType>
       <RoleName>WCFServiceWebRole1</RoleName>
     </ProjectReference>
+    <ProjectReference Include="..\WebRole2\WebRole2.csproj">
+      <Name>WebRole2</Name>
+      <Project>{8a6d8c44-68a4-4bf4-bb53-e8a871a58bcf}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>WebRole2</RoleName>
+    </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
