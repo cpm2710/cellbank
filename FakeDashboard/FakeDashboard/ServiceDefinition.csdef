@@ -32,5 +32,7 @@
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+    <Certificates>
+    </Certificates>
   </WebRole>
 </ServiceDefinition>
