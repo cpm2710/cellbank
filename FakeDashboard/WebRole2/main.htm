@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dashboard</title>
+<script type="text/javascript" src="./Scripts/jquery-1.4.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var GetDomainURl = "http://localhost:1796/Service1.svc/";
+        $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: GetDomainURl,
+            success: function (department) {
+                jDepartment = department;
+                alert(jDepartment);
+            },
+             error:  function(xhr) {
+              alert(xhr);
+             }
+        });
+    });
+</script>
+</head>
+
+<body>
+<img src="./images/users.jpg" alt="所有用户"/>
+
+</body>
+</html>
