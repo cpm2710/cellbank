@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionPointService.svc" />
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -65,6 +66,9 @@
   <ItemGroup>
     <Compile Include="FunctionPointService.svc.cs">
       <DependentUpon>FunctionPointService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+
+<script type="text/javascript" src="./Scripts/jquery-1.5.1.min.js"></script>
+<script type="text/javascript">
+    function renderFunctionPoints() {
+        var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/";
+       var jfunctions ;
+       $.ajax({
+           type: "GET",
+           dataType: "text",
+           url: GetFunctionPointsURl,
+           success: function (functions) {
+               jfunctions = functions;
+               var functionList = $.parseJSON(functions);
+
+               for (var i = 0; i < functionList.length; i++) {
+                   alert(functionList[i].Name);
+               }
+           },
+           error: function (xhr) {
+               alert(xhr);
+           }
+       });
+    }
+    $(document).ready(function () {
+
+        renderFunctionPoints();
+
+
+    });
+    function renderAllUser() {
+        var jUsers;
+        var GetUsersURl = "http://localhost:9600/UserService.svc/";
+        $.ajax({
+            type: "GET",
+            dataType: "text",
+            url: GetUsersURl,
+            success: function (users) {
+                jUsers = users;
+                alert(jUsers);
+            },
+            error: function (xhr) {
+                alert(xhr);
+            }
+        });
+    }
+</script>
+</head>
+<body>
+    <div id="mainPanel">
+        <div></div>
+    </div>
+    <div class="template">
+        abc
+    </div>
+</body>
+</html>
