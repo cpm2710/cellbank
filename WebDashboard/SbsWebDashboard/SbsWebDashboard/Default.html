@@ -85,9 +85,9 @@ body
 
                     //                    });
                     alert($('.userTemplate').length);
-                    var elem = $('.userTemplate')[0];
-                    var user = elem.clone();
-                    user.setAttr('id', 'ss' + elem.Name + i);
+                    var user = $('.userTemplate:eq(0)').clone();
+                    //var user = elem.clone();
+                    //user.setAttr('id', 'ss' + userList[i].Name + i);
                     var allUsers = $('#allUsers');
                     user.insertAfter(allUsers);
                 }
