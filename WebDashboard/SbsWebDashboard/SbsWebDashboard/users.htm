@@ -6,55 +6,68 @@
     <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="./Scripts/effectsUtil.js"></script>
-    <script type="text/javascript">
-        init();
-        
-        function init() {
-            renderAllUser();
-            $('#alluserstable tbody').sortable().disableSelection();            
-        }
-        function renderAllUser() {
-
-            var userList = [
-            { "AccessLevel": "admin", "Email": "email", 
-            "LogonName": "logonshit", "Name": "shit" },
-             { "AccessLevel": "standard user", "Email": "email",
-              "LogonName": "logonshit", "Name": "shit"}];
-
-
-            $allUsersTbody = $("#alluserstable tbody");
-            for (var i = 0; i < userList.length; i++) {
-                $user = $("#userTemplate").tmpl(userList[i]);
-
-                $user.appendTo($allUsersTbody);
-            }
-
-//            getAllUsers(function (userList) {
-//                $allUsersTbody = $('#alluserstable tbody');
-//                for (var i = 0; i < userList.length; i++) {
-//                    $user = $('#userTemplate').tmpl(userList[i]);
-
-//                    $user.appendTo($allUsersTbody);
-//                }
-//            });
-            
-        }
-    </script>
+   
 </head>
 <body>
     <table id="alluserstable">
         <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    LogonName
+                </th>
+                <th>
+                    AccessLevel
+                </th>
+            </tr>
         </thead>
         <tbody id="alluserstbody">
-            
         </tbody>
     </table>
     <script id="userTemplate" type="text/x-jQuery-tmpl">
-            <tr>
+            <tr class="userrow">
             <td class="name">${Name}</td>
             <td class="logonName">${LogonName}</td>
             <td class="accessLevel">${AccessLevel}</td>
             </tr>
+    </script>
+     <script type="text/javascript">
+         init();
+
+         function init() {
+             renderAllUser();
+             $('#alluserstable tbody').sortable().disableSelection();
+         }
+         function renderAllUser() {
+
+             var userList = [
+            { "AccessLevel": "admin", "Email": "email",
+                "LogonName": "logonshit", "Name": "shit"
+            },
+             { "AccessLevel": "standard user", "Email": "email",
+                 "LogonName": "logonshit", "Name": "shit"
+             }];
+
+
+             //$allUsersTbody = $("#alluserstable");
+             for (var i = 0; i < userList.length; i++) {
+                 $user = $("#userTemplate").tmpl(userList[i]);
+
+                 $user.appendTo("#alluserstbody");
+             }
+
+             //            getAllUsers(function (userList) {
+             //                $allUsersTbody = $('#alluserstable tbody');
+             //                for (var i = 0; i < userList.length; i++) {
+             //                    $user = $('#userTemplate').tmpl(userList[i]);
+
+             //                    $user.appendTo($allUsersTbody);
+             //                }
+             //            });
+
+         }
     </script>
 </body>
 </html>
