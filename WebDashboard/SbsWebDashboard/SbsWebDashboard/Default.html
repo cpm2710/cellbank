@@ -20,74 +20,60 @@ body
 </style>
 <script type="text/javascript" src="./Scripts/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="./Scripts/functionPointHandlers.js"></script>
+
+<link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript">
+    var CurrentUser = "andy@sbswebdashboard";
+
     function renderFunctionPoints() {
         var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/";
-       var jfunctions ;
-       $.ajax({
-           type: "GET",
-           dataType: "text",
-           url: GetFunctionPointsURl,
-           success: function (functions) {
-               jfunctions = functions;
-               var functionList = $.parseJSON(functions);
+        var functionPoints = [
+        { "AlertCount": "1", "Description": "Users Management Component", "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management" }
+        , { "AlertCount": "2", "Description": "Users Management Component", "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management" }
+        , { "AlertCount": "3", "Description": "Users Management Component", "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management"}];
 
-               for (var i = 0; i < functionList.length; i++) {
-                  // alert(functionList[i].Name);
-               }
-           },
-           error: function (xhr) {
-               //alert(xhr);
-           }
-       });
+        for (var i in functionPoints) {
+            var fp = functionPoints[i];
+            $("#ftemplate").tmpl(fp).appendTo("#sortable");
+        }
+
+//        queryFunctionPointsForUser(CurrentUser, function (functionPoints) {
+//            for (var i in functionPoints) {
+//                var fp = functionPoints[i];
+//                $("#ftemplate").tmpl(fp).appendTo("#sortable");                
+//            }
+//        });
+        
     }
     $(document).ready(function () {
 
         renderFunctionPoints();
-        $('#allUsers').sortable();
-        renderAllUser();
-
+        $("#sortable").sortable();
+        $("#sortable").disableSelection();
     })
-    function renderAllUser() {
-        var jUsers;
-        var GetUsersURl = "http://localhost:9600/UserService.svc/";
-        $.ajax({
-            type: "GET",
-            dataType: "text",
-            url: GetUsersURl,
-            success: function (users) {
-                jUsers = users;
-                var userList = $.parseJSON(users);
-                for (var i = 0; i < userList.length; i++) {
-                    //                    $('.cloneThis', this).each(function () {
-
-                    //                    });
-                    //alert($('.userTemplate').length);
-                    var user = $('.userTemplate:eq(0)').clone();
-                    //var user = elem.clone();
-                    //user.setAttr('id', 'ss' + userList[i].Name + i);
-                    var allUsers = $('#allUsers');
-                    user.appendTo(allUsers);
-                }
-
-                //alert(jUsers);
-            },
-            error: function (xhr) {
-                alert(xhr);
-            }
-        });
-    }
+    
 </script>
 </head>
 <body>
-    <div id="mainPanel">
-        <div></div>
-    </div>
-    <ul id="allUsers">
-   
-    </ul>
-     <li class="userTemplate">
-    <span>ahit</span>
-    </li>
+      <div class="pageContent">
+        <div class="loadingMessage">Page is loading......</div>
+
+		<div id="sortable">
+		</div>
+		<div style="clear:both" />
+	</div>
+    <script id="ftemplate" type="text/x-jQuery-tmpl">
+            <a class="tile" href="#">
+            <div class="ftile-content">
+                <div class="ftile-title">${Title}</div>
+                <img class="ftile-picture" src="${ImgUrl}" />
+                <div class="ftile-alertCount">${AlertCount}</div>
+                <div class="ftile-description">${Description}</div>
+            </div>
+            </a>
+    </script>
 </body>
 </html>

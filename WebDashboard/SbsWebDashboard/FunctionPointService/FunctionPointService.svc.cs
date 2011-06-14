@@ -17,8 +17,19 @@ namespace FunctionPointService
         {
             FunctionPointList l = new FunctionPointList();
             FunctionPoint s = new FunctionPoint();
-            s.Name = "所有用户";
+            s.Title = "Users Management";
+            s.ImgUrl = "/staticImages/users.png";
+            s.AlertCount = "3";
+            s.Description = "Users Management Component";
             l.Add(s);
+
+            FunctionPoint s2 = new FunctionPoint();
+            s2.Title = "Users Management";
+            s2.ImgUrl = "/staticImages/users.png";
+            s2.AlertCount = "3";
+            s2.Description = "Users Management Component";
+            l.Add(s2);
+
             return l;
         }
         // TODO: Add your service operations here
@@ -28,7 +39,13 @@ namespace FunctionPointService
     public class FunctionPoint
     {
         [DataMember]
-        public string Name;
+        public string Title;
+        [DataMember]
+        public string ImgUrl;
+        [DataMember]
+        public string  AlertCount;
+        [DataMember]
+        public string Description;
     }
     [CollectionDataContract(Name = "FunctionPoints", Namespace = "")]
     public class FunctionPointList : List<FunctionPoint>
