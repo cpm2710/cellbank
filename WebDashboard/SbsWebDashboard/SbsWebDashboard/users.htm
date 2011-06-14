@@ -29,6 +29,10 @@
     <script id="userTemplate" type="text/x-jQuery-tmpl">
             <tr class="userrow">
             <td class="name">${Name}</td>
+            </tr>
+    </script>
+    <script id="userDetailTemplate" type="text/x-jQuery-tmpl">
+         <tr class="userrow">
             <td class="logonName">${LogonName}</td>
             <td class="accessLevel">${AccessLevel}</td>
             </tr>
@@ -40,6 +44,8 @@
              renderAllUser();
              $('#alluserstable tbody').sortable().disableSelection();
          }
+         var selectedItem = null;
+
          function renderAllUser() {
 
              var userList = [
@@ -57,7 +63,25 @@
 
                  $user.appendTo("#alluserstbody");
              }
+             $("#alluserstbody").delegate(".userrow", "click", function () {
+                 if (selectedItem) {
+                     /* Switch previously selected item back to the summaryTemplate */
+                     selectedItem.tmpl = $("#userTemplate").template();
 
+                     /* Update rendering of previous selected item */
+                     selectedItem.update();
+                 }
+
+                 /* Make this the selected item  */
+                 selectedItem = $.tmplItem(this);
+
+                 /* Switch this template item to the detailTemplate */
+                 selectedItem.tmpl = $("#userDetailTemplate").template();
+
+                 /* Refresh rendering */
+                 selectedItem.update();
+
+             });
              //            getAllUsers(function (userList) {
              //                $allUsersTbody = $('#alluserstable tbody');
              //                for (var i = 0; i < userList.length; i++) {
