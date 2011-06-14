@@ -31,13 +31,25 @@ body
     function renderFunctionPoints() {
         var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/";
         var functionPoints = [
-        { "AlertCount": "1", "Description": "Users Management Component", "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management" }
-        , { "AlertCount": "2", "Description": "Users Management Component", "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management" }
-        , { "AlertCount": "3", "Description": "Users Management Component", "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management"}];
+        { "AlertCount": "1", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
+            "NavigationUrl": "\/users.htm"
+        }
+
+        , { "AlertCount": "2", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
+            "NavigationUrl": "\/users.htm"
+        }
+
+        , { "AlertCount": "3", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
+        }];
 
         for (var i in functionPoints) {
             var fp = functionPoints[i];
-            $("#ftemplate").tmpl(fp).appendTo("#sortable");
+            $ftmpl = $("#ftemplate").tmpl(fp);
+            $ftmpl.attr("href", fp.NavigationUrl)
+            $ftmpl.appendTo("#sortable");            
         }
 
 //        queryFunctionPointsForUser(CurrentUser, function (functionPoints) {
@@ -66,7 +78,7 @@ body
 		<div style="clear:both" />
 	</div>
     <script id="ftemplate" type="text/x-jQuery-tmpl">
-            <a class="tile" href="#">
+            <a class="ftile" href="#">
             <div class="ftile-content">
                 <div class="ftile-title">${Title}</div>
                 <img class="ftile-picture" src="${ImgUrl}" />

@@ -21,11 +21,13 @@ namespace UserService
             s.Name = "shit";
             s.Email = "email";
             s.LogonName = "logonshit";
+            s.AccessLevel = "admin";
             l.Add(s);
             User s2 = new User();
             s2.Name = "shit";
             s2.Email = "email";
             s2.LogonName = "logonshit";
+            s2.AccessLevel = "standard user";
             l.Add(s2);
             return l;
         }
@@ -41,6 +43,8 @@ namespace UserService
         public string LogonName;
         [DataMember]
         public string Email;
+        [DataMember]
+        public string AccessLevel;
     }
     [CollectionDataContract(Name = "Users", Namespace = "")]
     public class UserList : List<User>

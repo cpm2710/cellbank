@@ -21,6 +21,7 @@ namespace FunctionPointService
             s.ImgUrl = "/staticImages/users.png";
             s.AlertCount = "3";
             s.Description = "Users Management Component";
+            s.FunctionHref = "/s.htm";
             l.Add(s);
 
             FunctionPoint s2 = new FunctionPoint();
@@ -28,6 +29,7 @@ namespace FunctionPointService
             s2.ImgUrl = "/staticImages/users.png";
             s2.AlertCount = "3";
             s2.Description = "Users Management Component";
+            s2.FunctionHref = "/s.htm";
             l.Add(s2);
 
             return l;
@@ -46,6 +48,8 @@ namespace FunctionPointService
         public string  AlertCount;
         [DataMember]
         public string Description;
+        [DataMember]
+        public string FunctionHref;
     }
     [CollectionDataContract(Name = "FunctionPoints", Namespace = "")]
     public class FunctionPointList : List<FunctionPoint>
