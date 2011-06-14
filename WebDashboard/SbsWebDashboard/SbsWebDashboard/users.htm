@@ -26,13 +26,14 @@
         <tbody id="alluserstbody">
         </tbody>
     </table>
-    <script id="userTemplate" type="text/x-jQuery-tmpl">
-            <tr class="userrow">
+    <script id="userSummaryTemplate" type="text/x-jQuery-tmpl">
+            <tr class="userSummary">
             <td class="name">${Name}</td>
             </tr>
     </script>
     <script id="userDetailTemplate" type="text/x-jQuery-tmpl">
-         <tr class="userrow">
+         <tr class="userDetail">
+            <td class="name">${Name}</td>
             <td class="logonName">${LogonName}</td>
             <td class="accessLevel">${AccessLevel}</td>
             </tr>
@@ -59,14 +60,14 @@
 
              //$allUsersTbody = $("#alluserstable");
              for (var i = 0; i < userList.length; i++) {
-                 $user = $("#userTemplate").tmpl(userList[i]);
+                 $user = $("#userSummaryTemplate").tmpl(userList[i]);
 
                  $user.appendTo("#alluserstbody");
              }
-             $("#alluserstbody").delegate(".userrow", "click", function () {
+             $("#alluserstbody").delegate(".userSummary", "click", function () {
                  if (selectedItem) {
                      /* Switch previously selected item back to the summaryTemplate */
-                     selectedItem.tmpl = $("#userTemplate").template();
+                     selectedItem.tmpl = $("#userSummaryTemplate").template();
 
                      /* Update rendering of previous selected item */
                      selectedItem.update();
@@ -81,7 +82,17 @@
                  /* Refresh rendering */
                  selectedItem.update();
 
+             })
+             .delegate(".userDetail", "click", function () {
+                 /* Unselect - switch to the summaryTemplate */
+                 selectedItem.tmpl = $("#userSummaryTemplate").template();
+
+                 /* Refresh rendering */
+                 selectedItem.update();
+
+                 selectedItem = null;
              });
+             ;
              //            getAllUsers(function (userList) {
              //                $allUsersTbody = $('#alluserstable tbody');
              //                for (var i = 0; i < userList.length; i++) {
