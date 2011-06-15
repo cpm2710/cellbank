@@ -5,12 +5,15 @@
     <script type="text/javascript" src="./Scripts/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="./Scripts/functionPointHandlers.js"></script>
+    <script type="text/javascript" src="./Scripts/mockdata.js"></script>
+    <script type="text/javascript" src="./Scripts/userhandler.js"></script>
     <script type="text/javascript" src="./Scripts/gettmpl.js"></script>
     <script type="text/javascript" src="./Scripts/effectsUtil.js"></script>
+     <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="usersFunctionPoints">
-        
     </div>
     <table id="alluserstable">
         <thead>
@@ -18,61 +21,57 @@
         <tbody id="alluserstbody">
         </tbody>
     </table>
-    
     <script type="text/javascript">
         init();
-
         function init() {
+            renderFPs();
             renderAllUser();
             $('#alluserstable tbody').sortable().disableSelection();
+            $('#usersFunctionPoints').sortable();
         }
         var selectedItem = null;
+        function renderFPs() {
+            $.getTmpl("/templates/functionTemplate.htm").done(function () 
+            {
+                queryFunctionPointsForUserAndAddIn
+                    (CurrentUser,"users",function (functionPoints) 
+                        {
+                            for (var i in functionPoints) 
+                            {
+                               var fp = functionPoints[i];
+                                 $ftmpl = $("#ftemplate").tmpl(fp);
+                                 $ftmpl.attr("href", fp.NavigationUrl)
+                                 $ftmpl.appendTo("#usersFunctionPoints");
+                             }
+                         }
+                      );
+            });
+        }
         function renderAllUser() {
-            var userList = [
-            { "AccessLevel": "admin", "Email": "email",
-                "LogonName": "logonshit", "Name": "shit"
-            },
-             { "AccessLevel": "standard user", "Email": "email",
-                 "LogonName": "logonshit", "Name": "shit"
-             }];
-             $.getTmpl("/templates/userTemplate.htm").done(function () {
-                 for (var i = 0; i < userList.length; i++) {
-                     $user = $("#userSummaryTemplate").tmpl(userList[i]);
-                     $user.appendTo("#alluserstbody");
-                 }
-                 $("#alluserstbody").delegate(".userSummary", "click", function () {
-                     if (selectedItem) {
-                         /* Switch previously selected item back to the summaryTemplate */
-                         selectedItem.tmpl = $("#userSummaryTemplate").template();
-                         /* Update rendering of previous selected item */
-                         selectedItem.update();
-                     }
-                     /* Make this the selected item  */
-                     selectedItem = $.tmplItem(this);
-                     /* Switch this template item to the detailTemplate */
-                     selectedItem.tmpl = $("#userDetailTemplate").template();
-                     /* Refresh rendering */
-                     selectedItem.update();
-
-                 })
+           
+            
+            $.getTmpl("/templates/userTemplate.htm").done(function () {
+                getAllUsers(function (userList) {
+                    for (var i = 0; i < userList.length; i++) {
+                        $user = $("#userSummaryTemplate").tmpl(userList[i]);
+                        $user.appendTo("#alluserstbody");
+                    }
+                    $("#alluserstbody").delegate(".userSummary", "click", function () {
+                        if (selectedItem) {
+                            selectedItem.tmpl = $("#userSummaryTemplate").template();
+                            selectedItem.update();
+                        }
+                        selectedItem = $.tmplItem(this);
+                        selectedItem.tmpl = $("#userDetailTemplate").template();
+                        selectedItem.update();
+                    })
              .delegate(".userDetail", "click", function () {
-                 /* Unselect - switch to the summaryTemplate */
                  selectedItem.tmpl = $("#userSummaryTemplate").template();
-                 /* Refresh rendering */
                  selectedItem.update();
                  selectedItem = null;
              });
-              });
-            
-            //            getAllUsers(function (userList) {
-            //                $allUsersTbody = $('#alluserstable tbody');
-            //                for (var i = 0; i < userList.length; i++) {
-            //                    $user = $('#userTemplate').tmpl(userList[i]);
-
-            //                    $user.appendTo($allUsersTbody);
-            //                }
-            //            });
-
+                });
+            });
         }
     </script>
 </body>

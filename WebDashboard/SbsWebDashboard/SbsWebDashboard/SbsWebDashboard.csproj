@@ -52,7 +52,8 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="draggable.htm" />
+    <Content Include="Scripts\mockdata.js" />
+    <Content Include="test\draggable.htm" />
     <Content Include="staticImages\back.png" />
     <Content Include="templates\userTemplate.htm" />
     <Content Include="templates\functionTemplate.htm" />
@@ -83,7 +84,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="workflow.htm" />
+    <Content Include="test\workflow.htm" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,35 +6,16 @@
     <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="./Scripts/functionPointHandlers.js"></script>
+    <script type="text/javascript" src="./Scripts/mockdata.js"></script>
     <script type="text/javascript" src="./Scripts/gettmpl.js"></script>
     <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        var CurrentUser = "andy@sbswebdashboard";
+        
         function renderFunctionPoints() {
 
-            /*       var functionPoints = [
-            { "AlertCount": "1", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
-            "NavigationUrl": "\/users.htm"
-            }
-
-            , { "AlertCount": "2", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
-            "NavigationUrl": "\/users.htm"
-            }
-
-            , { "AlertCount": "3", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-            }
-            , { "AlertCount": "3", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-            }
-            , { "AlertCount": "3", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-            }];*/
             $.getTmpl("/templates/functionTemplate.htm").done(function () {
-                queryFunctionPointsForUser
-                (CurrentUser, function (functionPoints) {
+                queryFunctionPointsForUserAndAddIn
+                (CurrentUser,"main", function (functionPoints) {
                     for (var i in functionPoints) {
                         var fp = functionPoints[i];
                         $ftmpl = $("#ftemplate").tmpl(fp);
