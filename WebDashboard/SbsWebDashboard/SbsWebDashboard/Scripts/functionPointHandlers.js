@@ -1,10 +1,10 @@
 ﻿var functionPoints;
-var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/";
+var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/mainfpbyuser/";
 
 function queryFunctionPointsForUser(userPrincipal, callback) {
-    $.getJSON(GetFunctionPointsURl,
+    $.getJSON(GetFunctionPointsURl+userPrincipal,
         {
-            userPrincipalName: userPrincipal
+           
         },
         function (data) {
             //alert(data.length);

@@ -1,87 +1,64 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <title></title>
-    <style type="text/css" media="all">
-body
-{
-	background: #fff;
-	height: 100%;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
-}
-.userTemplate
-{
-	cursor:move;
-	width: 300px;
-	list-style: none;
-}
-</style>
-<script type="text/javascript" src="./Scripts/jquery-1.5.1.min.js"></script>
-<script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
-<script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
-<script type="text/javascript" src="./Scripts/functionPointHandlers.js"></script>
-<script type="text/javascript" src="./Scripts/gettmpl.js"></script>
-<link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./Scripts/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="./Scripts/functionPointHandlers.js"></script>
+    <script type="text/javascript" src="./Scripts/gettmpl.js"></script>
+    <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var CurrentUser = "andy@sbswebdashboard";
+        function renderFunctionPoints() {
 
-<script type="text/javascript">
-    var CurrentUser = "andy@sbswebdashboard";
-    function renderFunctionPoints() {
-        var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/";
-        var functionPoints = [
-        { "AlertCount": "1", "Description": "Users Management Component",
+            /*       var functionPoints = [
+            { "AlertCount": "1", "Description": "Users Management Component",
             "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
             "NavigationUrl": "\/users.htm"
-        }
-
-        , { "AlertCount": "2", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
-            "NavigationUrl": "\/users.htm"
-        }
-
-        , { "AlertCount": "3", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-        }
-        , { "AlertCount": "3", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-        }
-        , { "AlertCount": "3", "Description": "Users Management Component",
-            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-        }];
-        $.getTmpl("/functionTemplate.htm").done(function () {            
-            for (var i in functionPoints) {
-                var fp = functionPoints[i];
-                $ftmpl = $("#ftemplate").tmpl(fp);
-                $ftmpl.attr("href", fp.NavigationUrl)
-                $ftmpl.appendTo("#sortable");
             }
-        });       
 
-//        queryFunctionPointsForUser(CurrentUser, function (functionPoints) {
-//            for (var i in functionPoints) {
-//                var fp = functionPoints[i];
-//                $("#ftemplate").tmpl(fp).appendTo("#sortable");                
-//            }
-//        });
-        
-    }
-    $(document).ready(function () {
-        renderFunctionPoints();
-        $("#sortable").sortable();
-        $("#sortable").disableSelection();
-    })
+            , { "AlertCount": "2", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management",
+            "NavigationUrl": "\/users.htm"
+            }
+
+            , { "AlertCount": "3", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
+            }
+            , { "AlertCount": "3", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
+            }
+            , { "AlertCount": "3", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
+            }];*/
+            $.getTmpl("/templates/functionTemplate.htm").done(function () {
+                queryFunctionPointsForUser
+                (CurrentUser, function (functionPoints) {
+                    for (var i in functionPoints) {
+                        var fp = functionPoints[i];
+                        $ftmpl = $("#ftemplate").tmpl(fp);
+                        $ftmpl.attr("href", fp.NavigationUrl)
+                        $ftmpl.appendTo("#sortable");
+                    }
+                });
+            });
+        }
+        $(document).ready(function () {
+            renderFunctionPoints();
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
+        });
     
-</script>
+    </script>
 </head>
 <body>
-      <div class="pageContent">
-        <div class="loadingMessage">Page is loading......</div>
-
-		<div id="sortable">
-		</div>
-		<div style="clear:both" />
-	</div>
-    
+    <div class="pageContent">
+        <div class="loadingMessage">
+            Page is loading......</div>
+        <div id="sortable">
+        </div>
+        <div style="clear: both" />
+    </div>
 </body>
 </html>

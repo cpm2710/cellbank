@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="draggable.htm" />
-    <Content Include="functionTemplate.htm" />
+    <Content Include="staticImages\back.png" />
+    <Content Include="templates\userTemplate.htm" />
+    <Content Include="templates\functionTemplate.htm" />
     <Content Include="Scripts\effectsUtil.js" />
     <Content Include="Scripts\functionPointHandlers.js" />
     <Content Include="Scripts\gettmpl.js" />

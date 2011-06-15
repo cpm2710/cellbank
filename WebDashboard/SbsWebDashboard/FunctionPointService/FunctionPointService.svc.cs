@@ -21,7 +21,7 @@ namespace FunctionPointService
             s.ImgUrl = "/staticImages/users.png";
             s.AlertCount = "3";
             s.Description = "Users Management Component";
-            s.FunctionHref = "/s.htm";
+            s.NavigationUrl = "/s.htm";
             l.Add(s);
 
             FunctionPoint s2 = new FunctionPoint();
@@ -29,14 +29,14 @@ namespace FunctionPointService
             s2.ImgUrl = "/staticImages/users.png";
             s2.AlertCount = "3";
             s2.Description = "Users Management Component";
-            s2.FunctionHref = "/s.htm";
+            s2.NavigationUrl = "/s.htm";
             l.Add(s2);
 
             return l;
         }
         [OperationContract]
-        [WebGet(UriTemplate = "/functionpoints/{LogonName}", ResponseFormat = WebMessageFormat.Json)]
-        public FunctionPointList GetFunctionPoints(string LogonName)
+        [WebGet(UriTemplate = "/mainfpbyuser/{LogonName}", ResponseFormat = WebMessageFormat.Json)]
+        public FunctionPointList GetFunctionPointsByUser(string LogonName)
         {
             FunctionPointList l = new FunctionPointList();
             FunctionPoint s = new FunctionPoint();
@@ -44,7 +44,7 @@ namespace FunctionPointService
             s.ImgUrl = "/staticImages/users.png";
             s.AlertCount = "3";
             s.Description = "Users Management Component";
-            s.FunctionHref = "/s.htm";
+            s.NavigationUrl = "/users.htm";
             l.Add(s);
 
             FunctionPoint s2 = new FunctionPoint();
@@ -52,12 +52,35 @@ namespace FunctionPointService
             s2.ImgUrl = "/staticImages/users.png";
             s2.AlertCount = "3";
             s2.Description = "Users Management Component";
-            s2.FunctionHref = "/s.htm";
+            s2.NavigationUrl = "/rdps.htm";
             l.Add(s2);
 
             return l;
         }
-        // TODO: Add your service operations here
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/fpbyuserandaddin/{LogonName}/{AddIn}", ResponseFormat = WebMessageFormat.Json)]
+        public FunctionPointList GetFunctionPointsByUserAndAddIn(string LogonName, string AddIn)
+        {
+            FunctionPointList l = new FunctionPointList();
+            FunctionPoint s = new FunctionPoint();
+            s.Title = "Add User";
+            s.ImgUrl = "/staticImages/AddUser.png";
+            s.AlertCount = "3";
+            s.Description = "Users Management Component";
+            s.NavigationUrl = "/s.htm";
+            l.Add(s);
+
+            FunctionPoint s2 = new FunctionPoint();
+            s2.Title = "BacktoHome";
+            s2.ImgUrl = "/staticImages/back.png";
+            s2.AlertCount = "3";
+            s2.Description = "Users Management Component";
+            s2.NavigationUrl = "/Default.htm";
+            l.Add(s2);
+
+            return l;
+        }
     }
 
     [DataContract(Namespace = "")]
@@ -72,7 +95,7 @@ namespace FunctionPointService
         [DataMember]
         public string Description;
         [DataMember]
-        public string FunctionHref;
+        public string NavigationUrl;
     }
     [CollectionDataContract(Name = "FunctionPoints", Namespace = "")]
     public class FunctionPointList : List<FunctionPoint>
