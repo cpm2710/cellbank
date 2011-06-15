@@ -3,3 +3,42 @@
 	height: 100%;
 	text-align: center;	
 }
+#sortable { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 100%; 
+}
+.ftile 
+{
+    float: left;
+	width: 358px;
+	height: 173px;
+	margin:6px;	
+	text-decoration: none;
+	position: relative;
+}
+.ftile-title{
+	display: none;
+}
+
+.ftile-picture
+{
+	position: relative;
+    top: 40px;
+    text-align: center;
+}
+
+.ftile-alertCount
+{
+    display: none;
+}
+
+.ftile-description
+{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+	color: white;
+	font-size:small;
+}

@@ -6,103 +6,93 @@
     <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="./Scripts/effectsUtil.js"></script>
-   
 </head>
 <body>
+    <div id="usersFunctionPoints">
+        
+    </div>
     <table id="alluserstable">
         <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    LogonName
-                </th>
-                <th>
-                    AccessLevel
-                </th>
-            </tr>
         </thead>
         <tbody id="alluserstbody">
         </tbody>
     </table>
     <script id="userSummaryTemplate" type="text/x-jQuery-tmpl">
-            <tr class="userSummary">
-            <td class="name">${Name}</td>
+            <tr class="userSummary" draggable="true">
+                <td class="name">Name:${Name}</td>
+                <td class="logonName">Role:${LogonName}</td>
+                <td class="accessLevel">AccessLevel:${AccessLevel}</td>
             </tr>
+    </script>
+    <script id="shareFolderTemplate" type="text/x-jQuery-tmpl">
+            <div class="shareFolder>
+                
+            </div>
     </script>
     <script id="userDetailTemplate" type="text/x-jQuery-tmpl">
-         <tr class="userDetail">
-            <td class="name">${Name}</td>
-            <td class="logonName">${LogonName}</td>
-            <td class="accessLevel">${AccessLevel}</td>
-            </tr>
+         <tr class="userDetail" draggable="true">
+            <td class="name">Name:${Name}</td>
+            <td class="logonName">Role:${LogonName}</td>
+            <td class="accessLevel">AccessLevel:${AccessLevel}</td>
+         </tr>
+         <tr>
+            <td><div class="detailContent">
+
+            </div></td>
+         </tr>
     </script>
-     <script type="text/javascript">
-         init();
+    <script type="text/javascript">
+        init();
 
-         function init() {
-             renderAllUser();
-             $('#alluserstable tbody').sortable().disableSelection();
-         }
-         var selectedItem = null;
-
-         function renderAllUser() {
-
-             var userList = [
+        function init() {
+            renderAllUser();
+            $('#alluserstable tbody').sortable().disableSelection();
+        }
+        var selectedItem = null;
+        function renderAllUser() {
+            var userList = [
             { "AccessLevel": "admin", "Email": "email",
                 "LogonName": "logonshit", "Name": "shit"
             },
              { "AccessLevel": "standard user", "Email": "email",
                  "LogonName": "logonshit", "Name": "shit"
              }];
+            for (var i = 0; i < userList.length; i++) {
+                $user = $("#userSummaryTemplate").tmpl(userList[i]);
+                $user.appendTo("#alluserstbody");
+            }
+            $("#alluserstbody").delegate(".userSummary", "click", function () {
+                if (selectedItem) {
+                    /* Switch previously selected item back to the summaryTemplate */
+                    selectedItem.tmpl = $("#userSummaryTemplate").template();
+                    /* Update rendering of previous selected item */
+                    selectedItem.update();
+                }
+                /* Make this the selected item  */
+                selectedItem = $.tmplItem(this);
+                /* Switch this template item to the detailTemplate */
+                selectedItem.tmpl = $("#userDetailTemplate").template();
+                /* Refresh rendering */
+                selectedItem.update();
 
-
-             //$allUsersTbody = $("#alluserstable");
-             for (var i = 0; i < userList.length; i++) {
-                 $user = $("#userSummaryTemplate").tmpl(userList[i]);
-
-                 $user.appendTo("#alluserstbody");
-             }
-             $("#alluserstbody").delegate(".userSummary", "click", function () {
-                 if (selectedItem) {
-                     /* Switch previously selected item back to the summaryTemplate */
-                     selectedItem.tmpl = $("#userSummaryTemplate").template();
-
-                     /* Update rendering of previous selected item */
-                     selectedItem.update();
-                 }
-
-                 /* Make this the selected item  */
-                 selectedItem = $.tmplItem(this);
-
-                 /* Switch this template item to the detailTemplate */
-                 selectedItem.tmpl = $("#userDetailTemplate").template();
-
-                 /* Refresh rendering */
-                 selectedItem.update();
-
-             })
+            })
              .delegate(".userDetail", "click", function () {
                  /* Unselect - switch to the summaryTemplate */
                  selectedItem.tmpl = $("#userSummaryTemplate").template();
-
                  /* Refresh rendering */
                  selectedItem.update();
-
                  selectedItem = null;
              });
-             ;
-             //            getAllUsers(function (userList) {
-             //                $allUsersTbody = $('#alluserstable tbody');
-             //                for (var i = 0; i < userList.length; i++) {
-             //                    $user = $('#userTemplate').tmpl(userList[i]);
+            //            getAllUsers(function (userList) {
+            //                $allUsersTbody = $('#alluserstable tbody');
+            //                for (var i = 0; i < userList.length; i++) {
+            //                    $user = $('#userTemplate').tmpl(userList[i]);
 
-             //                    $user.appendTo($allUsersTbody);
-             //                }
-             //            });
+            //                    $user.appendTo($allUsersTbody);
+            //                }
+            //            });
 
-         }
+        }
     </script>
 </body>
 </html>

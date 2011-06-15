@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="draggable.htm" />
+    <Content Include="functionTemplate.htm" />
     <Content Include="Scripts\effectsUtil.js" />
     <Content Include="Scripts\functionPointHandlers.js" />
+    <Content Include="Scripts\gettmpl.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Default.html" />

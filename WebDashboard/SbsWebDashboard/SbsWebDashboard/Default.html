@@ -22,12 +22,11 @@ body
 <script type="text/javascript" src="./Scripts/jquery-ui-1.8.13.custom.min.js"></script>
 <script type="text/javascript" src="./Scripts/jquery.tmpl.min.js"></script>
 <script type="text/javascript" src="./Scripts/functionPointHandlers.js"></script>
-
+<script type="text/javascript" src="./Scripts/gettmpl.js"></script>
 <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
     var CurrentUser = "andy@sbswebdashboard";
-
     function renderFunctionPoints() {
         var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/";
         var functionPoints = [
@@ -43,14 +42,21 @@ body
 
         , { "AlertCount": "3", "Description": "Users Management Component",
             "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
-        }];
-
-        for (var i in functionPoints) {
-            var fp = functionPoints[i];
-            $ftmpl = $("#ftemplate").tmpl(fp);
-            $ftmpl.attr("href", fp.NavigationUrl)
-            $ftmpl.appendTo("#sortable");            
         }
+        , { "AlertCount": "3", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
+        }
+        , { "AlertCount": "3", "Description": "Users Management Component",
+            "ImgUrl": "\/staticImages\/users.png", "Title": "Users Management", "NavigationUrl": "\/users.htm"
+        }];
+        $.getTmpl("/functionTemplate.htm").done(function () {            
+            for (var i in functionPoints) {
+                var fp = functionPoints[i];
+                $ftmpl = $("#ftemplate").tmpl(fp);
+                $ftmpl.attr("href", fp.NavigationUrl)
+                $ftmpl.appendTo("#sortable");
+            }
+        });       
 
 //        queryFunctionPointsForUser(CurrentUser, function (functionPoints) {
 //            for (var i in functionPoints) {
@@ -61,7 +67,6 @@ body
         
     }
     $(document).ready(function () {
-
         renderFunctionPoints();
         $("#sortable").sortable();
         $("#sortable").disableSelection();
@@ -77,15 +82,6 @@ body
 		</div>
 		<div style="clear:both" />
 	</div>
-    <script id="ftemplate" type="text/x-jQuery-tmpl">
-            <a class="ftile" href="#">
-            <div class="ftile-content">
-                <div class="ftile-title">${Title}</div>
-                <img class="ftile-picture" src="${ImgUrl}" />
-                <div class="ftile-alertCount">${AlertCount}</div>
-                <div class="ftile-description">${Description}</div>
-            </div>
-            </a>
-    </script>
+    
 </body>
 </html>

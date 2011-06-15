@@ -31,6 +31,22 @@ namespace UserService
             l.Add(s2);
             return l;
         }
+        [OperationContract]
+        [WebGet(UriTemplate = "/userdetails/{LogonName}", ResponseFormat = WebMessageFormat.Json)]
+        public UserDetail GetUserDetail(string LogonName)
+        {
+            UserDetail ud= new UserDetail();
+            ud.Name = "admin";
+            ud.LogonName = LogonName;
+            ud.AccessLevel = "admin";
+            ud.Email = "email";
+            ud.SharedFolders = new SharedFolderList();
+            SharedFolder sf=new SharedFolder();
+            sf.AccessLevel = "ReadOnly";
+            sf.Name = "sharedfolder";
+            ud.SharedFolders.Add(sf);
+            return ud;
+        }
         // TODO: Add your service operations here
     }
 
@@ -45,6 +61,35 @@ namespace UserService
         public string Email;
         [DataMember]
         public string AccessLevel;
+    }
+    [DataContract(Namespace = "")]
+    public class UserDetail
+    {
+        [DataMember]
+        public string Name;
+        [DataMember]
+        public string LogonName;
+        [DataMember]
+        public string Email;
+        [DataMember]
+        public string AccessLevel;
+        [DataMember]
+        public SharedFolderList SharedFolders;
+    }
+
+
+    [DataContract(Namespace="")]
+    public class SharedFolder
+    {
+        [DataMember]
+        public string Name;
+        [DataMember]
+        public string AccessLevel;
+    }
+    [CollectionDataContract(Name="SharedFolders",Namespace="")]
+    public class SharedFolderList:List<SharedFolder>
+    {
+
     }
     [CollectionDataContract(Name = "Users", Namespace = "")]
     public class UserList : List<User>
