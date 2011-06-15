@@ -52,11 +52,13 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="draggable.htm" />
     <Content Include="Scripts\effectsUtil.js" />
     <Content Include="Scripts\functionPointHandlers.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Default.html" />
+    <Content Include="staticImages\AddUser.png" />
     <Content Include="Styles\users.css" />
     <Content Include="users.htm" />
     <Content Include="Scripts\jquery.tmpl.min.js" />
