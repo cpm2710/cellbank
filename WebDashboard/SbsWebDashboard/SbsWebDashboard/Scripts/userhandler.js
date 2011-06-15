@@ -8,3 +8,13 @@ function getAllUsers(callback) {
             }
         });
 }
+
+
+function getUserDetail(logonName, callback) {
+    $.getJSON(GetAllUsersURl + "userdetails/" + logonName,
+        function (data) {
+            if (data != undefined) {
+                callback(data);
+            }
+        });
+}

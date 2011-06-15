@@ -48,12 +48,12 @@
             });
         }
         function renderAllUser() {
-           
-            
             $.getTmpl("/templates/userTemplate.htm").done(function () {
                 getAllUsers(function (userList) {
                     for (var i = 0; i < userList.length; i++) {
                         $user = $("#userSummaryTemplate").tmpl(userList[i]);
+                        var lgName = userList[i].LogonName;
+                        $user.attr("id", "usersummary_" + lgName);
                         $user.appendTo("#alluserstbody");
                     }
                     $("#alluserstbody").delegate(".userSummary", "click", function () {
@@ -63,7 +63,27 @@
                         }
                         selectedItem = $.tmplItem(this);
                         selectedItem.tmpl = $("#userDetailTemplate").template();
+                        var logonName = selectedItem.data.LogonName;
+
+
+                        //                        getUserDetail(
+
+                        //                        $("#")
+                        //                        selectedItem
                         selectedItem.update();
+                        $detailContent = $(".detailContent");
+
+                        $detailContent.attr("id", "userdetail_" + logonName);
+                        getUserDetail(logonName, function (userDetail) {
+                            var sharedFolders = userDetail.SharedFolders;
+                            //alert(sharedFolders.length);
+                            for (var i = 0; i < sharedFolders.length; i++) {
+                                var sf = sharedFolders[i];
+                                $sharedFolder = $("#shareFolderTemplate").tmpl(sf);
+                                $userDetail = $("#userdetail_" + logonName);
+                                $sharedFolder.appendTo($("#userdetail_" + logonName));
+                            }
+                        });
                     })
              .delegate(".userDetail", "click", function () {
                  selectedItem.tmpl = $("#userSummaryTemplate").template();
