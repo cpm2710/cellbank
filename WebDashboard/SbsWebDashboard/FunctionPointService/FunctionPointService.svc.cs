@@ -63,22 +63,42 @@ namespace FunctionPointService
         public FunctionPointList GetFunctionPointsByUserAndAddIn(string LogonName, string AddIn)
         {
             FunctionPointList l = new FunctionPointList();
-            FunctionPoint s = new FunctionPoint();
-            s.Title = "Add User";
-            s.ImgUrl = "/staticImages/AddUser.png";
-            s.AlertCount = "3";
-            s.Description = "Users Management Component";
-            s.NavigationUrl = "/s.htm";
-            l.Add(s);
+            if (AddIn.Equals("main", StringComparison.InvariantCultureIgnoreCase))
+            {
+                FunctionPoint s = new FunctionPoint();
+                s.Title = "Users Management";
+                s.ImgUrl = "/staticImages/users.png";
+                s.AlertCount = "3";
+                s.Description = "Users Management Component";
+                s.NavigationUrl = "/users.htm";
+                l.Add(s);
 
-            FunctionPoint s2 = new FunctionPoint();
-            s2.Title = "BacktoHome";
-            s2.ImgUrl = "/staticImages/back.png";
-            s2.AlertCount = "3";
-            s2.Description = "Users Management Component";
-            s2.NavigationUrl = "/Default.htm";
-            l.Add(s2);
+                FunctionPoint s2 = new FunctionPoint();
+                s2.Title = "Users Management";
+                s2.ImgUrl = "/staticImages/users.png";
+                s2.AlertCount = "3";
+                s2.Description = "Users Management Component";
+                s2.NavigationUrl = "/rdps.htm";
+                l.Add(s2);
+            }
+            else if (AddIn.Equals("users", StringComparison.InvariantCultureIgnoreCase))
+            {
+                FunctionPoint s = new FunctionPoint();
+                s.Title = "Add User";
+                s.ImgUrl = "/staticImages/AddUser.png";
+                s.AlertCount = "3";
+                s.Description = "Users Management Component";
+                s.NavigationUrl = "/s.htm";
+                l.Add(s);
 
+                FunctionPoint s2 = new FunctionPoint();
+                s2.Title = "BacktoHome";
+                s2.ImgUrl = "/staticImages/back.png";
+                s2.AlertCount = "3";
+                s2.Description = "Users Management Component";
+                s2.NavigationUrl = "/Default.html";
+                l.Add(s2);
+            }
             return l;
         }
     }
