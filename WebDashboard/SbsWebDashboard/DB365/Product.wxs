@@ -6,9 +6,9 @@
 
 		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
-    <!--<iis:WebSite Id="DefaultWebSite" Description="My Site">
-      <iis:WebAddress Id="My.Web.Address" Port="8089"/>
-    </iis:WebSite>-->
+    <iis:WebSite Id="DefaultWebSite" Description="Default Web Site">
+      <iis:WebAddress Id="AllUnassigned" Port="80"/>
+    </iis:WebSite>
     
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFiles64Folder" Name="PFiles">
@@ -17,17 +17,18 @@
             <Directory Id="INSTALLLOCATION" Name="DB365">
               <Component Id="DB365FilesComponent" Guid="C3A98849-E807-4083-8ED5-3F60925B33F5" Win64="yes">
                 <File Id="Web.config" Name="Web.config" Source="..\UserService\Web.config"/>
+                <File Id="UserService.svc" Name="UserService.svc" Source="..\UserService\bin\UserService.svc"/>
               </Component>
               <Directory Id="DB365BinDir" Name="bin">
                 <Component Id="DB365BinDirComponent" Guid="4F7D687D-C2D3-4D02-BF03-9AE03908FD36" Win64="yes">
                   <File Id="UserService.dll" Name="UserService.dll" Source="..\UserService\bin\UserService.dll"/>
                 </Component>
               </Directory>
-              <!--<Component Id="IIS.Component" Guid="6FAD9EC7-D2B0-4471-A657-C8AF5F6F707F" KeyPath="yes" Win64="yes">
+              <Component Id="IIS.Component" Guid="6FAD9EC7-D2B0-4471-A657-C8AF5F6F707F" KeyPath="yes" Win64="yes">
                 <iis:WebVirtualDir Id="My.VirtualDir" Alias="foo" Directory="INSTALLLOCATION" WebSite="DefaultWebSite">
                   <iis:WebApplication Id="My.Application1" Name="Web Application 1"/>
                 </iis:WebVirtualDir>
-              </Component>-->
+              </Component>
             </Directory>
           </Directory>
         </Directory>				
@@ -41,7 +42,7 @@
 			<!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
       <ComponentRef Id="DB365FilesComponent"/>
       <ComponentRef Id="DB365BinDirComponent" />
-      <!--<ComponentRef Id="IIS.Component" />-->
+      <ComponentRef Id="IIS.Component" />
 		</Feature>
 	</Product>
 </Wix>
