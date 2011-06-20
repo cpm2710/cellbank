@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 	<Product Id="09639e6f-5c8b-4f63-ae88-f52d81ed621a" Name="DB365" Language="1033" Version="1.0.0.0" Manufacturer="DB365" UpgradeCode="7bd92377-2222-40ff-acdb-2221311dd19a">
 		<Package InstallerVersion="200" Compressed="yes" Platform="x64"/>
 
