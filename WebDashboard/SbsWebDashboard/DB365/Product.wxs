@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+	<Product Id="09639e6f-5c8b-4f63-ae88-f52d81ed621a" Name="DB365" Language="1033" Version="1.0.0.0" Manufacturer="DB365" UpgradeCode="7bd92377-2222-40ff-acdb-2221311dd19a">
+		<Package InstallerVersion="200" Compressed="yes" Platform="x64"/>
+
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <!--<iis:WebSite Id="DefaultWebSite" Description="My Site">
+      <iis:WebAddress Id="My.Web.Address" Port="8089"/>
+    </iis:WebSite>-->
+    
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder" Name="PFiles">
+        <Directory Id="WINDOWSServer" Name="Windows Server">
+          <Directory Id="WEBAPPS" Name="WebApps">
+            <Directory Id="INSTALLLOCATION" Name="DB365">
+              <Component Id="DB365FilesComponent" Guid="C3A98849-E807-4083-8ED5-3F60925B33F5" Win64="yes">
+                <File Id="Web.config" Name="Web.config" Source="..\UserService\Web.config"/>
+              </Component>
+              <Directory Id="DB365BinDir" Name="bin">
+                <Component Id="DB365BinDirComponent" Guid="4F7D687D-C2D3-4D02-BF03-9AE03908FD36" Win64="yes">
+                  <File Id="UserService.dll" Name="UserService.dll" Source="..\UserService\bin\UserService.dll"/>
+                </Component>
+              </Directory>
+              <!--<Component Id="IIS.Component" Guid="6FAD9EC7-D2B0-4471-A657-C8AF5F6F707F" KeyPath="yes" Win64="yes">
+                <iis:WebVirtualDir Id="My.VirtualDir" Alias="foo" Directory="INSTALLLOCATION" WebSite="DefaultWebSite">
+                  <iis:WebApplication Id="My.Application1" Name="Web Application 1"/>
+                </iis:WebVirtualDir>
+              </Component>-->
+            </Directory>
+          </Directory>
+        </Directory>				
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="DB365" Level="1">
+			<!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+			<!-- <ComponentRef Id="ProductComponent" /> -->
+			
+			<!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
+      <ComponentRef Id="DB365FilesComponent"/>
+      <ComponentRef Id="DB365BinDirComponent" />
+      <!--<ComponentRef Id="IIS.Component" />-->
+		</Feature>
+	</Product>
+</Wix>
