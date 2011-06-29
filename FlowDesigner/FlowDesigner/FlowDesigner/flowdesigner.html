@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="./javascript/lib/hashmap.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/jquery-1.5.1.min.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/jquery.tmpl.min.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/functionPointHandlers.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/gettmpl.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/effectsUtil.js"></script>
+
+<script type="text/javascript"
+	src="./javascript/flowdesigner/flowpainter.js"></script>
+<script type="text/javascript"
+	src="./javascript/flowdesigner/flowmodel.js"></script>
+
+<link href="./css/flowdesigner.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="designercontrollersdiv">
+		<ul id="designercontrollers">
+		</ul>
+	</div>
+	<div id="flowdesignerwrapper">
+		<div id="flowdesigner">
+
+			<canvas id="designerpanel">
+	 		
+	 	</canvas>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var flowmodel = new model();
+		flowmodel.controllers.put("Start1", new controller("Start1", "Start"));
+		var selectedControllerType = "";
+		function renderControllers() {
+			var functionPoints = [ {
+				"Description" : "Start Event",
+				"ImgUrl" : ".\/images\/flowdesigner\/start_event_empty.png",
+				"Type" : "Start",
+				"AlertCount" : "0"
+			}, {
+				"Description" : "End Event",
+				"ImgUrl" : ".\/images\/flowdesigner\/end_event_terminate.png",
+				"Type" : "End",
+				"AlertCount" : "0"
+			}, {
+				"Description" : "Task",
+				"ImgUrl" : ".\/images\/flowdesigner\/task_empty.png",
+				"Type" : "Task",
+				"AlertCount" : "0"
+			}, {
+				"Description" : "RuleDecision",
+				"ImgUrl" : ".\/images\/flowdesigner\/ruledecision.png",
+				"Type" : "RuleDecision",
+				"AlertCount" : "0"
+			} ];
+
+			$.getTmpl("./templates/functionTemplate.htm").done(function() {
+				for ( var i in functionPoints) {
+					var fp = functionPoints[i];
+					$ftmpl = $("#ftemplate").tmpl(fp);
+					$ftmpl.bind("click", function() {
+						$(".ftile").removeClass("selectedcontroller");
+						$(this).addClass("selectedcontroller");
+						var tmplItem = $.tmplItem($(this));
+						selectedControllerType = tmplItem.data.Title;
+					});
+					$ftmpl.appendTo("#designercontrollers");
+				}
+			});
+		}
+		function initialDesignerPanel() {
+			$("#designerpanel").bind("click", function(event) {
+				//console.dir(event);
+				var ctx = $(this)[0].getContext("2d");
+				paint(flowmodel, ctx);
+			});
+		}
+		renderControllers();
+		initialDesignerPanel();
+		$("#designercontrollers").sortable();
+		$("#designercontrollers").disableSelection();
+	</script>
+</body>
+</html>
