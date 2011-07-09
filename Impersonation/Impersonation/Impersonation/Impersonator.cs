@@ -117,7 +117,7 @@ namespace Impersonation
         ///    SECURITY_BUILTIN_DOMAIN_RID.
         /// </summary>
         private const int SECURITY_BUILTIN_DOMAIN_RID = 0x20;
-
+        private const int SECURITY_LOCAL_SYSTEM_RID=   (0x12);
         /// <summary>
         ///    DOMAIN_ALIAS_RID_ADMINS.
         /// </summary>
@@ -175,7 +175,7 @@ End Enum
 						password,
                         LOGON32_LOGON_SERVICE,
                         //LOGON32_LOGON_INTERACTIVE,
-						3, 
+						1, 
 						ref token ) != 0 )
 					{
                         //tempWindowsIdentity = new WindowsIdentity(token);
@@ -190,10 +190,9 @@ End Enum
       IntPtr AdministratorsGroup;
       
       NtAuthority[5] = 5; // SECURITY_NT_AUTHORITY
-      
-      
-      int ret = AllocateAndInitializeSid(NtAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, out AdministratorsGroup);
 
+
+      int ret = AllocateAndInitializeSid(NtAuthority, 2, SECURITY_LOCAL_SYSTEM_RID, DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, out AdministratorsGroup);
       if (ret != 0)
       {
           if (CheckTokenMembership(tokenDuplicate, AdministratorsGroup, ref ret) == 0)

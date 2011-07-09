@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impersonation", "Impersonat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{F7D04658-199B-47B8-ADC9-8F52B2C173BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -39,6 +41,16 @@ Global
 		{F7D04658-199B-47B8-ADC9-8F52B2C173BC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F7D04658-199B-47B8-ADC9-8F52B2C173BC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F7D04658-199B-47B8-ADC9-8F52B2C173BC}.Release|x86.ActiveCfg = Release|Any CPU
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Debug|x86.ActiveCfg = Debug|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Debug|x86.Build.0 = Debug|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Release|Any CPU.ActiveCfg = Release|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Release|Mixed Platforms.Build.0 = Release|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Release|x86.ActiveCfg = Release|x86
+		{58A6F2E6-B1CC-4179-9DB0-06430DBDB370}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
