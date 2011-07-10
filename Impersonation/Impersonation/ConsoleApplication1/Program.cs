@@ -19,9 +19,9 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Console.WriteLine(AuthenticationHelper.IsUserInAdminGroup());
-           // System.Security.Principal.WindowsIdentity wid2 = System.Security.Principal.WindowsIdentity.GetCurrent();
-           // WindowsPrincipal wip = new WindowsPrincipal(wid2);
-           //Console.WriteLine( wip.IsInRole(WindowsBuiltInRole.Administrator));
+            System.Security.Principal.WindowsIdentity wid2 = System.Security.Principal.WindowsIdentity.GetCurrent();
+            WindowsPrincipal wip = new WindowsPrincipal(wid2);
+           Console.WriteLine( wip.IsInRole(WindowsBuiltInRole.Administrator));
            // Console.WriteLine(IsAdminRole());
         }
 
