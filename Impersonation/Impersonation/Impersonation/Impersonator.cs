@@ -147,28 +147,6 @@ namespace Impersonation
 			{
 				if ( RevertToSelf() )
 				{
-                    /*Enum LOGON32_LOGON
-    INTERACTIVE = 2
-    NETWORK = 3
-    BATCH = 4
-    SERVICE = 5
-    UNLOCK = 7
-    NETWORK_CLEARTEXT = 8
-    NEW_CREDENTIALS = 9
-End Enum
-Enum LOGON32_PROVIDER
-    [DEFAULT] = 0
-    WINNT35 = 1
-    WINNT40 = 2
-    WINNT50 = 3
-End Enum
-Enum SECURITY_LEVEL
-    Anonymous = 0
-    Identification = 1
-    Impersonation = 2
-    Delegation = 3
-End Enum
-*/
 					if ( LogonUser(
 						userName, 
 						domain, 
@@ -182,8 +160,8 @@ End Enum
                         //    impersonationContext = tempWindowsIdentity.Impersonate();
                             if (DuplicateToken(token, 2, ref tokenDuplicate) != 0)
                             {
-                                tempWindowsIdentity = new WindowsIdentity(tokenDuplicate);
-                                //tempWindowsIdentity = new WindowsIdentity(tokenDuplicate, "WindowsAuthentication", WindowsAccountType.System);
+                                //tempWindowsIdentity = new WindowsIdentity(tokenDuplicate);
+                                tempWindowsIdentity = new WindowsIdentity(tokenDuplicate, "WindowsAuthentication", WindowsAccountType.System);
                                 impersonationContext = tempWindowsIdentity.Impersonate();
 
                                 byte[] NtAuthority = new byte[6];

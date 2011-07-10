@@ -8,31 +8,21 @@ namespace ConsoleApplication1
     using System;
 
     using System.Security.Principal;
+    using System.Threading;
 
 
 
     class NamesAndSIDs
     {
 
-        const string userAccount = @".\SYSTEM";
 
         static void Main(string[] args)
         {
-            Console.WriteLine(WellKnownSidType.LocalSystemSid);
-            NTAccount name = new NTAccount(userAccount);
-
-            Console.WriteLine(name);
-
-            SecurityIdentifier sid = (SecurityIdentifier)
-
-              name.Translate(typeof(SecurityIdentifier));
-
-            Console.WriteLine(sid);
-
-            name = (NTAccount)sid.Translate(typeof(NTAccount));
-
-            Console.WriteLine(name);
-
+            Console.WriteLine(AuthenticationHelper.IsUserInAdminGroup());
+           // System.Security.Principal.WindowsIdentity wid2 = System.Security.Principal.WindowsIdentity.GetCurrent();
+           // WindowsPrincipal wip = new WindowsPrincipal(wid2);
+           //Console.WriteLine( wip.IsInRole(WindowsBuiltInRole.Administrator));
+           // Console.WriteLine(IsAdminRole());
         }
 
     }
