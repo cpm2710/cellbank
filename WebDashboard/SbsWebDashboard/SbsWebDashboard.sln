@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionPointService", "Fun
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "DB365", "DB365\DB365.wixproj", "{8AA22A44-182C-4354-80D4-1E8BBC2397A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryDecryP", "EncryDecryP\EncryDecryP.csproj", "{5394EE78-3992-4954-A4AE-F505782F1933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthLib", "AuthLib\AuthLib.csproj", "{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -63,6 +67,26 @@ Global
 		{8AA22A44-182C-4354-80D4-1E8BBC2397A0}.Release|Mixed Platforms.Build.0 = Release|x86
 		{8AA22A44-182C-4354-80D4-1E8BBC2397A0}.Release|x86.ActiveCfg = Release|x86
 		{8AA22A44-182C-4354-80D4-1E8BBC2397A0}.Release|x86.Build.0 = Release|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Debug|x86.ActiveCfg = Debug|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Debug|x86.Build.0 = Debug|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Release|Any CPU.ActiveCfg = Release|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Release|x86.ActiveCfg = Release|x86
+		{5394EE78-3992-4954-A4AE-F505782F1933}.Release|x86.Build.0 = Release|x86
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

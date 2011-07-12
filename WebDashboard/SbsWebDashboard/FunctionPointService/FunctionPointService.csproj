@@ -53,6 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AuthenticationService.svc" />
     <Content Include="FunctionPointService.svc" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -64,16 +65,28 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationService.svc.cs">
+      <DependentUpon>AuthenticationService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticationUtil.cs" />
     <Compile Include="FunctionPointService.svc.cs">
       <DependentUpon>FunctionPointService.svc</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Authentication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AuthLib\AuthLib.csproj">
+      <Project>{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}</Project>
+      <Name>AuthLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

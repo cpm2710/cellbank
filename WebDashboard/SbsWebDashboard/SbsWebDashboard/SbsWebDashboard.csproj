@@ -52,6 +52,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\authenticationHandlers.js" />
     <Content Include="Scripts\mockdata.js" />
     <Content Include="test\draggable.htm" />
     <Content Include="staticImages\back.png" />

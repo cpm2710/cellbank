@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="FunctionPointService.FunctionPointService" CodeBehind="FunctionPointService.svc.cs" Factory="System.ServiceModel.Activation.WebServiceHostFactory"%>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Dashboard365Service.FunctionPointService" CodeBehind="FunctionPointService.svc.cs" Factory="System.ServiceModel.Activation.WebServiceHostFactory"%>

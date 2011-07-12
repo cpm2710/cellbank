@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace FunctionPointService
+namespace Dashboard365Service
 {
     [ServiceContract]
     public class FunctionPointService
