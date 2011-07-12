@@ -6,10 +6,12 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web;
+using System.ServiceModel.Activation;
 
 namespace Dashboard365Service
 {
     [ServiceContract]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class FunctionPointService
     {
         [OperationContract]
