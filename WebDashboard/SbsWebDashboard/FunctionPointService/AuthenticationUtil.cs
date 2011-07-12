@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Text;
 namespace Dashboard365Service
 {
     //authentication information including everything
@@ -16,6 +17,7 @@ namespace Dashboard365Service
     }
     public class AuthenticationUtil
     {
+        public static string Dashboard365TokenName="Dashboard365TokenName";
         public static string GenCookieToken(AuthenticationInstance instance)
         {
             MemoryStream stream1 = new MemoryStream();
@@ -27,6 +29,16 @@ namespace Dashboard365Service
             string instanceStr=sr.ReadToEnd();
             string tokenGenerated=RSAUtil.Instance.Encrypt(instanceStr);
             return tokenGenerated;
+        }
+        public static bool Verify(string token)
+        {
+            string json=RSAUtil.Instance.Decrypt(token);
+            DataContractJsonSerializer ser =
+              new DataContractJsonSerializer(typeof(AuthenticationInstance));
+            MemoryStream ms=new MemoryStream(Encoding.UTF8.GetBytes(json));
+            AuthenticationInstance ai =
+            ser.ReadObject(ms) as AuthenticationInstance;
+            return true;
         }
     }
 }

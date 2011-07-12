@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web;
 
 namespace Dashboard365Service
 {
@@ -15,6 +16,10 @@ namespace Dashboard365Service
         [WebGet(UriTemplate = "/", ResponseFormat = WebMessageFormat.Json)]
         public FunctionPointList GetRoot()
         {
+            string token=HttpContext.Current.Request.Cookies[AuthenticationUtil.Dashboard365TokenName].Value;
+
+
+
             FunctionPointList l = new FunctionPointList();
             FunctionPoint s = new FunctionPoint();
             s.Title = "Users Management";
