@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryDecryP", "EncryDecryP\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthLib", "AuthLib\AuthLib.csproj", "{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthLibTest", "AuthLibTest\AuthLibTest.csproj", "{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -87,6 +89,16 @@ Global
 		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}.Release|x86.ActiveCfg = Release|Any CPU
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Debug|x86.ActiveCfg = Debug|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Debug|x86.Build.0 = Debug|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Release|Any CPU.ActiveCfg = Release|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Release|Mixed Platforms.Build.0 = Release|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Release|x86.ActiveCfg = Release|x86
+		{D675CAA0-D95F-44E0-AB20-1DBE2675D9CC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

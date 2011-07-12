@@ -15,5 +15,9 @@ namespace Dashboard365Service
         [OperationContract]
         [WebInvoke(UriTemplate = "/authentications", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         string Authenticate(AuthenticationInstance ai);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/", ResponseFormat = WebMessageFormat.Json)]
+        string getMockToken();
     }
 }

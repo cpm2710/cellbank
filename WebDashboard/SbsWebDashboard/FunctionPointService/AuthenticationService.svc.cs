@@ -14,6 +14,15 @@ namespace Dashboard365Service
     {
         public string Authenticate(AuthenticationInstance ai)
         {
+            string token = AuthenticationUtil.GenCookieToken(ai);
+            return token;
+        }
+        public string getMockToken()
+        {
+            AuthenticationInstance ai = new AuthenticationInstance();
+            ai.UserName = "shit";
+            ai.PassWord = "shitp";
+            ai.TimeStamp = 1;
             return AuthenticationUtil.GenCookieToken(ai);
         }
     }

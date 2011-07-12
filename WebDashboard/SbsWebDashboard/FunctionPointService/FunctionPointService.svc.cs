@@ -20,7 +20,7 @@ namespace Dashboard365Service
         {
             string token=HttpContext.Current.Request.Cookies[AuthenticationUtil.Dashboard365TokenName].Value;
 
-
+            AuthenticationUtil.Verify(token);
 
             FunctionPointList l = new FunctionPointList();
             FunctionPoint s = new FunctionPoint();
