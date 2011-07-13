@@ -12,7 +12,9 @@
     <script type="text/javascript" src="./Scripts/jquery.cookie.js"></script>
     <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        
+        var aIn = { UserName: "abc", PassWord: "a?", TimeStamp: 1 };
+        //var str=JSON.stringify(aIn);
+        Dashboard365Login(aIn, function (data) { });
         function renderFunctionPoints() {
 
             $.getTmpl("/templates/functionTemplate.htm").done(function () {

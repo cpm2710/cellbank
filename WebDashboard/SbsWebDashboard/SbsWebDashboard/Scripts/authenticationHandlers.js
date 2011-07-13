@@ -1,12 +1,17 @@
-﻿var authURL = "http:\/\/localhost:5659\/AuthenticationService.svc\/authentications";
+﻿var authURL = "/AuthenticationService.svc/authentications";
 function Dashboard365Login(authInstance, callback) {
     $.ajax(
     {
-        type:"POST",
-        url:authURL,
-        dataType:"json",
+        url: authURL,
+
         data: authInstance,
-        contentType:"application/json",
+
+        type: "POST",
+
+        processData: true,
+
+        contentType: "application/json",
+        dataType:"json",
         success:function (data) { alert(data); } 
     });
 }

@@ -13,7 +13,7 @@ namespace Dashboard365Service
     public interface IAuthenticationService
     {
         [OperationContract]
-        [WebInvoke(UriTemplate = "/authentications", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        [WebInvoke(Method = "POST",UriTemplate = "/authentications", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         string Authenticate(AuthenticationInstance ai);
 
         [OperationContract]

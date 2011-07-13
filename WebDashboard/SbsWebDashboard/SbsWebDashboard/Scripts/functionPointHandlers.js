@@ -1,5 +1,5 @@
 ﻿var functionPoints;
-var GetFunctionPointsURl = "http://localhost:5659/FunctionPointService.svc/fpbyuserandaddin/";
+var GetFunctionPointsURl = "/FunctionPointService.svc/fpbyuserandaddin/";
 
 function queryFunctionPointsForUser(userPrincipal, callback) {
     $.getJSON(GetFunctionPointsURl+userPrincipal,
