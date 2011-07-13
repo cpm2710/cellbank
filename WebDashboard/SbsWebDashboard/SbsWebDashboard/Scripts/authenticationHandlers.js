@@ -8,7 +8,6 @@ function Dashboard365Login(authInstance, callback) {
 
         type: "POST",
 
-        processData: true,
 
         contentType: "application/json",
         dataType:"json",
