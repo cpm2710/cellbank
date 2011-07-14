@@ -38,7 +38,7 @@ namespace Dashboard365Service
             if (!EventLog.SourceExists("New Application"))
                 EventLog.CreateEventSource("New Application", "MyEvent");
             log.Source = "New Application";
-            log.WriteEntry("ss:" + token, EventLogEntryType.Information);
+            log.WriteEntry("verifying:" + token, EventLogEntryType.Information);
 
             string json=RSAUtil.Instance.Decrypt(token);
             DataContractJsonSerializer ser =
@@ -46,11 +46,10 @@ namespace Dashboard365Service
             MemoryStream ms=new MemoryStream(Encoding.UTF8.GetBytes(json));
             AuthenticationInstance ai =
             ser.ReadObject(ms) as AuthenticationInstance;
-            
 
-            
-            log.WriteEntry("ss:"+ai.UserName, EventLogEntryType.Information);
-            log.WriteEntry("ss:"+ai.PassWord, EventLogEntryType.Information);
+
+            log.WriteEntry("verifying:" + ai.UserName, EventLogEntryType.Information);
+            log.WriteEntry("verifying:" + ai.PassWord, EventLogEntryType.Information);
             return true;
         }
     }

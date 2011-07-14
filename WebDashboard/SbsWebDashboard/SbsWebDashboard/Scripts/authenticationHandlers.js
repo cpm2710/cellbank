@@ -12,6 +12,7 @@ function Dashboard365Login(authInstance, callback) {
         contentType: "application/json",
         dataType:"json",
         success: function (data) {
+            $.cookie("Dashboard365TokenName",data,{expires: 7});
             callback(data); 
         } 
     });

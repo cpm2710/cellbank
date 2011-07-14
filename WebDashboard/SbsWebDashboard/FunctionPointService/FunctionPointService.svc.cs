@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Web;
 using System.ServiceModel.Activation;
+using System.Diagnostics;
 
 namespace Dashboard365Service
 {
@@ -18,9 +19,19 @@ namespace Dashboard365Service
         [WebGet(UriTemplate = "/", ResponseFormat = WebMessageFormat.Json)]
         public FunctionPointList GetRoot()
         {
-            string token=HttpContext.Current.Request.Cookies[AuthenticationUtil.Dashboard365TokenName].Value;
+            string token=HttpContext.Current.Request.Headers[AuthenticationUtil.Dashboard365TokenName];
+            EventLog log = new EventLog("MyEvent");
+            //  首先应判断日志来源是否存在，一个日志来源只能同时与一个事件绑定s
+            if (!EventLog.SourceExists("New Application"))
+                EventLog.CreateEventSource("New Application", "MyEvent");
 
-            AuthenticationUtil.Verify(token);
+            log.Source = "New Application";
+            log.WriteEntry("token" + token, EventLogEntryType.Information);
+
+            if (!AuthenticationUtil.Verify(token))
+            {
+                return null;
+            }
 
             FunctionPointList l = new FunctionPointList();
             FunctionPoint s = new FunctionPoint();
@@ -69,6 +80,19 @@ namespace Dashboard365Service
         [WebGet(UriTemplate = "/fpbyuserandaddin/{LogonName}/{AddIn}", ResponseFormat = WebMessageFormat.Json)]
         public FunctionPointList GetFunctionPointsByUserAndAddIn(string LogonName, string AddIn)
         {
+            string token = HttpContext.Current.Request.Headers[AuthenticationUtil.Dashboard365TokenName];
+            EventLog log = new EventLog("MyEvent");
+            //  首先应判断日志来源是否存在，一个日志来源只能同时与一个事件绑定s
+            if (!EventLog.SourceExists("New Application"))
+                EventLog.CreateEventSource("New Application", "MyEvent");
+
+            log.Source = "New Application";
+            log.WriteEntry("token" + token, EventLogEntryType.Information);
+
+            if (!AuthenticationUtil.Verify(token))
+            {
+                return null;
+            }
             FunctionPointList l = new FunctionPointList();
             if (AddIn.Equals("main", StringComparison.InvariantCultureIgnoreCase))
             {

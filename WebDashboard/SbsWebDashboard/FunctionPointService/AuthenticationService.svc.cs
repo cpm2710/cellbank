@@ -22,13 +22,13 @@ namespace Dashboard365Service
                 EventLog.CreateEventSource("New Application", "MyEvent");
 
             log.Source = "New Application";
-            log.WriteEntry(ai.UserName, EventLogEntryType.Information);
-            log.WriteEntry(ai.PassWord, EventLogEntryType.Information);
+            log.WriteEntry("authenticate:"+ai.UserName, EventLogEntryType.Information);
+            log.WriteEntry("authenticate:"+ai.PassWord, EventLogEntryType.Information);
             Console.WriteLine(ai.UserName);
             Console.WriteLine(ai.PassWord);
 
             string token = AuthenticationUtil.GenCookieToken(ai);
-            AuthenticationUtil.Verify(token);
+            //AuthenticationUtil.Verify(token);
             return token;
         }
         public string getMockToken()
