@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://ist.se.sjtu.edu.cn/wsis/wsgp.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://ist.se.sjtu.edu.cn/wsis/wsgp.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://ist.se.sjtu.edu.cn/wsis/wsgp.owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Ability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AtomAbility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AtomGoal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Authority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChangeAtomAbility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChangeAtomGoal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChangeAuthority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChangeDirection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChangeStepLength"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CompositeProcess"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CompositeTask"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Condition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CreateAtomAbility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CreateAtomGoal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CreateAuthority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeleteAtomAbility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeleteAtomGoal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeleteAuthority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Goal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NegativeDirection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParallelDirection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PositiveDirection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Process"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Property"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Resource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SearchAtomAbility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SearchAtomGoal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SearchAuthority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Service"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ServiceEffect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SimpleTask"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Task"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#AbilityTarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#OperationTarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#PropertyType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#dependOnTask"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCondition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGoalTarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOperations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProperty"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPropertyChangeDirection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ApproveAskForLeaveNoteGoal"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AskForLeaveNote"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AskForLeaveNoteStatus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AskForLeaveReason"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AssessAskForLeaveTask"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ChangeAskForLeaveNoteAbility"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ComputeTotalValue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#name"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AtomAbility"/>
+        <Class IRI="#Ability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtomGoal"/>
+        <Class IRI="#Goal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtomGoal"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasGoalTarget"/>
+            <Class IRI="#Resource"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChangeAtomAbility"/>
+        <Class IRI="#AtomAbility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChangeAtomGoal"/>
+        <Class IRI="#AtomGoal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChangeAuthority"/>
+        <Class IRI="#Authority"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CompositeTask"/>
+        <Class IRI="#Task"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CreateAtomAbility"/>
+        <Class IRI="#AtomAbility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CreateAtomGoal"/>
+        <Class IRI="#AtomGoal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CreateAuthority"/>
+        <Class IRI="#Authority"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeleteAtomAbility"/>
+        <Class IRI="#AtomAbility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeleteAtomGoal"/>
+        <Class IRI="#AtomGoal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeleteAuthority"/>
+        <Class IRI="#Authority"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NegativeDirection"/>
+        <Class IRI="#ChangeDirection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParallelDirection"/>
+        <Class IRI="#ChangeDirection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PositiveDirection"/>
+        <Class IRI="#ChangeDirection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Property"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#PropertyType"/>
+            <Class IRI="#Property"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearchAtomAbility"/>
+        <Class IRI="#AtomAbility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearchAtomGoal"/>
+        <Class IRI="#AtomGoal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SearchAuthority"/>
+        <Class IRI="#Authority"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SimpleTask"/>
+        <Class IRI="#Task"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#ChangeAtomGoal"/>
+        <NamedIndividual IRI="#ApproveAskForLeaveNoteGoal"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Resource"/>
+        <NamedIndividual IRI="#AskForLeaveNote"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Property"/>
+        <NamedIndividual IRI="#AskForLeaveNoteStatus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Property"/>
+        <NamedIndividual IRI="#AskForLeaveReason"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#AssessAskForLeaveTask"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChangeAtomAbility"/>
+        <NamedIndividual IRI="#ChangeAskForLeaveNoteAbility"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Task"/>
+        <NamedIndividual IRI="#ComputeTotalValue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Property"/>
+        <NamedIndividual IRI="#name"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProperty"/>
+        <NamedIndividual IRI="#AskForLeaveNote"/>
+        <NamedIndividual IRI="#name"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProperty"/>
+        <NamedIndividual IRI="#AskForLeaveNote"/>
+        <NamedIndividual IRI="#AskForLeaveNoteStatus"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasProperty"/>
+        <NamedIndividual IRI="#AskForLeaveNote"/>
+        <NamedIndividual IRI="#AskForLeaveReason"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#AbilityTarget"/>
+        <NamedIndividual IRI="#ChangeAskForLeaveNoteAbility"/>
+        <NamedIndividual IRI="#AskForLeaveNote"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#AbilityTarget"/>
+        <Class IRI="#Ability"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#OperationTarget"/>
+        <Class IRI="#Goal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#dependOnTask"/>
+        <Class IRI="#Task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCondition"/>
+        <Class IRI="#Task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGoalTarget"/>
+        <Class IRI="#Goal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProperty"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#hasProperty"/>
+            <Class IRI="#Resource"/>
+        </ObjectMinCardinality>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#AbilityTarget"/>
+        <Class IRI="#Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#OperationTarget"/>
+        <Class IRI="#Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#dependOnTask"/>
+        <Class IRI="#Task"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCondition"/>
+        <Class IRI="#Condition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGoalTarget"/>
+        <Class IRI="#Resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPropertyChangeDirection"/>
+        <Class IRI="#ChangeDirection"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ParallelDirection</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">used for string change</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.20069) http://owlapi.sourceforge.net -->
+
