@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Dashboard365Service;
 using System.Security.Cryptography;
-using AuthLib;
 using System.Runtime.Serialization.Json;
 using System.IO;
 namespace Dashboard365Service
@@ -16,7 +15,7 @@ namespace Dashboard365Service
 
         static void Main(string[] args)
         {
-            string json = "{\"PassWord\":\"shitp??\",\"TimeStamp\":1,\"UserName\":\"shit\"}";
+            string json = "{\"UserName\":\"a\",\"PassWord\":\"b@@##$?b\",\"TimeStamp\":1}";
             DataContractJsonSerializer ser =
               new DataContractJsonSerializer(typeof(AuthenticationInstance));
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
@@ -24,12 +23,10 @@ namespace Dashboard365Service
             AuthenticationInstance aii =
             ser.ReadObject(ms) as AuthenticationInstance;
 
-            AuthenticationInstance ai = new AuthenticationInstance();
-            ai.UserName = "shit";
-            ai.PassWord = "shitp??";
-            ai.TimeStamp = 1;
-            string token=AuthenticationUtil.GenCookieToken(ai);
+            string token=AuthenticationUtil.GenCookieToken(aii);
             //AuthenticationUtil.
+            //string tokdden=@"FoluB\/oYyXPTbFCRTrJMbwBodY4jR1RwVtGSXCtrxa4OjeIsovSI0nihqPXllAUdHTW9dNuOuaIk5Xb93dqDG6Ld6qnuRTeuXp0hpFrbwkwOataMcS2NwE9NCcgQZlH4IjdCjds7euP5kxzWjPVmWiP67YJz4zVQieQ6iJDLEIs=";
+
             AuthenticationUtil.Verify(token);
         }
     }

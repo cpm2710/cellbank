@@ -28,6 +28,7 @@ namespace Dashboard365Service
             Console.WriteLine(ai.PassWord);
 
             string token = AuthenticationUtil.GenCookieToken(ai);
+            AuthenticationUtil.Verify(token);
             return token;
         }
         public string getMockToken()

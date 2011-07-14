@@ -11,6 +11,8 @@ function Dashboard365Login(authInstance, callback) {
 
         contentType: "application/json",
         dataType:"json",
-        success:function (data) { alert(data); } 
+        success: function (data) {
+            callback(data); 
+        } 
     });
 }

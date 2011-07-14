@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Diagnostics;
+
 namespace Dashboard365Service
 {
     //authentication information including everything
@@ -33,24 +33,12 @@ namespace Dashboard365Service
         }
         public static bool Verify(string token)
         {
-            EventLog log = new EventLog("MyEvent");
-            //  首先应判断日志来源是否存在，一个日志来源只能同时与一个事件绑定s
-            if (!EventLog.SourceExists("New Application"))
-                EventLog.CreateEventSource("New Application", "MyEvent");
-            log.Source = "New Application";
-            log.WriteEntry("ss:" + token, EventLogEntryType.Information);
-
             string json=RSAUtil.Instance.Decrypt(token);
             DataContractJsonSerializer ser =
               new DataContractJsonSerializer(typeof(AuthenticationInstance));
             MemoryStream ms=new MemoryStream(Encoding.UTF8.GetBytes(json));
             AuthenticationInstance ai =
             ser.ReadObject(ms) as AuthenticationInstance;
-            
-
-            
-            log.WriteEntry("ss:"+ai.UserName, EventLogEntryType.Information);
-            log.WriteEntry("ss:"+ai.PassWord, EventLogEntryType.Information);
             return true;
         }
     }

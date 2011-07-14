@@ -44,14 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AuthLib\AuthLib.csproj">
-      <Project>{1450F0CB-A4BE-4F3D-921C-FC76C1F67EA6}</Project>
-      <Name>AuthLib</Name>
-    </ProjectReference>
+    <Compile Include="RSAUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
