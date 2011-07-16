@@ -54,6 +54,7 @@
   <ItemGroup>
     <Content Include="Scripts\authenticationHandlers.js" />
     <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\locationHandler.js" />
     <Content Include="Scripts\mockdata.js" />
     <Content Include="test\draggable.htm" />
     <Content Include="staticImages\back.png" />
