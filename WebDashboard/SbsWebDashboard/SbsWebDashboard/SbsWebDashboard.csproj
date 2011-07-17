@@ -56,8 +56,10 @@
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\locationHandler.js" />
     <Content Include="Scripts\mockdata.js" />
+    <Content Include="Scripts\remoteDesktopHandler.js" />
     <Content Include="Styles\map.css" />
     <Content Include="templates\locationsTemplate.html" />
+    <Content Include="templates\remoteDesktopTemplate.html" />
     <Content Include="test\draggable.htm" />
     <Content Include="staticImages\back.png" />
     <Content Include="templates\userTemplate.htm" />
