@@ -14,7 +14,20 @@ namespace FunctionPointService
     {
         public UserLocation reportUserLocation(UserLocation UserLocation)
         {
+            LocationSingleton.Instance.AddOrUpdateUserLocation(UserLocation);
             return UserLocation;
+        }
+        public MachineLocation reportMachineLocation(MachineLocation MachineLocation)
+        {
+            return MachineLocation;
+        }
+        public UserLocationList getUserLocations()
+        {
+            return LocationSingleton.Instance.UserLocations;
+        }
+        public MachineLocationList getMachineLocations()
+        {
+            return LocationSingleton.Instance.MachineLocations;
         }
     }
 }

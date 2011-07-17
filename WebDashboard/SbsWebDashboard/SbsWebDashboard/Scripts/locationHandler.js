@@ -33,3 +33,14 @@ function reportLocation(UserName) {
         navigator.geolocation.getCurrentPosition(successFunction);
     }
 }
+
+function queryUserLocations(callback) {
+    $.ajax({
+        type: "GET",
+        url: userLocationUrl,
+        beforeSend: modifyHeader,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}

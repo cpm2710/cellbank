@@ -81,6 +81,7 @@
     <Compile Include="LocationService.svc.cs">
       <DependentUpon>LocationService.svc</DependentUpon>
     </Compile>
+    <Compile Include="LocationSingleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSAUtil.cs" />
   </ItemGroup>
