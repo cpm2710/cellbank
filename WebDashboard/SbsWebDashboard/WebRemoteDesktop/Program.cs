@@ -15,8 +15,10 @@ namespace Dashboard365Service
             //string MachineName = "andy-PC";
             //IPHostEntry hostinfo = Dns.GetHostEntry(MachineName); 
 
-            RemoteDesktopServer server = new RemoteDesktopServer();
-            server.StartConnection();
+            //RemoteDesktopServer server = new RemoteDesktopServer();
+            //server.StartConnection();
+            RemoteDesktopHttpServer server = new RemoteDesktopHttpServer();
+            server.Listen();
         }
     }
 }
