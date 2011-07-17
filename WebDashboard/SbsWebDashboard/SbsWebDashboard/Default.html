@@ -24,13 +24,23 @@
 
         function renderMap() {
             $.getTmpl("/templates/locationsTemplate.html").done(function () {
-                queryUserLocations(function () {
-                });
                 $locationsTmpl = $("#locationsTemplate").tmpl(null);
                 $locationsTmpl.appendTo("body");
 
                 var map = new VEMap('locationMap');
                 map.LoadMap();
+                queryUserLocations(function (data) {
+                    var i = 0;
+                    for (i = 0; i < data.length; i++) {
+                        var userLocation = data[i];
+                        var shape = new VEShape(VEShapeType.Pushpin,
+                        new VELatLong(userLocation.Latitude, userLocation.Longitude));
+                        shape.SetTitle(userLocation.UserName);
+                        shape.SetDescription(userLocation.UserName);
+                        map.AddShape(shape);
+                    }
+                });
+
 
             });
         }

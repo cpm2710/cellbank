@@ -42,7 +42,7 @@ namespace FunctionPointService
 
         private LocationSingleton()
         {
-            userLocations = new UserLocationList();
+            initialize();
         }
         public void AddOrUpdateMachineLocation(MachineLocation machineLocation)
         {
@@ -63,7 +63,7 @@ namespace FunctionPointService
         {
             UserLocation gotUserLocation=null;
             userLocationDictionary.TryGetValue(userLocation.UserName, out gotUserLocation);
-            if (userLocation != null)
+            if (gotUserLocation != null)
             {
                 gotUserLocation.Latitude = userLocation.Latitude;
                 gotUserLocation.Longitude = userLocation.Longitude;
@@ -83,6 +83,13 @@ namespace FunctionPointService
                 userLocationDictionary.Remove(userName);
                 userLocations.Remove(userLocation);
             }            
+        }
+        private void initialize()
+        {
+            this.userLocationDictionary = new Dictionary<string, UserLocation>();
+            this.machineLocationDictionary = new Dictionary<string, MachineLocation>();
+            this.userLocations = new UserLocationList();
+            this.machineLocations = new MachineLocationList();
         }
         public static LocationSingleton Instance
         {
