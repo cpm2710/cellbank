@@ -1,4 +1,5 @@
-﻿function Show() {
+﻿var desktopURL="/RemoteDesktopService.svc/desktops";
+function Show(machineName) {
     //获取画布对象
     ctx = document.getElementById("canvas1").getContext("2d");
     //创建图像对象
@@ -8,7 +9,17 @@
         ctx.drawImage(img, 0, 0);
     }
     //指定图像源
-    img.src = IMG_SRC;
+    $.ajax({
+        type: "GET",
+        url: desktopURL + "/" + machineName,
+        beforeSend: modifyHeader,
+        success: function (data) {
+            img.src = "data:image/gif;base64," + data.DesktopBase64;
+            //callback(data);
+        } 
+    });
+
+    
 }
 function Clear() {
     //清除画布

@@ -13,6 +13,7 @@
     <script type="text/javascript" src="./Scripts/gettmpl.js"></script>
     <script type="text/javascript" src="./Scripts/authenticationHandlers.js"></script>
     <script type="text/javascript" src="./Scripts/locationHandler.js"></script>
+    <script type="text/javascript" src="./Scripts/remoteDesktopHandler.js"></script>
     <script type="text/javascript" src="./Scripts/jquery.cookie.js"></script>
 
     <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
@@ -30,11 +31,7 @@
                 $locationsTmpl = $("#remoteDesktopTemplate").tmpl(null);
                 $locationsTmpl.appendTo("body");
 
-                var ws = new WebSocket(
-                    "ws://192.168.254.105:3390/");
-                ws.onmessage = function (evt) {
-                   alert(evt.data);
-                };
+                
 
             }); 
         }
@@ -74,7 +71,7 @@
         }
         $(document).ready(function () {
             renderFunctionPoints();
-            renderMap();
+           // renderMap();
             renderRemoteDesktop();
             $("#sortable").sortable();
             $("#sortable").disableSelection();
