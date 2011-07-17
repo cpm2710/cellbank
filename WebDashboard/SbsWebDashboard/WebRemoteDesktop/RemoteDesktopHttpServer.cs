@@ -48,7 +48,7 @@ namespace Dashboard365Service
                         stream1.Position = 0;
                         StreamReader sr = new StreamReader(stream1);
                         string instanceStr = sr.ReadToEnd();
-
+                        sr.Close();
                         //DataContractJsonSerializer ser =
                         //    new DataContractJsonSerializer(typeof(AuthenticationInstance));
                         //MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
@@ -61,13 +61,14 @@ namespace Dashboard365Service
                             writer.Write(instanceStr);
 
                             writer.Close();
+                            ctx.Response.Close();
                         }
                     }
                     //string[] splits=rawUrl.Split('/');
                     //string machineName = splits[1];
                     
 
-                    ctx.Response.Close();
+                    
                 }
             }
         }

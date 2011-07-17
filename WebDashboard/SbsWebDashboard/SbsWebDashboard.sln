@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketServer", "WebSocke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRemoteDesktop", "WebRemoteDesktop\WebRemoteDesktop.csproj", "{4E5B7E58-5014-477B-801D-EFB6F244E2B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard365Site", "Dashboard365Site\Dashboard365Site.csproj", "{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -123,6 +125,16 @@ Global
 		{4E5B7E58-5014-477B-801D-EFB6F244E2B5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4E5B7E58-5014-477B-801D-EFB6F244E2B5}.Release|x86.ActiveCfg = Release|x86
 		{4E5B7E58-5014-477B-801D-EFB6F244E2B5}.Release|x86.Build.0 = Release|x86
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

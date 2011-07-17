@@ -39,7 +39,7 @@ namespace Dashboard365Service
             System.IO.MemoryStream m = new System.IO.MemoryStream();
             System.Drawing.Image bp = getDesktopBitmap();//new System.Drawing.Bitmap(@“c:/demo.GIF”);
             bp.Save(m, System.Drawing.Imaging.ImageFormat.Png);
-            bp.Save("d:\\abc.png", System.Drawing.Imaging.ImageFormat.Png);
+            //bp.Save("d:\\abc.png", System.Drawing.Imaging.ImageFormat.Png);
             byte[]b= m.GetBuffer();
             string base64string=Convert.ToBase64String(b);
             return base64string;
