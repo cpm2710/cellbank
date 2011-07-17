@@ -24,9 +24,9 @@
 //        Dashboard365Login(xx, function (data) { });
 
         function renderRemoteDesktop() {
-            if (!window.WebSocket) {
-                alert("WebSocket not supported by this browser!");
-            }  
+//            if (!window.WebSocket) {
+//                alert("WebSocket not supported by this browser!");
+//            }  
             $.getTmpl("/templates/remoteDesktopTemplate.html").done(function () {
                 $locationsTmpl = $("#remoteDesktopTemplate").tmpl(null);
                 $locationsTmpl.appendTo("body");

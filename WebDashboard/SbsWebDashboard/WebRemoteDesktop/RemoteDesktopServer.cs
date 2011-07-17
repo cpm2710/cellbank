@@ -45,7 +45,8 @@ namespace Dashboard365Service
                 if (sc != null)
                 {
                     string desktopImageBase64=DesktopUtil.getDesktopInBase64();
-                    sc.Send(Encoding.UTF8.GetBytes(desktopImageBase64));
+                    byte[] base64Bytes = Encoding.UTF8.GetBytes(desktopImageBase64);
+                    sc.Send(base64Bytes);
                     sc.Close();
                 }
             }
