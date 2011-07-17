@@ -55,14 +55,20 @@ namespace Dashboard365Service
                         //AuthenticationInstance ai =
                         //ser.ReadObject(ms) as AuthenticationInstance;
 
-                        using (StreamWriter writer = new StreamWriter(ctx.Response.OutputStream))
-                        {
+                        byte[] response = System.Text.Encoding.UTF8.GetBytes(instanceStr);
+                        ctx.Response.ContentType = "text/plain"; //这里的类型随便你写.如果想返回HTML格式使用text/html
+                        ctx.Response.StatusCode = 200;
+                        ctx.Response.ContentLength64 = response.LongLength;
+                        ctx.Response.OutputStream.Write(response, 0, response.Length); 
 
-                            writer.Write(instanceStr);
+                        //using (StreamWriter writer = new StreamWriter(ctx.Response.OutputStream))
+                        //{
+                        //    //
+                        //    writer.Write(instanceStr);
 
-                            writer.Close();
-                            ctx.Response.Close();
-                        }
+                        //    writer.Close();
+                        //    ctx.Response.Close();
+                        //}
                     }
                     //string[] splits=rawUrl.Split('/');
                     //string machineName = splits[1];

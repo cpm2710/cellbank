@@ -30,9 +30,13 @@ function getRelativeY(e) {
 
 function refreshRemoteDesktop() {
     //指定图像源
+//    $.getJSON("http://localhost:3390/remotedesktops",
+//    function (data) { alert(data); });
     $.ajax({
         type: "GET",
-        url: "http://" + "localhost" + ":3390/remotedesktops",
+        url: "http://localhost:3390/remotedesktops",
+        contentType: "application/json",
+        dataType: "json",
         beforeSend: modifyHeader,
         success: function (data) {
             var ctx = canvas.getContext("2d");
