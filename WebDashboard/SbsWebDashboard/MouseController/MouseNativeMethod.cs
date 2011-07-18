@@ -7,12 +7,21 @@ namespace MouseController
 {
     class MouseNativeMethod
     {
+        private const int MAX=65535;
+        public static void MoveTo(double x, double y)
+        {
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, (int)(x * MAX), (int)(y * MAX),0,0);
+        }
         public static void MoveTo(int dx, int dy)
         {
-            mouse_event(MOUSEEVENTF_MOVE, dx, dy, 0, 0);
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, dx, dy, 0, 0);
+        }
+        public static void LeftClick(double x, double y)
+        {
+            mouse_event(MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_LEFTDOWN ,(int)(x*MAX), (int)(y*MAX), 0, 0);
         }
         public static void LeftClick(int dx,int dy){
-            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_ABSOLUTE, dx, dy, 0, 0);
+            mouse_event(MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_LEFTDOWN, dx, dy, 0, 0);
         }
         public static void ClickUp(int dx, int dy)
         {

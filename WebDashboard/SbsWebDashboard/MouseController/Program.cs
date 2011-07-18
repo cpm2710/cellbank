@@ -9,7 +9,7 @@ namespace MouseController
     {
         static void Main(string[] args)
         {
-            MouseNativeMethod.MoveTo(500, 400);
+            MouseNativeMethod.MoveTo(30000, 400);
             MouseNativeMethod.LeftClick(500, 400);
         }
     }
