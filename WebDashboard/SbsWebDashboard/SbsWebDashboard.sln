@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRemoteDesktop", "WebRemo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard365Site", "Dashboard365Site\Dashboard365Site.csproj", "{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseController", "MouseController\MouseController.csproj", "{E028F01F-F98C-415F-BF6E-7F98F12DD521}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -135,6 +137,16 @@ Global
 		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8C0B23B1-5029-43E4-A4DF-29ECA03D0A5A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Debug|x86.ActiveCfg = Debug|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Debug|x86.Build.0 = Debug|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Release|Any CPU.ActiveCfg = Release|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Release|x86.ActiveCfg = Release|x86
+		{E028F01F-F98C-415F-BF6E-7F98F12DD521}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
