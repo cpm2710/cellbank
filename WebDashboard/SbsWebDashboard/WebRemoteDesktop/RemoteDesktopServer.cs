@@ -15,6 +15,10 @@ namespace Dashboard365Service
         {
 
         }
+        public void StartControllerConnection()
+        {
+
+        }
         public void StartConnection()
         {
             serverListener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);  // Start the socket
