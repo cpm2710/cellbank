@@ -17,7 +17,7 @@ namespace WebDesktopDaemon
         [DataMember]
         public string DesktopBase64;
     }
-    class RemoteDesktopHttpServer
+    class WebDesktopHttpServer
     {
         public void Listen()
         {

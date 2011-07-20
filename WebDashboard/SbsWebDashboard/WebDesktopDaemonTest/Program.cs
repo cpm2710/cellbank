@@ -11,7 +11,7 @@ namespace WebDesktopDaemonTest
     {
         static void Main(string[] args)
         {
-            RemoteDesktopTCPServer server = new RemoteDesktopTCPServer();
+            WebDesktopTCPServer server = new WebDesktopTCPServer();
             server.Listen();
 
             DaemonControllerTest dct = new DaemonControllerTest();

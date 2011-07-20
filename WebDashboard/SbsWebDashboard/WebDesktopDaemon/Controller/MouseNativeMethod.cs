@@ -10,16 +10,27 @@ namespace WebDesktopDaemon
         private const int MAX=65535;
         public static void MoveTo(double x, double y)
         {
-            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, (int)(x * MAX), (int)(y * MAX),0,0);
-        }
-        public static void MoveTo(int dx, int dy)
-        {
-            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, dx, dy, 0, 0);
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x,y);
         }
         public static void LeftClick(double x, double y)
         {
-            mouse_event(MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_LEFTDOWN ,(int)(x*MAX), (int)(y*MAX), 0, 0);
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, (int)(x * MAX), (int)(y * MAX), 0, 0);
         }
+
+        public static void DoubleClick(double x, double y)
+        {
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, x, y);
+        }
+        public static void ClickUp(double x, double y)
+        {
+            RealAction(MOUSEEVENTF_LEFTUP, x, y);
+        }
+       
+        public static void MoveTo(int dx, int dy)
+        {
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, dx, dy);
+        }
+        
         public static void LeftClick(int dx,int dy){
             mouse_event(MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_LEFTDOWN, dx, dy, 0, 0);
         }
@@ -27,8 +38,13 @@ namespace WebDesktopDaemon
         {
             mouse_event(MOUSEEVENTF_LEFTUP, dx, dy, 0, 0); 
         }
+        private static void RealAction(int action, double x, double y)
+        {
+            mouse_event(action, (int)(x * MAX), (int)(y * MAX), 0, 0);
+        }
+
         [System.Runtime.InteropServices.DllImport("user32")]
-        public static extern int mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+        private static extern int mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
         const int MOUSEEVENTF_MOVE = 0x0001;     // 移动鼠标
 
         const int MOUSEEVENTF_LEFTDOWN = 0x0002; //模拟鼠标左键按下

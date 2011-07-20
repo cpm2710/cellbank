@@ -10,13 +10,13 @@ using System.IO;
 
 namespace WebDesktopDaemon
 {
-    public class RemoteDesktopTCPServer
+    public class WebDesktopTCPServer
     {
         private Socket serverImageListener;
         private Socket serverControlListener;
         private int ImagePort = 3390;
         private int ControlPort = 3391;
-        public RemoteDesktopTCPServer()
+        public WebDesktopTCPServer()
         {
 
         }
@@ -47,6 +47,26 @@ namespace WebDesktopDaemon
 
                     ControlCommand cc=ser.ReadObject(ms) as ControlCommand;
                     Console.Write("cc.CommandType=="+cc.CommandType);
+                    if (cc.CommandType == CommandType.mouse)
+                    {
+                        switch (cc.MouseCommandType)
+                        {
+                            case MouseCommandType.click:{
+                                MouseNativeMethod.LeftClick(cc.x, cc.y);
+                                break;
+                            }
+                            case MouseCommandType.dbclick:
+                                {
+                                    break;
+                                }
+                            case MouseCommandType.move:
+                                {
+                                    MouseNativeMethod.MoveTo(cc.x, cc.y);
+                                    break;
+                                }
+                        }
+                        //MouseNativeMethod.
+                    }
                     sc.Close();
                 }
             }
