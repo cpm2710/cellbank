@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="DaemonControllerTest.cs" />
     <Compile Include="DaemonImageTest.cs" />
-    <Compile Include="DataContractJsonSerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

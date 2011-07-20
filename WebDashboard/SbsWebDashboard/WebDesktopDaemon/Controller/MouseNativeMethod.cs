@@ -12,32 +12,44 @@ namespace WebDesktopDaemon
         {
             RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x,y);
         }
+        public static void LeftDown(double x, double y)
+        {
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, x,y);
+        }
+        public static void LeftUp(double x, double y)
+        {
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, x, y);
+        }
         public static void LeftClick(double x, double y)
         {
-            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, (int)(x * MAX), (int)(y * MAX), 0, 0);
+            LeftDown(x, y);
+            LeftUp(x, y);
         }
-
         public static void DoubleClick(double x, double y)
         {
-            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, x, y);
+            LeftClick(x, y);
+            LeftClick(x, y);
         }
-        public static void ClickUp(double x, double y)
+        public static void RightDown(double x, double y)
         {
-            RealAction(MOUSEEVENTF_LEFTUP, x, y);
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, x, y);
         }
-       
-        public static void MoveTo(int dx, int dy)
+        public static void RightUp(double x, double y)
         {
-            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, dx, dy);
+            RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, x, y);
         }
+        //public static void MoveTo(int dx, int dy)
+        //{
+        //    RealAction(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, dx, dy);
+        //}
         
-        public static void LeftClick(int dx,int dy){
-            mouse_event(MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_LEFTDOWN, dx, dy, 0, 0);
-        }
-        public static void ClickUp(int dx, int dy)
-        {
-            mouse_event(MOUSEEVENTF_LEFTUP, dx, dy, 0, 0); 
-        }
+        //public static void LeftClick(int dx,int dy){
+        //    mouse_event(MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_LEFTDOWN, dx, dy, 0, 0);
+        //}
+        //public static void ClickUp(int dx, int dy)
+        //{
+        //    mouse_event(MOUSEEVENTF_LEFTUP, dx, dy, 0, 0); 
+        //}
         private static void RealAction(int action, double x, double y)
         {
             mouse_event(action, (int)(x * MAX), (int)(y * MAX), 0, 0);

@@ -6,11 +6,14 @@ using System.Runtime.Serialization;
 
 namespace WebDesktopDaemon
 {
-    public enum MouseCommandType{
-        click=0,
-        move=1,
-        up=2,
-        dbclick=3
+    public enum MouseCommandType
+    {
+        move = 0,
+        leftdown = 1,        
+        leftup = 2,
+        rightdown=3,
+        rightup=4,
+        dbclick = 5
     }
     public enum CommandType{
         mouse=0,

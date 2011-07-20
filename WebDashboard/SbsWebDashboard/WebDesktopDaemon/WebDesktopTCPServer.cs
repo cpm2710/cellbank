@@ -35,33 +35,51 @@ namespace WebDesktopDaemon
                 if (sc != null)
                 {
                     byte[] buffer = new byte[ReadControllerBufferSize];
-                    
-                    int size=sc.Receive(buffer);
+
+                    int size = sc.Receive(buffer);
                     byte[] realData = new byte[size];
                     Array.Copy(buffer, realData, size);
                     string controlstr = System.Text.UTF8Encoding.UTF8.GetString(realData);
-                    byte[] trimed=System.Text.UTF8Encoding.UTF8.GetBytes(controlstr.Trim());
+                    byte[] trimed = System.Text.UTF8Encoding.UTF8.GetBytes(controlstr.Trim());
                     DataContractJsonSerializer ser =
                         new DataContractJsonSerializer(typeof(ControlCommand));
                     MemoryStream ms = new MemoryStream(trimed);
 
-                    ControlCommand cc=ser.ReadObject(ms) as ControlCommand;
-                    Console.Write("cc.CommandType=="+cc.CommandType);
+                    ControlCommand cc = ser.ReadObject(ms) as ControlCommand;
+                    Console.WriteLine("cc.CommandType==" + cc.CommandType);
+                    Console.WriteLine("cc.MouseCommandType==" + cc.MouseCommandType);
                     if (cc.CommandType == CommandType.mouse)
                     {
                         switch (cc.MouseCommandType)
                         {
-                            case MouseCommandType.click:{
-                                MouseNativeMethod.LeftClick(cc.x, cc.y);
-                                break;
-                            }
+                            case MouseCommandType.leftdown:
+                                {
+                                    MouseNativeMethod.LeftDown(cc.x, cc.y);
+                                    break;
+                                }
+                            case MouseCommandType.leftup:
+                                {
+                                    MouseNativeMethod.LeftUp(cc.x, cc.y);
+                                    break;
+                                }
                             case MouseCommandType.dbclick:
                                 {
+                                    MouseNativeMethod.DoubleClick(cc.x, cc.y);
                                     break;
                                 }
                             case MouseCommandType.move:
                                 {
                                     MouseNativeMethod.MoveTo(cc.x, cc.y);
+                                    break;
+                                }
+                            case MouseCommandType.rightdown:
+                                {
+                                    MouseNativeMethod.RightDown(cc.x, cc.y);
+                                    break;
+                                }
+                            case MouseCommandType.rightup:
+                                {
+                                    MouseNativeMethod.RightUp(cc.x, cc.y);
                                     break;
                                 }
                         }
@@ -71,7 +89,7 @@ namespace WebDesktopDaemon
                 }
             }
         }
-        
+
         public void Listen()
         {
             ThreadStart imageThreadStart = new ThreadStart(this.ListenImageRequest);

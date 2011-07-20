@@ -17,8 +17,8 @@ namespace WebDesktopDaemonTest
             DaemonControllerTest dct = new DaemonControllerTest();
             dct.Test();
 
-            DaemonImageTest img = new DaemonImageTest();
-            img.Test();
+            //DaemonImageTest img = new DaemonImageTest();
+            //img.Test();
 
             
 
