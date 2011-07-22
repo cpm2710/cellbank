@@ -18,6 +18,8 @@
 
     <link href="./Styles/fp.css" rel="stylesheet" type="text/css" />
     <link href="./Styles/map.css" rel="Stylesheet" type="text/css" />
+    <link href="./Styles/remoteDesktop.css" rel="Stylesheet" type="text/css" />
+
     <script type="text/javascript">
 //        var ii = { UserName: "a", PassWord: "\?\?b", TimeStamp: 1 };
 //        var xx = JSON.stringify(ii);
@@ -29,52 +31,49 @@
 //            }  
             $.getTmpl("/templates/remoteDesktopTemplate.html").done(function () {
                 $locationsTmpl = $("#remoteDesktopTemplate").tmpl(null);
-                $locationsTmpl.appendTo("body");
-
-                
-
-            }); 
+                $locationsTmpl.appendTo("body"); 
+             }); 
         }
-        function renderMap() {
-            $.getTmpl("/templates/locationsTemplate.html").done(function () {
-                $locationsTmpl = $("#locationsTemplate").tmpl(null);
-                $locationsTmpl.appendTo("body");
+//        function renderMap() {
+//            $.getTmpl("/templates/locationsTemplate.html").done(function () {
+//                $locationsTmpl = $("#locationsTemplate").tmpl(null);
+//                $locationsTmpl.appendTo("body");
 
-                var map = new VEMap('locationMap');
-                map.LoadMap();
-                queryUserLocations(function (data) {
-                    var i = 0;
-                    for (i = 0; i < data.length; i++) {
-                        var userLocation = data[i];
-                        var shape = new VEShape(VEShapeType.Pushpin,
-                        new VELatLong(userLocation.Latitude, userLocation.Longitude));
-                        shape.SetTitle(userLocation.UserName);
-                        shape.SetDescription(userLocation.UserName);
-                        map.AddShape(shape);
-                    }
-                });
-            });
-        }
-        function renderFunctionPoints() {
+//                var map = new VEMap('locationMap');
+//                map.LoadMap();
+//                queryUserLocations(function (data) {
+//                    var i = 0;
+//                    for (i = 0; i < data.length; i++) {
+//                        var userLocation = data[i];
+//                        var shape = new VEShape(VEShapeType.Pushpin,
+//                        new VELatLong(userLocation.Latitude, userLocation.Longitude));
+//                        shape.SetTitle(userLocation.UserName);
+//                        shape.SetDescription(userLocation.UserName);
+//                        map.AddShape(shape);
+//                    }
+//                });
+//            });
+//        }
+//        function renderFunctionPoints() {
 
-            $.getTmpl("/templates/functionTemplate.htm").done(function () {
-                queryFunctionPointsForUserAndAddIn
-                (CurrentUser,"main", function (functionPoints) {
-                    for (var i in functionPoints) {
-                        var fp = functionPoints[i];
-                        $ftmpl = $("#ftemplate").tmpl(fp);
-                        $ftmpl.attr("href", fp.NavigationUrl)
-                        $ftmpl.appendTo("#sortable");
-                    }
-                });
-            });
-        }
+//            $.getTmpl("/templates/functionTemplate.htm").done(function () {
+//                queryFunctionPointsForUserAndAddIn
+//                (CurrentUser,"main", function (functionPoints) {
+//                    for (var i in functionPoints) {
+//                        var fp = functionPoints[i];
+//                        $ftmpl = $("#ftemplate").tmpl(fp);
+//                        $ftmpl.attr("href", fp.NavigationUrl)
+//                        $ftmpl.appendTo("#sortable");
+//                    }
+//                });
+//            });
+//        }
         $(document).ready(function () {
-            renderFunctionPoints();
+            //renderFunctionPoints();
            // renderMap();
             renderRemoteDesktop();
-            $("#sortable").sortable();
-            $("#sortable").disableSelection();
+            //$("#sortable").sortable();
+            //$("#sortable").disableSelection();
         });
     
     </script>

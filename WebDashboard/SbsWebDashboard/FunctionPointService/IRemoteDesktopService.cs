@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.ServiceModel.Web;
+using WebDesktopDaemon;
 
 namespace FunctionPointService
 {
@@ -12,6 +13,10 @@ namespace FunctionPointService
     [DataContract]
     public class DesktopSnapshot
     {
+        [DataMember]
+        public int Width;
+        [DataMember]
+        public int Height;
         [DataMember]
         public string MachineName;
         [DataMember]
@@ -23,5 +28,9 @@ namespace FunctionPointService
         [OperationContract]
         [WebGet(UriTemplate = "/desktops/{MachineName}", ResponseFormat = WebMessageFormat.Json)]
         DesktopSnapshot getDesktopSnapshot(string MachineName);
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/desktops", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        DesktopSnapshot sendControlCommand(ControlCommand ControlCommand);
+        
     }
 }

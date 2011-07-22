@@ -14,8 +14,8 @@ namespace WebDesktopDaemonTest
             WebDesktopTCPServer server = new WebDesktopTCPServer();
             server.Listen();
 
-            DaemonControllerTest dct = new DaemonControllerTest();
-            dct.Test();
+            //DaemonControllerTest dct = new DaemonControllerTest();
+            //dct.Test();
 
             //DaemonImageTest img = new DaemonImageTest();
             //img.Test();

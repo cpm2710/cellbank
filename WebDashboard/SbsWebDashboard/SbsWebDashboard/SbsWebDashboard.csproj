@@ -58,6 +58,7 @@
     <Content Include="Scripts\mockdata.js" />
     <Content Include="Scripts\remoteDesktopHandler.js" />
     <Content Include="Styles\map.css" />
+    <Content Include="Styles\remoteDesktop.css" />
     <Content Include="templates\locationsTemplate.html" />
     <Content Include="templates\remoteDesktopTemplate.html" />
     <Content Include="test\draggable.htm" />

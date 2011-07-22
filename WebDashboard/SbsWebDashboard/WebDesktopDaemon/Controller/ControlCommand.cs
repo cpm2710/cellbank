@@ -23,6 +23,8 @@ namespace WebDesktopDaemon
     public class ControlCommand
     {
         [DataMember]
+        public string MachineName;
+        [DataMember]
         public CommandType CommandType;
         [DataMember]
         public string Content;

@@ -13,6 +13,10 @@ namespace WebDesktopDaemon
         private string ServerIP = "";
         private int ImagePort = 3390;
         private int ControlPort = 3391;
+        public WebDesktopTCPClient(string ServerIP)
+        {
+            this.ServerIP = ServerIP;
+        }
         public WebDesktopTCPClient(string ServerIP,int ImagePort,int ControlPort)
         {
             this.ServerIP = ServerIP;

@@ -94,6 +94,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Authentication\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebDesktopDaemon\WebDesktopDaemon.csproj">
+      <Project>{308A237B-4AE5-4E57-9243-65E6DC3BDB31}</Project>
+      <Name>WebDesktopDaemon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

@@ -1,6 +1,7 @@
-﻿//var desktopURL = "/RemoteDesktopService.svc/desktops";
+﻿var desktopURL = "/RemoteDesktopService.svc/desktops";
 var canvas = null;
 var remotedMachineName = null;
+var img = null;
 function getTrueOffsetLeft(ele) {
     var n = 0;
     while (ele) {
@@ -32,7 +33,7 @@ function refreshRemoteDesktop() {
     //指定图像源
     $.ajax({
         type: "GET",
-        url: "http://" + "localhost" + ":3390/remotedesktops",
+        url: desktopURL + "/" + remotedMachineName,
         beforeSend: modifyHeader,
         success: function (data) {
             var ctx = canvas.getContext("2d");
@@ -58,6 +59,9 @@ function refreshRemoteDesktop() {
 function handleClickEvent(e) {
     var x = getRelativeX(e);
     var y = getRelativeY(e);
+    var height = img.height;
+    var width = img.width;
+
     refreshRemoteDesktop();
 }
 function mouseMove(e) {
@@ -81,8 +85,8 @@ function RemoteMachine(machineName) {
     remotedMachineName = machineName;
     registerListener();    
 }
-function Clear() {
-    //清除画布
-    ctx = document.getElementById("canvas1").getContext("2d");
-    ctx.clearRect(0, 0, 250, 300);
-} 
+//function Clear() {
+//    //清除画布
+//    ctx = document.getElementById("canvas1").getContext("2d");
+//    ctx.clearRect(0, 0, 250, 300);
+//} 
