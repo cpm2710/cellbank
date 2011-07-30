@@ -10,18 +10,7 @@ using WebDesktopDaemon;
 namespace FunctionPointService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRemoteDesktopService" in both code and config file together.
-    [DataContract]
-    public class DesktopSnapshot
-    {
-        [DataMember]
-        public int Width;
-        [DataMember]
-        public int Height;
-        [DataMember]
-        public string MachineName;
-        [DataMember]
-        public string DesktopBase64;
-    }
+    
     [ServiceContract]
     public interface IRemoteDesktopService
     {
