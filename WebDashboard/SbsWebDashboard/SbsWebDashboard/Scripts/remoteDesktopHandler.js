@@ -1,4 +1,4 @@
-﻿var desktopURL = "/RemoteDesktopService.svc/desktops";
+﻿var desktopURL = "/RemoteDesktopService.svc/desktopslices";
 var canvas = null;
 var remotedMachineName = null;
 var img = null;
@@ -36,18 +36,37 @@ function refreshRemoteDesktop() {
         url: desktopURL + "/" + remotedMachineName,
         beforeSend: modifyHeader,
         success: function (data) {
-            var ctx = canvas.getContext("2d");
-            //创建图像对象
-            img = new Image();
-            //图像被装入后触发
-            img.onload = function () {
-                ctx.drawImage(img, 0, 0);
+            var imageSlices = eval(data);
+            var i = 0;
+            for (i = 0; i < imageSlices.length; i++) {
+                var islice=imageSlices[i];
+                var ctx = canvas.getContext("2d");
+                //            //创建图像对象
+                var img = new Image();
+                //            //图像被装入后触发
+                img.onload = function () {
+                    ctx.drawImage(img, islice.X, islice.Y);
+                }
+                img.onerror = function () {
+                    alert("imageerror");
+                }
+                var imageSrc = "data:image/png;base64," + islice.DesktopBase64;
+                img.src = imageSrc;
             }
-            img.onerror = function () {
-                alert("imageerror");
-            }
-            var imageSrc = "data:image/png;base64," + data.DesktopBase64;
-            img.src = imageSrc;
+
+            setTimeout(refreshRemoteDesktop, 1);
+            //            var ctx = canvas.getContext("2d");
+            //            //创建图像对象
+            //            img = new Image();
+            //            //图像被装入后触发
+            //            img.onload = function () {
+            //                ctx.drawImage(img, 0, 0);
+            //            }
+            //            img.onerror = function () {
+            //                alert("imageerror");
+            //            }
+            //            var imageSrc = "data:image/png;base64," + data.DesktopBase64;
+            //            img.src = imageSrc;
             //callback(data);
         },
         failed: function (data) {
@@ -61,8 +80,7 @@ function handleClickEvent(e) {
     var y = getRelativeY(e);
     var height = img.height;
     var width = img.width;
-
-    refreshRemoteDesktop();
+    //refreshRemoteDesktop();
 }
 function mouseMove(e) {
     {
@@ -83,7 +101,8 @@ function RemoteMachine(machineName) {
     //获取画布对象
     canvas = $("#remotedesktopcanvas")[0];
     remotedMachineName = machineName;
-    registerListener();    
+    registerListener();
+    refreshRemoteDesktop();
 }
 //function Clear() {
 //    //清除画布

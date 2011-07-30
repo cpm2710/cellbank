@@ -15,6 +15,9 @@ namespace FunctionPointService
     public interface IRemoteDesktopService
     {
         [OperationContract]
+        [WebGet(UriTemplate = "/desktopslices/{MachineName}", ResponseFormat = WebMessageFormat.Json)]
+        string getDesktopSnapshots(string MachineName);
+        [OperationContract]
         [WebGet(UriTemplate = "/desktops/{MachineName}", ResponseFormat = WebMessageFormat.Json)]
         DesktopSnapshot getDesktopSnapshot(string MachineName);
         [OperationContract]

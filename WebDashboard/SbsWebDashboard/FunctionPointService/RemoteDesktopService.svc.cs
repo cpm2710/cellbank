@@ -16,13 +16,17 @@ namespace FunctionPointService
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class RemoteDesktopService : IRemoteDesktopService
     {
+        public string getDesktopSnapshots(string MachineName)
+        {
+            WebDesktopTCPClient client = new WebDesktopTCPClient(MachineName);
+            return client.GetSliceImages();
+        }
         public DesktopSnapshot getDesktopSnapshot(string MachineName)
         {
             WebDesktopTCPClient client = new WebDesktopTCPClient(MachineName);
             string base64 = client.GetImage();
             DesktopSnapshot snapshot = new DesktopSnapshot();
             snapshot.DesktopBase64 = base64;
-            snapshot.MachineName = MachineName;
             return snapshot;
             //DesktopSnapshot snapshot=new DesktopSnapshot();
             //snapshot.MachineName = MachineName;
@@ -44,7 +48,6 @@ namespace FunctionPointService
             string base64=client.SendControl(ControlCommand);
             DesktopSnapshot snapshot = new DesktopSnapshot();
             snapshot.DesktopBase64 = base64;
-            snapshot.MachineName = ControlCommand.MachineName;
             return snapshot;
         }
     }

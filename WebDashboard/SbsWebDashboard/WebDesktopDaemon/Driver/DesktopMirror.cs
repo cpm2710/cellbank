@@ -216,7 +216,7 @@ namespace MirrSharp.Driver
 		/// <summary>
 		/// Driver buffer polling interval, in msec.
 		/// </summary>
-		private const int PollInterval = 100;
+		private const int PollInterval = 1000;
 
 		private void pollingThreadProc()
 		{

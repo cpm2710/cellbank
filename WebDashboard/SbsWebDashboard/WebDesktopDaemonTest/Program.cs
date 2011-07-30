@@ -21,26 +21,21 @@ namespace WebDesktopDaemonTest
             {
                 now = System.DateTime.Now.Ticks / 10000;
                 WebDesktopTCPClient CLIENT = new WebDesktopTCPClient("andy-PC", 3390, 3391);
-                string base64String=CLIENT.GetSliceImages();
-                
-                MemoryStream ms=new MemoryStream(Encoding.UTF8.GetBytes(base64String));
+                string base64String = CLIENT.GetSliceImages();
+
+                MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(base64String));
                 DataContractJsonSerializer ser =
                   new DataContractJsonSerializer(typeof(DesktopSnapshotList));
-               DesktopSnapshotList ss= ser.ReadObject(ms) as DesktopSnapshotList;
-               Console.WriteLine((System.DateTime.Now.Ticks / 10000 - now) + "ms");
-               
-               Console.WriteLine(ss.Count);
+                DesktopSnapshotList ss = ser.ReadObject(ms) as DesktopSnapshotList;
+                Console.WriteLine((System.DateTime.Now.Ticks / 10000 - now) + "ms");
+                for (int i = 0; i < ss.Count; i++)
+                {
+                    Console.WriteLine(ss[i].Width + "  and " + ss[i].Height);
+                }
+                Console.WriteLine(ss.Count);
 
-                //Thread.Sleep(2000);
+                Thread.Sleep(2000);
             }
-            //DaemonControllerTest dct = new DaemonControllerTest();
-            //dct.Test();
-
-           // DaemonImageTest img = new DaemonImageTest();
-           // img.Test();
-
-            
-
         }
     }
 }

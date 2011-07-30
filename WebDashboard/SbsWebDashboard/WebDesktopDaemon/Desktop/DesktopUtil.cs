@@ -68,19 +68,15 @@ namespace WebDesktopDaemon
                 if (bp != null)
                 {
                     bp.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+                    //bp.Save("d:\\abc.png", System.Drawing.Imaging.ImageFormat.Png);
                     byte[] b = m.GetBuffer();
                     string base64string = Convert.ToBase64String(b);
                     DesktopSnapshot s = new DesktopSnapshot();
                     s.X = e.x1;
                     s.Y = e.y1;
                     s.DesktopBase64 = base64string;
-                    if (decodedImages.Count < 10)
                     {
                         decodedImages.Add(s);
-                    }else
-                    {
-                        index = index % 10;
-                        decodedImages[index] = s;
                     }
                 }
             }
