@@ -115,13 +115,15 @@ namespace WebDesktopDaemon
            
             while (true)
             {
-                //等待客户端请求
+                
+                //Thread.Sleep(5000);
+                ////等待客户端请求
                 Socket sc = serverImageListener.Accept();
                 if (sc != null)
                 {
                     string base64String = DesktopUtil.Instance.GetChangedImages();
                     byte[] base64Bytes = Encoding.UTF8.GetBytes(base64String);
-                   // string desktopImageBase64 = DesktopUtil.getDesktopInBase64();
+                    // string desktopImageBase64 = DesktopUtil.getDesktopInBase64();
                     //byte[] base64Bytes = Encoding.UTF8.GetBytes(desktopImageBase64);
                     sc.Send(base64Bytes);
                     sc.Close();

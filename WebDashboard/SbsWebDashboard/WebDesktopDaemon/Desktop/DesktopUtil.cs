@@ -30,7 +30,7 @@ namespace WebDesktopDaemon
     {
 
     }
-    class DesktopUtil
+    public class DesktopUtil
     {
         private static object syncObject = new object();
         private static  DesktopUtil instance;
@@ -49,11 +49,12 @@ namespace WebDesktopDaemon
                 return instance;
             }
         }
-        public DesktopUtil()
+        private DesktopUtil()
         {
-           // _mirror.DesktopChange += _mirror_DesktopChange;
+             _mirror= new DesktopMirror();
+           _mirror.DesktopChange += _mirror_DesktopChange;
         }
-        readonly DesktopMirror _mirror = new DesktopMirror();
+        readonly DesktopMirror _mirror;//
         private object desktopChangeLock = new object();
 
         private DesktopSnapshotList decodedImages = new DesktopSnapshotList();
@@ -73,12 +74,12 @@ namespace WebDesktopDaemon
                     s.X = e.x1;
                     s.Y = e.y1;
                     s.DesktopBase64 = base64string;
-                    if (decodedImages.Count < 100)
+                    if (decodedImages.Count < 10)
                     {
                         decodedImages.Add(s);
                     }else
                     {
-                        index = index % 100;
+                        index = index % 10;
                         decodedImages[index] = s;
                     }
                 }
