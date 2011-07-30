@@ -23,6 +23,17 @@ namespace WebDesktopDaemon
             this.ImagePort = ImagePort;
             this.ControlPort = ControlPort;
         }
+        public string GetSliceImages()
+        {
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.Connect(ServerIP, ImagePort);
+            NetworkStream ns = new NetworkStream(socket);
+            StreamReader sr = new StreamReader(ns);
+            string base64 = sr.ReadToEnd();
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+            return base64;
+        }
         public string GetImage()
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

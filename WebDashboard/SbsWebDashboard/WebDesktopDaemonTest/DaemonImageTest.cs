@@ -12,7 +12,7 @@ namespace WebDesktopDaemonTest
         public void Test()
         {
             WebDesktopTCPClient client = new WebDesktopTCPClient("andy-PC", 3390, 3391);
-            client.GetImage();
+            Console.WriteLine(client.GetImage());
             //ControlCommand cc=new ControlCommand();
             //client.SendControl(cc);
         }
