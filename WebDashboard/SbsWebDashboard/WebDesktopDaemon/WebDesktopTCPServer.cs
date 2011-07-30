@@ -7,6 +7,7 @@ using System.Net;
 using System.Threading;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using MirrSharp.Driver;
 
 namespace WebDesktopDaemon
 {
@@ -16,9 +17,30 @@ namespace WebDesktopDaemon
         private Socket serverControlListener;
         private int ImagePort = 3390;
         private int ControlPort = 3391;
+        readonly DesktopMirror _mirror = new DesktopMirror();
         public WebDesktopTCPServer()
         {
-
+            _mirror.DesktopChange += _mirror_DesktopChange;
+        }
+        private object desktopChangeLock = new object();
+        
+        void _mirror_DesktopChange(object sender, DesktopMirror.DesktopChangeEventArgs e)
+        {
+            _mirror.GetScreen();
+            long now = System.DateTime.Now.Ticks / 10000;
+            //Trace.WriteLine(now - date);
+            //date = System.DateTime.Now.Ticks / 10000;
+            //Trace.WriteLine(string.Format("Changed rect is {0},{1} ; {2}, {3} ({4})", new object[] { e.x1, e.y1, e.x2, e.y2, e.type }));
+        }
+        private void initialDriver()
+        {
+            _mirror.Load();
+            _mirror.Connect();
+        }
+        private void unloadDriver()
+        {
+            _mirror.Disconnect();
+            _mirror.Unload();
         }
         private int ReadControllerBufferSize = 1000;
         private void ListenControllerRequest()

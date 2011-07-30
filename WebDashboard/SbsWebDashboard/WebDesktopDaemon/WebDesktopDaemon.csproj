@@ -53,6 +53,8 @@
     <Compile Include="Desktop\DesktopNativeMethod.cs" />
     <Compile Include="Desktop\DesktopUtil.cs" />
     <Compile Include="Controller\MouseNativeMethod.cs" />
+    <Compile Include="Driver\DesktopMirror.cs" />
+    <Compile Include="Driver\Interop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDesktopHttpServer.cs" />
     <Compile Include="WebDesktopTCPClient.cs" />

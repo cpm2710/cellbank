@@ -15,9 +15,12 @@ namespace WebDesktopDaemon
         rightup=4,
         dbclick = 5
     }
-    public enum CommandType{
-        mouse=0,
-        keyboard=1
+    public enum CommandType
+    {
+        mouse = 0,
+        keyboard = 1,
+        connect = 2,
+        disconnect = 3
     }
     [DataContract]
     public class ControlCommand
