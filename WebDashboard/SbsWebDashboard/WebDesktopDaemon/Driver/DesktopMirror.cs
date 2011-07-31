@@ -255,9 +255,13 @@ namespace MirrSharp.Driver
                       
                     //}
                     long now = System.DateTime.Now.Ticks / 10000;
+                    DesktopChangeEventArgs args = new DesktopChangeEventArgs();
+                    if (buffer.counter - oldCounter > 50)
+                    {
 
-                    DesktopChangeEventArgs args=new DesktopChangeEventArgs();
-                    args.rectangles=RectangleUtil.getRectangle(buffer.pointrect,oldCounter,buffer.counter);
+                    }
+                    
+                    
                     Console.WriteLine(args.rectangles.Count);
                     DesktopChange(this, args);
                     Console.WriteLine((System.DateTime.Now.Ticks/10000-now)+"ms");

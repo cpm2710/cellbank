@@ -67,7 +67,7 @@ namespace WebDesktopDaemon
                 List<System.Drawing.Rectangle> rectangles=e.rectangles;
                 foreach (System.Drawing.Rectangle re in rectangles)
                 {
-                    Console.WriteLine("changed total:  " + re.X + "--" + re.Y+"  width:  "+re.Width+"  height: "+re.Height);
+                    //Console.WriteLine("changed total:  " + re.X + "--" + re.Y+"  width:  "+re.Width+"  height: "+re.Height);
                 }
                 //System.Drawing.Image bp = _mirror.GetRegion(e.x1, e.y1, e.x2, e.y2);//new System.Drawing.Bitmap(@“c:/demo.GIF”);
                 //if (bp != null)
