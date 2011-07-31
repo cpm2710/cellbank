@@ -1,4 +1,4 @@
-﻿//var desktopURL = "/RemoteDesktopService.svc/desktops";
+﻿var desktopURL = "/RemoteDesktopService.svc/desktopslices";
 var canvas = null;
 var remotedMachineName = null;
 function getTrueOffsetLeft(ele) {
@@ -27,42 +27,57 @@ function getRelativeY(e) {
     return y;
 }
 
-
 function refreshRemoteDesktop() {
-    //指定图像源
-//    $.getJSON("http://localhost:3390/remotedesktops",
-//    function (data) { alert(data); });
     $.ajax({
         type: "GET",
-        url: "http://localhost:3390/remotedesktops",
+        url: desktopURL,
         contentType: "application/json",
         dataType: "json",
         beforeSend: modifyHeader,
         success: function (data) {
-            var ctx = canvas.getContext("2d");
-            //创建图像对象
-            img = new Image();
-            //图像被装入后触发
-            img.onload = function () {
-                ctx.drawImage(img, 0, 0);
-            }
-            img.onerror = function () {
-                alert("imageerror");
-            }
-            var imageSrc = "data:image/png;base64," + data.DesktopBase64;
-            img.src = imageSrc;
-            //callback(data);
+            alert(data);
+            setTimeout(refreshRemoteDesktop, 1);
         },
         failed: function (data) {
             alert(data);
         }
     });
 }
+//function refreshRemoteDesktop() {
+//    //指定图像源
+////    $.getJSON("http://localhost:3390/remotedesktops",
+////    function (data) { alert(data); });
+//    $.ajax({
+//        type: "GET",
+//        url: "http://localhost:3390/remotedesktops",
+//        contentType: "application/json",
+//        dataType: "json",
+//        beforeSend: modifyHeader,
+//        success: function (data) {
+//            var ctx = canvas.getContext("2d");
+//            //创建图像对象
+//            img = new Image();
+//            //图像被装入后触发
+//            img.onload = function () {
+//                ctx.drawImage(img, 0, 0);
+//            }
+//            img.onerror = function () {
+//                alert("imageerror");
+//            }
+//            var imageSrc = "data:image/png;base64," + data.DesktopBase64;
+//            img.src = imageSrc;
+//            //callback(data);
+//        },
+//        failed: function (data) {
+//            alert(data);
+//        }
+//    });
+//}
 
 function handleClickEvent(e) {
     var x = getRelativeX(e);
     var y = getRelativeY(e);
-    refreshRemoteDesktop();
+   // refreshRemoteDesktop();
 }
 function mouseMove(e) {
     {
@@ -83,7 +98,8 @@ function RemoteMachine(machineName) {
     //获取画布对象
     canvas = $("#remotedesktopcanvas")[0];
     remotedMachineName = machineName;
-    registerListener();    
+    registerListener();
+
 }
 function Clear() {
     //清除画布
