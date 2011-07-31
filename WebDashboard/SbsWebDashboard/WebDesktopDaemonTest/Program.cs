@@ -27,12 +27,12 @@ namespace WebDesktopDaemonTest
                 DataContractJsonSerializer ser =
                   new DataContractJsonSerializer(typeof(DesktopSnapshotList));
                 DesktopSnapshotList ss = ser.ReadObject(ms) as DesktopSnapshotList;
-                Console.WriteLine((System.DateTime.Now.Ticks / 10000 - now) + "ms");
+               // Console.WriteLine((System.DateTime.Now.Ticks / 10000 - now) + "ms");
                 for (int i = 0; i < ss.Count; i++)
                 {
-                    Console.WriteLine(ss[i].Width + "  and " + ss[i].Height);
+                   // Console.WriteLine(ss[i].Width + "  and " + ss[i].Height);
                 }
-                Console.WriteLine(ss.Count);
+               // Console.WriteLine(ss.Count);
 
                 Thread.Sleep(2000);
             }

@@ -64,21 +64,26 @@ namespace WebDesktopDaemon
             lock (desktopChangeLock)
             {
                 System.IO.MemoryStream m = new System.IO.MemoryStream();
-                System.Drawing.Image bp = _mirror.GetRegion(e.x1, e.y1, e.x2, e.y2);//new System.Drawing.Bitmap(@“c:/demo.GIF”);
-                if (bp != null)
+                List<System.Drawing.Rectangle> rectangles=e.rectangles;
+                foreach (System.Drawing.Rectangle re in rectangles)
                 {
-                    bp.Save(m, System.Drawing.Imaging.ImageFormat.Png);
-                    //bp.Save("d:\\abc.png", System.Drawing.Imaging.ImageFormat.Png);
-                    byte[] b = m.GetBuffer();
-                    string base64string = Convert.ToBase64String(b);
-                    DesktopSnapshot s = new DesktopSnapshot();
-                    s.X = e.x1;
-                    s.Y = e.y1;
-                    s.DesktopBase64 = base64string;
-                    {
-                        decodedImages.Add(s);
-                    }
+                    Console.WriteLine("changed total:  " + re.X + "--" + re.Y+"  width:  "+re.Width+"  height: "+re.Height);
                 }
+                //System.Drawing.Image bp = _mirror.GetRegion(e.x1, e.y1, e.x2, e.y2);//new System.Drawing.Bitmap(@“c:/demo.GIF”);
+                //if (bp != null)
+                //{
+                //    bp.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+                //    //bp.Save("d:\\abc.png", System.Drawing.Imaging.ImageFormat.Png);
+                //    byte[] b = m.GetBuffer();
+                //    string base64string = Convert.ToBase64String(b);
+                //    DesktopSnapshot s = new DesktopSnapshot();
+                //    s.X = e.x1;
+                //    s.Y = e.y1;
+                //    s.DesktopBase64 = base64string;
+                //    {
+                //        decodedImages.Add(s);
+                //    }
+                //}
             }
         }
         public string GetChangedImages()

@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace MirrSharp.Driver
 {
@@ -66,6 +67,7 @@ namespace MirrSharp.Driver
 		public event EventHandler<DesktopChangeEventArgs> DesktopChange;
 		public class DesktopChangeEventArgs : EventArgs
 		{
+            public List<System.Drawing.Rectangle> rectangles;
 			public int x1;
 			public int y1;
 			public int x2;
@@ -80,6 +82,11 @@ namespace MirrSharp.Driver
 				this.y2 = y2;
 				this.type = type;
 			}
+
+            public DesktopChangeEventArgs()
+            {
+                // TODO: Complete member initialization
+            }
 		}
 
 		private string driverInstanceName = "";
@@ -233,22 +240,28 @@ namespace MirrSharp.Driver
 				if (oldCounter != buffer.counter)
 				{
 					Trace.WriteLine(string.Format("Counter changed. Old is {0} new is {1}", oldCounter, buffer.counter));
-					for (long currentChange = oldCounter; currentChange != buffer.counter; currentChange++ )
-					{
-						if (currentChange >= ChangesBuffer.MAXCHANGES_BUF) 
-							currentChange = 0;
+                    //for (long currentChange = oldCounter; currentChange != buffer.counter; currentChange++ )
+                    //{
+                    //    if (currentChange >= ChangesBuffer.MAXCHANGES_BUF) 
+                    //        currentChange = 0;
 
-						if (DesktopChange != null)
-							DesktopChange(this,
-							              new DesktopChangeEventArgs(buffer.pointrect[currentChange].rect.x1,
-							                                         buffer.pointrect[currentChange].rect.y1,
-							                                         buffer.pointrect[currentChange].rect.x2,
-							                                         buffer.pointrect[currentChange].rect.y2,
-																	 (OperationType) buffer.pointrect[currentChange].type));
-                        //Thread.Sleep(1000);
-                        //TODO wirte the changes back here
-					}
+                    //    if (DesktopChange != null)
+                    //        DesktopChange(this,
+                    //                      new DesktopChangeEventArgs(buffer.pointrect[currentChange].rect.x1,
+                    //                                                 buffer.pointrect[currentChange].rect.y1,
+                    //                                                 buffer.pointrect[currentChange].rect.x2,
+                    //                                                 buffer.pointrect[currentChange].rect.y2,
+                    //                                                 (OperationType) buffer.pointrect[currentChange].type));
+                      
+                    //}
+                    long now = System.DateTime.Now.Ticks / 10000;
 
+                    DesktopChangeEventArgs args=new DesktopChangeEventArgs();
+                    args.rectangles=RectangleUtil.getRectangle(buffer.pointrect,oldCounter,buffer.counter);
+                    Console.WriteLine(args.rectangles.Count);
+                    DesktopChange(this, args);
+                    Console.WriteLine((System.DateTime.Now.Ticks/10000-now)+"ms");
+                    
 					oldCounter = buffer.counter;
 				}
 
