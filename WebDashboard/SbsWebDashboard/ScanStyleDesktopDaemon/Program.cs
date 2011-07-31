@@ -17,16 +17,18 @@ namespace ScanStyleDesktopDaemon
             
             while (true)
             {
+                now = System.DateTime.Now.Ticks / 10000;
                List<Bitmap> changes= _mirror.getDifference();
+               
                Console.WriteLine(changes.Count);
-                //now = System.DateTime.Now.Ticks / 10000;
+                
                 //Bitmap screen = _mirror.GetScreen();
 
                 //System.IO.MemoryStream m = new System.IO.MemoryStream();
 
                 //screen.Save(m, System.Drawing.Imaging.ImageFormat.Png);
 
-                //Console.WriteLine((System.DateTime.Now.Ticks / 10000 - now) + "ms");
+                Console.WriteLine((System.DateTime.Now.Ticks / 10000 - now) + "ms");
             }
             
             _mirror.Disconnect();

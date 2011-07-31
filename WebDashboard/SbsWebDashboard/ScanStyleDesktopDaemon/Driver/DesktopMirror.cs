@@ -210,12 +210,7 @@ namespace MirrSharp.Driver
             if (oldCounter == long.MaxValue)
 					oldCounter = buffer.counter;
 
-            if (oldCounter != buffer.counter)
-            {
-                
-                Console.WriteLine("Changed Number"+(buffer.counter-oldCounter));
-                oldCounter = buffer.counter;
-            }
+            //toReturn.Add(GetScreen());
             if (buffer.counter > (oldCounter + 50))
             {
                 toReturn.Add(GetScreen());
@@ -224,14 +219,19 @@ namespace MirrSharp.Driver
             {
                 for (long i = oldCounter; i < buffer.counter; i++)
                 {
-                    toReturn.Add(this.GetRegion(buffer.pointrect[oldCounter].rect.x1,
+                    Bitmap b = this.GetRegion(buffer.pointrect[oldCounter].rect.x1,
                         buffer.pointrect[oldCounter].rect.y1,
                         buffer.pointrect[oldCounter].rect.x2,
-                        buffer.pointrect[oldCounter].rect.y2));
-
+                        buffer.pointrect[oldCounter].rect.y2);
+                    if (b != null)
+                    {
+                        toReturn.Add(b);
+                    }
                 }
-                
+
             }
+            Console.WriteLine("Changed Number" + (buffer.counter - oldCounter));
+            oldCounter = buffer.counter;
             return toReturn;
         }
 
@@ -337,53 +337,77 @@ namespace MirrSharp.Driver
         }
         public Bitmap GetRegion(int x1,int y1,int x2,int y2)
         {
-            if (x1 == y1 || x2 == y2)
+            if (x1 == x2 || y1 == y2)
             {
                 return null;
             }
-            if (State != MirrorState.Connected && State != MirrorState.Running)
-                throw new InvalidOperationException("In order to get current screen you must at least be connected to the driver");
-
-            PixelFormat format;
-            if (_bitmapBpp == 16)
-                format = PixelFormat.Format16bppRgb565;
-            else if (_bitmapBpp == 24)
-                format = PixelFormat.Format24bppRgb;
-            else if (_bitmapBpp == 32)
-                format = PixelFormat.Format32bppArgb;
-            else
-            {
-                Debug.Fail("Unknown pixel format");
-                throw new Exception("Unknown pixel format");
-            }
-
-            var result = new Bitmap(_bitmapWidth, _bitmapHeight, format);
-
-            var rect = new System.Drawing.Rectangle(0, 0, _bitmapWidth, _bitmapHeight);
-            BitmapData bmpData = result.LockBits(rect, ImageLockMode.WriteOnly, format);
-            
-            // Get the address of the first line.
-            IntPtr ptr = bmpData.Scan0;
-            // Declare an array to hold the bytes of the bitmap.
-            int bytes = bmpData.Stride * _bitmapHeight;
-
-            var getChangesBuffer = (GetChangesBuffer)Marshal.PtrToStructure(_getChangesBuffer, typeof(GetChangesBuffer));
-            var data = new byte[bytes];
-            Marshal.Copy(getChangesBuffer.UserBuffer, data, 0, bytes);
-            // Copy the RGB values into the bitmap.
-            Marshal.Copy(data, 0, ptr, bytes);
-
-            result.UnlockBits(bmpData);
             int width = x2 - x1;
             int height = y2 - y1;
+            PixelFormat format;
+            format = PixelFormat.Format32bppArgb;
+            var result = new Bitmap(width, height, format);
 
-            Bitmap changedMap = new Bitmap(width,height,PixelFormat.Format32bppArgb) ;
-            var g=Graphics.FromImage(changedMap);
-            var rg = new System.Drawing.Rectangle(x1, y1, width, height);
-            var changedMapRec = new System.Drawing.Rectangle(0, 0, width, height);
-            g.DrawImage(result, changedMapRec, rg, GraphicsUnit.Pixel);
+            var rect = new System.Drawing.Rectangle(0, 0, width, height);
+            BitmapData bmpData = result.LockBits(rect, ImageLockMode.WriteOnly, format);
+            IntPtr ptr = bmpData.Scan0;
+            int bytes = bmpData.Stride * height;
+            var data = new byte[bytes];
+
+            var getChangesBuffer = (GetChangesBuffer)Marshal.PtrToStructure(_getChangesBuffer, typeof(GetChangesBuffer));
+            for (int i = 0; i < height; i++)
+            {
+                Marshal.Copy(getChangesBuffer.UserBuffer, data, i*bmpData.Stride, bmpData.Stride);
+            }
+            Marshal.Copy(data, 0, ptr, bytes);
+            result.UnlockBits(bmpData);
+            return result;
+            //if (x1 == y1 || x2 == y2)
+            //{
+            //    return null;
+            //}
+            //if (State != MirrorState.Connected && State != MirrorState.Running)
+            //    throw new InvalidOperationException("In order to get current screen you must at least be connected to the driver");
+
+            //PixelFormat format;
+            //if (_bitmapBpp == 16)
+            //    format = PixelFormat.Format16bppRgb565;
+            //else if (_bitmapBpp == 24)
+            //    format = PixelFormat.Format24bppRgb;
+            //else if (_bitmapBpp == 32)
+            //    format = PixelFormat.Format32bppArgb;
+            //else
+            //{
+            //    Debug.Fail("Unknown pixel format");
+            //    throw new Exception("Unknown pixel format");
+            //}
+
+            //var result = new Bitmap(_bitmapWidth, _bitmapHeight, format);
+
+            //var rect = new System.Drawing.Rectangle(0, 0, _bitmapWidth, _bitmapHeight);
+            //BitmapData bmpData = result.LockBits(rect, ImageLockMode.WriteOnly, format);
             
-            return changedMap;
+            //// Get the address of the first line.
+            //IntPtr ptr = bmpData.Scan0;
+            //// Declare an array to hold the bytes of the bitmap.
+            //int bytes = bmpData.Stride * _bitmapHeight;
+
+            //var getChangesBuffer = (GetChangesBuffer)Marshal.PtrToStructure(_getChangesBuffer, typeof(GetChangesBuffer));
+            //var data = new byte[bytes];
+            //Marshal.Copy(getChangesBuffer.UserBuffer, data, 0, bytes);
+            //// Copy the RGB values into the bitmap.
+            //Marshal.Copy(data, 0, ptr, bytes);
+
+            //result.UnlockBits(bmpData);
+            //int width = x2 - x1;
+            //int height = y2 - y1;
+
+            //Bitmap changedMap = new Bitmap(width,height,PixelFormat.Format32bppArgb) ;
+            //var g=Graphics.FromImage(changedMap);
+            //var rg = new System.Drawing.Rectangle(x1, y1, width, height);
+            //var changedMapRec = new System.Drawing.Rectangle(0, 0, width, height);
+            //g.DrawImage(result, changedMapRec, rg, GraphicsUnit.Pixel);
+            
+            //return changedMap;
         }
 
         private byte[] originFrame;
