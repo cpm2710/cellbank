@@ -146,6 +146,16 @@ namespace MirrSharp.Driver
 			_bitmapHeight = deviceMode.dmPelsHeight = Screen.PrimaryScreen.Bounds.Height;
 			_bitmapWidth = deviceMode.dmPelsWidth = Screen.PrimaryScreen.Bounds.Width;
 
+
+            var result = new Bitmap(_bitmapWidth, _bitmapHeight, PixelFormat.Format32bppArgb);
+
+            var rect = new System.Drawing.Rectangle(0, 0, _bitmapWidth, _bitmapHeight);
+            BitmapData bmpData = result.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            _totalStride = bmpData.Stride;
+            result.UnlockBits(bmpData);
+           
+
+
 			bool deviceFound;
 			uint deviceIndex = 0;
 
@@ -192,6 +202,7 @@ namespace MirrSharp.Driver
 			if (State != MirrorState.Loaded)
 				throw new InvalidOperationException("You may call Connect only if the state is Loaded");
 
+
 			bool result = mapSharedBuffers(); // Adjusts _running
 			if (result)
 			{
@@ -211,7 +222,7 @@ namespace MirrSharp.Driver
 					oldCounter = buffer.counter;
 
             //toReturn.Add(GetScreen());
-            if (buffer.counter > (oldCounter + 50))
+            if (buffer.counter > (oldCounter + 24))
             {
                 toReturn.Add(GetScreen());
             }
@@ -219,18 +230,23 @@ namespace MirrSharp.Driver
             {
                 for (long i = oldCounter; i < buffer.counter; i++)
                 {
-                    Bitmap b = this.GetRegion(buffer.pointrect[oldCounter].rect.x1,
-                        buffer.pointrect[oldCounter].rect.y1,
-                        buffer.pointrect[oldCounter].rect.x2,
-                        buffer.pointrect[oldCounter].rect.y2);
-                    if (b != null)
+                    if (buffer.pointrect[i].type == (uint)OperationType.dmf_dfo_BLIT
+                        || buffer.pointrect[i].type == (uint)OperationType.dmf_dfo_SCREEN_SCREEN
+                        || buffer.pointrect[i].type == (uint)OperationType.dmf_dfo_TO_SCREEN)
                     {
-                        toReturn.Add(b);
+                        Bitmap b = this.GetRegion(buffer.pointrect[i].rect.x1,
+                            buffer.pointrect[i].rect.y1,
+                            buffer.pointrect[i].rect.x2,
+                            buffer.pointrect[i].rect.y2);
+                        if (b != null)
+                        {
+                            toReturn.Add(b);
+                        }
                     }
                 }
 
             }
-            Console.WriteLine("Changed Number" + (buffer.counter - oldCounter));
+            //Console.WriteLine("Changed Number" + (buffer.counter - oldCounter));
             oldCounter = buffer.counter;
             return toReturn;
         }
@@ -331,10 +347,7 @@ namespace MirrSharp.Driver
 
 		private int _bitmapWidth, _bitmapHeight, _bitmapBpp;
 
-        public string GetScreenEncode()
-        {
-            return null;
-        }
+        private int _totalStride;
         public Bitmap GetRegion(int x1,int y1,int x2,int y2)
         {
             if (x1 == x2 || y1 == y2)
@@ -354,9 +367,10 @@ namespace MirrSharp.Driver
             var data = new byte[bytes];
 
             var getChangesBuffer = (GetChangesBuffer)Marshal.PtrToStructure(_getChangesBuffer, typeof(GetChangesBuffer));
+            
             for (int i = 0; i < height; i++)
             {
-                Marshal.Copy(getChangesBuffer.UserBuffer, data, i*bmpData.Stride, bmpData.Stride);
+                Marshal.Copy(new IntPtr((long)getChangesBuffer.UserBuffer+i*_totalStride+4*width), data, i*bmpData.Stride, bmpData.Stride);
             }
             Marshal.Copy(data, 0, ptr, bytes);
             result.UnlockBits(bmpData);
@@ -410,7 +424,49 @@ namespace MirrSharp.Driver
             //return changedMap;
         }
 
-        private byte[] originFrame;
+        
+        public List<Bitmap> GetScreenInLineCut()
+        {
+            if (State != MirrorState.Connected && State != MirrorState.Running)
+                throw new InvalidOperationException("In order to get current screen you must at least be connected to the driver");
+
+            PixelFormat format;
+            if (_bitmapBpp == 16)
+                format = PixelFormat.Format16bppRgb565;
+            else if (_bitmapBpp == 24)
+                format = PixelFormat.Format24bppRgb;
+            else if (_bitmapBpp == 32)
+                format = PixelFormat.Format32bppArgb;
+            else
+            {
+                Debug.Fail("Unknown pixel format");
+                throw new Exception("Unknown pixel format");
+            }
+            int times = 1;
+            int lineHeight = _bitmapHeight / times;
+            List<Bitmap> lineCuts = new List<Bitmap>();
+            for (int i = 0; i < times; i++)
+            {
+                var result = new Bitmap(_bitmapWidth, lineHeight, format);
+
+                var rect = new System.Drawing.Rectangle(0, 0, _bitmapWidth, lineHeight);
+                BitmapData bmpData = result.LockBits(rect, ImageLockMode.WriteOnly, format);
+
+                // Get the address of the first line.
+                IntPtr ptr = bmpData.Scan0;
+                // Declare an array to hold the bytes of the bitmap.
+                int bytes = bmpData.Stride * lineHeight;
+
+                var getChangesBuffer = (GetChangesBuffer)Marshal.PtrToStructure(_getChangesBuffer, typeof(GetChangesBuffer));
+                var data = new byte[bytes];
+                Marshal.Copy((IntPtr)(getChangesBuffer.UserBuffer + i * bmpData.Stride), data, 0, bytes);
+                // Copy the RGB values into the bitmap.
+                Marshal.Copy(data, 0, ptr, bytes);
+                result.UnlockBits(bmpData);
+                lineCuts.Add(result);
+            }
+            return lineCuts;
+        }
         public Bitmap GetScreen()
 		{
 			if (State != MirrorState.Connected && State != MirrorState.Running)

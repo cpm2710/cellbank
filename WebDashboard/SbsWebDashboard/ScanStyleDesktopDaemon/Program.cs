@@ -19,6 +19,7 @@ namespace ScanStyleDesktopDaemon
             {
                 now = System.DateTime.Now.Ticks / 10000;
                List<Bitmap> changes= _mirror.getDifference();
+               //List<Bitmap> changes= _mirror.GetScreenInLineCut();
                foreach (Bitmap change in changes)
                {
                    System.IO.MemoryStream m = new System.IO.MemoryStream();
@@ -26,7 +27,7 @@ namespace ScanStyleDesktopDaemon
                }
                 //if(changes.Count>0)
                //changes[0].Save("d:\\abc.png", System.Drawing.Imaging.ImageFormat.Png);
-               Console.WriteLine("changes count:"+changes.Count);
+               //Console.WriteLine("changes count:"+changes.Count);
                 
                 //Bitmap screen = _mirror.GetScreen();
 
