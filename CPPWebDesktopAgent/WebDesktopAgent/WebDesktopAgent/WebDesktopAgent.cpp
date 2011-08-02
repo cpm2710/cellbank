@@ -55,13 +55,16 @@ GdiplusStartup(&m_gdiplusToken, &m_gdiplusStartupInput, NULL);
    encoderParameters.Parameter[0].NumberOfValues = 1;
 
    // Save the image as a JPEG with quality level 0.
-   ULONG             quality = 100;
+   ULONG             quality = 50;
    encoderParameters.Parameter[0].Value = &quality;
+   long t1=GetTickCount();
+   HDC screenDC = CreateDC(_T("DISPLAY"), NULL, NULL, NULL);
 
-	HDC screenDC = CreateDC(_T("DISPLAY"), NULL, NULL, NULL);
-	Graphics graphics(screenDC);
+   Graphics graphics(screenDC);
 	int x = GetDeviceCaps(screenDC, HORZRES);  
     int y = GetDeviceCaps(screenDC, VERTRES); 
+	for(int i=0;i<100;i++){
+	t1=GetTickCount();
 
 	Bitmap outputImage(x,y,&graphics);
 	
@@ -70,8 +73,12 @@ GdiplusStartup(&m_gdiplusToken, &m_gdiplusStartupInput, NULL);
 	::BitBlt(imageDC,0,0,x,y,screenDC,0,0,0xCC0020);
 	imgGraphics->ReleaseHDC(imageDC);
 	
-	outputImage.Save(L"d:\\abc.png",&encoderClsid,&encoderParameters);
-	DeleteDC(screenDC);
+	//outputImage.Save(L"d:\\abc.png",&encoderClsid,&encoderParameters);
+	
+	printf("%dms\n",GetTickCount()-t1);
+	t1=GetTickCount();
+   }
+   DeleteDC(screenDC);
 	Gdiplus::GdiplusShutdown(m_gdiplusToken);
 	return 0;
 }
