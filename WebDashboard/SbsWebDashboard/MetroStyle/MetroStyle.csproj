@@ -59,6 +59,7 @@
     <Content Include="Scripts\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\mockdata.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\templates.min.js" />
     <Content Include="Styles\main.css" />
