@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntersectTest", "IntersectT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScanStyleDesktopDaemon", "ScanStyleDesktopDaemon\ScanStyleDesktopDaemon.csproj", "{F7EC137B-7B37-4924-9D6A-EBB2D840A98F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroStyle", "MetroStyle\MetroStyle.csproj", "{985C547D-8F91-4A7F-9B13-B8CF9A698E45}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -195,6 +197,16 @@ Global
 		{F7EC137B-7B37-4924-9D6A-EBB2D840A98F}.Release|Mixed Platforms.Build.0 = Release|x86
 		{F7EC137B-7B37-4924-9D6A-EBB2D840A98F}.Release|x86.ActiveCfg = Release|x86
 		{F7EC137B-7B37-4924-9D6A-EBB2D840A98F}.Release|x86.Build.0 = Release|x86
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{985C547D-8F91-4A7F-9B13-B8CF9A698E45}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
