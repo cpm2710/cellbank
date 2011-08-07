@@ -1,0 +1,18 @@
+﻿body 
+{
+    background:#260930;
+	overflow: hidden;
+}
+.ground
+{
+    width:3000px;
+    height:650px;
+    margin:0px;
+}
+#mostused
+{
+    width:1000px;
+    height:auto;
+    position:absolute;
+    top:80px;
+}
