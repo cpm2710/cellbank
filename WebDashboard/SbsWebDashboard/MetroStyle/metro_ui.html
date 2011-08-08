@@ -13,17 +13,22 @@
     <script type="text/javascript" src="./Scripts/jquery-animate-css-rotate-scale.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-           
+            $("#tile2").click(function () {
+                //$(this).animate({rotate: '30deg', scale: '1.25'}, 1000);
+                //$(this).animate({ width: "0%" }, 1000);
+                $(this).animate({ width: "-=100px" },5000,"linear");
+               // $(this).animate({ scale: "2" }, 1000);
+            });
         });
     </script>
 </head>
 <body>
 <div class="ground">
     <div id="tile">
-    abc
+    abcddddddddddddd
     </div>
     <div id="tile2">
-    abcdef
+    abcdefdddddddddddddddd
     </div>
 </div>
 </body>
