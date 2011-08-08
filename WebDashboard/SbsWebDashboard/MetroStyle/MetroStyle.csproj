@@ -62,6 +62,7 @@
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.tmpl.min.js" />
     <Content Include="Scripts\mockdata.js" />
+    <Content Include="Scripts\rotate3Di.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\templates.min.js" />
     <Content Include="Styles\main.css" />

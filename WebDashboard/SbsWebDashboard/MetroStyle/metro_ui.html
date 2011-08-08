@@ -11,13 +11,15 @@
     <script type="text/javascript" src="./Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="./Scripts/jquery-css-transform.js"></script>
     <script type="text/javascript" src="./Scripts/jquery-animate-css-rotate-scale.js"></script>
+    <script type="text/javascript" src="./Scripts/rotate3Di.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#tile2").click(function () {
                 //$(this).animate({rotate: '30deg', scale: '1.25'}, 1000);
                 //$(this).animate({ width: "0%" }, 1000);
-                $(this).animate({ width: "-=100px" },5000,"linear");
-               // $(this).animate({ scale: "2" }, 1000);
+                $(this).animate({ width: "-=200px" }, 1000, "easeOutBounce");
+                $(this).rotate3Di("flip", 1000);
+                // $(this).animate({ scale: "2" }, 1000);
             });
         });
     </script>
