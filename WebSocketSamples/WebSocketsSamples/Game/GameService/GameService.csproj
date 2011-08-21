@@ -56,7 +56,10 @@
   <ItemGroup>
     <Reference Include="Microsoft.ServiceModel.WebSockets, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files (x86)\Microsoft SDKs\WCF WebSockets\11.06.22\bin\Microsoft.ServiceModel.WebSockets.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\WCF WebSockets\11.06.22\bin\Microsoft.ServiceModel.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceModel.WebSockets.Silverlight">
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\WCF WebSockets\11.06.22\bin\Microsoft.ServiceModel.WebSockets.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
