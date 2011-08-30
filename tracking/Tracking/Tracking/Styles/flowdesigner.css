@@ -1,0 +1,29 @@
+﻿#pagecontent
+{
+    display:block;
+    float:left;
+    margin: 0;
+    width:100%;
+    height:100%;
+}
+#controllerpanel
+{
+    float:left;
+    width:30%;
+    height:100%;
+}
+.selectedcontroller {
+    background-color: #65C294;
+}
+#designerpanel
+{
+    float:left;
+    width:70%;
+    height:100%;
+}
+#designercanvas
+{
+    float:left;
+    width:100%;
+    height:100%;
+}
