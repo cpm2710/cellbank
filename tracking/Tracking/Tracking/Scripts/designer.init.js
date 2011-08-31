@@ -14,28 +14,24 @@
     "Type": "end",
     "AlertCount": "0"
 }, {
-    "Description": "Task",
+    "Description": "State",
     "ImgUrl": ".\/images\/flowdesigner\/task_empty.png",
-    "Type": "task",
+    "Type": "state",
     "AlertCount": "0"
-}, {
-    "Description": "Decision",
-    "ImgUrl": ".\/images\/flowdesigner\/ruledecision.png",
-    "Type": "decision",
-    "AlertCount": "0"
-}, {
+},{
     "Description": "Transition",
     "ImgUrl": ".\/images\/flowdesigner\/transition.png",
     "Type": "transition",
     "AlertCount": "0"
 }, {
-    "Description": "Custom",
+    "Description": "Event",
     "ImgUrl": ".\/images\/flowdesigner\/customize.png",
-    "Type": "custom",
+    "Type": "event",
     "AlertCount": "0"
 }];
 var fmodel;
 var canvas;
+var selectedControllerType="select";
 function renderControllers() {//左边工具栏的一些初始化，以及对应的click更改当前操作状态
     $.getTmpl("./templates/functionTemplate.htm").done(function () {
         for (var i in functionPoints) {
@@ -46,37 +42,25 @@ function renderControllers() {//左边工具栏的一些初始化，以及对应
                 $ftile.removeClass("selectedcontroller");
                 $(this).addClass("selectedcontroller");
                 var tmplItem = $.tmplItem($(this));
-
                 //如果上一个状态是连线，清除连线的一些状态
                 if (selectedControllerType != null && selectedControllerType == "transition") {
                     transitionFrom = null;
                     fmodel.tempTransition = null;
                     repaint();
                 }
-
                 selectedControllerType = tmplItem.data.Type;
             });
             $ftmpl.appendTo("#designercontrollers");
         }
     });
 }
-function handleClickEvent(e) {//处理鼠标事件
-    var x = getRelativeX(e,canvas);
-    var y = getRelativeY(e, canvas);
-    //selectedNode = selectElement(x, y);
-}
 
-function mouseMove(e) {//对于鼠标移动时的处理
-}
-function mouseUp(e) {
-
-}
 
 function initialDesigner(){
-    //fmodel = new flowmodel();
-	//canvas = $("#designercanvas")[0];
-	//canvas.width = $("#flowdesignerwrapper")[0].offsetWidth;
-    //canvas.height = $("#flowdesignerwrapper")[0].offsetHeight;
+    fmodel = new flowmodel();
+	canvas = $("#designercanvas")[0];
+	canvas.width = $("#designerpanel")[0].offsetWidth;
+	canvas.height = $("#designerpanel")[0].offsetHeight;
     renderControllers();
     initialDesignerPanel();
 }

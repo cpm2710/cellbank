@@ -13,6 +13,7 @@
     <RootNamespace>Tracking</RootNamespace>
     <AssemblyName>Tracking</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,9 +68,11 @@
     <Content Include="images\flowdesigner\start_event_empty.png" />
     <Content Include="images\flowdesigner\task_empty.png" />
     <Content Include="images\flowdesigner\transition.png" />
-    <Content Include="Scripts\connections.lib.js" />
+    <Content Include="Scripts\collections.lib.js" />
+    <Content Include="Scripts\designer.controller.js" />
     <Content Include="Scripts\designer.flowmodel.js" />
     <Content Include="Scripts\designer.init.js" />
+    <Content Include="Scripts\designer.painter.js" />
     <Content Include="Scripts\gettmpl.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-animate-css-rotate-scale.js" />
