@@ -8,7 +8,13 @@
 function selectElement(x, y) {
     var states = fmodel.states.values();
     var events = fmodel.events.values();
-    var transitions = fmodel.transitions.values();        
+    var transitions = fmodel.transitions.values();
+    if (fmodel.start!=null&&containedIn(fmodel.start, x, y)) {
+        return fmodel.start;
+    }
+    if (fmodel.end!=null&&containedIn(fmodel.end, x, y)) {
+        return fmodel.end;
+    }
         var i = 0;
         for (i = 0; i < states.length; i++) {
             if (containedIn(states[i], x, y)) {
@@ -54,14 +60,32 @@ function handleClickEvent(e) {//处理鼠标事件
         c.y = y - (c.height / 2);
         fmodel.states.put(c.name, c);
     } else if (selectedControllerType == "transition") {
-    if (transitionFrom == null) {
-        transitionFrom = selectedNode;
-    } else {
-        transitionTo = selectedNode;
-        var t = new transition(transitionFrom, transitionTo, "");
+        if (transitionFrom == null) {
+            transitionFrom = selectedNode;
+        } else {
+            transitionTo = selectedNode;
+            var t = new transition(transitionFrom, transitionTo, "");
 
-        fmodel.transitions.put(t.name, t);
-        transitionFrom = null;
+            fmodel.transitions.put(t.name, t);
+            transitionFrom = null;
+        }
+    } else if (selectedControllerType == "start") {
+    if (fmodel.start != null) {
+        alert("only one start could exist.");
+    } else {
+        var start = new controller("start", selectedControllerType);
+        start.x = x - (start.width / 2);
+        start.y = y - (start.height / 2);
+        fmodel.start = start;
+    }
+    } else if (selectedControllerType = "end") {
+    if (fmodel.end != null) {
+        alert("only one end could exits.");
+    } else {
+        var end = new controller("end", selectedControllerType);
+        end.x = x - (end.width / 2);
+        end.y = y - (end.height / 2);
+        fmodel.end = end;
     }
     }
     }

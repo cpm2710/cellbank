@@ -121,40 +121,39 @@ function MarkCurNode(x, y,width,height, ctx) {// 每个节点周围描绘8个点
     ctx.stroke();
 }
 
+function drawNode(c, ctx) {
+    var image = new Image();
+    image.src = c.ImgUrl;
+    ctx.drawImage(image, c.x, c.y, c.width, c.height);
+    ctx.font = "12pt Arial"; // 设置字体，大小
+    ctx.textBaseline = "top"; // 设置文字垂直对齐方式
+    ctx.textAlign = "center"; // 设置文字水平对齐方式
+    var strtext = c.name;
+    ctx.fillText(strtext, (c.x + c.width / 2), (c.y
+						+ c.height + 5));
+    if (c.selected == true) {
+        MarkCurNode(c.x, c.y, c.width, c.height, ctx);
+    }
+}
 function paint(model, ctx) {
     ctx.canvas.width = canvas.width;
     ctx.canvas.height = canvas.height;
+
+    if (fmodel.start != null) {
+        drawNode(fmodel.start,ctx);
+    }
+    if (fmodel.end != null) {
+        drawNode(fmodel.end, ctx);
+    }
     var states = model.states.values();
     for (i = 0; i < states.length; i++) {
         var c = states[i];
-        var image = new Image();
-        image.src = states[i].ImgUrl;
-        ctx.drawImage(image, c.x, c.y, c.width, c.height);
-        ctx.font = "12pt Arial"; // 设置字体，大小
-        ctx.textBaseline = "top"; // 设置文字垂直对齐方式
-        ctx.textAlign = "center"; // 设置文字水平对齐方式
-        var strtext = c.name;
-        ctx.fillText(strtext, (c.x + c.width / 2), (c.y
-						+ c.height + 5));
-        if (c.selected == true) {
-            MarkCurNode(c.x, c.y,c.width,c.height, ctx);
-        }
+        drawNode(c,ctx);
     }
     var events = model.events.values();
     for (i = 0; i < events.length; i++) {
         var e = events[i];
-        var img = new Image();
-        image.src = states[i].ImgUrl;
-        ctx.drawImage(image, c.x, c.y, c.width, c.height);
-        ctx.font = "12pt Arial"; // 设置字体，大小
-        ctx.textBaseline = "top"; // 设置文字垂直对齐方式
-        ctx.textAlign = "center"; // 设置文字水平对齐方式
-        var strtext = c.name;
-        ctx.fillText(strtext, (c.x + c.width / 2), (c.y
-						+ c.height + 5));
-        if (c.selected == true) {
-            MarkCurNode(c.x, c.y, c.width, c.height, ctx);
-        }
+        drawNode(e, ctx);
     }
     var transitions = model.transitions.values();
     for (i = 0; i < transitions.length; i++) {
@@ -165,7 +164,6 @@ function paint(model, ctx) {
         var end_y = t.to.y + t.to.height / 2;
         drawLine(start_x, start_y, end_x, end_y, t.from.width, t.from.height, ctx);
         ctx.stroke();
-        //TODO paint the transitions.
     }
     ctx.stroke();
 }
