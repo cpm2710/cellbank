@@ -3,7 +3,19 @@
     this.states = new HashMap(); //记录节点信息的HashMap
     this.transitions = new HashMap(); //记录连线信息的HashMap
     this.events = new HashMap();
-
+    this.clearSelection = function () {
+        if (this.states != null) {
+            var i = 0;
+            var sts = this.states.values();
+            for (i = 0; i < sts.length; i++) {
+                sts[i].selected = false;
+            }
+            var evts = this.events.values();
+            for (i = 0; i < evts.length; i++) {
+                evts[i].selected = false;
+            }
+        }
+    }
 }
 function asXml(model) {
     var result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";

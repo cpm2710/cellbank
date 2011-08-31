@@ -27,16 +27,16 @@ function selectElement(x, y) {
 function handleClickEvent(e) {//处理鼠标事件
     var x = e.layerX;// getRelativeX(e, canvas);
     var y = e.layerY; // getRelativeY(e, canvas);
-   // alert(e.layerX);
-    //alert(e.layerY);
     if (selectedControllerType == null) {
         return;
     }
     var selectedNode = selectElement(x, y);
     if (selectedControllerType == "select") {
-        if (selectedNode == null) {
+        if (selectedNode != null) {
+            fmodel.clearSelection();
             selectedNode.selected = true;
         }
+        
     } else {
     
     if (selectedControllerType == "event") {
@@ -51,8 +51,7 @@ function handleClickEvent(e) {//处理鼠标事件
         c.x = x - (c.width / 2);
         c.y = y - (c.height / 2);
         fmodel.states.put(c.name, c);
-    }
-        
+    }        
     }
     repaint();
    

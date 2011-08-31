@@ -58,7 +58,7 @@ function renderControllers() {//左边工具栏的一些初始化，以及对应
 function resizeDesignerCanvas() {
     canvas.width = $("#designerpanel")[0].offsetWidth;
     canvas.height = $("#designerpanel")[0].offsetHeight;
-
+    repaint();
 }
 
 function initialDesigner(){
