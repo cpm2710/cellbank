@@ -63,3 +63,9 @@ function mouseMove(e) {//对于鼠标移动时的处理
 function mouseUp(e) {
 
 }
+function doKeyDown(evt) {
+    switch (evt.keyCode) {
+        case 38:
+            break;
+    }
+}

@@ -68,6 +68,7 @@
     <Content Include="images\flowdesigner\start_event_empty.png" />
     <Content Include="images\flowdesigner\task_empty.png" />
     <Content Include="images\flowdesigner\transition.png" />
+    <Content Include="SampleDoc\SampleXML.xml" />
     <Content Include="Scripts\collections.lib.js" />
     <Content Include="Scripts\designer.controller.js" />
     <Content Include="Scripts\designer.flowmodel.js" />

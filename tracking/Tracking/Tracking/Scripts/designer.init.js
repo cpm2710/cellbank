@@ -55,6 +55,11 @@ function renderControllers() {//左边工具栏的一些初始化，以及对应
     });
 }
 
+function resizeDesignerCanvas() {
+    canvas.width = $("#designerpanel")[0].offsetWidth;
+    canvas.height = $("#designerpanel")[0].offsetHeight;
+
+}
 
 function initialDesigner(){
     fmodel = new flowmodel();
@@ -63,6 +68,10 @@ function initialDesigner(){
 	canvas.height = $("#designerpanel")[0].offsetHeight;
     renderControllers();
     initialDesignerPanel();
+    $(window).resize(function () {
+        resizeDesignerCanvas();
+    });
+    window.addEventListener('keydown',doKeyDown,true);
 }
 function initialDesignerPanel() {
     $("#designercanvas").mousedown(handleClickEvent); //canvas面板的鼠标单击事件
