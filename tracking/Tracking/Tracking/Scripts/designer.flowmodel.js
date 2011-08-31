@@ -48,5 +48,6 @@ function transition(from, to,acceptevent) {
     this.from = from;
     this.to = to;
     this.acceptevent = acceptevent;
+    this.name = from.name +"to"+ to.name;
     this.visible = "";
 }

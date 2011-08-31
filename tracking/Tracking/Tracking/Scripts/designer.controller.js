@@ -23,7 +23,8 @@ function selectElement(x, y) {
 
     return null;
 }
-
+var transitionFrom = null;
+var transitionTo = null;
 function handleClickEvent(e) {//处理鼠标事件
     var x = e.layerX;// getRelativeX(e, canvas);
     var y = e.layerY; // getRelativeY(e, canvas);
@@ -38,7 +39,7 @@ function handleClickEvent(e) {//处理鼠标事件
         }
         
     } else {
-    
+
     if (selectedControllerType == "event") {
         var name = "Event" + fmodel.events.values().length;
         var c = new controller(name, selectedControllerType)
@@ -51,7 +52,17 @@ function handleClickEvent(e) {//处理鼠标事件
         c.x = x - (c.width / 2);
         c.y = y - (c.height / 2);
         fmodel.states.put(c.name, c);
-    }        
+    } else if (selectedControllerType == "transition") {
+    if (transitionFrom == null) {
+        transitionFrom = selectedNode;
+    } else {
+        transitionTo = selectedNode;
+        var t = new transition(transitionFrom, transitionTo, "");
+
+        fmodel.transitions.put(t.name, t);
+        transitionFrom = null;
+    }
+    }
     }
     repaint();
    
