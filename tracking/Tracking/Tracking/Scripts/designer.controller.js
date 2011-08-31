@@ -25,13 +25,14 @@ function selectElement(x, y) {
 }
 var transitionFrom = null;
 var transitionTo = null;
+var selectedNode = null;
 function handleClickEvent(e) {//处理鼠标事件
     var x = e.layerX;// getRelativeX(e, canvas);
     var y = e.layerY; // getRelativeY(e, canvas);
     if (selectedControllerType == null) {
         return;
     }
-    var selectedNode = selectElement(x, y);
+    selectedNode = selectElement(x, y);
     if (selectedControllerType == "select") {
         if (selectedNode != null) {
             fmodel.clearSelection();
@@ -69,9 +70,16 @@ function handleClickEvent(e) {//处理鼠标事件
 }
 
 function mouseMove(e) {//对于鼠标移动时的处理
+    if (selectedControllerType == "select") {
+        if (selectedNode != null) {
+            selectedNode.x = e.layerX - (selectedNode.width / 2);
+            selectedNode.y = e.layerY - (selectedNode.height / 2);
+        }
+    }
+    repaint();
 }
 function mouseUp(e) {
-
+    selectedNode = null;
 }
 function doKeyDown(evt) {
     switch (evt.keyCode) {
