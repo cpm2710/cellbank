@@ -1,0 +1,27 @@
+﻿<StateMachineWorkflowDesigner xmlns:ns0="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Size="610, 458" AutoSizeMargin="16, 24" Location="30, 30" Name="Workflow1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<StateMachineWorkflowDesigner.Designers>
+		<StateDesigner Size="325, 143" AutoSizeMargin="16, 24" Location="185, 75" Name="Started">
+			<StateDesigner.Designers>
+				<StateInitializationDesigner Name="stateInitializationActivity1" Size="150, 206" Location="193, 108">
+					<StateInitializationDesigner.Designers>
+						<CodeDesigner Name="codeActivity1" Size="130, 41" Location="203, 173" />
+						<SetStateDesigner Name="setStateActivity1" Size="130, 62" Location="203, 233" />
+					</StateInitializationDesigner.Designers>
+				</StateInitializationDesigner>
+			</StateDesigner.Designers>
+		</StateDesigner>
+		<StateDesigner Size="160, 80" AutoSizeMargin="16, 24" Location="203, 255" Name="Working" />
+		<StateDesigner Size="160, 80" AutoSizeMargin="16, 24" Location="207, 378" Name="stateActivity1" />
+	</StateMachineWorkflowDesigner.Designers>
+	<StateMachineWorkflowDesigner.DesignerConnectors>
+		<StateDesignerConnector TargetActivity="Working" SetStateName="setStateActivity1" SourceActivity="Started" TargetConnectionIndex="0" SourceStateName="Started" TargetConnectionEdge="Top" SourceConnectionEdge="Right" EventHandlerName="stateInitializationActivity1" SourceConnectionIndex="0" TargetStateName="Working">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="381" Y="119" />
+				<ns0:Point X="515" Y="119" />
+				<ns0:Point X="515" Y="243" />
+				<ns0:Point X="283" Y="243" />
+				<ns0:Point X="283" Y="255" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+	</StateMachineWorkflowDesigner.DesignerConnectors>
+</StateMachineWorkflowDesigner>
