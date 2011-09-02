@@ -1,3 +1,0 @@
-﻿<StateMachineWorkflowActivity x:Class="TrackingStateMachine.Workflow2" Name="Workflow2" InitialStateName="Workflow2InitialState" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <StateActivity Name="Workflow2InitialState" />
-</StateMachineWorkflowActivity>
