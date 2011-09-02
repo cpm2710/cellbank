@@ -12,25 +12,44 @@ namespace TrackingStateMachine
     {
         static void Main(string[] args)
         {
-          QFEWorkFlow wf=new QFEWorkFlow();
-          WorkflowApplication app = new WorkflowApplication(wf);
-          app.Run();
-          
-          
+            SETrackingMachine m = new SETrackingMachine();
+            m.app.Run();
 
-          app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-          ReadOnlyCollection<BookmarkInfo> bookInfos = app.GetBookmarks();
-          foreach (BookmarkInfo i in bookInfos)
-          {
-              Console.WriteLine(i.BookmarkName);
-          }
-          app.Run();
-          bookInfos = app.GetBookmarks();
-          foreach (BookmarkInfo i in bookInfos)
-          {
-              Console.WriteLine(i.BookmarkName);
-          }
-          app.Run();
+          //app.Run();
+          //app.Idle += new Action<WorkflowApplicationIdleEventArgs>(() => { });
+          //WorkflowInvoker.in(wf);
+          m.app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
+          //ReadOnlyCollection<BookmarkInfo> bookInfos = app.GetBookmarks();
+          //foreach (BookmarkInfo i in bookInfos)
+          //{
+          //    Console.WriteLine(i.BookmarkName);
+          //}
+          //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
+         
+          //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
+
+          //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
+          
+          //bookInfos = app.GetBookmarks();
+          //foreach (BookmarkInfo i in bookInfos)
+          //{
+          //    Console.WriteLine(i.BookmarkName);
+          //}
+          //app.Run();
             //app.ResumeBookmark(ChooseTransitionEvent
 
         }
