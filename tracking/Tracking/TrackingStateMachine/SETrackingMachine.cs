@@ -37,7 +37,7 @@ namespace TrackingStateMachine
         }
         private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
         {
-            //currentBookmarks = args.Bookmarks;
+            currentBookmarks = args.Bookmarks;
             //if (nextEvent == null)
             //{
             //    nextEventEvent.WaitOne();
@@ -49,6 +49,7 @@ namespace TrackingStateMachine
         private string nextEvent = null;
         public void AcceptEvent(string eventName)
         {
+            currentBookmarks = null;
             app.ResumeBookmark(eventName, new ChooseTransitionResult());
             //are.WaitOne();
             //nextEvent = eventName;

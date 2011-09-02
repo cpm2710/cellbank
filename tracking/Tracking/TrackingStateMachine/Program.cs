@@ -20,7 +20,18 @@ namespace TrackingStateMachine
 
 
             m.AcceptEvent(ChooseTransitionEvent.ProcessStart.ToString());
+            while (m.CurrentBookmarks == null)
+            {
+                Thread.Sleep(1000);
+            }
             ReadOnlyCollection<BookmarkInfo> bookInfos2=m.app.GetBookmarks();
+
+            m.AcceptEvent(bookInfos2[0].BookmarkName);
+            while (m.CurrentBookmarks == null)
+            {
+                Thread.Sleep(1000);
+            }
+            bookInfos2 = m.app.GetBookmarks();
             AutoResetEvent e = new AutoResetEvent(false);
             e.WaitOne();
           //app.Run();
