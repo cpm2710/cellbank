@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingStateMachine", "Tra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEActivities", "SEActivities\SEActivities.csproj", "{711AD212-A9AF-4502-A641-9351A914C3BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingActivityActionServices", "TrackingActivityActionServices\TrackingActivityActionServices.csproj", "{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -63,6 +65,16 @@ Global
 		{711AD212-A9AF-4502-A641-9351A914C3BE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{711AD212-A9AF-4502-A641-9351A914C3BE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{711AD212-A9AF-4502-A641-9351A914C3BE}.Release|x86.ActiveCfg = Release|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

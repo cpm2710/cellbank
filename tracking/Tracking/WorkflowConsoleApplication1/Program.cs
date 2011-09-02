@@ -15,8 +15,10 @@ namespace WorkflowConsoleApplication1
         {
             var connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
             SqlWorkflowInstanceStore instanceStore = new SqlWorkflowInstanceStore(connStr);
+            
             Workflow1 w = new Workflow1();
             
+            //instanceStore.
             //IDictionary<string, object> xx=WorkflowInvoker.Invoke(new Workflow1());
             //ICollection<string> keys=xx.Keys;
             
