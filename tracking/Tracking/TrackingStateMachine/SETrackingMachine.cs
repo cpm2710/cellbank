@@ -13,17 +13,25 @@ namespace TrackingStateMachine
     public class SETrackingMachine
     {
         public WorkflowApplication app;
-        string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
-        SqlWorkflowInstanceStore instanceStore ;
+        
         AutoResetEvent are = new AutoResetEvent(false);
         AutoResetEvent nextEventEvent = new AutoResetEvent(false);
         public SETrackingMachine()
         {
-            QFEWorkFlow wf = new QFEWorkFlow(); 
+            string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
+            SqlWorkflowInstanceStore instanceStore;
             instanceStore = new SqlWorkflowInstanceStore(connStr);
+           
+
+            QFEWorkFlow wf = new QFEWorkFlow(); 
+            
             app = new WorkflowApplication(wf);
             app.InstanceStore = instanceStore;
             app.Idle += this.OnWorkflowIdle;            
+        }
+        public void PersistMachine()
+        {            
+            app.Unload();
         }
         public SETrackingMachine(string instanceId)
         {

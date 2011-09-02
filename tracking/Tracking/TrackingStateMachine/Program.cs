@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Activities.Hosting;
 using System.Activities.Tracking;
 using System.Threading;
+using System.Activities.DurableInstancing;
 namespace TrackingStateMachine
 {
 
@@ -14,6 +15,25 @@ namespace TrackingStateMachine
     {
         static void Main(string[] args)
         {
+            //var connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
+            //SqlWorkflowInstanceStore instanceStore = new SqlWorkflowInstanceStore(connStr);
+
+
+            //6d64d963-b950-439a-aeaa-4b9b101528ab
+
+            QFEWorkFlow wf = new QFEWorkFlow();
+
+            WorkflowApplication app = new WorkflowApplication(wf);
+            string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
+            SqlWorkflowInstanceStore instanceStore;
+            instanceStore = new SqlWorkflowInstanceStore(connStr);
+
+            app.InstanceStore = instanceStore;
+            app.Load(new Guid("6d64d963-b950-439a-aeaa-4b9b101528ab"));
+
+            ReadOnlyCollection<BookmarkInfo> oldBookmarks=app.GetBookmarks();
+
+
             SETrackingMachine m = new SETrackingMachine();
             m.app.Run();
             ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
@@ -32,6 +52,8 @@ namespace TrackingStateMachine
                 Thread.Sleep(1000);
             }
             bookInfos2 = m.app.GetBookmarks();
+
+            m.PersistMachine();
             AutoResetEvent e = new AutoResetEvent(false);
             e.WaitOne();
           //app.Run();
