@@ -28,8 +28,6 @@ namespace SEActivities
         }
         protected override void Execute(NativeActivityContext context)
         {
-            // CardReaderEvent.None is a no op
-
             string cardReaderEvent = this.ChooseTransitionEvent.ToString();
             context.CreateBookmark(cardReaderEvent, this.ChooseTransitionCallback);
             

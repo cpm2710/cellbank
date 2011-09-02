@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Activities.Hosting;
 using System.Activities.DurableInstancing;
 using System.Threading;
+using SEActivities;
 namespace TrackingStateMachine
 {
     public class SETrackingMachine
@@ -15,6 +16,7 @@ namespace TrackingStateMachine
         string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
         SqlWorkflowInstanceStore instanceStore ;
         AutoResetEvent are = new AutoResetEvent(false);
+        AutoResetEvent nextEventEvent = new AutoResetEvent(false);
         public SETrackingMachine()
         {
             QFEWorkFlow wf = new QFEWorkFlow(); 
@@ -35,13 +37,23 @@ namespace TrackingStateMachine
         }
         private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
         {
-            currentBookmarks = args.Bookmarks;
-            this.are.Reset();
+            //currentBookmarks = args.Bookmarks;
+            //if (nextEvent == null)
+            //{
+            //    nextEventEvent.WaitOne();
+            //}
+            //app.ResumeBookmark(nextEvent, new ChooseTransitionResult());
+            //nextEvent = null;
+            //this.are.Reset();
         }
+        private string nextEvent = null;
         public void AcceptEvent(string eventName)
         {
+            app.ResumeBookmark(eventName, new ChooseTransitionResult());
             //are.WaitOne();
-            app.ResumeBookmark(eventName, null);
+            //nextEvent = eventName;
+            //nextEventEvent.Reset();
+            //
         }
     }
 }

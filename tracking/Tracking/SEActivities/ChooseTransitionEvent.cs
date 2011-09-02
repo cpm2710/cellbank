@@ -7,6 +7,7 @@ namespace SEActivities
 {
     public enum ChooseTransitionEvent
     {
+        ProcessStart,
         RequireMoreInformation,
         ProvideMoreInformation,
         AssignToTriage

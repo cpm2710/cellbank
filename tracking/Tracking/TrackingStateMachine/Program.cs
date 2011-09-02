@@ -6,6 +6,7 @@ using SEActivities;
 using System.Collections.ObjectModel;
 using System.Activities.Hosting;
 using System.Activities.Tracking;
+using System.Threading;
 namespace TrackingStateMachine
 {
 
@@ -15,12 +16,18 @@ namespace TrackingStateMachine
         {
             SETrackingMachine m = new SETrackingMachine();
             m.app.Run();
+            ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
 
+
+            m.AcceptEvent(ChooseTransitionEvent.ProcessStart.ToString());
+            ReadOnlyCollection<BookmarkInfo> bookInfos2=m.app.GetBookmarks();
+            AutoResetEvent e = new AutoResetEvent(false);
+            e.WaitOne();
           //app.Run();
           //app.Idle += new Action<WorkflowApplicationIdleEventArgs>(() => { });
           //WorkflowInvoker.in(wf);
           //ReadOnlyCollection<BookmarkInfo> bookmarkInfos=  m.CurrentBookmarks;
-            m.AcceptEvent(ChooseTransitionEvent.RequireMoreInformation.ToString());
+           // m.AcceptEvent(ChooseTransitionEvent.RequireMoreInformation.ToString());
             //m.app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
 
           //WorkflowInstanceQuery que = new WorkflowInstanceQuery();
