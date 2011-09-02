@@ -19,14 +19,22 @@ namespace WorkflowConsoleApplication1
             
             //IDictionary<string, object> xx=WorkflowInvoker.Invoke(new Workflow1());
             //ICollection<string> keys=xx.Keys;
+            
             WorkflowApplication a = new WorkflowApplication(w);
             a.InstanceStore = instanceStore;
-            a.Persist();
-            a.Unload();
-            Guid id = a.Id;
-            WorkflowApplication b = new WorkflowApplication(w);
-            b.InstanceStore = instanceStore;
-            b.Load(id);
+            a.GetBookmarks();
+            //a.ResumeBookmark("Final State", new object());
+           
+            a.Run();
+            //a.ResumeBookmark(
+
+            
+            //a.Persist();
+            //a.Unload();
+            //Guid id = a.Id;
+            //WorkflowApplication b = new WorkflowApplication(w);
+            //b.InstanceStore = instanceStore;
+            //b.Load(id);
             //WorkflowApplication a=new WorkflowApplication(
         }
     }
