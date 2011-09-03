@@ -26,9 +26,20 @@ namespace TrackingCommands
         }
         public void executeCommand(string commandName,Dictionary<string,string> inputs)
         {
-            object command=Assembly.Load("TrackingCommands").CreateInstance("TrackingCommands."+commandName);
+            Assembly trackingCommandsAssembly = Assembly.Load("TrackingCommands");
+            object command = trackingCommandsAssembly.CreateInstance("TrackingCommands." + commandName);
+
             Command cmd = (Command)command;
+            FieldInfo [] fieldInfos=cmd.GetType().GetFields();
+            foreach (FieldInfo fi in fieldInfos)
+            {
+                fi.SetValue(cmd, inputs[fi.Name]);
+            }
             cmd.execute();
+            //Command cmd = (Command)command;
+            //FieldInfo [] fieldInfos=cmd.GetType().GetFields();
+            //Assembly.Load("TrackingCommands").
+            ///cmd.execute();
             //Type[] types = Assembly.Load("TrackingCommands").GetTypes();
             //foreach (Type t in types)
             //{

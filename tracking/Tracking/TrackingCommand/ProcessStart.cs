@@ -10,6 +10,7 @@ namespace TrackingCommands
         public override void execute()
         {
             Console.WriteLine("this is process start command");
+            Console.WriteLine("assigned to" + this.AssignTo);
         }
         public override void validate()
         {
