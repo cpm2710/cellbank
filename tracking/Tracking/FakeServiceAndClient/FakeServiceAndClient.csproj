@@ -51,6 +51,10 @@
       <Project>{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}</Project>
       <Name>TrackingCommands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackingDataSource\TrackingDataSource.csproj">
+      <Project>{61B20189-1432-44AB-A86D-A6623C0EFCDE}</Project>
+      <Name>TrackingDataSource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackingStateMachine\TrackingStateMachine.csproj">
       <Project>{7214B86B-75B6-4E77-A78A-97B2D15CA308}</Project>
       <Name>TrackingStateMachine</Name>

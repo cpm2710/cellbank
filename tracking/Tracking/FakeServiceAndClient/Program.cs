@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TrackingCommands;
-
+using TrackingDataSource;
 namespace FakeServiceAndClient
 {
     class Program
@@ -16,10 +16,13 @@ namespace FakeServiceAndClient
             Dictionary<string, string> inputWithValues = new Dictionary<string, string>();
             foreach (string input in requiredInputs)
             {
-                inputWithValues.Add(input, "st");
-                
+                inputWithValues.Add(input, "st");                
             }
             ci.executeCommand("ProcessStart", inputWithValues);
+
+            GeneralDataSource psds = new GeneralDataSource();
+            psds.getValueCandidates("assignedto");
+            //psds.getCandidate();
         }
     }
 }
