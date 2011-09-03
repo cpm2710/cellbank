@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingActivityActionServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCommands", "TrackingCommand\TrackingCommands.csproj", "{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeServiceAndClient", "FakeServiceAndClient\FakeServiceAndClient.csproj", "{36580783-98F3-4F43-BF21-D774B91D36CF}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -75,6 +77,16 @@ Global
 		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|x86.ActiveCfg = Release|Any CPU
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Debug|x86.ActiveCfg = Debug|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Debug|x86.Build.0 = Debug|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Release|Any CPU.ActiveCfg = Release|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Release|Mixed Platforms.Build.0 = Release|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Release|x86.ActiveCfg = Release|x86
+		{36580783-98F3-4F43-BF21-D774B91D36CF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
