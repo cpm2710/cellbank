@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking", "Tracking\Tracking.csproj", "{9693F65F-7E7B-4F20-A824-E1D85701FB8A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowConsoleApplication1", "WorkflowConsoleApplication1\WorkflowConsoleApplication1.csproj", "{1929A973-A7C5-400D-958B-07CFD4BA0245}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingStateMachine", "TrackingStateMachine\TrackingStateMachine.csproj", "{7214B86B-75B6-4E77-A78A-97B2D15CA308}"
@@ -10,6 +8,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEActivities", "SEActivities\SEActivities.csproj", "{711AD212-A9AF-4502-A641-9351A914C3BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingActivityActionServices", "TrackingActivityActionServices\TrackingActivityActionServices.csproj", "{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingCommands", "TrackingCommand\TrackingCommands.csproj", "{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -25,16 +25,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9693F65F-7E7B-4F20-A824-E1D85701FB8A}.Release|x86.ActiveCfg = Release|Any CPU
 		{1929A973-A7C5-400D-958B-07CFD4BA0245}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{1929A973-A7C5-400D-958B-07CFD4BA0245}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{1929A973-A7C5-400D-958B-07CFD4BA0245}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -75,6 +65,16 @@ Global
 		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DEFE0CC0-CB50-4C80-8EE1-0BB16A8C0E9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

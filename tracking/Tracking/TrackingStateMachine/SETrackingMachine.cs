@@ -46,6 +46,7 @@ namespace TrackingStateMachine
         private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
         {
             currentBookmarks = args.Bookmarks;
+            this.PersistMachine();
             //if (nextEvent == null)
             //{
             //    nextEventEvent.WaitOne();
