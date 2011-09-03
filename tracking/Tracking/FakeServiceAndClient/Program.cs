@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TrackingCommands;
 
 namespace FakeServiceAndClient
 {
@@ -9,7 +10,10 @@ namespace FakeServiceAndClient
     {
         static void Main(string[] args)
         {
+            CommandInteraction ci = new CommandInteraction();
+            List<string> requiredInputs=ci.getRequiredInputs("ProcessStart");
 
+            
         }
     }
 }

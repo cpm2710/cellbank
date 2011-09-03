@@ -5,9 +5,10 @@ using System.Text;
 
 namespace TrackingCommands
 {
-    public interface Command
+    public abstract class Command
     {
-        void execute();
-        void validate();
+        public string AssignTo;
+       public abstract void execute();
+       public abstract void validate();
     }
 }

@@ -5,14 +5,13 @@ using System.Text;
 
 namespace TrackingCommands
 {
-    public class StartQFECommand:Command
+    public class ProcessStart:Command
     {
-        public string AssignTo;
-        public void execute()
+        public override void execute()
         {
 
         }
-        public void validate()
+        public override void validate()
         {
 
         }

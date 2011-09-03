@@ -40,8 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignToTriage.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="StartQFECommand.cs" />
+    <Compile Include="CommandInteraction.cs" />
+    <Compile Include="ProvideMoreInformation.cs" />
+    <Compile Include="RequireMoreInformation.cs" />
+    <Compile Include="ProcessStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
