@@ -13,7 +13,13 @@ namespace FakeServiceAndClient
             CommandInteraction ci = new CommandInteraction();
             List<string> requiredInputs=ci.getRequiredInputs("ProcessStart");
 
-            
+            Dictionary<string, string> inputWithValues = new Dictionary<string, string>();
+            foreach (string input in requiredInputs)
+            {
+                inputWithValues.Add(input, "st");
+                
+            }
+            ci.executeCommand("ProcessStart", inputWithValues);
         }
     }
 }

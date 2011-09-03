@@ -9,7 +9,7 @@ namespace TrackingCommands
     {
         public override void execute()
         {
-
+            Console.WriteLine("this is process start command");
         }
         public override void validate()
         {

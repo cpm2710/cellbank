@@ -24,9 +24,20 @@ namespace TrackingCommands
             }
             return requiredInputs;
         }
-        public void executeCommand(string commandName)
+        public void executeCommand(string commandName,Dictionary<string,string> inputs)
         {
-
+            object command=Assembly.Load("TrackingCommands").CreateInstance("TrackingCommands."+commandName);
+            Command cmd = (Command)command;
+            cmd.execute();
+            //Type[] types = Assembly.Load("TrackingCommands").GetTypes();
+            //foreach (Type t in types)
+            //{
+            //    if (t.Name.Equals(commandName))
+            //    {
+            //        t.
+            //        //Assembly.Load("").CreateInstance("TrackingCommands");
+            //    }
+            //}
         }
     }
 }
