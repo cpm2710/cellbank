@@ -18,6 +18,9 @@ namespace TrackingService
         public WorkFlowInstanceList GetWorkFlowInstances()
         {
             WorkFlowInstanceList l = new WorkFlowInstanceList();
+            WorkFlowInstanceDataContext dataContext = new WorkFlowInstanceDataContext();
+            var workflowinstance = from b in dataContext.InstancesTables select b;
+
             return l;
         }
 

@@ -72,16 +72,20 @@
     <Content Include="Scripts\designer.init.js" />
     <Content Include="Scripts\designer.painter.js" />
     <Content Include="Scripts\gettmpl.js" />
+    <Content Include="Scripts\interaction.controller.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-animate-css-rotate-scale.js" />
     <Content Include="Scripts\jquery-css-transform.js" />
     <Content Include="Scripts\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\mockdata.js" />
     <Content Include="Scripts\position.util.js" />
     <Content Include="Scripts\templates.min.js" />
     <Content Include="Styles\flowdesigner.css" />
     <Content Include="templates\functionTemplate.htm" />
+    <Content Include="templates\HTMLPage1.htm" />
+    <Content Include="templates\interactionTemplate.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
