@@ -22,6 +22,7 @@ namespace TrackingService
 	using System;
 	
 	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Tracking")]
 	public partial class TrackingDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,6 +31,12 @@ namespace TrackingService
     #region Extensibility Method Definitions
     partial void OnCreated();
     #endregion
+		
+		public TrackingDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TrackingConnectionString"].ConnectionString, mappingSource)
+		{
+			OnCreated();
+		}
 		
 		public TrackingDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -53,6 +60,77 @@ namespace TrackingService
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<Tracking> Trackings
+		{
+			get
+			{
+				return this.GetTable<Tracking>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tracking")]
+	public partial class Tracking
+	{
+		
+		private System.Nullable<System.Guid> _wfinstanceid;
+		
+		private string _wfname;
+		
+		private string _currentevent;
+		
+		public Tracking()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wfinstanceid", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> wfinstanceid
+		{
+			get
+			{
+				return this._wfinstanceid;
+			}
+			set
+			{
+				if ((this._wfinstanceid != value))
+				{
+					this._wfinstanceid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wfname", DbType="NChar(50)")]
+		public string wfname
+		{
+			get
+			{
+				return this._wfname;
+			}
+			set
+			{
+				if ((this._wfname != value))
+				{
+					this._wfname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_currentevent", DbType="NChar(50)")]
+		public string currentevent
+		{
+			get
+			{
+				return this._currentevent;
+			}
+			set
+			{
+				if ((this._currentevent != value))
+				{
+					this._currentevent = value;
+				}
+			}
 		}
 	}
 }
