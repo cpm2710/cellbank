@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
+using TrackingCommands;
 
 namespace TrackingService
 {
@@ -39,6 +40,22 @@ namespace TrackingService
                 return wfi;
             }
             return null;
+        }
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/parameters/{CommandName}", ResponseFormat = WebMessageFormat.Json)]
+        public ParameterList GetParameters(string CommandName)
+        {
+            ParameterList pList=new ParameterList();
+            CommandInteraction ci = new CommandInteraction();
+            List<string> requierdInputs=ci.getRequiredInputs(CommandName);
+            foreach (string i in requierdInputs)
+            {
+                Parameter p = new Parameter();
+                p.Name = i;
+                pList.Add(p);
+            }
+            return pList;
         }
     }
 }
