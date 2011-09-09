@@ -1,15 +1,17 @@
-﻿function initializeInteraction(eventName) {
-    
+﻿function initializeInteraction(commandName) {
     $.getTmplSync("./templates/interactionTemplate.html").done(function () {
         $usersModelT = $("#interactionTemplate").tmpl(null);
-        $usersModelT.appendTo(parent.model);
+        showInLightbox($usersModelT);
+        //$usersModelT.appendTo(parent.model);
         //self.hide();
     });
-    //GetParameters(
+    //GetParameters(commandName, function (parameters) {
+        
+    //});
 }
-function validateInteraction(eventName) {
+function validateInteraction(commandName) {
     
 }
-function commitInteraction(eventName) {
+//function commitInteraction(commandInfo) {
     
-}
+//}
