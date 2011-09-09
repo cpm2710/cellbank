@@ -17,7 +17,7 @@ namespace TrackingService
     public class TrackingService 
     {
         [OperationContract]
-        [WebGet(UriTemplate = "/", ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(UriTemplate = "/workflowinstances", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowInstanceList GetWorkFlowInstances()
         {
             WorkFlowInstanceList l = new WorkFlowInstanceList();
@@ -27,7 +27,7 @@ namespace TrackingService
             return l;
         }
         [OperationContract]
-        [WebGet(UriTemplate = "/{InstanceId}", ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(UriTemplate = "/workflowinstances/{InstanceId}", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowInstance GetWorkFlowInstance(string InstanceId)
         {
             WorkFlowInstance wfi = new WorkFlowInstance();            
@@ -67,9 +67,10 @@ namespace TrackingService
         }
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/commands/{WFName}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
-        public WorkFlowInstance startWorkFlow(string WFName)
+        [WebInvoke(Method = "POST", UriTemplate = "/workflowinstances", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        public WorkFlowInstance startWorkFlow(CommandInfo CommandInfo)
         {
+            string WFName = CommandInfo.WFName;
             TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
 
             string id=twfi.startProcess(WFName);

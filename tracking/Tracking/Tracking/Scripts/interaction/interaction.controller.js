@@ -5,6 +5,7 @@
         $usersModelT.appendTo(parent.model);
         //self.hide();
     });
+    //GetParameters(
 }
 function validateInteraction(eventName) {
     
