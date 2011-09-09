@@ -33,7 +33,7 @@ namespace TrackingService
     #endregion
 		
 		public TrackingDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TrackingConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TrackingConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -80,6 +80,8 @@ namespace TrackingService
 		private string _wfname;
 		
 		private string _currentevent;
+		
+		private string _bugid;
 		
 		public Tracking()
 		{
@@ -129,6 +131,22 @@ namespace TrackingService
 				if ((this._currentevent != value))
 				{
 					this._currentevent = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bugid", CanBeNull=false)]
+		public string bugid
+		{
+			get
+			{
+				return this._bugid;
+			}
+			set
+			{
+				if ((this._bugid != value))
+				{
+					this._bugid = value;
 				}
 			}
 		}

@@ -177,7 +177,7 @@ namespace TrackingService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrimitiveDataProperties", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrimitiveDataProperties", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary PrimitiveDataProperties
 		{
 			get
@@ -193,7 +193,7 @@ namespace TrackingService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ComplexDataProperties", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ComplexDataProperties", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary ComplexDataProperties
 		{
 			get
@@ -209,7 +209,7 @@ namespace TrackingService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WriteOnlyPrimitiveDataProperties", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WriteOnlyPrimitiveDataProperties", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary WriteOnlyPrimitiveDataProperties
 		{
 			get
@@ -225,7 +225,7 @@ namespace TrackingService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WriteOnlyComplexDataProperties", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WriteOnlyComplexDataProperties", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary WriteOnlyComplexDataProperties
 		{
 			get
@@ -241,7 +241,7 @@ namespace TrackingService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MetadataProperties", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MetadataProperties", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary MetadataProperties
 		{
 			get

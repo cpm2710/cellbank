@@ -19,15 +19,17 @@ namespace TrackingService
         public WorkFlowInstanceList GetWorkFlowInstances()
         {
             WorkFlowInstanceList l = new WorkFlowInstanceList();
+
             //WorkFlowInstanceDataContext dataContext = new WorkFlowInstanceDataContext();
             //var workflowinstance = from b in dataContext.InstancesTables select b;
             return l;
         }
         [OperationContract]
         [WebGet(UriTemplate = "/{InstanceId}", ResponseFormat = WebMessageFormat.Json)]
-        public WorkFlowInstance GetWorkFlowInstances(string InstanceId)
+        public WorkFlowInstance GetWorkFlowInstance(string InstanceId)
         {
             WorkFlowInstance wfi = new WorkFlowInstance();
+            
             TrackingDataContext trackingContext = new TrackingDataContext();
             Guid guid = new Guid(InstanceId);
             IQueryable<Tracking> trackingQuery =
@@ -56,6 +58,14 @@ namespace TrackingService
                 pList.Add(p);
             }
             return pList;
+        }
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        public CommandInfo doCommand(CommandInfo CommandInfo)
+        {
+
+            return CommandInfo;
         }
     }
 }
