@@ -87,6 +87,14 @@ namespace TrackingService
         [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         public CommandInfo doCommand(CommandInfo CommandInfo)
         {
+
+            CommandInteraction cmdInteraction = new CommandInteraction();
+            Dictionary<string, string> paras = new Dictionary<string, string>();
+            foreach (Parameter p in CommandInfo.ParameterList)
+            {
+                paras.Add(p.Name, p.Value);
+            }
+            cmdInteraction.executeCommand(CommandInfo.CommandName, paras);
             TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
             twfi.doCommand(CommandInfo);
             return CommandInfo;

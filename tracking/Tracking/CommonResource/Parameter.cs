@@ -13,6 +13,8 @@ namespace CommonResource
         public string Name;
         [DataMember]
         public string Type;
+        [DataMember]
+        public string Value;
     }
     [CollectionDataContract(Name = "ParameterList", Namespace = "")]
     public class ParameterList : List<Parameter>

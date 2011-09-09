@@ -21,15 +21,25 @@ namespace TrackingWorkFlow
                     TrackingWorkFlow twf = (TrackingWorkFlow)wf;
                     twf.Start();
                     return twf.app.Id.ToString();
-                    //List<string> candCmds=twf.GetCandidateCommand();
-                    //return candCmds;
                 }
             }
             return null;
         }
         public void doCommand(CommandInfo commandInfo)
         {
-
+            Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
+            Type[] types = trackingWorkFlowAssembly.GetTypes();
+            foreach (Type t in types)
+            {
+                if (t.Name.Equals(commandInfo.WFName))
+                {
+                    Type tt = typeof(String);
+                    ConstructorInfo ci = t.GetConstructor(new Type[] { tt });
+                    object wf = ci.Invoke(new object[] { commandInfo.InstanceId });
+                    TrackingWorkFlow twf = (TrackingWorkFlow)wf;
+                    twf.AcceptCommand(commandInfo.CommandName);
+                }
+            }
         }
         public List<string> getCandidateCommands(string wfName, string instanceId)
         {

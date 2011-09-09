@@ -12,6 +12,8 @@ namespace CommonResource
         [DataMember]
         public string WFName;
         [DataMember]
+        public string InstanceId;
+        [DataMember]
         public string CommandName;
         [DataMember]
         public ParameterList ParameterList;
