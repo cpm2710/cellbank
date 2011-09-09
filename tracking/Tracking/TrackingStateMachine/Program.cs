@@ -23,13 +23,10 @@ namespace TrackingWorkFlow
 
             SESampleWorkFlow wf = new SESampleWorkFlow();
 
-            WorkflowApplication app = new WorkflowApplication(wf);
-            string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
-            SqlWorkflowInstanceStore instanceStore;
-            instanceStore = new SqlWorkflowInstanceStore(connStr);
+            WorkflowApplication app = new WorkflowApplication(wf);            
 
-            app.InstanceStore = instanceStore;
-            app.Load(new Guid("6d64d963-b950-439a-aeaa-4b9b101528ab"));
+            app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
+           // app.Load(new Guid("6d64d963-b950-439a-aeaa-4b9b101528ab"));
 
             ReadOnlyCollection<BookmarkInfo> oldBookmarks=app.GetBookmarks();
 
@@ -37,14 +34,17 @@ namespace TrackingWorkFlow
             SESampleTrackingWorkFlow m = new SESampleTrackingWorkFlow();
             m.app.Run();
             ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
-
-
+            
             m.AcceptCommand(ChooseTransitionCommand.ProcessStart.ToString());
             while (m.CurrentBookmarks == null)
             {
                 Thread.Sleep(1000);
             }
-            ReadOnlyCollection<BookmarkInfo> bookInfos2=m.app.GetBookmarks();
+            Guid iId = m.app.Id;
+            SESampleTrackingWorkFlow m2 = new SESampleTrackingWorkFlow();
+            
+            m2.app.Load(iId);
+            ReadOnlyCollection<BookmarkInfo> bookInfos2=m2.app.GetBookmarks();
 
             m.AcceptCommand(bookInfos2[0].BookmarkName);
             while (m.CurrentBookmarks == null)

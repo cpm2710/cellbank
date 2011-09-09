@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TrackingDataSource;
 using SEActivities;
 using TrackingCommands;
 namespace FakeServiceAndClient
@@ -21,8 +20,8 @@ namespace FakeServiceAndClient
             }
             ci.executeCommand("ProcessStart", inputWithValues);
 
-            GeneralDataSource psds = new GeneralDataSource();
-            psds.getValueCandidates("assignedto");
+            //GeneralDataSource psds = new GeneralDataSource();
+            //psds.getValueCandidates("assignedto");
             //psds.getCandidate();
         }
     }

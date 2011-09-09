@@ -27,7 +27,10 @@ namespace TrackingWorkFlow
                 app.Persist();
             }
         }
-
+        public virtual void Start()
+        {
+            app.ResumeBookmark(ChooseTransitionCommand.ProcessStart.ToString(), new ChooseTransitionResult());
+        }
         public abstract List<string> GetCandidateCommand();
         public virtual void AcceptCommand(string commandName)
         {

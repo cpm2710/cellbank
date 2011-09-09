@@ -7,7 +7,7 @@ using System.Text;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 
-namespace TrackingService
+namespace CommonResource
 {
     [DataContract(Namespace = "")]
     public class WorkFlowInstance

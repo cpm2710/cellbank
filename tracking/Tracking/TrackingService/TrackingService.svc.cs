@@ -8,6 +8,7 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using TrackingCommands;
 using TrackingWorkFlow;
+using CommonResource;
 
 namespace TrackingService
 {
@@ -65,14 +66,29 @@ namespace TrackingService
             return pList;
         }
 
-        //[OperationContract]
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/commands/{WFName}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        public WorkFlowInstance startWorkFlow(string WFName)
+        {
+            TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
 
+            string id=twfi.startProcess(WFName);
+
+            WorkFlowInstance wfi = new WorkFlowInstance();
+            wfi.Id = id;
+            List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+            CandidateCommandList ccl = new CandidateCommandList();
+            ccl.AddRange(candCmds);
+            wfi.CandidateCommandList = ccl;
+            return wfi;
+        }
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         public CommandInfo doCommand(CommandInfo CommandInfo)
         {
-
+            TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+            twfi.doCommand(CommandInfo);
             return CommandInfo;
         }
     }

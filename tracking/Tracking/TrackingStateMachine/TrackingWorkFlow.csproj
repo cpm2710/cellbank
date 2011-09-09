@@ -67,6 +67,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonResource\CommonResource.csproj">
+      <Project>{CF82BC7D-96B2-4410-9670-CF625A117B0D}</Project>
+      <Name>CommonResource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SEActivities\SEActivities.csproj">
       <Project>{711AD212-A9AF-4502-A641-9351A914C3BE}</Project>
       <Name>SEActivities</Name>

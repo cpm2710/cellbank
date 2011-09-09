@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 
-namespace TrackingService
+namespace CommonResource
 {
     [DataContract(Namespace = "")]
     public class CommandInfo

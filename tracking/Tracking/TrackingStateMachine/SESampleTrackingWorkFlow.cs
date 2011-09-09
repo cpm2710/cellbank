@@ -32,8 +32,8 @@ namespace TrackingWorkFlow
             app.Load(g);
         }
         public override void Persist()
-        {            
-            app.Unload();
+        {
+            app.Persist();
         }
         private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
         {
