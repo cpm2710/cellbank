@@ -112,9 +112,9 @@
       <Project>{711AD212-A9AF-4502-A641-9351A914C3BE}</Project>
       <Name>SEActivities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TrackingStateMachine\TrackingStateMachine.csproj">
+    <ProjectReference Include="..\TrackingStateMachine\TrackingWorkFlow.csproj">
       <Project>{7214B86B-75B6-4E77-A78A-97B2D15CA308}</Project>
-      <Name>TrackingStateMachine</Name>
+      <Name>TrackingWorkFlow</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

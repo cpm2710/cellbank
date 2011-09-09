@@ -55,9 +55,9 @@
       <Project>{61B20189-1432-44AB-A86D-A6623C0EFCDE}</Project>
       <Name>TrackingDataSource</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TrackingStateMachine\TrackingStateMachine.csproj">
+    <ProjectReference Include="..\TrackingStateMachine\TrackingWorkFlow.csproj">
       <Project>{7214B86B-75B6-4E77-A78A-97B2D15CA308}</Project>
-      <Name>TrackingStateMachine</Name>
+      <Name>TrackingWorkFlow</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

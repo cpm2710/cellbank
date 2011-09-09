@@ -8,7 +8,7 @@ using System.Activities.Hosting;
 using System.Activities.Tracking;
 using System.Threading;
 using System.Activities.DurableInstancing;
-namespace TrackingStateMachine
+namespace TrackingWorkFlow
 {
 
     class Program
@@ -21,7 +21,7 @@ namespace TrackingStateMachine
 
             //6d64d963-b950-439a-aeaa-4b9b101528ab
 
-            QFEWorkFlow wf = new QFEWorkFlow();
+            SESampleWorkFlow wf = new SESampleWorkFlow();
 
             WorkflowApplication app = new WorkflowApplication(wf);
             string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
@@ -34,26 +34,26 @@ namespace TrackingStateMachine
             ReadOnlyCollection<BookmarkInfo> oldBookmarks=app.GetBookmarks();
 
 
-            SETrackingMachine m = new SETrackingMachine();
+            SESampleTrackingWorkFlow m = new SESampleTrackingWorkFlow();
             m.app.Run();
             ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
 
 
-            m.AcceptEvent(ChooseTransitionCommand.ProcessStart.ToString());
+            m.AcceptCommand(ChooseTransitionCommand.ProcessStart.ToString());
             while (m.CurrentBookmarks == null)
             {
                 Thread.Sleep(1000);
             }
             ReadOnlyCollection<BookmarkInfo> bookInfos2=m.app.GetBookmarks();
 
-            m.AcceptEvent(bookInfos2[0].BookmarkName);
+            m.AcceptCommand(bookInfos2[0].BookmarkName);
             while (m.CurrentBookmarks == null)
             {
                 Thread.Sleep(1000);
             }
             bookInfos2 = m.app.GetBookmarks();
 
-            m.PersistMachine();
+            m.Persist();
             AutoResetEvent e = new AutoResetEvent(false);
             e.WaitOne();
           //app.Run();

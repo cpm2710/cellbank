@@ -7,21 +7,32 @@ using SEActivities;
 using System.Collections.ObjectModel;
 using System.Activities.Hosting;
 
-namespace TrackingStateMachine
+namespace TrackingWorkFlow
 {
     public abstract class TrackingWorkFlow
     {
         public WorkflowApplication app;
-        private ReadOnlyCollection<BookmarkInfo> currentBookmarks;
+        protected ReadOnlyCollection<BookmarkInfo> currentBookmarks;
         public ReadOnlyCollection<BookmarkInfo> CurrentBookmarks
         {
             get { return currentBookmarks; }
             set { this.currentBookmarks = value; }
         }
-        public void AcceptEvent(string eventName)
+
+
+        public virtual void Persist()
+        {
+            if (app != null)
+            {
+                app.Persist();
+            }
+        }
+
+        public abstract List<string> GetCandidateCommand();
+        public virtual void AcceptCommand(string commandName)
         {
             currentBookmarks = null;
-            app.ResumeBookmark(eventName, new ChooseTransitionResult());
+            app.ResumeBookmark(commandName, new ChooseTransitionResult());
         }
     }
 }

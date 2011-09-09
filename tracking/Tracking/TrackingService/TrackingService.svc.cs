@@ -7,6 +7,7 @@ using System.Text;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using TrackingCommands;
+using TrackingWorkFlow;
 
 namespace TrackingService
 {
@@ -28,8 +29,7 @@ namespace TrackingService
         [WebGet(UriTemplate = "/{InstanceId}", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowInstance GetWorkFlowInstance(string InstanceId)
         {
-            WorkFlowInstance wfi = new WorkFlowInstance();
-            
+            WorkFlowInstance wfi = new WorkFlowInstance();            
             TrackingDataContext trackingContext = new TrackingDataContext();
             Guid guid = new Guid(InstanceId);
             IQueryable<Tracking> trackingQuery =
@@ -38,7 +38,12 @@ namespace TrackingService
                 select tracking;
             foreach (Tracking t in trackingQuery)
             {
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 wfi = new WorkFlowInstance();
+                List<string> candCmds=twfi.getCandidateCommands(t.wfname, InstanceId);
+                CandidateCommandList ccl=new CandidateCommandList();
+                ccl.AddRange(candCmds);
+                wfi.CandidateCommandList = ccl;
                 return wfi;
             }
             return null;
@@ -59,6 +64,9 @@ namespace TrackingService
             }
             return pList;
         }
+
+        //[OperationContract]
+
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]

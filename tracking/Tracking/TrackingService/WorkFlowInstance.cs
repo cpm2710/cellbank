@@ -16,6 +16,12 @@ namespace TrackingService
         public string Id;
         [DataMember]
         public string Title;
+        [DataMember]
+        public CandidateCommandList CandidateCommandList;
+    }
+    [CollectionDataContract(Name = "CandidateCommandList", Namespace = "")]
+    public class CandidateCommandList : List<string>
+    {
     }
     [CollectionDataContract(Name = "WorkFlowInstanceList", Namespace = "")]
     public class WorkFlowInstanceList : List<WorkFlowInstance>

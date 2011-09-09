@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowConsoleApplication1", "WorkflowConsoleApplication1\WorkflowConsoleApplication1.csproj", "{1929A973-A7C5-400D-958B-07CFD4BA0245}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingStateMachine", "TrackingStateMachine\TrackingStateMachine.csproj", "{7214B86B-75B6-4E77-A78A-97B2D15CA308}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingWorkFlow", "TrackingStateMachine\TrackingWorkFlow.csproj", "{7214B86B-75B6-4E77-A78A-97B2D15CA308}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEActivities", "SEActivities\SEActivities.csproj", "{711AD212-A9AF-4502-A641-9351A914C3BE}"
 EndProject
