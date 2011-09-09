@@ -8,7 +8,7 @@ namespace SEActivities
 {
     public class ChooseTransitionActivity : NativeActivity<ChooseTransitionResult>
     {
-        public ChooseTransitionEvent ChooseTransitionEvent { get; set; }
+        public ChooseTransitionCommand ChooseTransitionCommand { get; set; }
         private BookmarkCallback chooseTransitionCallback;
 
         private BookmarkCallback ChooseTransitionCallback
@@ -28,7 +28,7 @@ namespace SEActivities
         }
         protected override void Execute(NativeActivityContext context)
         {
-            string cardReaderEvent = this.ChooseTransitionEvent.ToString();
+            string cardReaderEvent = this.ChooseTransitionCommand.ToString();
             context.CreateBookmark(cardReaderEvent, this.ChooseTransitionCallback);
             
         }

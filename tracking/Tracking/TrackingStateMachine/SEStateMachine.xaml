@@ -3,7 +3,7 @@
     <StateMachine.InitialState>
       <State x:Name="__ReferenceID0" DisplayName="Pretriage" sap:VirtualizedContainerService.HintSize="149,126">
         <State.Entry>
-          <s4:ChooseTransitionActivity ChooseTransitionEvent="ProcessStart" sap:VirtualizedContainerService.HintSize="335,150" />
+          <s4:ChooseTransitionActivity ChooseTransitionCommand="ProcessStart" sap:VirtualizedContainerService.HintSize="335,150" />
         </State.Entry>
         <sap:WorkflowViewStateService.ViewState>
           <scg3:Dictionary x:TypeArguments="x:String, x:Object">
@@ -17,7 +17,7 @@
         <State.Transitions>
           <Transition DisplayName="AssignToTriage" sap:VirtualizedContainerService.HintSize="430,498">
             <Transition.Trigger>
-              <s4:ChooseTransitionActivity ChooseTransitionEvent="AssignToTriage" sap:VirtualizedContainerService.HintSize="388,100" />
+              <s4:ChooseTransitionActivity ChooseTransitionCommand="AssignToTriage" sap:VirtualizedContainerService.HintSize="388,100" />
             </Transition.Trigger>
             <sap:WorkflowViewStateService.ViewState>
               <scg3:Dictionary x:TypeArguments="x:String, x:Object">
@@ -61,7 +61,7 @@
           </Transition>
           <Transition DisplayName="Require More Information" sap:VirtualizedContainerService.HintSize="430,498">
             <Transition.Trigger>
-              <s4:ChooseTransitionActivity ChooseTransitionEvent="RequireMoreInformation" sap:VirtualizedContainerService.HintSize="388,100" />
+              <s4:ChooseTransitionActivity ChooseTransitionCommand="RequireMoreInformation" sap:VirtualizedContainerService.HintSize="388,100" />
             </Transition.Trigger>
             <sap:WorkflowViewStateService.ViewState>
               <scg3:Dictionary x:TypeArguments="x:String, x:Object">
@@ -83,7 +83,7 @@
                 <State.Transitions>
                   <Transition DisplayName="Provide More Information" sap:VirtualizedContainerService.HintSize="430,498">
                     <Transition.Trigger>
-                      <s4:ChooseTransitionActivity ChooseTransitionEvent="ProvideMoreInformation" sap:VirtualizedContainerService.HintSize="388,100" />
+                      <s4:ChooseTransitionActivity ChooseTransitionCommand="ProvideMoreInformation" sap:VirtualizedContainerService.HintSize="388,100" />
                     </Transition.Trigger>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg3:Dictionary x:TypeArguments="x:String, x:Object">

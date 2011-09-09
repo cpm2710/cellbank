@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SEActivities
 {
-    public enum ChooseTransitionEvent
+    public enum ChooseTransitionCommand
     {
         ProcessStart,
         RequireMoreInformation,

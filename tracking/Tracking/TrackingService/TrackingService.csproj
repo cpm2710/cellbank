@@ -108,9 +108,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TrackingCommand\TrackingCommands.csproj">
-      <Project>{4A36D9D0-668E-4A15-AEF3-9FAC0426133F}</Project>
-      <Name>TrackingCommands</Name>
+    <ProjectReference Include="..\SEActivities\SEActivities.csproj">
+      <Project>{711AD212-A9AF-4502-A641-9351A914C3BE}</Project>
+      <Name>SEActivities</Name>
     </ProjectReference>
     <ProjectReference Include="..\TrackingStateMachine\TrackingStateMachine.csproj">
       <Project>{7214B86B-75B6-4E77-A78A-97B2D15CA308}</Project>

@@ -39,7 +39,7 @@ namespace TrackingStateMachine
             ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
 
 
-            m.AcceptEvent(ChooseTransitionEvent.ProcessStart.ToString());
+            m.AcceptEvent(ChooseTransitionCommand.ProcessStart.ToString());
             while (m.CurrentBookmarks == null)
             {
                 Thread.Sleep(1000);
