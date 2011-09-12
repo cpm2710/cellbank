@@ -55,7 +55,6 @@ namespace TrackingService
             WorkFlowInstance wfi = new WorkFlowInstance();            
             TrackingDataContext trackingContext = new TrackingDataContext();
             Guid guid = new Guid(InstanceId);
-
             IQueryable<Tracking.Tracking> trackingQuery =
                 from tracking in trackingContext.Trackings
                 where ((tracking.wfinstanceid == guid))
