@@ -17,6 +17,8 @@ namespace CommonResource
         [DataMember]
         public string Title;
         [DataMember]
+        public string BugId;
+        [DataMember]
         public CandidateCommandList CandidateCommandList;
     }
     [CollectionDataContract(Name = "CandidateCommandList", Namespace = "")]

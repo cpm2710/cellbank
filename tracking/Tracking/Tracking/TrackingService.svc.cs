@@ -25,9 +25,27 @@ namespace TrackingService
         public WorkFlowInstanceList GetWorkFlowInstances()
         {
             WorkFlowInstanceList l = new WorkFlowInstanceList();
+            TrackingDataContext dataContext = new TrackingDataContext();
 
-            //WorkFlowInstanceDataContext dataContext = new WorkFlowInstanceDataContext();
-            //var workflowinstance = from b in dataContext.InstancesTables select b;
+            IQueryable<Tracking.Tracking> trackingQuery =
+                from tracking in dataContext.Trackings 
+                select tracking;
+            TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
+            
+            foreach (Tracking.Tracking t in trackingQuery)
+            {
+                WorkFlowInstance wfi = new WorkFlowInstance();
+                wfi.BugId = t.bugid;
+                wfi.Id = t.wfinstanceid.ToString();
+                List<string> candiCmds=interaction.getCandidateCommands(t.wfname, t.wfinstanceid.ToString());
+                wfi.Title = t.wfname;
+                CandidateCommandList ccl = new CandidateCommandList();
+                foreach (string cmd in candiCmds)
+                {
+                    ccl.Add(cmd);
+                }
+                wfi.CandidateCommandList = ccl;
+            }
             return l;
         }
         [OperationContract]
@@ -100,7 +118,6 @@ namespace TrackingService
         [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         public CommandInfo doCommand(CommandInfo CommandInfo)
         {
-
             CommandInteraction cmdInteraction = new CommandInteraction();
             Dictionary<string, string> paras = new Dictionary<string, string>();
             foreach (Parameter p in CommandInfo.ParameterList)
