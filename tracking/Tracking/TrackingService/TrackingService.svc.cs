@@ -8,7 +8,10 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using TrackingCommands;
 using TrackingWorkFlow;
+using System.Net;
+using System.Web.Hosting;
 using CommonResource;
+using System.Web;
 
 namespace TrackingService
 {
@@ -56,12 +59,19 @@ namespace TrackingService
         {
             ParameterList pList=new ParameterList();
             CommandInteraction ci = new CommandInteraction();
-            List<string> requierdInputs=ci.getRequiredInputs(CommandName);
-            foreach (string i in requierdInputs)
+            try
             {
-                Parameter p = new Parameter();
-                p.Name = i;
-                pList.Add(p);
+                List<string> requierdInputs = ci.getRequiredInputs(CommandName);
+                foreach (string i in requierdInputs)
+                {
+                    Parameter p = new Parameter();
+                    p.Name = i;
+                    pList.Add(p);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new HttpException((int)HttpStatusCode.InternalServerError,e.Message);
             }
             return pList;
         }

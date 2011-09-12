@@ -9,7 +9,7 @@ namespace TrackingCommands
     {
         public List<string> getRequiredInputs(string commandName)
         {
-            Type[] types=Assembly.Load("TrackingCommands").GetTypes();
+            Type[] types = Assembly.Load("SEActivities").GetTypes();
             List<string> requiredInputs = new List<string>();
             foreach (Type t in types)
             {

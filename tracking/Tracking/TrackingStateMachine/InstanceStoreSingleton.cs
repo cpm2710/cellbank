@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.DurableInstancing;
 using System.Activities.DurableInstancing;
 
 namespace TrackingWorkFlow
 {
-    class InstanceStoreSingleton
+    public class InstanceStoreSingleton
     {
         private SqlWorkflowInstanceStore instanceStore;
         public SqlWorkflowInstanceStore InstanceStore
