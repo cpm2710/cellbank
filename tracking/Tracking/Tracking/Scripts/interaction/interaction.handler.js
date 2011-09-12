@@ -51,12 +51,13 @@ function GetParameters(commandName,callback) {
         }
     });
 }
-function startWorkFlow(commandInfo) {
+function startWorkFlow(commandInfo, callback) {
+    var dataString = JSON.stringify(commandInfo);
     $.ajax({
-        type: "POST",
         url: trakingServiceURL + "workflowinstances",
-        contentType: "application/json",
-        data: commandInfo,
+        data: dataString,
+        type: "POST",        
+        contentType: "application/json",        
         dataType: "json",
         cache: false,
         success: function (data) {
@@ -69,7 +70,7 @@ function startWorkFlow(commandInfo) {
         }
     });
 }
-function doCommand(commandInfo) {
+function doCommand(commandInfo, callback) {
     $.ajax({
         type: "POST",
         url: trakingServiceURL + "commands",

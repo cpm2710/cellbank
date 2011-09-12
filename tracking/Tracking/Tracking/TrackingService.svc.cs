@@ -13,6 +13,7 @@ using System.Web.Hosting;
 using CommonResource;
 using System.Web;
 using Tracking;
+using System.Diagnostics;
 
 namespace TrackingService
 {
@@ -99,17 +100,37 @@ namespace TrackingService
         [WebInvoke(Method = "POST", UriTemplate = "/workflowinstances", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         public WorkFlowInstance startWorkFlow(CommandInfo CommandInfo)
         {
-            string WFName = CommandInfo.WFName;
-            TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-
-            string id=twfi.startProcess(WFName);
-
             WorkFlowInstance wfi = new WorkFlowInstance();
-            wfi.Id = id;
-            List<string> candCmds = twfi.getCandidateCommands(WFName, id);
-            CandidateCommandList ccl = new CandidateCommandList();
-            ccl.AddRange(candCmds);
-            wfi.CandidateCommandList = ccl;
+            try
+            {
+                string WFName = CommandInfo.WFName;
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+
+                string id = twfi.startProcess(WFName);
+
+                TrackingDataContext tdc = new TrackingDataContext();
+                Tracking.Tracking t = new Tracking.Tracking();
+                t.wfname = CommandInfo.WFName;
+                t.wfinstanceid = new Guid(id);
+                tdc.Trackings.InsertOnSubmit(t);
+                tdc.SubmitChanges();
+                
+                //wfi.Id = id;
+                //List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+                //CandidateCommandList ccl = new CandidateCommandList();
+                //ccl.AddRange(candCmds);
+                //wfi.CandidateCommandList = ccl;
+            }
+            catch (Exception e)
+            {
+                EventLog log = new EventLog("MyEvent");
+                //  首先应判断日志来源是否存在，一个日志来源只能同时与一个事件绑定s
+                if (!EventLog.SourceExists("New Application"))
+                    EventLog.CreateEventSource("New Application", "MyEvent");
+                log.Source = "New Application";
+                log.WriteEntry("verifying:"+e.Message, EventLogEntryType.Information);
+               // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
+            }
             return wfi;
         }
 
@@ -123,9 +144,10 @@ namespace TrackingService
             {
                 paras.Add(p.Name, p.Value);
             }
-            cmdInteraction.executeCommand(CommandInfo.CommandName, paras);
+            cmdInteraction.executeCommand(CommandInfo.CommandName, paras);//this is do the real action in extension
             TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-            twfi.doCommand(CommandInfo);
+            twfi.doCommand(CommandInfo);// this is just trigger the state machine(WF) to do one step
+
             return CommandInfo;
         }
     }
