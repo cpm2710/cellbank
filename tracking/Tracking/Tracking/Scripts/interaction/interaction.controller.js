@@ -15,15 +15,20 @@ function initializeInteraction(commandName) {
                     inputField.appendTo($interactionFields);
                 }
                 $interactionPanel.find("#submit").bind("click", function (e) {
-                    var inputFields = "{";
+                    var inputFields = "\"ParameterList\":[";
                     $interactionFields.find(".inputField").each(function () {
                         $ths = $(this);
+
                         var key = $ths.find("p")[0].innerHTML;
                         var value = $ths.find("input").val();
-                        inputFields += key + ":\"" + value + "\",";
+
+                        inputFields += "{\"Name\":\"" + key + "\",\"Type\":\"string\",\"Value\":\"" + value + "\"},";
+
                     });
-                    inputFields = inputFields.substr(0, inputFields.length - 1) + "}";
-                    var parameters = eval("(" + inputFields + ")");
+                    inputFields = inputFields.substr(0, inputFields.length - 1) + "]";
+
+                    var commandInfoStr = "{\"CommandName\":\""+commandName+"\"," + inputFields + "}";
+                    var commandInfo = eval("(" + commandInfoStr + ")");
 
                 });
 
