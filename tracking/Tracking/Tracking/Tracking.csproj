@@ -147,6 +147,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Tracking.dbml</DependentUpon>
     </Compile>
+    <Compile Include="TrackingLog.cs" />
     <Compile Include="TrackingService.svc.cs">
       <DependentUpon>TrackingService.svc</DependentUpon>
     </Compile>

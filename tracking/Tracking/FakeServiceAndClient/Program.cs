@@ -20,81 +20,100 @@ namespace FakeServiceAndClient
     {
         static void Main(string[] args)
         {
-            CommandInfo cinfo = new CommandInfo();
-            cinfo.CommandName = "shit";
-            cinfo.InstanceId = "123";
-            ParameterList pl=new ParameterList();
-            pl.Add(new Parameter());
-            pl[0].Name = "pname";
-            pl[0].Type = "string";
-            pl[0].Value = "value1";
-            cinfo.ParameterList = pl;
-            cinfo.WFName = "wf1";
-
-            MemoryStream stream1 = new MemoryStream();
-            DataContractJsonSerializer ser =
-              new DataContractJsonSerializer(typeof(CommandInfo));
-            ser.WriteObject(stream1, cinfo);
-            stream1.Position = 0;
-            StreamReader sr = new StreamReader(stream1);
-            string instanceStr = sr.ReadToEnd();
-            Console.WriteLine(instanceStr);
-
-            CommandInteraction ci = new CommandInteraction();
-            List<string> requiredInputs=ci.getRequiredInputs("ProcessStart");
-
-            Dictionary<string, string> inputWithValues = new Dictionary<string, string>();
-            foreach (string input in requiredInputs)
+            CommandInfo CommandInfo = new CommandInfo();
+            CommandInfo.WFName = "SESampleTrackingWorkFlow";
+            WorkFlowInstance wfi = new WorkFlowInstance();
+            try
             {
-                inputWithValues.Add(input, "st");                
+                string WFName = CommandInfo.WFName;
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+                string id = twfi.startProcess(WFName);                
+
+                wfi.Id = id;
+                List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+                CandidateCommandList ccl = new CandidateCommandList();
+                ccl.AddRange(candCmds);
+                wfi.CandidateCommandList = ccl;
             }
-            ci.executeCommand("ProcessStart", inputWithValues);
+            catch (Exception e)
+            {
+                // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+            //CommandInfo cinfo = new CommandInfo();
+            //cinfo.CommandName = "shit";
+            //cinfo.InstanceId = "123";
+            //ParameterList pl=new ParameterList();
+            //pl.Add(new Parameter());
+            //pl[0].Name = "pname";
+            //pl[0].Type = "string";
+            //pl[0].Value = "value1";
+            //cinfo.ParameterList = pl;
+            //cinfo.WFName = "wf1";
 
-            //GeneralDataSource psds = new GeneralDataSource();
-            //psds.getValueCandidates("assignedto");
-            //psds.getCandidate();
+            //MemoryStream stream1 = new MemoryStream();
+            //DataContractJsonSerializer ser =
+            //  new DataContractJsonSerializer(typeof(CommandInfo));
+            //ser.WriteObject(stream1, cinfo);
+            //stream1.Position = 0;
+            //StreamReader sr = new StreamReader(stream1);
+            //string instanceStr = sr.ReadToEnd();
+            //Console.WriteLine(instanceStr);
 
-            //var connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
-            //SqlWorkflowInstanceStore instanceStore = new SqlWorkflowInstanceStore(connStr);
+            //CommandInteraction ci = new CommandInteraction();
+            //List<string> requiredInputs=ci.getRequiredInputs("ProcessStart");
+
+            //Dictionary<string, string> inputWithValues = new Dictionary<string, string>();
+            //foreach (string input in requiredInputs)
+            //{
+            //    inputWithValues.Add(input, "st");                
+            //}
+            //ci.executeCommand("ProcessStart", inputWithValues);
+
+            ////GeneralDataSource psds = new GeneralDataSource();
+            ////psds.getValueCandidates("assignedto");
+            ////psds.getCandidate();
+
+            ////var connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
+            ////SqlWorkflowInstanceStore instanceStore = new SqlWorkflowInstanceStore(connStr);
 
 
-            //6d64d963-b950-439a-aeaa-4b9b101528ab
+            ////6d64d963-b950-439a-aeaa-4b9b101528ab
 
-            SESampleWorkFlow wf = new SESampleWorkFlow();
+            //SESampleWorkFlow wf = new SESampleWorkFlow();
 
-            WorkflowApplication app = new WorkflowApplication(wf);
-            app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
+            //WorkflowApplication app = new WorkflowApplication(wf);
             //app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
-            // app.Load(new Guid("6d64d963-b950-439a-aeaa-4b9b101528ab"));
+            ////app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
+            //// app.Load(new Guid("6d64d963-b950-439a-aeaa-4b9b101528ab"));
 
-            ReadOnlyCollection<BookmarkInfo> oldBookmarks = app.GetBookmarks();
+            //ReadOnlyCollection<BookmarkInfo> oldBookmarks = app.GetBookmarks();
 
 
-            SESampleTrackingWorkFlow m = new SESampleTrackingWorkFlow();
-            m.app.Run();
-            ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
+            //SESampleTrackingWorkFlow m = new SESampleTrackingWorkFlow();
+            //m.app.Run();
+            //ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
 
-            m.AcceptCommand(ChooseTransitionCommand.ProcessStart.ToString());
-            while (m.CurrentBookmarks == null)
-            {
-                Thread.Sleep(1000);
-            }
-            Guid iId = m.app.Id;
-            SESampleTrackingWorkFlow m2 = new SESampleTrackingWorkFlow();
+            //m.AcceptCommand(ChooseTransitionCommand.ProcessStart.ToString());
+            //while (m.CurrentBookmarks == null)
+            //{
+            //    Thread.Sleep(1000);
+            //}
+            //Guid iId = m.app.Id;
+            //SESampleTrackingWorkFlow m2 = new SESampleTrackingWorkFlow();
 
-            m2.app.Load(iId);
-            ReadOnlyCollection<BookmarkInfo> bookInfos2 = m2.app.GetBookmarks();
+            //m2.app.Load(iId);
+            //ReadOnlyCollection<BookmarkInfo> bookInfos2 = m2.app.GetBookmarks();
 
-            m.AcceptCommand(bookInfos2[0].BookmarkName);
-            while (m.CurrentBookmarks == null)
-            {
-                Thread.Sleep(1000);
-            }
-            bookInfos2 = m.app.GetBookmarks();
+            //m.AcceptCommand(bookInfos2[0].BookmarkName);
+            //while (m.CurrentBookmarks == null)
+            //{
+            //    Thread.Sleep(1000);
+            //}
+            //bookInfos2 = m.app.GetBookmarks();
 
-            m.Persist();
-            AutoResetEvent e = new AutoResetEvent(false);
-            e.WaitOne();
+            //m.Persist();
+            AutoResetEvent ee = new AutoResetEvent(false);
+            ee.WaitOne();
             //app.Run();
             //app.Idle += new Action<WorkflowApplicationIdleEventArgs>(() => { });
             //WorkflowInvoker.in(wf);

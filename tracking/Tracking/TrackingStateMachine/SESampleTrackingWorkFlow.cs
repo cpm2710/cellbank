@@ -12,14 +12,14 @@ namespace TrackingWorkFlow
 {
     public class SESampleTrackingWorkFlow : TrackingWorkFlow
     {        
-        AutoResetEvent are = new AutoResetEvent(false);
-        AutoResetEvent nextEventEvent = new AutoResetEvent(false);
+        
         public SESampleTrackingWorkFlow():base()
         {
             SESampleWorkFlow wf = new SESampleWorkFlow();            
             app = new WorkflowApplication(wf);
             app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
-            app.Idle += this.OnWorkflowIdle;            
+            //app.PersistableIdle += OnPersistableIdle;
+            //app.Idle += this.OnWorkflowIdle;       
         }
         public SESampleTrackingWorkFlow(string instanceId)
             : base()
@@ -27,7 +27,6 @@ namespace TrackingWorkFlow
             SESampleWorkFlow wf = new SESampleWorkFlow();
             app = new WorkflowApplication(wf);
             app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
-            app.Idle += this.OnWorkflowIdle;
             Guid g=new Guid(instanceId);
             app.Load(g);
         }

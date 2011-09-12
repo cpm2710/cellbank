@@ -17,10 +17,12 @@ namespace TrackingWorkFlow
                 if (t.Name.Equals(wfName))
                 {
                     ConstructorInfo ci = t.GetConstructor(new Type[] { });
-                    object wf=ci.Invoke(new object[] { });
-                    TrackingWorkFlow twf = (TrackingWorkFlow)wf;
-                    twf.Start();
-                    return twf.app.Id.ToString();
+                    using(TrackingWorkFlow twf=(TrackingWorkFlow)ci.Invoke(new object[] { })){
+                        twf.Start();
+                        twf.Persist();
+                        twf.Unload();
+                        return twf.app.Id.ToString();
+                    }                    
                 }
             }
             return null;
@@ -52,9 +54,9 @@ namespace TrackingWorkFlow
                 {
                   Type tt=  typeof(String);
                   ConstructorInfo ci = t.GetConstructor(new Type[]{tt});
-                  object wf=ci.Invoke(new object[]{instanceId});
-                  TrackingWorkFlow twf = (TrackingWorkFlow)wf;
-                  return twf.GetCandidateCommand();
+                    using(TrackingWorkFlow twf=(TrackingWorkFlow)(ci.Invoke(new object[]{instanceId}))){
+                        return twf.GetCandidateCommand();
+                    }                  
                 }
             }
             return null;

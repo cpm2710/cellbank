@@ -105,30 +105,24 @@ namespace TrackingService
             {
                 string WFName = CommandInfo.WFName;
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-
                 string id = twfi.startProcess(WFName);
-
                 TrackingDataContext tdc = new TrackingDataContext();
                 Tracking.Tracking t = new Tracking.Tracking();
                 t.wfname = CommandInfo.WFName;
                 t.wfinstanceid = new Guid(id);
                 tdc.Trackings.InsertOnSubmit(t);
                 tdc.SubmitChanges();
-                
-                //wfi.Id = id;
-                //List<string> candCmds = twfi.getCandidateCommands(WFName, id);
-                //CandidateCommandList ccl = new CandidateCommandList();
-                //ccl.AddRange(candCmds);
-                //wfi.CandidateCommandList = ccl;
+
+                wfi.Id = id;
+                List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+                CandidateCommandList ccl = new CandidateCommandList();
+                ccl.AddRange(candCmds);
+                wfi.CandidateCommandList = ccl;
             }
             catch (Exception e)
             {
-                EventLog log = new EventLog("MyEvent");
-                //  首先应判断日志来源是否存在，一个日志来源只能同时与一个事件绑定s
-                if (!EventLog.SourceExists("New Application"))
-                    EventLog.CreateEventSource("New Application", "MyEvent");
-                log.Source = "New Application";
-                log.WriteEntry("verifying:"+e.Message, EventLogEntryType.Information);
+                TrackingLog.Log(e.Message);
+                TrackingLog.Log(e.ToString());
                // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
             }
             return wfi;
