@@ -14,17 +14,31 @@
 
     <script type="text/javascript" src="./Scripts/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <script type="text/javascript" src="./Scripts/lib/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <link rel="stylesheet" href="./Scripts/lib/fancybox/jquery.fancybox-1.3.4.css" type="text/css" />
+    
     <script type="text/javascript" src="./Scripts/interaction/interaction.fancybox.js"></script>
     <script type="text/javascript" src="./Scripts/interaction/interaction.handler.js"></script>
     <script type="text/javascript" src="./Scripts/interaction/interaction.controller.js"></script>
-   
+    <script type="text/javascript" src="./Scripts/interaction/interaction.mainpage.js"></script>
+    <link rel="stylesheet" href="./Scripts/lib/fancybox/jquery.fancybox-1.3.4.css" type="text/css" />
+    <link rel="stylesheet" href="./Styles/mainpage.css" type="text/css" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initialDashboard();
+        });
+    </script>
 </head>
 <body>
 <div id="main">
-    <div id="title"></div>
+    <div id="title">
+    <p>SE Tracking, Take it easy.</p></div>
+
     <div id="mainpage">
-        <div id="dashboard"></div>
+
+        <div id="dashboard">
+            <ul id="dashboarditems">
+            </ul>
+        </div>
         <div id="setracking" class="showpanel">
             <div id="setrackingmain">
                 <p>this is a list</p>

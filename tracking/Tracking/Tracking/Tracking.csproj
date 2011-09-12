@@ -69,6 +69,7 @@
     <Content Include="images\flowdesigner\transition.png" />
     <Content Include="mainpage.html" />
     <Content Include="SampleDoc\SampleXML.xml" />
+    <Content Include="Scripts\interaction\interaction.mainpage.js" />
     <Content Include="Scripts\lib\fancybox\blank.gif" />
     <Content Include="Scripts\lib\fancybox\fancybox-x.png" />
     <Content Include="Scripts\lib\fancybox\fancybox-y.png" />
@@ -114,6 +115,8 @@
     <Content Include="Scripts\lib\templates.min.js" />
     <Content Include="sql\tracking.sql" />
     <Content Include="Styles\flowdesigner.css" />
+    <Content Include="Styles\mainpage.css" />
+    <Content Include="templates\dashboardItemTemplate.html" />
     <Content Include="templates\functionTemplate.htm" />
     <Content Include="templates\HTMLPage1.htm" />
     <Content Include="templates\inputFieldTemplate.html" />
