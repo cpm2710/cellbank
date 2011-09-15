@@ -104,6 +104,16 @@
     <Content Include="Scripts\designer\designer.painter.js" />
     <Content Include="Scripts\lib\gettmpl.js" />
     <Content Include="Scripts\interaction\interaction.controller.js" />
+    <Content Include="Scripts\lib\jexpand\125px-Flag_of_Canada.svg.png" />
+    <Content Include="Scripts\lib\jexpand\125px-Flag_of_Germany.svg.png" />
+    <Content Include="Scripts\lib\jexpand\125px-Flag_of_India.svg.png" />
+    <Content Include="Scripts\lib\jexpand\125px-Flag_of_the_United_Kingdom.svg.png" />
+    <Content Include="Scripts\lib\jexpand\125px-Flag_of_the_United_States.svg.png" />
+    <Content Include="Scripts\lib\jexpand\arrows.png" />
+    <Content Include="Scripts\lib\jexpand\header_bkg.png" />
+    <Content Include="Scripts\lib\jexpand\http_imgload.cgi.jpg" />
+    <Content Include="Scripts\lib\jexpand\index.html" />
+    <Content Include="Scripts\lib\jexpand\jExpand.js" />
     <Content Include="Scripts\lib\jquery-1.5.1.min.js" />
     <Content Include="Scripts\lib\jquery-animate-css-rotate-scale.js" />
     <Content Include="Scripts\lib\jquery-css-transform.js" />
@@ -121,6 +131,7 @@
     <Content Include="templates\HTMLPage1.htm" />
     <Content Include="templates\inputFieldTemplate.html" />
     <Content Include="templates\interactionTemplate.html" />
+    <Content Include="templates\trackingProcessTemplate.html" />
     <Content Include="TrackingService.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -182,6 +193,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scripts\lib\jexpand\desktop.ini" />
     <None Include="Tracking.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Tracking.designer.cs</LastGenOutput>
