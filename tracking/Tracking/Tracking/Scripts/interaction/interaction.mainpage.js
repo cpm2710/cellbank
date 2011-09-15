@@ -14,5 +14,16 @@ function initialDashboard() {
             $dItem.appendTo("#dashboarditems");
         }
     });
-   
+    refreshTrackingProcess();
+}
+function refreshTrackingProcess() {
+    getWorkFlowInstances(function (data) {
+        var i = 0;
+        for (i = 0; i < data.length; i++) {
+            $.getTmplAsync("./templates/trackingProcessTemplate.html").done(function () {
+                var trackingItem = $("#trackingProcessTemplate").tmpl(data[i]);
+                trackingItem.appendTo("#report");
+            });
+        }
+    });
 }

@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title></title>
-
-<script type="text/javascript" src="./Scripts/lib/jquery-1.5.1.min.js"></script>
+    <title></title>
+    <script type="text/javascript" src="./Scripts/lib/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="./Scripts/lib/jquery-ui-1.8.13.custom.min.js"></script>
     <script type="text/javascript" src="./Scripts/lib/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="./Scripts/lib/gettmpl.js"></script>
@@ -11,17 +10,14 @@
     <script type="text/javascript" src="./Scripts/lib/jquery-css-transform.js"></script>
     <script type="text/javascript" src="./Scripts/lib/jquery-animate-css-rotate-scale.js"></script>
     <script type="text/javascript" src="./Scripts/lib/collections.lib.js"></script>
-
     <script type="text/javascript" src="./Scripts/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <script type="text/javascript" src="./Scripts/lib/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    
     <script type="text/javascript" src="./Scripts/interaction/interaction.fancybox.js"></script>
     <script type="text/javascript" src="./Scripts/interaction/interaction.handler.js"></script>
     <script type="text/javascript" src="./Scripts/interaction/interaction.controller.js"></script>
     <script type="text/javascript" src="./Scripts/interaction/interaction.mainpage.js"></script>
     <link rel="stylesheet" href="./Scripts/lib/fancybox/jquery.fancybox-1.3.4.css" type="text/css" />
     <link rel="stylesheet" href="./Styles/mainpage.css" type="text/css" />
-
     <script type="text/javascript">
         $(document).ready(function () {
             initialDashboard();
@@ -29,31 +25,33 @@
     </script>
 </head>
 <body>
-<div id="main">
-    <div id="title">
-    <p>SE Tracking, Take it easy.</p></div>
-
-    <div id="mainpage">
-
-        <div id="dashboard">
-            <ul id="dashboarditems">
-            </ul>
+    <div id="main">
+        <div id="title">
+            <p>
+                SE Tracking, Take it easy.</p>
         </div>
-        <div id="setracking" class="showpanel">
-            <div id="setrackingmain">
-                <table>
-                    <thead>
-                    </thead>
-                    <tr><td>abc</td><td>cde</td></tr>
-                </table>
+        <div id="mainpage">
+            <div id="dashboard">
+                <ul id="dashboarditems">
+                </ul>
             </div>
-            <div id="setrackingactions">
-                <p>this is actions according to your selection</p>
+            <div id="setracking" class="showpanel">
+                <div id="setrackingmain">
+                    <table id="report">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>BugId</th>
+                            <th></th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="setrackingactions">
+                    <p>
+                        this is actions according to your selection</p>
+                </div>
             </div>
         </div>
-    
     </div>
-     
-</div>
 </body>
 </html>
