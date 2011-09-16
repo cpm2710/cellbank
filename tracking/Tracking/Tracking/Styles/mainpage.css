@@ -1,4 +1,9 @@
-﻿#main
+﻿body
+{
+    font-family:Arial, Helvetica, Sans-Serif; 
+    font-size:0.8em;
+}
+#main
 {
     left: 0;
     overflow: hidden; 
@@ -43,3 +48,13 @@
     width:20%;
     height:100%;
 }
+
+#setrackingreport { border-collapse:collapse;}
+#setrackingreport h4 { margin:0px; padding:0px;}
+#setrackingreport img { float:right;}
+#setrackingreport ul { margin:10px 0 10px 40px; padding:0px;}
+#setrackingreport th { background:#7CB8E2 url(../Scripts/lib/jexpand/header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;}
+#setrackingreport td { background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; }
+#setrackingreport tr.odd td { background:#fff url(../Scripts/lib/jexpand/row_bkg.png) repeat-x scroll center left; cursor:pointer; }
+#setrackingreport div.arrow { background:transparent url(../Scripts/lib/jexpand/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+#setrackingreport div.up { background-position:0px 0px;}
