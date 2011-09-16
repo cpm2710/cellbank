@@ -61,5 +61,19 @@ namespace TrackingWorkFlow
             }
             return null;
         }
+        public WorkFlowDefinitionList getWorkFlowDefinitions()
+        {
+            WorkFlowDefinitionList l = new WorkFlowDefinitionList();
+            Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
+            Type[] types = trackingWorkFlowAssembly.GetTypes();
+            foreach (Type t in types)
+            {
+                //if (t.IsInstanceOfType())
+                //{
+
+                //}
+            }
+            return l;
+        }
     }
 }

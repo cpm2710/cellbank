@@ -22,6 +22,14 @@ namespace TrackingService
     public class TrackingService 
     {
         [OperationContract]
+        [WebGet(UriTemplate = "/workflowdefinitions", ResponseFormat = WebMessageFormat.Json)]
+        public WorkFlowDefinitionList GetWorkFlowDefinitions()
+        {
+            WorkFlowDefinitionList l = new WorkFlowDefinitionList();
+
+            return l;
+        }
+        [OperationContract]
         [WebGet(UriTemplate = "/workflowinstances", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowInstanceList GetWorkFlowInstances()
         {

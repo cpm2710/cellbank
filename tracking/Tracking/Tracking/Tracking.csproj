@@ -123,6 +123,7 @@
     <Content Include="Scripts\mockdata.js" />
     <Content Include="Scripts\designer\position.util.js" />
     <Content Include="Scripts\lib\templates.min.js" />
+    <Content Include="Scripts\test\testall.js" />
     <Content Include="sql\tracking.sql" />
     <Content Include="Styles\flowdesigner.css" />
     <Content Include="Styles\mainpage.css" />
@@ -162,6 +163,7 @@
     <Compile Include="TrackingService.svc.cs">
       <DependentUpon>TrackingService.svc</DependentUpon>
     </Compile>
+    <Compile Include="WorkFlowDefinition.cs" />
     <Compile Include="WorkFlowInstance.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />

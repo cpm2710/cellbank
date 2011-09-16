@@ -46,6 +46,7 @@
     <Compile Include="CommandInfo.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkFlowDefinition.cs" />
     <Compile Include="WorkFlowInstance.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
