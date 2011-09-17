@@ -155,7 +155,8 @@ namespace FakeServiceAndClient
                     ci.WFName=wfd.WFName.Trim();
                     p.startWorkFlow(ci);
             }
-           
+
+            WorkFlowInstanceList wfilist=p.GetWorkFlowInstances();
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
             
