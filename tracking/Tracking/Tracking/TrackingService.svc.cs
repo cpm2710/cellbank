@@ -47,7 +47,7 @@ namespace TrackingService
                     WorkFlowInstance wfi = new WorkFlowInstance();
                     wfi.BugId = t.bugid;
                     wfi.Id = t.wfinstanceid.ToString();
-                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname, t.wfinstanceid.ToString());
+                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                     wfi.Title = t.wfname;
                     CandidateCommandList ccl = new CandidateCommandList();
                     foreach (string cmd in candiCmds)
@@ -78,7 +78,7 @@ namespace TrackingService
             {
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 wfi = new WorkFlowInstance();
-                List<string> candCmds=twfi.getCandidateCommands(t.wfname, InstanceId);
+                List<string> candCmds=twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
                 CandidateCommandList ccl=new CandidateCommandList();
                 ccl.AddRange(candCmds);
                 wfi.CandidateCommandList = ccl;

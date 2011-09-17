@@ -35,7 +35,7 @@ namespace FakeServiceAndClient
                     WorkFlowInstance wfi = new WorkFlowInstance();
                     wfi.BugId = t.bugid;
                     wfi.Id = t.wfinstanceid.ToString();
-                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname, t.wfinstanceid.ToString());
+                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                     wfi.Title = t.wfname;
                     CandidateCommandList ccl = new CandidateCommandList();
                     foreach (string cmd in candiCmds)
@@ -50,26 +50,26 @@ namespace FakeServiceAndClient
                 TrackingLog.Log(e.ToString() + "!!" + e.Message);
             }
 
-            CommandInfo CommandInfo = new CommandInfo();
-            CommandInfo.WFName = "SESampleTrackingWorkFlow";
-            WorkFlowInstance wfii = new WorkFlowInstance();
-            try
-            {
-                string WFName = CommandInfo.WFName;
-                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-                twfi.getWorkFlowDefinitions();
-                string id = twfi.startProcess(WFName);                
+            //CommandInfo CommandInfo = new CommandInfo();
+            //CommandInfo.WFName = "SESampleTrackingWorkFlow";
+            //WorkFlowInstance wfii = new WorkFlowInstance();
+            //try
+            //{
+            //    string WFName = CommandInfo.WFName;
+            //    TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+            //    twfi.getWorkFlowDefinitions();
+            //    string id = twfi.startProcess(WFName);                
 
-                wfii.Id = id;
-                List<string> candCmds = twfi.getCandidateCommands(WFName, id);
-                CandidateCommandList ccl = new CandidateCommandList();
-                ccl.AddRange(candCmds);
-                wfii.CandidateCommandList = ccl;
-            }
-            catch (Exception e)
-            {
-                // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            //    wfii.Id = id;
+            //    List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+            //    CandidateCommandList ccl = new CandidateCommandList();
+            //    ccl.AddRange(candCmds);
+            //    wfii.CandidateCommandList = ccl;
+            //}
+            //catch (Exception e)
+            //{
+            //    // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
+            //}
             //CommandInfo cinfo = new CommandInfo();
             //cinfo.CommandName = "shit";
             //cinfo.InstanceId = "123";
