@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using CommonResource;
+using System.Collections.ObjectModel;
+using System.Activities.Hosting;
 namespace TrackingWorkFlow
 {
-    public class TrackingWorkFlowInteraction
+    public class TrackingWorkFlowInteraction : IDisposable
     {
         public string startProcess(string wfName)
         {
@@ -17,12 +19,13 @@ namespace TrackingWorkFlow
                 if (t.Name.Equals(wfName))
                 {
                     ConstructorInfo ci = t.GetConstructor(new Type[] { });
-                    using(TrackingWorkFlow twf=(TrackingWorkFlow)ci.Invoke(new object[] { })){
+                    using (TrackingWorkFlow twf = (TrackingWorkFlow)ci.Invoke(new object[] { }))
+                    {
                         twf.Start();
                         twf.Persist();
                         twf.Unload();
                         return twf.app.Id.ToString();
-                    }                    
+                    }
                 }
             }
             return null;
@@ -37,26 +40,30 @@ namespace TrackingWorkFlow
                 {
                     Type tt = typeof(String);
                     ConstructorInfo ci = t.GetConstructor(new Type[] { tt });
-                    object wf = ci.Invoke(new object[] { commandInfo.InstanceId });
-                    TrackingWorkFlow twf = (TrackingWorkFlow)wf;
-                    twf.AcceptCommand(commandInfo.CommandName);
+                    using (TrackingWorkFlow twf = (TrackingWorkFlow)(ci.Invoke(new object[] { commandInfo.InstanceId })))
+                    {
+                        twf.AcceptCommand(commandInfo.CommandName);
+                    }
                 }
             }
         }
         public List<string> getCandidateCommands(string wfName, string instanceId)
         {
-            Assembly trackingWorkFlowAssembly=Assembly.Load("TrackingWorkFlow");
+            Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
             Type[] types = trackingWorkFlowAssembly.GetTypes();
             List<string> requiredInputs = new List<string>();
             foreach (Type t in types)
             {
                 if (t.Name.Equals(wfName))
                 {
-                  Type tt=  typeof(String);
-                  ConstructorInfo ci = t.GetConstructor(new Type[]{tt});
-                    using(TrackingWorkFlow twf=(TrackingWorkFlow)(ci.Invoke(new object[]{instanceId}))){
-                        return twf.GetCandidateCommand();
-                    }                  
+                    Type tt = typeof(String);
+                    ConstructorInfo ci = t.GetConstructor(new Type[] { tt });
+                    List<string> bookmarkInfos = null;
+                    using (TrackingWorkFlow twf = (TrackingWorkFlow)(ci.Invoke(new object[] { instanceId })))
+                    {
+                        bookmarkInfos = twf.GetCandidateCommand();                        
+                    }
+                    return bookmarkInfos;
                 }
             }
             return null;
@@ -69,17 +76,18 @@ namespace TrackingWorkFlow
             Type target = trackingWorkFlowAssembly.GetType("TrackingWorkFlow.TrackingWorkFlow");
             foreach (Type t in types)
             {
-                //if (t.IsInstanceOfType())
-                //{
                 if (t.IsSubclassOf(target))
                 {
                     WorkFlowDefinition WFD = new WorkFlowDefinition();
                     WFD.WFName = t.Name;
                     l.Add(WFD);
                 }
-                //}
             }
             return l;
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

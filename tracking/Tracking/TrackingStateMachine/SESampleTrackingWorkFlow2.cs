@@ -17,7 +17,8 @@ namespace TrackingWorkFlow
         {
             SESampleWorkFlow wf = new SESampleWorkFlow();            
             app = new WorkflowApplication(wf);
-            app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
+            app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
+            //app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
             //app.PersistableIdle += OnPersistableIdle;
             //app.Idle += this.OnWorkflowIdle;       
         }
@@ -26,7 +27,8 @@ namespace TrackingWorkFlow
         {
             SESampleWorkFlow wf = new SESampleWorkFlow();
             app = new WorkflowApplication(wf);
-            app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
+            app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
+            //app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
             Guid g=new Guid(instanceId);
             app.Load(g);
         }

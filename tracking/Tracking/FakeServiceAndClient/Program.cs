@@ -34,24 +34,26 @@ namespace FakeServiceAndClient
                 IQueryable<CommonResource.Tracking> trackingQuery =
                     from tracking in dataContext.Trackings
                     select tracking;
-                TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
 
                 foreach (CommonResource.Tracking t in trackingQuery)
                 {
-                    WorkFlowInstance wfi = new WorkFlowInstance();
-                    wfi.BugId = t.bugid;
-                    wfi.Id = t.wfinstanceid.ToString();
-                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
-                    wfi.Title = t.wfname;
-                    CandidateCommandList ccl = new CandidateCommandList();
-                    if (candiCmds != null)
+                    using (TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction())
                     {
-                        foreach (string cmd in candiCmds)
+                        WorkFlowInstance wfi = new WorkFlowInstance();
+                        wfi.BugId = t.bugid;
+                        wfi.Id = t.wfinstanceid.ToString();
+                        List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
+                        wfi.Title = t.wfname;
+                        CandidateCommandList ccl = new CandidateCommandList();
+                        if (candiCmds != null)
                         {
-                            ccl.Add(cmd);
+                            foreach (string cmd in candiCmds)
+                            {
+                                ccl.Add(cmd);
+                            }
                         }
+                        wfi.CandidateCommandList = ccl;
                     }
-                    wfi.CandidateCommandList = ccl;
                 }
             }
             catch (Exception e)
@@ -109,20 +111,23 @@ namespace FakeServiceAndClient
             try
             {
                 string WFName = CommandInfo.WFName;
-                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-                string id = twfi.startProcess(WFName);
-                TrackingDataContext tdc = new TrackingDataContext();
-                CommonResource.Tracking t = new CommonResource.Tracking();
-                t.wfname = CommandInfo.WFName;
-                t.wfinstanceid = new Guid(id);
-                tdc.Trackings.InsertOnSubmit(t);
-                tdc.SubmitChanges();
+                using (
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction())
+                {
+                    string id = twfi.startProcess(WFName);
+                    TrackingDataContext tdc = new TrackingDataContext();
+                    CommonResource.Tracking t = new CommonResource.Tracking();
+                    t.wfname = CommandInfo.WFName;
+                    t.wfinstanceid = new Guid(id);
+                    tdc.Trackings.InsertOnSubmit(t);
+                    tdc.SubmitChanges();
 
-                wfi.Id = id;
-                List<string> candCmds = twfi.getCandidateCommands(WFName, id);
-                CandidateCommandList ccl = new CandidateCommandList();
-                ccl.AddRange(candCmds);
-                wfi.CandidateCommandList = ccl;
+                    wfi.Id = id;
+                    List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+                    CandidateCommandList ccl = new CandidateCommandList();
+                    ccl.AddRange(candCmds);
+                    wfi.CandidateCommandList = ccl;
+                }
             }
             catch (Exception e)
             {
@@ -149,17 +154,19 @@ namespace FakeServiceAndClient
         {
 
             Program p = new Program();
-           WorkFlowDefinitionList wflist= p.GetWorkFlowDefinitions();
-            foreach(WorkFlowDefinition wfd in wflist){
-                     CommandInfo ci=new CommandInfo();
-                    ci.WFName=wfd.WFName.Trim();
-                    p.startWorkFlow(ci);
+            WorkFlowDefinitionList wflist = p.GetWorkFlowDefinitions();
+            foreach (WorkFlowDefinition wfd in wflist)
+            {
+                CommandInfo ci = new CommandInfo();
+                ci.WFName = wfd.WFName.Trim();
+                WorkFlowInstance wfi= p.startWorkFlow(ci);
+                break;
             }
-
-            WorkFlowInstanceList wfilist=p.GetWorkFlowInstances();
+            
+            WorkFlowInstanceList wfilist = p.GetWorkFlowInstances();
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
-            
+
         }
     }
 }
