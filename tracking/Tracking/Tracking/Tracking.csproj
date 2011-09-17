@@ -133,7 +133,9 @@
     <Content Include="templates\inputFieldTemplate.html" />
     <Content Include="templates\interactionTemplate.html" />
     <Content Include="templates\SETrackingMainTemplate.html" />
+    <Content Include="templates\startProjectMainTemplate.html" />
     <Content Include="templates\trackingProcessItemTemplate.html" />
+    <Content Include="templates\workFlowDedinitionItemTemplate.html" />
     <Content Include="TrackingService.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -1,10 +1,10 @@
 ﻿var dashboarditems = [{ "Name": "Current Projects" }, { "Name": "Start Project" }, { "Name": "Statistics"}];
 
 function formatTableStyle() {
-    $("#setrackingreport tr:odd").addClass("odd");
-    $("#setrackingreport tr:not(.odd)").hide();
-    $("#setrackingreport tr:first-child").show();
-    $("#setrackingreport tr.odd").click(function () {
+    $(".reporttable tr:odd").addClass("odd");
+    $(".reporttable tr:not(.odd)").hide();
+    $(".reporttable tr:first-child").show();
+    $(".reporttable tr.odd").click(function () {
         $(this).next("tr").toggle();
         $(this).find(".arrow").toggleClass("up");
     });
@@ -19,9 +19,19 @@ function showDashboard() {
     }
     hookLeftDashboard();
 }
+function refreshStartProjects() {
+    GetTrackingWorkFlowDefinition(function (workFlowDefinitions) {
+        var i = 0;
+        for (i = 0; i < workFlowDefinitions.length; i++) {
+            $("#workFlowDefinitionItemTemplate").tmpl(workFlowDefinitions[i]).appendTo("#sestartprojectreport");
+        }
+    });
+}
 function showStartProject() {
     $("#showpanelmain").empty();
-    alert("showStartProject");
+    $("#startProjectMainTemplate").tmpl(null).appendTo("#showpanelmain");
+    refreshStartProjects();
+    formatTableStyle();  
 }
 function showStatistics() {
     $("#showpanelmain").empty();
@@ -59,7 +69,7 @@ function refreshTrackingProcess() {
         var i = 0;
         for (i = 0; i < data.length; i++) {
             var trackingItem = $("#trackingProcessTemplate").tmpl(data[i]);
-            trackingItem.appendTo("#report");
+            trackingItem.appendTo("#setrackingreport");
         }
     });
 }
