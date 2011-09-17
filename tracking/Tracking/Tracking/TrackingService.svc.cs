@@ -50,9 +50,12 @@ namespace TrackingService
                     List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                     wfi.Title = t.wfname;
                     CandidateCommandList ccl = new CandidateCommandList();
-                    foreach (string cmd in candiCmds)
+                    if (candiCmds != null)
                     {
-                        ccl.Add(cmd);
+                        foreach (string cmd in candiCmds)
+                        {
+                            ccl.Add(cmd);
+                        }
                     }
                     wfi.CandidateCommandList = ccl;
                 }

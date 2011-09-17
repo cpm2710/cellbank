@@ -64,10 +64,6 @@
       <Project>{7214B86B-75B6-4E77-A78A-97B2D15CA308}</Project>
       <Name>TrackingWorkFlow</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tracking\Tracking.csproj">
-      <Project>{9693F65F-7E7B-4F20-A824-E1D85701FB8A}</Project>
-      <Name>Tracking</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

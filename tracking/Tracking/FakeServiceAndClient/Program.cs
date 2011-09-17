@@ -18,7 +18,13 @@ namespace FakeServiceAndClient
 {
     class Program
     {
-        static void Main(string[] args)
+        public WorkFlowDefinitionList GetWorkFlowDefinitions()
+        {
+            TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
+            WorkFlowDefinitionList l = interaction.getWorkFlowDefinitions();
+            return l;
+        }
+        public WorkFlowInstanceList GetWorkFlowInstances()
         {
             WorkFlowInstanceList l = new WorkFlowInstanceList();
             try
@@ -38,9 +44,12 @@ namespace FakeServiceAndClient
                     List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                     wfi.Title = t.wfname;
                     CandidateCommandList ccl = new CandidateCommandList();
-                    foreach (string cmd in candiCmds)
+                    if (candiCmds != null)
                     {
-                        ccl.Add(cmd);
+                        foreach (string cmd in candiCmds)
+                        {
+                            ccl.Add(cmd);
+                        }
                     }
                     wfi.CandidateCommandList = ccl;
                 }
@@ -49,144 +58,107 @@ namespace FakeServiceAndClient
             {
                 TrackingLog.Log(e.ToString() + "!!" + e.Message);
             }
+            return l;
+        }
+        public WorkFlowInstance GetWorkFlowInstance(string InstanceId)
+        {
+            WorkFlowInstance wfi = new WorkFlowInstance();
+            TrackingDataContext trackingContext = new TrackingDataContext();
+            Guid guid = new Guid(InstanceId);
+            IQueryable<CommonResource.Tracking> trackingQuery =
+                from tracking in trackingContext.Trackings
+                where ((tracking.wfinstanceid == guid))
+                select tracking;
+            foreach (CommonResource.Tracking t in trackingQuery)
+            {
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+                wfi = new WorkFlowInstance();
+                List<string> candCmds = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
+                CandidateCommandList ccl = new CandidateCommandList();
+                ccl.AddRange(candCmds);
+                wfi.CandidateCommandList = ccl;
+                return wfi;
+            }
+            return null;
+        }
 
-            //CommandInfo CommandInfo = new CommandInfo();
-            //CommandInfo.WFName = "SESampleTrackingWorkFlow";
-            //WorkFlowInstance wfii = new WorkFlowInstance();
-            //try
-            //{
-            //    string WFName = CommandInfo.WFName;
-            //    TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-            //    twfi.getWorkFlowDefinitions();
-            //    string id = twfi.startProcess(WFName);                
+        public ParameterList GetParameters(string CommandName)
+        {
+            ParameterList pList = new ParameterList();
+            CommandInteraction ci = new CommandInteraction();
+            try
+            {
+                List<string> requierdInputs = ci.getRequiredInputs(CommandName);
+                foreach (string i in requierdInputs)
+                {
+                    Parameter p = new Parameter();
+                    p.Name = i;
+                    pList.Add(p);
+                }
+            }
+            catch (Exception e)
+            {
+                //throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+            return pList;
+        }
 
-            //    wfii.Id = id;
-            //    List<string> candCmds = twfi.getCandidateCommands(WFName, id);
-            //    CandidateCommandList ccl = new CandidateCommandList();
-            //    ccl.AddRange(candCmds);
-            //    wfii.CandidateCommandList = ccl;
-            //}
-            //catch (Exception e)
-            //{
-            //    // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
-            //}
-            //CommandInfo cinfo = new CommandInfo();
-            //cinfo.CommandName = "shit";
-            //cinfo.InstanceId = "123";
-            //ParameterList pl=new ParameterList();
-            //pl.Add(new Parameter());
-            //pl[0].Name = "pname";
-            //pl[0].Type = "string";
-            //pl[0].Value = "value1";
-            //cinfo.ParameterList = pl;
-            //cinfo.WFName = "wf1";
+        public WorkFlowInstance startWorkFlow(CommandInfo CommandInfo)
+        {
+            WorkFlowInstance wfi = new WorkFlowInstance();
+            try
+            {
+                string WFName = CommandInfo.WFName;
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+                string id = twfi.startProcess(WFName);
+                TrackingDataContext tdc = new TrackingDataContext();
+                CommonResource.Tracking t = new CommonResource.Tracking();
+                t.wfname = CommandInfo.WFName;
+                t.wfinstanceid = new Guid(id);
+                tdc.Trackings.InsertOnSubmit(t);
+                tdc.SubmitChanges();
 
-            //MemoryStream stream1 = new MemoryStream();
-            //DataContractJsonSerializer ser =
-            //  new DataContractJsonSerializer(typeof(CommandInfo));
-            //ser.WriteObject(stream1, cinfo);
-            //stream1.Position = 0;
-            //StreamReader sr = new StreamReader(stream1);
-            //string instanceStr = sr.ReadToEnd();
-            //Console.WriteLine(instanceStr);
+                wfi.Id = id;
+                List<string> candCmds = twfi.getCandidateCommands(WFName, id);
+                CandidateCommandList ccl = new CandidateCommandList();
+                ccl.AddRange(candCmds);
+                wfi.CandidateCommandList = ccl;
+            }
+            catch (Exception e)
+            {
+                TrackingLog.Log(e.Message + "!!" + e.ToString());
+            }
+            return wfi;
+        }
 
-            //CommandInteraction ci = new CommandInteraction();
-            //List<string> requiredInputs=ci.getRequiredInputs("ProcessStart");
+        public CommandInfo doCommand(CommandInfo CommandInfo)
+        {
+            CommandInteraction cmdInteraction = new CommandInteraction();
+            Dictionary<string, string> paras = new Dictionary<string, string>();
+            foreach (Parameter p in CommandInfo.ParameterList)
+            {
+                paras.Add(p.Name, p.Value);
+            }
+            cmdInteraction.executeCommand(CommandInfo.CommandName, paras);//this is do the real action in extension
+            TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+            twfi.doCommand(CommandInfo);// this is just trigger the state machine(WF) to do one step
 
-            //Dictionary<string, string> inputWithValues = new Dictionary<string, string>();
-            //foreach (string input in requiredInputs)
-            //{
-            //    inputWithValues.Add(input, "st");                
-            //}
-            //ci.executeCommand("ProcessStart", inputWithValues);
+            return CommandInfo;
+        }
+        static void Main(string[] args)
+        {
 
-            ////GeneralDataSource psds = new GeneralDataSource();
-            ////psds.getValueCandidates("assignedto");
-            ////psds.getCandidate();
-
-            ////var connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
-            ////SqlWorkflowInstanceStore instanceStore = new SqlWorkflowInstanceStore(connStr);
-
-
-            ////6d64d963-b950-439a-aeaa-4b9b101528ab
-
-            //SESampleWorkFlow wf = new SESampleWorkFlow();
-
-            //WorkflowApplication app = new WorkflowApplication(wf);
-            //app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
-            ////app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
-            //// app.Load(new Guid("6d64d963-b950-439a-aeaa-4b9b101528ab"));
-
-            //ReadOnlyCollection<BookmarkInfo> oldBookmarks = app.GetBookmarks();
-
-
-            //SESampleTrackingWorkFlow m = new SESampleTrackingWorkFlow();
-            //m.app.Run();
-            //ReadOnlyCollection<BookmarkInfo> bookInfos = m.app.GetBookmarks();
-
-            //m.AcceptCommand(ChooseTransitionCommand.ProcessStart.ToString());
-            //while (m.CurrentBookmarks == null)
-            //{
-            //    Thread.Sleep(1000);
-            //}
-            //Guid iId = m.app.Id;
-            //SESampleTrackingWorkFlow m2 = new SESampleTrackingWorkFlow();
-
-            //m2.app.Load(iId);
-            //ReadOnlyCollection<BookmarkInfo> bookInfos2 = m2.app.GetBookmarks();
-
-            //m.AcceptCommand(bookInfos2[0].BookmarkName);
-            //while (m.CurrentBookmarks == null)
-            //{
-            //    Thread.Sleep(1000);
-            //}
-            //bookInfos2 = m.app.GetBookmarks();
-
-            //m.Persist();
+            Program p = new Program();
+           WorkFlowDefinitionList wflist= p.GetWorkFlowDefinitions();
+            foreach(WorkFlowDefinition wfd in wflist){
+                     CommandInfo ci=new CommandInfo();
+                    ci.WFName=wfd.WFName.Trim();
+                    p.startWorkFlow(ci);
+            }
+           
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
-            //app.Run();
-            //app.Idle += new Action<WorkflowApplicationIdleEventArgs>(() => { });
-            //WorkflowInvoker.in(wf);
-            //ReadOnlyCollection<BookmarkInfo> bookmarkInfos=  m.CurrentBookmarks;
-            // m.AcceptEvent(ChooseTransitionEvent.RequireMoreInformation.ToString());
-            //m.app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //WorkflowInstanceQuery que = new WorkflowInstanceQuery();
-
-
-            //ReadOnlyCollection<BookmarkInfo> bookInfos = app.GetBookmarks();
-            //foreach (BookmarkInfo i in bookInfos)
-            //{
-            //    Console.WriteLine(i.BookmarkName);
-            //}
-            //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.RequireMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //app.ResumeBookmark(ChooseTransitionEvent.ProvideMoreInformation.ToString(), new ChooseTransitionResult());
-
-            //bookInfos = app.GetBookmarks();
-            //foreach (BookmarkInfo i in bookInfos)
-            //{
-            //    Console.WriteLine(i.BookmarkName);
-            //}
-            //app.Run();
-            //app.ResumeBookmark(ChooseTransitionEvent
+            
         }
     }
 }
