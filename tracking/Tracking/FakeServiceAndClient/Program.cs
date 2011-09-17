@@ -27,6 +27,7 @@ namespace FakeServiceAndClient
             {
                 string WFName = CommandInfo.WFName;
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+                twfi.getWorkFlowDefinitions();
                 string id = twfi.startProcess(WFName);                
 
                 wfi.Id = id;

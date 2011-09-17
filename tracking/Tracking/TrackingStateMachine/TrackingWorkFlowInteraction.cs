@@ -66,11 +66,17 @@ namespace TrackingWorkFlow
             WorkFlowDefinitionList l = new WorkFlowDefinitionList();
             Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
             Type[] types = trackingWorkFlowAssembly.GetTypes();
+            Type target = trackingWorkFlowAssembly.GetType("TrackingWorkFlow.TrackingWorkFlow");
             foreach (Type t in types)
             {
                 //if (t.IsInstanceOfType())
                 //{
-
+                if (t.IsSubclassOf(target))
+                {
+                    WorkFlowDefinition WFD = new WorkFlowDefinition();
+                    WFD.WFName = t.Name;
+                    l.Add(WFD);
+                }
                 //}
             }
             return l;

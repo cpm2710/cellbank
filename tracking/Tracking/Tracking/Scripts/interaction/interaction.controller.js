@@ -4,10 +4,10 @@
 
 */
 function initializeInteraction(commandName) {
-    $.getTmplSync("./templates/interactionTemplate.html").done(function () {
+   
         $interactionPanel = $("#interactionTemplate").tmpl(null);
         $interactionFields = $interactionPanel.find(".interactionfields");
-        $.getTmplSync("./templates/inputFieldTemplate.html").done(function () {
+        
             GetParameters(commandName, function (parameters) {
                 var i = 0;
                 for (i = 0; i < parameters.length; i++) {
@@ -37,8 +37,6 @@ function initializeInteraction(commandName) {
                 });
                 showInLightbox($interactionPanel);
             });
-        });
-    });
 }
 function validateInteraction(commandName) {
     

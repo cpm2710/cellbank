@@ -25,8 +25,8 @@ namespace TrackingService
         [WebGet(UriTemplate = "/workflowdefinitions", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowDefinitionList GetWorkFlowDefinitions()
         {
-            WorkFlowDefinitionList l = new WorkFlowDefinitionList();
-
+            TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
+            WorkFlowDefinitionList l=interaction.getWorkFlowDefinitions();
             return l;
         }
         [OperationContract]
