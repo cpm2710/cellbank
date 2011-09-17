@@ -12,15 +12,12 @@ namespace TrackingWorkFlow
 {
     public class SESampleTrackingWorkFlow2 : TrackingWorkFlow
     {        
-        
         public SESampleTrackingWorkFlow2():base()
         {
             SESampleWorkFlow wf = new SESampleWorkFlow();            
             app = new WorkflowApplication(wf);
             app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
             //app.InstanceStore = InstanceStoreSingleton.Instance.InstanceStore;
-            //app.PersistableIdle += OnPersistableIdle;
-            //app.Idle += this.OnWorkflowIdle;       
         }
         public SESampleTrackingWorkFlow2(string instanceId)
             : base()
@@ -36,11 +33,11 @@ namespace TrackingWorkFlow
         {
             app.Persist();
         }
-        private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
-        {
-            currentBookmarks = args.Bookmarks;
-            this.Persist();
-        }
+        //private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
+        //{
+        //    currentBookmarks = args.Bookmarks;
+        //    this.Persist();
+        //}
         public override List<string> GetCandidateCommand()
         {
             ReadOnlyCollection<BookmarkInfo>  bis=this.app.GetBookmarks();

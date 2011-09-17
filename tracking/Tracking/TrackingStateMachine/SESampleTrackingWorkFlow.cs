@@ -34,11 +34,11 @@ namespace TrackingWorkFlow
         {
             app.Persist();
         }
-        private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
-        {
-            currentBookmarks = args.Bookmarks;
-            this.Persist();
-        }
+        //private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
+        //{
+        //    currentBookmarks = args.Bookmarks;
+        //    this.Persist();
+        //}
         public override List<string> GetCandidateCommand()
         {
             ReadOnlyCollection<BookmarkInfo>  bis=this.app.GetBookmarks();

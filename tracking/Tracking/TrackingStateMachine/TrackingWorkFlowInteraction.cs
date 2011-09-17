@@ -19,13 +19,15 @@ namespace TrackingWorkFlow
                 if (t.Name.Equals(wfName))
                 {
                     ConstructorInfo ci = t.GetConstructor(new Type[] { });
+                    string appId = null;
                     using (TrackingWorkFlow twf = (TrackingWorkFlow)ci.Invoke(new object[] { }))
                     {
                         twf.Start();
-                        twf.Persist();
-                        twf.Unload();
-                        return twf.app.Id.ToString();
+                        //twf.Persist();
+                        //twf.Unload();//should make it the sync call
+                        appId= twf.app.Id.ToString();
                     }
+                    return appId;
                 }
             }
             return null;

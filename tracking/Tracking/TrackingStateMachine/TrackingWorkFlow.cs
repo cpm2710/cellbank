@@ -54,6 +54,7 @@ namespace TrackingWorkFlow
 
         public void Dispose()
         {
+            this.app.Unload();
             //throw new NotImplementedException();
         }
     }

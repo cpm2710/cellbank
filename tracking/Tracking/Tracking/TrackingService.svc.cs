@@ -40,29 +40,32 @@ namespace TrackingService
                 IQueryable<CommonResource.Tracking> trackingQuery =
                     from tracking in dataContext.Trackings
                     select tracking;
-                TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
 
                 foreach (CommonResource.Tracking t in trackingQuery)
                 {
-                    WorkFlowInstance wfi = new WorkFlowInstance();
-                    wfi.BugId = t.bugid;
-                    wfi.Id = t.wfinstanceid.ToString();
-                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
-                    wfi.Title = t.wfname;
-                    CandidateCommandList ccl = new CandidateCommandList();
-                    if (candiCmds != null)
+                    using (TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction())
                     {
-                        foreach (string cmd in candiCmds)
+                        WorkFlowInstance wfi = new WorkFlowInstance();
+                        wfi.BugId = t.bugid;
+                        wfi.Id = t.wfinstanceid.ToString();
+                        List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
+                        wfi.Title = t.wfname;
+                        CandidateCommandList ccl = new CandidateCommandList();
+                        if (candiCmds != null)
                         {
-                            ccl.Add(cmd);
+                            foreach (string cmd in candiCmds)
+                            {
+                                ccl.Add(cmd);
+                            }
                         }
+                        wfi.CandidateCommandList = ccl;
+                        l.Add(wfi);
                     }
-                    wfi.CandidateCommandList = ccl;
                 }
             }
             catch (Exception e)
             {
-                TrackingLog.Log(e.ToString()+"!!"+e.Message);                
+                TrackingLog.Log(e.ToString() + "!!" + e.Message);
             }
             return l;
         }

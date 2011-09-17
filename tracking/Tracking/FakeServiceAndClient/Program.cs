@@ -53,6 +53,7 @@ namespace FakeServiceAndClient
                             }
                         }
                         wfi.CandidateCommandList = ccl;
+                        l.Add(wfi);
                     }
                 }
             }
