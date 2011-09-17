@@ -42,13 +42,30 @@
     width:80%;
     height:100%;
 }
+#sestartprojectmain
+{
+    float:left;
+    width:80%;
+    height:100%;
+}
 #setrackingactions
 {
     float:left;
     width:20%;
     height:100%;
 }
-
+ #sestartprojectactions
+ {
+      float:left;
+    width:20%;
+    height:100%;
+ }
+ .projectaction
+ {
+     float:left;
+     width:100%;
+     height:20%;
+ }
 .reporttable { border-collapse:collapse;}
 .reporttable h4 { margin:0px; padding:0px;}
 .reporttable img { float:right;}
@@ -58,3 +75,7 @@
 .reporttable tr.odd td { background:#fff url(../Scripts/lib/jexpand/row_bkg.png) repeat-x scroll center left; cursor:pointer; }
 .reporttable div.arrow { background:transparent url(../Scripts/lib/jexpand/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
 .reporttable div.up { background-position:0px 0px;}
+.reporttable > tr:hover
+{
+    background:#222222;
+}

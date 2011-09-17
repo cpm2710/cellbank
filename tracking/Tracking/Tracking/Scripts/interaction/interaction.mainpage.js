@@ -23,7 +23,11 @@ function refreshStartProjects() {
     GetTrackingWorkFlowDefinition(function (workFlowDefinitions) {
         var i = 0;
         for (i = 0; i < workFlowDefinitions.length; i++) {
-            $("#workFlowDefinitionItemTemplate").tmpl(workFlowDefinitions[i]).appendTo("#sestartprojectreport");
+            var workFlowDefItem = $("#workFlowDefinitionItemTemplate").tmpl(workFlowDefinitions[i]);
+            workFlowDefItem.bind("click", function (e) {
+                
+             });
+            workFlowDefItem.appendTo("#sestartprojectreport");
         }
     });
 }
