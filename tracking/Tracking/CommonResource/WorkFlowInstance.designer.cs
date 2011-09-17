@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tracking
+namespace CommonResource
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -33,7 +33,7 @@ namespace Tracking
     #endregion
 		
 		public WorkFlowInstanceDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["WorkflowInstanceStoreConnectionString"].ConnectionString, mappingSource)
+				base(global::CommonResource.Properties.Settings.Default.WorkflowInstanceStoreConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

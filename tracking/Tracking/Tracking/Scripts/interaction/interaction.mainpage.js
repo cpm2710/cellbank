@@ -25,17 +25,37 @@ function refreshStartProjects() {
         for (i = 0; i < workFlowDefinitions.length; i++) {
             var workFlowDefItem = $("#workFlowDefinitionItemTemplate").tmpl(workFlowDefinitions[i]);
             workFlowDefItem.bind("click", function (e) {
-                
-             });
+                var trs = $("#sestartprojectreport").find("tr");
+                trs.removeClass("selected");
+                $(this).addClass("selected");
+                /*var abc=$(this).tmplItem();
+                console.dir(abc);
+                alert(abc.data.WFName);*/
+            });
             workFlowDefItem.appendTo("#sestartprojectreport");
         }
     });
+    $("#sestartprojectactions > .startprojectaction").bind("click", function (e) {
+        var selectedWFD = $("#sestartprojectreport").find("tr.selected");
+        //var selectedWFD = trs.find(".selected");
+        var wfname = selectedWFD.tmplItem().data.WFName;
+        var commandInfo = { "WFName": wfname };
+        startWorkFlow(commandInfo, function (data) {
+            alert(data);
+        });
+    });
+    $("#sestartprojectactions > .suspendprojectaction").bind("click", function (e) {
+
+    });
+    $("#sestartprojectactions > .attachbugtemplate").bind("click", function (e) {
+
+    }); 
 }
 function showStartProject() {
     $("#showpanelmain").empty();
     $("#startProjectMainTemplate").tmpl(null).appendTo("#showpanelmain");
     refreshStartProjects();
-    formatTableStyle();  
+    formatTableStyle();
 }
 function showStatistics() {
     $("#showpanelmain").empty();

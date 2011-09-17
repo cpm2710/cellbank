@@ -14,7 +14,6 @@ using CommonResource;
 using System.Web;
 using Tracking;
 using System.Diagnostics;
-
 namespace TrackingService
 {
     [ServiceContract]
@@ -34,26 +33,33 @@ namespace TrackingService
         public WorkFlowInstanceList GetWorkFlowInstances()
         {
             WorkFlowInstanceList l = new WorkFlowInstanceList();
-            TrackingDataContext dataContext = new TrackingDataContext();
-
-            IQueryable<Tracking.Tracking> trackingQuery =
-                from tracking in dataContext.Trackings 
-                select tracking;
-            TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
-            
-            foreach (Tracking.Tracking t in trackingQuery)
+            try
             {
-                WorkFlowInstance wfi = new WorkFlowInstance();
-                wfi.BugId = t.bugid;
-                wfi.Id = t.wfinstanceid.ToString();
-                List<string> candiCmds=interaction.getCandidateCommands(t.wfname, t.wfinstanceid.ToString());
-                wfi.Title = t.wfname;
-                CandidateCommandList ccl = new CandidateCommandList();
-                foreach (string cmd in candiCmds)
+                TrackingDataContext dataContext = new TrackingDataContext();
+
+                IQueryable<CommonResource.Tracking> trackingQuery =
+                    from tracking in dataContext.Trackings
+                    select tracking;
+                TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
+
+                foreach (CommonResource.Tracking t in trackingQuery)
                 {
-                    ccl.Add(cmd);
+                    WorkFlowInstance wfi = new WorkFlowInstance();
+                    wfi.BugId = t.bugid;
+                    wfi.Id = t.wfinstanceid.ToString();
+                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname, t.wfinstanceid.ToString());
+                    wfi.Title = t.wfname;
+                    CandidateCommandList ccl = new CandidateCommandList();
+                    foreach (string cmd in candiCmds)
+                    {
+                        ccl.Add(cmd);
+                    }
+                    wfi.CandidateCommandList = ccl;
                 }
-                wfi.CandidateCommandList = ccl;
+            }
+            catch (Exception e)
+            {
+                TrackingLog.Log(e.ToString()+"!!"+e.Message);                
             }
             return l;
         }
@@ -64,11 +70,11 @@ namespace TrackingService
             WorkFlowInstance wfi = new WorkFlowInstance();            
             TrackingDataContext trackingContext = new TrackingDataContext();
             Guid guid = new Guid(InstanceId);
-            IQueryable<Tracking.Tracking> trackingQuery =
+            IQueryable<CommonResource.Tracking> trackingQuery =
                 from tracking in trackingContext.Trackings
                 where ((tracking.wfinstanceid == guid))
                 select tracking;
-            foreach (Tracking.Tracking t in trackingQuery)
+            foreach (CommonResource.Tracking t in trackingQuery)
             {
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 wfi = new WorkFlowInstance();
@@ -115,7 +121,7 @@ namespace TrackingService
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 string id = twfi.startProcess(WFName);
                 TrackingDataContext tdc = new TrackingDataContext();
-                Tracking.Tracking t = new Tracking.Tracking();
+                CommonResource.Tracking t = new CommonResource.Tracking();
                 t.wfname = CommandInfo.WFName;
                 t.wfinstanceid = new Guid(id);
                 tdc.Trackings.InsertOnSubmit(t);
@@ -129,9 +135,7 @@ namespace TrackingService
             }
             catch (Exception e)
             {
-                TrackingLog.Log(e.Message);
-                TrackingLog.Log(e.ToString());
-               // throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
+                TrackingLog.Log(e.Message + "!!" + e.ToString());
             }
             return wfi;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Diagnostics;
 
-namespace Tracking
+namespace CommonResource
 {
     public class TrackingLog
     {

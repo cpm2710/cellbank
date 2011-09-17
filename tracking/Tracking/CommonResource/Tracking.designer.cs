@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tracking
+namespace CommonResource
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -30,13 +30,10 @@ namespace Tracking
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTracking(Tracking instance);
-    partial void UpdateTracking(Tracking instance);
-    partial void DeleteTracking(Tracking instance);
     #endregion
 		
 		public TrackingDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TrackingConnectionString"].ConnectionString, mappingSource)
+				base(global::CommonResource.Properties.Settings.Default.TrackingConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -75,12 +72,10 @@ namespace Tracking
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tracking")]
-	public partial class Tracking : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Tracking
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _wfinstanceid;
+		private System.Nullable<System.Guid> _wfinstanceid;
 		
 		private string _wfname;
 		
@@ -88,27 +83,12 @@ namespace Tracking
 		
 		private string _bugid;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnwfinstanceidChanging(System.Guid value);
-    partial void OnwfinstanceidChanged();
-    partial void OnwfnameChanging(string value);
-    partial void OnwfnameChanged();
-    partial void OncurrenteventChanging(string value);
-    partial void OncurrenteventChanged();
-    partial void OnbugidChanging(string value);
-    partial void OnbugidChanged();
-    #endregion
-		
 		public Tracking()
 		{
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wfinstanceid", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid wfinstanceid
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wfinstanceid", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> wfinstanceid
 		{
 			get
 			{
@@ -118,11 +98,7 @@ namespace Tracking
 			{
 				if ((this._wfinstanceid != value))
 				{
-					this.OnwfinstanceidChanging(value);
-					this.SendPropertyChanging();
 					this._wfinstanceid = value;
-					this.SendPropertyChanged("wfinstanceid");
-					this.OnwfinstanceidChanged();
 				}
 			}
 		}
@@ -138,11 +114,7 @@ namespace Tracking
 			{
 				if ((this._wfname != value))
 				{
-					this.OnwfnameChanging(value);
-					this.SendPropertyChanging();
 					this._wfname = value;
-					this.SendPropertyChanged("wfname");
-					this.OnwfnameChanged();
 				}
 			}
 		}
@@ -158,11 +130,7 @@ namespace Tracking
 			{
 				if ((this._currentevent != value))
 				{
-					this.OncurrenteventChanging(value);
-					this.SendPropertyChanging();
 					this._currentevent = value;
-					this.SendPropertyChanged("currentevent");
-					this.OncurrenteventChanged();
 				}
 			}
 		}
@@ -178,32 +146,8 @@ namespace Tracking
 			{
 				if ((this._bugid != value))
 				{
-					this.OnbugidChanging(value);
-					this.SendPropertyChanging();
 					this._bugid = value;
-					this.SendPropertyChanged("bugid");
-					this.OnbugidChanged();
 				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

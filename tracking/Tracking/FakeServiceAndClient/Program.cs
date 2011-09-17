@@ -20,9 +20,39 @@ namespace FakeServiceAndClient
     {
         static void Main(string[] args)
         {
+            WorkFlowInstanceList l = new WorkFlowInstanceList();
+            try
+            {
+                TrackingDataContext dataContext = new TrackingDataContext();
+
+                IQueryable<CommonResource.Tracking> trackingQuery =
+                    from tracking in dataContext.Trackings
+                    select tracking;
+                TrackingWorkFlowInteraction interaction = new TrackingWorkFlowInteraction();
+
+                foreach (CommonResource.Tracking t in trackingQuery)
+                {
+                    WorkFlowInstance wfi = new WorkFlowInstance();
+                    wfi.BugId = t.bugid;
+                    wfi.Id = t.wfinstanceid.ToString();
+                    List<string> candiCmds = interaction.getCandidateCommands(t.wfname, t.wfinstanceid.ToString());
+                    wfi.Title = t.wfname;
+                    CandidateCommandList ccl = new CandidateCommandList();
+                    foreach (string cmd in candiCmds)
+                    {
+                        ccl.Add(cmd);
+                    }
+                    wfi.CandidateCommandList = ccl;
+                }
+            }
+            catch (Exception e)
+            {
+                TrackingLog.Log(e.ToString() + "!!" + e.Message);
+            }
+
             CommandInfo CommandInfo = new CommandInfo();
             CommandInfo.WFName = "SESampleTrackingWorkFlow";
-            WorkFlowInstance wfi = new WorkFlowInstance();
+            WorkFlowInstance wfii = new WorkFlowInstance();
             try
             {
                 string WFName = CommandInfo.WFName;
@@ -30,11 +60,11 @@ namespace FakeServiceAndClient
                 twfi.getWorkFlowDefinitions();
                 string id = twfi.startProcess(WFName);                
 
-                wfi.Id = id;
+                wfii.Id = id;
                 List<string> candCmds = twfi.getCandidateCommands(WFName, id);
                 CandidateCommandList ccl = new CandidateCommandList();
                 ccl.AddRange(candCmds);
-                wfi.CandidateCommandList = ccl;
+                wfii.CandidateCommandList = ccl;
             }
             catch (Exception e)
             {
