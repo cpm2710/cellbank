@@ -165,6 +165,9 @@ namespace FakeServiceAndClient
             }
             
             WorkFlowInstanceList wfilist = p.GetWorkFlowInstances();
+
+            p.GetParameters("RequireMoreInformation");
+
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
 
