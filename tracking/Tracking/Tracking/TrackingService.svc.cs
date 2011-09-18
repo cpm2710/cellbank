@@ -48,17 +48,18 @@ namespace TrackingService
                         WorkFlowInstance wfi = new WorkFlowInstance();
                         wfi.BugId = t.bugid;
                         wfi.Id = t.wfinstanceid.ToString();
-                        List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                         wfi.Title = t.wfname;
-                        CandidateCommandList ccl = new CandidateCommandList();
-                        if (candiCmds != null)
-                        {
-                            foreach (string cmd in candiCmds)
-                            {
-                                ccl.Add(cmd);
-                            }
-                        }
-                        wfi.CandidateCommandList = ccl;
+
+                        //List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
+                        //CandidateCommandList ccl = new CandidateCommandList();
+                        //if (candiCmds != null)
+                        //{
+                        //    foreach (string cmd in candiCmds)
+                        //    {
+                        //        ccl.Add(cmd);
+                        //    }
+                        //}
+                        //wfi.CandidateCommandList = ccl;
                         l.Add(wfi);
                     }
                 }
@@ -82,12 +83,15 @@ namespace TrackingService
                 select tracking;
             foreach (CommonResource.Tracking t in trackingQuery)
             {
-                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-                wfi = new WorkFlowInstance();
-                List<string> candCmds=twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
-                CandidateCommandList ccl=new CandidateCommandList();
-                ccl.AddRange(candCmds);
-                wfi.CandidateCommandList = ccl;
+                using (TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction())
+                {
+                    wfi = new WorkFlowInstance();
+                    wfi.Title = t.wfname;
+                    List<string> candCmds = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
+                    CandidateCommandList ccl = new CandidateCommandList();
+                    ccl.AddRange(candCmds);
+                    wfi.CandidateCommandList = ccl;
+                }
                 return wfi;
             }
             return null;

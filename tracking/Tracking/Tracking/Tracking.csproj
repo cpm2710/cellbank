@@ -128,6 +128,7 @@
     <Content Include="sql\tracking.sql" />
     <Content Include="Styles\flowdesigner.css" />
     <Content Include="Styles\mainpage.css" />
+    <Content Include="templates\candidateCommandTemplate.html" />
     <Content Include="templates\dashboardItemTemplate.html" />
     <Content Include="templates\functionTemplate.htm" />
     <Content Include="templates\inputFieldTemplate.html" />

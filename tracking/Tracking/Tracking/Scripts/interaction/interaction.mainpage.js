@@ -92,7 +92,26 @@ function refreshTrackingProcess() {
     getWorkFlowInstances(function (data) {
         var i = 0;
         for (i = 0; i < data.length; i++) {
-            var trackingItem = $("#trackingProcessTemplate").tmpl(data[i]);
+            var trackingItem = $("#trackingProcessItemTemplate").tmpl(data[i]);
+            trackingItem.bind("click", function (e) {
+                var trs = $("#setrackingreport").find("tr");
+                trs.removeClass("selected");
+                $(this).addClass("selected");
+                var selectedTrackingProcess = $(this).tmplItem();
+                var instanceId = selectedTrackingProcess.data.Id;
+                $("#setrackingactions").empty();
+                getWorkFlowInstance(instanceId, function (data) {
+                    var candCommandList = data.CandidateCommandList;
+                    for (i = 0; i < candCommandList.length; i++) {
+                        var candidateCmd = { CommandName: candCommandList[i] };
+                        var candiCmdJObj = $("#candidateCommandTemplate").tmpl(candidateCmd);
+                        candiCmdJObj.appendTo("#setrackingactions");
+                        candiCmdJObj.bind("click", function (e) {
+                            initializeInteraction($(this).tmplItem().data.CommandName);
+                        });
+                    }
+                });
+            });
             trackingItem.appendTo("#setrackingreport");
         }
     });

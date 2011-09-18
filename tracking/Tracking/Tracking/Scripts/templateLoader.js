@@ -6,4 +6,5 @@
     $.getTmplSync("./templates/inputFieldTemplate.html");
     $.getTmplSync("./templates/startProjectMainTemplate.html");
     $.getTmplSync("./templates/workFlowDedinitionItemTemplate.html");
+    $.getTmplSync("./templates/candidateCommandTemplate.html");
 }
