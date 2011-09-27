@@ -87,13 +87,13 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tracking.dbml.layout">
-      <DependentUpon>Tracking.dbml</DependentUpon>
+    <None Include="WorkFlowInstance.dbml.layout">
+      <DependentUpon>WorkFlowInstance.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="WorkFlowInstance.dbml.layout">
-      <DependentUpon>WorkFlowInstance.dbml</DependentUpon>
+    <None Include="Tracking.dbml.layout">
+      <DependentUpon>Tracking.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
