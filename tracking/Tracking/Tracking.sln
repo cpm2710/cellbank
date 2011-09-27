@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking", "Tracking\Tracki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonResource", "CommonResource\CommonResource.csproj", "{CF82BC7D-96B2-4410-9670-CF625A117B0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingService", "TrackingServiceImplementation\TrackingService.csproj", "{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -75,6 +77,16 @@ Global
 		{CF82BC7D-96B2-4410-9670-CF625A117B0D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CF82BC7D-96B2-4410-9670-CF625A117B0D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CF82BC7D-96B2-4410-9670-CF625A117B0D}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6B096A76-C20B-4BE1-B0B7-EF2B7BA00849}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
