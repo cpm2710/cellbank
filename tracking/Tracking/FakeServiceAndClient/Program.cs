@@ -31,19 +31,19 @@ namespace FakeServiceAndClient
             ci.WFName="SESampleTrackingWorkFlow";
             WorkFlowInstance startedOne=ts.startWorkFlow(ci);
 
-            foreach (WorkFlowInstance wfi in wfil)
-            {
-                WorkFlowInstance gotWFI = ts.GetWorkFlowInstance(wfi.Id);
-                CandidateCommandList commandsList = gotWFI.CandidateCommandList;
-                Console.WriteLine(wfi.Id + ":");
-                if (commandsList != null)
-                {
-                    foreach (string cmd in commandsList)
-                    {
-                        Console.WriteLine(cmd);
-                    }
-                }
-            }
+            //foreach (WorkFlowInstance wfi in wfil)
+            //{
+            //    WorkFlowInstance gotWFI = ts.GetWorkFlowInstance(wfi.Id);
+            //    CandidateCommandList commandsList = gotWFI.CandidateCommandList;
+            //    Console.WriteLine(wfi.Id + ":");
+            //    if (commandsList != null)
+            //    {
+            //        foreach (string cmd in commandsList)
+            //        {
+            //            Console.WriteLine(cmd);
+            //        }
+            //    }
+            //}
 
 
             AutoResetEvent ee = new AutoResetEvent(false);

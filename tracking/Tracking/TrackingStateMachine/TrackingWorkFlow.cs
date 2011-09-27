@@ -24,12 +24,12 @@ namespace TrackingWorkFlow
         }
         protected void MakeAsyncSync()
         {
-            this.app.PersistableIdle = (e) =>
-            {
-                barrier.Set();
-                return PersistableIdleAction.Unload;
+            //this.app.PersistableIdle = (e) =>
+            //{
+            //    barrier.Set();
+            //    return PersistableIdleAction.Unload;
 
-            };
+            //};
 
             this.app.Unloaded = (e) =>
             {
@@ -69,6 +69,12 @@ namespace TrackingWorkFlow
         public virtual void Start()
         {
             app.ResumeBookmark(ChooseTransitionCommand.ProcessStart.ToString(), new ChooseTransitionResult());
+            app.Idle = (e) =>
+            {
+                this.barrier.Set();
+            };
+            this.barrier.WaitOne();
+            //Thread.Sleep(5000);
             this.Unload();
         }
         public abstract List<string> GetCandidateCommand();
