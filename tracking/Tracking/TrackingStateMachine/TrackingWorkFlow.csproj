@@ -59,6 +59,7 @@
     <Compile Include="TrackingWorkFlow.cs" />
     <Compile Include="TrackingWorkFlowInteraction.cs" />
     <Compile Include="WorkFlowInstanceDataAccess.cs" />
+    <Compile Include="WorkFlowNotFoundException.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamlAppDef Include="SESampleWorkFlow.xaml">

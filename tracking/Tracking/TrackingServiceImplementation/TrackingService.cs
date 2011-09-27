@@ -84,10 +84,15 @@ namespace TrackingService
                 {
                     wfi = new WorkFlowInstance();
                     wfi.Title = t.wfname;
-                    List<string> candCmds = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
-                    CandidateCommandList ccl = new CandidateCommandList();
-                    ccl.AddRange(candCmds);
-                    wfi.CandidateCommandList = ccl;
+                    try
+                    {
+                        CandidateCommandList ccl = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
+                        wfi.CandidateCommandList = ccl;
+                    }
+                    catch (WorkFlowNotFoundException e)
+                    {
+
+                    }                    
                 }
                 return wfi;
             }
@@ -112,7 +117,7 @@ namespace TrackingService
             }
             catch (Exception e)
             {
-                throw new HttpException((int)HttpStatusCode.InternalServerError, e.Message);
+                throw new WebFaultException<string>(e.ToString(),HttpStatusCode.InternalServerError);
             }
             return pList;
         }

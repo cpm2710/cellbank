@@ -6,10 +6,12 @@ using System.Reflection;
 using CommonResource;
 using System.Collections.ObjectModel;
 using System.Activities.Hosting;
+using System.Threading;
 namespace TrackingWorkFlow
 {
     public class TrackingWorkFlowInteraction : IDisposable
     {
+      
         public string startProcess(string wfName)
         {
             Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
@@ -49,7 +51,7 @@ namespace TrackingWorkFlow
                 }
             }
         }
-        public List<string> getCandidateCommands(string wfName, string instanceId)
+        public CandidateCommandList getCandidateCommands(string wfName, string instanceId)
         {
             Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
             Type[] types = trackingWorkFlowAssembly.GetTypes();
@@ -65,10 +67,20 @@ namespace TrackingWorkFlow
                     {
                         bookmarkInfos = twf.GetCandidateCommand();                        
                     }
-                    return bookmarkInfos;
+                    CandidateCommandList cmdList=null;
+                    if (bookmarkInfos != null)
+                    {
+                        cmdList = new CandidateCommandList();
+                        cmdList.AddRange(bookmarkInfos);
+                        return cmdList;
+                    }
+                    else
+                    {
+                        return null;
+                    }                    
                 }
             }
-            return null;
+            throw new WorkFlowNotFoundException("workFlow named "+wfName+" not found");
         }
         public WorkFlowDefinitionList getWorkFlowDefinitions()
         {
