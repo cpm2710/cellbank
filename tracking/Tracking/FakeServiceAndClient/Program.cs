@@ -154,6 +154,14 @@ namespace FakeServiceAndClient
         static void Main(string[] args)
         {
 
+            //SESampleWorkFlow wf = new SESampleWorkFlow();
+            //WorkflowApplication app = new WorkflowApplication(wf);
+            //app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
+            //Guid g = new Guid("11859d18-257d-45a1-ba0a-0f4f257e82be");
+            //app.Load(g);
+            //ReadOnlyCollection<BookmarkInfo>  abc=app.GetBookmarks();
+
+
             Program p = new Program();
             WorkFlowDefinitionList wflist = p.GetWorkFlowDefinitions();
             foreach (WorkFlowDefinition wfd in wflist)

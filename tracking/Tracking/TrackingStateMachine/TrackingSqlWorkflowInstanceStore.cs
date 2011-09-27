@@ -6,7 +6,7 @@ using System.Activities.DurableInstancing;
 
 namespace TrackingWorkFlow
 {
-    class TrackingSqlWorkflowInstanceStore
+    public class TrackingSqlWorkflowInstanceStore
     {
         public static string connStr = @"Data Source=.\sqlexpress;Initial Catalog=WorkflowInstanceStore;Integrated Security=True;Pooling=False";
         public static SqlWorkflowInstanceStore generateOne()
