@@ -127,7 +127,7 @@ namespace TrackingService
             WorkFlowInstance wfi = new WorkFlowInstance();
             try
             {
-                string WFName = CommandInfo.WFName;
+                string WFName = CommandInfo.WFName.Trim();
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 string id = twfi.startProcess(WFName);
                 TrackingDataContext tdc = new TrackingDataContext();
