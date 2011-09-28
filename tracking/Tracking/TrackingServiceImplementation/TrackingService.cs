@@ -168,9 +168,13 @@ namespace TrackingService
             {
                 CommandInteraction cmdInteraction = new CommandInteraction();
                 Dictionary<string, string> paras = new Dictionary<string, string>();
-                foreach (Parameter p in CommandInfo.ParameterList)
+                paras.Add("InstanceId", CommandInfo.InstanceId);
+                if (CommandInfo.ParameterList != null)
                 {
-                    paras.Add(p.Name, p.Value);
+                    foreach (Parameter p in CommandInfo.ParameterList)
+                    {
+                        paras.Add(p.Name, p.Value);
+                    }
                 }
                 cmdInteraction.executeCommand(CommandInfo.CommandName, paras);//this is do the real action in extension
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();

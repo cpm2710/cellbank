@@ -22,8 +22,14 @@ namespace FakeServiceAndClient
         static void Main(string[] args)
         {
             TrackingService.TrackingService ts = new TrackingService.TrackingService();
-
-            WorkFlowInstance wfi=ts.GetWorkFlowInstance("966b0c2d-fcb9-4b94-931c-e86ed7c75657");
+            CommandInfo ci = new CommandInfo();
+            ci.CommandName="AssignToTriage";
+            ci.InstanceId = "c0c2abaa-6f65-46a2-9f47-686d672dc99b";
+            ci.WFName = "SESampleTrackingWorkFlow";
+            ci.ParameterList = new ParameterList();
+            ci.ParameterList.Add(new Parameter("AssignTo","t-limliu"));
+            ts.doCommand(ci);
+            //WorkFlowInstance wfi=ts.GetWorkFlowInstance("966b0c2d-fcb9-4b94-931c-e86ed7c75657");
 
             //WorkFlowInstanceList wfil = ts.GetWorkFlowInstances();
 

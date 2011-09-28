@@ -7,8 +7,9 @@ namespace TrackingCommands
 {
     public abstract class Command
     {
+        private string InstanceId;
         public string AssignTo;
-       public abstract void execute();
-       public abstract void validate();
+        public abstract void execute();
+        public abstract void validate();
     }
 }

@@ -9,6 +9,15 @@ namespace CommonResource
     [DataContract(Namespace = "")]
     public class Parameter
     {
+        public Parameter()
+        {
+
+        }
+        public Parameter(string Name, string Value)
+        {
+            this.Name = Name;
+            this.Value = Value;
+        }
         [DataMember]
         public string Name;
         [DataMember]
