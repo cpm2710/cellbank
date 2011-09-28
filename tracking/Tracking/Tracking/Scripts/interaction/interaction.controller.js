@@ -28,8 +28,8 @@ function initializeInteraction(commandName) {
                 inputFields = inputFields.substr(0, inputFields.length - 1) + "]";
 
                 var commandInfoStr = "{CommandName:\"" + commandName + "\"," + inputFields + "}";
-                //var commandInfo = eval("(" + commandInfoStr + ")");
-                doCommand(commandInfoStr, function (data) {
+                var commandInfo = eval("(" + commandInfoStr + ")");
+                doCommand(commandInfo, function (data) {
                     alert(data);
                 });
             });

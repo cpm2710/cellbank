@@ -73,29 +73,36 @@ namespace TrackingService
         {
             WorkFlowInstance wfi = new WorkFlowInstance();
             wfi.Id = InstanceId;
-            TrackingDataContext trackingContext = new TrackingDataContext();
-            Guid guid = new Guid(InstanceId);
-            IQueryable<CommonResource.Tracking> trackingQuery =
-                from tracking in trackingContext.Trackings
-                where ((tracking.wfinstanceid == guid))
-                select tracking;
-            foreach (CommonResource.Tracking t in trackingQuery)
+            try
             {
-                using (TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction())
+                TrackingDataContext trackingContext = new TrackingDataContext();
+                Guid guid = new Guid(InstanceId);
+                IQueryable<CommonResource.Tracking> trackingQuery =
+                    from tracking in trackingContext.Trackings
+                    where ((tracking.wfinstanceid == guid))
+                    select tracking;
+                foreach (CommonResource.Tracking t in trackingQuery)
                 {
-                    wfi = new WorkFlowInstance();
-                    wfi.Title = t.wfname;
-                    try
+                    using (TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction())
                     {
-                        CandidateCommandList ccl = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
-                        wfi.CandidateCommandList = ccl;
-                    }
-                    catch (WorkFlowNotFoundException e)
-                    {
+                        wfi = new WorkFlowInstance();
+                        wfi.Title = t.wfname;
+                        try
+                        {
+                            CandidateCommandList ccl = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
+                            wfi.CandidateCommandList = ccl;
+                        }
+                        catch (WorkFlowNotFoundException e)
+                        {
 
-                    }                    
+                        }
+                    }
+                    return wfi;
                 }
-                return wfi;
+            }
+            catch (Exception e)
+            {
+                throw new WebFaultException<string>(e.ToString(),HttpStatusCode.InternalServerError);
             }
             return null;
         }

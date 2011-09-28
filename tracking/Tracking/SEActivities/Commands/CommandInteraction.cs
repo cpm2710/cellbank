@@ -26,7 +26,7 @@ namespace TrackingCommands
         }
         public void executeCommand(string commandName,Dictionary<string,string> inputs)
         {
-            Assembly trackingCommandsAssembly = Assembly.Load("TrackingCommands");
+            Assembly trackingCommandsAssembly = Assembly.Load("SEActivities");
             object command = trackingCommandsAssembly.CreateInstance("TrackingCommands." + commandName);
 
             Command cmd = (Command)command;

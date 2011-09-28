@@ -89,11 +89,12 @@ function startWorkFlow(commandInfo, callback) {
     });
 }
 function doCommand(commandInfo, callback) {
+    var dataString = JSON.stringify(commandInfo);
     $.ajax({
         type: "POST",
         url: trakingServiceURL + "commands",
         contentType: "application/json",
-        data: commandInfo,
+        data: dataString,
         dataType: "json",
         cache: false,
         success: function (data) {
