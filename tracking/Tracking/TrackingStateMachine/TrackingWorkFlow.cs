@@ -26,9 +26,7 @@ namespace TrackingWorkFlow
         {
             //this.app.PersistableIdle = (e) =>
             //{
-            //    barrier.Set();
             //    return PersistableIdleAction.Unload;
-
             //};
 
             this.app.Unloaded = (e) =>

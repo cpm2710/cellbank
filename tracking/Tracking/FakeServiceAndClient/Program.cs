@@ -23,13 +23,14 @@ namespace FakeServiceAndClient
         {
             TrackingService.TrackingService ts = new TrackingService.TrackingService();
 
+            WorkFlowInstance wfi=ts.GetWorkFlowInstance("966b0c2d-fcb9-4b94-931c-e86ed7c75657");
 
-            WorkFlowInstanceList wfil = ts.GetWorkFlowInstances();
+            //WorkFlowInstanceList wfil = ts.GetWorkFlowInstances();
 
             
-            CommandInfo ci=new CommandInfo();
-            ci.WFName="SESampleTrackingWorkFlow";
-            WorkFlowInstance startedOne=ts.startWorkFlow(ci);
+            //CommandInfo ci=new CommandInfo();
+            //ci.WFName="SESampleTrackingWorkFlow";
+            //WorkFlowInstance startedOne=ts.startWorkFlow(ci);
 
             //foreach (WorkFlowInstance wfi in wfil)
             //{

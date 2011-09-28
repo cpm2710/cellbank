@@ -72,6 +72,7 @@ namespace TrackingService
         public WorkFlowInstance GetWorkFlowInstance(string InstanceId)
         {
             WorkFlowInstance wfi = new WorkFlowInstance();
+            wfi.Id = InstanceId;
             TrackingDataContext trackingContext = new TrackingDataContext();
             Guid guid = new Guid(InstanceId);
             IQueryable<CommonResource.Tracking> trackingQuery =
