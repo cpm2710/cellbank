@@ -50,6 +50,7 @@
     <Compile Include="ChooseTransitionResult.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandInteraction.cs" />
+    <Compile Include="Commands\FinishProcess.cs" />
     <Compile Include="Commands\ProcessStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChooseTransitionActivity.cs" />

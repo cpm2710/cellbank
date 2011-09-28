@@ -78,7 +78,7 @@ namespace TrackingWorkFlow
         public abstract List<string> GetCandidateCommand();
         public virtual void AcceptCommand(string commandName)
         {
-            currentBookmarks = null;
+            currentBookmarks = app.GetBookmarks();
             app.ResumeBookmark(commandName, new ChooseTransitionResult());
             this.Unload();
         }

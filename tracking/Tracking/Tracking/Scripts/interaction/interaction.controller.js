@@ -10,7 +10,7 @@ function initializeInteraction(commandName) {
         var selectedTR = $("#setrackingreport").find("tr.selected");
         var selectedIdTd = selectedTR.find("td:eq(0)");
         var instanceId = selectedIdTd[0].innerHTML;
-        var workFlowName = selectedTR.find("td:eq(1)")[0].innterHTML;
+        var workFlowName = selectedTR.find("td:eq(1)")[0].innerHTML;
         GetParameters(commandName, function (parameters) {
             var i = 0;
             for (i = 0; i < parameters.length; i++) {
@@ -33,13 +33,12 @@ function initializeInteraction(commandName) {
                 var commandInfoStr = "{WFName:\""+workFlowName+"\",InstanceId:\""+instanceId+"\",CommandName:\"" + commandName + "\"," + inputFields + "}";
                 var commandInfo = eval("(" + commandInfoStr + ")");
                 doCommand(commandInfo, function (data) {
-                    alert(data);
+                    
                 });
             });
 
             $interactionPanel.find("#cancel").bind("click", function (e) {
                 
-                //alert("shit");
             });
             showInLightbox($interactionPanel);
         });
