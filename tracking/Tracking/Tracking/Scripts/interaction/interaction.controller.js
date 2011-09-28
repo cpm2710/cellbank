@@ -7,36 +7,39 @@ function initializeInteraction(commandName) {
    
         $interactionPanel = $("#interactionTemplate").tmpl(null);
         $interactionFields = $interactionPanel.find(".interactionfields");
-        
-            GetParameters(commandName, function (parameters) {
-                var i = 0;
-                for (i = 0; i < parameters.length; i++) {
-                    var inputField = $("#inputFieldTemplate").tmpl(parameters[i]);
-                    inputField.appendTo($interactionFields);
-                }
-                $interactionPanel.find("#submit").bind("click", function (e) {
-                    var inputFields = "\"ParameterList\":[";
-                    $interactionFields.find(".inputField").each(function () {
-                        $ths = $(this);
 
-                        var key = $ths.find("p")[0].innerHTML;
-                        var value = $ths.find("input").val();
+        GetParameters(commandName, function (parameters) {
+            var i = 0;
+            for (i = 0; i < parameters.length; i++) {
+                var inputField = $("#inputFieldTemplate").tmpl(parameters[i]);
+                inputField.appendTo($interactionFields);
+            }
+            $interactionPanel.find("#submit").bind("click", function (e) {
+                var inputFields = "ParameterList:[";
+                $interactionFields.find(".inputField").each(function () {
+                    $ths = $(this);
 
-                        inputFields += "{\"Name\":\"" + key + "\",\"Type\":\"string\",\"Value\":\"" + value + "\"},";
+                    var key = $ths.find("p")[0].innerHTML;
+                    var value = $ths.find("input").val();
 
-                    });
-                    inputFields = inputFields.substr(0, inputFields.length - 1) + "]";
-
-                    var commandInfoStr = "{\"CommandName\":\""+commandName+"\"," + inputFields + "}";
-                    var commandInfo = eval("(" + commandInfoStr + ")");
+                    inputFields += "{Name:\"" + key + "\",Type:\"string\",Value:\"" + value + "\"},";
 
                 });
+                inputFields = inputFields.substr(0, inputFields.length - 1) + "]";
 
-                $interactionPanel.find("#cancel").bind("click", function (e) {
-                    alert("shit");
+                var commandInfoStr = "{CommandName:\"" + commandName + "\"," + inputFields + "}";
+                //var commandInfo = eval("(" + commandInfoStr + ")");
+                doCommand(commandInfoStr, function (data) {
+                    alert(data);
                 });
-                showInLightbox($interactionPanel);
             });
+
+            $interactionPanel.find("#cancel").bind("click", function (e) {
+                
+                //alert("shit");
+            });
+            showInLightbox($interactionPanel);
+        });
 }
 function validateInteraction(commandName) {
     

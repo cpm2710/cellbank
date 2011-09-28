@@ -157,16 +157,23 @@ namespace TrackingService
         [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         public CommandInfo doCommand(CommandInfo CommandInfo)
         {
-            CommandInteraction cmdInteraction = new CommandInteraction();
-            Dictionary<string, string> paras = new Dictionary<string, string>();
-            foreach (Parameter p in CommandInfo.ParameterList)
+            try
             {
-                paras.Add(p.Name, p.Value);
+                CommandInteraction cmdInteraction = new CommandInteraction();
+                Dictionary<string, string> paras = new Dictionary<string, string>();
+                foreach (Parameter p in CommandInfo.ParameterList)
+                {
+                    paras.Add(p.Name, p.Value);
+                }
+                cmdInteraction.executeCommand(CommandInfo.CommandName, paras);//this is do the real action in extension
+                TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
+                twfi.doCommand(CommandInfo);// this is just trigger the state machine(WF) to do one step
             }
-            cmdInteraction.executeCommand(CommandInfo.CommandName, paras);//this is do the real action in extension
-            TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
-            twfi.doCommand(CommandInfo);// this is just trigger the state machine(WF) to do one step
-
+            catch (Exception e)
+            {
+                throw new WebFaultException<string>(e.ToString(), HttpStatusCode.InternalServerError);
+                //TrackingLog.Log(e.Message + "!!" + e.ToString());
+            }
             return CommandInfo;
         }
     }

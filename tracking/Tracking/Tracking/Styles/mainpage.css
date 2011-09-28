@@ -71,6 +71,14 @@
  {
      width:100%;
  }
+ .candidatecommand
+ {
+    color: #000000;
+    cursor: pointer;
+    font-family: Segoe ui semibold,helvetica,Sans-Serif;
+    font-size: 20px;
+    text-shadow: 0.1em 0.1em 0.3em #FFFFFF;
+ }
 .reporttable { border-collapse:collapse;}
 .reporttable h4 { margin:0px; padding:0px;}
 .reporttable img { float:right;}

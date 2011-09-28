@@ -1,4 +1,4 @@
-﻿var dashboarditems = [{ "Name": "Current Projects" }, { "Name": "Start Project" }, { "Name": "Statistics"}];
+﻿var dashboarditems = [{ "Name": "Current Projects" }, { "Name": "Start Project" }, { "Name": "Statistics" }, {"Name":"Process Graph"}];
 
 function formatTableStyle() {
     $(".reporttable tr:odd").addClass("odd");
@@ -37,7 +37,6 @@ function refreshStartProjects() {
     });
     $("#sestartprojectactions > .startprojectaction").bind("click", function (e) {
         var selectedWFD = $("#sestartprojectreport").find("tr.selected");
-        //var selectedWFD = trs.find(".selected");
         var wfname = selectedWFD.tmplItem().data.WFName;
         var commandInfo = { "WFName": wfname };
         startWorkFlow(commandInfo, function (data) {
@@ -73,6 +72,8 @@ function hookLeftDashboard() {
                 showStartProject();
             } else if (index == 2) {
                 showStatistics();
+            } else if (index == 3) {
+                
             }
         });
     });
@@ -83,11 +84,7 @@ function showCurrentProject() {
     
     refreshTrackingProcess();
 }
-function initialDashboard() {
-    formatTableStyle();
-    showDashboard();
-    showCurrentProject();
-}
+
 function refreshTrackingProcess() {
     getWorkFlowInstances(function (data) {
         var i = 0;
@@ -115,4 +112,10 @@ function refreshTrackingProcess() {
             trackingItem.appendTo("#setrackingreport");
         }
     });
+}
+
+function initialDashboard() {
+    formatTableStyle();
+    showDashboard();
+    showCurrentProject();
 }
