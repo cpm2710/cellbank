@@ -15,7 +15,7 @@ namespace TrackingWorkFlow
         
         public SESample2TrackingWorkFlow():base()
         {
-            SESampleWorkFlow wf = new SESampleWorkFlow();            
+            SESampleProcess2 wf = new SESampleProcess2();            
             app = new WorkflowApplication(wf);
             app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
             this.MakeAsyncSync();
@@ -23,7 +23,7 @@ namespace TrackingWorkFlow
         public SESample2TrackingWorkFlow(string instanceId)
             : base()
         {
-            SESampleWorkFlow wf = new SESampleWorkFlow();
+            SESampleProcess2 wf = new SESampleProcess2();
             app = new WorkflowApplication(wf);
             app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
             Guid g=new Guid(instanceId);
