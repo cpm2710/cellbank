@@ -130,12 +130,13 @@
     <Content Include="Styles\flowdesigner.css" />
     <Content Include="Styles\mainpage.css" />
     <Content Include="templates\candidateCommandTemplate.html" />
+    <Content Include="templates\processGraphMainTemplate.html" />
     <Content Include="templates\dashboardItemTemplate.html" />
-    <Content Include="templates\functionTemplate.htm" />
     <Content Include="templates\inputFieldTemplate.html" />
     <Content Include="templates\interactionTemplate.html" />
     <Content Include="templates\SETrackingMainTemplate.html" />
     <Content Include="templates\startProjectMainTemplate.html" />
+    <Content Include="templates\statisticsMainTemplate.html" />
     <Content Include="templates\trackingProcessItemTemplate.html" />
     <Content Include="templates\workFlowDedinitionItemTemplate.html" />
     <Content Include="TrackingService.svc" />

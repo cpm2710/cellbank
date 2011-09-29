@@ -7,4 +7,6 @@
     $.getTmplSync("./templates/startProjectMainTemplate.html");
     $.getTmplSync("./templates/workFlowDedinitionItemTemplate.html");
     $.getTmplSync("./templates/candidateCommandTemplate.html");
+    $.getTmplSync("./templates/statisticsMainTemplate.html");
+    $.getTmplSync("./templates/processGraphMainTemplate.html");
 }

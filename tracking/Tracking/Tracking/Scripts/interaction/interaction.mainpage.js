@@ -59,7 +59,11 @@ function showStartProject() {
 }
 function showStatistics() {
     $("#showpanelmain").empty();
-    alert("showStatistics");
+    $("#statisticsMainTemplate").tmpl(null).appendTo("#showpanelmain");
+}
+function showProcessGraph() {
+    $("#showpanelmain").empty();
+    $("#processGraphMainTemplate").tmpl(null).appendTo("#showpanelmain"); 
 }
 function hookLeftDashboard() {
     $("#dashboarditems").find(".dashboardItem").each(function (i) {
@@ -76,7 +80,7 @@ function hookLeftDashboard() {
             } else if (index == 2) {
                 showStatistics();
             } else if (index == 3) {
-
+                showProcessGraph();
             }
         });
     });
