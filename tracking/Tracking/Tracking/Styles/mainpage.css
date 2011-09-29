@@ -27,8 +27,26 @@
 #dashboard
 {
     float:left;
-    width:20%;
+    width:12%;
     height:100%;
+}
+#setrackingactions > .candidatecommand:hover
+{
+    background: #DDE5FF;
+    cursor:pointer;
+}
+#dashboarditems > .dashboardItem:hover
+{
+    background: #DDE5FF;
+    cursor:pointer;
+}
+#dashboarditems > .dashboardItem.selected
+{
+    background: #BBCCFF;
+}
+#dashboarditems > .dashboardItem
+{
+    width:100%;
 }
 .showpanel
 {
@@ -65,9 +83,12 @@
  {
      float:left;
      width:100%;
-     height:20%;
  }
  #setrackingreport
+ {
+     width:100%;
+ }
+ #sestartprojectreport
  {
      width:100%;
  }

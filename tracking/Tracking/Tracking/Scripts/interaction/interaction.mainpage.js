@@ -65,6 +65,8 @@ function hookLeftDashboard() {
     $("#dashboarditems").find(".dashboardItem").each(function (i) {
         $(this).data("index", i);
         $(this).bind("click", function (e) {
+            $(this).parent().find(".dashboardItem").removeClass("selected");
+            $(this).addClass("selected");
             var index = $(this).data("index");
             if (index == 0) {
                 showCurrentProject();
@@ -74,7 +76,7 @@ function hookLeftDashboard() {
             } else if (index == 2) {
                 showStatistics();
             } else if (index == 3) {
-                
+
             }
         });
     });

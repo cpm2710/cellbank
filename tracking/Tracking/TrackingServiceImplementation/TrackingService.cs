@@ -179,6 +179,7 @@ namespace TrackingService
                 CommandInteraction cmdInteraction = new CommandInteraction();
                 Dictionary<string, string> paras = new Dictionary<string, string>();
                 paras.Add("InstanceId", CommandInfo.InstanceId);
+                paras.Add("WFName", CommandInfo.WFName);
                 if (CommandInfo.ParameterList != null)
                 {
                     foreach (Parameter p in CommandInfo.ParameterList)
@@ -193,7 +194,6 @@ namespace TrackingService
             catch (Exception e)
             {
                 throw new WebFaultException<string>(e.ToString(), HttpStatusCode.InternalServerError);
-                //TrackingLog.Log(e.Message + "!!" + e.ToString());
             }
             return CommandInfo;
         }
