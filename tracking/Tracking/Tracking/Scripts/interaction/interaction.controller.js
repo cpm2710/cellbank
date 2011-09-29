@@ -9,8 +9,8 @@ function initializeInteraction(commandName) {
         $interactionFields = $interactionPanel.find(".interactionfields");
         var selectedTR = $("#setrackingreport").find("tr.selected");
         var selectedIdTd = selectedTR.find("td:eq(0)");
-        var instanceId = selectedIdTd[0].innerHTML;
-        var workFlowName = selectedTR.find("td:eq(1)")[0].innerHTML;
+        var instanceId = (selectedIdTd[0].innerHTML+"").trim();
+        var workFlowName = (selectedTR.find("td:eq(1)")[0].innerHTML+"").trim();
         GetParameters(commandName, function (parameters) {
             var i = 0;
             for (i = 0; i < parameters.length; i++) {

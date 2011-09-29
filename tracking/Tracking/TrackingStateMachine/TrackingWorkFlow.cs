@@ -24,37 +24,19 @@ namespace TrackingWorkFlow
         }
         protected void MakeAsyncSync()
         {
-            //this.app.PersistableIdle = (e) =>
-            //{
-            //    return PersistableIdleAction.Unload;
-            //};
-
+            this.app.Idle = (e) =>
+            {
+                barrier.Set();
+            };
             this.app.Unloaded = (e) =>
             {
-
                 barrier.Set();
-
             };
         }
         public TrackingWorkFlow()
         {
             
-            //this.app.Unloaded += this.OnWorkflowIdle;
-            //this.app.PersistableIdle += this.OnWorkflowIdle;
         }
-        //private void OnWorkflowIdle(WorkflowApplicationIdleEventArgs args)
-        //{
-        //    currentBookmarks = args.Bookmarks;
-        //    this.Persist();
-        //}
-        //public virtual void Persist()
-        //{
-        //    if (app != null)
-        //    {
-        //        app.Persist();
-        //        this.barrier.WaitOne();
-        //    }
-        //}
         public virtual void Unload()
         {
             if (app != null)
@@ -68,10 +50,10 @@ namespace TrackingWorkFlow
         {
             app.Run();
             //app.ResumeBookmark(ChooseTransitionCommand.ProcessStart.ToString(), new ChooseTransitionResult());
-            app.Idle = (e) =>
-            {
-                this.barrier.Set();
-            };
+            //app.Idle = (e) =>
+            //{
+            //    this.barrier.Set();
+            //};
             this.barrier.WaitOne();
             //Thread.Sleep(5000);
             this.Unload();
@@ -79,8 +61,9 @@ namespace TrackingWorkFlow
         public abstract List<string> GetCandidateCommand();
         public virtual void AcceptCommand(string commandName)
         {
-            currentBookmarks = app.GetBookmarks();
+            //currentBookmarks = app.GetBookmarks();
             app.ResumeBookmark(commandName, new ChooseTransitionResult());
+            this.barrier.WaitOne();
             this.Unload();
         }
 

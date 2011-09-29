@@ -123,7 +123,17 @@ namespace FakeServiceAndClient
             TrackingService.TrackingService ts = new TrackingService.TrackingService();
             CommandInfo ci = new CommandInfo();
             ci.WFName = "SESample2TrackingWorkFlow";
-            WorkFlowInstance wfi=ts.startWorkFlow(ci);
+            //WorkFlowInstance wfi=ts.startWorkFlow(ci);
+
+            ci.InstanceId = "f3875fd4-8bf2-4774-a754-928fcef66e5c";
+            ci.CommandName = "AssignToTriage";
+            ci.ParameterList = ts.GetParameters(ci.CommandName); 
+            ts.doCommand(ci);
+
+
+
+            WorkFlowInstance wfi = ts.GetWorkFlowInstance(ci.InstanceId);
+            Console.WriteLine("shi");
         }
         static void Main(string[] args)
         {

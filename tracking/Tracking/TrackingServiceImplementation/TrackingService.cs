@@ -164,6 +164,7 @@ namespace TrackingService
         [WebInvoke(Method = "POST", UriTemplate = "/commands", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         public CommandInfo doCommand(CommandInfo CommandInfo)
         {
+            CommandInfo.CommandName = CommandInfo.CommandName.Trim();
             try
             {
                 CommandInteraction cmdInteraction = new CommandInteraction();
