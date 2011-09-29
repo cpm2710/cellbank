@@ -67,6 +67,7 @@
     <Content Include="images\flowdesigner\start_event_empty.png" />
     <Content Include="images\flowdesigner\task_empty.png" />
     <Content Include="images\flowdesigner\transition.png" />
+    <Content Include="images\ProcessDiagram.png" />
     <Content Include="mainpage.html" />
     <Content Include="SampleDoc\SampleXML.xml" />
     <Content Include="Scripts\interaction\interaction.mainpage.js" />

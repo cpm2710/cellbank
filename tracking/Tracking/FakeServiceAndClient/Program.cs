@@ -14,6 +14,7 @@ using System.Activities.Hosting;
 using System.Activities.DurableInstancing;
 using System.Runtime.DurableInstancing;
 using System.Threading;
+using System.Activities.Tracking;
 namespace FakeServiceAndClient
 {
     class Program
@@ -21,25 +22,97 @@ namespace FakeServiceAndClient
 
         static void Main(string[] args)
         {
+            SESampleWorkFlow p2 = new SESampleWorkFlow();
+            WorkflowApplication app = new WorkflowApplication(p2);
+            AutoResetEvent rre = new AutoResetEvent(false);
+            app.Idle = (e) =>
+            {
+                rre.Set();
+            };
+            //TrackingProfile trackingProfile = new TrackingProfile();
 
-            SESampleWorkFlow wf = new SESampleWorkFlow();
-            ReadOnlyCollection<BookmarkInfo> bookmarks = null;
-            WorkflowApplication app = new WorkflowApplication(wf);
+            ////trackingProfile.Queries.Add(new WorkflowInstanceQuery
+
+            ////{
+
+            ////    States = { "*"}
+
+            ////});
+
+            ////trackingProfile.Queries.Add(new ActivityStateQuery
+
+            ////{
+
+            ////    States = {"*" }
+
+            ////});
+
+            //trackingProfile.Queries.Add(new CustomTrackingQuery
+
+            //{
+
+            //   ActivityName="*",
+
+            //   Name = "*"
+
+            //});
+            //SETrackingParticipant p = new SETrackingParticipant();
+            //p.TrackingProfile = trackingProfile;
+            //app.Extensions.Add(p);
+
             app.Completed = (e) =>
             {
-                Console.WriteLine("completed");
+                Console.WriteLine("shit");
             };
-            app.ResumeBookmark("ProcessStart", new ChooseTransitionResult());
+            ReadOnlyCollection<BookmarkInfo> bookmarks = null;
+
+            WorkflowInstanceExtensionManager extensions=app.Extensions;
+
+            BookmarkResumptionResult result;
+            //bookmarks = app.GetBookmarks();
+
+            result= app.ResumeBookmark("ProcessStart", new ChooseTransitionResult());
+            rre.WaitOne();
+            //app.Run();
+
+            //bookmarks = app.GetBookmarks();
+
+
+             //result=app.ResumeBookmark("RequireMoreInformation", new ChooseTransitionResult());
+            //app.Run();
+
+             //result = app.ResumeBookmark("ProvideMoreInformation", new ChooseTransitionResult());
 
             bookmarks = app.GetBookmarks();
-
-            app.ResumeBookmark("AssignToTriage",new ChooseTransitionResult());
+            ChooseTransitionResult rslt=new ChooseTransitionResult();
+           // rslt.ChooseResult="Not Need";
+            result=app.ResumeBookmark("AssignToTriage", rslt);
+            rre.WaitOne();
+            result = app.ResumeBookmark("FinishProcess", rslt);
+            rre.WaitOne();
             
             bookmarks = app.GetBookmarks();
+            
+            Console.WriteLine();
 
-            app.ResumeBookmark("FinishProcess", new ChooseTransitionResult());
-            bookmarks = app.GetBookmarks();
-            Console.WriteLine("shit");
+            //SESampleWorkFlow wf = new SESampleWorkFlow();
+            //ReadOnlyCollection<BookmarkInfo> bookmarks = null;
+            //WorkflowApplication app = new WorkflowApplication(wf);
+            //app.Completed = (e) =>
+            //{
+            //    Console.WriteLine("completed");
+            //};
+            //app.ResumeBookmark("ProcessStart", new ChooseTransitionResult());
+
+            //bookmarks = app.GetBookmarks();
+
+            //app.ResumeBookmark("AssignToTriage",new ChooseTransitionResult());
+            
+            //bookmarks = app.GetBookmarks();
+
+            //app.ResumeBookmark("FinishProcess", new ChooseTransitionResult());
+            //bookmarks = app.GetBookmarks();
+            //Console.WriteLine("shit");
             //TrackingService.TrackingService ts = new TrackingService.TrackingService();
             //CommandInfo ci = new CommandInfo();
             //ci.CommandName = "RequireMoreInformation";
