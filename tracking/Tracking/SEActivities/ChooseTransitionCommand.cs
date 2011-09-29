@@ -10,6 +10,7 @@ namespace SEActivities
         ProcessStart,
         RequireMoreInformation,
         ProvideMoreInformation,
+        AssignToInvestigation,
         AssignToTriage,
         FinishProcess
     }

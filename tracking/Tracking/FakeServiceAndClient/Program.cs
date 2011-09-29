@@ -22,7 +22,8 @@ namespace FakeServiceAndClient
 
         static void Main(string[] args)
         {
-            SESampleWorkFlow p2 = new SESampleWorkFlow();
+            SESampleProcess2 p2 = new SESampleProcess2();
+            //SESampleWorkFlow p2 = new SESampleWorkFlow();
             WorkflowApplication app = new WorkflowApplication(p2);
             AutoResetEvent rre = new AutoResetEvent(false);
             app.Idle = (e) =>
@@ -71,25 +72,42 @@ namespace FakeServiceAndClient
             BookmarkResumptionResult result;
             //bookmarks = app.GetBookmarks();
 
-            result= app.ResumeBookmark("ProcessStart", new ChooseTransitionResult());
-            rre.WaitOne();
+            //result= app.ResumeBookmark("ProcessStart", new ChooseTransitionResult());
+            //rre.WaitOne();
             //app.Run();
 
             //bookmarks = app.GetBookmarks();
 
 
-             //result=app.ResumeBookmark("RequireMoreInformation", new ChooseTransitionResult());
+             result=app.ResumeBookmark("RequireMoreInformation", new ChooseTransitionResult());
+             rre.WaitOne();
+             bookmarks = app.GetBookmarks();
             //app.Run();
 
-             //result = app.ResumeBookmark("ProvideMoreInformation", new ChooseTransitionResult());
-
+             result = app.ResumeBookmark("ProvideMoreInformation", new ChooseTransitionResult());
+             rre.WaitOne();
             bookmarks = app.GetBookmarks();
-            ChooseTransitionResult rslt=new ChooseTransitionResult();
-           // rslt.ChooseResult="Not Need";
-            result=app.ResumeBookmark("AssignToTriage", rslt);
+
+
+            result = app.ResumeBookmark("AssignToInvestigation", new ChooseTransitionResult());
             rre.WaitOne();
-            result = app.ResumeBookmark("FinishProcess", rslt);
+            bookmarks = app.GetBookmarks();
+
+
+            result = app.ResumeBookmark("AssignToTriage", new ChooseTransitionResult());
             rre.WaitOne();
+            bookmarks = app.GetBookmarks();
+
+            result = app.ResumeBookmark("FinishProcess", new ChooseTransitionResult());
+            rre.WaitOne();
+            bookmarks = app.GetBookmarks();
+            
+           // ChooseTransitionResult rslt=new ChooseTransitionResult();
+           //// rslt.ChooseResult="Not Need";
+           // result=app.ResumeBookmark("AssignToTriage", rslt);
+           // rre.WaitOne();
+           // result = app.ResumeBookmark("FinishProcess", rslt);
+           // rre.WaitOne();
             
             bookmarks = app.GetBookmarks();
             
