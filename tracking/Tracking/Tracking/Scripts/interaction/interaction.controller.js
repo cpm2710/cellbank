@@ -3,6 +3,46 @@
 :"string","Value":"value1"}],"WFName":"wf1"}
 
 */
+
+function initializeProcessStartInteraction() {
+    var commandName = "ProcessStart";
+    $interactionPanel = $("#interactionTemplate").tmpl(null);
+    $interactionFields = $interactionPanel.find(".interactionfields");
+    var selectedTR = $("#sestartprojectreport").find("tr.selected");
+    var workFlowName = (selectedTR.find("td:eq(0)")[0].innerHTML + "").trim();
+    GetParameters(commandName, function (parameters) {
+        var i = 0;
+        for (i = 0; i < parameters.length; i++) {
+            var inputField = $("#inputFieldTemplate").tmpl(parameters[i]);
+            inputField.appendTo($interactionFields);
+        }
+        $interactionPanel.find("#submit").bind("click", function (e) {
+            var inputFields = "ParameterList:[";
+            $interactionFields.find(".inputField").each(function () {
+                $ths = $(this);
+
+                var key = $ths.find("p")[0].innerHTML;
+                var value = $ths.find("input").val();
+
+                inputFields += "{Name:\"" + key + "\",Type:\"string\",Value:\"" + value + "\"},";
+
+            });
+            inputFields = inputFields.substr(0, inputFields.length - 1) + "]";
+
+            var commandInfoStr = "{WFName:\"" + workFlowName + "\",CommandName:\"" + commandName + "\"," + inputFields + "}";
+            var commandInfo = eval("(" + commandInfoStr + ")");
+            startWorkFlow(commandInfo, function (data) {
+                alert(data);
+            });
+        });
+
+        $interactionPanel.find("#cancel").bind("click", function (e) {
+
+        });
+        showInLightbox($interactionPanel);
+    });
+}
+
 function initializeInteraction(commandName) {
    
         $interactionPanel = $("#interactionTemplate").tmpl(null);

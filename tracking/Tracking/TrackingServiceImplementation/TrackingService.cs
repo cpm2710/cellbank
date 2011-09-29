@@ -140,12 +140,20 @@ namespace TrackingService
                 string WFName = CommandInfo.WFName.Trim();
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 string id = twfi.startProcess(WFName);
-                TrackingDataContext tdc = new TrackingDataContext();
-                CommonResource.Tracking t = new CommonResource.Tracking();
-                t.wfname = CommandInfo.WFName;
-                t.wfinstanceid = new Guid(id);
-                tdc.Trackings.InsertOnSubmit(t);
-                tdc.SubmitChanges();
+
+                CommandInteraction cmdInteraction = new CommandInteraction();
+                Dictionary<string, string> paras = new Dictionary<string, string>();
+                paras.Add("InstanceId", id);
+                paras.Add("WFName", CommandInfo.WFName);
+                if (CommandInfo.ParameterList != null)
+                {
+                    foreach (Parameter p in CommandInfo.ParameterList)
+                    {
+                        paras.Add(p.Name, p.Value);
+                    }
+                }
+                cmdInteraction.executeCommand(CommandInfo.CommandName, paras);
+
 
                 wfi.Id = id;
                 List<string> candCmds = twfi.getCandidateCommands(WFName, id);
@@ -155,7 +163,8 @@ namespace TrackingService
             }
             catch (Exception e)
             {
-                TrackingLog.Log(e.Message + "!!" + e.ToString());
+                throw new WebFaultException<string>(e.ToString(), HttpStatusCode.InternalServerError);
+//                TrackingLog.Log(e.Message + "!!" + e.ToString());
             }
             return wfi;
         }

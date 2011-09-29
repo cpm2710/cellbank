@@ -38,6 +38,7 @@
     <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activities" />
     <Reference Include="System.Xaml" />
@@ -57,6 +58,12 @@
     <Compile Include="ChooseTransitionActivity.cs" />
     <Compile Include="Commands\ProvideMoreInformation.cs" />
     <Compile Include="Commands\RequireMoreInformation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonResource\CommonResource.csproj">
+      <Project>{CF82BC7D-96B2-4410-9670-CF625A117B0D}</Project>
+      <Name>CommonResource</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

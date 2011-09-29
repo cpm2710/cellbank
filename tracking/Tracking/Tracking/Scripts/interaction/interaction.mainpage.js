@@ -36,12 +36,13 @@ function refreshStartProjects() {
         }
     });
     $("#sestartprojectactions > .startprojectaction").bind("click", function (e) {
-        var selectedWFD = $("#sestartprojectreport").find("tr.selected");
-        var wfname = selectedWFD.tmplItem().data.WFName;
-        var commandInfo = { "WFName": wfname };
-        startWorkFlow(commandInfo, function (data) {
-            alert(data);
-        });
+        //        var selectedWFD = $("#sestartprojectreport").find("tr.selected");
+        //        var wfname = selectedWFD.tmplItem().data.WFName;
+        //        var commandInfo = { "WFName": wfname };
+        initializeProcessStartInteraction();
+        //        startWorkFlow(commandInfo, function (data) {
+        //            alert(data);
+        //        });
     });
     $("#sestartprojectactions > .suspendprojectaction").bind("click", function (e) {
 

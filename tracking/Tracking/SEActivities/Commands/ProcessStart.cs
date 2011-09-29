@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CommonResource;
 
 namespace TrackingCommands
 {
@@ -11,6 +12,16 @@ namespace TrackingCommands
         {
             Console.WriteLine("this is process start command");
             Console.WriteLine("assigned to" + this.AssignTo);
+
+            string bugId = "bug12345";
+            TrackingDataContext tdc = new TrackingDataContext();
+            CommonResource.Tracking t = new CommonResource.Tracking();
+            t.wfname = this.WFName;
+            t.bugid = bugId;
+            t.wfinstanceid = new Guid(this.InstanceId);
+            tdc.Trackings.InsertOnSubmit(t);
+            tdc.SubmitChanges();
+
         }
         public override void validate()
         {

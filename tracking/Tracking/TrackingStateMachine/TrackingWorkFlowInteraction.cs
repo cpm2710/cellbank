@@ -25,8 +25,6 @@ namespace TrackingWorkFlow
                     using (TrackingWorkFlow twf = (TrackingWorkFlow)ci.Invoke(new object[] { }))
                     {
                         twf.Start();
-                        //twf.Persist();
-                        //twf.Unload();//should make it the sync call
                         appId= twf.app.Id.ToString();
                     }
                     return appId;

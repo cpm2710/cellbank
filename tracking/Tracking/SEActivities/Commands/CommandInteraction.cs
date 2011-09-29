@@ -30,25 +30,18 @@ namespace TrackingCommands
             object command = trackingCommandsAssembly.CreateInstance("TrackingCommands." + commandName);
 
             Command cmd = (Command)command;
-            FieldInfo [] fieldInfos=cmd.GetType().GetFields();
-            foreach (FieldInfo fi in fieldInfos)
+
+            PropertyInfo [] propertyInfos=cmd.GetType().GetProperties();
+            foreach (PropertyInfo pi in propertyInfos)
             {
-                fi.SetValue(cmd, inputs[fi.Name]);
+                pi.SetValue(cmd, inputs[pi.Name],null);
             }
-            cmd.execute();
-            //Command cmd = (Command)command;
             //FieldInfo [] fieldInfos=cmd.GetType().GetFields();
-            //Assembly.Load("TrackingCommands").
-            ///cmd.execute();
-            //Type[] types = Assembly.Load("TrackingCommands").GetTypes();
-            //foreach (Type t in types)
+            //foreach (FieldInfo fi in fieldInfos)
             //{
-            //    if (t.Name.Equals(commandName))
-            //    {
-            //        t.
-            //        //Assembly.Load("").CreateInstance("TrackingCommands");
-            //    }
+            //    fi.SetValue(cmd, inputs[fi.Name]);
             //}
+            cmd.execute();
         }
     }
 }
