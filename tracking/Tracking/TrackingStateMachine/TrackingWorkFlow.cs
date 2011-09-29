@@ -66,7 +66,8 @@ namespace TrackingWorkFlow
         }
         public virtual void Start()
         {
-            app.ResumeBookmark(ChooseTransitionCommand.ProcessStart.ToString(), new ChooseTransitionResult());
+            app.Run();
+            //app.ResumeBookmark(ChooseTransitionCommand.ProcessStart.ToString(), new ChooseTransitionResult());
             app.Idle = (e) =>
             {
                 this.barrier.Set();
