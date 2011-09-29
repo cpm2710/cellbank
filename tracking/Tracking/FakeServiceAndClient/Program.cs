@@ -19,6 +19,59 @@ namespace FakeServiceAndClient
 {
     class Program
     {
+        static void testReadXaml()
+        {
+            SESampleProcess2 ss = new SESampleProcess2();
+
+            string[] resources = typeof(SESampleProcess2).Assembly.GetManifestResourceNames();
+            string resourceName = null;
+            for (int i = 0; (i < resources.Length); i = (i + 1))
+            {
+                resourceName = resources[i];
+                if ((resourceName.Contains(".SESampleProcess2.g.xaml") || resourceName.Equals("SESampleProcess2.g.xaml")))
+                {
+                    break;
+                }
+            }
+            System.IO.Stream initializeXaml = typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
+            Console.WriteLine(initializeXaml.ToString());
+            System.Xml.XmlReader xmlReader = null;
+            System.Xaml.XamlReader reader = null;
+            System.Xaml.XamlObjectWriter objectWriter = null;
+            try
+            {
+                //System.Xaml.XamlSchemaContext schemaContext = XamlStaticHelperNamespace._XamlStaticHelper.SchemaContext;
+                xmlReader = System.Xml.XmlReader.Create(initializeXaml);
+                System.Xaml.XamlXmlReaderSettings readerSettings = new System.Xaml.XamlXmlReaderSettings();
+                readerSettings.LocalAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+                readerSettings.AllowProtectedMembersOnRoot = true;
+                //reader = new System.Xaml.XamlXmlReader(xmlReader, schemaContext, readerSettings);
+                System.Xaml.XamlObjectWriterSettings writerSettings = new System.Xaml.XamlObjectWriterSettings();
+                //writerSettings.RootObjectInstance = this;
+                //writerSettings.AccessLevel = System.Xaml.Permissions.XamlAccessLevel.PrivateAccessTo(typeof(SESampleProcess2));
+                //objectWriter = new System.Xaml.XamlObjectWriter(schemaContext, writerSettings);
+                //System.Xaml.XamlServices.Transform(reader, objectWriter);
+            }
+            finally
+            {
+                if ((xmlReader != null))
+                {
+                    ((System.IDisposable)(xmlReader)).Dispose();
+                }
+                if ((reader != null))
+                {
+                    ((System.IDisposable)(reader)).Dispose();
+                }
+                if ((objectWriter != null))
+                {
+                    ((System.IDisposable)(objectWriter)).Dispose();
+                }
+            }
+
+            Console.WriteLine();
+            //string resourceName = this.FindResource();
+            //System.IO.Stream initializeXaml = typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
+        }
         static void testOffline()
         {
             SESampleProcess2 p2 = new SESampleProcess2();
@@ -155,8 +208,8 @@ namespace FakeServiceAndClient
         static void Main(string[] args)
         {
             //testOffline();
-
-            testStartProcess();
+            testReadXaml();
+            //testStartProcess();
             //testOnline();
 
 
