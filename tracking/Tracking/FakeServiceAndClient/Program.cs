@@ -15,14 +15,15 @@ using System.Activities.DurableInstancing;
 using System.Runtime.DurableInstancing;
 using System.Threading;
 using System.Activities.Tracking;
+using System.Activities.Statements;
+using System.Activities.XamlIntegration;
+using System.Xaml;
 namespace FakeServiceAndClient
 {
     class Program
     {
-        static void testReadXaml()
+        static void testParseXaml()
         {
-            SESampleProcess2 ss = new SESampleProcess2();
-
             string[] resources = typeof(SESampleProcess2).Assembly.GetManifestResourceNames();
             string resourceName = null;
             for (int i = 0; (i < resources.Length); i = (i + 1))
@@ -34,39 +35,92 @@ namespace FakeServiceAndClient
                 }
             }
             System.IO.Stream initializeXaml = typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
-            Console.WriteLine(initializeXaml.ToString());
-            System.Xml.XmlReader xmlReader = null;
+            System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(initializeXaml);
+            
+        }
+        static void testReadXaml()
+        {
+            string[] resources = typeof(SESampleProcess2).Assembly.GetManifestResourceNames();
+            string resourceName = null;
+            for (int i = 0; (i < resources.Length); i = (i + 1))
+            {
+                resourceName = resources[i];
+                if ((resourceName.Contains(".SESampleProcess2.g.xaml") || resourceName.Equals("SESampleProcess2.g.xaml")))
+                {
+                    break;
+                }
+            }
+            //resourceName=@"D:\WorkSpaces\Tracking\TrackingStateMachine\SESampleProcess2.xaml";
+
+            
+
+            //System.IO.Stream initializeXaml = new FileStream(resourceName,FileMode.Open);// typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
+            System.IO.Stream initializeXaml = typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
+            StreamReader sr = new StreamReader(initializeXaml);
+            Console.WriteLine(sr.ReadToEnd());
+            //System.Xml.XmlReader xmlReader = null;
             System.Xaml.XamlReader reader = null;
-            System.Xaml.XamlObjectWriter objectWriter = null;
-            try
-            {
-                //System.Xaml.XamlSchemaContext schemaContext = XamlStaticHelperNamespace._XamlStaticHelper.SchemaContext;
-                xmlReader = System.Xml.XmlReader.Create(initializeXaml);
-                System.Xaml.XamlXmlReaderSettings readerSettings = new System.Xaml.XamlXmlReaderSettings();
-                readerSettings.LocalAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-                readerSettings.AllowProtectedMembersOnRoot = true;
-                //reader = new System.Xaml.XamlXmlReader(xmlReader, schemaContext, readerSettings);
-                System.Xaml.XamlObjectWriterSettings writerSettings = new System.Xaml.XamlObjectWriterSettings();
-                //writerSettings.RootObjectInstance = this;
-                //writerSettings.AccessLevel = System.Xaml.Permissions.XamlAccessLevel.PrivateAccessTo(typeof(SESampleProcess2));
-                //objectWriter = new System.Xaml.XamlObjectWriter(schemaContext, writerSettings);
-                //System.Xaml.XamlServices.Transform(reader, objectWriter);
-            }
-            finally
-            {
-                if ((xmlReader != null))
-                {
-                    ((System.IDisposable)(xmlReader)).Dispose();
-                }
-                if ((reader != null))
-                {
-                    ((System.IDisposable)(reader)).Dispose();
-                }
-                if ((objectWriter != null))
-                {
-                    ((System.IDisposable)(objectWriter)).Dispose();
-                }
-            }
+
+            System.Xaml.XamlSchemaContext schemaContext = XamlStaticHelperNamespace._XamlStaticHelper.SchemaContext;
+            //xmlReader = System.Xml.XmlReader.Create(initializeXaml);
+            System.Xaml.XamlXmlReaderSettings readerSettings = new System.Xaml.XamlXmlReaderSettings();
+            readerSettings.LocalAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            reader = new XamlXmlReader(initializeXaml,schemaContext, readerSettings);
+
+            Activity a = ActivityXamlServices.Load(reader);
+            StateMachine sm = (StateMachine)a;
+
+            Console.WriteLine();
+            //ShitProcess sp = new ShitProcess();
+            //SESampleProcess2 ss = new SESampleProcess2();
+            //StateMachine sm = new StateMachine();
+            
+
+            //string[] resources = typeof(SESampleProcess2).Assembly.GetManifestResourceNames();
+            //string resourceName = null;
+            //for (int i = 0; (i < resources.Length); i = (i + 1))
+            //{
+            //    resourceName = resources[i];
+            //    if ((resourceName.Contains(".SESampleProcess2.g.xaml") || resourceName.Equals("SESampleProcess2.g.xaml")))
+            //    {
+            //        break;
+            //    }
+            //}
+            //System.IO.Stream initializeXaml = typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
+            //Console.WriteLine(initializeXaml.ToString());
+            //System.Xml.XmlReader xmlReader = null;
+            //System.Xaml.XamlReader reader = null;
+            //System.Xaml.XamlObjectWriter objectWriter = null;
+            //try
+            //{
+            //    System.Xaml.XamlSchemaContext schemaContext = XamlStaticHelperNamespace._XamlStaticHelper.SchemaContext;
+            //    xmlReader = System.Xml.XmlReader.Create(initializeXaml);
+            //    System.Xaml.XamlXmlReaderSettings readerSettings = new System.Xaml.XamlXmlReaderSettings();
+            //    readerSettings.LocalAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+            //    readerSettings.AllowProtectedMembersOnRoot = true;
+            //    reader = new System.Xaml.XamlXmlReader(xmlReader, schemaContext, readerSettings);
+            //    System.Xaml.XamlObjectWriterSettings writerSettings = new System.Xaml.XamlObjectWriterSettings();
+            //    writerSettings.RootObjectInstance = sm;
+            //    writerSettings.AccessLevel = System.Xaml.Permissions.XamlAccessLevel.PrivateAccessTo(typeof(SESampleProcess2));
+            //    objectWriter = new System.Xaml.XamlObjectWriter(schemaContext, writerSettings);
+            //    System.Xaml.XamlServices.Transform(reader, objectWriter);
+            //}
+            //finally
+            //{
+            //    if ((xmlReader != null))
+            //    {
+            //        ((System.IDisposable)(xmlReader)).Dispose();
+            //    }
+            //    if ((reader != null))
+            //    {
+            //        ((System.IDisposable)(reader)).Dispose();
+            //    }
+            //    if ((objectWriter != null))
+            //    {
+            //        ((System.IDisposable)(objectWriter)).Dispose();
+            //    }
+            //}
 
             Console.WriteLine();
             //string resourceName = this.FindResource();
@@ -208,7 +262,8 @@ namespace FakeServiceAndClient
         static void Main(string[] args)
         {
             //testOffline();
-            testReadXaml();
+            //testReadXaml();
+            testParseXaml();
             //testStartProcess();
             //testOnline();
 
