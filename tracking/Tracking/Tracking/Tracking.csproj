@@ -166,7 +166,6 @@
     <Compile Include="TrackingService.svc.cs">
       <DependentUpon>TrackingService.svc</DependentUpon>
     </Compile>
-    <Compile Include="WorkFlowDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
