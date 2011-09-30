@@ -34,6 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.ProductStudio, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>_dll\Interop.ProductStudio.DLL</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
@@ -55,6 +60,7 @@
     <Compile Include="Commands\CommandInteraction.cs" />
     <Compile Include="Commands\FinishProcess.cs" />
     <Compile Include="Commands\ProcessStart.cs" />
+    <Compile Include="DataAccess\PSDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChooseTransitionActivity.cs" />
     <Compile Include="Commands\ProvideMoreInformation.cs" />
@@ -65,6 +71,9 @@
       <Project>{CF82BC7D-96B2-4410-9670-CF625A117B0D}</Project>
       <Name>CommonResource</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_dll\Interop.ProductStudio.DLL" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

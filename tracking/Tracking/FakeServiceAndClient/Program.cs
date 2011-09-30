@@ -19,10 +19,16 @@ using System.Activities.Statements;
 using System.Activities.XamlIntegration;
 using System.Xaml;
 using System.Xml;
+using SEActivities.DataAccess;
 namespace FakeServiceAndClient
 {
     class Program
     {
+        static void testProductStudio()
+        {
+            PSDataAccess s = new PSDataAccess("redmond.corp.microsoft.com", "Windows Server Solutions", "t-limliu");
+
+        }
         static void testgetStateMachineDefinition()
         {
             TrackingWorkFlowInteraction II = new TrackingWorkFlowInteraction();
@@ -298,8 +304,8 @@ namespace FakeServiceAndClient
             //testParseXaml();
             //testStartProcess();
             //testOnline();
-            testgetStateMachineDefinition();
-
+            //testgetStateMachineDefinition();
+            testProductStudio();
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
 
