@@ -33,7 +33,7 @@ var fmodel;
 var canvas;
 var selectedControllerType="select";
 function renderControllers() {//左边工具栏的一些初始化，以及对应的click更改当前操作状态
-    $.getTmpl("./templates/functionTemplate.htm").done(function () {
+    $.getTmplSync("./templates/functionTemplate.htm").done(function () {
         for (var i in functionPoints) {
             var fp = functionPoints[i];
             $ftmpl = $("#ftemplate").tmpl(fp);

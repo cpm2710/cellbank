@@ -63,7 +63,8 @@ function showStatistics() {
 }
 function showProcessGraph() {
     $("#showpanelmain").empty();
-    $("#processGraphMainTemplate").tmpl(null).appendTo("#showpanelmain"); 
+    $("#processGraphMainTemplate").tmpl(null).appendTo("#showpanelmain");
+    showProcessGraphViewer();
 }
 function hookLeftDashboard() {
     $("#dashboarditems").find(".dashboardItem").each(function (i) {

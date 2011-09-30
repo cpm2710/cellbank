@@ -107,12 +107,12 @@ namespace TrackingWorkFlow
             Assembly trackingWorkFlowAssembly = Assembly.Load("TrackingWorkFlow");
             Type[] types = trackingWorkFlowAssembly.GetTypes();
             Type target = trackingWorkFlowAssembly.GetType("TrackingWorkFlow.TrackingWorkFlow");
-            foreach (Type t in types)
+            foreach (Type type in types)
             {
-                if (t.IsSubclassOf(target)&&t.Name.Equals(WFName,StringComparison.InvariantCultureIgnoreCase))
+                if (type.IsSubclassOf(target)&&type.Name.Equals(WFName,StringComparison.InvariantCultureIgnoreCase))
                 {
                     Type tt = typeof(Boolean);
-                    ConstructorInfo ci = t.GetConstructor(new Type[] { tt });
+                    ConstructorInfo ci = type.GetConstructor(new Type[] { tt });
                     using (TrackingWorkFlow twf = (TrackingWorkFlow)(ci.Invoke(new object[] { false })))
                     {
                         Activity workflowDefinition = twf.app.WorkflowDefinition;
@@ -141,6 +141,7 @@ namespace TrackingWorkFlow
                         XmlNamespaceManager nsmgr = new XmlNamespaceManager(xDoc.NameTable);
                         nsmgr.AddNamespace(root.Prefix, nameSpace);
                         nsmgr.AddNamespace("default", xmlns);
+                        nsmgr.AddNamespace("x", "http://schemas.microsoft.com/winfx/2006/xaml");
                         XmlNode stateMachineNode = root.SelectSingleNode(".//default:StateMachine", nsmgr);
 
                         XmlNode initialStateNode = stateMachineNode.SelectSingleNode(".//default:StateMachine.InitialState", nsmgr);
@@ -148,22 +149,62 @@ namespace TrackingWorkFlow
 
                         XmlNodeList states = root.SelectNodes(".//default:State", nsmgr);
 
-                        XmlNodeList transitions = root.SelectNodes(".//default:Transition", nsmgr);
+                        //XmlNodeList transitions = root.SelectNodes(".//default:Transition", nsmgr);
 
                         if (states != null)
                         {
                             foreach (XmlNode node in states)
                             {
-                                definition.StateList.Add(new State());
+                                State state = new State();
+                                string displayName=node.Attributes["DisplayName"].Value;
+                                state.Name = displayName;
+                                definition.StateList.Add(state);
+
+                                XmlNodeList transitions = node.SelectNodes("./default:State.Transitions/default:Transition", nsmgr);
+
+                                if (transitions != null)
+                                {
+                                    foreach (XmlNode tNode in transitions)
+                                    {
+                                        Transition t = new Transition();
+                                        t.Name=tNode.Attributes["DisplayName"].Value;
+                                        t.From = state.Name;
+                                        XmlNode transitionTo=tNode.SelectSingleNode("./default:Transition.To",nsmgr);
+
+                                        XmlNode transitionToState = transitionTo.SelectSingleNode("./default:State", nsmgr);
+
+                                        if (transitionToState != null)
+                                        {
+                                            string toStateName = transitionToState.Attributes["DisplayName"].Value;
+                                            t.To = toStateName;
+                                            
+                                        }
+                                        else
+                                        {
+                                            XmlNode referenceNode = transitionTo.SelectSingleNode("./x:Reference", nsmgr);
+                                            foreach (XmlNode stateNode in states)
+                                            {
+                                                string xName = stateNode.Attributes["x:Name"].Value;
+                                                if (xName.Equals(referenceNode.InnerText, StringComparison.InvariantCultureIgnoreCase))
+                                                {
+                                                    string toStateName = stateNode.Attributes["DisplayName"].Value;
+                                                    t.To = toStateName;
+                                                }
+                                            }
+                                            //transitionToState = tNode.SelectSingleNode("./default:Transition.To/default:State", nsmgr);
+                                        }
+                                        definition.TransitionList.Add(t);
+                                    }
+                                }                                
                             }
                         }
-                        if (transitions != null)
-                        {
-                            foreach (XmlNode node in transitions)
-                            {
-                                definition.TransitionList.Add(new Transition());
-                            }
-                        }
+                        //if (transitions != null)
+                        //{
+                        //    foreach (XmlNode node in transitions)
+                        //    {
+                        //        definition.TransitionList.Add(new Transition());
+                        //    }
+                        //}
                     }
                     //WorkFlowDefinition WFD = new WorkFlowDefinition();
                     //WFD.WFName = t.Name;

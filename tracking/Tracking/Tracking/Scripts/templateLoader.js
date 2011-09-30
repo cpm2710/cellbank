@@ -5,8 +5,9 @@
     $.getTmplSync("./templates/interactionTemplate.html");
     $.getTmplSync("./templates/inputFieldTemplate.html");
     $.getTmplSync("./templates/startProjectMainTemplate.html");
-    $.getTmplSync("./templates/workFlowDedinitionItemTemplate.html");
+    $.getTmplSync("./templates/workFlowDefinitionItemTemplate.html");
     $.getTmplSync("./templates/candidateCommandTemplate.html");
     $.getTmplSync("./templates/statisticsMainTemplate.html");
     $.getTmplSync("./templates/processGraphMainTemplate.html");
+    $.getTmplSync("./templates/workFlowDefinitionTemplate.html"); 
 }

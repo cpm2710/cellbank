@@ -13,6 +13,13 @@
     height:100%;
     overflow:scroll;
 }
+#workflowlistpanel
+{
+    float:left;
+    width:30%;
+    height:100%;
+    overflow-y:scroll;
+}
 .selectedcontroller {
     background-color: #65C294;
 }
