@@ -10,17 +10,22 @@ using System.Threading;
 using SEActivities;
 namespace TrackingWorkFlow
 {
-    public class SESample2TrackingWorkFlow : TrackingWorkFlow
-    {        
-        
-        public SESample2TrackingWorkFlow():base()
+    public class SESampleProcess2WorkFlow : TrackingWorkFlow
+    {
+        public SESampleProcess2WorkFlow(bool persist)
+        {
+            SESampleProcess2 wf = new SESampleProcess2();
+            app = new WorkflowApplication(wf);
+        }
+        public SESampleProcess2WorkFlow():base()
         {
             SESampleProcess2 wf = new SESampleProcess2();            
             app = new WorkflowApplication(wf);
+            //app.WorkflowDefinition
             app.InstanceStore = TrackingSqlWorkflowInstanceStore.generateOne();
             this.MakeAsyncSync();
         }
-        public SESample2TrackingWorkFlow(string instanceId)
+        public SESampleProcess2WorkFlow(string instanceId)
             : base()
         {
             SESampleProcess2 wf = new SESampleProcess2();

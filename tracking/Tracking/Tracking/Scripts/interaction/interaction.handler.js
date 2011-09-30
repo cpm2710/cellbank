@@ -51,6 +51,21 @@ function GetParameters(commandName,callback) {
         }
     });
 }
+function GetStateMachineDefinition(wfName,callback) {
+    $.ajax({
+        type: "GET",
+        url: trakingServiceURL + "statemachinedefinitions/" + wfName,
+        contentType: "application/json",
+        //data: jsonStr,
+        dataType: "json",
+        cache: false,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (data) {
+        }
+    });
+}
 function GetTrackingWorkFlowDefinition(callback) {
     $.ajax({
         type: "GET",

@@ -18,6 +18,14 @@ namespace TrackingService
     public class TrackingService
     {
         [OperationContract]
+        [WebGet(UriTemplate = "/statemachinedefinitions/{WFName}", ResponseFormat = WebMessageFormat.Json)]
+        public StateMachineDefinition GetStateMachineDefinition(string WFName)
+        {
+            TrackingWorkFlowInteraction II = new TrackingWorkFlowInteraction();
+            StateMachineDefinition statemachineDefinition = II.getStateMachineDefinition(WFName);
+            return statemachineDefinition;
+        }
+        [OperationContract]
         [WebGet(UriTemplate = "/workflowdefinitions", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowDefinitionList GetWorkFlowDefinitions()
         {

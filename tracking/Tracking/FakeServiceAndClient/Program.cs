@@ -18,10 +18,17 @@ using System.Activities.Tracking;
 using System.Activities.Statements;
 using System.Activities.XamlIntegration;
 using System.Xaml;
+using System.Xml;
 namespace FakeServiceAndClient
 {
     class Program
     {
+        static void testgetStateMachineDefinition()
+        {
+            TrackingWorkFlowInteraction II = new TrackingWorkFlowInteraction();
+            StateMachineDefinition statemachineDefinition=II.getStateMachineDefinition("SESampleProcess2WorkFlow");
+
+        }
         static void testParseXaml()
         {
             string[] resources = typeof(SESampleProcess2).Assembly.GetManifestResourceNames();
@@ -35,8 +42,33 @@ namespace FakeServiceAndClient
                 }
             }
             System.IO.Stream initializeXaml = typeof(SESampleProcess2).Assembly.GetManifestResourceStream(resourceName);
-            System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(initializeXaml);
+            //System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(initializeXaml);
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(initializeXaml);
+
+            XmlElement root = xDoc.DocumentElement;
+            string documentNameSpace=xDoc.NamespaceURI;
+            string nameSpace = root.NamespaceURI;
+            string xmlns = root.Attributes["xmlns"].Value;
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xDoc.NameTable);
+            nsmgr.AddNamespace(root.Prefix, nameSpace);
+            nsmgr.AddNamespace("default", xmlns);
+            XmlNode stateMachineNode = root.SelectSingleNode(".//default:StateMachine", nsmgr);
+
+            XmlNode initialStateNode = stateMachineNode.SelectSingleNode(".//default:StateMachine.InitialState", nsmgr);
+
+
+            XmlNodeList states = root.SelectNodes(".//default:State", nsmgr);
+
+            XmlNodeList transitions = root.SelectNodes(".//default:Transition", nsmgr);
+            //ss= root.SelectNodes("//*");
+           // ss = root.SelectNodes("//"+root.Prefix+":*",nsmgr);
             
+           //XmlNodeList nodes = root.SelectNodes("/"+root.Prefix+":*/default:StateMachine", nsmgr);
+
+            //XmlNodeList nodeList=nodes.ChildNodes;
+            Console.WriteLine();
         }
         static void testReadXaml()
         {
@@ -263,10 +295,10 @@ namespace FakeServiceAndClient
         {
             //testOffline();
             //testReadXaml();
-            testParseXaml();
+            //testParseXaml();
             //testStartProcess();
             //testOnline();
-
+            testgetStateMachineDefinition();
 
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
