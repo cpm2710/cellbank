@@ -10,6 +10,8 @@ using TrackingWorkFlow;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Net;
+using System.Security.Principal;
+using System.Threading;
 
 namespace TrackingService
 {
@@ -37,6 +39,12 @@ namespace TrackingService
         [WebGet(UriTemplate = "/workflowinstances", ResponseFormat = WebMessageFormat.Json)]
         public WorkFlowInstanceList GetWorkFlowInstances()
         {
+            //WindowsPrincipal principal = (WindowsPrincipal)Thread.CurrentPrincipal;
+
+            //WindowsIdentity identity = (WindowsIdentity)principal.Identity;
+
+            //TrackingLog.Log(identity.Name);
+
             WorkFlowInstanceList l = new WorkFlowInstanceList();
             try
             {
