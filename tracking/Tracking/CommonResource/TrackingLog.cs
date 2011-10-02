@@ -14,10 +14,12 @@ namespace CommonResource
         {
             lock (syncLock)
             {
-                FileStream fs = new FileStream(@"C:\TrackingLog\Tracking.log", FileMode.Append, FileAccess.ReadWrite);
+                FileStream fs = new FileStream(@"C:\TrackingLog\Tracking.log", FileMode.Append, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fs);
                
                 sw.WriteLine( new DateTime().ToUniversalTime()+":  "+str);
+                sw.Close();
+                fs.Close();
             }
             //EventLog log = new EventLog("MyEvent");
             ////  首先应判断日志来源是否存在，一个日志来源只能同时与一个事件绑定s
