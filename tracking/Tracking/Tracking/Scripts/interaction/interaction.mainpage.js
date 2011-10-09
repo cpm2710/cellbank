@@ -34,6 +34,7 @@ function refreshStartProjects() {
             });
             workFlowDefItem.appendTo("#sestartprojectreport");
         }
+        formatTableStyle();
     });
     $("#sestartprojectactions > .startprojectaction").bind("click", function (e) {
         //        var selectedWFD = $("#sestartprojectreport").find("tr.selected");
@@ -115,24 +116,25 @@ function refreshTrackingProcess() {
                             candiCmdJObj.bind("click", function (e) {
                                 initializeInteraction($(this).tmplItem().data.CommandName);
                             });
-                        } 
+                        }
                     }
                 });
             });
             trackingItem.appendTo("#setrackingreport");
         }
-        $("#setrackingreport tr:odd").addClass("odd");
-        $("#setrackingreport tr:not(.odd)").hide();
-        $("#setrackingreport tr:first-child").show();
-        $("#setrackingreport tr.odd").click(function () {
-            $(this).next("tr").toggle();
-            $(this).find(".arrow").toggleClass("up");
-        });
+        formatTableStyle();
+        //        $("#setrackingreport tr:odd").addClass("odd");
+        //        $("#setrackingreport tr:not(.odd)").hide();
+        //        $("#setrackingreport tr:first-child").show();
+        //        $("#setrackingreport tr.odd").click(function () {
+        //            $(this).next("tr").toggle();
+        //            $(this).find(".arrow").toggleClass("up");
+        //        });
     });
 }
 
 function initialDashboard() {
-    formatTableStyle();
+    //formatTableStyle();
     showDashboard();
     showCurrentProject();
 }
