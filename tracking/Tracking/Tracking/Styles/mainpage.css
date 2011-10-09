@@ -30,7 +30,7 @@
     width:12%;
     height:100%;
 }
-#setrackingactions > .candidatecommand:hover
+#setrackingactionpanel > .candidatecommand:hover
 {
     background: #DDE5FF;
     cursor:pointer;
@@ -57,7 +57,7 @@
 #setrackingmain
 {
     float:left;
-    width:100%;
+    width:80%;
     height:100%;
     overflow:scroll;
 }
@@ -67,7 +67,7 @@
     width:80%;
     height:100%;
 }
-#setrackingactions
+#setrackingactionpanel
 {
     float:left;
     width:20%;
