@@ -7,14 +7,26 @@ using System.Runtime.Serialization;
 namespace CommonResource
 {
     [DataContract(Namespace = "")]
-    public class State
+    public class Shape
     {
-        public State()
+        public Shape()
         {
             this.Name = "fakeName";
         }
         [DataMember]
         public string Name;
+        [DataMember]
+        public double x;
+        [DataMember]
+        public double y;
+    }
+    [DataContract(Namespace = "")]
+    public class State:Shape
+    {
+        public State()
+        {
+            this.Name = "fakeName";
+        }
     }
     [CollectionDataContract(Name = "StateList", Namespace = "")]
     public class StateList : List<State>

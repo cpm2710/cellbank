@@ -18,13 +18,15 @@ function showProcessGraphViewer() {
                 var i = 0;
                 for (i = 0; i < states.length; i++) {
                     var c = new controller(states[i].Name, "state");
+                    c.x = states[i].x;
+                    c.y = states[i].y;
                     fmodel.states.put(states[i].Name, c);
                 }
                 var j = 0;
                 //var statesInModel = fmodel.states.values();
                 for (i = 0; i < transitions.length; i++) {
-//                    for (j = 0; j < statesInModel.length; j++) {
-//                        
+                    //                    for (j = 0; j < statesInModel.length; j++) {
+                    //                        
                     //                    }
                     var stateFrom = fmodel.states.get(transitions[i].From);
                     var stateTo = fmodel.states.get(transitions[i].To);

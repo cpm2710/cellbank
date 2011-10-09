@@ -314,9 +314,9 @@ namespace FakeServiceAndClient
             //testParseXaml();
             //testStartProcess();
             //testOnline();
-            //testgetStateMachineDefinition();
+            testgetStateMachineDefinition();
             //testProductStudio();
-            testSendMail();
+            //testSendMail();
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
 

@@ -142,6 +142,11 @@ namespace TrackingWorkFlow
                         nsmgr.AddNamespace(root.Prefix, nameSpace);
                         nsmgr.AddNamespace("default", xmlns);
                         nsmgr.AddNamespace("x", "http://schemas.microsoft.com/winfx/2006/xaml");
+                        nsmgr.AddNamespace("av","http://schemas.microsoft.com/winfx/2006/xaml/presentation");
+                        nsmgr.AddNamespace("sap", "http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation");
+
+                        //av xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        //xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
                         XmlNode stateMachineNode = root.SelectSingleNode(".//default:StateMachine", nsmgr);
 
                         XmlNode initialStateNode = stateMachineNode.SelectSingleNode(".//default:StateMachine.InitialState", nsmgr);
@@ -159,7 +164,23 @@ namespace TrackingWorkFlow
                                 string displayName=node.Attributes["DisplayName"].Value;
                                 state.Name = displayName;
                                 definition.StateList.Add(state);
+                                XmlNode point=node.SelectSingleNode("./sap:WorkflowViewStateService.ViewState/*/av:Point", nsmgr);
+                                string shapeLocation = point.InnerText;
 
+                                string[] location = shapeLocation.Split(',');
+                                state.x = double.Parse(location[0]);
+                                state.y = double.Parse(location[1]);
+                                /*
+                                 <sap:WorkflowViewStateService.ViewState>
+            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">33,79.5</av:Point>
+              <av:Size x:Key="ShapeSize">153,90</av:Size>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Double x:Key="StateContainerWidth">139</x:Double>
+              <x:Double x:Key="StateContainerHeight">
+                54.326666666666654</x:Double>
+              </scg3:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>*/
                                 XmlNodeList transitions = node.SelectNodes("./default:State.Transitions/default:Transition", nsmgr);
 
                                 if (transitions != null)
