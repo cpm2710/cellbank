@@ -66,8 +66,20 @@ function initializeInteraction(commandName) {
         GetParameters(commandName, function (parameters) {
             var i = 0;
             for (i = 0; i < parameters.length; i++) {
-                var inputField = $("#inputFieldTemplate").tmpl(parameters[i]);
-                inputField.appendTo($interactionFields);
+                if (parameters[i].Values.length > 0) {
+                    var inputField = $("#selectFieldTemplate").tmpl(parameters[i]);
+                    inputField.appendTo($interactionFields);
+                    var j = 0;
+                    var options = "";
+                    var parameter = parameters[i];
+                    for (j = 0; j < parameter.Values.length; j++) {
+                        options = options + "<option value=\"" + parameter.Values[j] + "\">" + parameter.Values[j] + "</option>"
+                    }
+                    inputField.find(".select_field_input").append(options);
+                } else {
+                    var inputField = $("#inputFieldTemplate").tmpl(parameters[i]);
+                    inputField.appendTo($interactionFields);
+                }
             }
             $interactionPanel.find("#submit").bind("click", function (e) {
                 var inputFields = "ParameterList:[";

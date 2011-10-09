@@ -20,10 +20,16 @@ using System.Activities.XamlIntegration;
 using System.Xaml;
 using System.Xml;
 using SEActivities.DataAccess;
+using SEActivities.Mail;
 namespace FakeServiceAndClient
 {
     class Program
     {
+        static void testSendMail()
+        {
+            EmailSender ms=new EmailSender("@microsoft.com", "smtphost.redmond.corp.microsoft.com", "t-limliu@microsoft.com");
+            ms.SendEmail("shit", "t-limliu", "", "shitbody", "t-limliu", false);
+        }
         static void testProductStudio()
         {
             PSDataAccess s = new PSDataAccess("redmond.corp.microsoft.com", "Windows Server Solutions");
@@ -309,7 +315,8 @@ namespace FakeServiceAndClient
             //testStartProcess();
             //testOnline();
             //testgetStateMachineDefinition();
-            testProductStudio();
+            //testProductStudio();
+            testSendMail();
             AutoResetEvent ee = new AutoResetEvent(false);
             ee.WaitOne();
 
