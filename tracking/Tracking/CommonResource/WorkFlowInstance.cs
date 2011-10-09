@@ -19,6 +19,14 @@ namespace CommonResource
         [DataMember]
         public string BugId;
         [DataMember]
+        public string WFName;
+        [DataMember]
+        public string AssignedTo;
+        [DataMember]
+        public string LastModified;
+        [DataMember]
+        public string QFEStatus;
+        [DataMember]
         public CandidateCommandList CandidateCommandList;
     }
     [CollectionDataContract(Name = "CandidateCommandList", Namespace = "")]

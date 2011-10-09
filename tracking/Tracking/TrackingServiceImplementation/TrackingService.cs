@@ -62,8 +62,11 @@ namespace TrackingService
                         WorkFlowInstance wfi = new WorkFlowInstance();
                         wfi.BugId = t.bugid;
                         wfi.Id = t.wfinstanceid.ToString();
-                        wfi.Title = t.wfname;
-
+                        wfi.Title = t.title;
+                        wfi.WFName = t.wfname;
+                        wfi.LastModified = t.lastmodified.ToString();
+                        wfi.QFEStatus = t.qfestatus;
+                        wfi.AssignedTo = t.assignedto;
                         //List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                         //CandidateCommandList ccl = new CandidateCommandList();
                         //if (candiCmds != null)
@@ -103,7 +106,13 @@ namespace TrackingService
                     using (TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction())
                     {
                         wfi = new WorkFlowInstance();
-                        wfi.Title = t.wfname;
+                        wfi.BugId = t.bugid;
+                        wfi.Id = t.wfinstanceid.ToString();
+                        wfi.Title = t.title;
+                        wfi.WFName = t.wfname;
+                        wfi.LastModified = t.lastmodified==null?"N/A":t.lastmodified.ToString();
+                        wfi.QFEStatus = t.qfestatus;
+                        wfi.AssignedTo = t.assignedto;
                         try
                         {
                             CandidateCommandList ccl = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
@@ -140,42 +149,43 @@ namespace TrackingService
                     pList.Add(p);
                 }
                 TeamInfo teamInfo=TeamInfoAccess.getTeam(0);
-                using (PSDataAccess psDataAccess = new PSDataAccess(teamInfo.domain, teamInfo.product))
-                {
-                    string psFieldNames = string.Empty;
-                    foreach (Parameter p in pList)
-                    {
-                        p.Name = p.Name.Replace("__", " ");
-                        if (psFieldNames == string.Empty)
-                        {
-                            psFieldNames = p.Name;//"__" is for the white space issue
-                        }
-                        else
-                        {
-                            psFieldNames = string.Format("{0};{1}", psFieldNames, p.Name);
-                        }
-                    }
-                    List<PSFieldDefinition>  fieldDefinitions=psDataAccess.LoadingPSFields(psFieldNames);
-                    foreach (Parameter p in pList)
-                    {
-                        if (p.Name.Equals("AssignedTo"))
-                        {
-                            p.Values.AddRange(new string[] { "t-limliu","yuanzhua","zachary","zichsun"});
-                        }
-                        foreach (PSFieldDefinition definition in fieldDefinitions)
-                        {
-                            if (p.Name.Equals(definition.Name))
-                            {
-                                List<object> values=definition.GetAllowedValues();
-                                foreach (object v in values)
-                                {
-                                    p.Values.Add(v.ToString());
-                                }                                
-                                break;
-                            }
-                        }
-                    }                    
-                }
+
+                //using (PSDataAccess psDataAccess = new PSDataAccess(teamInfo.domain, teamInfo.product))
+                //{
+                //    string psFieldNames = string.Empty;
+                //    foreach (Parameter p in pList)
+                //    {
+                //        p.Name = p.Name.Replace("__", " ");
+                //        if (psFieldNames == string.Empty)
+                //        {
+                //            psFieldNames = p.Name;//"__" is for the white space issue
+                //        }
+                //        else
+                //        {
+                //            psFieldNames = string.Format("{0};{1}", psFieldNames, p.Name);
+                //        }
+                //    }
+                //    List<PSFieldDefinition>  fieldDefinitions=psDataAccess.LoadingPSFields(psFieldNames);
+                //    foreach (Parameter p in pList)
+                //    {
+                //        if (p.Name.Equals("AssignedTo"))
+                //        {
+                //            p.Values.AddRange(new string[] { "t-limliu","yuanzhua","zachary","zichsun"});
+                //        }
+                //        foreach (PSFieldDefinition definition in fieldDefinitions)
+                //        {
+                //            if (p.Name.Equals(definition.Name))
+                //            {
+                //                List<object> values=definition.GetAllowedValues();
+                //                foreach (object v in values)
+                //                {
+                //                    p.Values.Add(v.ToString());
+                //                }                                
+                //                break;
+                //            }
+                //        }
+                //    }             
+                //}
             }
             catch (Exception e)
             {

@@ -119,6 +119,8 @@ function refreshTrackingProcess() {
             });
             trackingItem.appendTo("#setrackingreport");
         }
+        //$("#setrackingreport tr:odd").addClass("odd");
+       // $("#setrackingreport tr:not(.odd)").hide();
     });
 }
 
