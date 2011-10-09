@@ -107,20 +107,27 @@ function refreshTrackingProcess() {
                 $("#setrackingactions").empty();
                 getWorkFlowInstance(instanceId, function (data) {
                     var candCommandList = data.CandidateCommandList;
-                    for (i = 0; i < candCommandList.length; i++) {
-                        var candidateCmd = { CommandName: candCommandList[i] };
-                        var candiCmdJObj = $("#candidateCommandTemplate").tmpl(candidateCmd);
-                        candiCmdJObj.appendTo("#setrackingactions");
-                        candiCmdJObj.bind("click", function (e) {
-                            initializeInteraction($(this).tmplItem().data.CommandName);
-                        });
+                    if (candCommandList != null) {
+                        for (i = 0; i < candCommandList.length; i++) {
+                            var candidateCmd = { CommandName: candCommandList[i] };
+                            var candiCmdJObj = $("#candidateCommandTemplate").tmpl(candidateCmd);
+                            candiCmdJObj.appendTo("#setrackingactions");
+                            candiCmdJObj.bind("click", function (e) {
+                                initializeInteraction($(this).tmplItem().data.CommandName);
+                            });
+                        } 
                     }
                 });
             });
             trackingItem.appendTo("#setrackingreport");
         }
-        //$("#setrackingreport tr:odd").addClass("odd");
-       // $("#setrackingreport tr:not(.odd)").hide();
+        $("#setrackingreport tr:odd").addClass("odd");
+        $("#setrackingreport tr:not(.odd)").hide();
+        $("#setrackingreport tr:first-child").show();
+        $("#setrackingreport tr.odd").click(function () {
+            $(this).next("tr").toggle();
+            $(this).find(".arrow").toggleClass("up");
+        });
     });
 }
 
