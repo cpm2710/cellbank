@@ -8,6 +8,12 @@ namespace TrackingCommands
 {
     public class ProcessStart:Command
     {
+        public string Title;
+        public string Path;
+        public string IssueType;
+        public string Priority;
+        public string Severity;
+        public string ReproSteps;
         public override void execute()
         {
             Console.WriteLine("this is process start command");

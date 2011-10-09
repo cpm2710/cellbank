@@ -27,7 +27,9 @@ namespace FakeServiceAndClient
         static void testProductStudio()
         {
             PSDataAccess s = new PSDataAccess("redmond.corp.microsoft.com", "Windows Server Solutions");
-
+            List<string> products=s.LoadingProducts();
+            s.CreateNewBug("s");
+            Console.WriteLine();
         }
         static void testgetStateMachineDefinition()
         {

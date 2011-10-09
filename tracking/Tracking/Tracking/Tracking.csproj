@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\lib\jexpand\desktop.ini" />
+    <None Include="SampleDoc\老界面.docx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
