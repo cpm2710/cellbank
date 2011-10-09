@@ -9,5 +9,6 @@
     $.getTmplSync("./templates/candidateCommandTemplate.html");
     $.getTmplSync("./templates/statisticsMainTemplate.html");
     $.getTmplSync("./templates/processGraphMainTemplate.html");
-    $.getTmplSync("./templates/workFlowDefinitionTemplate.html"); 
+    $.getTmplSync("./templates/workFlowDefinitionTemplate.html");
+    $.getTmplSync("./templates/selectFieldTemplate.html"); 
 }
