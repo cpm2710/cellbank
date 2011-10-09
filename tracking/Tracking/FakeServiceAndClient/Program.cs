@@ -26,7 +26,7 @@ namespace FakeServiceAndClient
     {
         static void testProductStudio()
         {
-            PSDataAccess s = new PSDataAccess("redmond.corp.microsoft.com", "Windows Server Solutions", "t-limliu");
+            PSDataAccess s = new PSDataAccess("redmond.corp.microsoft.com", "Windows Server Solutions");
 
         }
         static void testgetStateMachineDefinition()
