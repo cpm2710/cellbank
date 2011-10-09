@@ -28,7 +28,9 @@ namespace FakeServiceAndClient
         {
             PSDataAccess s = new PSDataAccess("redmond.corp.microsoft.com", "Windows Server Solutions");
             List<string> products=s.LoadingProducts();
-            s.CreateNewBug("s");
+            //s.CreateNewBug("s");
+            TrackingService.TrackingService ts = new TrackingService.TrackingService();
+            ParameterList parameterList=ts.GetParameters("ProcessStart");
             Console.WriteLine();
         }
         static void testgetStateMachineDefinition()

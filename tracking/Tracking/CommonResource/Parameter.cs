@@ -11,7 +11,7 @@ namespace CommonResource
     {
         public Parameter()
         {
-
+            this.Values = new List<string>();
         }
         public Parameter(string Name, string Value)
         {
@@ -24,6 +24,8 @@ namespace CommonResource
         public string Type;
         [DataMember]
         public string Value;
+        [DataMember]
+        public List<string> Values;
     }
     [CollectionDataContract(Name = "ParameterList", Namespace = "")]
     public class ParameterList : List<Parameter>

@@ -21,7 +21,7 @@ namespace TrackingCommands
             get { return wFName; }
             set { wFName = value; }
         }
-        public string AssignTo;
+        public string AssignedTo;
         public abstract void execute();
         public abstract void validate();
     }

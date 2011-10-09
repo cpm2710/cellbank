@@ -12,6 +12,7 @@ using System.Web;
 using System.Net;
 using System.Security.Principal;
 using System.Threading;
+using SEActivities.DataAccess;
 
 namespace TrackingService
 {
@@ -137,6 +138,43 @@ namespace TrackingService
                     Parameter p = new Parameter();
                     p.Name = i;
                     pList.Add(p);
+                }
+                TeamInfo teamInfo=TeamInfoAccess.getTeam(0);
+                using (PSDataAccess psDataAccess = new PSDataAccess(teamInfo.domain, teamInfo.product))
+                {
+                    string psFieldNames = string.Empty;
+                    foreach (Parameter p in pList)
+                    {
+                        p.Name = p.Name.Replace("__", " ");
+                        if (psFieldNames == string.Empty)
+                        {
+                            psFieldNames = p.Name;//"__" is for the white space issue
+                        }
+                        else
+                        {
+                            psFieldNames = string.Format("{0};{1}", psFieldNames, p.Name);
+                        }
+                    }
+                    List<PSFieldDefinition>  fieldDefinitions=psDataAccess.LoadingPSFields(psFieldNames);
+                    foreach (Parameter p in pList)
+                    {
+                        if (p.Name.Equals("AssignedTo"))
+                        {
+                            p.Values.AddRange(new string[] { "t-limliu","yuanzhua","zachary","zichsun"});
+                        }
+                        foreach (PSFieldDefinition definition in fieldDefinitions)
+                        {
+                            if (p.Name.Equals(definition.Name))
+                            {
+                                List<object> values=definition.GetAllowedValues();
+                                foreach (object v in values)
+                                {
+                                    p.Values.Add(v.ToString());
+                                }                                
+                                break;
+                            }
+                        }
+                    }                    
                 }
             }
             catch (Exception e)

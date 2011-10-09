@@ -24,6 +24,10 @@ namespace TrackingWorkFlow
         }
         protected void MakeAsyncSync()
         {
+            this.app.Completed = (e) =>
+            {
+                barrier.Set();
+            };
             this.app.Idle = (e) =>
             {
                 barrier.Set();

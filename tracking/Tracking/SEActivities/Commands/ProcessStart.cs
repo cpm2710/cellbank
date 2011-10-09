@@ -10,14 +10,14 @@ namespace TrackingCommands
     {
         public string Title;
         public string Path;
-        public string IssueType;
+        public string Issue__Type;
         public string Priority;
         public string Severity;
-        public string ReproSteps;
+        public string Steps;
         public override void execute()
         {
             Console.WriteLine("this is process start command");
-            Console.WriteLine("assigned to" + this.AssignTo);
+            //Console.WriteLine("assigned to" + this.AssignTo);
 
             string bugId = "bug12345";
             TrackingDataContext tdc = new TrackingDataContext();
