@@ -122,6 +122,8 @@
     <Content Include="Scripts\lib\jquery-ui-1.8.13.custom.min.js" />
     <Content Include="Scripts\lib\jquery.cookie.js" />
     <Content Include="Scripts\lib\jquery.tmpl.min.js" />
+    <Content Include="Scripts\lib\visualize\excanvas.js" />
+    <Content Include="Scripts\lib\visualize\visualize.jQuery.js" />
     <Content Include="Scripts\mockdata.js" />
     <Content Include="Scripts\designer\position.util.js" />
     <Content Include="Scripts\lib\templates.min.js" />
@@ -131,6 +133,10 @@
     <Content Include="sql\tracking.sql" />
     <Content Include="Styles\flowdesigner.css" />
     <Content Include="Styles\mainpage.css" />
+    <Content Include="Styles\visualize\basic.css" />
+    <Content Include="Styles\visualize\visualize-dark.css" />
+    <Content Include="Styles\visualize\visualize-light.css" />
+    <Content Include="Styles\visualize\visualize.css" />
     <Content Include="templates\candidateCommandTemplate.html" />
     <Content Include="templates\selectFieldTemplate.html" />
     <Content Include="templates\workFlowDefinitionTemplate.html" />

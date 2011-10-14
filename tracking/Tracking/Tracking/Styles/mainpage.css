@@ -35,18 +35,35 @@
     background: #DDE5FF;
     cursor:pointer;
 }
-#dashboarditems > .dashboardItem:hover
+#setrackingactions > .candidatecommand
 {
-    background: #DDE5FF;
+    width:100%;
+}
+#dashboarditems > .dashboardItem > a:hover
+{
+    background-color: #B6CFE5;
+    color: #FFFFFF;
     cursor:pointer;
 }
 #dashboarditems > .dashboardItem.selected
 {
-    background: #BBCCFF;
+    background-color: #B6CFE5;
+    color: #FFFFFF;
+}
+#dashboarditems > .dashboardItem > a
+{
+    display: block;
+    padding: 5px 5px 5px 0.5em;
+    border-left: 12px solid #BED4E9;
+    border-right: 1px solid #BED4E9;
+    background-color: #B6CFE5;
+    color: #000000;
+    text-decoration: none;
 }
 #dashboarditems > .dashboardItem
 {
     width:100%;
+    border-bottom: 1px solid #FFFFFF;
 }
 .showpanel
 {
@@ -97,7 +114,6 @@
     color: #000000;
     cursor: pointer;
     font-family: Segoe ui semibold,helvetica,Sans-Serif;
-    font-size: 20px;
     text-shadow: 0.1em 0.1em 0.3em #FFFFFF;
  }
 .reporttable { border-collapse:collapse;}
