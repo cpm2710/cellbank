@@ -61,12 +61,20 @@ function showStartProject() {
 function showStatistics() {
     $("#showpanelmain").empty();
     $("#statisticsMainTemplate").tmpl(null).appendTo("#showpanelmain");
-    //$('table').visualize();
-    $('#tabbb').visualize({ type: 'pie', height: '300px', width: '420px' });
-    //$('table').visualize({ type: 'bar', width: '420px' });
-    //$('table').visualize({ type: 'area', width: '420px' });
-    //$('table').visualize({ type: 'line', width: '420px' });
-
+    GetTrackingWorkFlowDefinition(function (workFlowDefinitions) {
+        var i = 0;
+        for (i = 0; i < workFlowDefinitions.length; i++) {
+            var options = "";
+            options = options + "<option value=\"" + workFlowDefinitions[i].WFName + "\">" + workFlowDefinitions[i].WFName + "</option>"
+            $("#workflowselect").append(options);
+            //var workFlowDefinition = {WFName:};
+            //$("#workFlowDefinitionTemplate").tmpl(workFlowDefinitions[i]).appendTo("#workflowlist");
+        }
+        $("#workflowselect").bind("onchange", function (e) {
+            var workFlowName = $("#workflowselect").value();
+            alert(workFlowName);
+        });
+    });
 }
 function showProcessGraph() {
     $("#showpanelmain").empty();

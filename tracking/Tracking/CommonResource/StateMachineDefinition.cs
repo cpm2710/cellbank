@@ -61,6 +61,8 @@ namespace CommonResource
             this.TransitionList = new TransitionList();
         }
         [DataMember]
+        public string InitialState;
+        [DataMember]
         public StateList StateList;
         [DataMember]
         public TransitionList TransitionList;

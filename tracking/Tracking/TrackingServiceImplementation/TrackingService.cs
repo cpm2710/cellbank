@@ -67,6 +67,9 @@ namespace TrackingService
                         wfi.LastModified = t.lastmodified.ToString();
                         wfi.QFEStatus = t.qfestatus;
                         wfi.AssignedTo = t.assignedto;
+                        wfi.LastModified = t.lastmodified == null ? "N/A" : t.lastmodified.Value.ToString();
+                        wfi.LastModifiedBy = t.lastmodifiedby;
+                        //
                         //List<string> candiCmds = interaction.getCandidateCommands(t.wfname.Trim(), t.wfinstanceid.ToString());
                         //CandidateCommandList ccl = new CandidateCommandList();
                         //if (candiCmds != null)
@@ -110,9 +113,11 @@ namespace TrackingService
                         wfi.Id = t.wfinstanceid.ToString();
                         wfi.Title = t.title;
                         wfi.WFName = t.wfname;
-                        wfi.LastModified = t.lastmodified==null?"N/A":t.lastmodified.ToString();
+                        //wfi.LastModified = t.lastmodified==null?"N/A":t.lastmodified.ToString();
+                        wfi.LastModified = t.lastmodified == null ? "N/A" : t.lastmodified.ToString();
                         wfi.QFEStatus = t.qfestatus;
                         wfi.AssignedTo = t.assignedto;
+                        wfi.LastModifiedBy = t.lastmodifiedby;
                         try
                         {
                             CandidateCommandList ccl = twfi.getCandidateCommands(t.wfname.Trim(), InstanceId);
@@ -150,42 +155,42 @@ namespace TrackingService
                 }
                 TeamInfo teamInfo=TeamInfoAccess.getTeam(0);
 
-                //using (PSDataAccess psDataAccess = new PSDataAccess(teamInfo.domain, teamInfo.product))
-                //{
-                //    string psFieldNames = string.Empty;
-                //    foreach (Parameter p in pList)
-                //    {
-                //        p.Name = p.Name.Replace("__", " ");
-                //        if (psFieldNames == string.Empty)
-                //        {
-                //            psFieldNames = p.Name;//"__" is for the white space issue
-                //        }
-                //        else
-                //        {
-                //            psFieldNames = string.Format("{0};{1}", psFieldNames, p.Name);
-                //        }
-                //    }
-                //    List<PSFieldDefinition>  fieldDefinitions=psDataAccess.LoadingPSFields(psFieldNames);
-                //    foreach (Parameter p in pList)
-                //    {
-                //        if (p.Name.Equals("AssignedTo"))
-                //        {
-                //            p.Values.AddRange(new string[] { "t-limliu","yuanzhua","zachary","zichsun"});
-                //        }
-                //        foreach (PSFieldDefinition definition in fieldDefinitions)
-                //        {
-                //            if (p.Name.Equals(definition.Name))
-                //            {
-                //                List<object> values=definition.GetAllowedValues();
-                //                foreach (object v in values)
-                //                {
-                //                    p.Values.Add(v.ToString());
-                //                }                                
-                //                break;
-                //            }
-                //        }
-                //    }             
-                //}
+                using (PSDataAccess psDataAccess = new PSDataAccess(teamInfo.domain, teamInfo.product))
+                {
+                    string psFieldNames = string.Empty;
+                    foreach (Parameter p in pList)
+                    {
+                        p.Name = p.Name.Replace("__", " ");
+                        if (psFieldNames == string.Empty)
+                        {
+                            psFieldNames = p.Name;//"__" is for the white space issue
+                        }
+                        else
+                        {
+                            psFieldNames = string.Format("{0};{1}", psFieldNames, p.Name);
+                        }
+                    }
+                    List<PSFieldDefinition> fieldDefinitions = psDataAccess.LoadingPSFields(psFieldNames);
+                    foreach (Parameter p in pList)
+                    {
+                        if (p.Name.Equals("AssignedTo"))
+                        {
+                            p.Values.AddRange(new string[] { "t-limliu", "yuanzhua", "zachary", "zichsun" });
+                        }
+                        foreach (PSFieldDefinition definition in fieldDefinitions)
+                        {
+                            if (p.Name.Equals(definition.Name))
+                            {
+                                List<object> values = definition.GetAllowedValues();
+                                foreach (object v in values)
+                                {
+                                    p.Values.Add(v.ToString());
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -216,9 +221,12 @@ namespace TrackingService
                         paras.Add(p.Name, p.Value);
                     }
                 }
+                TrackingWorkFlowInteraction II = new TrackingWorkFlowInteraction();
+                StateMachineDefinition statemachineDefinition = II.getStateMachineDefinition(CommandInfo.WFName);
+                paras.Add("QFEStatus", statemachineDefinition.InitialState);
                 cmdInteraction.executeCommand(CommandInfo.CommandName, paras);
 
-
+                
                 wfi.Id = id;
                 List<string> candCmds = twfi.getCandidateCommands(WFName, id);
                 CandidateCommandList ccl = new CandidateCommandList();
@@ -251,6 +259,23 @@ namespace TrackingService
                         paras.Add(p.Name, p.Value);
                     }
                 }
+                TrackingDataContext tdc = new TrackingDataContext();
+                Guid guid = new Guid(CommandInfo.InstanceId);
+                IQueryable<CommonResource.Tracking> trackingQuery =
+                    from tracking in tdc.Trackings
+                    where ((tracking.wfinstanceid == guid))
+                    select tracking;
+                foreach (CommonResource.Tracking t in trackingQuery)
+                {
+                    t.lastmodifiedby = AuthenticationHelper.GetCurrentUser();
+                }
+                //CommonResource.Tracking t = new CommonResource.Tracking();
+                //t.wfname = this.WFName;
+                //t.bugid = bugId;
+                //t.wfinstanceid = new Guid(this.InstanceId);
+                //tdc.Trackings.InsertOnSubmit(t);
+                tdc.SubmitChanges();
+
                 cmdInteraction.executeCommand(CommandInfo.CommandName, paras);//this is do the real action in extension
                 TrackingWorkFlowInteraction twfi = new TrackingWorkFlowInteraction();
                 twfi.doCommand(CommandInfo);// this is just trigger the state machine(WF) to do one step

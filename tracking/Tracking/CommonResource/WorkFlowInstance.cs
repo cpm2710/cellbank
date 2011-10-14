@@ -25,6 +25,8 @@ namespace CommonResource
         [DataMember]
         public string LastModified;
         [DataMember]
+        public string LastModifiedBy;
+        [DataMember]
         public string QFEStatus;
         [DataMember]
         public CandidateCommandList CandidateCommandList;

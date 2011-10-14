@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationHelper.cs" />
     <Compile Include="BugChangeList.cs" />
     <Compile Include="BugData.cs" />
     <Compile Include="ChangelistInfo.cs" />

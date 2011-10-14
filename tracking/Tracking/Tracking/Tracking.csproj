@@ -139,6 +139,7 @@
     <Content Include="Styles\visualize\visualize.css" />
     <Content Include="templates\candidateCommandTemplate.html" />
     <Content Include="templates\selectFieldTemplate.html" />
+    <Content Include="templates\statisticsTemplate.html" />
     <Content Include="templates\workFlowDefinitionTemplate.html" />
     <Content Include="templates\functionTemplate.htm" />
     <Content Include="templates\processGraphMainTemplate.html" />

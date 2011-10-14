@@ -149,9 +149,9 @@ namespace TrackingWorkFlow
                         //xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
                         XmlNode stateMachineNode = root.SelectSingleNode(".//default:StateMachine", nsmgr);
 
-                        XmlNode initialStateNode = stateMachineNode.SelectSingleNode(".//default:StateMachine.InitialState", nsmgr);
-
-
+                        XmlNode initialStateNode = stateMachineNode.SelectSingleNode(".//default:StateMachine.InitialState/default:State", nsmgr);
+                        definition.InitialState=initialStateNode.Attributes["DisplayName"].Value;
+                        //definition.InitialState = initialStateNode;
                         XmlNodeList states = root.SelectNodes(".//default:State", nsmgr);
 
                         //XmlNodeList transitions = root.SelectNodes(".//default:Transition", nsmgr);
