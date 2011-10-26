@@ -15,8 +15,8 @@ public class ReadOWL {
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		OntModel m = ModelFactory.createOntologyModel();  
-		File myFile = new File(".");
-		
+		File myFile = new File("D:/WorkSpace/Orips3WorkSpace/GPaper/owl/wsgp2.owl");
+		System.out.println(myFile.getAbsolutePath());
 		m.read(new FileInputStream(myFile), ""); 
 		
 	}
