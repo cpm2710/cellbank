@@ -3,6 +3,7 @@
 	<import file="${basedir}/common.xml" />
 	<target name="initialejb3">
 		<delete dir="${build.ejb3.home}" quiet="true" />
+		<delete dir="${deploy.dir}/${ejb3.home}" quiet="true"/>
 		<mkdir dir="${build.ejb3.home}" />
 		<mkdir dir="${build.ejb3.home}/META-INF" />
 		<mkdir dir="${deploy.dir}/${ejb3.home}"/>

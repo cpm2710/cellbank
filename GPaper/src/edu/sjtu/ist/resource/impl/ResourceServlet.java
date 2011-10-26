@@ -1,4 +1,4 @@
-package edu.sjtu.ist.resource;
+package edu.sjtu.ist.resource.impl;
 
 import javax.servlet.http.HttpServlet;
 

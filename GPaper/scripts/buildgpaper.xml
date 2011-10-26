@@ -3,9 +3,8 @@
 	<import file="${basedir}/common.xml">
 	</import>
 	<target name="initialgpaper">
-		<!-- <delete file="${deploy.dir}/gpaper.war"/>-->
-
 		<delete failonerror="false" dir="${build.gpaper.home}" />
+		<delete dir="${deploy.dir}/${gpaper.home}" quiet="true"/>
 		<mkdir dir="${build.gpaper.home}/WEB-INF/classes" />
 		<mkdir dir="${deploy.dir}/${gpaper.home}"/>
 		<copy todir="${build.gpaper.home}">
