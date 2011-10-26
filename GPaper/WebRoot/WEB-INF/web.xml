@@ -6,7 +6,7 @@
 	
 	<filter>
 		<filter-name>encoding</filter-name>
-		<filter-class>edu.sjtu.erplab.orips.struts.encoding.EncodingFilter</filter-class>
+		<filter-class>edu.sjtu.ist.common.EncodingFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>encoding</filter-name>
@@ -18,7 +18,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>ResourceServlet</servlet-name>
-		<servlet-class></servlet-class>
+		<servlet-class>edu.sjtu.ist.resource.ResourceServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

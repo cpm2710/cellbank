@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="gpaper" basedir="." default="deploy">
+<project name="gpaper" basedir="." default="deployfolder">
 	<import file="${basedir}/buildejb3.xml"/>
 	<import file="${basedir}/buildgpaper.xml"/>
 	<target name="deploy">
