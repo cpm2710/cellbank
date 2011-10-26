@@ -1,14 +1,30 @@
 package edu.sjtu.ist.resource;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
+import javax.persistence.Table;
+@Entity
+@Table(name="resource_property_meta")
 public class ResourcePropertyMeta {
+	private int propertyMetaId;
+	
 	private ResourceMeta resourceMetaOne;
 	private ResourceMeta resourceMetaTwo;
 	private String propertyName;
-	@OneToOne
+	@Id
+	@Column(name = "property_meta_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getPropertyMetaId() {
+		return propertyMetaId;
+	}
+	public void setPropertyMetaId(int propertyMetaId) {
+		this.propertyMetaId = propertyMetaId;
+	}@OneToOne
 	@JoinColumn(name="resource_meta_one")
 	public ResourceMeta getResourceMetaOne() {
 		return resourceMetaOne;
