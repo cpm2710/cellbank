@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="orips3" basedir="." default="deploy">
+<project name="gpaper" basedir="." default="deploy">
 	<import file="${basedir}/buildejb3.xml"/>
-	<import file="${basedir}/buildorips3.xml"/>
+	<import file="${basedir}/buildgpaper.xml"/>
 	<target name="deploy">
 		<antcall target="deployejb3"></antcall>
-		<antcall target="deployorips3"></antcall>
+		<antcall target="deploygpaper"></antcall>
 	</target>
 	<target name="deployfolder">
 		<antcall target="copyejb3"></antcall>
-		<antcall target="copyorips3"></antcall>				
+		<antcall target="copygpaper"></antcall>				
 	</target>
 </project>

@@ -2,7 +2,6 @@
 <project name="ejb3" basedir=".">
 	<import file="${basedir}/common.xml" />
 	<target name="initialejb3">
-		<!-- <delete file="${deploy.dir}/orips3.jar"/>-->
 		<delete dir="${build.ejb3.home}" quiet="true" />
 		<mkdir dir="${build.ejb3.home}" />
 		<mkdir dir="${build.ejb3.home}/META-INF" />
@@ -16,15 +15,7 @@
 		</copy>
 		<copy todir="${targetdeploydir}/lib">
 			<fileset dir="${lib.home}">
-				<include name="mysql-connector-java-5.1.7-bin.jar" />
-				<include name="bsh.jar" />
-				<include name="jdom1.1.1.jar"/>
-				<include name="castor-1.3.1*"/>
-				<include name="xbean*.jar"/>
-				<include name="xmlbeans-qname.jar"/>
-				<include name="json-lib-2.1-jdk15.jar"/>
-				<include name="commons-*.jar"/>
-				<include name="ezmorph-1.0.6.jar"/>
+				<include name="mysql-connector-java-5.1.7-bin.jar" />				
 			</fileset>
 		</copy>
 		<copy todir="${build.ejb3.home}/META-INF">
@@ -34,7 +25,7 @@
 		</copy>
 		<copy todir="${targetdeploydir}/deploy" overwrite="true">
 			<fileset dir="${configfiles.home}">
-				<include name="orips3-mysql-ds.xml" />
+				<include name="gpaper-mysql-ds.xml" />
 			</fileset>
 		</copy>
 		<copy todir="${targetdeploydir}/conf">
@@ -52,7 +43,7 @@
 	</target>
 
 	<target name="packupebj3" depends="compileejb3">
-		<jar destfile="${build.ejb3.home}/orips3.jar">
+		<jar destfile="${build.ejb3.home}/gpaper.jar">
 			<fileset dir="${build.ejb3.home}">
 				<include name="**/*" />
 			</fileset>
@@ -68,7 +59,7 @@
 	<target name="deployejb3" depends="packupebj3">
 		<copy todir="${targetdeploydir}/deploy" overwrite="true">
 			<fileset dir="${configfiles.home}">
-				<include name="orips3-mysql-ds.xml" />
+				<include name="gpaper-mysql-ds.xml" />
 			</fileset>
 		</copy>
 		<copy todir="${targetdeploydir}/conf">
@@ -78,7 +69,7 @@
 		</copy>
 		<!--<copy todir="${targetdeploydir}/deploy">
 			<fileset dir="${build.ejb3.home}">
-				<include name="orips3.jar" />
+				<include name="gpaper.jar" />
 			</fileset>
 		</copy> -->
 

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="orips3web" basedir=".">
+<project name="gpaperweb" basedir=".">
 	<import file="${basedir}/common.xml"></import>
-	<target name="initialorips3">
-		<!-- <delete file="${deploy.dir}/orips3.war"/>-->
+	<target name="initialgpaper">
+		<!-- <delete file="${deploy.dir}/gpaper.war"/>-->
 		
-		<delete failonerror="false" dir="${build.orips3.home}" />
-		<mkdir dir="${build.orips3.home}/WEB-INF/classes" />
-		<mkdir dir="${deploy.dir}/${orips3.home}"/>
-		<copy todir="${build.orips3.home}">
+		<delete failonerror="false" dir="${build.gpaper.home}" />
+		<mkdir dir="${build.gpaper.home}/WEB-INF/classes" />
+		<mkdir dir="${deploy.dir}/${gpaper.home}"/>
+		<copy todir="${build.gpaper.home}">
 			<fileset dir="${webroot.home}">
 				<include name="**/*" />
 			</fileset>
 		</copy>
-		<copy todir="${build.orips3.home}/WEB-INF/lib">
+		<copy todir="${build.gpaper.home}/WEB-INF/lib">
 			<fileset dir="${lib.home}">
 				<include name="**/*.jar" />
 				<exclude name="servlet-api.jar"/>
@@ -20,22 +20,22 @@
 		</copy>
 		
 	</target>
-	<target name="compileorips3" depends="initialorips3">
-		<javac srcdir="${src.home}" destdir="${build.orips3.home}/WEB-INF/classes" includeantruntime="false">
+	<target name="compilegpaper" depends="initialgpaper">
+		<javac srcdir="${src.home}" destdir="${build.gpaper.home}/WEB-INF/classes" includeantruntime="false">
 			<compilerarg line="-encoding UTF-8" />
 			<classpath refid="compile.path">
 			</classpath>
 		</javac>
-		<copy todir="${build.orips3.home}/WEB-INF/classes">
+		<copy todir="${build.gpaper.home}/WEB-INF/classes">
 			<fileset dir="${src.home}">
 				<include name="**/*.xml" />
 				<include name="**/*.properties" />
 			</fileset>
 		</copy>
 	</target>
-	<target name="copyorips3" depends="compileorips3">
-		<copy todir="${deploy.dir}/${orips3.home}">
-			<fileset dir="${build.orips3.home}">
+	<target name="copygpaper" depends="compilegpaper">
+		<copy todir="${deploy.dir}/${gpaper.home}">
+			<fileset dir="${build.gpaper.home}">
 				<include name="**/*" />
 				<exclude name="classes/test/**/*" />
 				<exclude name="classes/edu/sjtu/erplab/orips/sessionbeans/**/*"/>
@@ -43,12 +43,12 @@
 		</copy>
 	</target>
 	<target name="copywebroot">
-		<copy todir="${deploy.dir}/${orips3.home}">
+		<copy todir="${deploy.dir}/${gpaper.home}">
 			<fileset dir="${webroot.home}">
 					<include name="**/*" />
 			</fileset>
 			<!--
-			<fileset dir="${build.orips3.home}">
+			<fileset dir="${build.gpaper.home}">
 				<include name="**/*.js"/>
 				<include name="**/*.xml"/>
 				<include name="**/*.html"/>
@@ -59,16 +59,16 @@
 			</fileset>-->
 		</copy>
 	</target>
-	<target name="packuporips3" depends="compileorips3">
-		<jar destfile="${build.orips3.home}/orips3.war">
-			<fileset dir="${build.orips3.home}">
+	<target name="packupgpaper" depends="compilegpaper">
+		<jar destfile="${build.gpaper.home}/gpaper.war">
+			<fileset dir="${build.gpaper.home}">
 				<include name="**/*" />
 				<exclude name="classes/test/**/*" />
 				<exclude name="classes/edu/sjtu/erplab/orips/sessionbeans/**/*"/>
 			</fileset>
 		</jar>
 	</target>
-	<target name="deployorips3" depends="packuporips3">
+	<target name="deploygpaper" depends="packupgpaper">
 		<copy todir="${env.JBOSS_HOME}/bin">
 			<fileset dir="${configfiles.home}">
 				<include name="run.conf" />
@@ -89,8 +89,8 @@
 			</fileset>
 		</copy>
 		<!--<copy todir="${deploy.dir}/">
-			<fileset dir="${build.orips3.home}">
-				<include name="orips3.war" />
+			<fileset dir="${build.gpaper.home}">
+				<include name="gpaper.war" />
 			</fileset>
 		</copy> -->
 		
