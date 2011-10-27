@@ -66,4 +66,4 @@ JVM_ARGS=${JVM_ARGS:-}
 SDB_CP="$($SDBROOT/bin/sdb_path)"
 
 ## ---- Store description (default)
-SDB_SPEC="${SDB_SPEC:---sdb=sdb.ttl}"
+SDB_SPEC="${SDB_SPEC:---sdb=sdb-mysql-innodb.ttl}"

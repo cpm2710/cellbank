@@ -49,15 +49,15 @@ for jar in "$LIBDIR"/*.jar
   [ "${jar/javadoc}" = "${jar}" ] || continue
   #echo "Path: $jar"
   [ "$CP" != "" ] && CP="${CP}${SEP}"
-  CP="${CP}$jar"
+  #CP="${CP}$jar"
 
 ##  # Suggested:
-##   if [ "$CYGWIN" = 1 ]
-##   then
-##     CP="${CP}$(cygpath -wp "$jar")"
-##   else
-##     CP="${CP}$jar"
-##   fi
+   if [ "$CYGWIN" = 1 ]
+   then
+     CP="${CP}$(cygpath -w "$jar")"
+   else
+     CP="${CP}$jar"
+   fi
 ## 
 done
 
