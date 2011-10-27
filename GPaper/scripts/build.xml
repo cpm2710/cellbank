@@ -2,6 +2,7 @@
 <project name="gpaper" basedir="." default="deployfolder">
 	<import file="${basedir}/buildejb3.xml"/>
 	<import file="${basedir}/buildgpaper.xml"/>
+	<import file="${basedir}/buildplayground.xml"/>
 	<target name="deploy">
 		<antcall target="deployejb3"></antcall>
 		<antcall target="deploygpaper"></antcall>

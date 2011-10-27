@@ -3,10 +3,16 @@
 	<property environment="env"/>
 	<property name="src.home" location="${basedir}/../src"/>
 	<property name="test.home" location="${basedir}/../test"/>	
-	<property name="gpaper.home" value="gpaper.war"></property>
-	<property name="ejb3.home" value="gpaper.jar"></property>
-	<property name="build.ejb3.home" location="${basedir}/../../${ejb3.home}"/>
-	<property name="build.gpaper.home" location="${basedir}/../../${gpaper.home}"/>
+	<property name="gpaper.home" value="gpaper.war"/>
+	<property name="ejb3.home" value="gpaper.jar"/>
+	<!-- playground means the location where sdb occupied!-->	
+	<property name="playground.dir" value="playground"/>
+	<property name="playground.home" value="${basedir}/../../${playground.dir}"/>
+	<property name="environment.dir" value="environment"/>
+	<property name="environment.home" value="${basedir}/../${environment.dir}"/>
+	<property name="build.dir" value="build"/>
+	<property name="build.ejb3.home" location="${basedir}/../../${build.dir}/${ejb3.home}"/>
+	<property name="build.gpaper.home" location="${basedir}/../../${build.dir}/${gpaper.home}"/>
 	<property name="configfiles.home" value="${basedir}/../scripts"/>
 	<property name="webroot.home" location="${basedir}/../WebRoot"/>
 	<property name="lib.home" location="${basedir}/../lib"/>

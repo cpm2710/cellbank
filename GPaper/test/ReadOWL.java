@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 
 public class ReadOWL {
@@ -18,7 +21,10 @@ public class ReadOWL {
 		File myFile = new File("D:/WorkSpace/Orips3WorkSpace/GPaper/owl/wsgp2.owl");
 		System.out.println(myFile.getAbsolutePath());
 		m.read(new FileInputStream(myFile), ""); 
-		
+		StmtIterator ite=m.listStatements();
+		Statement st=ite.next();
+		Resource resource=st.getResource();
+		String resourceString=resource.toString();
 	}
 
 }

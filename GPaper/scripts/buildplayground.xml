@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="playground" basedir=".">
+	<import file="${basedir}/common.xml" />
+	<target name="ppp">
+		<mkdir dir="${playground.home}" />
+		<copy todir="${playground.home}">
+			<fileset dir="${environment.home}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${playground.home}">
+			<fileset dir="${lib.home}">
+				<include name="**/*.jar"></include>
+			</fileset>
+		</copy>
+	</target>
+</project>

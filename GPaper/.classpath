@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="lib/jena/icu4j-3.4.4.jar"/>
 	<classpathentry kind="lib" path="lib/jena/iri-0.8.jar"/>
 	<classpathentry kind="lib" path="lib/jena/jena-2.6.4-tests.jar"/>
-	<classpathentry kind="lib" path="lib/jena/jena-2.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/jena/jena-2.6.4.jar" sourcepath="D:/JavaTools/Jena-2.6.4/lib-src/jena-2.6.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jena/junit-4.5.jar"/>
 	<classpathentry kind="lib" path="lib/jena/log4j-1.2.13.jar"/>
 	<classpathentry kind="lib" path="lib/jena/lucene-core-2.3.1.jar"/>
