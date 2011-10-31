@@ -6,6 +6,7 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntDocumentManager;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
+import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.ModelMaker;
@@ -50,6 +51,7 @@ public class CompanyOntologyTest {
 			OntClass oc=(OntClass)itereator.next();
 			System.out.println(oc.getURI());
 		}
+		OntResource resource=m.getOntResource("http://www.ist.sjtu.edu.cn/ontologies/company.owl#ChairOrder");
 		OntClass cc=m.getOntClass("http://www.ist.sjtu.edu.cn/ontologies/company.owl#BuyOrder");
 		//cc2.listInstances();
 		cc.listInstances();
