@@ -1,17 +1,28 @@
 package company;
 
+import java.io.File;
+import java.util.Set;
+
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
+
 import com.hp.hpl.jena.db.DBConnection;
 import com.hp.hpl.jena.db.IDBConnection;
-import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntDocumentManager;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.ModelMaker;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
-public class CompanyOntologyTest {
+public class CopyOfCompanyOntologyTest {
 
 	/**
 	 * @param args
@@ -24,7 +35,7 @@ public class CompanyOntologyTest {
 	public static final Boolean cleanDB = true;
 	public static final String COMPANY_ONT = "urn:x-hp-jena:company";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws OWLOntologyCreationException {
 
 		// ensure the JDBC driver class is loaded
 		/*try {
@@ -34,25 +45,17 @@ public class CompanyOntologyTest {
 					+ e.getMessage());
 			System.err.println("Have you got the CLASSPATH set correctly?");
 		}*/
-		OntDocumentManager.getInstance().addAltEntry( COMPANY_ONT, "file:D:\\WorkSpace\\Orips3WorkSpace\\GPaper\\owl\\companyrdf.owl" );
+		//OntDocumentManager.getInstance().addAltEntry( COMPANY_ONT, "file:D:\\WorkSpace\\Orips3WorkSpace\\GPaper\\owl\\company.owl" );
         
-		ModelMaker maker=ModelFactory.createMemModelMaker();
+		/*ModelMaker maker=
 		Model base = maker.createModel(COMPANY_ONT, false);
 		OntModelSpec spec = new OntModelSpec(OntModelSpec.OWL_DL_MEM);
-		spec.setImportModelMaker(maker);
+		spec.setImportModelMaker(maker);*/
 		
-		OntModel m = ModelFactory.createOntologyModel(spec, base);
+		//OntModel m = ModelFactory.createOntologyModel();
 		
-		m.read(COMPANY_ONT);
-		//OntClass cc2=m.getOntClass("http://www.ist.sjtu.edu.cn/ontologies/company.owl#ChairOrder");
-		ExtendedIterator<OntClass> itereator=m.listClasses();
-		while(itereator.hasNext()){
-			OntClass oc=(OntClass)itereator.next();
-			System.out.println(oc.getURI());
-		}
-		OntClass cc=m.getOntClass("http://www.ist.sjtu.edu.cn/ontologies/company.owl#BuyOrder");
-		//cc2.listInstances();
-		cc.listInstances();
+		//m.read(COMPANY_ONT);
+		
 		// Create a model maker object
 		/*ModelMaker maker = getRDBMaker(DB_URL, DB_USER, DB_PASSWD, DB_TYPE);
 
@@ -71,10 +74,24 @@ public class CompanyOntologyTest {
 		//maker = getRDBMaker(DB_URL, DB_USER, DB_PASSWD, DB_TYPE);
 		
 		//base = maker.createModel( COMPANY_ONT, false );
+		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		File file = new File("D:\\WorkSpace\\Orips3WorkSpace\\GPaper\\owl\\company.owl");
+		OWLOntology companyOntology = manager.loadOntologyFromOntologyDocument(file);
+		System.out.println("Loaded ontology: " + companyOntology);
+		OWLDataFactory factory = manager.getOWLDataFactory();
 		
+		//factory.getowl
+		String base = "http://www.ist.sjtu.edu.cn/ontologies/company.owl";
+		PrefixManager pm = new DefaultPrefixManager(base);
+		OWLNamedIndividual chairOrder = factory.getOWLNamedIndividual("#ChairOrder", pm);
+		Set<OWLObjectProperty> properties=chairOrder.getObjectPropertiesInSignature();
+		for(OWLObjectProperty p : properties){
+			//chairOrder.getObjectPropertyValues(property, ontology)
+		}
+		System.out.println(chairOrder);
 	}
 
-	public static ModelMaker getRDBMaker(String dbURL, String dbUser,
+	/*public static ModelMaker getRDBMaker(String dbURL, String dbUser,
 			String dbPw, String dbType) {
 		try {
 			// Create database connection
@@ -93,5 +110,5 @@ public class CompanyOntologyTest {
 		}
 
 		return null;
-	}
+	}*/
 }
