@@ -112,6 +112,12 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderClass -->
+
+    <Class rdf:about="&company;OrderClass"/>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Price -->
 
     <Class rdf:about="&company;Price"/>
