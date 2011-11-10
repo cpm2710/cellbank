@@ -1,0 +1,77 @@
+<application xmlns="http://wadl.dev.java.net/2009/02"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prefix1="http://www.ist.sjtu.edu.cn">
+	<grammars>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://www.ist.sjtu.edu.cn" attributeFormDefault="unqualified"
+			elementFormDefault="unqualified" targetNamespace="http://www.ist.sjtu.edu.cn">
+			<xs:element name="Product" type="tns:Product" />
+			<xs:element name="ProductCollection" type="tns:ProductCollection" />
+			<xs:complexType name="Product">
+				<xs:sequence>
+					<xs:element name="id" type="xs:long" />
+					<xs:element minOccurs="0" name="name" type="xs:string" />
+					<xs:element name="price" type="xs:double" />
+					<xs:element name="quantity" type="xs:long" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ProductCollection">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="orders">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element maxOccurs="unbounded" minOccurs="0" name="orders"
+									nillable="true" type="tns:Product" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</grammars>
+	<resources base="http://localhost:7777/">
+		<resource path="/customers">
+			<method name="GET">
+				<request>
+					<param name="id" style="query" type="xs:string" />
+				</request>
+				<response>
+					<representation mediaType="application/xml"
+						element="prefix1:ProductCollection" />
+				</response>
+			</method>
+			<method name="POST">
+				<request>
+					<representation element="prefix1:Product" />
+				</request>
+				<response>
+					<representation element="prefix1:Product" />
+				</response>
+			</method>
+			<method name="PUT">
+				<request>
+					<representation element="prefix1:Product" />
+				</request>
+				<response>
+					<representation element="prefix1:Product" />
+				</response>
+			</method>
+			<resource path="/{id}/">
+				<param name="id" style="template" type="xs:string" />
+				<method name="DELETE">
+					<request></request>
+					<response>
+						<representation mediaType="application/xml"
+							element="prefix1:Product" />
+					</response>
+				</method>
+				<method name="GET">
+					<request></request>
+					<response>
+						<representation mediaType="application/xml"
+							element="prefix1:ProductCollection" />
+					</response>
+				</method>
+			</resource>
+		</resource>
+	</resources>
+</application>
