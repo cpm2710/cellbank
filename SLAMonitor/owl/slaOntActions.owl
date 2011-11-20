@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.laas.fr/~kchaari/slaOntActions.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:slaActions="http://www.domain2.com#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.laas.fr/~kchaari/slaOntActions.owl">
+  <owl:Ontology rdf:about=""/>
+  <rdf:Property rdf:ID="inArgs"/>
+  <rdf:Property rdf:ID="rgs"/>
+  <owl:DatatypeProperty rdf:ID="minArgs"/>
+  <owl:DatatypeProperty rdf:ID="args"/>
+  <owl:DatatypeProperty rdf:ID="maxArgs"/>
+  <swrl:Builtin rdf:ID="getMetric">
+    <rgs rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</rgs>
+  </swrl:Builtin>
+  <swrl:Builtin rdf:ID="setSLAParameterValue">
+    <rgs rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</rgs>
+  </swrl:Builtin>
+  <rdf:Description rdf:about="http://www.w3.org/2003/11/swrl#Builtin">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#args"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#args"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#minArgs"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#minArgs"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#maxArgs"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="#maxArgs"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </rdf:Description>
+  <swrl:Builtin rdf:ID="agregateMetric">
+    <inArgs rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >2</inArgs>
+  </swrl:Builtin>
+  <swrl:Builtin rdf:ID="disseminateViolation">
+    <inArgs rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >1</inArgs>
+  </swrl:Builtin>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
