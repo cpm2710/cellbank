@@ -100,6 +100,15 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Laptop -->
+
+    <Class rdf:about="&company;Laptop">
+        <rdfs:subClassOf rdf:resource="&company;Product"/>
+        <disjointWith rdf:resource="&company;PC"/>
+    </Class>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Name -->
 
     <Class rdf:about="&company;Name"/>
@@ -115,6 +124,14 @@
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderClass -->
 
     <Class rdf:about="&company;OrderClass"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PC -->
+
+    <Class rdf:about="&company;PC">
+        <rdfs:subClassOf rdf:resource="&company;Product"/>
+    </Class>
     
 
 
@@ -136,11 +153,23 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Resource -->
+
+    <Class rdf:about="&company;Resource"/>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#SaleOrder -->
 
     <Class rdf:about="&company;SaleOrder">
         <rdfs:subClassOf rdf:resource="&company;Order"/>
     </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StatusTransformation -->
+
+    <Class rdf:about="&company;StatusTransformation"/>
     
 
 
@@ -155,84 +184,6 @@
     
 
 
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ChairOrder -->
-
-    <NamedIndividual rdf:about="&company;ChairOrder">
-        <rdf:type rdf:resource="&company;BuyOrder"/>
-        <company:hasName rdf:resource="&company;ChairOrderName1"/>
-        <company:hasProduct rdf:resource="&company;ChairProduct"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ChairOrderName1 -->
-
-    <NamedIndividual rdf:about="&company;ChairOrderName1">
-        <rdf:type rdf:resource="&company;Name"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ChairProduct -->
-
-    <NamedIndividual rdf:about="&company;ChairProduct">
-        <rdf:type rdf:resource="&company;Product"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ClutchOrder -->
-
-    <NamedIndividual rdf:about="&company;ClutchOrder">
-        <rdf:type rdf:resource="&company;BuyOrder"/>
-        <company:hasName rdf:resource="&company;ClutchOrderName1"/>
-        <company:hasProduct rdf:resource="&company;ClutchProduct"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ClutchOrderName1 -->
-
-    <NamedIndividual rdf:about="&company;ClutchOrderName1">
-        <rdf:type rdf:resource="&company;Name"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ClutchProduct -->
-
-    <NamedIndividual rdf:about="&company;ClutchProduct">
-        <rdf:type rdf:resource="&company;Product"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#EngineOrder -->
-
-    <NamedIndividual rdf:about="&company;EngineOrder">
-        <rdf:type rdf:resource="&company;BuyOrder"/>
-        <company:hasName rdf:resource="&company;EngineOrderName1"/>
-        <company:hasProduct rdf:resource="&company;EngineProduct"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#EngineOrderName1 -->
-
-    <NamedIndividual rdf:about="&company;EngineOrderName1">
-        <rdf:type rdf:resource="&company;Name"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#EngineProduct -->
-
-    <NamedIndividual rdf:about="&company;EngineProduct">
-        <rdf:type rdf:resource="&company;Product"/>
-    </NamedIndividual>
-    
-
-
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Gear -->
 
     <NamedIndividual rdf:about="&company;Gear"/>
@@ -242,67 +193,6 @@
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Gear1 -->
 
     <NamedIndividual rdf:about="&company;Gear1"/>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#GearName1 -->
-
-    <NamedIndividual rdf:about="&company;GearName1">
-        <rdf:type rdf:resource="&company;Name"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#GearOrder -->
-
-    <NamedIndividual rdf:about="&company;GearOrder">
-        <rdf:type rdf:resource="&company;BuyOrder"/>
-        <company:hasName rdf:resource="&company;GearOrderName1"/>
-        <company:hasProduct rdf:resource="&company;GearProduct"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#GearOrderName1 -->
-
-    <NamedIndividual rdf:about="&company;GearOrderName1">
-        <rdf:type rdf:resource="&company;Name"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#GearProduct -->
-
-    <NamedIndividual rdf:about="&company;GearProduct">
-        <rdf:type rdf:resource="&company;Product"/>
-        <company:hasName rdf:resource="&company;GearName1"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#IstCarOrderName1 -->
-
-    <NamedIndividual rdf:about="&company;IstCarOrderName1">
-        <rdf:type rdf:resource="&company;Name"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#IstCarProduct -->
-
-    <NamedIndividual rdf:about="&company;IstCarProduct">
-        <rdf:type rdf:resource="&company;Product"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#IstCarSaleOrder -->
-
-    <NamedIndividual rdf:about="&company;IstCarSaleOrder">
-        <rdf:type rdf:resource="&company;SaleOrder"/>
-        <company:hasName rdf:resource="&company;IstCarOrderName1"/>
-        <company:hasProduct rdf:resource="&company;IstCarProduct"/>
-    </NamedIndividual>
 </rdf:RDF>
 
 
