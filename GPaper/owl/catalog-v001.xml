@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp2.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrla.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="http://www.ist.sjtu.edu.cn/ontologies/company.owl" uri="company.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="FlightSLA.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="http://www.w3.org/2002/07/owl" uri="companyrdf.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="http://www.w3.org/2003/11/swrlb" uri="swrlb.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine-origin.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321945755430" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrla.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="http://www.ist.sjtu.edu.cn/ontologies/company.owl" uri="company.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="http://www.ist.sjtu.edu.cn/ontologies/sla.owl" uri="sla.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="FlightSLA.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="http://www.w3.org/2002/07/owl" uri="companyrdf.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="http://www.w3.org/2003/11/swrlb" uri="swrlb.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine-origin.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1321966448589" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine.owl"/>
     </group>
 </catalog>
