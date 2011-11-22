@@ -30,6 +30,25 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#belongsToResource -->
+
+    <ObjectProperty rdf:about="&company;belongsToResource">
+        <rdfs:domain rdf:resource="&company;Attribute"/>
+        <rdfs:range rdf:resource="&company;Resource"/>
+        <inverseOf rdf:resource="&company;hasAttribute"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasAttribute -->
+
+    <ObjectProperty rdf:about="&company;hasAttribute">
+        <rdfs:range rdf:resource="&company;Attribute"/>
+        <rdfs:domain rdf:resource="&company;Resource"/>
+    </ObjectProperty>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasName -->
 
     <ObjectProperty rdf:about="&company;hasName">
@@ -66,6 +85,12 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasStateTransformation -->
+
+    <ObjectProperty rdf:about="&company;hasStateTransformation"/>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#producedBy -->
 
     <ObjectProperty rdf:about="&company;producedBy">
@@ -86,6 +111,52 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptService -->
+
+    <Class rdf:about="&company;AcceptService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptTask -->
+
+    <Class rdf:about="&company;AcceptTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Account -->
+
+    <Class rdf:about="&company;Account">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AskForPriceService -->
+
+    <Class rdf:about="&company;AskForPriceService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AskForPriceTask -->
+
+    <Class rdf:about="&company;AskForPriceTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Attribute -->
+
+    <Class rdf:about="&company;Attribute"/>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#BuyOrder -->
 
     <Class rdf:about="&company;BuyOrder">
@@ -97,6 +168,12 @@
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Company -->
 
     <Class rdf:about="&company;Company"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Input -->
+
+    <Class rdf:about="&company;Input"/>
     
 
 
@@ -117,13 +194,31 @@
 
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Order -->
 
-    <Class rdf:about="&company;Order"/>
+    <Class rdf:about="&company;Order">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
     
 
 
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderClass -->
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderService -->
 
-    <Class rdf:about="&company;OrderClass"/>
+    <Class rdf:about="&company;OrderService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderTask -->
+
+    <Class rdf:about="&company;OrderTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Output -->
+
+    <Class rdf:about="&company;Output"/>
     
 
 
@@ -131,6 +226,22 @@
 
     <Class rdf:about="&company;PC">
         <rdfs:subClassOf rdf:resource="&company;Product"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PaymentService -->
+
+    <Class rdf:about="&company;PaymentService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PaymentTask -->
+
+    <Class rdf:about="&company;PaymentTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
     </Class>
     
 
@@ -143,7 +254,17 @@
 
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Product -->
 
-    <Class rdf:about="&company;Product"/>
+    <Class rdf:about="&company;Product">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ProductRepository -->
+
+    <Class rdf:about="&company;ProductRepository">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
     
 
 
@@ -173,6 +294,34 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StorageService -->
+
+    <Class rdf:about="&company;StorageService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StorageTask -->
+
+    <Class rdf:about="&company;StorageTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Task -->
+
+    <Class rdf:about="&company;Task"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#WebService -->
+
+    <Class rdf:about="&company;WebService"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -181,6 +330,14 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#EmptyStatusTransformation -->
+
+    <NamedIndividual rdf:about="&company;EmptyStatusTransformation">
+        <rdf:type rdf:resource="&company;StatusTransformation"/>
+    </NamedIndividual>
     
 
 
