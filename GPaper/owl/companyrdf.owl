@@ -288,6 +288,14 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#SatisfiedTask -->
+
+    <Class rdf:about="&company;SatisfiedTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StatusTransformation -->
 
     <Class rdf:about="&company;StatusTransformation"/>
