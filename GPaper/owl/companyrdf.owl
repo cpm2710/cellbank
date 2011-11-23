@@ -100,6 +100,15 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#satisfiedBy -->
+
+    <ObjectProperty rdf:about="&company;satisfiedBy">
+        <rdfs:domain rdf:resource="&company;Task"/>
+        <rdfs:range rdf:resource="&company;WebService"/>
+    </ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
