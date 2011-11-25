@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY company "http://www.ist.sjtu.edu.cn/ontologies/company.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:company="http://www.ist.sjtu.edu.cn/ontologies/company.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/company.owl">
+        <imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+        <imports rdf:resource="http://www.w3.org/2003/11/swrl"/>
+        <imports rdf:resource="http://www.w3.org/2003/11/swrlb"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#belongsToResource -->
+
+    <ObjectProperty rdf:about="&company;belongsToResource">
+        <rdfs:domain rdf:resource="&company;Attribute"/>
+        <rdfs:range rdf:resource="&company;Resource"/>
+        <inverseOf rdf:resource="&company;hasAttribute"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasAttribute -->
+
+    <ObjectProperty rdf:about="&company;hasAttribute">
+        <rdfs:range rdf:resource="&company;Attribute"/>
+        <rdfs:domain rdf:resource="&company;Resource"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasName -->
+
+    <ObjectProperty rdf:about="&company;hasName">
+        <rdfs:range rdf:resource="&company;Name"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasPrice -->
+
+    <ObjectProperty rdf:about="&company;hasPrice">
+        <rdfs:range rdf:resource="&company;Price"/>
+        <rdfs:domain rdf:resource="&company;Product"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasProduct -->
+
+    <ObjectProperty rdf:about="&company;hasProduct">
+        <rdfs:domain rdf:resource="&company;Order"/>
+        <rdfs:range rdf:resource="&company;Product"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasQuantity -->
+
+    <ObjectProperty rdf:about="&company;hasQuantity">
+        <rdfs:domain rdf:resource="&company;Order"/>
+        <rdfs:range rdf:resource="&company;Quantity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasStateTransformation -->
+
+    <ObjectProperty rdf:about="&company;hasStateTransformation">
+        <rdfs:range rdf:resource="&company;StatusTransformation"/>
+        <rdfs:domain rdf:resource="&company;Task"/>
+        <rdfs:domain rdf:resource="&company;WebService"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#producedBy -->
+
+    <ObjectProperty rdf:about="&company;producedBy">
+        <rdfs:range rdf:resource="&company;Company"/>
+        <rdfs:domain rdf:resource="&company;Product"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#satisfiedBy -->
+
+    <ObjectProperty rdf:about="&company;satisfiedBy">
+        <rdfs:domain rdf:resource="&company;Task"/>
+        <rdfs:range rdf:resource="&company;WebService"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptService -->
+
+    <Class rdf:about="&company;AcceptService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptTask -->
+
+    <Class rdf:about="&company;AcceptTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Account -->
+
+    <Class rdf:about="&company;Account">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AskForPriceService -->
+
+    <Class rdf:about="&company;AskForPriceService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AskForPriceTask -->
+
+    <Class rdf:about="&company;AskForPriceTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Attribute -->
+
+    <Class rdf:about="&company;Attribute"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#BuyOrder -->
+
+    <Class rdf:about="&company;BuyOrder">
+        <rdfs:subClassOf rdf:resource="&company;Order"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Company -->
+
+    <Class rdf:about="&company;Company"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Input -->
+
+    <Class rdf:about="&company;Input"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Laptop -->
+
+    <Class rdf:about="&company;Laptop">
+        <rdfs:subClassOf rdf:resource="&company;Product"/>
+        <disjointWith rdf:resource="&company;PC"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Name -->
+
+    <Class rdf:about="&company;Name"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Order -->
+
+    <Class rdf:about="&company;Order">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderService -->
+
+    <Class rdf:about="&company;OrderService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderTask -->
+
+    <Class rdf:about="&company;OrderTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Output -->
+
+    <Class rdf:about="&company;Output"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PC -->
+
+    <Class rdf:about="&company;PC">
+        <rdfs:subClassOf rdf:resource="&company;Product"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PaymentService -->
+
+    <Class rdf:about="&company;PaymentService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PaymentTask -->
+
+    <Class rdf:about="&company;PaymentTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Price -->
+
+    <Class rdf:about="&company;Price"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Product -->
+
+    <Class rdf:about="&company;Product">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ProductRepository -->
+
+    <Class rdf:about="&company;ProductRepository">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Quantity -->
+
+    <Class rdf:about="&company;Quantity"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Resource -->
+
+    <Class rdf:about="&company;Resource"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#SaleOrder -->
+
+    <Class rdf:about="&company;SaleOrder">
+        <rdfs:subClassOf rdf:resource="&company;Order"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#SatisfiedTask -->
+
+    <Class rdf:about="&company;SatisfiedTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StatusTransformation -->
+
+    <Class rdf:about="&company;StatusTransformation"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StorageService -->
+
+    <Class rdf:about="&company;StorageService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StorageTask -->
+
+    <Class rdf:about="&company;StorageTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Task -->
+
+    <Class rdf:about="&company;Task"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#WebService -->
+
+    <Class rdf:about="&company;WebService"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#EmptyStatusTransformation -->
+
+    <NamedIndividual rdf:about="&company;EmptyStatusTransformation">
+        <rdf:type rdf:resource="&company;StatusTransformation"/>
+    </NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
