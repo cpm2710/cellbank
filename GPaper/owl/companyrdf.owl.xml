@@ -180,6 +180,16 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#satisfy -->
+
+    <ObjectProperty rdf:about="&company;satisfy">
+        <rdfs:range rdf:resource="&company;Task"/>
+        <rdfs:domain rdf:resource="&company;WebService"/>
+        <inverseOf rdf:resource="&company;satisfy"/>
+    </ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -600,24 +610,24 @@
     <Class rdf:about="&swrl;Builtin">
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&swrlb;minArgs"/>
-                <allValuesFrom rdf:resource="&xsd;int"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&swrlb;maxArgs"/>
-                <maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</maxCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&swrlb;maxArgs"/>
                 <allValuesFrom rdf:resource="&xsd;int"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&swrlb;minArgs"/>
+                <allValuesFrom rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;args"/>
+                <maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</maxCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&swrlb;args"/>
                 <allValuesFrom rdf:resource="&xsd;int"/>
             </Restriction>
@@ -630,7 +640,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&swrlb;args"/>
+                <onProperty rdf:resource="&swrlb;maxArgs"/>
                 <maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</maxCardinality>
             </Restriction>
         </rdfs:subClassOf>
@@ -1354,45 +1364,86 @@
         <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
     </NamedIndividual>
     
-    <swrl:Variable rdf:about="#x" />
-	<swrl:Variable rdf:about="#y" />
-	<swrl:Variable rdf:about="#z" />
 
-	<swrl:Imp rdf:about="#SatisfiedRule">
-		<swrl:head rdf:parseType="Collection">
-			<swrl:IndividualPropertyAtom>
-				<swrl:propertyPredicate rdf:resource="#satisfiedBy" />
-				<swrl:argument1 rdf:resource="#x" />
-				<swrl:argument2 rdf:resource="#y" />
-			</swrl:IndividualPropertyAtom>
-		</swrl:head>
 
-		<swrl:body rdf:parseType="Collection">
-			<swrl:ClassAtom>
-				<swrl:classPredicate rdf:resource="#Task" />
-				<swrl:argument1 rdf:resource="#x" />
-			</swrl:ClassAtom>
-			<swrl:ClassAtom>
-				<swrl:classPredicate rdf:resource="#WebService" />
-				<swrl:argument1 rdf:resource="#y" />
-			</swrl:ClassAtom>
-			<swrl:ClassAtom>
-				<swrl:classPredicate rdf:resource="#StatusTransformation" />
-				<swrl:argument1 rdf:resource="#z" />
-			</swrl:ClassAtom>
-			<swrl:IndividualPropertyAtom>
-				<swrl:propertyPredicate rdf:resource="#hasStateTransformation" />
-				<swrl:argument1 rdf:resource="#x" />
-				<swrl:argument2 rdf:resource="#z" />
-			</swrl:IndividualPropertyAtom>
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-			<swrl:IndividualPropertyAtom>
-				<swrl:propertyPredicate rdf:resource="#hasStateTransformation" />
-				<swrl:argument1 rdf:resource="#y" />
-				<swrl:argument2 rdf:resource="#z" />
-			</swrl:IndividualPropertyAtom>
-		</swrl:body>
-	</swrl:Imp>
+    <swrl:Variable rdf:about="http://www.w3.org/2002/07/owl#z"/>
+    <swrl:Variable rdf:about="http://www.w3.org/2002/07/owl#x"/>
+    <swrl:Variable rdf:about="http://www.w3.org/2002/07/owl#y"/>
+    <swrl:Imp>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="&company;satisfiedBy"/>
+                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#x"/>
+                        <swrl:argument2 rdf:resource="http://www.w3.org/2002/07/owl#y"/>
+                    </swrl:IndividualPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="&company;StatusTransformation"/>
+                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#z"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:first>
+                                    <swrl:ClassAtom>
+                                        <swrl:classPredicate rdf:resource="&company;WebService"/>
+                                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#y"/>
+                                    </swrl:ClassAtom>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <swrl:AtomList>
+                                        <rdf:first>
+                                            <swrl:IndividualPropertyAtom>
+                                                <swrl:propertyPredicate rdf:resource="&company;hasStateTransformation"/>
+                                                <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#x"/>
+                                                <swrl:argument2 rdf:resource="http://www.w3.org/2002/07/owl#z"/>
+                                            </swrl:IndividualPropertyAtom>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <swrl:AtomList>
+                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                <rdf:first>
+                                                    <swrl:IndividualPropertyAtom>
+                                                        <swrl:propertyPredicate rdf:resource="&company;hasStateTransformation"/>
+                                                        <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#y"/>
+                                                        <swrl:argument2 rdf:resource="http://www.w3.org/2002/07/owl#z"/>
+                                                    </swrl:IndividualPropertyAtom>
+                                                </rdf:first>
+                                            </swrl:AtomList>
+                                        </rdf:rest>
+                                    </swrl:AtomList>
+                                </rdf:rest>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                        <rdf:first>
+                            <swrl:ClassAtom>
+                                <swrl:classPredicate rdf:resource="&company;Task"/>
+                                <swrl:argument1 rdf:resource="http://www.w3.org/2002/07/owl#x"/>
+                            </swrl:ClassAtom>
+                        </rdf:first>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+    </swrl:Imp>
 </rdf:RDF>
 
 

@@ -4,27 +4,27 @@
     <uri id="Imports Wizard Entry" name="http://www.w3.org/2003/11/swrlb" uri="swrl/swrlb.owl.rdf"/>
     <uri id="Imports Wizard Entry" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrl/swrla.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp2.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://owldl.com/ontologies/dl-safe.owl#" uri="dl-safe.owl.xml"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrla.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl" uri="swrl/abox.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl" uri="swrl/query.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl" uri="swrl/swrlx.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl" uri="swrl/tbox.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl" uri="swrl/temporal.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://swrl.stanford.edu/ontologies/examples/family.swrl.owl" uri="swrl/family.swrl.xml"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="duplicate:http://www.ist.sjtu.edu.cn/ontologies/company.owl" uri="company.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="duplicate:http://www.ist.sjtu.edu.cn/ontologies/company.owl" uri="companyowl.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://www.ist.sjtu.edu.cn/ontologies/sla.owl" uri="sla.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="FlightSLA.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://www.w3.org/2002/07/owl" uri="companyrdf.owl.xml"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://www.w3.org/2003/11/swrl" uri="swrl/swrl.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="http://www.w3.org/2003/11/swrlb" uri="swrlb.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine-origin.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="shadowed:http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrl/swrla.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="shadowed:http://www.w3.org/2002/07/owl" uri="swrl/mmm.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1322226829789" name="shadowed:http://www.w3.org/2003/11/swrlb" uri="swrl/swrlb.owl.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="duplicate:http://ist.se.sjtu.edu.cn/wsis/wsgp.owl" uri="wsgp2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://owldl.com/ontologies/dl-safe.owl#" uri="dl-safe.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrla.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl" uri="swrl/abox.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl" uri="swrl/query.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl" uri="swrl/swrlx.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl" uri="swrl/tbox.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl" uri="swrl/temporal.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://swrl.stanford.edu/ontologies/examples/family.swrl.owl" uri="swrl/family.swrl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="duplicate:http://www.ist.sjtu.edu.cn/ontologies/company.owl" uri="company.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="duplicate:http://www.ist.sjtu.edu.cn/ontologies/company.owl" uri="companyowl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://www.ist.sjtu.edu.cn/ontologies/sla.owl" uri="sla.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="FlightSLA.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://www.w3.org/2002/07/owl" uri="companyrdf.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://www.w3.org/2003/11/swrl" uri="swrl/swrl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="http://www.w3.org/2003/11/swrlb" uri="swrlb.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine-origin.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="duplicate:http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="wine.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="shadowed:http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrl/swrla.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="shadowed:http://www.w3.org/2002/07/owl" uri="swrl/mmm.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322227533703" name="shadowed:http://www.w3.org/2003/11/swrlb" uri="swrl/swrlb.owl.rdf"/>
     </group>
 </catalog>
