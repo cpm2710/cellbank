@@ -189,5 +189,21 @@
 	<classpathentry kind="lib" path="lib/cxf/XmlSchema-1.4.7.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/xmlsec-1.4.5.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/xsdlib-2010.1.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/aterm-java-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-cli.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-core.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-datatypes.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-dig.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-el.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-explanation.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-jena.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-modularity.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-owlapi.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-owlapiv3.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-pellint.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-query.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-rules.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/pellet-test.jar"/>
+	<classpathentry kind="lib" path="lib/pellet/servlet.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrla.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl" uri="abox.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl" uri="query.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl" uri="swrlx.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl" uri="tbox.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl" uri="temporal.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://swrl.stanford.edu/ontologies/examples/family.swrl.owl" uri="family.swrl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://www.w3.org/2002/07/owl" uri="mmm.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://www.w3.org/2003/11/swrl" uri="swrl.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322206886340" name="http://www.w3.org/2003/11/swrlb" uri="swrlb.owl.rdf"/>
+    </group>
+</catalog>
