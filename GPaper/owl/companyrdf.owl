@@ -2,20 +2,29 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY company "http://www.ist.sjtu.edu.cn/ontologies/company.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
 ]>
 
 
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl"
      xmlns:company="http://www.ist.sjtu.edu.cn/ontologies/company.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/company.owl"/>
+     xmlns:swrlb="&swrl;b#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/company.owl">
+        <imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+        <imports rdf:resource="&swrl;b"/>
+    </Ontology>
     
 
 
@@ -355,18 +364,6 @@
     <NamedIndividual rdf:about="&company;EmptyStatusTransformation">
         <rdf:type rdf:resource="&company;StatusTransformation"/>
     </NamedIndividual>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Gear -->
-
-    <NamedIndividual rdf:about="&company;Gear"/>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Gear1 -->
-
-    <NamedIndividual rdf:about="&company;Gear1"/>
 </rdf:RDF>
 
 
