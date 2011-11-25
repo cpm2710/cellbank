@@ -2,8 +2,9 @@
 
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY swrl "http://www.w3.org/2003/11/swrl" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
     <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY ruleml "http://www.w3.org/2003/11/ruleml#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -15,16 +16,25 @@
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:swrl="http://www.w3.org/2003/11/swrl"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:company="http://www.ist.sjtu.edu.cn/ontologies/company.owl#"
+     xmlns:ruleml="http://www.w3.org/2003/11/ruleml#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:swrlb="&swrl;b#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
-    <Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/company.owl">
-        <imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
-        <imports rdf:resource="&swrl;b"/>
-    </Ontology>
+    <Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/company.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
     
 
 
@@ -44,7 +54,6 @@
     <ObjectProperty rdf:about="&company;belongsToResource">
         <rdfs:domain rdf:resource="&company;Attribute"/>
         <rdfs:range rdf:resource="&company;Resource"/>
-        <inverseOf rdf:resource="&company;hasAttribute"/>
     </ObjectProperty>
     
 
@@ -54,6 +63,27 @@
     <ObjectProperty rdf:about="&company;hasAttribute">
         <rdfs:range rdf:resource="&company;Attribute"/>
         <rdfs:domain rdf:resource="&company;Resource"/>
+        <inverseOf rdf:resource="&company;belongsToResource"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasInput -->
+
+    <ObjectProperty rdf:about="&company;hasInput">
+        <rdfs:range rdf:resource="&company;Attribute"/>
+        <rdfs:domain rdf:resource="&company;Task"/>
+        <rdfs:domain rdf:resource="&company;WebService"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasInquireCondition -->
+
+    <ObjectProperty rdf:about="&company;hasInquireCondition">
+        <rdfs:range rdf:resource="&company;InquireCondition"/>
+        <rdfs:domain rdf:resource="&company;InquireService"/>
+        <rdfs:domain rdf:resource="&company;InquireTask"/>
     </ObjectProperty>
     
 
@@ -63,6 +93,16 @@
     <ObjectProperty rdf:about="&company;hasName">
         <rdfs:range rdf:resource="&company;Name"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasOutput -->
+
+    <ObjectProperty rdf:about="&company;hasOutput">
+        <rdfs:range rdf:resource="&company;Attribute"/>
+        <rdfs:domain rdf:resource="&company;Task"/>
+        <rdfs:domain rdf:resource="&company;WebService"/>
     </ObjectProperty>
     
 
@@ -96,7 +136,11 @@
 
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#hasStateTransformation -->
 
-    <ObjectProperty rdf:about="&company;hasStateTransformation"/>
+    <ObjectProperty rdf:about="&company;hasStateTransformation">
+        <rdfs:range rdf:resource="&company;StatusTransformation"/>
+        <rdfs:domain rdf:resource="&company;Task"/>
+        <rdfs:domain rdf:resource="&company;WebService"/>
+    </ObjectProperty>
     
 
 
@@ -121,6 +165,35 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#args -->
+
+    <DatatypeProperty rdf:about="&swrlb;args"/>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#maxArgs -->
+
+    <DatatypeProperty rdf:about="&swrlb;maxArgs"/>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#minArgs -->
+
+    <DatatypeProperty rdf:about="&swrlb;minArgs"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -129,17 +202,17 @@
     
 
 
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptService -->
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptProductService -->
 
-    <Class rdf:about="&company;AcceptService">
+    <Class rdf:about="&company;AcceptProductService">
         <rdfs:subClassOf rdf:resource="&company;WebService"/>
     </Class>
     
 
 
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptTask -->
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AcceptProductTask -->
 
-    <Class rdf:about="&company;AcceptTask">
+    <Class rdf:about="&company;AcceptProductTask">
         <rdfs:subClassOf rdf:resource="&company;Task"/>
     </Class>
     
@@ -149,6 +222,30 @@
 
     <Class rdf:about="&company;Account">
         <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ApproveService -->
+
+    <Class rdf:about="&company;ApproveService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ApproveStatusTransformation -->
+
+    <Class rdf:about="&company;ApproveStatusTransformation">
+        <rdfs:subClassOf rdf:resource="&company;StatusTransformation"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ApproveTask -->
+
+    <Class rdf:about="&company;ApproveTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
     </Class>
     
 
@@ -175,6 +272,12 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#AttributeStatusTransformation -->
+
+    <Class rdf:about="&company;AttributeStatusTransformation"/>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#BuyOrder -->
 
     <Class rdf:about="&company;BuyOrder">
@@ -185,7 +288,25 @@
 
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Company -->
 
-    <Class rdf:about="&company;Company"/>
+    <Class rdf:about="&company;Company">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Computer -->
+
+    <Class rdf:about="&company;Computer">
+        <rdfs:subClassOf rdf:resource="&company;Product"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ComputerRepository -->
+
+    <Class rdf:about="&company;ComputerRepository">
+        <rdfs:subClassOf rdf:resource="&company;ProductRepository"/>
+    </Class>
     
 
 
@@ -195,11 +316,65 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#InquireCondition -->
+
+    <Class rdf:about="&company;InquireCondition"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#InquireService -->
+
+    <Class rdf:about="&company;InquireService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#InquireStorageService -->
+
+    <Class rdf:about="&company;InquireStorageService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#InquireStorageTask -->
+
+    <Class rdf:about="&company;InquireStorageTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#InquireTask -->
+
+    <Class rdf:about="&company;InquireTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Laptop -->
 
     <Class rdf:about="&company;Laptop">
-        <rdfs:subClassOf rdf:resource="&company;Product"/>
+        <rdfs:subClassOf rdf:resource="&company;Computer"/>
         <disjointWith rdf:resource="&company;PC"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#LaptopBuyOrder -->
+
+    <Class rdf:about="&company;LaptopBuyOrder">
+        <rdfs:subClassOf rdf:resource="&company;BuyOrder"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#LaptopRepository -->
+
+    <Class rdf:about="&company;LaptopRepository">
+        <rdfs:subClassOf rdf:resource="&company;ComputerRepository"/>
     </Class>
     
 
@@ -218,22 +393,6 @@
     
 
 
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderService -->
-
-    <Class rdf:about="&company;OrderService">
-        <rdfs:subClassOf rdf:resource="&company;WebService"/>
-    </Class>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#OrderTask -->
-
-    <Class rdf:about="&company;OrderTask">
-        <rdfs:subClassOf rdf:resource="&company;Task"/>
-    </Class>
-    
-
-
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Output -->
 
     <Class rdf:about="&company;Output"/>
@@ -243,7 +402,23 @@
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PC -->
 
     <Class rdf:about="&company;PC">
-        <rdfs:subClassOf rdf:resource="&company;Product"/>
+        <rdfs:subClassOf rdf:resource="&company;Computer"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PCBuyOrder -->
+
+    <Class rdf:about="&company;PCBuyOrder">
+        <rdfs:subClassOf rdf:resource="&company;BuyOrder"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PCRepository -->
+
+    <Class rdf:about="&company;PCRepository">
+        <rdfs:subClassOf rdf:resource="&company;ComputerRepository"/>
     </Class>
     
 
@@ -259,6 +434,22 @@
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PaymentTask -->
 
     <Class rdf:about="&company;PaymentTask">
+        <rdfs:subClassOf rdf:resource="&company;Task"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PlaceOrderService -->
+
+    <Class rdf:about="&company;PlaceOrderService">
+        <rdfs:subClassOf rdf:resource="&company;WebService"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#PlaceOrderTask -->
+
+    <Class rdf:about="&company;PlaceOrderTask">
         <rdfs:subClassOf rdf:resource="&company;Task"/>
     </Class>
     
@@ -292,6 +483,14 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Repository -->
+
+    <Class rdf:about="&company;Repository">
+        <rdfs:subClassOf rdf:resource="&company;Resource"/>
+    </Class>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Resource -->
 
     <Class rdf:about="&company;Resource"/>
@@ -320,22 +519,6 @@
     
 
 
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StorageService -->
-
-    <Class rdf:about="&company;StorageService">
-        <rdfs:subClassOf rdf:resource="&company;WebService"/>
-    </Class>
-    
-
-
-    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#StorageTask -->
-
-    <Class rdf:about="&company;StorageTask">
-        <rdfs:subClassOf rdf:resource="&company;Task"/>
-    </Class>
-    
-
-
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#Task -->
 
     <Class rdf:about="&company;Task"/>
@@ -345,6 +528,73 @@
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#WebService -->
 
     <Class rdf:about="&company;WebService"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#WorkStation -->
+
+    <Class rdf:about="&company;WorkStation">
+        <rdfs:subClassOf rdf:resource="&company;Computer"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#WorkStationBuyOrder -->
+
+    <Class rdf:about="&company;WorkStationBuyOrder">
+        <rdfs:subClassOf rdf:resource="&company;BuyOrder"/>
+    </Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#WorkStationRepository -->
+
+    <Class rdf:about="&company;WorkStationRepository">
+        <rdfs:subClassOf rdf:resource="&company;ComputerRepository"/>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrl#Builtin -->
+
+    <Class rdf:about="&swrl;Builtin">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;maxArgs"/>
+                <maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</maxCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;minArgs"/>
+                <maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</maxCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;maxArgs"/>
+                <allValuesFrom rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;minArgs"/>
+                <allValuesFrom rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;args"/>
+                <allValuesFrom rdf:resource="&xsd;int"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&swrlb;args"/>
+                <maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</maxCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
     
 
 
@@ -359,10 +609,709 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ApproveBuyOrderService -->
+
+    <NamedIndividual rdf:about="&company;ApproveBuyOrderService">
+        <rdf:type rdf:resource="&company;ApproveService"/>
+        <company:hasStateTransformation rdf:resource="&company;ApprovePCBuyOrderST"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ApproveBuyOrderTask -->
+
+    <NamedIndividual rdf:about="&company;ApproveBuyOrderTask">
+        <rdf:type rdf:resource="&company;ApproveTask"/>
+        <company:hasStateTransformation rdf:resource="&company;ApprovePCBuyOrderST"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ApprovePCBuyOrderST -->
+
+    <NamedIndividual rdf:about="&company;ApprovePCBuyOrderST">
+        <rdf:type rdf:resource="&company;ApproveStatusTransformation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#DellLaptop -->
+
+    <NamedIndividual rdf:about="&company;DellLaptop">
+        <rdf:type rdf:resource="&company;Laptop"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#DellPC -->
+
+    <NamedIndividual rdf:about="&company;DellPC">
+        <rdf:type rdf:resource="&company;PC"/>
+    </NamedIndividual>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#EmptyStatusTransformation -->
 
     <NamedIndividual rdf:about="&company;EmptyStatusTransformation">
         <rdf:type rdf:resource="&company;StatusTransformation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#HPPC -->
+
+    <NamedIndividual rdf:about="&company;HPPC">
+        <rdf:type rdf:resource="&company;PC"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#HPWorkStation -->
+
+    <NamedIndividual rdf:about="&company;HPWorkStation">
+        <rdf:type rdf:resource="&company;WorkStation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#IBMWorkStation -->
+
+    <NamedIndividual rdf:about="&company;IBMWorkStation">
+        <rdf:type rdf:resource="&company;WorkStation"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/company.owl#ThinkpadLaptop -->
+
+    <NamedIndividual rdf:about="&company;ThinkpadLaptop">
+        <rdf:type rdf:resource="&company;Laptop"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#abs -->
+
+    <NamedIndividual rdf:about="&swrlb;abs">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#add -->
+
+    <NamedIndividual rdf:about="&swrlb;add">
+        <swrlb:minArgs rdf:datatype="&xsd;int">3</swrlb:minArgs>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addDayTimeDurationToDate -->
+
+    <NamedIndividual rdf:about="&swrlb;addDayTimeDurationToDate">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addDayTimeDurationToDateTime -->
+
+    <NamedIndividual rdf:about="&swrlb;addDayTimeDurationToDateTime">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addDayTimeDurationToTime -->
+
+    <NamedIndividual rdf:about="&swrlb;addDayTimeDurationToTime">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addDayTimeDurations -->
+
+    <NamedIndividual rdf:about="&swrlb;addDayTimeDurations">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addYearMonthDurationToDate -->
+
+    <NamedIndividual rdf:about="&swrlb;addYearMonthDurationToDate">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addYearMonthDurationToDateTime -->
+
+    <NamedIndividual rdf:about="&swrlb;addYearMonthDurationToDateTime">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#addYearMonthDurations -->
+
+    <NamedIndividual rdf:about="&swrlb;addYearMonthDurations">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#anyURI -->
+
+    <NamedIndividual rdf:about="&swrlb;anyURI">
+        <swrlb:args rdf:datatype="&xsd;int">7</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#booleanNot -->
+
+    <NamedIndividual rdf:about="&swrlb;booleanNot">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#ceiling -->
+
+    <NamedIndividual rdf:about="&swrlb;ceiling">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#contains -->
+
+    <NamedIndividual rdf:about="&swrlb;contains">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#containsIgnoreCase -->
+
+    <NamedIndividual rdf:about="&swrlb;containsIgnoreCase">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#cos -->
+
+    <NamedIndividual rdf:about="&swrlb;cos">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#date -->
+
+    <NamedIndividual rdf:about="&swrlb;date">
+        <swrlb:args rdf:datatype="&xsd;int">5</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#dateTime -->
+
+    <NamedIndividual rdf:about="&swrlb;dateTime">
+        <swrlb:args rdf:datatype="&xsd;int">8</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#dayTimeDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;dayTimeDuration">
+        <swrlb:args rdf:datatype="&xsd;int">5</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#divide -->
+
+    <NamedIndividual rdf:about="&swrlb;divide">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#divideDayTimeDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;divideDayTimeDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#divideYearMonthDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;divideYearMonthDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#empty -->
+
+    <NamedIndividual rdf:about="&swrlb;empty">
+        <swrlb:args rdf:datatype="&xsd;int">1</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#endsWith -->
+
+    <NamedIndividual rdf:about="&swrlb;endsWith">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#equal -->
+
+    <NamedIndividual rdf:about="&swrlb;equal">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#first -->
+
+    <NamedIndividual rdf:about="&swrlb;first">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#floor -->
+
+    <NamedIndividual rdf:about="&swrlb;floor">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#greaterThan -->
+
+    <NamedIndividual rdf:about="&swrlb;greaterThan">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#greaterThanOrEqual -->
+
+    <NamedIndividual rdf:about="&swrlb;greaterThanOrEqual">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#integerDivide -->
+
+    <NamedIndividual rdf:about="&swrlb;integerDivide">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#length -->
+
+    <NamedIndividual rdf:about="&swrlb;length">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#lessThan -->
+
+    <NamedIndividual rdf:about="&swrlb;lessThan">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#lessThanOrEqual -->
+
+    <NamedIndividual rdf:about="&swrlb;lessThanOrEqual">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#listConcat -->
+
+    <NamedIndividual rdf:about="&swrlb;listConcat">
+        <swrlb:minArgs rdf:datatype="&xsd;int">3</swrlb:minArgs>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#listIntersection -->
+
+    <NamedIndividual rdf:about="&swrlb;listIntersection">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#listSubtraction -->
+
+    <NamedIndividual rdf:about="&swrlb;listSubtraction">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#lowerCase -->
+
+    <NamedIndividual rdf:about="&swrlb;lowerCase">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#matches -->
+
+    <NamedIndividual rdf:about="&swrlb;matches">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#member -->
+
+    <NamedIndividual rdf:about="&swrlb;member">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#mod -->
+
+    <NamedIndividual rdf:about="&swrlb;mod">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#multiply -->
+
+    <NamedIndividual rdf:about="&swrlb;multiply">
+        <swrlb:minArgs rdf:datatype="&xsd;int">3</swrlb:minArgs>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#multiplyDayTimeDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;multiplyDayTimeDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#multiplyYearMonthDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;multiplyYearMonthDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#normalizeSpace -->
+
+    <NamedIndividual rdf:about="&swrlb;normalizeSpace">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#notEqual -->
+
+    <NamedIndividual rdf:about="&swrlb;notEqual">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#pow -->
+
+    <NamedIndividual rdf:about="&swrlb;pow">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#replace -->
+
+    <NamedIndividual rdf:about="&swrlb;replace">
+        <swrlb:args rdf:datatype="&xsd;int">4</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#resolveURI -->
+
+    <NamedIndividual rdf:about="&swrlb;resolveURI">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#rest -->
+
+    <NamedIndividual rdf:about="&swrlb;rest">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#round -->
+
+    <NamedIndividual rdf:about="&swrlb;round">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#roundHalfToEven -->
+
+    <NamedIndividual rdf:about="&swrlb;roundHalfToEven">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#sin -->
+
+    <NamedIndividual rdf:about="&swrlb;sin">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#startsWith -->
+
+    <NamedIndividual rdf:about="&swrlb;startsWith">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#stringConcat -->
+
+    <NamedIndividual rdf:about="&swrlb;stringConcat">
+        <swrlb:minArgs rdf:datatype="&xsd;int">3</swrlb:minArgs>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase -->
+
+    <NamedIndividual rdf:about="&swrlb;stringEqualIgnoreCase">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#stringLength -->
+
+    <NamedIndividual rdf:about="&swrlb;stringLength">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#sublist -->
+
+    <NamedIndividual rdf:about="&swrlb;sublist">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#substring -->
+
+    <NamedIndividual rdf:about="&swrlb;substring">
+        <swrlb:minArgs rdf:datatype="&xsd;int">3</swrlb:minArgs>
+        <swrlb:maxArgs rdf:datatype="&xsd;int">4</swrlb:maxArgs>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#substringAfter -->
+
+    <NamedIndividual rdf:about="&swrlb;substringAfter">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#substringBefore -->
+
+    <NamedIndividual rdf:about="&swrlb;substringBefore">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtract -->
+
+    <NamedIndividual rdf:about="&swrlb;subtract">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDateTimesYieldingDayTimeDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDateTimesYieldingDayTimeDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDateTimesYieldingYearMonthDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDateTimesYieldingYearMonthDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDates -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDates">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDayTimeDurationFromDate -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDayTimeDurationFromDate">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDayTimeDurationFromDateTime -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDayTimeDurationFromDateTime">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDayTimeDurationFromTime -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDayTimeDurationFromTime">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractDayTimeDurations -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractDayTimeDurations">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractTimes -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractTimes">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractYearMonthDurationFromDate -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractYearMonthDurationFromDate">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractYearMonthDurationFromDateTime -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractYearMonthDurationFromDateTime">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#subtractYearMonthDurations -->
+
+    <NamedIndividual rdf:about="&swrlb;subtractYearMonthDurations">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#tan -->
+
+    <NamedIndividual rdf:about="&swrlb;tan">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#time -->
+
+    <NamedIndividual rdf:about="&swrlb;time">
+        <swrlb:args rdf:datatype="&xsd;int">5</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#translate -->
+
+    <NamedIndividual rdf:about="&swrlb;translate">
+        <swrlb:args rdf:datatype="&xsd;int">4</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#unaryMinus -->
+
+    <NamedIndividual rdf:about="&swrlb;unaryMinus">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#unaryPlus -->
+
+    <NamedIndividual rdf:about="&swrlb;unaryPlus">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#upperCase -->
+
+    <NamedIndividual rdf:about="&swrlb;upperCase">
+        <swrlb:args rdf:datatype="&xsd;int">2</swrlb:args>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2003/11/swrlb#yearMonthDuration -->
+
+    <NamedIndividual rdf:about="&swrlb;yearMonthDuration">
+        <swrlb:args rdf:datatype="&xsd;int">3</swrlb:args>
     </NamedIndividual>
 </rdf:RDF>
 
