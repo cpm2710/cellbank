@@ -6,6 +6,7 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY resource "http://www.ist.sjtu.edu.cn/ontologies/resource.owl#" >
 ]>
 
 
@@ -14,8 +15,124 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:resource="http://www.ist.sjtu.edu.cn/ontologies/resource.owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl"/>
+    <owl:Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl">
+        <owl:imports rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/resource.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#hasStatusTransformation -->
+
+    <owl:ObjectProperty rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#hasStatusTransformation">
+        <rdfs:range rdf:resource="&resource;StatusTransformation"/>
+        <rdfs:domain rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#AcceptProductService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#AcceptProductService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#ApproveService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#ApproveService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#AskForPriceService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#AskForPriceService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#InquireService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#InquireService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#InquireStorageService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#InquireStorageService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#PaymentService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#PaymentService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#PlaceOrderService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#PlaceOrderService">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#WebService"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#ApprovePCBuyOrderService -->
+
+    <owl:NamedIndividual rdf:about="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#ApprovePCBuyOrderService">
+        <rdf:type rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#ApproveService"/>
+        <hasStatusTransformation rdf:resource="&resource;ApprovePCBuyOrderST"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 

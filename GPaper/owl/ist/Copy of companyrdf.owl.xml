@@ -68,6 +68,9 @@
     
 
 
+    <!-- http://www.w3.org/2002/07/owl#parent -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#parent"/>
     
 
 
@@ -79,75 +82,55 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <swrl:Variable rdf:about="&resource;rst"/>
-    <swrl:Variable rdf:about="&task;tsk"/>
+    <swrl:Variable rdf:about="&task;t"/>
     <swrl:Variable rdf:about="&webservice;ws"/>
+    <swrl:Variable rdf:about="&resource;rst"/>
     <swrl:Imp>
-        <swrl:body>
-            <swrl:AtomList>
-                <rdf:rest>
-                    <swrl:AtomList>
-                        <rdf:rest>
-                            <swrl:AtomList>
-                                <rdf:first>
-                                    <swrl:ClassAtom>
-                                        <swrl:classPredicate rdf:resource="&webservice;WebService"/>
-                                        <swrl:argument1 rdf:resource="&webservice;ws"/>
-                                    </swrl:ClassAtom>
-                                </rdf:first>
-                                <rdf:rest>
-                                    <swrl:AtomList>
-                                        <rdf:rest>
-                                            <swrl:AtomList>
-                                                <rdf:rest rdf:resource="&rdf;nil"/>
-                                                <rdf:first>
-                                                    <swrl:IndividualPropertyAtom>
-                                                        <swrl:propertyPredicate rdf:resource="&webservice;hasStatusTransformation"/>
-                                                        <swrl:argument1 rdf:resource="&webservice;ws"/>
-                                                        <swrl:argument2 rdf:resource="&resource;rst"/>
-                                                    </swrl:IndividualPropertyAtom>
-                                                </rdf:first>
-                                            </swrl:AtomList>
-                                        </rdf:rest>
-                                        <rdf:first>
-                                            <swrl:IndividualPropertyAtom>
-                                                <swrl:propertyPredicate rdf:resource="&task;hasStatusTransformation"/>
-                                                <swrl:argument1 rdf:resource="&task;tsk"/>
-                                                <swrl:argument2 rdf:resource="&resource;rst"/>
-                                            </swrl:IndividualPropertyAtom>
-                                        </rdf:first>
-                                    </swrl:AtomList>
-                                </rdf:rest>
-                            </swrl:AtomList>
-                        </rdf:rest>
-                        <rdf:first>
-                            <swrl:ClassAtom>
-                                <swrl:classPredicate rdf:resource="&task;Task"/>
-                                <swrl:argument1 rdf:resource="&task;tsk"/>
-                            </swrl:ClassAtom>
-                        </rdf:first>
-                    </swrl:AtomList>
-                </rdf:rest>
-                <rdf:first>
-                    <swrl:ClassAtom>
-                        <swrl:classPredicate rdf:resource="&resource;StatusTransformation"/>
-                        <swrl:argument1 rdf:resource="&resource;rst"/>
-                    </swrl:ClassAtom>
-                </rdf:first>
-            </swrl:AtomList>
-        </swrl:body>
         <swrl:head>
             <swrl:AtomList>
                 <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <swrl:IndividualPropertyAtom>
                         <swrl:propertyPredicate rdf:resource="&company;satisfiedBy"/>
-                        <swrl:argument1 rdf:resource="&task;tsk"/>
+                        <swrl:argument1 rdf:resource="&task;t"/>
                         <swrl:argument2 rdf:resource="&webservice;ws"/>
                     </swrl:IndividualPropertyAtom>
                 </rdf:first>
             </swrl:AtomList>
         </swrl:head>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:IndividualPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="&webservice;hasStatusTransformation"/>
+                                <swrl:argument2 rdf:resource="&webservice;ws"/>
+                                <swrl:argument1 rdf:resource="&resource;rst"/>
+                            </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                <rdf:first>
+                                    <swrl:IndividualPropertyAtom>
+                                		<swrl:propertyPredicate rdf:resource="&task;hasStatusTransformation"/>
+                                		<swrl:argument2 rdf:resource="&task;t"/>
+                                		<swrl:argument1 rdf:resource="&resource;rst"/>
+                            		</swrl:IndividualPropertyAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+                <rdf:first>
+                    <swrl:ClassAtom>
+						<swrl:classPredicate rdf:resource="#BadChild" />
+						<swrl:argument1 rdf:resource="#x" />
+					</swrl:ClassAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:body>
     </swrl:Imp>
 </rdf:RDF>
 

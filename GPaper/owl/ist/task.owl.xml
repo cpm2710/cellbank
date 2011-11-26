@@ -6,6 +6,7 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY resource "http://www.ist.sjtu.edu.cn/ontologies/resource.owl#" >
 ]>
 
 
@@ -14,8 +15,132 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:resource="http://www.ist.sjtu.edu.cn/ontologies/resource.owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl"/>
+    <owl:Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl">
+        <owl:imports rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/resource.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#hasStatusTransformation -->
+
+    <owl:ObjectProperty rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#hasStatusTransformation">
+        <rdfs:range rdf:resource="&resource;StatusTransformation"/>
+        <rdfs:domain rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#AcceptProductTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#AcceptProductTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#AskForPriceTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#AskForPriceTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#InquireStorageTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#InquireStorageTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#InquireTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#InquireTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#PaymentTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#PaymentTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#PlaceOrderTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#PlaceOrderTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#SatisfiedTask -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#SatisfiedTask">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#Task"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveBuyOrderTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveBuyOrderTask">
+        <rdf:type rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveTask"/>
+        <hasStatusTransformation rdf:resource="&resource;ApprovePCBuyOrderST"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
