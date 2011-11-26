@@ -135,6 +135,14 @@
     
 
 
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#AcceptPCProductTask -->
+
+    <owl:NamedIndividual rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#AcceptPCProductTask">
+        <rdf:type rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl#AcceptProductTask"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveBuyOrderTask -->
 
     <owl:NamedIndividual rdf:about="http://www.ist.sjtu.edu.cn/ontologies/task.owl#ApproveBuyOrderTask">
