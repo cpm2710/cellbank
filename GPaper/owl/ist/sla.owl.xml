@@ -6,16 +6,103 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY task "http://www.ist.sjtu.edu.cn/ontologies/task.owl#" >
+    <!ENTITY webservice "http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#" >
 ]>
 
 
 <rdf:RDF xmlns="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#"
      xml:base="http://www.ist.sjtu.edu.cn/ontologies/sla.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:task="http://www.ist.sjtu.edu.cn/ontologies/task.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl"/>
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:webservice="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl#">
+    <owl:Ontology rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl">
+        <owl:imports rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/task.owl"/>
+        <owl:imports rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/webservice.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#hasMetric -->
+
+    <owl:ObjectProperty rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#hasMetric">
+        <rdfs:range rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#SLAMetric"/>
+        <rdfs:domain rdf:resource="&task;Task"/>
+        <rdfs:domain rdf:resource="&webservice;WebService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#unsatisiedDuetoMetric -->
+
+    <owl:ObjectProperty rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#unsatisiedDuetoMetric"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#CostMetric -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#CostMetric">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#SLAMetric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#FailurePercentageMetric -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#FailurePercentageMetric">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#SLAMetric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#ResponseTimeMetric -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#ResponseTimeMetric">
+        <rdfs:subClassOf rdf:resource="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#SLAMetric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#Responsibility -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#Responsibility"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#SLAMetric -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#SLAMetric"/>
+    
+
+
+    <!-- http://www.ist.sjtu.edu.cn/ontologies/sla.owl#WebServiceParty -->
+
+    <owl:Class rdf:about="http://www.ist.sjtu.edu.cn/ontologies/sla.owl#WebServiceParty"/>
 </rdf:RDF>
 
 

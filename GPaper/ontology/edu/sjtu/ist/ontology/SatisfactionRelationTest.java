@@ -13,11 +13,11 @@ public class SatisfactionRelationTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String ont = "D:\\JavaWorld\\WorkSpaces\\GPaper\\GPaper\\owl\\companyrdf.owl.xml";
+		String ont = "D:\\JavaWorld\\WorkSpaces\\GPaper\\GPaper\\owl\\ist\\companyrdf.owl.xml";
 
 		OntModel model = ModelFactory.createOntologyModel( PelletReasonerFactory.THE_SPEC, null );
 		model.read( ont );
-		ObjectProperty sibling = model.getObjectProperty( "http://www.ist.sjtu.edu.cn/ontologies/company.owl" + "#sibling" );
+		//ObjectProperty sibling = model.getObjectProperty( "http://www.ist.sjtu.edu.cn/ontologies/company.owl" + "#sibling" );
 	}
 
 }
