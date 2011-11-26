@@ -1,0 +1,531 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns="http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl#"
+    xmlns:slaont="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+  xml:base="http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    <owl:imports rdf:resource="http://www.daml.org/rules/proposal/swrlb.owl"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/11/swrl"/>
+    <owl:imports rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl"/>
+  </owl:Ontology>
+  <rdf:Description rdf:about="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#getSLAParametersDetails">
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</swrla:isRuleEnabled>
+  </rdf:Description>
+  <slaont:Operation rdf:ID="measurementOperation">
+    <slaont:hasURL rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://flightServer.com/metrics/RPC2</slaont:hasURL>
+    <slaont:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getMetric</slaont:hasName>
+    <slaont:hasHandler>
+      <slaont:Handler rdf:ID="measurementHandler">
+        <slaont:hasStringValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >measurement</slaont:hasStringValue>
+      </slaont:Handler>
+    </slaont:hasHandler>
+    <slaont:hasParameter>
+      <slaont:Parameter rdf:ID="responseTime_Metric">
+        <slaont:hasValue>
+          <slaont:Value rdf:ID="responseTimeMetric">
+            <slaont:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >String</slaont:hasType>
+            <slaont:hasUnit rdf:resource="#millisecond"/>
+            <slaont:hasInstance rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >ResponseTime</slaont:hasInstance>
+          </slaont:Value>
+        </slaont:hasValue>
+        <slaont:hasStringValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >responseTime</slaont:hasStringValue>
+      </slaont:Parameter>
+    </slaont:hasParameter>
+    <slaont:hasStringValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >getMetric</slaont:hasStringValue>
+  </slaont:Operation>
+  <slaont:ApplicationDomain rdf:ID="bookingFlight"/>
+  <slaont:SignatoryParty rdf:ID="flightProvider">
+    <slaont:hasStringValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >toCompleteWithAddressEtc</slaont:hasStringValue>
+  </slaont:SignatoryParty>
+  <slaont:Function rdf:ID="averageResponseTime">
+    <slaont:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >averageResponseTime</slaont:hasName>
+    <slaont:hasOperand>
+      <slaont:MeasurementDirective rdf:ID="responseTimeDirective">
+        <slaont:hasProtocol>
+          <slaont:Protocol rdf:ID="XML-RPC"/>
+        </slaont:hasProtocol>
+        <slaont:hasOperation rdf:resource="#measurementOperation"/>
+        <slaont:hasAggregationFrequency>
+          <slaont:Value rdf:ID="twentyFourHours">
+            <slaont:hasInstance rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >24</slaont:hasInstance>
+            <slaont:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Time</slaont:hasType>
+            <slaont:hasUnit>
+              <slaont:SubUnit rdf:ID="hour">
+                <slaont:hasUnitProportion rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                >60</slaont:hasUnitProportion>
+                <slaont:hasSubUnit rdf:resource="#minute"/>
+              </slaont:SubUnit>
+            </slaont:hasUnit>
+          </slaont:Value>
+        </slaont:hasAggregationFrequency>
+        <slaont:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Vector</slaont:hasType>
+      </slaont:MeasurementDirective>
+    </slaont:hasOperand>
+    <slaont:hasImplementingClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >edu.stanford.smi.protegex.owl.swrl.bridge.builtins.slaActions.AverageFunction</slaont:hasImplementingClass>
+    <slaont:hasValue rdf:resource="#responseTimeMetric"/>
+    <slaont:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Float</slaont:hasType>
+  </slaont:Function>
+  <slaont:Value rdf:ID="simulationFrequency">
+    <slaont:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Time</slaont:hasType>
+    <slaont:hasUnit rdf:resource="#millisecond"/>
+    <slaont:hasInstance rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >6000</slaont:hasInstance>
+  </slaont:Value>
+  <slaont:Parties rdf:ID="implicatedParties">
+    <slaont:isComposedOfSignatoryParty rdf:resource="#flightProvider"/>
+    <slaont:isComposedOfSignatoryParty>
+      <slaont:SignatoryParty rdf:ID="flightConsumer">
+        <slaont:hasStringValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >toCompleteWithAddressEtc</slaont:hasStringValue>
+      </slaont:SignatoryParty>
+    </slaont:isComposedOfSignatoryParty>
+    <slaont:isComposedOfSupportingParty>
+      <slaont:SupportingParty rdf:ID="flightProviderMeasure">
+        <slaont:notify>
+          <slaont:SupportingParty rdf:ID="flightAuditor">
+            <slaont:notify rdf:resource="#flightProvider"/>
+            <slaont:notify rdf:resource="#flightConsumer"/>
+          </slaont:SupportingParty>
+        </slaont:notify>
+      </slaont:SupportingParty>
+    </slaont:isComposedOfSupportingParty>
+    <slaont:isComposedOfSupportingParty rdf:resource="#flightAuditor"/>
+  </slaont:Parties>
+  <swrl:Imp rdf:ID="PredicateEvaluationRule">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >false</rdf:first>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:first>
+                          <slaont:SLAParameter rdf:ID="average_response_time">
+                            <slaont:hasAggregationFrequency>
+                              <slaont:Value rdf:ID="simulationPeriodicity">
+                                <slaont:hasType rdf:datatype=
+                                "http://www.w3.org/2001/XMLSchema#string"
+                                >Time</slaont:hasType>
+                                <slaont:hasInstance rdf:datatype=
+                                "http://www.w3.org/2001/XMLSchema#int"
+                                >30000</slaont:hasInstance>
+                                <slaont:hasUnit rdf:resource="#millisecond"/>
+                              </slaont:Value>
+                            </slaont:hasAggregationFrequency>
+                            <slaont:definedByMetric>
+                              <slaont:Metric rdf:ID="responseTime">
+                                <slaont:hasMeasurementFrequency rdf:resource="#simulationFrequency"/>
+                                <slaont:hasValueFrom rdf:resource="#responseTimeDirective"/>
+                                <slaont:hasName rdf:datatype=
+                                "http://www.w3.org/2001/XMLSchema#string"
+                                >ResponseTime</slaont:hasName>
+                                <slaont:hasUnit rdf:resource="#millisecond"/>
+                                <slaont:hasType rdf:datatype=
+                                "http://www.w3.org/2001/XMLSchema#string"
+                                >float</slaont:hasType>
+                              </slaont:Metric>
+                            </slaont:definedByMetric>
+                            <slaont:hasMeasurementFrequency rdf:resource="#simulationFrequency"/>
+                            <slaont:hasFunction rdf:resource="#averageResponseTime"/>
+                            <slaont:hasEvaluation rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#float"
+                            >105.950195</slaont:hasEvaluation>
+                            <slaont:hasUnit rdf:resource="#millisecond"/>
+                            <slaont:hasType xml:lang="fr">float</slaont:hasType>
+                            <slaont:hasStringValue rdf:datatype=
+                            "http://www.w3.org/2001/XMLSchema#string"
+                            >50</slaont:hasStringValue>
+                          </slaont:SLAParameter>
+                        </rdf:first>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first>
+                              <swrl:Variable rdf:ID="x"/>
+                            </rdf:first>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          </rdf:List>
+                        </rdf:rest>
+                      </rdf:List>
+                    </rdf:rest>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first>
+                  <slaont:Predicate rdf:ID="lessThan100msPredicate">
+                    <slaont:hasVerificationPeriodicity rdf:resource="#simulationPeriodicity"/>
+                    <slaont:hasRule rdf:resource="#PredicateEvaluationRule"/>
+                  </slaont:Predicate>
+                </rdf:first>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://www.laas.fr/~kchaari/slaOntActions.owl#disseminateViolation"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</swrla:isRuleEnabled>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                        >100.0</rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="#x"/>
+                  </rdf:List>
+                </swrl:arguments>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:DatavaluedPropertyAtom>
+            <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#hasEvaluation"/>
+            <swrl:argument1 rdf:resource="#average_response_time"/>
+            <swrl:argument2 rdf:resource="#x"/>
+          </swrl:DatavaluedPropertyAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:body>
+  </swrl:Imp>
+  <slaont:SLA rdf:ID="flightSLA">
+    <slaont:isConcernedBy rdf:resource="#bookingFlight"/>
+    <slaont:hasImplicatedParties rdf:resource="#implicatedParties"/>
+    <slaont:hasServiceDefinition>
+      <slaont:ServiceDefinition rdf:ID="fligntServiceDefinition">
+        <slaont:hasWSDL rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >http://www.flightservice.com/flight.wsdl</slaont:hasWSDL>
+        <slaont:hasServiceObject>
+          <slaont:ServiceObject rdf:ID="flight">
+            <slaont:hasSLAParameter rdf:resource="#average_response_time"/>
+          </slaont:ServiceObject>
+        </slaont:hasServiceObject>
+      </slaont:ServiceDefinition>
+    </slaont:hasServiceDefinition>
+    <slaont:hasObligations>
+      <slaont:Obligations rdf:ID="flightObligation">
+        <slaont:isComposedOfActionGuarantee>
+          <slaont:ActionGuarantee rdf:ID="notification"/>
+        </slaont:isComposedOfActionGuarantee>
+        <slaont:isComposedOfServiceLevelObjective>
+          <slaont:ServiceLevelObjective rdf:ID="flightSLO">
+            <slaont:hasObligedParty rdf:resource="#flightProvider"/>
+            <slaont:hasStartTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+            >2008-02-02T11:46:48</slaont:hasStartTime>
+            <slaont:hasPredicate rdf:resource="#lessThan100msPredicate"/>
+            <slaont:hasEndTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+            >2008-03-02T11:47:01</slaont:hasEndTime>
+          </slaont:ServiceLevelObjective>
+        </slaont:isComposedOfServiceLevelObjective>
+        <slaont:hasStringValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >avg(responseTime)&lt;100 ms</slaont:hasStringValue>
+      </slaont:Obligations>
+    </slaont:hasObligations>
+  </slaont:SLA>
+  <swrl:Variable rdf:ID="impClass"/>
+  <rdf:Description rdf:about="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#getObligationDetails">
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</swrla:isRuleEnabled>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#getMetricsDetails">
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</swrla:isRuleEnabled>
+  </rdf:Description>
+  <swrl:Variable rdf:ID="value"/>
+  <swrl:Imp rdf:ID="Calculateaverage_response_time">
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swrla:isRuleEnabled>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:DatavaluedPropertyAtom>
+                    <swrl:argument2 rdf:resource="#impClass"/>
+                    <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#hasImplementingClass"/>
+                    <swrl:argument1>
+                      <swrl:Variable rdf:ID="f"/>
+                    </swrl:argument1>
+                  </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:BuiltinAtom>
+                        <swrl:builtin rdf:resource="http://www.laas.fr/~kchaari/slaOntActions.owl#agregateMetric"/>
+                        <swrl:arguments>
+                          <rdf:List>
+                            <rdf:rest>
+                              <rdf:List>
+                                <rdf:rest>
+                                  <rdf:List>
+                                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    <rdf:first rdf:resource="#x"/>
+                                  </rdf:List>
+                                </rdf:rest>
+                                <rdf:first rdf:resource="#impClass"/>
+                              </rdf:List>
+                            </rdf:rest>
+                            <rdf:first>
+                              <swrl:Variable rdf:ID="metric"/>
+                            </rdf:first>
+                          </rdf:List>
+                        </swrl:arguments>
+                      </swrl:BuiltinAtom>
+                    </rdf:first>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:argument1 rdf:resource="#average_response_time"/>
+                <swrl:argument2 rdf:resource="#f"/>
+                <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#hasFunction"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:IndividualPropertyAtom>
+            <swrl:argument2 rdf:resource="#metric"/>
+            <swrl:argument1 rdf:resource="#average_response_time"/>
+            <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#definedByMetric"/>
+          </swrl:IndividualPropertyAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:builtin rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl#select"/>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:first rdf:resource="#x"/>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:List>
+                </swrl:arguments>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:builtin rdf:resource="http://www.laas.fr/~kchaari/slaOntActions.owl#setSLAParameterValue"/>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    <rdf:first rdf:resource="#x"/>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first rdf:resource="#average_response_time"/>
+              </rdf:List>
+            </swrl:arguments>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:head>
+  </swrl:Imp>
+  <swrl:Imp rdf:ID="responseTimeMeasurementRule">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:builtin rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl#select"/>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first rdf:resource="#value"/>
+              </rdf:List>
+            </swrl:arguments>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first rdf:resource="#responseTime"/>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first rdf:resource="#value"/>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://www.laas.fr/~kchaari/slaOntActions.owl#getMetric"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</swrla:isRuleEnabled>
+  </swrl:Imp>
+  <swrl:Imp rdf:ID="Rule-4">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:builtin rdf:resource="http://www.laas.fr/~kchaari/slaOntActions.owl#setSLAParameterValue"/>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first rdf:resource="#average_response_time"/>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    <rdf:first rdf:resource="#x"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first rdf:resource="#x"/>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          </rdf:List>
+                        </rdf:rest>
+                        <rdf:first rdf:resource="#impClass"/>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="#metric"/>
+                  </rdf:List>
+                </swrl:arguments>
+                <swrl:builtin rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl#select"/>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:DatavaluedPropertyAtom>
+                    <swrl:argument2 rdf:resource="#impClass"/>
+                    <swrl:argument1 rdf:resource="#f"/>
+                    <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#hasImplementingClass"/>
+                  </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:BuiltinAtom>
+                        <swrl:arguments>
+                          <rdf:List>
+                            <rdf:rest>
+                              <rdf:List>
+                                <rdf:first rdf:resource="#impClass"/>
+                                <rdf:rest>
+                                  <rdf:List>
+                                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    <rdf:first rdf:resource="#x"/>
+                                  </rdf:List>
+                                </rdf:rest>
+                              </rdf:List>
+                            </rdf:rest>
+                            <rdf:first rdf:resource="#metric"/>
+                          </rdf:List>
+                        </swrl:arguments>
+                        <swrl:builtin rdf:resource="http://www.laas.fr/~kchaari/slaOntActions.owl#agregateMetric"/>
+                      </swrl:BuiltinAtom>
+                    </rdf:first>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:argument1 rdf:resource="#average_response_time"/>
+                <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#hasFunction"/>
+                <swrl:argument2 rdf:resource="#f"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:IndividualPropertyAtom>
+            <swrl:argument2 rdf:resource="#metric"/>
+            <swrl:propertyPredicate rdf:resource="http://www.laas.fr/~kchaari/slaOnt/SLAont.owl#definedByMetric"/>
+            <swrl:argument1 rdf:resource="#average_response_time"/>
+          </swrl:IndividualPropertyAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</swrla:isRuleEnabled>
+  </swrl:Imp>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

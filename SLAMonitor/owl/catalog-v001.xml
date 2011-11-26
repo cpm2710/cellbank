@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1321964308787" name="duplicate:http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="FlightSLA.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321964308787" name="duplicate:http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="SLAont.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321964308787" name="http://www.laas.fr/~kchaari/slaOntActions.owl" uri="slaOntActions.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321964308787" name="duplicate:http://www.owl-ontologies.com/Ontology1200829946.owl" uri="ontologieK.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1321964308787" name="duplicate:http://www.owl-ontologies.com/Ontology1200829946.owl" uri="ontologieSLA.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://swrl.stanford.edu/ontologies/3.3/swrla.owl" uri="swrla.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl" uri="abox.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl" uri="query.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl" uri="swrlx.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl" uri="tbox.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl" uri="temporal.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://www.daml.org/services/owl-s/1.1/Service.owl" uri="Service.owl.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="duplicate:http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="FlightSLA.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="duplicate:http://www.laas.fr/~kchaari/slaOnt/FlightSLA.owl" uri="SLAont.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="http://www.laas.fr/~kchaari/slaOntActions.owl" uri="slaOntActions.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="duplicate:http://www.owl-ontologies.com/Ontology1200829946.owl" uri="ontologieK.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1322043526511" name="duplicate:http://www.owl-ontologies.com/Ontology1200829946.owl" uri="ontologieSLA.owl"/>
     </group>
 </catalog>
