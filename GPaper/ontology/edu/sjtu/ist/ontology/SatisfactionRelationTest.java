@@ -16,6 +16,7 @@ public class SatisfactionRelationTest {
 		String ont = "D:\\JavaWorld\\WorkSpaces\\GPaper\\GPaper\\owl\\ist\\companyrdf.owl.xml";
 
 		OntModel model = ModelFactory.createOntologyModel( PelletReasonerFactory.THE_SPEC, null );
+		
 		model.read( ont );
 		//ObjectProperty sibling = model.getObjectProperty( "http://www.ist.sjtu.edu.cn/ontologies/company.owl" + "#sibling" );
 	}
