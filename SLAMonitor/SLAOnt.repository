@@ -1,0 +1,8 @@
+http://www.laas.fr/~kchaari/slaOnt/SLAont.owl
+http://www.laas.fr/~kchaari/slaOntActions.owl
+http://swrl.stanford.edu/ontologies/3.3/swrla.owl
+http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl
+http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl
+http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl
+http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl
+http://www.daml.org/rules/proposal/swrlb.owl
