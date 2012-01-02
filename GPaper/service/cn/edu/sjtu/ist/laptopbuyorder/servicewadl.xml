@@ -1,24 +1,24 @@
 <application xmlns="http://wadl.dev.java.net/2009/02"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prefix1="http://laptop.ist.sjtu.edu.cn">
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prefix1="http://company.ist.sjtu.edu.cn">
 	<grammars>
 		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-			xmlns:tns="http://laptop.ist.sjtu.edu.cn" attributeFormDefault="unqualified"
-			elementFormDefault="unqualified" targetNamespace="http://laptop.ist.sjtu.edu.cn">
-			<xs:element name="Laptop" type="tns:Laptop" />
-			<xs:element name="LaptopCollection" type="tns:LaptopCollection" />
-			<xs:complexType name="LaptopCollection">
+			xmlns:tns="http://company.ist.sjtu.edu.cn" attributeFormDefault="unqualified"
+			elementFormDefault="unqualified" targetNamespace="http://company.ist.sjtu.edu.cn">
+			<xs:element name="LaptopBuyOrder" type="tns:LaptopBuyOrder" />
+			<xs:element name="LaptopBuyOrderCollection" type="tns:LaptopBuyOrderCollection" />
+			<xs:complexType name="LaptopBuyOrderCollection">
 				<xs:sequence>
-					<xs:element minOccurs="0" name="laptops">
+					<xs:element minOccurs="0" name="laptopbuyorders">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element maxOccurs="unbounded" minOccurs="0" name="users"
-									nillable="true" type="tns:Laptop" />
+									nillable="true" type="tns:LaptopBuyOrder" />
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
 				</xs:sequence>
 			</xs:complexType>
-			<xs:complexType name="Laptop">
+			<xs:complexType name="LaptopBuyOrder">
 				<xs:sequence>
 					<xs:element name="id" type="xs:long" />
 					<xs:element minOccurs="0" name="name" type="xs:string" />
@@ -27,29 +27,30 @@
 		</xs:schema>
 	</grammars>
 	<resources base="http://localhost:7878/">
-		<resource path="/laptops">
+		<resource path="/laptopbuyorders">
 			<method name="GET">
 				<request>
 					<param name="name" style="query" type="xs:string" />
 				</request>
 				<response>
-					<representation mediaType="application/xml" element="prefix1:LaptopCollection" />
+					<representation mediaType="application/xml"
+						element="prefix1:LaptopBuyOrderCollection" />
 				</response>
 			</method>
 			<method name="POST">
 				<request>
-					<representation mediaType="application/xml" element="prefix1:Laptop" />
+					<representation mediaType="application/xml" element="prefix1:LaptopBuyOrder" />
 				</request>
 				<response>
-					<representation mediaType="application/xml" element="prefix1:Laptop" />
+					<representation mediaType="application/xml" element="prefix1:LaptopBuyOrder" />
 				</response>
 			</method>
 			<method name="PUT">
 				<request>
-					<representation mediaType="application/xml" element="prefix1:Laptop" />
+					<representation mediaType="application/xml" element="prefix1:LaptopBuyOrder" />
 				</request>
 				<response>
-					<representation mediaType="application/xml" element="prefix1:Laptop" />
+					<representation mediaType="application/xml" element="prefix1:LaptopBuyOrder" />
 				</response>
 			</method>
 			<resource path="/{id}/">
@@ -58,14 +59,14 @@
 					<request></request>
 					<response>
 						<representation mediaType="application/xml"
-							element="prefix1:Laptop" />
+							element="prefix1:LaptopBuyOrder" />
 					</response>
 				</method>
 				<method name="GET">
 					<request></request>
 					<response>
 						<representation mediaType="application/xml"
-							element="prefix1:Laptop" />
+							element="prefix1:LaptopBuyOrder" />
 					</response>
 				</method>
 			</resource>

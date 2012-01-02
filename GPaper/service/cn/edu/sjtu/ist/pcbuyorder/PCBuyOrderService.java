@@ -28,14 +28,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-@Path("/laptops")
+@Path("/pcbuyorders")
 @Consumes("application/xml")
 @Produces("application/xml")
-public class LaptopService {
+public class PCBuyOrderService {
     long currentId = 123;
     //Map<Long, Customer> customers = new HashMap<Long, Customer>();
-    LaptopCollection cc=new LaptopCollection();
-    public LaptopService() {
+    PCBuyOrderCollection cc=new PCBuyOrderCollection();
+    public PCBuyOrderService() {
         init();
     }
 
@@ -46,12 +46,12 @@ public class LaptopService {
     }*/
     
     @GET
-    public LaptopCollection findLaptop(@QueryParam("name") String name ){
+    public PCBuyOrderCollection findLaptop(@QueryParam("name") String name ){
     	System.out.println(name);
     	if(name.equals("shit")){
     		
-    		LaptopCollection c=
-    		 new LaptopCollection();
+    		PCBuyOrderCollection c=
+    		 new PCBuyOrderCollection();
     		c.getUsers().clear();
     		return c;
     	}
@@ -59,10 +59,10 @@ public class LaptopService {
     }
     @GET
     @Path("/{id}/")
-    public Laptop getLaptop(@PathParam("id") String id) {
+    public PCBuyOrder getLaptop(@PathParam("id") String id) {
         System.out.println("----invoking getCustomer, Customer id is: " + id);
         long idNumber = Long.parseLong(id);
-        for(Laptop c: cc.getUsers()){
+        for(PCBuyOrder c: cc.getUsers()){
         	if(c.getId()==idNumber){
         		return c;
         	}
@@ -71,10 +71,10 @@ public class LaptopService {
     }
 
     @PUT  
-    public Laptop updateLaptop(Laptop customer) {
+    public PCBuyOrder updateLaptop(PCBuyOrder customer) {
         System.out.println("----invoking updateCustomer, "+customer.getId()+"Customer name is: " + customer.getName());
         
-        for(Laptop c: cc.getUsers()){
+        for(PCBuyOrder c: cc.getUsers()){
         	if(c.getId()==customer.getId()){
         		c.setName(customer.getName());
         		return c;
@@ -84,7 +84,7 @@ public class LaptopService {
     }
 
     @POST
-    public Laptop addLaptop(Laptop customer) {
+    public PCBuyOrder addLaptop(PCBuyOrder customer) {
         System.out.println("----invoking addCustomer, Customer name is: " + customer.getName());
         //customer.setId(++currentId);
         cc.getUsers().add(customer);
@@ -95,10 +95,10 @@ public class LaptopService {
 
     @DELETE
     @Path("/{id}/")
-    public Laptop deleteLaptop(@PathParam("id") String id) {
+    public PCBuyOrder deleteLaptop(@PathParam("id") String id) {
         System.out.println("----invoking deleteCustomer, Customer id is: " + id);
         long idNumber = Long.parseLong(id);
-        for(Laptop c: cc.getUsers()){
+        for(PCBuyOrder c: cc.getUsers()){
         	if(c.getId()==idNumber){
         		cc.getUsers().remove(c);
         		return c;

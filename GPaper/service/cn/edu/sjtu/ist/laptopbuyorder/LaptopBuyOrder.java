@@ -20,9 +20,9 @@ package cn.edu.sjtu.ist.laptopbuyorder;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-@XmlType(name="Laptop", namespace="http://laptop.ist.sjtu.edu.cn")
-@XmlRootElement(name = "Laptop",namespace="http://laptop.ist.sjtu.edu.cn")
-public class Laptop {
+@XmlType(name="LaptopBuyOrder", namespace="http://company.ist.sjtu.edu.cn")
+@XmlRootElement(name = "LaptopBuyOrder",namespace="http://company.ist.sjtu.edu.cn")
+public class LaptopBuyOrder {
     private long id;
     private String name;
 

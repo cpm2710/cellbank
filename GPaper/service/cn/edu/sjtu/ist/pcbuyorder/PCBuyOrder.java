@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package cn.edu.sjtu.ist.workstationbuyorder;
+package cn.edu.sjtu.ist.pcbuyorder;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-@XmlType(name="Laptop", namespace="http://laptop.ist.sjtu.edu.cn")
-@XmlRootElement(name = "Laptop",namespace="http://laptop.ist.sjtu.edu.cn")
-public class Laptop {
+@XmlType(name="PCBuyOrder", namespace="http://company.ist.sjtu.edu.cn")
+@XmlRootElement(name = "PCBuyOrder",namespace="http://company.ist.sjtu.edu.cn")
+public class PCBuyOrder {
     private long id;
     private String name;
 
