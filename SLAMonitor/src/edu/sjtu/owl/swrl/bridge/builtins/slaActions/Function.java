@@ -1,4 +1,4 @@
-package edu.stanford.smi.protegex.owl.swrl.bridge.builtins.slaActions;
+package edu.sjtu.owl.swrl.bridge.builtins.slaActions;
 import edu.stanford.smi.protegex.owl.swrl.bridge.LiteralInfo;
 import java.util.Hashtable;
 

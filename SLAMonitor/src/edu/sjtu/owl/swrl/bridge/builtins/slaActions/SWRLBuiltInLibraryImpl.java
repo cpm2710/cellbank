@@ -3,10 +3,11 @@
      */
 
     
-    package edu.stanford.smi.protegex.owl.swrl.bridge.builtins.slaActions;
+    package edu.sjtu.owl.swrl.bridge.builtins.slaActions;
     
     import edu.stanford.smi.protegex.owl.swrl.bridge.*;
 	import edu.stanford.smi.protegex.owl.swrl.bridge.builtins.*;
+import edu.stanford.smi.protegex.owl.swrl.bridge.builtins.slaActions.Function;
     import edu.stanford.smi.protegex.owl.swrl.bridge.exceptions.*;
 	import com.hp.hpl.jena.util.FileUtils;
 	import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
@@ -20,7 +21,7 @@
    
     import java.util.*;
 //    import java.util.regex.*;
-	import edu.stanford.smi.protegex.owl.model.*;
+import edu.stanford.smi.protegex.owl.model.*;
     
 
     public class SWRLBuiltInLibraryImpl extends SWRLBuiltInLibrary
@@ -74,13 +75,13 @@
 		metrics.put(metricName, new Vector());
 	}
 	Vector metricValues = (Vector) metrics.get(metricName);
-	// ici la mesure de la métrique est simulée par une génération d'un float entre 0 et 170. Ceci doit être remplac?par l'appel de la directive de mesure
+	// ici la mesure de la mï¿½trique est simulï¿½e par une gï¿½nï¿½ration d'un float entre 0 et 170. Ceci doit ï¿½tre remplac?par l'appel de la directive de mesure
 	float value = new Float(Math.random()*170);
 	System.out.println("[SWRLBuiltInLibraryImpl] generated metric "+metricName+" value = "+value);
 	metricValues.add(value);
 	
 	//int resultIndex = SWRLBuiltInUtil.getFirstUnboundArgument(arguments);
-	// affecter au deuxième argument la valeur du résultat
+	// affecter au deuxiï¿½me argument la valeur du rï¿½sultat
 	if (arguments.size()>1)
 		arguments.set(1, new LiteralInfo(value)); // Bind the result to the given variable
 	return true;
@@ -115,7 +116,7 @@
 	
 	try{
 		Function function = (Function) Class.forName(agregationFunction).newInstance();
-			// affecter au troisième argument la valeur du résultat
+			// affecter au troisiï¿½me argument la valeur du rï¿½sultat
 		if (arguments.size()>2)
 			arguments.set(2, function.call(metrics)); // Bind the result to the third parameter
 		  // 	System.out.println("______________________________ agregateMetric end__________");
@@ -162,7 +163,7 @@
 			}
               };
 			Thread rr3 = new Thread(r3, "PredicateEvaluationThread");
-			rr3.start();		// cette méthode peut être étendue ?d'autres actions plus élaborées qu'un simple affichage sur la console
+			rr3.start();		// cette mï¿½thode peut ï¿½tre ï¿½tendue ?d'autres actions plus ï¿½laborï¿½es qu'un simple affichage sur la console
         return true;
       } // disseminateViolation
 	  
@@ -211,7 +212,7 @@
 			System.out.println("OWL FILE NOT SPECIFIED");
 			OWL_File = JOptionPane.showInputDialog("Please enter the complet Path to the SLAont OWL File","./javaTestOnto/SLAont.owl");
 			File file = new File(OWL_File);
-			// récupérer le modèle owl de l'ontologie spécifiée dans le fichier owl
+			// rï¿½cupï¿½rer le modï¿½le owl de l'ontologie spï¿½cifiï¿½e dans le fichier owl
 			owlModel = ProtegeOWL.createJenaOWLModelFromURI(file.toURI().toString());
 			}
 			catch(Exception e)
@@ -233,7 +234,7 @@
 			}while (returnVal!=JFileChooser.APPROVE_OPTION);
          	        File file = fc.getSelectedFile();
 			OWL_File = file.getAbsolutePath();
-			// récupérer le modèle owl de l'ontologie spécifiée dans le fichier owl
+			// rï¿½cupï¿½rer le modï¿½le owl de l'ontologie spï¿½cifiï¿½e dans le fichier owl
 			owlModel = ProtegeOWL.createJenaOWLModelFromURI(file.toURI().toString());
 			}
 			catch(Exception e)

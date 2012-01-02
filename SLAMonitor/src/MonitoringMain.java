@@ -15,7 +15,7 @@ import java.awt.*;
 import java.awt.event.*;
 
  
-// cette classe exécutre la régle "Rule-2" dans le projet local dans protégé "ontologieK.pprj"
+// cette classe exï¿½cutre la rï¿½gle "Rule-2" dans le projet local dans protï¿½gï¿½ "ontologieK.pprj"
 public class MonitoringMain extends JPanel    implements ActionListener { 
 
 	
@@ -29,7 +29,7 @@ public class MonitoringMain extends JPanel    implements ActionListener {
     JFileChooser fc;
 	String slaOntPrefix = "slaont:";
 	
-	// Le constructeur initialise les composants graphiques nécessaires pour l'affichage
+	// Le constructeur initialise les composants graphiques nï¿½cessaires pour l'affichage
 	public MonitoringMain() {
         super(new BorderLayout());
 
@@ -74,7 +74,7 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 		startMonitoring.setEnabled(false);
     }
 	
-	// gestion des évènements graphiques (openOWLFile et startMonitoring)
+	// gestion des ï¿½vï¿½nements graphiques (openOWLFile et startMonitoring)
 	public void actionPerformed(ActionEvent e) {
 
         //Handle open button action.
@@ -94,10 +94,10 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 					}
 					else
 					{
-						edu.stanford.smi.protegex.owl.swrl.bridge.builtins.slaActions.SWRLBuiltInLibraryImpl.setOWLModel(owlModel, OWL_FILE, slaOntPrefix);
-						// créer une instance de SWRLFactory qui sera responsable de la gestion des règles SWRL (activation, désactivation, création, suppression...)
+						edu.sjtu.owl.swrl.bridge.builtins.slaActions.SWRLBuiltInLibraryImpl.setOWLModel(owlModel, OWL_FILE, slaOntPrefix);
+						// crï¿½er une instance de SWRLFactory qui sera responsable de la gestion des rï¿½gles SWRL (activation, dï¿½sactivation, crï¿½ation, suppression...)
 						factory = new SWRLFactory(owlModel);
-						// créer une instance de SWRLRuleEngineBridge qui sera responsable de l'exécution des règles et de la récupération du résultat de cette exécution
+						// crï¿½er une instance de SWRLRuleEngineBridge qui sera responsable de l'exï¿½cution des rï¿½gles et de la rï¿½cupï¿½ration du rï¿½sultat de cette exï¿½cution
 						bridge = BridgeFactory.createBridge(owlModel);
 						
 		                //This is where a real application would open the file.
@@ -128,8 +128,8 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 		//System.out.println("File saved with " + errors.size() + " errors.");
 	}
 	/*
-	Cette métode récupère les détails (le nom de la métrique et sa fréquence de mesure) de toutes les métriques définies dans l'ontologie. 
-	Pour chaque métrique, on créé une règle SWRL qui permet de récupérer sa mesure et nous instancions un MetricMeasurementService.
+	Cette mï¿½tode rï¿½cupï¿½re les dï¿½tails (le nom de la mï¿½trique et sa frï¿½quence de mesure) de toutes les mï¿½triques dï¿½finies dans l'ontologie. 
+	Pour chaque mï¿½trique, on crï¿½ï¿½ une rï¿½gle SWRL qui permet de rï¿½cupï¿½rer sa mesure et nous instancions un MetricMeasurementService.
 	*/
 	private void createMetricMeasurementServices()
 	{
@@ -146,7 +146,7 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 				try{
 				factory.createImp(metricName+"MeasurementRule", "slaActions:getMetric("+metricName+",?value)"+SWRLParser.IMP_CHAR+"query:select(?value)");
 				}
-				catch(Exception e){/*ici ça veut dire que la règle existe déja*/log.append(e.getMessage());}
+				catch(Exception e){/*ici ï¿½a veut dire que la rï¿½gle existe dï¿½ja*/log.append(e.getMessage());}
 				
 				Thread measurementThread = new MetricMeasurementService(factory, bridge, metricName, frequency);
 				measurementThread.start();
@@ -161,8 +161,8 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 	}
 	
 	/*
-	Cette métode récupère les détails (le nom du SLaparameter et sa fréquence d'agrégation)  de tous les SLAparameter définis dans l'ontologie. 
-	Pour chaque SLAparameter, on créé une règle SWRL qui permet de calculer sa valeur et nous instancions un SLAParameterMeasurementService.
+	Cette mï¿½tode rï¿½cupï¿½re les dï¿½tails (le nom du SLaparameter et sa frï¿½quence d'agrï¿½gation)  de tous les SLAparameter dï¿½finis dans l'ontologie. 
+	Pour chaque SLAparameter, on crï¿½ï¿½ une rï¿½gle SWRL qui permet de calculer sa valeur et nous instancions un SLAParameterMeasurementService.
 	*/
 	private void createSLAParameterMeasurementServices()
 	{
@@ -180,7 +180,7 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 				//System.out.println(slaOntPrefix+"definedByMetric("+parameterName+", ?metric)  "+SWRLParser.AND_CHAR+" "+slaOntPrefix+"hasFunction("+parameterName+", ?f)  "+SWRLParser.AND_CHAR+"  "+slaOntPrefix+"hasImplementingClass(?f, ?impClass)  "+SWRLParser.AND_CHAR+" slaActions:agregateMetric(?metric, ?impClass, ?x)"+SWRLParser.IMP_CHAR+"slaActions:setSLAParameterValue("+parameterName+", ?x)"+SWRLParser.AND_CHAR+"query:select(?x)");
 				factory.createImp("Calculate"+parameterName, slaOntPrefix+"definedByMetric("+parameterName+", ?metric)  "+SWRLParser.AND_CHAR+" "+slaOntPrefix+"hasFunction("+parameterName+", ?f)  "+SWRLParser.AND_CHAR+"  "+slaOntPrefix+"hasImplementingClass(?f, ?impClass)  "+SWRLParser.AND_CHAR+" slaActions:agregateMetric(?metric, ?impClass, ?x)"+SWRLParser.IMP_CHAR+"slaActions:setSLAParameterValue("+parameterName+", ?x)"+SWRLParser.AND_CHAR+"query:select(?x)");
 				}
-				catch(Exception e){/*ici ça veut dire que la règle existe déja*/}
+				catch(Exception e){/*ici ï¿½a veut dire que la rï¿½gle existe dï¿½ja*/}
 				
 				Thread aggregationThread = new SLAParameterMeasurementService(factory, bridge, owlModel, parameterName, frequency);
 				aggregationThread.start();
@@ -195,8 +195,8 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 	}
 	
 	/*
-	Cette métode récupère les détails (le nom de la règle SWRL et sa fréquence de vérification)  de tous les prédicats définis dans l'ontologie. 
-	Pour chaque prédicat, nous instancions un ObligationMonitoringService.
+	Cette mï¿½tode rï¿½cupï¿½re les dï¿½tails (le nom de la rï¿½gle SWRL et sa frï¿½quence de vï¿½rification)  de tous les prï¿½dicats dï¿½finis dans l'ontologie. 
+	Pour chaque prï¿½dicat, nous instancions un ObligationMonitoringService.
 	*/
 	private void createObligationMonitoringServices()
 	{
@@ -246,7 +246,7 @@ public class MonitoringMain extends JPanel    implements ActionListener {
 	
 	private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("SLAOnt: SLA Obligation monitoring");
+        JFrame frame = new JFrame("SLAOnt: IST SLA monitoring");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add content to the window.

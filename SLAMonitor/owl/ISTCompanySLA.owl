@@ -57,7 +57,7 @@
     <slaont:hasType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Float</slaont:hasType>
     <slaont:hasImplementingClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >edu.stanford.smi.protegex.owl.swrl.bridge.builtins.slaActions.AverageFunction</slaont:hasImplementingClass>
+    >edu.sjtu.owl.swrl.bridge.builtins.slaActions.AverageFunction</slaont:hasImplementingClass>
     <slaont:hasOperand>
       <slaont:MeasurementDirective rdf:ID="responseTimeDirective">
         <slaont:hasProtocol>
