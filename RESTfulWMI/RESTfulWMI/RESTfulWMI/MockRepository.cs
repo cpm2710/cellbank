@@ -11,6 +11,6 @@ namespace RESTfulWMI
             new SBS9User("andy","andypswd","andliu@microsoft.com"),
             new SBS9User("andy2","andy2pswd","andliu2@microsoft.com")
         };
-        public static List<Storage> storages = new List<Storage>();
+        //public static List<Storage> storages = new List<Storage>();
     }
 }

@@ -6,13 +6,13 @@ using System.Management.Instrumentation;
 using System.Collections;
 using System.Management;
 
-[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.NetworkService)]    
+[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.Decoupled)]    
 namespace RESTfulWMI
 {
     [System.ComponentModel.RunInstaller(true)]
     public class SBSWMIInstaller : DefaultManagementInstaller
     {
-        public override void Install(IDictionary stateSaver)
+        /*public override void Install(IDictionary stateSaver)
         {
             base.Install(stateSaver);
             System.Runtime.InteropServices.RegistrationServices RS = 
@@ -39,6 +39,6 @@ namespace RESTfulWMI
                 base.Uninstall(savedState);
             }
             catch { }
-        }
+        }*/
     }
 }
