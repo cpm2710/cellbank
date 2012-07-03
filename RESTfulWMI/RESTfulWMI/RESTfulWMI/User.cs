@@ -7,8 +7,8 @@ using System.Collections;
 
 namespace RESTfulWMI
 {
-    [ManagementEntity(Name = "SBS8_User")]
-    public class SBS8User
+    [ManagementEntity(Name = "SBS9_User")]
+    public class SBS9User
     {
         [ManagementKey]
         public string UserId { get; set; }
@@ -18,7 +18,7 @@ namespace RESTfulWMI
         {
             get
             {
-                foreach (SBS8User u in MockRepository.sbsUsers)
+                foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
@@ -29,7 +29,7 @@ namespace RESTfulWMI
             }
             set
             {
-                foreach (SBS8User u in MockRepository.sbsUsers)
+                foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
@@ -44,7 +44,7 @@ namespace RESTfulWMI
         {
             get
             {
-                foreach (SBS8User u in MockRepository.sbsUsers)
+                foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
@@ -55,7 +55,7 @@ namespace RESTfulWMI
             }
             set
             {
-                foreach (SBS8User u in MockRepository.sbsUsers)
+                foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
@@ -70,7 +70,7 @@ namespace RESTfulWMI
         {
             get
             {
-                foreach (SBS8User u in MockRepository.sbsUsers)
+                foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
@@ -81,7 +81,7 @@ namespace RESTfulWMI
             }
             set
             {
-                foreach (SBS8User u in MockRepository.sbsUsers)
+                foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
@@ -91,9 +91,9 @@ namespace RESTfulWMI
             }
         }
         [ManagementBind]
-        static public SBS8User GetInstance([ManagementName("UserId")] string UserId)
+        static public SBS9User GetInstance([ManagementName("UserId")] string UserId)
         {
-            foreach (SBS8User u in MockRepository.sbsUsers)
+            foreach (SBS9User u in MockRepository.sbsUsers)
             {
                 if (string.Equals(u.UserId, UserId))
                 {
@@ -104,7 +104,7 @@ namespace RESTfulWMI
         /// <summary>
         /// The Constructor to create new instances of the LocalAdmins class...
         /// </summary>
-        public SBS8User(string UserName, string PassWord, string Email)
+        public SBS9User(string UserName, string PassWord, string Email)
         {
             this.UserId = Guid.NewGuid().ToString();
             this.UserName = UserName;
@@ -133,7 +133,7 @@ namespace RESTfulWMI
         [ManagementEnumerator]
         static public IEnumerable GetSBSUsers()
         {
-            foreach (SBS8User user in MockRepository.sbsUsers)
+            foreach (SBS9User user in MockRepository.sbsUsers)
             {
                 yield return user;
             }
