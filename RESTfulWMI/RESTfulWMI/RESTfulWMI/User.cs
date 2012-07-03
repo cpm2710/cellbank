@@ -13,81 +13,87 @@ namespace RESTfulWMI
         [ManagementKey]
         public string UserId { get; set; }
 
+        private string userName;
         [ManagementConfiguration]
         public string UserName
         {
             get
             {
-                foreach (SBS9User u in MockRepository.sbsUsers)
+                return userName;
+                /*foreach (SBS9User u in MockRepository.sbsUsers)
                 {
                     if (string.Equals(u.UserId, UserId))
                     {
                         return u.UserName;
                     }
                 }
-                return null;
+                return null;*/
             }
             set
             {
-                foreach (SBS9User u in MockRepository.sbsUsers)
-                {
-                    if (string.Equals(u.UserId, UserId))
-                    {
-                        u.UserName = value;
-                    }
-                }
+                this.userName = value;
+                //foreach (SBS9User u in MockRepository.sbsUsers)
+                //{
+                //    if (string.Equals(u.UserId, UserId))
+                //    {
+                //        u.UserName = value;
+                //    }
+                //}
             }
         }
-
+        private string passWord;
         [ManagementConfiguration]
         public string PassWord
         {
             get
             {
-                foreach (SBS9User u in MockRepository.sbsUsers)
-                {
-                    if (string.Equals(u.UserId, UserId))
-                    {
-                        return u.PassWord;
-                    }
-                }
-                return null;
+                //foreach (SBS9User u in MockRepository.sbsUsers)
+                //{
+                //    if (string.Equals(u.UserId, UserId))
+                //    {
+                //        return u.PassWord;
+                //    }
+                //}
+                return passWord;
             }
             set
             {
-                foreach (SBS9User u in MockRepository.sbsUsers)
-                {
-                    if (string.Equals(u.UserId, UserId))
-                    {
-                        u.PassWord = value;
-                    }
-                }
+                this.passWord = value;
+                //foreach (SBS9User u in MockRepository.sbsUsers)
+                //{
+                //    if (string.Equals(u.UserId, UserId))
+                //    {
+                //        u.PassWord = value;
+                //    }
+                //}
             }
         }
 
+        private string email;
         [ManagementConfiguration]
         public string Email
         {
             get
             {
-                foreach (SBS9User u in MockRepository.sbsUsers)
-                {
-                    if (string.Equals(u.UserId, UserId))
-                    {
-                        return u.Email;
-                    }
-                }
-                return null;
+                //foreach (SBS9User u in MockRepository.sbsUsers)
+                //{
+                //    if (string.Equals(u.UserId, UserId))
+                //    {
+                //        return u.Email;
+                //    }
+                //}
+                return email;
             }
             set
             {
-                foreach (SBS9User u in MockRepository.sbsUsers)
-                {
-                    if (string.Equals(u.UserId, UserId))
-                    {
-                        u.Email = value;
-                    }
-                }
+                //foreach (SBS9User u in MockRepository.sbsUsers)
+                //{
+                //    if (string.Equals(u.UserId, UserId))
+                //    {
+                //        u.Email = value;
+                //    }
+                //}
+                this.email = value;
             }
         }
         [ManagementBind]

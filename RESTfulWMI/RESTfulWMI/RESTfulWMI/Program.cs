@@ -10,6 +10,7 @@ namespace RESTfulWMI
     {
         public static void Main(string[] args)
         {
+            new SBS9User("andy", "andypswd", "andliu@microsoft.com");
             InstrumentationManager.RegisterType(typeof(SBS9User));
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
