@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Management.Instrumentation;
 using System.Collections;
+using System.Threading;
 
 namespace RESTfulWMI
 {
@@ -158,6 +159,7 @@ namespace RESTfulWMI
         [ManagementEnumerator]
         static public IEnumerable GetSBSUsers()
         {
+            Console.WriteLine("hello stupid:" + Thread.CurrentPrincipal.Identity.Name);
             foreach (SBS9User user in MockRepository.sbsUsers)
             {
                 yield return user;
