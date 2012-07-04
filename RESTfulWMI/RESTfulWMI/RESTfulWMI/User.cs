@@ -19,6 +19,7 @@ namespace RESTfulWMI
         {
             get
             {
+                Console.WriteLine("we are getting the UserName" + userName);
                 return userName;
                 /*foreach (SBS9User u in MockRepository.sbsUsers)
                 {
@@ -31,6 +32,7 @@ namespace RESTfulWMI
             }
             set
             {
+                Console.WriteLine("we are setting the UserName" + value);
                 this.userName = value;
                 //foreach (SBS9User u in MockRepository.sbsUsers)
                 //{
@@ -54,10 +56,12 @@ namespace RESTfulWMI
                 //        return u.PassWord;
                 //    }
                 //}
+                Console.WriteLine("we are getting the passWord" + passWord);
                 return passWord;
             }
             set
             {
+                Console.WriteLine("we are setting the passWord" + value);
                 this.passWord = value;
                 //foreach (SBS9User u in MockRepository.sbsUsers)
                 //{
@@ -82,6 +86,7 @@ namespace RESTfulWMI
                 //        return u.Email;
                 //    }
                 //}
+                Console.WriteLine("we are getting the email" + email);
                 return email;
             }
             set
@@ -93,6 +98,7 @@ namespace RESTfulWMI
                 //        u.Email = value;
                 //    }
                 //}
+                Console.WriteLine("we are setting the email" + value);
                 this.email = value;
             }
         }
@@ -118,8 +124,9 @@ namespace RESTfulWMI
             this.Email = Email;
         }
         [ManagementCreate]
-        public static SBS9User StartProcess(string UserName,string PassWord,string Email)
+        public static SBS9User CreateUser(string UserName,string PassWord,string Email)
         {
+            Console.WriteLine("we are creating user with UserName:" + UserName);
             SBS9User newUser = new SBS9User(UserName, PassWord, Email);
             return newUser;
         }
