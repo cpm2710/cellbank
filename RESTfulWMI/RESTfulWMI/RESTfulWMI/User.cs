@@ -7,7 +7,7 @@ using System.Collections;
 
 namespace RESTfulWMI
 {
-    [ManagementEntity(Name = "SBS9_User")]
+    [ManagementEntity(Name = "SBS9_User", Singleton = false)]
     public class SBS9User
     {
         [ManagementKey]
@@ -117,6 +117,18 @@ namespace RESTfulWMI
             this.PassWord = PassWord;
             this.Email = Email;
         }
+        [ManagementCreate]
+        public static SBS9User StartProcess(string UserName,string PassWord,string Email)
+        {
+            SBS9User newUser = new SBS9User(UserName, PassWord, Email);
+            return newUser;
+        }
+        [ManagementRemove]
+        public void DeleteUser()
+        {
+            Console.WriteLine("we are deleting the user with UserId:" + this.UserId);
+        }
+
         /*[ManagementTask]
         static public SBS8User Create(string FullName, string PassWord, string Email)
         {
