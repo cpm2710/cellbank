@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Management;
+using System.Threading;
 
 namespace Test
 {
@@ -10,20 +11,28 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            ConnectionOptions Conn = new ConnectionOptions();
-            //Conn.Username = "wmitest";
-            //Conn.Password = "wmitest";
-            ManagementScope ms = new ManagementScope(@"\\.\root\sbs9",Conn);
-            ms.Connect();
+            ThreadStart ts = new ThreadStart(() => {
 
-            ObjectQuery query = new ObjectQuery("select * from sbs9_user");
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(ms, query);
-            ManagementObjectCollection users = searcher.Get();
+                Server s = new Server();
+                //s.StartREST();
+                s.StartWMI();
+            });
+            Thread t = new Thread(ts);
+            t.Start();
+            t.Join();
 
-            foreach (ManagementObject mo in users)
+            ThreadStart ts2 = new ThreadStart(() =>
             {
-                Console.WriteLine(mo["UserName"]);
-            }
+
+                Server s2 = new Server();
+                s2.StartREST();
+                s2.StartWMI();
+            });
+            Thread t2 = new Thread(ts2);
+            t2.Start();
+            t2.Join();
+            Console.ReadLine();
+
             //ManagementClass mc=new ManagementClass(
             //ManagementClass mc = new ManagementClass("SBS9_USER");
            // mc.GetInstances();
