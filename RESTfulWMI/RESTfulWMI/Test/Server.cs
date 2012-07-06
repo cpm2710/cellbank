@@ -13,16 +13,14 @@ namespace Test
         public void StartWMI()
         {
             InstrumentationManager.RegisterType(typeof(SBS9User));
-            Console.WriteLine("Press enter to exit");
-            Console.ReadLine();
             InstrumentationManager.UnregisterType(typeof(SBS9User));
         }
         public void StartREST()
         {
-            int port = 80;
+            /*int port = 80;
             Uri baseAddress = new Uri("http://localhost:" + port++);
             ServiceHost sh = new ServiceHost(typeof(SBS9UserServiceWrapper), baseAddress);
-            sh.Open();
+            sh.Open();*/
         }
     }
 }

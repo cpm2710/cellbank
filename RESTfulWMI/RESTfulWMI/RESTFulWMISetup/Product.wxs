@@ -18,14 +18,23 @@
         <Directory Id="INSTALLLOCATION" Name="WindowsServer2012WMIService">
           
           <Component Id="WindowsServer2012WMIComponent" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2">
-            <File Id="service_exe" Name="Test.exe" Source="$(var.BUILDTARGET)Test.exe" Assembly=".net" KeyPath="yes"></File>
-            <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc" DisplayName="Windows Server 2012 Essentials WMI Service" Description="This service provides the wmi part of the windows server 2012 essentials." Start="auto" Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+            <File Id="service_exe" Name="Test.exe" Source="$(var.BUILDTARGET)Test.exe"></File>
+            <File Id="user_business_object" Name="UserBusinessObject.dll" Source="$(var.BUILDTARGET)UserBusinessObject.dll"></File>
+            <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc6" 
+                            DisplayName="Windows Server 2012 Essentials WMI Service6" 
+                            Description="This service provides the wmi part of the windows server 2012 essentials." 
+                            Start="demand" 
+                            Account="LocalSystem" ErrorControl="ignore" Interactive="no">
             </ServiceInstall>
-            <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc" Wait="yes" />
+            <ServiceControl Id="StartService" Stop="both" Remove="uninstall" Name="ws2012wmisvc2"/>
+            
           </Component>
           <Directory Id="GAC" Name="GAC">
-            <Component Id="UserBusinessObject" Guid="22887611-B13E-41EE-897C-D78830E68AEB">
-              <File Id="user_business_object" Name="UserBusinessObject.dll" Source="$(var.BUILDTARGET)UserBusinessObject.dll" Assembly=".net" KeyPath="yes"></File>
+            <Component Id="UserBusinessObjectGAC" Guid="22887611-B13E-41EE-897C-D78830E68AEB">
+              <File Id="user_business_object_gac" Name="UserBusinessObject.dll" Source="$(var.BUILDTARGET)UserBusinessObject.dll" Assembly=".net" KeyPath="yes"></File>
+            </Component>
+            <Component Id="TestGAC" Guid="28E9E9B3-3F34-427E-B003-C49B61836E48">
+              <File Id="test_exe_gac" Name="Test.exe" Source="$(var.BUILDTARGET)Test.exe" Assembly=".net" KeyPath="yes"></File>
             </Component>
           </Directory>
         </Directory>
@@ -38,7 +47,8 @@
 
       <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
       <ComponentRef Id="WindowsServer2012WMIComponent" />
-      <ComponentRef Id="UserBusinessObject"/>
+      <ComponentRef Id="UserBusinessObjectGAC"/>
+      <ComponentRef Id="TestGAC"/>
     </Feature>
   </Product>
 </Wix>

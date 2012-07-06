@@ -31,7 +31,6 @@ namespace Test
             Thread t2 = new Thread(ts2);
             t2.Start();
             t2.Join();
-            Console.ReadLine();
 
             //ManagementClass mc=new ManagementClass(
             //ManagementClass mc = new ManagementClass("SBS9_USER");
