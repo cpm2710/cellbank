@@ -6,7 +6,7 @@ using System.Management.Instrumentation;
 using System.Collections;
 using System.Management;
 
-[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.Decoupled)]    
+[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.LocalSystem)]    
 namespace RESTfulWMI
 {
     [System.ComponentModel.RunInstaller(true)]
