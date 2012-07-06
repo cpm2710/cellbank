@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+ <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+ <?define BUILDTARGET="G:Win7TFSVenusSrcBRC UpdaterUpdaterClientBRCUpdaterbinRelease" ?>
+ <Product Id="1195f5eb-4a35-4259-9c26-4d069e722e49" Name="BHO Upgrade Service" Language="1033" Version="1.0.0.0"
+ Manufacturer="BHO Upgrade Service" UpgradeCode="ad16898a-76f5-40f8-a253-7cc9cc31f8c6">
+ <Package Id="*" Description="BHO Upgrade Service Installer package" Comments="This is used to upload the BRC log."
+ Manufacturer="Microsoft Corporation"
+ InstallerVersion="200" Compressed="yes"/>
+ <Upgrade Id="92430A4C-BE2B-42B6-9EAC-D0F48ED7408E">
+ <UpgradeVersion OnlyDetect="no" Property="PROJECT_UPGRADE" Maximum="1.0.0.0" IncludeMaximum="no" RemoveFeatures="all"/>
+ <UpgradeVersion OnlyDetect="yes" Property="PROJECT_DOWNGRADE" Minimum="1.0.0.0" IncludeMinimum="no"/>
+ </Upgrade>
+ <Property Id="PROJECT_UPGRADE" Secure="yes"/>
+ <Property Id="PROJECT_DOWNGRADE" Secure="yes"/>
+ <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+ <Condition Message="You must have administrator privileges to install the application."><![CDATA[Privileged]]></Condition>
+ <Directory Id="TARGETDIR" Name="SourceDir">
+ <Directory Id="ProgramFilesFolder">
+ <Directory Id="INSTALLLOCATION" Name="BHO Upgrade Service">
+ <Component Id="ProductComponent" Guid="06FDC340-2560-48D8-A58F-81B8833C51E1">
+ <File Id="Updater.exe" Source="$(var.BUILDTARGET)Updater.exe" />
+ <File Id="Updater.exe.config" Source="$(var.BUILDTARGET)Updater.exe.config" />
+ <File Id="TaskManager.dll" Source="$(var.BUILDTARGET)TaskManager.dll" />
+ <File Id="RoleModel.dll" Source="$(var.BUILDTARGET)RoleModel.dll" />
+ <File Id="RoleEngine.dll" Source="$(var.BUILDTARGET)RoleEngine.dll" />
+ <File Id="DownLoadEngine.dll" Source="$(var.BUILDTARGET)DownLoadEngine.dll" />
+ <File Id="Microsoft.Practices.ObjectBuilder2.dll" Source="$(var.BUILDTARGET)Microsoft.Practices.ObjectBuilder2.dll" />
+ <File Id="Microsoft.Practices.Unity.dll" Source="$(var.BUILDTARGET)Microsoft.Practices.Unity.dll"/>
+ <File Id="ExceptionHandlerProvider.dll" Source="$(var.BUILDTARGET)ExceptionHandlerProvider.dll" />
+ <RegistryKey Action="createAndRemoveOnUninstall" Root="HKLM" Key="SOFTWARESoftLab">
+ <RegistryValue Name="Name" Value="BHO" Type="string"/>
+ <RegistryValue Name="Path" Value="[INSTALLDIR]" Type="string"/>
+ <RegistryValue Name="Version" Value="2.5" Type="string"/>
+ </RegistryKey>
+ <!–<RemoveFolder Id="DeleteFolder" Directory="[INSTALLDIR]" On="uninstall"/>–>
+ <ServiceInstall
+ Id="ServiceInstaller"
+ Type="ownProcess"
+ Vital="yes"
+ Name="BHOUS"
+ DisplayName="BHO Upgrade Service"
+ Description="This service is used to upgrade BHO."
+ Start="auto"
+ Account="LocalSystem"
+ ErrorControl="ignore"
+ Interactive="no">
+ </ServiceInstall>
+ <ServiceControl Id="StartService" Start="install" Stop="both"
+ Remove="uninstall" Name="BHOUS" Wait="yes" />
+ </Component>
+ </Directory>
+ </Directory>
+ </Directory>
+ <CustomAction Id="NoDownGrade" Error="A later version of [ProductName] is already installed." />
+ <InstallExecuteSequence>
+ <LaunchConditions After="AppSearch"></LaunchConditions>
+ <Custom Action="NoDownGrade" After="FindRelatedProducts"><![CDATA[PROJECT_DOWNGRADE]]></Custom>
+ <RemoveExistingProducts After="InstallFinalize"/>
+ </InstallExecuteSequence>
+ <Feature Id="ProductFeature" Title="BHO Upgrade Service" Level="1">
+ <ComponentRef Id="ProductComponent" />
+ <!–<ComponentRef Id="RegistryComponent" />–>
+ </Feature>
+ </Product>
+ </Wix>
