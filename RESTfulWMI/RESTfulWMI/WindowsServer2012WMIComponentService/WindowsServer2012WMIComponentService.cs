@@ -8,6 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Management.Instrumentation;
 using UserBusinessObject;
+using System.Configuration.Install;
 
 namespace WindowsServer2012WMIComponentService
 {
@@ -15,7 +16,7 @@ namespace WindowsServer2012WMIComponentService
     {
         public WindowsServer2012WMIComponentService()
         {
-            this.ServiceName = "";
+            this.ServiceName = "ws2012wmisvc";
         }
         public WindowsServer2012WMIComponentService(String serviceName)
         {
@@ -23,6 +24,12 @@ namespace WindowsServer2012WMIComponentService
         }
         protected override void OnStart(string[] args)
         {
+            /*System.Configuration.Install.AssemblyInstaller myAssemblyInstaller = new System.Configuration.Install.AssemblyInstaller();
+            myAssemblyInstaller.Path = "UserBusinessObject.dll";
+            myAssemblyInstaller.Install(null);
+            myAssemblyInstaller.Dispose();*/
+            //SBSWMIInstaller installer = new SBSWMIInstaller();
+           // ManagedInstallerClass.InstallHelper(new string[]{"UserBusinessObject.dll"});
             InstrumentationManager.RegisterType(typeof(SBS9User));
             InstrumentationManager.UnregisterType(typeof(SBS9User));
         }
