@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <?define BUILDTARGET="..\Test\bin\Release\" ?>
+  <?define BUILDTARGET="C:\WorkSpace\Microsoft\RestFulWMIComponentBuild\" ?>
   <Product Id="bb227452-8611-4e01-bfe0-d3f91dcc1ef9"
            Name="RESTFulWMISetup"
            Language="1033" Version="1.0.0.0"
@@ -18,7 +18,7 @@
         <Directory Id="INSTALLLOCATION" Name="WindowsServer2012WMIService">
           
           <Component Id="WindowsServer2012WMIComponent" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2">
-            <File Id="service_exe" Name="Test.exe" Source="$(var.BUILDTARGET)Test.exe"></File>
+            <File Id="service_exe" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe"></File>
             <File Id="user_business_object" Name="UserBusinessObject.dll" Source="$(var.BUILDTARGET)UserBusinessObject.dll"></File>
             <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc6" 
                             DisplayName="Windows Server 2012 Essentials WMI Service6" 
@@ -34,7 +34,7 @@
               <File Id="user_business_object_gac" Name="UserBusinessObject.dll" Source="$(var.BUILDTARGET)UserBusinessObject.dll" Assembly=".net" KeyPath="yes"></File>
             </Component>
             <Component Id="TestGAC" Guid="28E9E9B3-3F34-427E-B003-C49B61836E48">
-              <File Id="test_exe_gac" Name="Test.exe" Source="$(var.BUILDTARGET)Test.exe" Assembly=".net" KeyPath="yes"></File>
+              <File Id="test_exe_gac" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe" Assembly=".net" KeyPath="yes"></File>
             </Component>
           </Directory>
         </Directory>

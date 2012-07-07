@@ -16,7 +16,7 @@ namespace WindowsServer2012WMIComponentService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
 			{ 
-				new WindowsServer2012WMIComponentService() 
+				new WindowsServer2012WMIComponentService("") 
 			};
             ServiceBase.Run(ServicesToRun);
         }
