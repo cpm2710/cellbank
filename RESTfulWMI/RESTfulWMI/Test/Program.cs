@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Management;
 using System.Threading;
+using System.Collections;
+using System.Configuration.Install;
 
 namespace Test
 {
@@ -11,6 +13,20 @@ namespace Test
     {
         static void Main(string[] args)
         {
+
+
+
+
+            /*
+             * string[] installArgs = new string[] { @"C:\Program Files (x86)\WindowsServer2012WMIService\UserBusinessObject.dll" };
+            ManagedInstallerClass.InstallHelper(installArgs);
+             * System.Configuration.Install.AssemblyInstaller myAssemblyInstaller = new System.Configuration.Install.AssemblyInstaller();
+            myAssemblyInstaller.Path = @"C:\Program Files (x86)\WindowsServer2012WMIService\UserBusinessObject.dll";
+            Hashtable mySavedState = new Hashtable();
+myAssemblyInstaller.Install(mySavedState); 
+myAssemblyInstaller.Commit(mySavedState); 
+            myAssemblyInstaller.Dispose();
+            */
             ThreadStart ts = new ThreadStart(() => {
 
                 Server s = new Server();
