@@ -31,7 +31,7 @@
                             Start="demand" 
                             Account="LocalSystem" ErrorControl="ignore" Interactive="no">
             </ServiceInstall>
-            <ServiceControl Id="StartService" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
+            <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
             
           </Component>
           <Component Id="WindowsServer2012WebApiConfig" Guid="1FF9CC19-4050-4D84-8F0C-FF4B52B0DFA1" Win64="yes">

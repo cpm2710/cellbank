@@ -10,13 +10,13 @@ namespace UserBusinessObject
         private const String logFile = @"c:\windowsserver2012wmicomponent.log";
         public static void Log(string msg)
         {
-            using (FileStream fs = new FileStream(logFile, FileMode.Append, FileAccess.Write))
+            /*using (FileStream fs = new FileStream(logFile, FileMode.Append, FileAccess.Write))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
                     sw.WriteLine(msg);
                 }
-            }
+            }*/
         }
     }
 }
