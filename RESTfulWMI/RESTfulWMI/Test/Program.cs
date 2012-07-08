@@ -6,6 +6,7 @@ using System.Management;
 using System.Threading;
 using System.Collections;
 using System.Configuration.Install;
+using System.Security.Principal;
 
 namespace Test
 {
@@ -13,9 +14,10 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            //WindowsPrincipal principal = (WindowsPrincipal)Thread.CurrentPrincipal;
+           //bool user = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
-
-
+            //String abc=Thread.CurrentPrincipal.Identity.Name;
 
             /*
              * string[] installArgs = new string[] { @"C:\Program Files (x86)\WindowsServer2012WMIService\UserBusinessObject.dll" };

@@ -30,6 +30,7 @@ namespace UserBusinessObject
             }
             set
             {
+                Logger.Log("");
                 Console.WriteLine("we are setting the UserName" + value);
                 this.userName = value;
             }

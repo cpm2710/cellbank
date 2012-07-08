@@ -60,6 +60,12 @@
       <RefTargetDir>INSTALLLOCATION</RefTargetDir>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixIIsExtension">
+      <HintPath>$(WixExtDir)\WixIIsExtension.dll</HintPath>
+      <Name>WixIIsExtension</Name>
+    </WixExtension>
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

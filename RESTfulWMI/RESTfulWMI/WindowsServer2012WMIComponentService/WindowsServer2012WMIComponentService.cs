@@ -33,11 +33,14 @@ namespace WindowsServer2012WMIComponentService
             //SBSWMIInstaller installer = new SBSWMIInstaller();
            // ManagedInstallerClass.InstallHelper(new string[]{"UserBusinessObject.dll"});
             InstrumentationManager.RegisterType(typeof(SBS9User));
-            //InstrumentationManager.UnregisterType(typeof(SBS9User));
+            //
         }
 
         protected override void OnStop()
         {
+            string[] installArgs = new string[] { "/u", @"C:\Program Files (x86)\WindowsServer2012WMIService\UserBusinessObject.dll" };
+            ManagedInstallerClass.InstallHelper(installArgs);
+            InstrumentationManager.UnregisterType(typeof(SBS9User));
         }
     }
 }
