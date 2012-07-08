@@ -16,6 +16,19 @@ namespace WindowsServer2012RESTfulService
     {
         protected void Application_Start()
         {
+            /*RouteTable.Routes.MapHttpRoute(
+        name: "DefaultApi",
+        routeTemplate: "api/{controller}",
+        defaults: new { id = System.Web.Http.RouteParameter.Optional }
+        ); 
+
+            RouteTable.Routes.MapHttpRoute(
+        name: "DefaultApi2",
+        routeTemplate: "api/{controller}/{id}",
+        defaults: new { id = System.Web.Http.RouteParameter.Optional }
+        ); */
+
+
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

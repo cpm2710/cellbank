@@ -11,6 +11,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RESTFulWMISetup", "RESTFulW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsServer2012WMIComponentService", "WindowsServer2012WMIComponentService\WindowsServer2012WMIComponentService.csproj", "{EB1CC87E-5014-44A9-8024-942E17F78F25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsServer2012RESTfulService", "WindowsServer2012RESTfulService\WindowsServer2012RESTfulService.csproj", "{5CB647BE-89E8-4B7A-9029-740BD7749BDA}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -75,6 +77,16 @@ Global
 		{EB1CC87E-5014-44A9-8024-942E17F78F25}.Release|Mixed Platforms.Build.0 = Release|x86
 		{EB1CC87E-5014-44A9-8024-942E17F78F25}.Release|x86.ActiveCfg = Release|x86
 		{EB1CC87E-5014-44A9-8024-942E17F78F25}.Release|x86.Build.0 = Release|x86
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5CB647BE-89E8-4B7A-9029-740BD7749BDA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,7 +24,7 @@ namespace WindowsServer2012WMIComponentService
         }
         protected override void OnStart(string[] args)
         {
-            string[] installArgs = new string[] { @"C:\Program Files (x86)\WindowsServer2012WMIService\UserBusinessObject.dll" };
+            string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
             ManagedInstallerClass.InstallHelper(installArgs);
             /*System.Configuration.Install.AssemblyInstaller myAssemblyInstaller = new System.Configuration.Install.AssemblyInstaller();
             myAssemblyInstaller.Path = "UserBusinessObject.dll";
@@ -38,7 +38,7 @@ namespace WindowsServer2012WMIComponentService
 
         protected override void OnStop()
         {
-            string[] installArgs = new string[] { "/u", @"C:\Program Files (x86)\WindowsServer2012WMIService\UserBusinessObject.dll" };
+            string[] installArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
             ManagedInstallerClass.InstallHelper(installArgs);
             InstrumentationManager.UnregisterType(typeof(SBS9User));
         }
