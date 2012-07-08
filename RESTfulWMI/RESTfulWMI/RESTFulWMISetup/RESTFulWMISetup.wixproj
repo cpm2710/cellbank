@@ -27,25 +27,17 @@
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RESTfulWMI\RESTfulWMI.csproj">
-      <Name>RESTfulWMI</Name>
-      <Project>{a4a56652-8312-4e6d-b76e-1b019f4ed663}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLLOCATION</RefTargetDir>
-    </ProjectReference>
-    <ProjectReference Include="..\Test\Test.csproj">
-      <Name>Test</Name>
-      <Project>{1d9b5c30-b3db-443b-b7ee-ef2262004a0d}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLLOCATION</RefTargetDir>
-    </ProjectReference>
     <ProjectReference Include="..\UserBusinessObject\UserBusinessObject.csproj">
       <Name>UserBusinessObject</Name>
       <Project>{71d5a9a2-fda6-4d73-a1f1-61cd0f7f4cac}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLLOCATION</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\UserWebApi\UserWebApi.csproj">
+      <Name>UserWebApi</Name>
+      <Project>{f2f3aa1d-e27e-4403-a51d-5c6217f153e1}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
