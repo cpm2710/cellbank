@@ -13,13 +13,13 @@ namespace UserBusinessObject
         {
             lock (sync_obj)
             {
-               /* using (FileStream fs = new FileStream(logFile, FileMode.OpenOrCreate, FileAccess.Write))
+                using (FileStream fs = new FileStream(logFile, FileMode.OpenOrCreate, FileAccess.Write))
                 {
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
                         sw.WriteLine(msg);
                     }
-                }*/
+                }
             }
         }
     }

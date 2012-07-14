@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Management.Instrumentation;
-[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.Decoupled)]
+[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.LocalSystem)]
 namespace UserBusinessObject
 {
     [System.ComponentModel.RunInstaller(true)]
