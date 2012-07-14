@@ -7,16 +7,20 @@ namespace UserBusinessObject
 {
     public static class Logger
     {
-        private const String logFile = @"c:\windowsserver2012wmicomponent.log";
-        public static void Log(string msg)
+        private const String logFile = @"C:\Users\andy\Desktop\windowsserver2012wmicomponent.log";
+        private static object sync_obj = new object();
+        public static void WriteLine(string msg)
         {
-            /*using (FileStream fs = new FileStream(logFile, FileMode.Append, FileAccess.Write))
+            lock (sync_obj)
             {
-                using (StreamWriter sw = new StreamWriter(fs))
+               /* using (FileStream fs = new FileStream(logFile, FileMode.OpenOrCreate, FileAccess.Write))
                 {
-                    sw.WriteLine(msg);
-                }
-            }*/
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.WriteLine(msg);
+                    }
+                }*/
+            }
         }
     }
 }

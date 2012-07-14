@@ -9,62 +9,60 @@ using System.Collections;
 using System.Threading;
 namespace UserBusinessObject
 {
-    [DataContract]
     [ManagementEntity(Name = "SBS9_User", Singleton = false)]
     public class SBS9User
     {
         private string userId;
         [ManagementKey]
-        [DataMember]
-        public string UserId { get { return userId; } set { this.userId = value; } }
+        public string UserId
+        {
+            get { return userId; }
+            set { this.userId = value; }
+        }
 
         private string userName;
-        [DataMember]
-        [ManagementConfiguration]
+        [ManagementConfiguration(Mode = ManagementConfigurationType.OnCommit)]
         public string UserName
         {
             get
             {
-                Console.WriteLine("we are getting the UserName" + userName);
+                Logger.WriteLine("we are getting the UserName" + userName);
                 return userName;
             }
             set
             {
-                Logger.Log("");
-                Console.WriteLine("we are setting the UserName" + value);
+                Logger.WriteLine("we are setting the UserName" + value);
                 this.userName = value;
             }
         }
         private string passWord;
-        [DataMember]
-        [ManagementConfiguration]
+        [ManagementConfiguration(Mode = ManagementConfigurationType.OnCommit)]
         public string PassWord
         {
             get
             {                
-                Console.WriteLine("we are getting the passWord" + passWord);
+                Logger.WriteLine("we are getting the passWord" + passWord);
                 return passWord;
             }
             set
             {
-                Console.WriteLine("we are setting the passWord" + value);
+                Logger.WriteLine("we are setting the passWord" + value);
                 this.passWord = value;
             }
         }
 
         private string email;
-        [DataMember]
-        [ManagementConfiguration]
+        [ManagementConfiguration(Mode = ManagementConfigurationType.OnCommit)]
         public string Email
         {
             get
             {
-                Console.WriteLine("we are getting the email" + email);
+                Logger.WriteLine("we are getting the email" + email);
                 return email;
             }
             set
             {
-                Console.WriteLine("we are setting the email" + value);
+                Logger.WriteLine("we are setting the email" + value);
                 this.email = value;
             }
         }
@@ -92,60 +90,29 @@ namespace UserBusinessObject
         [ManagementCreate]
         public static SBS9User CreateUser(string UserName,string PassWord,string Email)
         {
-            Console.WriteLine("we are creating user with UserName:" + UserName);
+            Logger.WriteLine("we are creating user with UserName:" + UserName);
             SBS9User newUser = new SBS9User(UserName, PassWord, Email);
             return newUser;
         }
         [ManagementRemove]
         public void DeleteUser()
         {
-            Console.WriteLine("we are deleting the user with UserId:" + this.UserId);
+            Logger.WriteLine("we are deleting the user with UserId:" + this.UserId);
+        }
+        [ManagementCommit]
+        public void Commitment()
+        {
+            Logger.WriteLine("now we are commiting");
+
         }
         [ManagementEnumerator]
         static public IEnumerable GetSBSUsers()
         {
-            Console.WriteLine("hello stupid:" + Thread.CurrentPrincipal.Identity.Name);
+            Logger.WriteLine("hello stupid:" + Thread.CurrentPrincipal.Identity.Name);
             foreach (SBS9User user in MockRepository.sbsUsers)
             {
                 yield return user;
             }
         }
-    }
-    [ServiceContract]
-    public class SBS9UserServiceWrapper
-    {
-        [OperationContract]
-        public SBS9User CreateUser(SBS9User user)
-        {
-            return SBS9User.CreateUser(user.UserName, user.PassWord, user.Email);
-        }
-        [OperationContract]
-        public void DeleteUser(string id)
-        {
-            foreach (SBS9User user in MockRepository.sbsUsers)
-            {
-                if (string.Equals(user.UserId, id))
-                {
-                    user.DeleteUser();
-                }
-            }
-            //SBS9User foundedUser;
-            //foundedUser.DeleteUser();
-        }
-        [OperationContract]
-        public SBS9User UpdateUser(SBS9User user)
-        {
-            foreach (SBS9User u in MockRepository.sbsUsers)
-            {
-                if (string.Equals(user.UserId, u.UserId))
-                {
-                    u.UserName = user.UserName;
-                    u.Email = user.Email;
-                    u.PassWord = user.PassWord;
-                    return u;
-                }
-            }
-            return user;
-        }
-    }
+    }    
 }

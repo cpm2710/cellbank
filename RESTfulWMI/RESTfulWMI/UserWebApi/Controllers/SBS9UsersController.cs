@@ -10,11 +10,11 @@ namespace WindowsServer2012RESTfulService.Controllers
 {
     public class SBS9UsersController : ApiController
     {
-        
 
-        public IEnumerable<SBS9User> GetAllProducts()
+        [Queryable]
+        public IQueryable<SBS9User> GetAllSBS9Users()
         {
-            return MockRepository.sbsUsers;
+            return MockRepository.sbsUsers.AsQueryable();
         }
 
         public SBS9User GetSBS9UserById(string id)
@@ -28,12 +28,11 @@ namespace WindowsServer2012RESTfulService.Controllers
             return product;
         }
 
-        public IEnumerable<SBS9User> GetSBS9UsersByName(string name)
+        public IEnumerable<SBS9User> GetSBS9UserByByUserName(string UserName)
         {
             return MockRepository.sbsUsers.Where(
-                (p) => string.Equals(p.UserName, name,
+                (p) => string.Equals(p.UserName, UserName,
                     StringComparison.OrdinalIgnoreCase));
-        } 
-
+        }
     }
 }

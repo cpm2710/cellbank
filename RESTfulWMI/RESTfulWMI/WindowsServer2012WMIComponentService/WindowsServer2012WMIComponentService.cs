@@ -34,6 +34,8 @@ namespace WindowsServer2012WMIComponentService
            // ManagedInstallerClass.InstallHelper(new string[]{"UserBusinessObject.dll"});
             InstrumentationManager.RegisterType(typeof(SBS9User));
             //
+
+            Logger.WriteLine("we started");
         }
 
         protected override void OnStop()
