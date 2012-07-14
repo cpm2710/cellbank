@@ -83,9 +83,7 @@ namespace UserBusinessObject
             }
             return null;
         }
-        /// <summary>
-        /// The Constructor to create new instances of the LocalAdmins class...
-        /// </summary>
+
         public SBSUser(string UserName, string PassWord, string Email)
         {
             this.userId = Guid.NewGuid().ToString();

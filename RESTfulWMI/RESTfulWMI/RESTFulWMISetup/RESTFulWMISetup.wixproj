@@ -27,16 +27,16 @@
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserBusinessObject\UserBusinessObject.csproj">
-      <Name>UserBusinessObject</Name>
+    <ProjectReference Include="..\UserBusinessObject\SBSBusinessObject.csproj">
+      <Name>SBSBusinessObject</Name>
       <Project>{71d5a9a2-fda6-4d73-a1f1-61cd0f7f4cac}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLLOCATION</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\UserWebApi\UserWebApi.csproj">
-      <Name>UserWebApi</Name>
+    <ProjectReference Include="..\UserWebApi\SBSWebApi.csproj">
+      <Name>SBSWebApi</Name>
       <Project>{f2f3aa1d-e27e-4403-a51d-5c6217f153e1}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>

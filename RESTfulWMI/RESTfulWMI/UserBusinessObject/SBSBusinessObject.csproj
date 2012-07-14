@@ -8,8 +8,8 @@
     <ProjectGuid>{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UserBusinessObject</RootNamespace>
-    <AssemblyName>UserBusinessObject</AssemblyName>
+    <RootNamespace>SBSBusinessObject</RootNamespace>
+    <AssemblyName>SBSBusinessObject</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{1D9B5C30-B3DB-443B-B7EE-EF2262004A0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserBusinessObject", "UserBusinessObject\UserBusinessObject.csproj", "{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSBusinessObject", "UserBusinessObject\SBSBusinessObject.csproj", "{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTfulWMI", "RESTfulWMI\RESTfulWMI.csproj", "{A4A56652-8312-4E6D-B76E-1B019F4ED663}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsServer2012WMICompone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsServer2012RESTfulService", "WindowsServer2012RESTfulService\WindowsServer2012RESTfulService.csproj", "{5CB647BE-89E8-4B7A-9029-740BD7749BDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserWebApi", "UserWebApi\UserWebApi.csproj", "{F2F3AA1D-E27E-4403-A51D-5C6217F153E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSWebApi", "UserWebApi\SBSWebApi.csproj", "{F2F3AA1D-E27E-4403-A51D-5C6217F153E1}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

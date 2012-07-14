@@ -61,9 +61,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserBusinessObject\UserBusinessObject.csproj">
+    <ProjectReference Include="..\UserBusinessObject\SBSBusinessObject.csproj">
       <Project>{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}</Project>
-      <Name>UserBusinessObject</Name>
+      <Name>SBSBusinessObject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
