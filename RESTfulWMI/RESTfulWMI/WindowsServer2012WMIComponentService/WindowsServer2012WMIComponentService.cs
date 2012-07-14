@@ -7,7 +7,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Management.Instrumentation;
-using UserBusinessObject;
+using SBSBusinessObject;
 using System.Configuration.Install;
 
 namespace WindowsServer2012WMIComponentService
@@ -27,7 +27,7 @@ namespace WindowsServer2012WMIComponentService
             //string[] uninstallArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
             //ManagedInstallerClass.InstallHelper(uninstallArgs);
 
-            string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
+            string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
             ManagedInstallerClass.InstallHelper(installArgs);
             /*System.Configuration.Install.AssemblyInstaller myAssemblyInstaller = new System.Configuration.Install.AssemblyInstaller();
             myAssemblyInstaller.Path = "UserBusinessObject.dll";

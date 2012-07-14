@@ -5,8 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Management.Instrumentation;
-[assembly: WmiConfiguration(@"root/sbs9", HostingModel = ManagementHostingModel.LocalSystem)]
-namespace UserBusinessObject
+[assembly: WmiConfiguration(@"root/sbs", HostingModel = ManagementHostingModel.LocalSystem)]
+namespace SBSBusinessObject
 {
     [System.ComponentModel.RunInstaller(true)]
     public class SBSWMIInstaller : DefaultManagementInstaller

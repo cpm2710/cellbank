@@ -256,7 +256,7 @@
     <None Include="key.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserBusinessObject\SBSBusinessObject.csproj">
+    <ProjectReference Include="..\SBSBusinessObject\SBSBusinessObject.csproj">
       <Project>{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}</Project>
       <Name>SBSBusinessObject</Name>
     </ProjectReference>

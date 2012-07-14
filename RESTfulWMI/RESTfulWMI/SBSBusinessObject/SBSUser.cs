@@ -7,7 +7,7 @@ using System.Management.Instrumentation;
 using System.ServiceModel;
 using System.Collections;
 using System.Threading;
-namespace UserBusinessObject
+namespace SBSBusinessObject
 {
     [ManagementEntity(Name = "SBS_User", Singleton = false)]
     [DataContract]

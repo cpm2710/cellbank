@@ -6,7 +6,7 @@ using System.Management.Instrumentation;
 using System.Runtime.Serialization;
 using System.Threading;
 
-namespace UserBusinessObject
+namespace SBSBusinessObject
 {
     public enum DeviceType
     {

@@ -27,22 +27,6 @@
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserBusinessObject\SBSBusinessObject.csproj">
-      <Name>SBSBusinessObject</Name>
-      <Project>{71d5a9a2-fda6-4d73-a1f1-61cd0f7f4cac}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLLOCATION</RefTargetDir>
-    </ProjectReference>
-    <ProjectReference Include="..\UserWebApi\SBSWebApi.csproj">
-      <Name>SBSWebApi</Name>
-      <Project>{f2f3aa1d-e27e-4403-a51d-5c6217f153e1}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLLOCATION</RefTargetDir>
-    </ProjectReference>
     <ProjectReference Include="..\WindowsServer2012WMIComponentService\WindowsServer2012WMIComponentService.csproj">
       <Name>WindowsServer2012WMIComponentService</Name>
       <Project>{eb1cc87e-5014-44a9-8024-942e17f78f25}</Project>

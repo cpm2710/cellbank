@@ -96,7 +96,7 @@
               <File Id="sbs_business_object_gac" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll" Assembly=".net" KeyPath="yes"></File>
             </Component>
             <Component Id="WindowsServer2012WMIComponentServiceGAC" Guid="28E9E9B3-3F34-427E-B003-C49B61836E48" Win64="yes">
-              <File Id="test_exe_gac" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe" Assembly=".net" KeyPath="yes"></File>
+              <File Id="wmi_component_service_exe_gac" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe" Assembly=".net" KeyPath="yes"></File>
             </Component>
           </Directory>
         </Directory>

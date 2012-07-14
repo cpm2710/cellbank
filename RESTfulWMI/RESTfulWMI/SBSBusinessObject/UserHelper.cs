@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.DirectoryServices.AccountManagement;
 
-namespace UserBusinessObject
+namespace SBSBusinessObject
 {
     public class UserHelper
     {

@@ -5,7 +5,7 @@ using System.Web.Http;
 using System.Net;
 using System.Net.Http;
 using System.Diagnostics;
-using UserBusinessObject;
+using SBSBusinessObject;
 
 namespace WindowsServer2012RESTfulService
 {
