@@ -26,12 +26,12 @@ namespace UserBusinessObject
         {
             get
             {
-                Logger.WriteLine("we are getting the UserName" + userName);
+                Logger.WriteLine("we are getting the UserName: " + userName);
                 return userName;
             }
             set
             {
-                Logger.WriteLine("we are setting the UserName" + value);
+                Logger.WriteLine("we are setting the UserName: " + value);
                 this.userName = value;
             }
         }
@@ -40,13 +40,13 @@ namespace UserBusinessObject
         public string PassWord
         {
             get
-            {                
-                Logger.WriteLine("we are getting the passWord" + passWord);
+            {
+                Logger.WriteLine("we are getting the passWord: " + passWord);
                 return passWord;
             }
             set
             {
-                Logger.WriteLine("we are setting the passWord" + value);
+                Logger.WriteLine("we are setting the passWord: " + value);
                 this.passWord = value;
             }
         }
@@ -57,12 +57,12 @@ namespace UserBusinessObject
         {
             get
             {
-                Logger.WriteLine("we are getting the email" + email);
+                Logger.WriteLine("we are getting the email: " + email);
                 return email;
             }
             set
             {
-                Logger.WriteLine("we are setting the email" + value);
+                Logger.WriteLine("we are setting the email: " + value);
                 this.email = value;
             }
         }
@@ -82,22 +82,23 @@ namespace UserBusinessObject
         /// </summary>
         public SBS9User(string UserName, string PassWord, string Email)
         {
-            this.UserId = Guid.NewGuid().ToString();
-            this.UserName = UserName;
-            this.PassWord = PassWord;
-            this.Email = Email;
+            this.userId = Guid.NewGuid().ToString();
+            this.userName = UserName;
+            this.passWord = PassWord;
+            this.email = Email;
         }
         [ManagementCreate]
         public static SBS9User CreateUser(string UserName,string PassWord,string Email)
         {
-            Logger.WriteLine("we are creating user with UserName:" + UserName);
+            Logger.WriteLine("we are creating user with UserName: " + UserName);
             SBS9User newUser = new SBS9User(UserName, PassWord, Email);
+            MockRepository.sbsUsers.Add(newUser);
             return newUser;
         }
         [ManagementRemove]
         public void DeleteUser()
         {
-            Logger.WriteLine("we are deleting the user with UserId:" + this.UserId);
+            Logger.WriteLine("we are deleting the user with UserId: " + this.UserId);
         }
         [ManagementCommit]
         public void Commitment()
@@ -108,7 +109,7 @@ namespace UserBusinessObject
         [ManagementEnumerator]
         static public IEnumerable GetSBSUsers()
         {
-            Logger.WriteLine("hello stupid:" + Thread.CurrentPrincipal.Identity.Name);
+            Logger.WriteLine("hello stupid: " + Thread.CurrentPrincipal.Identity.Name);
             foreach (SBS9User user in MockRepository.sbsUsers)
             {
                 yield return user;

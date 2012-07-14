@@ -24,6 +24,9 @@ namespace WindowsServer2012WMIComponentService
         }
         protected override void OnStart(string[] args)
         {
+            //string[] uninstallArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
+            //ManagedInstallerClass.InstallHelper(uninstallArgs);
+
             string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
             ManagedInstallerClass.InstallHelper(installArgs);
             /*System.Configuration.Install.AssemblyInstaller myAssemblyInstaller = new System.Configuration.Install.AssemblyInstaller();
