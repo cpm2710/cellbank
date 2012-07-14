@@ -67,7 +67,7 @@ namespace UserBusinessObject
             }
         }
         [ManagementBind]
-        static public SBS9User GetInstance(string UserId)
+        public static SBS9User GetInstance(string UserId)
         {
             foreach (SBS9User u in MockRepository.sbsUsers)
             {
@@ -107,7 +107,7 @@ namespace UserBusinessObject
 
         }
         [ManagementEnumerator]
-        static public IEnumerable GetSBSUsers()
+        public static IEnumerable<SBS9User> GetSBSUsers()
         {
             Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.Identity.Name);
             foreach (SBS9User user in MockRepository.sbsUsers)

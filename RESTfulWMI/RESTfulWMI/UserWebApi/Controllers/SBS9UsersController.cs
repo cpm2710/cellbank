@@ -19,13 +19,14 @@ namespace WindowsServer2012RESTfulService.Controllers
 
         public SBS9User GetSBS9UserById(string id)
         {
-            var product = MockRepository.sbsUsers.FirstOrDefault((p) => p.UserId == id);
+            return SBS9User.GetInstance(id);
+            /*var product = MockRepository.sbsUsers.FirstOrDefault((p) => p.UserId == id);
             if (product == null)
             {
                 var resp = new HttpResponseMessage(HttpStatusCode.NotFound);
                 throw new HttpResponseException(resp);
             }
-            return product;
+            return product;*/
         }
 
         public IEnumerable<SBS9User> GetSBS9UserByByUserName(string UserName)
