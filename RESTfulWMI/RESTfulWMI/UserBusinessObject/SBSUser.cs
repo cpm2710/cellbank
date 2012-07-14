@@ -9,9 +9,9 @@ using System.Collections;
 using System.Threading;
 namespace UserBusinessObject
 {
-    [ManagementEntity(Name = "SBS9_User", Singleton = false)]
+    [ManagementEntity(Name = "SBS_User", Singleton = false)]
     [DataContract]
-    public class SBS9User
+    public class SBSUser
     {
         private string userId;
         [ManagementKey]
@@ -72,9 +72,9 @@ namespace UserBusinessObject
             }
         }
         [ManagementBind]
-        public static SBS9User GetInstance(string UserId)
+        public static SBSUser GetInstance(string UserId)
         {
-            foreach (SBS9User u in MockRepository.sbsUsers)
+            foreach (SBSUser u in MockRepository.sbsUsers)
             {
                 if (string.Equals(u.UserId, UserId))
                 {
@@ -86,7 +86,7 @@ namespace UserBusinessObject
         /// <summary>
         /// The Constructor to create new instances of the LocalAdmins class...
         /// </summary>
-        public SBS9User(string UserName, string PassWord, string Email)
+        public SBSUser(string UserName, string PassWord, string Email)
         {
             this.userId = Guid.NewGuid().ToString();
             this.userName = UserName;
@@ -94,10 +94,10 @@ namespace UserBusinessObject
             this.email = Email;
         }
         [ManagementCreate]
-        public static SBS9User CreateUser(string UserName,string PassWord,string Email)
+        public static SBSUser CreateUser(string UserName,string PassWord,string Email)
         {
             Logger.WriteLine("Creat user with UserName: " + UserName);
-            SBS9User newUser = new SBS9User(UserName, PassWord, Email);
+            SBSUser newUser = new SBSUser(UserName, PassWord, Email);
             MockRepository.sbsUsers.Add(newUser);
             return newUser;
         }
@@ -113,10 +113,10 @@ namespace UserBusinessObject
 
         }
         [ManagementEnumerator]
-        public static IEnumerable<SBS9User> GetSBSUsers()
+        public static IEnumerable<SBSUser> GetSBSUsers()
         {
             Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.Identity.Name);
-            foreach (SBS9User user in MockRepository.sbsUsers)
+            foreach (SBSUser user in MockRepository.sbsUsers)
             {
                 yield return user;
             }

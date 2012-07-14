@@ -8,18 +8,18 @@ using UserBusinessObject;
 
 namespace WindowsServer2012RESTfulService.Controllers
 {
-    public class SBS9UsersController : ApiController
+    public class SBSUsersController : ApiController
     {
 
         [Queryable(ResultLimit = 20)]
-        public IQueryable<SBS9User> GetAllSBS9Users()
+        public IQueryable<SBSUser> GetAllSBSUsers()
         {
             return MockRepository.sbsUsers.AsQueryable();
         }
 
-        public SBS9User GetSBS9UserById(string id)
+        public SBSUser GetSBSUserById(string id)
         {
-            return SBS9User.GetInstance(id);
+            return SBSUser.GetInstance(id);
             /*var product = MockRepository.sbsUsers.FirstOrDefault((p) => p.UserId == id);
             if (product == null)
             {
@@ -29,7 +29,7 @@ namespace WindowsServer2012RESTfulService.Controllers
             return product;*/
         }
 
-        public IEnumerable<SBS9User> GetSBS9UserByByUserName(string UserName)
+        public IEnumerable<SBSUser> GetSBSUserByByUserName(string UserName)
         {
             return MockRepository.sbsUsers.Where(
                 (p) => string.Equals(p.UserName, UserName,

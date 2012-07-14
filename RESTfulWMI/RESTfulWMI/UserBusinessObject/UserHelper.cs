@@ -33,7 +33,7 @@ namespace UserBusinessObject
                 return m_context;
             }
         }
-        public static void AddUser(SBS9User user){
+        public static void AddUser(SBSUser user){
             UserPrincipal userPrincipal = new UserPrincipal(Context);
             //if (lastName != null && lastName.Length > 0)
             userPrincipal.Surname = user.UserName;
