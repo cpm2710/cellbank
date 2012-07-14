@@ -28,6 +28,7 @@ namespace WindowsServer2012RESTfulService
         defaults: new { id = System.Web.Http.RouteParameter.Optional }
         ); */
 
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 
             AreaRegistration.RegisterAllAreas();
 

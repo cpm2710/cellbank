@@ -11,7 +11,7 @@ namespace WindowsServer2012RESTfulService.Controllers
     public class SBS9UsersController : ApiController
     {
 
-        [Queryable]
+        [Queryable(ResultLimit = 20)]
         public IQueryable<SBS9User> GetAllSBS9Users()
         {
             return MockRepository.sbsUsers.AsQueryable();

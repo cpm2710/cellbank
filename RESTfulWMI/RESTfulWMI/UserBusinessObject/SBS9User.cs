@@ -10,10 +10,12 @@ using System.Threading;
 namespace UserBusinessObject
 {
     [ManagementEntity(Name = "SBS9_User", Singleton = false)]
+    [DataContract]
     public class SBS9User
     {
         private string userId;
         [ManagementKey]
+        [DataMember]
         public string UserId
         {
             get { return userId; }
@@ -22,6 +24,7 @@ namespace UserBusinessObject
 
         private string userName;
         [ManagementConfiguration(Mode = ManagementConfigurationType.OnCommit)]
+        [DataMember]
         public string UserName
         {
             get
@@ -37,6 +40,7 @@ namespace UserBusinessObject
         }
         private string passWord;
         [ManagementConfiguration(Mode = ManagementConfigurationType.OnCommit)]
+        [DataMember]
         public string PassWord
         {
             get
@@ -53,6 +57,7 @@ namespace UserBusinessObject
 
         private string email;
         [ManagementConfiguration(Mode = ManagementConfigurationType.OnCommit)]
+        [DataMember]
         public string Email
         {
             get
@@ -75,7 +80,8 @@ namespace UserBusinessObject
                 {
                     return u;
                 }
-            } return null;
+            }
+            return null;
         }
         /// <summary>
         /// The Constructor to create new instances of the LocalAdmins class...
