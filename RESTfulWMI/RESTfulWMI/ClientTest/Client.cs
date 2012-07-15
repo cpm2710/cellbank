@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Management;
+using System.Threading;
 
 namespace ClientTest
 {
@@ -10,6 +11,10 @@ namespace ClientTest
     {
         public void TestWMIServer()
         {
+           
+
+           
+
             ConnectionOptions Conn = new ConnectionOptions();
             //Conn.Username = "wmitest";
             //Conn.Password = "wmitest";
@@ -25,6 +30,16 @@ namespace ClientTest
             {
                 Console.WriteLine(mo["UserName"]);
             }
+
+            ManagementEventWatcher watcher = new ManagementEventWatcher(@"\\.\root\sbs",
+               "SELECT * FROM SBSUserAddedEvent");
+            watcher.EventArrived += (o, e) =>
+            {
+                Console.WriteLine(e.NewEvent["UserId"]);
+            };
+            watcher.Start();
+
+            Thread.Sleep(900000);
         }
         public void TestRESTServer()
         {

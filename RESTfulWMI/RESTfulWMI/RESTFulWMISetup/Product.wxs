@@ -25,6 +25,7 @@
           <Component Id="WindowsServer2012WMIComponent" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2" Win64="yes">
             <File Id="service_exe" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe"></File>
             <File Id="user_business_object" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll"></File>
+            <File Id="sbs_wmi_notification" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll"></File>
             <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc" 
                             DisplayName="Windows Server 2012 Essentials WMI Service" 
                             Description="This service provides the wmi part of the windows server 2012 essentials." 
@@ -95,6 +96,9 @@
             <Component Id="SBSBusinessObjectGAC" Guid="22887611-B13E-41EE-897C-D78830E68AEB" Win64="yes">
               <File Id="sbs_business_object_gac" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll" Assembly=".net" KeyPath="yes"></File>
             </Component>
+            <Component Id="SBSWMINotificationGAC" Guid="22887311-E13E-43EE-897C-D74830E66AEB" Win64="yes">
+              <File Id="sbs_wmi_notification_gac" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll" Assembly=".net" KeyPath="yes"></File>
+            </Component>
             <Component Id="WindowsServer2012WMIComponentServiceGAC" Guid="28E9E9B3-3F34-427E-B003-C49B61836E48" Win64="yes">
               <File Id="wmi_component_service_exe_gac" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe" Assembly=".net" KeyPath="yes"></File>
             </Component>
@@ -110,6 +114,7 @@
       <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
       <ComponentRef Id="WindowsServer2012WMIComponent" />
       <ComponentRef Id="SBSBusinessObjectGAC"/>
+      <ComponentRef Id="SBSWMINotificationGAC"/>
       <ComponentRef Id="WindowsServer2012WMIComponentServiceGAC"/>
       <ComponentRef Id="Service.IIS.Component"/>
       <ComponentRef Id="WindowsServer2012WebApiComponent"/>

@@ -7,6 +7,7 @@ using System.Management.Instrumentation;
 using System.ServiceModel;
 using System.Collections;
 using System.Threading;
+using SBSWMINotifications;
 namespace SBSBusinessObject
 {
     [ManagementEntity(Name = "SBS_User", Singleton = false)]
@@ -97,6 +98,15 @@ namespace SBSBusinessObject
             Logger.WriteLine("Creat user with UserName: " + UserName);
             SBSUser newUser = new SBSUser(UserName, PassWord, Email);
             MockRepository.sbsUsers.Add(newUser);
+            try
+            {
+                //SBSUserAddedEvent.Publish(newUser.userId);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteLine(e.ToString());
+            }
+            Logger.WriteLine("Created user with UserName: " + UserName);
             return newUser;
         }
         [ManagementRemove]

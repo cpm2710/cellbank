@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -259,6 +260,10 @@
     <ProjectReference Include="..\SBSBusinessObject\SBSBusinessObject.csproj">
       <Project>{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}</Project>
       <Name>SBSBusinessObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SBSWMINotifications\SBSWMINotifications.csproj">
+      <Project>{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}</Project>
+      <Name>SBSWMINotifications</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

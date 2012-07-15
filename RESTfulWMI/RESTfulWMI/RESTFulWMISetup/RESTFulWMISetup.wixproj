@@ -24,9 +24,6 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TextFile1.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\WindowsServer2012WMIComponentService\WindowsServer2012WMIComponentService.csproj">
       <Name>WindowsServer2012WMIComponentService</Name>
       <Project>{eb1cc87e-5014-44a9-8024-942e17f78f25}</Project>
