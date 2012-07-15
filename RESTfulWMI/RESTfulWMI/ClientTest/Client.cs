@@ -80,6 +80,17 @@ new EventQuery(
             ManagementEventWatcher watcher = new ManagementEventWatcher(ms, qCreate);
             watcher.EventArrived += (o, e) =>
             {
+                ManagementBaseObject mbo =
+
+e.NewEvent.Properties["TargetInstance"].Value
+
+as ManagementBaseObject;
+                foreach (PropertyData item in mbo.Properties)
+                {
+
+                    Console.WriteLine(item.Name + " : " + item.Value);
+
+                }
                 Console.WriteLine(e);
             };
             watcher.Start();
