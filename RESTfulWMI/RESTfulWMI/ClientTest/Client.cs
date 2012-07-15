@@ -17,7 +17,7 @@ namespace ClientTest
             ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
             ms.Connect();
 
-            ObjectQuery query = new ObjectQuery("select * from sbs_user");
+            ObjectQuery query = new ObjectQuery("select * from sbs_user where UserName='andy'");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(ms, query);
             ManagementObjectCollection users = searcher.Get();
 
