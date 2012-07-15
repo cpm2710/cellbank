@@ -63,6 +63,13 @@ namespace ClientTest
             Conn.Impersonation = ImpersonationLevel.Impersonate;
             ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
             ms.Connect();
+            var qModify = new WqlEventQuery("__InstanceModificationEvent",
+                TimeSpan.FromSeconds(1),
+                "TargetInstance ISA 'sbs_user'");
+
+            var qDelete = new WqlEventQuery("__InstanceDeletionEvent",
+                TimeSpan.FromSeconds(1),
+                "TargetInstance ISA 'sbs_user'");
 
 
             var qCreate = new WqlEventQuery("__InstanceCreationEvent",
