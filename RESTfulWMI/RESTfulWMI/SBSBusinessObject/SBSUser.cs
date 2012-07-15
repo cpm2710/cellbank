@@ -113,7 +113,7 @@ namespace SBSBusinessObject
         [ManagementEnumerator]
         public static IEnumerable<SBSUser> GetSBSUsers()
         {
-            Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.Identity.Name);
+            Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.ToString());
             foreach (SBSUser user in MockRepository.sbsUsers)
             {
                 yield return user;
