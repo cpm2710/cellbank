@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Management;
 using System.Threading;
+using SBSWMINotifications;
 
 namespace ClientTest
 {
@@ -17,9 +17,32 @@ namespace ClientTest
             TestEvent();
             TestGet();
             TestCreate();
-           
+            TestFileNormalEvent();
 
             Thread.Sleep(900000);
+        }
+
+        private void TestFileNormalEvent(){
+            ConnectionOptions Conn = new ConnectionOptions();
+            //Conn.Username = "wmitest";
+            //Conn.Password = "wmitest";
+            Conn.Impersonation = ImpersonationLevel.Impersonate;
+            ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
+            ms.Connect();
+
+            var qModify = new WqlEventQuery("select * from SBSUserAddedEvent");
+
+            ManagementEventWatcher watcher = new ManagementEventWatcher(ms, qModify);
+            watcher.EventArrived += (o, e) =>
+            {
+                foreach (var abc in e.NewEvent.Properties)
+                {
+                    Console.WriteLine(abc.Name+":::"+abc.Value);
+                }
+                Console.WriteLine(e);
+            };
+            watcher.Start();
+            SBSUserAddedEvent.Publish("userid1");
         }
 
         private void TestGet()
@@ -75,14 +98,6 @@ namespace ClientTest
             var qCreate = new WqlEventQuery("__InstanceCreationEvent",
                TimeSpan.FromSeconds(1),
                "TargetInstance ISA 'sbs_user'");
-
-            /*EventQuery query =
-
-new EventQuery(
-
-@"SELECT * FROM __InstanceCreationEvent " +
-
-@"WHERE TargetInstance ISA 'sbs_user' ");*/
 
             ManagementEventWatcher watcher = new ManagementEventWatcher(ms, qCreate);
             watcher.EventArrived += (o, e) =>

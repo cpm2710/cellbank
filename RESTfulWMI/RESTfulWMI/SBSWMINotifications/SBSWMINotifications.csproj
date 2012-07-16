@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\Microsoft\RestFulWMIComponentBuild\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SBSNotificationInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SBSNotifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

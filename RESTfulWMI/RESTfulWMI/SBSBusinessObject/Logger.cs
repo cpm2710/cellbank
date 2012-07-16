@@ -7,7 +7,7 @@ namespace SBSBusinessObject
 {
     public static class Logger
     {
-        private const String logFile = @"C:\Users\andy\Desktop\windowsserver2012wmicomponent.log";
+        private const String logFile = @"C:\Users\andliu\Desktop\windowsserver2012wmicomponent.log";
         private static object sync_obj = new object();
         public static void WriteLine(string msg)
         {

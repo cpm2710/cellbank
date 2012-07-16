@@ -6,7 +6,8 @@ using System.Management.Instrumentation;
 
 namespace SBSWMINotifications
 {
-    public class SBSUserAddedEvent
+    [ManagedName("SBSUserAddedEvent")]
+    public class SBSUserAddedEvent : BaseEvent
     {
         public string UserId
         {
@@ -19,10 +20,7 @@ namespace SBSWMINotifications
         }
         public static void Publish(string userId)
         {
-
-            ////Instrumentation.Fire(
-            //    new SBSUserAddedEvent(
-            //        userId));
+            Instrumentation.Fire(new SBSUserAddedEvent(userId));
         }
     }
 }

@@ -56,6 +56,12 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SBSWMINotifications\SBSWMINotifications.csproj">
+      <Project>{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}</Project>
+      <Name>SBSWMINotifications</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
