@@ -9,18 +9,19 @@ namespace SBSWMINotifications
     [ManagedName("SBSUserAddedEvent")]
     public class SBSUserAddedEvent : BaseEvent
     {
-        public string UserId
+        public string UserId;
+
+    }
+
+    public class SBSEventProvider
+    {
+        public static void FireSBSUserAddedEvent(string userId)
         {
-            get;
-            private set;
-        }
-        private SBSUserAddedEvent(string userId)
-        {
-            this.UserId = userId;
-        }
-        public static void Publish(string userId)
-        {
-            Instrumentation.Fire(new SBSUserAddedEvent(userId));
+            SBSUserAddedEvent addedEvent = new SBSUserAddedEvent();
+            addedEvent.UserId = userId;
+            addedEvent.Fire();
+            //Instrumentation.Fire(new (userId));
+
         }
     }
 }

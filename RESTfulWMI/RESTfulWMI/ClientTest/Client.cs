@@ -42,21 +42,21 @@ namespace ClientTest
                 Console.WriteLine(e);
             };
             watcher.Start();
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1"); 
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
-            SBSUserAddedEvent.Publish("userid1");
+            SBSEventProvider.FireSBSUserAddedEvent("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1"); 
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
+            //SBSUserAddedEvent.Publish("userid1");
         }
 
         private void TestGet()
