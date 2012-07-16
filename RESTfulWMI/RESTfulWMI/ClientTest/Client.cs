@@ -13,11 +13,11 @@ namespace ClientTest
         {
 
 
-
+            TestFileNormalEvent();
             TestEvent();
             TestGet();
             TestCreate();
-            TestFileNormalEvent();
+            
 
             Thread.Sleep(900000);
         }
@@ -35,14 +35,15 @@ namespace ClientTest
             ManagementEventWatcher watcher = new ManagementEventWatcher(ms, qModify);
             watcher.EventArrived += (o, e) =>
             {
+
                 foreach (var abc in e.NewEvent.Properties)
                 {
                     Console.WriteLine(abc.Name+":::"+abc.Value);
                 }
-                Console.WriteLine(e);
+                Console.WriteLine(e + "SHITSHIT");
             };
             watcher.Start();
-            SBSEventProvider.FireSBSUserAddedEvent("userid1");
+            //SBSEventProvider.FireSBSUserAddedEvent("userid1");
             //SBSUserAddedEvent.Publish("userid1");
             //SBSUserAddedEvent.Publish("userid1");
             //SBSUserAddedEvent.Publish("userid1");
@@ -83,6 +84,7 @@ namespace ClientTest
             //Conn.Username = "wmitest";
             //Conn.Password = "wmitest";
             Conn.Impersonation = ImpersonationLevel.Impersonate;
+            Conn.EnablePrivileges = true;
             ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
             ms.Connect();
             ObjectGetOptions option=new ObjectGetOptions();

@@ -101,9 +101,9 @@ namespace SBSBusinessObject
             try
             {
                 Logger.WriteLine("publishing SBSUserAddedEvent");
-                //SBSEventProvider.FireSBSUserAddedEvent(newUser.userId);
+                SBSEventProvider.FireSBSUserAddedEvent(newUser.userId);
                 //SBSUserAddedEvent.Publish(newUser.userId);
-                Logger.WriteLine("published SBSUserAddedEvent");
+                Logger.WriteLine("publishedddd SBSUserAddedEvent");
             }
             catch (Exception e)
             {
