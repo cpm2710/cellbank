@@ -43,6 +43,20 @@ namespace ClientTest
             };
             watcher.Start();
             SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1"); 
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
+            SBSUserAddedEvent.Publish("userid1");
         }
 
         private void TestGet()
