@@ -25,6 +25,7 @@ namespace WindowsServer2012WMIComponentService
         }
         protected override void OnStart(string[] args)
         {
+            //Logger.WriteLine("we starting");
             //string[] uninstallArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
             //ManagedInstallerClass.InstallHelper(uninstallArgs);
             try
@@ -34,6 +35,8 @@ namespace WindowsServer2012WMIComponentService
 
                 string[] installArgs2 = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
                 ManagedInstallerClass.InstallHelper(installArgs2);
+
+                //InstrumentationManager.RegisterType(typeof(SBSUser));
             }
             catch (Exception e)
             {
@@ -52,7 +55,7 @@ namespace WindowsServer2012WMIComponentService
             //InstrumentationManager.RegisterType(typeof(SBS9User));
             //
 
-            Logger.WriteLine("we started");
+           // Logger.WriteLine("we started");
         }
 
         protected override void OnStop()
@@ -65,6 +68,8 @@ namespace WindowsServer2012WMIComponentService
 
                 string[] installArgs2 = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
                 ManagedInstallerClass.InstallHelper(installArgs2);
+
+                //InstrumentationManager.UnregisterType(typeof(SBSUser));
             }
             catch (Exception e)
             {

@@ -8,6 +8,8 @@ using System.ServiceModel;
 using System.Collections;
 using System.Threading;
 using SBSWMINotifications;
+using System.Security.Principal;
+using System.Runtime.Remoting.Contexts;
 namespace SBSBusinessObject
 {
     [ManagementEntity(Name = "SBS_User", Singleton = false)]
@@ -95,6 +97,9 @@ namespace SBSBusinessObject
         [ManagementCreate]
         public static SBSUser CreateUser(string UserName,string PassWord,string Email)
         {
+            System.Security.Principal.WindowsImpersonationContext impersonationContext;
+
+            impersonationContext = (WindowsIdentity.GetCurrent()).Impersonate();
             Logger.WriteLine("Creat user with UserName: " + UserName);
             SBSUser newUser = new SBSUser(UserName, PassWord, Email);
             MockRepository.sbsUsers.Add(newUser);
@@ -110,6 +115,7 @@ namespace SBSBusinessObject
                 Logger.WriteLine(e.ToString());
             }
             Logger.WriteLine("Created user with UserName: " + UserName);
+            impersonationContext.Undo();
             return newUser;
         }
         [ManagementRemove]
@@ -126,11 +132,20 @@ namespace SBSBusinessObject
         [ManagementEnumerator]
         public static IEnumerable<SBSUser> GetSBSUsers()
         {
-            Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.ToString());
+            System.Security.Principal.WindowsImpersonationContext impersonationContext;
+
+            impersonationContext = (WindowsIdentity.GetCurrent()).Impersonate();
+
+            //Thread.CurrentPrincipal=
+            //WindowsIdentity.GetCurrent().Impersonate();
+            //WindowsIdentity.GetCurrent().Name;
+            //Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.ToString());
             foreach (SBSUser user in MockRepository.sbsUsers)
             {
+                user.userName = WindowsIdentity.GetCurrent().Name;
                 yield return user;
             }
+            impersonationContext.Undo();
         }
     }    
 }

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E6F1992A-37B7-4EE9-8613-9EB50176CAD1}</ProjectGuid>
+    <ProjectGuid>{244CD126-A13B-49EB-A28E-8E3D19B43781}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClientTest</RootNamespace>
-    <AssemblyName>ClientTest</AssemblyName>
+    <RootNamespace>WMIServerTest</RootNamespace>
+    <AssemblyName>WMIServerTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -29,16 +29,14 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\RestFulWMIComponentBuild\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accessibility">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Instrumentation" />
@@ -49,19 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\SBSBusinessObject\SBSBusinessObject.csproj">
+      <Project>{71D5A9A2-FDA6-4D73-A1F1-61CD0F7F4CAC}</Project>
+      <Name>SBSBusinessObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SBSWebApi\SBSWebApi.csproj">
+      <Project>{F2F3AA1D-E27E-4403-A51D-5C6217F153E1}</Project>
+      <Name>SBSWebApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SBSWMINotifications\SBSWMINotifications.csproj">
       <Project>{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}</Project>
       <Name>SBSWMINotifications</Name>
-      <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

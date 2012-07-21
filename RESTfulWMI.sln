@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTest", "ClientTest\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSWMINotifications", "SBSWMINotifications\SBSWMINotifications.csproj", "{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMIServerTest", "WMIServerTest\WMIServerTest.csproj", "{244CD126-A13B-49EB-A28E-8E3D19B43781}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -87,6 +89,16 @@ Global
 		{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AE3BBEB5-FB61-4AB6-8980-2814D02F41A0}.Release|x86.ActiveCfg = Release|Any CPU
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Debug|x86.ActiveCfg = Debug|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Debug|x86.Build.0 = Debug|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Release|Any CPU.ActiveCfg = Release|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Release|Mixed Platforms.Build.0 = Release|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Release|x86.ActiveCfg = Release|x86
+		{244CD126-A13B-49EB-A28E-8E3D19B43781}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,10 +12,10 @@ namespace ClientTest
         public void TestWMIServer()
         {
 
-
-            TestFileNormalEvent();
-            TestEvent();
-            TestGet();
+            //TestGet();
+            //TestFileNormalEvent();
+            //TestEvent();
+            
             TestCreate();
             
 
@@ -43,7 +43,7 @@ namespace ClientTest
                 Console.WriteLine(e + "SHITSHIT");
             };
             watcher.Start();
-            //SBSEventProvider.FireSBSUserAddedEvent("userid1");
+            SBSEventProvider.FireSBSUserAddedEvent("userid1");
             //SBSUserAddedEvent.Publish("userid1");
             //SBSUserAddedEvent.Publish("userid1");
             //SBSUserAddedEvent.Publish("userid1");
@@ -66,10 +66,14 @@ namespace ClientTest
             //Conn.Username = "wmitest";
             //Conn.Password = "wmitest";
             Conn.Impersonation = ImpersonationLevel.Impersonate;
+
+            
             ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
+            //ms.Options.EnablePrivileges = true;
+            //ms.Options.Authentication = AuthenticationLevel.Packet;
             ms.Connect();
 
-            ObjectQuery query = new ObjectQuery("select * from sbs_user where UserName='andy'");
+            ObjectQuery query = new ObjectQuery("select * from sbs_user");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(ms, query);
             ManagementObjectCollection users = searcher.Get();
 
@@ -84,8 +88,9 @@ namespace ClientTest
             //Conn.Username = "wmitest";
             //Conn.Password = "wmitest";
             Conn.Impersonation = ImpersonationLevel.Impersonate;
-            Conn.EnablePrivileges = true;
+            //Conn.EnablePrivileges = true;
             ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
+            ms.Options.Authentication = AuthenticationLevel.PacketPrivacy;
             ms.Connect();
             ObjectGetOptions option=new ObjectGetOptions();
             ManagementClass mc = new ManagementClass(ms, new ManagementPath("sbs_user"), option);
