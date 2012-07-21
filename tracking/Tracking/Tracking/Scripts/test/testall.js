@@ -1,6 +1,0 @@
-﻿function testGetAllWorkFlows() {
-    
-}
-function testStartWorkFlow() {
-    
-}
