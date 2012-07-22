@@ -12,7 +12,7 @@ namespace ClientTest
         public void TestWMIServer()
         {
 
-            //TestGet();
+            TestGet();
             //TestFileNormalEvent();
             //TestEvent();
             
@@ -24,10 +24,10 @@ namespace ClientTest
 
         private void TestFileNormalEvent(){
             ConnectionOptions Conn = new ConnectionOptions();
-            //Conn.Username = "wmitest";
-            //Conn.Password = "wmitest";
+            Conn.Username = "aurorauser";
+            Conn.Password = "Quattro!";
             Conn.Impersonation = ImpersonationLevel.Impersonate;
-            ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
+            ManagementScope ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
             ms.Connect();
 
             var qModify = new WqlEventQuery("select * from SBSUserAddedEvent");
@@ -63,14 +63,13 @@ namespace ClientTest
         private void TestGet()
         {
             ConnectionOptions Conn = new ConnectionOptions();
-            //Conn.Username = "wmitest";
-            //Conn.Password = "wmitest";
+            Conn.Username = "aurorauser";
+            Conn.Password = "Quattro!";
+            Conn.EnablePrivileges = true;
+            Conn.Authentication = AuthenticationLevel.PacketIntegrity;
             Conn.Impersonation = ImpersonationLevel.Impersonate;
-
+            ManagementScope ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
             
-            ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
-            //ms.Options.EnablePrivileges = true;
-            //ms.Options.Authentication = AuthenticationLevel.Packet;
             ms.Connect();
 
             ObjectQuery query = new ObjectQuery("select * from sbs_user");
@@ -88,7 +87,8 @@ namespace ClientTest
             //Conn.Username = "wmitest";
             //Conn.Password = "wmitest";
             Conn.Impersonation = ImpersonationLevel.Impersonate;
-            //Conn.EnablePrivileges = true;
+            Conn.EnablePrivileges = true;
+            Conn.Authentication = AuthenticationLevel.PacketIntegrity;
             ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
             ms.Options.Authentication = AuthenticationLevel.PacketPrivacy;
             ms.Connect();

@@ -17,7 +17,7 @@ namespace SBSBusinessObject
                 {
                     //logFile = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\windowsserver2012wmicomponent.log";
 
-                    logFile = @"C:\Users\andy\Desktop\windowsserver2012wmicomponent.log";
+                    logFile = @"C:\Users\AuroraUser\Desktop\windowsserver2012wmicomponent.log";
                     
                 }
                 using (FileStream fs = new FileStream(logFile, FileMode.Append, FileAccess.Write))

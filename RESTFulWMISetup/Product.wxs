@@ -31,6 +31,7 @@
                             Description="This service provides the wmi part of the windows server 2012 essentials." 
                             Start="demand" 
                             Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+              <!--NT AUTHORITY\NetworkService -->
             </ServiceInstall>
             <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
             
