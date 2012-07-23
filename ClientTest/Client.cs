@@ -16,7 +16,7 @@ namespace ClientTest
             //TestFileNormalEvent();
             //TestEvent();
             
-            TestCreate();
+            //TestCreate();
             
 
             Thread.Sleep(900000);
@@ -42,7 +42,7 @@ namespace ClientTest
                 }
                 Console.WriteLine(e + "SHITSHIT");
             };
-            watcher.Start();
+            //watcher.Start();
             SBSEventProvider.FireSBSUserAddedEvent("userid1");
             //SBSUserAddedEvent.Publish("userid1");
             //SBSUserAddedEvent.Publish("userid1");
@@ -84,14 +84,15 @@ namespace ClientTest
         private void TestCreate()
         {
             ConnectionOptions Conn = new ConnectionOptions();
-            //Conn.Username = "wmitest";
-            //Conn.Password = "wmitest";
-            Conn.Impersonation = ImpersonationLevel.Impersonate;
+            Conn.Username = "aurorauser";
+            Conn.Password = "Quattro!";
             Conn.EnablePrivileges = true;
             Conn.Authentication = AuthenticationLevel.PacketIntegrity;
-            ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
-            ms.Options.Authentication = AuthenticationLevel.PacketPrivacy;
+            Conn.Impersonation = ImpersonationLevel.Impersonate;
+            ManagementScope ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
+
             ms.Connect();
+
             ObjectGetOptions option=new ObjectGetOptions();
             ManagementClass mc = new ManagementClass(ms, new ManagementPath("sbs_user"), option);
             ManagementObject mo=mc.CreateInstance();
