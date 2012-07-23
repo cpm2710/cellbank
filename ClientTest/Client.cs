@@ -12,11 +12,11 @@ namespace ClientTest
         public void TestWMIServer()
         {
 
-            TestGet();
+            //TestGet();
             //TestFileNormalEvent();
             //TestEvent();
             
-            //TestCreate();
+            TestCreate();
             
 
             Thread.Sleep(900000);
@@ -91,12 +91,14 @@ namespace ClientTest
             Conn.Impersonation = ImpersonationLevel.Impersonate;
             ManagementScope ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
 
+
             ms.Connect();
 
             ObjectGetOptions option=new ObjectGetOptions();
             ManagementClass mc = new ManagementClass(ms, new ManagementPath("sbs_user"), option);
             ManagementObject mo=mc.CreateInstance();
             mo["UserName"] = "aaa";
+            mo["PassWord"] = "aaa";
             mo.Put();
 
         }

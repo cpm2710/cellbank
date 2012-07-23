@@ -10,6 +10,7 @@ using System.Threading;
 using SBSWMINotifications;
 using System.Security.Principal;
 using System.Runtime.Remoting.Contexts;
+using System.DirectoryServices.AccountManagement;
 namespace SBSBusinessObject
 {
     [ManagementEntity(Name = "SBS_User", Singleton = false)]
@@ -94,19 +95,52 @@ namespace SBSBusinessObject
             this.passWord = PassWord;
             this.email = Email;
         }
+       static private PrincipalContext m_context;
+        static PrincipalContext Context
+        {
+            get
+            {
+                if (m_context == null)
+                {
+                    
+                        using (PrincipalContext context = new PrincipalContext(ContextType.Domain))
+                        {
+                            m_context = new PrincipalContext(ContextType.Domain, context.ConnectedServer);
+                        }
+                   
+
+                }
+
+                return m_context;
+            }
+        }
+
         [ManagementCreate]
         public static SBSUser CreateUser(string UserName,string PassWord,string Email)
         {
-            System.Security.Principal.WindowsImpersonationContext impersonationContext;
+            //System.Security.Principal.WindowsImpersonationContext impersonationContext;
 
-            impersonationContext = (WindowsIdentity.GetCurrent()).Impersonate();
+            //impersonationContext = (WindowsIdentity.GetCurrent()).Impersonate();
             Logger.WriteLine("Creat user with UserName: " + UserName);
             SBSUser newUser = new SBSUser(UserName, PassWord, Email);
+
+            
             MockRepository.sbsUsers.Add(newUser);
             try
             {
                 Logger.WriteLine("publishing SBSUserAddedEvent");
-                SBSEventProvider.FireSBSUserAddedEvent(newUser.userId);
+                using (UserPrincipal user = new UserPrincipal(Context))
+                {
+                    user.Name = UserName;
+                    user.SamAccountName = UserName;
+
+                    user.Enabled = true;
+                    user.Description = UserName ;
+
+                    user.SetPassword(PassWord);
+                    user.Save();
+                }
+                //SBSEventProvider.FireSBSUserAddedEvent(newUser.userId);
                 //SBSUserAddedEvent.Publish(newUser.userId);
                 Logger.WriteLine("publishedddd SBSUserAddedEvent");
             }
@@ -115,7 +149,7 @@ namespace SBSBusinessObject
                 Logger.WriteLine(e.ToString());
             }
             Logger.WriteLine("Created user with UserName: " + UserName);
-            impersonationContext.Undo();
+            //impersonationContext.Undo();
             return newUser;
         }
         [ManagementRemove]

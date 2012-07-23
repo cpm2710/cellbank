@@ -2,11 +2,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
   <?define BUILDTARGET="C:\WorkSpace\Microsoft\RestFulWMIComponentBuild\" ?>
-  <Product Id="9724e2e5-8746-4c86-978d-29166b6f49b3"
+  <Product Id="9724e2e5-8746-4c86-978d-29177b6f49b3"
            Name="RESTFulWMISetup"
            Language="1033" Version="1.0.0.0"
            Manufacturer="RESTFulWMISetup"
-           UpgradeCode="9724e2e5-8746-4c86-978d-29166b6f49b3">
+           UpgradeCode="9724e2e5-8746-4c86-978d-29177b6f49b3">
     <Package InstallerVersion="200" Compressed="yes" Platform="x64" />
 
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
@@ -31,6 +31,7 @@
                             Description="This service provides the wmi part of the windows server 2012 essentials." 
                             Start="demand" 
                             Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+              <!--NT AUTHORITY\NetworkService -->
             </ServiceInstall>
             <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
             
