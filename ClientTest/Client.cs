@@ -14,7 +14,7 @@ namespace ClientTest
 
             //TestGet();
             //TestFileNormalEvent();
-            //TestEvent();
+            TestEvent();
             
             TestCreate();
             
@@ -62,15 +62,22 @@ namespace ClientTest
 
         private void TestGet()
         {
-            ConnectionOptions Conn = new ConnectionOptions();
-            Conn.Username = "aurorauser";
-            Conn.Password = "Quattro!";
-            Conn.EnablePrivileges = true;
-            Conn.Authentication = AuthenticationLevel.PacketIntegrity;
-            Conn.Impersonation = ImpersonationLevel.Impersonate;
-            ManagementScope ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
-            
-            ms.Connect();
+            lock (lockdd)
+            {
+                if (ms == null)
+                {
+                    ConnectionOptions Conn = new ConnectionOptions();
+                    Conn.Username = "aurorauser";
+                    Conn.Password = "Quattro!";
+                    Conn.EnablePrivileges = true;
+                    Conn.Authentication = AuthenticationLevel.PacketIntegrity;
+                    Conn.Impersonation = ImpersonationLevel.Impersonate;
+                    ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
+
+
+                    ms.Connect();
+                }
+            }
 
             ObjectQuery query = new ObjectQuery("select * from sbs_user");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(ms, query);
@@ -81,46 +88,65 @@ namespace ClientTest
                 Console.WriteLine(mo["UserName"]);
             }
         }
+
+        private ManagementScope ms = null;
+        private object lockdd = new object();
         private void TestCreate()
         {
-            ConnectionOptions Conn = new ConnectionOptions();
-            Conn.Username = "aurorauser";
-            Conn.Password = "Quattro!";
-            Conn.EnablePrivileges = true;
-            Conn.Authentication = AuthenticationLevel.PacketIntegrity;
-            Conn.Impersonation = ImpersonationLevel.Impersonate;
-            ManagementScope ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
+            lock (lockdd)
+            {
+                if (ms == null)
+                {
+                    ConnectionOptions Conn = new ConnectionOptions();
+                    Conn.Username = "aurorauser";
+                    Conn.Password = "Quattro!";
+                    Conn.EnablePrivileges = true;
+                    Conn.Authentication = AuthenticationLevel.PacketIntegrity;
+                    Conn.Impersonation = ImpersonationLevel.Impersonate;
+                    ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
 
 
-            ms.Connect();
+                    ms.Connect();
+                }
+            }
 
             ObjectGetOptions option=new ObjectGetOptions();
             ManagementClass mc = new ManagementClass(ms, new ManagementPath("sbs_user"), option);
             ManagementObject mo=mc.CreateInstance();
-            mo["UserName"] = "aaa";
-            mo["PassWord"] = "aaa";
+            mo["UserName"] = "cddcdcff";
+            mo["PassWord"] = "cddcdcff";
             mo.Put();
 
         }
         private void TestEvent()
         {
-            ConnectionOptions Conn = new ConnectionOptions();
-            //Conn.Username = "wmitest";
-            //Conn.Password = "wmitest";
-            Conn.Impersonation = ImpersonationLevel.Impersonate;
-            ManagementScope ms = new ManagementScope(@"\\.\root\sbs", Conn);
-            ms.Connect();
+            lock (lockdd)
+            {
+                if (ms == null)
+                {
+                    ConnectionOptions Conn = new ConnectionOptions();
+                    Conn.Username = "aurorauser";
+                    Conn.Password = "Quattro!";
+                    Conn.EnablePrivileges = true;
+                    //Conn.Authentication = AuthenticationLevel.PacketIntegrity;
+                    Conn.Impersonation = ImpersonationLevel.Impersonate;
+                    ms = new ManagementScope(@"\\hsbsh407v13\root\sbs", Conn);
+
+
+                    ms.Connect();
+                }
+            }
             var qModify = new WqlEventQuery("__InstanceModificationEvent",
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(20),
                 "TargetInstance ISA 'sbs_user'");
 
             var qDelete = new WqlEventQuery("__InstanceDeletionEvent",
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(20),
                 "TargetInstance ISA 'sbs_user'");
 
 
             var qCreate = new WqlEventQuery("__InstanceCreationEvent",
-               TimeSpan.FromSeconds(1),
+               TimeSpan.FromSeconds(20),
                "TargetInstance ISA 'sbs_user'");
 
             ManagementEventWatcher watcher = new ManagementEventWatcher(ms, qCreate);
