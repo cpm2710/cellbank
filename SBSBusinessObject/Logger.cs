@@ -11,7 +11,7 @@ namespace SBSBusinessObject
         private static object sync_obj = new object();
         public static void WriteLine(string msg)
         {
-            lock (sync_obj)
+            /*lock (sync_obj)
             {
                 if (logFile == null)
                 {
@@ -29,7 +29,7 @@ namespace SBSBusinessObject
                     }
                     //fs.Flush();
                 }
-            }
+            }*/
         }
     }
 }

@@ -12,11 +12,11 @@ namespace ClientTest
         public void TestWMIServer()
         {
 
-            //TestGet();
+            TestGet();
             //TestFileNormalEvent();
-            TestEvent();
+            //TestEvent();
             
-            TestCreate();
+            //TestCreate();
             
 
             Thread.Sleep(900000);
@@ -113,8 +113,8 @@ namespace ClientTest
             ObjectGetOptions option=new ObjectGetOptions();
             ManagementClass mc = new ManagementClass(ms, new ManagementPath("sbs_user"), option);
             ManagementObject mo=mc.CreateInstance();
-            mo["UserName"] = "cddcdcff";
-            mo["PassWord"] = "cddcdcff";
+            mo["UserName"] = "cddcffffdcff";
+            mo["PassWord"] = "cddcffffdcff";
             mo.Put();
 
         }

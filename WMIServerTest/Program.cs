@@ -17,8 +17,8 @@ namespace WMIServerTest
                 string[] installArgs = new string[] { @"C:\WorkSpace\Microsoft\RESTfulWMI\WMIServerTest\bin\Release\SBSBusinessObject.dll" };
                 ManagedInstallerClass.InstallHelper(installArgs);
 
-                string[] installArgs2 = new string[] { @"C:\WorkSpace\Microsoft\RESTfulWMI\WMIServerTest\bin\Release\SBSWMINotifications.dll" };
-                ManagedInstallerClass.InstallHelper(installArgs2);
+                //string[] installArgs2 = new string[] { @"C:\WorkSpace\Microsoft\RESTfulWMI\WMIServerTest\bin\Release\SBSWMINotifications.dll" };
+                //ManagedInstallerClass.InstallHelper(installArgs2);
                 //InstrumentationManager.UnregisterType(typeof(SBSUser));
                 InstrumentationManager.RegisterType(typeof(SBSUser));
             }
@@ -35,8 +35,8 @@ namespace WMIServerTest
                 ManagedInstallerClass.InstallHelper(installArgs);
 
 
-                string[] installArgs2 = new string[] { "/u", @"C:\WorkSpace\Microsoft\RESTfulWMI\WMIServerTest\bin\Release\SBSWMINotifications.dll" };
-                ManagedInstallerClass.InstallHelper(installArgs2);
+               // string[] installArgs2 = new string[] { "/u", @"C:\WorkSpace\Microsoft\RESTfulWMI\WMIServerTest\bin\Release\SBSWMINotifications.dll" };
+                //ManagedInstallerClass.InstallHelper(installArgs2);
 
                 InstrumentationManager.UnregisterType(typeof(SBSUser));
             }

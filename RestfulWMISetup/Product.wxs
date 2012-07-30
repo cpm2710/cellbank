@@ -20,28 +20,27 @@
     
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFiles64Folder">
-        <Directory Id="INSTALLLOCATION" Name="WindowsServer2012WMIService">
+        <Directory Id="INSTALLLOCATION" Name="Windows Server">
           
-          <Component Id="WindowsServer2012WMIComponent" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2" Win64="yes">
-            <File Id="service_exe" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe"></File>
-            <File Id="user_business_object" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll"></File>
-            <File Id="sbs_wmi_notification" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll"></File>
-            <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc" 
-                            DisplayName="Windows Server 2012 Essentials WMI Service" 
-                            Description="This service provides the wmi part of the windows server 2012 essentials." 
-                            Start="demand" 
-                            Account="LocalSystem" ErrorControl="ignore" Interactive="no">
-              <!--NT AUTHORITY\NetworkService -->
-            </ServiceInstall>
-            <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
-            
-          </Component>
           <Component Id="WindowsServer2012WebApiConfig" Guid="1FF9CC19-4050-4D84-8F0C-FF4B52B0DFA1" Win64="yes">
             <File Id="Web.config" Name="Web.config" Source="$(var.BUILDTARGET)Web.config"></File>
             <File Id="Global.asax" Name="Global.asax" Source="$(var.BUILDTARGET)Global.asax"></File>
           </Component>
           <Directory Id="bin" Name="bin">
             <Component Id="WindowsServer2012WebApiComponent" Guid="08587205-8966-4380-A3FB-3372D5D522F0" Win64="yes">
+              <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc"
+                            DisplayName="Windows Server 2012 Essentials WMI Service"
+                            Description="This service provides the wmi part of the windows server 2012 essentials."
+                            Start="demand"
+                            Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+                <!--NT AUTHORITY\NetworkService NT AUTHORITY\LocalService-->
+              </ServiceInstall>
+              <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
+              
+              <File Id="service_exe" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe"></File>
+              <File Id="user_business_object" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll"></File>
+              <File Id="sbs_wmi_notification" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll"></File>
+              
               <File Id="Antlr3.Runtime.dll" Name="Antlr3.Runtime.dll" Source="$(var.BUILDTARGET)Antlr3.Runtime.dll"></File>
               <File Id="EntityFramework.dll" Name="EntityFramework.dll" Source="$(var.BUILDTARGET)EntityFramework.dll"></File>
               <File Id="EntityFramework.xml" Name="EntityFramework.xml" Source="$(var.BUILDTARGET)EntityFramework.xml"></File>
@@ -113,7 +112,7 @@
       <!-- <ComponentRef Id="ProductComponent" /> -->
 
       <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
-      <ComponentRef Id="WindowsServer2012WMIComponent" />
+      <!--<ComponentRef Id="WindowsServer2012WMIComponent" />-->
       <ComponentRef Id="SBSBusinessObjectGAC"/>
       <ComponentRef Id="SBSWMINotificationGAC"/>
       <ComponentRef Id="WindowsServer2012WMIComponentServiceGAC"/>

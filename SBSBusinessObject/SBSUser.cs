@@ -11,6 +11,7 @@ using SBSWMINotifications;
 using System.Security.Principal;
 using System.Runtime.Remoting.Contexts;
 using System.DirectoryServices.AccountManagement;
+using Microsoft.WindowsServerSolutions.Users;
 namespace SBSBusinessObject
 {
     [ManagementEntity(Name = "SBS_User", Singleton = false)]
@@ -95,6 +96,11 @@ namespace SBSBusinessObject
             this.passWord = PassWord;
             this.email = Email;
         }
+
+        public SBSUser()
+        {
+            // TODO: Complete member initialization
+        }
        static private PrincipalContext m_context;
         static PrincipalContext Context
         {
@@ -174,11 +180,24 @@ namespace SBSBusinessObject
             //WindowsIdentity.GetCurrent().Impersonate();
             //WindowsIdentity.GetCurrent().Name;
             //Logger.WriteLine("Hello Stupid: " + Thread.CurrentPrincipal.ToString());
-            foreach (SBSUser user in MockRepository.sbsUsers)
+
+            UserMgmtManager umm = new UserMgmtManager();
+            umm.Connect();
+            Microsoft.WindowsServerSolutions.Common.ProviderFramework.ThreadSafeReadOnlyObservableCollection<User>
+                users = umm.GetUsers();
+            foreach (User u in users)
             {
-                user.userName = WindowsIdentity.GetCurrent().Name;
-                yield return user;
+                SBSUser uu = new SBSUser();
+                uu.UserName = u.UserName;
+                uu.UserId = u.CurrentSid.ToString();
+                yield return uu;
             }
+
+            //foreach (SBSUser user in MockRepository.sbsUsers)
+            //{
+            //    user.userName = WindowsIdentity.GetCurrent().Name;
+            //    yield return user;
+            //}
             impersonationContext.Undo();
         }
     }    

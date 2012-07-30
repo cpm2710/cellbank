@@ -30,10 +30,10 @@ namespace WindowsServer2012WMIComponentService
             //ManagedInstallerClass.InstallHelper(uninstallArgs);
             try
             {
-                string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
+                string[] installArgs = new string[] { @"C:\Program Files\Windows Server\Bin\SBSBusinessObject.dll" };
                 ManagedInstallerClass.InstallHelper(installArgs);
 
-                string[] installArgs2 = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
+                string[] installArgs2 = new string[] { @"C:\Program Files\Windows Server\Bin\SBSWMINotifications.dll" };
                 ManagedInstallerClass.InstallHelper(installArgs2);
 
                 //InstrumentationManager.RegisterType(typeof(SBSUser));
