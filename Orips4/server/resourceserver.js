@@ -4,7 +4,7 @@ var http = require('http');
 var proxy = http.createServer(function(req, res) {
 	req.on("data", function(data) {
 
-		console.log(""+data);
+		console.log("" + data);
 		if (req.method === ("get")) {
 
 		};

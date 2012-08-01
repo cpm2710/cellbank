@@ -6,8 +6,9 @@ db.createCollection("users", function(err, collection) {
 	if (err) console.log("not created");
 	else console.log("create");
 });
+
 db.users.find({
-	sex: "female"
+	sex: "male"
 }, function(err, users) {
 	if (err || !users) console.log("No female users found");
 	else users.forEach(function(femaleUser) {
