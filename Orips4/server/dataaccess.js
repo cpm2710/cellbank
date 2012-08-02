@@ -24,7 +24,7 @@ db.users.save({
 }, function(err, saved) {
 	if (err || !saved) console.log("User not saved");
 	else console.log("User saved");
-});
+})
 
 db.users.update({
 	email: "srirangan@gmail.com"
