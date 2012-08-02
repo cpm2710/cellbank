@@ -15,8 +15,8 @@ server.use(express.errorHandler({
 	dumpExceptions: true
 }));
 
-server.get("/resources/", function(req, res) {
-	console.log("shit");
+server.get("/resources/*", function(req, res) {
+	console.log(req.url);
 	res.writeHead(200, {
 		'Content-Type': 'text/plain'
 	});
