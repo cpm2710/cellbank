@@ -1,16 +1,13 @@
-var abc="\r\npath";
-console.log(abc.trim());
-
 var cfg = require("./ini-file-loader.js").load("./app.ini")["resource_server"];
-console.log(cfg);
+var app_run_path=cfg["path"];
+
 
 
 var express = require('express');
 
 var server = express.createServer();
 
-console.log(__dirname);
-server.use(express.static(__dirname + '/demo'));
+server.use(express.static(app_run_path));
 
 
 server.use(express.errorHandler({
