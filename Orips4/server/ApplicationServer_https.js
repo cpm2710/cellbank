@@ -1,11 +1,25 @@
+const fs = require("fs"),crypto = require('crypto');
+
 var cfg = require("./ini-file-loader.js").load("./app.ini")["resource_server"];
 var app_run_path = cfg["path"];
 
-var authutil=require("./resourcepool/authenticationutil.js");
+
+var privateKey = fs.readFileSync('privatekey.pem').toString();
+var certificate = fs.readFileSync('certificate.pem').toString();
+console.log(privateKey);
+console.log(certificate);
+//var credentials = crypto.createCredentials({key: privateKey, cert: certificate});
+
+httpsOptions ={
+  key: privateKey,
+  cert: certificate};
+
 
 var express = require('express');
 
-var server = express.createServer();
+var server = express.createServer(httpsOptions);
+
+//server.setSecure(credentials);
 
 server.use(express.static(app_run_path));
 
@@ -16,23 +30,8 @@ server.use(express.errorHandler({
 }));
 
 server.get("/resources/*", function(req, res) {
+	req.ssl=true;
 	console.log(req.url);
-
-	var username=req.headers["username"];
-	var password=req.headers["password"];
-
-	username=username==null?"andy":username;
-	password=password==null?"andy":password;
-	console.log(username);
-	console.log(password);
-	authutil.auth_user(username,password,function(user){
-		console.log("@@@@@@@"+user);
-	});
-	//for (var item in req.headers) {
-
-	//	console.log(item + ": " + req.headers[item]);
-	//}
-
 	res.writeHead(200, {
 		'Content-Type': 'text/plain'
 	});
@@ -48,7 +47,7 @@ server.post("/resources/", function(req, res) {
 });
 
 //启动express web服务，监听8080端口
-server.listen(80);
+server.listen(444);
 
 
 
