@@ -1,8 +1,8 @@
-var cfg = require("./ini-file-loader.js").load("./app.ini")["resource_server"];
+var cfg = require("./util/ini-file-loader.js").load("./configfiles/app.ini")["resource_server"];
 var app_run_path = cfg["path"];
 var authutil = require("./resourcepool/authenticationutil.js");
 var express = require('express');
-var urlparser = require("./urlparser.js");
+var urlparser = require("./util/urlparser.js");
 
 var server = express.createServer();
 
@@ -26,6 +26,8 @@ server.get("/resources/*", function(req, res) {
 		console.log(password);
 		authutil.auth_user(username, password, function(user) {
 			//console.log("@@@@@@@" + JSON.stringify(user));
+
+			
 			res.writeHead(200, {
 				'Content-Type': 'text/plain'
 			});
@@ -42,7 +44,7 @@ server.get("/resources/*", function(req, res) {
 
 server.post("/resources/*", function(req, res) {
 
-	
+
 	req.on("data", function(data) {
 		//console.log(data);
 		var xx = urlparser.parse(req.url);

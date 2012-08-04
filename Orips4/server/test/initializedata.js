@@ -6,7 +6,19 @@ db.createCollection("users", function(err, collection) {
 	if (err) console.log("not created");
 	else console.log("create");
 });
-var user={username:"andy",password:"andy"};
+
+
+db.createCollection("users", function(err, collection) {
+	if (err) console.log("not created");
+	else console.log("create");
+});
+
+var user = {
+	username: "andy",
+	password: "andy",
+	organization:"andyorg"
+};
 db.users.save(user, function(error, saved) {
-		console.log(saved);
-	});
+	console.log(saved);
+});
+
