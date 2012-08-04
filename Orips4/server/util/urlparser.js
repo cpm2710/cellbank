@@ -3,6 +3,7 @@
 // or /resources/orgid/resourcename/id/customrelation
 // or /resources/orgid/resourcename/id/brother
 exports.parse = function(url, callback) {
+	console.log("##########url:"+url);
 	var array = url.split("/");
 	var organization, resource, id, relation;
 
@@ -16,11 +17,12 @@ exports.parse = function(url, callback) {
 			break;
 		}
 	}
-
-	callback(new Object({
-		"organization": organization!=undefined?organization.toString():undefined,
-		"resource": resource!=undefined?resource.toString():undefined,
-		"id": id!=undefined?id.toString():undefined,
-		"relation": relation!=undefined?relation.toString():undefined
-	}));
+	if (callback != undefined) {
+		callback(new Object({
+			"organization": organization != undefined ? organization.toString() : undefined,
+			"resource": resource != undefined ? resource.toString() : undefined,
+			"id": id != undefined ? id.toString() : undefined,
+			"relation": relation != undefined ? relation.toString() : undefined
+		}));
+	}
 };

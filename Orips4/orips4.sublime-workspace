@@ -8,85 +8,27 @@
 	"buffers":
 	[
 		{
-			"file": "server/resourceserver.js",
+			"file": "server/resourcepool/resourceutil.js",
 			"settings":
 			{
-				"buffer_size": 429,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/test/initializedata.js",
-			"settings":
-			{
-				"buffer_size": 412,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "var databaseUrl = \"mydb\"; // \"username:password@example.com/mydb\"\nvar collections = [\"users\", \"reports\"]\nvar db = require(\"mongojs\").connect(databaseUrl, collections);\n\ndb.createCollection(\"users\", function(err, collection) {\n	if (err) console.log(\"not created\");\n	else console.log(\"create\");\n});\n\ndb.users.find({\n	sex: \"male\"\n}, function(err, users) {\n	if (err || !users) console.log(\"No female users found\");\n	else users.forEach(function(femaleUser) {\n		console.log(femaleUser);\n	});\n});\n\n\ndb.users.save({\n	email: \"srirangan@gmail.com\",\n	password: \"iLoveMongo\",\n	sex: \"male\"\n}, function(err, saved) {\n	if (err || !saved) console.log(\"User not saved\");\n	else console.log(\"User saved\");\n})\n\ndb.users.update({\n	email: \"srirangan@gmail.com\"\n}, {\n	$set: {\n		password: \"iReallyLoveMongo\"\n	}\n}, function(err, updated) {\n	if (err || !updated) console.log(\"User not updated\");\n	else console.log(\"User updated\");\n});",
-			"file": "server/dataaccess.js",
-			"file_size": 945,
-			"file_write_time": 129883821728763412,
-			"settings":
-			{
-				"buffer_size": 908,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "build.xml",
-			"settings":
-			{
-				"buffer_size": 21,
-				"line_ending": "Windows"
+				"buffer_size": 1955,
+				"line_ending": "Windows",
+				"name": "dataacccessutil.js"
 			}
 		},
 		{
 			"file": "server/ApplicationServer.js",
 			"settings":
 			{
-				"buffer_size": 1415,
+				"buffer_size": 2870,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "howtogeneratecert.txt",
+			"file": "server/util/urlparser.js",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/ini-file-loader.js",
-			"settings":
-			{
-				"buffer_size": 592,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/app.ini",
-			"settings":
-			{
-				"buffer_size": 57,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/resourcepool/dataaccess.js",
-			"settings":
-			{
-				"buffer_size": 908,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/resourcepool/authenticationutil.js",
-			"settings":
-			{
-				"buffer_size": 1414,
+				"buffer_size": 958,
 				"line_ending": "Windows"
 			}
 		}
@@ -102,11 +44,11 @@
 				"Format: Javascript"
 			],
 			[
-				"for",
+				"forma",
 				"Format: Javascript"
 			],
 			[
-				"forma",
+				"for",
 				"Format: Javascript"
 			]
 		],
@@ -127,6 +69,18 @@
 	},
 	"file_history":
 	[
+		"/C/WorkSpace/Orips4/server/util/urlparser.js",
+		"/C/WorkSpace/Orips4/server/resourcepool/dataaccess.js",
+		"/C/WorkSpace/Orips4/server/resourceserver.js",
+		"/C/WorkSpace/Orips4/server/test/initializedata.js",
+		"/C/WorkSpace/Orips4/server/dataaccess.js",
+		"/C/WorkSpace/Orips4/build.xml",
+		"/C/WorkSpace/Orips4/server/ApplicationServer.js",
+		"/C/WorkSpace/Orips4/server/urlparser.js",
+		"/C/WorkSpace/Orips4/howtogeneratecert.txt",
+		"/C/WorkSpace/Orips4/server/ini-file-loader.js",
+		"/C/WorkSpace/Orips4/server/app.ini",
+		"/C/WorkSpace/Orips4/server/resourcepool/authenticationutil.js",
 		"/C/Users/andy/Desktop/sublime_text - 副本.exe",
 		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
 		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.sublime-settings",
@@ -148,6 +102,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"resource",
+			"users",
+			"resource_name",
+			"org_id",
+			"i",
 			"3342",
 			"t",
 			");\n"
@@ -169,27 +128,28 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "server/resourceserver.js",
+					"file": "server/resourcepool/resourceutil.js",
 					"settings":
 					{
-						"buffer_size": 429,
+						"buffer_size": 1955,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								130,
-								146
+								23,
+								76
 							]
 						],
 						"settings":
 						{
+							"auto_name": "dataacccessutil.js",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -201,243 +161,45 @@
 				},
 				{
 					"buffer": 1,
-					"file": "server/test/initializedata.js",
+					"file": "server/ApplicationServer.js",
 					"settings":
 					{
-						"buffer_size": 412,
+						"buffer_size": 2870,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								412,
-								412
+								1303,
+								1303
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 216.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "server/dataaccess.js",
+					"file": "server/util/urlparser.js",
 					"settings":
 					{
-						"buffer_size": 908,
+						"buffer_size": 958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								752,
-								752
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "build.xml",
-					"settings":
-					{
-						"buffer_size": 21,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								21,
-								21
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/XML/XML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "server/ApplicationServer.js",
-					"settings":
-					{
-						"buffer_size": 1415,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1112,
-								1112
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 201.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "howtogeneratecert.txt",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "server/ini-file-loader.js",
-					"settings":
-					{
-						"buffer_size": 592,
-						"regions":
-						{
-							"mark":
-							{
-								"flags": 144,
-								"icon": "dot",
-								"regions":
-								[
-								],
-								"scope": "mark"
-							}
-						},
-						"selection":
-						[
-							[
-								0,
-								7
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "server/app.ini",
-					"settings":
-					{
-						"buffer_size": 57,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								36,
-								36
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "server/resourcepool/dataaccess.js",
-					"settings":
-					{
-						"buffer_size": 908,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								501,
-								505
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "server/resourcepool/authenticationutil.js",
-					"settings":
-					{
-						"buffer_size": 1414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								404,
-								404
+								284,
+								284
 							]
 						],
 						"settings":
@@ -456,7 +218,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{
