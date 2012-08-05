@@ -1,0 +1,9 @@
+{
+	relationname:"parent",
+	mainresource:"resource1",
+	mainresourceid:"resource1id",
+	subresource:"resource2",
+	subresourceid:"resource2id"
+}
+
+

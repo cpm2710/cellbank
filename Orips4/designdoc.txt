@@ -1,0 +1,10 @@
+url design:
+
+/organizaiton/resources/resourcename/id
+
+
+//relation should be association/owns/
+//other customizedrelation
+/organization/resources/resourcename/id/relationname/resourcename2/
+//if there's already one relation with it, just add it.
+

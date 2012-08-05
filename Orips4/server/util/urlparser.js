@@ -8,12 +8,12 @@ exports.parse = function(url, callback) {
 	var organization, resourcename, id, relation;
 
 	for (var x = 0; x < array.length; x++) {
-		//console.log(array[x].toString());
+		console.log("#####"+array[x].toString());
 		if (array[x].toString() === "resources") {
-			organization = array[x + 1];
-			resourcename = array[x + 2];
-			id = array[x + 3]
-			relation = array[x + 4];
+			organization = array[x - 1];
+			resourcename = array[x + 1];
+			id = array[x + 2]
+			relation = array[x + 3];
 			break;
 		}
 	}

@@ -14,8 +14,8 @@ server.use(express.errorHandler({
 	dumpExceptions: true
 }));
 
-server.get("/resources/*", function(req, res) {
-	//req._parsedUrl.pathname
+//organization/resources/
+server.get("/*/resources/*", function(req, res) {
 	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		var username = req.headers["username"];
 		var password = req.headers["password"];
@@ -25,7 +25,11 @@ server.get("/resources/*", function(req, res) {
 		authutil.auth_user(username, password, function(user) {
 			if (user != undefined) {
 				//console.log("@@@@@@@@@" + resource_meta.organization + "#########" + resource_meta.resourcename + req.param("$query"));
-				var query = JSON.parse(req.param("$query"));
+				var query;
+				if(req.param("$query")!=undefined){
+					query = JSON.parse(req.param("$query"));
+				}
+				
 
 				//{organization:asssdfd,resourcename:reere,query:query}
 				//$filter=CategoryName eq 'Produce'
@@ -48,10 +52,11 @@ server.get("/resources/*", function(req, res) {
 	});
 });
 
-server.post("/resources/*", function(req, res) {
-	req.on("data", function(data) {
-		//console.log(data);
-		urlparser.parse(req.url, function(resource_meta) {
+//if we submit one resource related to one resource
+// shold we let the resource cross organization?
+server.post("/*/resources/*", function(req, res) {
+	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
+		req.on("data", function(data) {
 			var resource = JSON.parse(data);
 			// {organization:"sdf",resourcename:"sdf",resource:{}}
 			var resource_def = new Object({
@@ -60,18 +65,17 @@ server.post("/resources/*", function(req, res) {
 				"resource": resource
 			});
 			resourceutil.post(resource_def, function(err, saved) {
-				console.log("here1");
+
+				res.writeHead(200, {
+					'Content-Type': 'text/plain'
+				});
+				res.end('okay');
 			});
 		});
 	});
-	//console.log("shit");
-	res.writeHead(200, {
-		'Content-Type': 'text/plain'
-	});
-	res.end('okay');
 });
 
-server.put("/resources/*", function(req, res) {
+server.put("/*/resources/*", function(req, res) {
 	req.on("data", function(data) {
 		//console.log(data);
 		urlparser.parse(req.url, function(resource_meta) {
@@ -88,7 +92,7 @@ server.put("/resources/*", function(req, res) {
 	res.end('okay');
 });
 
-server.delete("/resources/*", function(req, res) {
+server.delete("/*/resources/*", function(req, res) {
 	var xx = urlparser.parse(req.url);
 	//console.log("shit");
 	res.writeHead(200, {
