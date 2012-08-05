@@ -1,0 +1,14 @@
+http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%3C%2C%3C%3D%2C%3E%2C%3E%3D
+
+
+db.collection.find({ "field" : { $gt: value } } );   // greater than  : field > value
+db.collection.find({ "field" : { $lt: value } } );   // less than  :  field < value
+db.collection.find({ "field" : { $gte: value } } );  // greater than or equal to : field >= value
+db.collection.find({ "field" : { $lte: value } } );  // less than or equal to : field <= value
+
+
+
+使用npm安装node-inspector (npm install node-inspector)
+启动node-inspector (node-inspector &)
+通过--debug执行nodejs (node --debug example.js)
+在chrome中输入http://127.0.0.1:8080，打开的tab我们称其为debug tab (firefox不支持)

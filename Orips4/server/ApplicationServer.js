@@ -15,35 +15,34 @@ server.use(express.errorHandler({
 }));
 
 server.get("/resources/*", function(req, res) {
-	var xx = urlparser.parse(req.url, function(resource_meta) {
+	//req._parsedUrl.pathname
+	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		var username = req.headers["username"];
 		var password = req.headers["password"];
 		username = username == null ? "andy" : username;
 		password = password == null ? "andy" : password;
-		console.log(username);
-		console.log(password);
+
 		authutil.auth_user(username, password, function(user) {
 			if (user != undefined) {
-				//console.dir(req);
-				var query=eval(req.param("$query"));
+				//console.log("@@@@@@@@@" + resource_meta.organization + "#########" + resource_meta.resourcename + req.param("$query"));
+				var query = JSON.parse(req.param("$query"));
 
 				//{organization:asssdfd,resourcename:reere,query:query}
-				urlparser.parse(req.url, function(resource_meta) {
-					//$filter=CategoryName eq 'Produce'
-					var query_def=new Object({
-						"organization": resource_meta.organization,
-						"resourcename": resource_meta.resourcename,
-						"query":query
-					});
-					resourceutil.get(query_def, function(err, resources) {
-						
-						res.write(JSON.stringify(resources));
-						res.writeHead(200, {
-							'Content-Type': 'text/plain'
-						});
-						res.end();
-					});
+				//$filter=CategoryName eq 'Produce'
+				var query_def = new Object({
+					"organization": resource_meta.organization,
+					"resourcename": resource_meta.resourcename,
+					"query": query
 				});
+				resourceutil.get(query_def, function(err, resources) {
+					res.writeHead(200, {
+						'Content-Type': 'text/plain'
+					});
+					res.write(JSON.stringify(resources));
+
+					res.end();
+				});
+
 			}
 		});
 	});
