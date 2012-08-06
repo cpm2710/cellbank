@@ -11,7 +11,7 @@
 			"file": "server/resourcepool/resourceutil.js",
 			"settings":
 			{
-				"buffer_size": 1955,
+				"buffer_size": 2015,
 				"line_ending": "Windows",
 				"name": "dataacccessutil.js"
 			}
@@ -20,7 +20,23 @@
 			"file": "server/ApplicationServer.js",
 			"settings":
 			{
-				"buffer_size": 2870,
+				"buffer_size": 3014,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "designdoc.txt",
+			"settings":
+			{
+				"buffer_size": 246,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/resourcedefinitions.txt",
+			"settings":
+			{
+				"buffer_size": 143,
 				"line_ending": "Windows"
 			}
 		},
@@ -28,7 +44,32 @@
 			"file": "server/util/urlparser.js",
 			"settings":
 			{
-				"buffer_size": 958,
+				"buffer_size": 984,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apidocuments.txt",
+			"settings":
+			{
+				"buffer_size": 661,
+				"line_ending": "Windows",
+				"name": "apidocuments.txt"
+			}
+		},
+		{
+			"file": "server/test/initializedata.js",
+			"settings":
+			{
+				"buffer_size": 1031,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/resourcepool/authenticationutil.js",
+			"settings":
+			{
+				"buffer_size": 1414,
 				"line_ending": "Windows"
 			}
 		}
@@ -40,11 +81,11 @@
 		"selected_items":
 		[
 			[
-				"form",
+				"forma",
 				"Format: Javascript"
 			],
 			[
-				"forma",
+				"form",
 				"Format: Javascript"
 			],
 			[
@@ -92,7 +133,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -128,7 +169,6 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
 				{
@@ -136,15 +176,15 @@
 					"file": "server/resourcepool/resourceutil.js",
 					"settings":
 					{
-						"buffer_size": 1955,
+						"buffer_size": 2015,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23,
-								76
+								277,
+								277
 							]
 						],
 						"settings":
@@ -164,15 +204,15 @@
 					"file": "server/ApplicationServer.js",
 					"settings":
 					{
-						"buffer_size": 2870,
+						"buffer_size": 3014,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1303,
-								1303
+								524,
+								524
 							]
 						],
 						"settings":
@@ -188,18 +228,150 @@
 				},
 				{
 					"buffer": 2,
-					"file": "server/util/urlparser.js",
+					"file": "designdoc.txt",
 					"settings":
 					{
-						"buffer_size": 958,
+						"buffer_size": 246,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								284,
-								284
+								93,
+								93
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "server/resourcedefinitions.txt",
+					"settings":
+					{
+						"buffer_size": 143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								137,
+								137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "server/util/urlparser.js",
+					"settings":
+					{
+						"buffer_size": 984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								607,
+								607
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "apidocuments.txt",
+					"settings":
+					{
+						"buffer_size": 661,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								661,
+								661
+							]
+						],
+						"settings":
+						{
+							"auto_name": "apidocuments.txt",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "server/test/initializedata.js",
+					"settings":
+					{
+						"buffer_size": 1031,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								31,
+								31
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "server/resourcepool/authenticationutil.js",
+					"settings":
+					{
+						"buffer_size": 1414,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":

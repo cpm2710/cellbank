@@ -8,3 +8,8 @@ url design:
 /organization/resources/resourcename/id/relationname/resourcename2/
 //if there's already one relation with it, just add it.
 
+
+relation的数据表设计为
+
+resourcename1 resourceid1 relation resourcename2 resournceid2 summaryofresource2
+

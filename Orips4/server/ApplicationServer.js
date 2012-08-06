@@ -14,7 +14,12 @@ server.use(express.errorHandler({
 	dumpExceptions: true
 }));
 
-//organization/resources/
+//organization/resources/resourcename/id
+
+// {mainresource:"name1",subresource:"name2",relation:"parent",subsummary:"summary"
+// ,mainid:"id1",subid:"id2"}
+
+//especially /organization/resources/relations/$query={}
 server.get("/*/resources/*", function(req, res) {
 	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		var username = req.headers["username"];
@@ -54,6 +59,12 @@ server.get("/*/resources/*", function(req, res) {
 
 //if we submit one resource related to one resource
 // shold we let the resource cross organization?
+//organization/resources/resourcename/
+//if this is the relations then should be 
+//organization/resources/relations
+// relations should in format 
+// {mainresource:"name1",subresource:"name2",relation:"parent",subsummary:"summary"
+// ,mainid:"id1",subid:"id2"}
 server.post("/*/resources/*", function(req, res) {
 	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		req.on("data", function(data) {
@@ -74,6 +85,9 @@ server.post("/*/resources/*", function(req, res) {
 		});
 	});
 });
+
+
+
 
 server.put("/*/resources/*", function(req, res) {
 	req.on("data", function(data) {
