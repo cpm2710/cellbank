@@ -1,1 +1,1 @@
-mongod -dbpath C:\WorkSpace\MongoDBData
+mongod -dbpath C:\WorkSpace\RunningSpace\MongoDBData

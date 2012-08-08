@@ -7,77 +7,11 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "server/resourcepool/resourceutil.js",
-			"settings":
-			{
-				"buffer_size": 2015,
-				"line_ending": "Windows",
-				"name": "dataacccessutil.js"
-			}
-		},
-		{
-			"file": "server/ApplicationServer.js",
-			"settings":
-			{
-				"buffer_size": 3014,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "designdoc.txt",
-			"settings":
-			{
-				"buffer_size": 246,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/resourcedefinitions.txt",
-			"settings":
-			{
-				"buffer_size": 143,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/util/urlparser.js",
-			"settings":
-			{
-				"buffer_size": 984,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "apidocuments.txt",
-			"settings":
-			{
-				"buffer_size": 661,
-				"line_ending": "Windows",
-				"name": "apidocuments.txt"
-			}
-		},
-		{
-			"file": "server/test/initializedata.js",
-			"settings":
-			{
-				"buffer_size": 1031,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/resourcepool/authenticationutil.js",
-			"settings":
-			{
-				"buffer_size": 1414,
-				"line_ending": "Windows"
-			}
-		}
 	],
-	"build_system": "Packages/Java/Ant.sublime-build",
+	"build_system": "Packages/Nodejs/Nodejs.sublime-build",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -110,6 +44,15 @@
 	},
 	"file_history":
 	[
+		"/C/WorkSpace/Adventures/server/resourcepool/authenticationutil.js",
+		"/C/WorkSpace/Adventures/server/test/initializedata.js",
+		"/C/WorkSpace/Adventures/apidocuments.txt",
+		"/C/WorkSpace/Adventures/server/util/urlparser.js",
+		"/C/WorkSpace/Adventures/server/resourcedefinitions.txt",
+		"/C/WorkSpace/Adventures/designdoc.txt",
+		"/C/WorkSpace/Adventures/server/ApplicationServer.js",
+		"/C/WorkSpace/Adventures/server/resourcepool/resourceutil.js",
+		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.sublime-settings",
 		"/C/WorkSpace/Orips4/server/util/urlparser.js",
 		"/C/WorkSpace/Orips4/server/resourcepool/dataaccess.js",
 		"/C/WorkSpace/Orips4/server/resourceserver.js",
@@ -124,7 +67,6 @@
 		"/C/WorkSpace/Orips4/server/resourcepool/authenticationutil.js",
 		"/C/Users/andy/Desktop/sublime_text - 副本.exe",
 		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
-		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.sublime-settings",
 		"/C/WorkSpace/Orips3/Orips4/server/dataaccess/resourceserver.js"
 	],
 	"find":
@@ -133,7 +75,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -171,220 +113,6 @@
 		{
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "server/resourcepool/resourceutil.js",
-					"settings":
-					{
-						"buffer_size": 2015,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								277,
-								277
-							]
-						],
-						"settings":
-						{
-							"auto_name": "dataacccessutil.js",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "server/ApplicationServer.js",
-					"settings":
-					{
-						"buffer_size": 3014,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								524,
-								524
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 216.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "designdoc.txt",
-					"settings":
-					{
-						"buffer_size": 246,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								93,
-								93
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "server/resourcedefinitions.txt",
-					"settings":
-					{
-						"buffer_size": 143,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								137,
-								137
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "server/util/urlparser.js",
-					"settings":
-					{
-						"buffer_size": 984,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								607,
-								607
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "apidocuments.txt",
-					"settings":
-					{
-						"buffer_size": 661,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								661,
-								661
-							]
-						],
-						"settings":
-						{
-							"auto_name": "apidocuments.txt",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "server/test/initializedata.js",
-					"settings":
-					{
-						"buffer_size": 1031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								31,
-								31
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "server/resourcepool/authenticationutil.js",
-					"settings":
-					{
-						"buffer_size": 1414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -442,11 +170,11 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"show_minimap": true,
 	"show_open_files": false,
