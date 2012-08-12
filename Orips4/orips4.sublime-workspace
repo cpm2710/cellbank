@@ -7,27 +7,48 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "site/design.html",
+			"settings":
+			{
+				"buffer_size": 750,
+				"line_ending": "Windows",
+				"name": "design.html"
+			}
+		},
+		{
+			"file": "site/design-main.js",
+			"settings":
+			{
+				"buffer_size": 4236,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/Nodejs/Nodejs.sublime-build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 58.0,
 		"selected_items":
 		[
+			[
+				"form",
+				"Format: Javascript"
+			],
 			[
 				"forma",
 				"Format: Javascript"
 			],
 			[
-				"form",
-				"Format: Javascript"
+				"html",
+				"Snippet: html"
 			],
 			[
 				"for",
 				"Format: Javascript"
 			]
 		],
-		"width": 416.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -44,12 +65,22 @@
 	},
 	"file_history":
 	[
+		"/C/WorkSpace/Adventures/site/index.html",
+		"/C/WorkSpace/Adventures/site/resourceutil.js",
+		"/C/WorkSpace/Adventures/site/css/designer.css",
+		"/C/WorkSpace/Adventures/site/css/index.css",
+		"/C/WorkSpace/Adventures/site/design-main.js",
+		"/C/WorkSpace/Adventures/site/design.js",
+		"/C/WorkSpace/Adventures/site/urlutil.js",
+		"/C/WorkSpace/Adventures/server/configfiles/app.ini",
+		"/C/WorkSpace/Adventures/designdoc.txt",
+		"/C/WorkSpace/Adventures/server/resourcedefinitions.txt",
+		"/C/WorkSpace/Adventures/site/main.js",
+		"/C/Program Files/Sublime Text 2/sublime_text - Copy.exe",
 		"/C/WorkSpace/Adventures/server/resourcepool/authenticationutil.js",
 		"/C/WorkSpace/Adventures/server/test/initializedata.js",
 		"/C/WorkSpace/Adventures/apidocuments.txt",
 		"/C/WorkSpace/Adventures/server/util/urlparser.js",
-		"/C/WorkSpace/Adventures/server/resourcedefinitions.txt",
-		"/C/WorkSpace/Adventures/designdoc.txt",
 		"/C/WorkSpace/Adventures/server/ApplicationServer.js",
 		"/C/WorkSpace/Adventures/server/resourcepool/resourceutil.js",
 		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.sublime-settings",
@@ -85,6 +116,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"3342",
 			"resource",
 			"users",
 			"resource_name",
@@ -111,8 +143,65 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "site/design.html",
+					"settings":
+					{
+						"buffer_size": 750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								494,
+								494
+							]
+						],
+						"settings":
+						{
+							"auto_name": "design.html",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "site/design-main.js",
+					"settings":
+					{
+						"buffer_size": 4236,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3460,
+								3460
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2383.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -180,6 +269,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 264.0,
+	"side_bar_width": 341.0,
 	"status_bar_visible": true
 }

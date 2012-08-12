@@ -13,3 +13,32 @@ relation的数据表设计为
 
 resourcename1 resourceid1 relation resourcename2 resournceid2 summaryofresource2
 
+
+{
+	relationname:"parent",
+	mainresource:"resource1",
+	mainresourceid:"resource1id",
+	subresource:"resource2",
+	subresourceid:"resource2id"
+}
+
+
+
+
+
+前台:
+page
+{
+	resources:""
+}
+
+
+resource_metas
+{
+	resource_name:"abc",
+	property_name:"abc",
+	property_locname:"",
+	language:"zh-cn"//this default to en-us
+}
+
+
