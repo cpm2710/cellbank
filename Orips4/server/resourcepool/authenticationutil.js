@@ -1,6 +1,6 @@
 exports.auth_user = function auth_user(username, password,callback) {
 
-	var databaseUrl = "mydb"; // "username:password@example.com/mydb"
+	var databaseUrl = "orips4"; // "username:password@example.com/mydb"
 	var collections = ["users"]
 	var db = require("mongojs").connect(databaseUrl, collections);
 

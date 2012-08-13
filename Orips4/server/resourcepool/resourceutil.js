@@ -2,12 +2,14 @@
 
 //query should be in {organization:asssdfd,resourcename:reere,query:query}
 exports.get = function(query_def, callback) {
+
+	console.log("query=="+JSON.stringify(query_def.query));
 	var databaseUrl = query_def.organization; // "username:password@example.com/mydb"
 	//var resouceCollection = [resource.resourcename];
 	var db = require("mongojs").connect(databaseUrl);
 	var resource_collection = db.collection(query_def.resourcename);
 
-	//console.log("query=="+JSON.stringify(query_def.query));
+	
 	resource_collection.find(query_def.query, callback);
 };
 

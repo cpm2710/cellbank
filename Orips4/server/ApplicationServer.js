@@ -20,7 +20,7 @@ server.use(express.errorHandler({
 // ,mainid:"id1",subid:"id2"}
 
 //especially /organization/resources/relations/$query={}
-server.get("/*/resources/*", function(req, res) {
+server.get("/resources/*", function(req, res) {
 	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		var username = req.headers["username"];
 		var password = req.headers["password"];
@@ -35,7 +35,7 @@ server.get("/*/resources/*", function(req, res) {
 					query = JSON.parse(req.param("$query"));
 				}
 				
-
+				console.log("##########"+query);
 				//{organization:asssdfd,resourcename:reere,query:query}
 				//$filter=CategoryName eq 'Produce'
 				var query_def = new Object({
@@ -65,7 +65,7 @@ server.get("/*/resources/*", function(req, res) {
 // relations should in format 
 // {mainresource:"name1",subresource:"name2",relation:"parent",subsummary:"summary"
 // ,mainid:"id1",subid:"id2"}
-server.post("/*/resources/*", function(req, res) {
+server.post("/resources/*", function(req, res) {
 	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		req.on("data", function(data) {
 			var resource = JSON.parse(data);
@@ -89,7 +89,7 @@ server.post("/*/resources/*", function(req, res) {
 
 
 
-server.put("/*/resources/*", function(req, res) {
+server.put("/resources/*", function(req, res) {
 	req.on("data", function(data) {
 		//console.log(data);
 		urlparser.parse(req.url, function(resource_meta) {
@@ -106,7 +106,7 @@ server.put("/*/resources/*", function(req, res) {
 	res.end('okay');
 });
 
-server.delete("/*/resources/*", function(req, res) {
+server.delete("/resources/*", function(req, res) {
 	var xx = urlparser.parse(req.url);
 	//console.log("shit");
 	res.writeHead(200, {

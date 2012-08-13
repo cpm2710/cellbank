@@ -3,12 +3,12 @@ $(document).ready(function() {
 	//first get the page definition
 	//{page_id:"1",resources:["aaa","bbb","cccc"]};
 	var query_def = new Object({
-					"organization": "organization",
-					"resourcename": "users",
+					"organization": "andyorg",
+					"resourcename": "orders",
 					"query": null
 				});
 	function callback(d){
-
+		alert(d);
 	};
 	get_resource(query_def, callback);
 });

@@ -1,6 +1,6 @@
-var databaseUrl = "organization"; // "username:password@example.com/mydb"
-var collections = ["users", "orders"]
-var db = require("mongojs").connect(databaseUrl, collections);
+var databaseUrl = "orips4"; // "username:password@example.com/mydb"
+var usersCollectoin = ["users"]
+var db = require("mongojs").connect(databaseUrl, usersCollectoin);
 
 db.createCollection("users", function(err, collection) {
 	if (err) console.log("not created");
@@ -19,6 +19,16 @@ var user = {
 	organization:"andyorg"
 };
 
+db.users.save(user, function(error, saved) {
+	console.log(saved);
+});
+
+
+var resourceUrl = "andyorg"; // "username:password@example.com/mydb"
+var collections = ["orders"]
+var db2 = require("mongojs").connect(resourceUrl, collections);
+
+
 var order={
 	name:"ordername",
 	number:1234,
@@ -31,19 +41,17 @@ var order2={
 	price:1.2234
 };
 
-db.users.save(user, function(error, saved) {
+
+
+db2.orders.save(order, function(error, saved) {
 	console.log(saved);
 });
 
-db.orders.save(order, function(error, saved) {
+db2.orders.save(order2, function(error, saved) {
 	console.log(saved);
 });
 
-db.orders.save(order2, function(error, saved) {
-	console.log(saved);
-});
-
-db.orders.find({
+db2.orders.find({
 	"name": "ordername"
 }, function(err, orders) {
 	if (err || !orders) console.log("No female orders found");

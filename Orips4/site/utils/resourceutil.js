@@ -14,7 +14,8 @@ var query_def = new Object({
 				});*/
 	//query_def could be $query="{adfadsdsa}";
 	// query_def organization_id="";
-	var url = "./" + query_def.organization + "/" + query_def.resourcename + query == null ? "" : ? ("$query=" + query_def.query);
+	var url = "./resources/" + query_def.organization + "/" + query_def.resourcename + 
+		(query_def.query == null ? "" : ("$query=" + query_def.query));
 	$.ajax({
 		contentType: "application/json",
 		url: url,
@@ -66,7 +67,6 @@ function update_resource(resource_def, callback) {
 		error: callback,
 		success: callback
 	});
-};
 };
 
 //remove_def should be in {organization:"adsf",resourcename:"asdf",query:"deletequery{id:1}}
