@@ -38,7 +38,7 @@ function post_resource(resource_def, callback) {
 				"resource": resource
 			});*/
 
-	var url = "./" + resource_def.organization + "/" + resource_def.resourcename;
+	var url = "./resources/" + resource_def.organization + "/" + resource_def.resourcename;
 	$.ajax({
 		contentType: "application/json",
 		url: url,
@@ -56,7 +56,7 @@ function post_resource(resource_def, callback) {
 
 function update_resource(resource_def, callback) {
 
-	var url = "./" + resource_def.organization + "/" + resource_def.resourcename + "/" + resource_def.id;
+	var url = "./resources/" + resource_def.organization + "/" + resource_def.resourcename + "/" + resource_def.id;
 	$.ajax({
 		contentType: "application/json",
 		url: url,
@@ -72,7 +72,17 @@ function update_resource(resource_def, callback) {
 //remove_def should be in {organization:"adsf",resourcename:"asdf",query:"deletequery{id:1}}
 
 function delete_resource(remove_def, callback) {
-
+var url = "./resources/" + resource_def.organization + "/" + resource_def.resourcename + "/" + resource_def.id;
+	$.ajax({
+		contentType: "application/json",
+		url: url,
+		type: "DELETE",
+		cache: false,
+		dataType: "json",
+		data: resource_def.resource,
+		error: callback,
+		success: callback
+	});
 };
 
 

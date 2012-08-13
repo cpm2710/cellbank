@@ -1,12 +1,10 @@
 var cfg = require("./util/ini-file-loader.js").load("./configfiles/app.ini")["resource_server"];
 var app_run_path = cfg["path"];
 var authutil = require("./resourcepool/authenticationutil.js");
-var express = require('express');
+var express = require("express");
 var urlparser = require("./util/urlparser.js");
 var resourceutil = require("./resourcepool/resourceutil.js");
 var server = express.createServer();
-
-
 
 server.use(express.static(app_run_path));
 server.use(express.errorHandler({
