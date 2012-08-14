@@ -14,8 +14,7 @@ var query_def = new Object({
 				});*/
 	//query_def could be $query="{adfadsdsa}";
 	// query_def organization_id="";
-	var url = "./resources/" + query_def.organization + "/" + query_def.resourcename + 
-		(query_def.query == null ? "" : ("$query=" + query_def.query));
+	var url = "./resources/" + query_def.organization + "/" + query_def.resourcename + (query_def.query == null ? "" : ("$query=" + query_def.query));
 	$.ajax({
 		contentType: "application/json",
 		url: url,
@@ -53,7 +52,6 @@ function post_resource(resource_def, callback) {
 
 //seems there would be one id in resource_def
 
-
 function update_resource(resource_def, callback) {
 
 	var url = "./resources/" + resource_def.organization + "/" + resource_def.resourcename + "/" + resource_def.id;
@@ -72,7 +70,7 @@ function update_resource(resource_def, callback) {
 //remove_def should be in {organization:"adsf",resourcename:"asdf",query:"deletequery{id:1}}
 
 function delete_resource(remove_def, callback) {
-var url = "./resources/" + resource_def.organization + "/" + resource_def.resourcename + "/" + resource_def.id;
+	var url = "./resources/" + resource_def.organization + "/" + resource_def.resourcename + "/" + resource_def.id;
 	$.ajax({
 		contentType: "application/json",
 		url: url,
@@ -86,49 +84,67 @@ var url = "./resources/" + resource_def.organization + "/" + resource_def.resour
 };
 
 
-/*
-var adminManagementUrl="/rest/admin"
-function modifyPasswordRest(orip, newp) {
-	resultJson = $.ajax({
-		contentType : "application/json",
-		url : adminManagementUrl + "/modifyPassword/" + orip +"/"+newp,
-		cache : false,
-		async : false,
-		type: 'POST',
-		statusCode: {
-			401: function(){
-				jumpToLogin();
-			},
-		    403: function() {
-		    	jumpToLogin();
-		    }
-		  }
-	}).responseText;
-	return resultJson;
-}
 
-function addAdmin(adminJson){
-	resultJson = $.ajax({
+//get the meta_data of the resource
+function get_resource_meta(resource_meta_def, callback) {
+	var url = "./resources/" + resource_meta_def.organization + "/resource_metas/" + resource_meta_def.resourcename;
+	$.ajax({
+		contentType: "application/json",
+		url: url,
+		type: "DELETE",
+		cache: false,
 		dataType: "json",
-		contentType:"application/json",
-		type:'POST',
-		url: adminManagementUrl + "/",
-		data: adminJson,
-		cache:false,
-		aysnc:false,
-		statusCode: {
-			401:function(){
-				jumpToLogin();
-			},
-			403:function(){
-				jumpToLogin();
-			}
-			
-		}
-	}).responseText;
-	if (resultJson!=null && resultJson!="")
-		resultJson =  eval("(" + resultJson + ")");
-	return resultJson;
-}
+		data: resource_meta_def.resource,
+		error: callback,
+		success: callback
+	});
+};
 
-*/
+
+//create the meta_data of the resource
+function post_resource_meta(resource_meta_def, callback) {
+	var url = "./resources/" + resource_meta_def.organization + "/resource_metas/" + resource_meta_def.resourcename;
+	$.ajax({
+		contentType: "application/json",
+		url: url,
+		type: "POST",
+		cache: false,
+		dataType: "json",
+		data: resource_meta_def.resource,
+		error: callback,
+		success: callback
+	});
+};
+
+//put the meta_data of the resource
+function put_resource_meta(resource_meta_def, callback) {
+	var url = "./resources/" + resource_meta_def.organization + "/resource_metas/" + resource_meta_def.resourcename;
+	$.ajax({
+		contentType: "application/json",
+		url: url,
+		type: "PUT",
+		cache: false,
+		dataType: "json",
+		data: resource_meta_def.resource,
+		error: callback,
+		success: callback
+	});
+};
+
+
+//delete the meta_data of the resource
+function delete_resource_meta(resource_meta_def, callback) {
+	var url = "./resources/" + resource_meta_def.organization + "/resource_metas/" + resource_meta_def.resourcename;
+	$.ajax({
+		contentType: "application/json",
+		url: url,
+		type: "DELETE",
+		cache: false,
+		dataType: "json",
+		data: resource_meta_def.resource,
+		error: callback,
+		success: callback
+	});
+};
+
+

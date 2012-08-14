@@ -18,6 +18,7 @@ server.use(express.errorHandler({
 // ,mainid:"id1",subid:"id2"}
 
 //especially /organization/resources/relations/$query={}
+
 server.get("/resources/*", function(req, res) {
 	urlparser.parse(req._parsedUrl.pathname, function(resource_meta) {
 		var username = req.headers["username"];
@@ -89,15 +90,10 @@ server.post("/resources/*", function(req, res) {
 
 server.put("/resources/*", function(req, res) {
 	req.on("data", function(data) {
-		//console.log(data);
 		urlparser.parse(req.url, function(resource_meta) {
 			var resource = JSON.parse(data);
-
 		});
-
-
 	});
-	//console.log("shit");
 	res.writeHead(200, {
 		'Content-Type': 'text/plain'
 	});
@@ -113,6 +109,13 @@ server.delete("/resources/*", function(req, res) {
 	res.end('okay');
 });
 
+
+
+//begin resource metas
+server.get("/resources/*/resource_metas/*",function(req,res){
+
+});
+//end resource metas
 //启动express web服务，监听8080端口
 server.listen(80);
 

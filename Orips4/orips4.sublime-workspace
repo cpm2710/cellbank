@@ -11,7 +11,7 @@
 			"file": "server/ApplicationServer.js",
 			"settings":
 			{
-				"buffer_size": 3467,
+				"buffer_size": 3493,
 				"line_ending": "Windows"
 			}
 		},
@@ -19,7 +19,7 @@
 			"file": "site/utils/resourceutil.js",
 			"settings":
 			{
-				"buffer_size": 2824,
+				"buffer_size": 3161,
 				"line_ending": "Windows"
 			}
 		},
@@ -35,7 +35,7 @@
 			"file": "site/index.html",
 			"settings":
 			{
-				"buffer_size": 518,
+				"buffer_size": 516,
 				"line_ending": "Windows"
 			}
 		},
@@ -43,7 +43,56 @@
 			"file": "site/index-main.js",
 			"settings":
 			{
-				"buffer_size": 352,
+				"buffer_size": 359,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/util/urlparser.js",
+			"settings":
+			{
+				"buffer_size": 1021,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "common/commonconstats.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows",
+				"name": "commonconstats.js"
+			}
+		},
+		{
+			"file": "server/resourcepool/resourceutil.js",
+			"settings":
+			{
+				"buffer_size": 2016,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/test/initializedata.js",
+			"settings":
+			{
+				"buffer_size": 1193,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/resourcepool/authenticationutil.js",
+			"settings":
+			{
+				"buffer_size": 1416,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "site/controls/oripstable.js",
+			"settings":
+			{
+				"buffer_size": 28,
 				"line_ending": "Windows"
 			}
 		}
@@ -169,7 +218,6 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
 				{
@@ -177,15 +225,15 @@
 					"file": "server/ApplicationServer.js",
 					"settings":
 					{
-						"buffer_size": 3467,
+						"buffer_size": 3493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2434,
-								2593
+								1559,
+								1559
 							]
 						],
 						"settings":
@@ -194,7 +242,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 810.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -204,15 +252,15 @@
 					"file": "site/utils/resourceutil.js",
 					"settings":
 					{
-						"buffer_size": 2824,
+						"buffer_size": 3161,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2824,
-								2824
+								2178,
+								2178
 							]
 						],
 						"settings":
@@ -221,7 +269,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -258,15 +306,15 @@
 					"file": "site/index.html",
 					"settings":
 					{
-						"buffer_size": 518,
+						"buffer_size": 516,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								502,
-								502
+								146,
+								146
 							]
 						],
 						"settings":
@@ -284,15 +332,177 @@
 					"file": "site/index-main.js",
 					"settings":
 					{
-						"buffer_size": 352,
+						"buffer_size": 359,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								276,
-								276
+								251,
+								251
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "server/util/urlparser.js",
+					"settings":
+					{
+						"buffer_size": 1021,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								241,
+								241
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "common/commonconstats.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "commonconstats.js",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "server/resourcepool/resourceutil.js",
+					"settings":
+					{
+						"buffer_size": 2016,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1219,
+								1219
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "server/test/initializedata.js",
+					"settings":
+					{
+						"buffer_size": 1193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								864,
+								864
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "server/resourcepool/authenticationutil.js",
+					"settings":
+					{
+						"buffer_size": 1416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								97,
+								97
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "site/controls/oripstable.js",
+					"settings":
+					{
+						"buffer_size": 28,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								24
 							]
 						],
 						"settings":
