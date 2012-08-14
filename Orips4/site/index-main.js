@@ -11,4 +11,7 @@ $(document).ready(function() {
 		alert(d);
 	};
 	get_resource(query_def, callback);
+
+
+	
 });

@@ -8,10 +8,10 @@
 	"buffers":
 	[
 		{
-			"file": "server/ApplicationServer.js",
+			"file": "site/controls/oripstree.js",
 			"settings":
 			{
-				"buffer_size": 3493,
+				"buffer_size": 52,
 				"line_ending": "Windows"
 			}
 		},
@@ -19,72 +19,7 @@
 			"file": "site/utils/resourceutil.js",
 			"settings":
 			{
-				"buffer_size": 3161,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "site/design.html",
-			"settings":
-			{
-				"buffer_size": 828,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "site/index.html",
-			"settings":
-			{
-				"buffer_size": 516,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "site/index-main.js",
-			"settings":
-			{
-				"buffer_size": 359,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/util/urlparser.js",
-			"settings":
-			{
-				"buffer_size": 1021,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "common/commonconstats.js",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows",
-				"name": "commonconstats.js"
-			}
-		},
-		{
-			"file": "server/resourcepool/resourceutil.js",
-			"settings":
-			{
-				"buffer_size": 2016,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/test/initializedata.js",
-			"settings":
-			{
-				"buffer_size": 1193,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/resourcepool/authenticationutil.js",
-			"settings":
-			{
-				"buffer_size": 1416,
+				"buffer_size": 3915,
 				"line_ending": "Windows"
 			}
 		},
@@ -92,7 +27,56 @@
 			"file": "site/controls/oripstable.js",
 			"settings":
 			{
-				"buffer_size": 28,
+				"buffer_size": 53,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "site/utils/control_util.js",
+			"settings":
+			{
+				"buffer_size": 339,
+				"line_ending": "Windows",
+				"name": "control_util.js"
+			}
+		},
+		{
+			"file": "server/ApplicationServer.js",
+			"settings":
+			{
+				"buffer_size": 3557,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/resourcepool/resourceutil.js",
+			"settings":
+			{
+				"buffer_size": 1647,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "designdoc.txt",
+			"settings":
+			{
+				"buffer_size": 878,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "site/index-main.js",
+			"settings":
+			{
+				"buffer_size": 363,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "test/initializedata.js",
+			"settings":
+			{
+				"buffer_size": 2013,
 				"line_ending": "Windows"
 			}
 		}
@@ -104,11 +88,11 @@
 		"selected_items":
 		[
 			[
-				"form",
+				"forma",
 				"Format: Javascript"
 			],
 			[
-				"forma",
+				"form",
 				"Format: Javascript"
 			],
 			[
@@ -137,12 +121,28 @@
 	},
 	"file_history":
 	[
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/index.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/demos.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/step-by-step/08_custom-tags.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/variants/accessing-templates/01_compiling-template-objects-from-strings.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/variants/accessing-templates/02_registering-named-template-from-script-declaration.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/variants/accessing-templates/03_getting-template-objects-from-script-declaration.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/variants/accessing-templates/04_template-composition-subtemplates.html",
+		"/C/WorkSpace/Adventures/test/libs/BorisMoore-jsrender-734d3bd/demos/variants/accessing-templates/05_template-composition-templateobjects.html",
+		"/C/WorkSpace/Adventures/server/ApplicationServer.js",
+		"/C/WorkSpace/Adventures/site/utils/resourceutil.js",
 		"/C/WorkSpace/Adventures/site/design.html",
+		"/C/WorkSpace/Adventures/site/index.html",
+		"/C/WorkSpace/Adventures/site/index-main.js",
+		"/C/WorkSpace/Adventures/server/util/urlparser.js",
+		"/C/WorkSpace/Adventures/common/commonconstats.js",
+		"/C/WorkSpace/Adventures/server/resourcepool/resourceutil.js",
+		"/C/WorkSpace/Adventures/server/test/initializedata.js",
+		"/C/WorkSpace/Adventures/server/resourcepool/authenticationutil.js",
+		"/C/WorkSpace/Adventures/site/controls/oripstable.js",
 		"/C/WorkSpace/Adventures/site/design-main.js",
 		"/C/WorkSpace/Adventures/site/controls/oripstree.js",
-		"/C/WorkSpace/Adventures/site/controls/oripstable.js",
 		"/C/WorkSpace/Adventures/site/resourceutil.js",
-		"/C/WorkSpace/Adventures/site/index.html",
 		"/C/WorkSpace/Adventures/site/css/designer.css",
 		"/C/WorkSpace/Adventures/site/css/index.css",
 		"/C/WorkSpace/Adventures/site/design.js",
@@ -152,12 +152,7 @@
 		"/C/WorkSpace/Adventures/server/resourcedefinitions.txt",
 		"/C/WorkSpace/Adventures/site/main.js",
 		"/C/Program Files/Sublime Text 2/sublime_text - Copy.exe",
-		"/C/WorkSpace/Adventures/server/resourcepool/authenticationutil.js",
-		"/C/WorkSpace/Adventures/server/test/initializedata.js",
 		"/C/WorkSpace/Adventures/apidocuments.txt",
-		"/C/WorkSpace/Adventures/server/util/urlparser.js",
-		"/C/WorkSpace/Adventures/server/ApplicationServer.js",
-		"/C/WorkSpace/Adventures/server/resourcepool/resourceutil.js",
 		"/C/Users/andy/AppData/Roaming/Sublime Text 2/Packages/Nodejs/Nodejs.sublime-settings",
 		"/C/WorkSpace/Orips4/server/util/urlparser.js",
 		"/C/WorkSpace/Orips4/server/resourcepool/dataaccess.js",
@@ -181,7 +176,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
@@ -191,6 +186,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create",
 			"3342",
 			"resource",
 			"users",
@@ -218,28 +214,28 @@
 	"groups":
 	[
 		{
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "server/ApplicationServer.js",
+					"file": "site/controls/oripstree.js",
 					"settings":
 					{
-						"buffer_size": 3493,
+						"buffer_size": 52,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1559,
-								1559
+								52,
+								52
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -252,15 +248,15 @@
 					"file": "site/utils/resourceutil.js",
 					"settings":
 					{
-						"buffer_size": 3161,
+						"buffer_size": 3915,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2178,
-								2178
+								2452,
+								2466
 							]
 						],
 						"settings":
@@ -269,137 +265,29 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1709.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "site/design.html",
+					"file": "site/controls/oripstable.js",
 					"settings":
 					{
-						"buffer_size": 828,
+						"buffer_size": 53,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								518,
-								518
+								53,
+								53
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "site/index.html",
-					"settings":
-					{
-						"buffer_size": 516,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								146,
-								146
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "site/index-main.js",
-					"settings":
-					{
-						"buffer_size": 359,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								251,
-								251
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "server/util/urlparser.js",
-					"settings":
-					{
-						"buffer_size": 1021,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								241,
-								241
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "common/commonconstats.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "commonconstats.js",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -409,11 +297,65 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 3,
+					"file": "site/utils/control_util.js",
+					"settings":
+					{
+						"buffer_size": 339,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								232,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "control_util.js",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "server/ApplicationServer.js",
+					"settings":
+					{
+						"buffer_size": 3557,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2973,
+								2973
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1350.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "server/resourcepool/resourceutil.js",
 					"settings":
 					{
-						"buffer_size": 2016,
+						"buffer_size": 1647,
 						"regions":
 						{
 						},
@@ -430,6 +372,60 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "designdoc.txt",
+					"settings":
+					{
+						"buffer_size": 878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								772,
+								772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "site/index-main.js",
+					"settings":
+					{
+						"buffer_size": 363,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								359,
+								359
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -437,18 +433,18 @@
 				},
 				{
 					"buffer": 8,
-					"file": "server/test/initializedata.js",
+					"file": "test/initializedata.js",
 					"settings":
 					{
-						"buffer_size": 1193,
+						"buffer_size": 2013,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								864,
-								864
+								2013,
+								2013
 							]
 						],
 						"settings":
@@ -457,60 +453,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "server/resourcepool/authenticationutil.js",
-					"settings":
-					{
-						"buffer_size": 1416,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								97,
-								97
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "site/controls/oripstable.js",
-					"settings":
-					{
-						"buffer_size": 28,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24,
-								24
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1266.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -578,10 +521,10 @@
 		],
 		"width": 380.0
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 341.0,
+	"side_bar_width": 336.0,
 	"status_bar_visible": true
 }
