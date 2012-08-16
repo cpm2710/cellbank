@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WindowsServer2012RESTfulService.Controllers
+namespace SBSWebApi.Controllers
 {
     public class HomeController : Controller
     {

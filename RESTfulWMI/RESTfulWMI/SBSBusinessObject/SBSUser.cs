@@ -7,7 +7,6 @@ using System.Management.Instrumentation;
 using System.ServiceModel;
 using System.Collections;
 using System.Threading;
-using SBSWMINotifications;
 namespace SBSBusinessObject
 {
     [ManagementEntity(Name = "SBS_User", Singleton = false)]
@@ -101,7 +100,7 @@ namespace SBSBusinessObject
             try
             {
                 Logger.WriteLine("publishing SBSUserAddedEvent");
-                SBSEventProvider.FireSBSUserAddedEvent(newUser.userId);
+                //SBSEventProvider.FireSBSUserAddedEvent(newUser.userId);
                 //SBSUserAddedEvent.Publish(newUser.userId);
                 Logger.WriteLine("publishedddd SBSUserAddedEvent");
             }

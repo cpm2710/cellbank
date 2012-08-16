@@ -27,18 +27,18 @@ namespace WindowsServer2012WMIComponentService
         {
             //string[] uninstallArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\UserBusinessObject.dll" };
             //ManagedInstallerClass.InstallHelper(uninstallArgs);
-            try
-            {
-                string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
-                ManagedInstallerClass.InstallHelper(installArgs);
+            //try
+            //{
+            //    string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
+            //    ManagedInstallerClass.InstallHelper(installArgs);
 
-                string[] installArgs2 = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
-                ManagedInstallerClass.InstallHelper(installArgs2);
-            }
-            catch (Exception e)
-            {
-                Logger.WriteLine(e.ToString());
-            }
+            //    string[] installArgs2 = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
+            //    ManagedInstallerClass.InstallHelper(installArgs2);
+            //}
+            //catch (Exception e)
+            //{
+            //    Logger.WriteLine(e.ToString());
+            //}
             //Assembly a = Assembly.Load(@"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll");
 
             //InstrumentationManager.RegisterAssembly(a);
@@ -49,7 +49,7 @@ namespace WindowsServer2012WMIComponentService
             myAssemblyInstaller.Dispose();*/
             //SBSWMIInstaller installer = new SBSWMIInstaller();
             // ManagedInstallerClass.InstallHelper(new string[]{"UserBusinessObject.dll"});
-            //InstrumentationManager.RegisterType(typeof(SBS9User));
+            InstrumentationManager.RegisterType(typeof(SBSUser));
             //
 
             Logger.WriteLine("we started");
@@ -57,23 +57,23 @@ namespace WindowsServer2012WMIComponentService
 
         protected override void OnStop()
         {
-            try
-            {
-                string[] installArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
-                ManagedInstallerClass.InstallHelper(installArgs);
+            //try
+            //{
+            //    string[] installArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
+            //    ManagedInstallerClass.InstallHelper(installArgs);
 
 
-                string[] installArgs2 = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
-                ManagedInstallerClass.InstallHelper(installArgs2);
-            }
-            catch (Exception e)
-            {
-                Logger.WriteLine(e.ToString());
-            }
+            //    string[] installArgs2 = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
+            //    ManagedInstallerClass.InstallHelper(installArgs2);
+            //}
+            //catch (Exception e)
+            //{
+            //    Logger.WriteLine(e.ToString());
+            //}
             //Assembly a = Assembly.Load(@"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll");
 
             //InstrumentationManager.UnregisterAssembly(a);
-            //InstrumentationManager.UnregisterType(typeof(SBS9User));
+            InstrumentationManager.UnregisterType(typeof(SBSUser));
         }
     }
 }

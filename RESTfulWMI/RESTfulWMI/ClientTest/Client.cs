@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Management;
 using System.Threading;
-using SBSWMINotifications;
 
 namespace ClientTest
 {

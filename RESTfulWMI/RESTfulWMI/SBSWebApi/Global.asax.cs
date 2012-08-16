@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace WindowsServer2012RESTfulService
+namespace SBSWebApi
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -16,24 +16,12 @@ namespace WindowsServer2012RESTfulService
     {
         protected void Application_Start()
         {
-            /*RouteTable.Routes.MapHttpRoute(
-        name: "DefaultApi",
-        routeTemplate: "api/{controller}",
-        defaults: new { id = System.Web.Http.RouteParameter.Optional }
-        ); 
-
-            RouteTable.Routes.MapHttpRoute(
-        name: "DefaultApi2",
-        routeTemplate: "api/{controller}/{id}",
-        defaults: new { id = System.Web.Http.RouteParameter.Optional }
-        ); */
-
-            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
-
             AreaRegistration.RegisterAllAreas();
 
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

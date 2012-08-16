@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Management.Instrumentation;
-[assembly: WmiConfiguration(@"root/sbs", IdentifyLevel = true, HostingModel = ManagementHostingModel.LocalSystem)]
+[assembly: WmiConfiguration(@"root/sbs", IdentifyLevel = true, HostingModel = ManagementHostingModel.Decoupled)]
 namespace SBSBusinessObject
 {
     [System.ComponentModel.RunInstaller(true)]

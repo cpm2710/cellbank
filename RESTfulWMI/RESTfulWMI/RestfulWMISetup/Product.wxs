@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
-  <?define BUILDTARGET="C:\WorkSpace\Microsoft\RestFulWMIComponentBuild\" ?>
+  <?define BUILDTARGET="C:\WorkSpace\Practise\RESTfulWMIBuild\" ?>
   <Product Id="9724e2e5-8746-4c86-978d-29166b6f49b3"
            Name="RESTFulWMISetup"
            Language="1033" Version="1.0.0.0"
@@ -12,11 +12,32 @@
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
     <Condition Message="You must have administrator privileges to install the application.">
       <![CDATA[Privileged]]>
-    </Condition>
-
-    <iis:WebSite Id="DefaultWebSite" Description="Default Web Site">
+    </Condition>   
+    
+    
+    <!--<iis:WebSite Id="DefaultWebSite" Description="Default Web Site">
       <iis:WebAddress Id="AllUnassigned" Port="443"/>
-    </iis:WebSite>
+    </iis:WebSite>-->
+    <CustomAction Id="InstallBinaryAction"
+               FileKey="install_binaries_exe"
+               ExeCommand=""
+               Execute="deferred"
+               Return="check"
+               HideTarget="no"
+               Impersonate="no" />
+
+    <CustomAction Id="UninstallBinaryAction"
+               FileKey="install_binaries_exe"
+               ExeCommand="-u"
+               Execute="deferred"
+               Return="check"
+               HideTarget="no"
+               Impersonate="no" />
+
+
+    <InstallExecuteSequence>
+      <Custom Action="InstallBinaryAction" After="InstallFiles"/>      
+    </InstallExecuteSequence>
     
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFiles64Folder">
@@ -25,7 +46,9 @@
           <Component Id="WindowsServer2012WMIComponent" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2" Win64="yes">
             <File Id="service_exe" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe"></File>
             <File Id="user_business_object" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll"></File>
-            <File Id="sbs_wmi_notification" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll"></File>
+            <File Id="install_binaries_exe" Name="InstallBinaries.exe" Source="$(var.BUILDTARGET)InstallBinaries.exe"></File>
+            <!--<File Id="sbs_wmi_notification" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll"></File>-->
+            
             <ServiceInstall Id="WindowsServer2012WMIServiceInstaller" Type="ownProcess" Vital="yes" Name="ws2012wmisvc" 
                             DisplayName="Windows Server 2012 Essentials WMI Service" 
                             Description="This service provides the wmi part of the windows server 2012 essentials." 
@@ -35,11 +58,12 @@
             <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
             
           </Component>
-          <Component Id="WindowsServer2012WebApiConfig" Guid="1FF9CC19-4050-4D84-8F0C-FF4B52B0DFA1" Win64="yes">
+          <!--<Component Id="WindowsServer2012WebApiConfig" Guid="1FF9CC19-4050-4D84-8F0C-FF4B52B0DFA1" Win64="yes">
             <File Id="Web.config" Name="Web.config" Source="$(var.BUILDTARGET)Web.config"></File>
             <File Id="Global.asax" Name="Global.asax" Source="$(var.BUILDTARGET)Global.asax"></File>
-          </Component>
-          <Directory Id="bin" Name="bin">
+          </Component>-->
+          
+          <!--<Directory Id="bin" Name="bin">
             <Component Id="WindowsServer2012WebApiComponent" Guid="08587205-8966-4380-A3FB-3372D5D522F0" Win64="yes">
               <File Id="Antlr3.Runtime.dll" Name="Antlr3.Runtime.dll" Source="$(var.BUILDTARGET)Antlr3.Runtime.dll"></File>
               <File Id="EntityFramework.dll" Name="EntityFramework.dll" Source="$(var.BUILDTARGET)EntityFramework.dll"></File>
@@ -75,9 +99,9 @@
               <File Id="SBSWebApi.dll" Name="UserWebApi.dll" Source="$(var.BUILDTARGET)SBSWebApi.dll"></File>
               
             </Component>
-          </Directory>
+          </Directory>-->
           
-          <Component Id="Service.IIS.Component" Guid="6FAD9EC7-D2B0-4471-A657-C8AF5F6F707F" KeyPath="yes" Win64="yes">
+          <!--<Component Id="Service.IIS.Component" Guid="6FAD9EC7-D2B0-4471-A657-C8AF5F6F707F" KeyPath="yes" Win64="yes">
             
             <iis:WebVirtualDir Id="WindowsServer2012RestService.VirtualDir" Alias="WindowsServer2012RestService" 
                                Directory="INSTALLLOCATION" 
@@ -90,15 +114,15 @@
                             Name="WindowsServer2012RestServicePool"
                             ManagedRuntimeVersion="v4.0" ManagedPipelineMode="integrated" Identity="localSystem">
             </iis:WebAppPool>
-          </Component>
+          </Component>-->
           
           <Directory Id="GAC" Name="GAC">
             <Component Id="SBSBusinessObjectGAC" Guid="22887611-B13E-41EE-897C-D78830E68AEB" Win64="yes">
               <File Id="sbs_business_object_gac" Name="SBSBusinessObject.dll" Source="$(var.BUILDTARGET)SBSBusinessObject.dll" Assembly=".net" KeyPath="yes"></File>
             </Component>
-            <Component Id="SBSWMINotificationGAC" Guid="22887311-E13E-43EE-897C-D74830E66AEB" Win64="yes">
+            <!--<Component Id="SBSWMINotificationGAC" Guid="22887311-E13E-43EE-897C-D74830E66AEB" Win64="yes">
               <File Id="sbs_wmi_notification_gac" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll" Assembly=".net" KeyPath="yes"></File>
-            </Component>
+            </Component>-->
             <Component Id="WindowsServer2012WMIComponentServiceGAC" Guid="28E9E9B3-3F34-427E-B003-C49B61836E48" Win64="yes">
               <File Id="wmi_component_service_exe_gac" Name="WindowsServer2012WMIComponentService.exe" Source="$(var.BUILDTARGET)WindowsServer2012WMIComponentService.exe" Assembly=".net" KeyPath="yes"></File>
             </Component>
@@ -114,11 +138,11 @@
       <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
       <ComponentRef Id="WindowsServer2012WMIComponent" />
       <ComponentRef Id="SBSBusinessObjectGAC"/>
-      <ComponentRef Id="SBSWMINotificationGAC"/>
       <ComponentRef Id="WindowsServer2012WMIComponentServiceGAC"/>
+      <!--<ComponentRef Id="SBSWMINotificationGAC"/>
       <ComponentRef Id="Service.IIS.Component"/>
       <ComponentRef Id="WindowsServer2012WebApiComponent"/>
-      <ComponentRef Id="WindowsServer2012WebApiConfig"/>
+      <ComponentRef Id="WindowsServer2012WebApiConfig"/>-->
     </Feature>
   </Product>
 </Wix>
