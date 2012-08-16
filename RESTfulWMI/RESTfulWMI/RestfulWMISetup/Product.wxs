@@ -39,7 +39,8 @@
 
 
     <InstallExecuteSequence>
-      <Custom Action="InstallBinaryAction" After="InstallFiles"/>      
+      <Custom Action="InstallBinaryAction" After="InstallFiles"/>
+      <Custom Action="UninstallBinaryAction" Before="RemoveFiles">REMOVE="ALL"</Custom>
     </InstallExecuteSequence>
     
     <Directory Id="TARGETDIR" Name="SourceDir">
@@ -56,7 +57,7 @@
                             DisplayName="Windows Server 2012 Essentials WMI Service" 
                             Description="This service provides the wmi part of the windows server 2012 essentials." 
                             Start="demand" 
-                            Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+                            Account="NT Authority\Network Service" ErrorControl="ignore" Interactive="no">
             </ServiceInstall>
             <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="ws2012wmisvc"/>
             

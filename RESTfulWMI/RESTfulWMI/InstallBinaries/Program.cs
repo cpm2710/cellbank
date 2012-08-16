@@ -12,37 +12,44 @@ namespace InstallBinaries
     {
         static void Main(string[] args)
         {
-
-            if (string.Equals(args[0], "-install"))
+            Logger.WriteLine(args.ToString());
+            try
             {
-                try
+                if (string.Equals(args[0], "-install"))
                 {
-                    string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
-                    ManagedInstallerClass.InstallHelper(installArgs);
+                    try
+                    {
+                        string[] installArgs = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
+                        ManagedInstallerClass.InstallHelper(installArgs);
 
-                    //string[] installArgs2 = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
-                    //ManagedInstallerClass.InstallHelper(installArgs2);
+                        //string[] installArgs2 = new string[] { @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
+                        //ManagedInstallerClass.InstallHelper(installArgs2);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.WriteLine(e.ToString());
+                    }
                 }
-                catch (Exception e)
+                if (string.Equals(args[0], "-uninstall"))
                 {
-                    Logger.WriteLine(e.ToString());
+                    try
+                    {
+                        string[] installArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
+                        ManagedInstallerClass.InstallHelper(installArgs);
+
+
+                        //string[] installArgs2 = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
+                        //ManagedInstallerClass.InstallHelper(installArgs2);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.WriteLine(e.ToString());
+                    }
                 }
             }
-            if (string.Equals(args[0], "-uninstall"))
+            catch (Exception e)
             {
-                try
-                {
-                    string[] installArgs = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSBusinessObject.dll" };
-                    ManagedInstallerClass.InstallHelper(installArgs);
-
-
-                    //string[] installArgs2 = new string[] { "/u", @"C:\Program Files\WindowsServer2012WMIService\SBSWMINotifications.dll" };
-                    //ManagedInstallerClass.InstallHelper(installArgs2);
-                }
-                catch (Exception e)
-                {
-                    Logger.WriteLine(e.ToString());
-                }
+                Logger.WriteLine(e.ToString());
             }
         }
     }

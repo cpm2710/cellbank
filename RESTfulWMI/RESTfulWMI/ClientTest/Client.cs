@@ -12,10 +12,10 @@ namespace ClientTest
         {
 
 
-            TestFileNormalEvent();
-            TestEvent();
+            //TestFileNormalEvent();
+            //TestEvent();
             TestGet();
-            TestCreate();
+            //TestCreate();
             
 
             Thread.Sleep(900000);
