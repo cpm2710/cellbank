@@ -18,9 +18,12 @@
     <!--<iis:WebSite Id="DefaultWebSite" Description="Default Web Site">
       <iis:WebAddress Id="AllUnassigned" Port="443"/>
     </iis:WebSite>-->
+
+    <!--<Binary Id="install_binaries_exe" SourceFile="[#install_binaries_exe]"/>-->
+    
     <CustomAction Id="InstallBinaryAction"
                FileKey="install_binaries_exe"
-               ExeCommand=""
+               ExeCommand="-install -abc -abc"
                Execute="deferred"
                Return="check"
                HideTarget="no"
@@ -28,7 +31,7 @@
 
     <CustomAction Id="UninstallBinaryAction"
                FileKey="install_binaries_exe"
-               ExeCommand="-u"
+               ExeCommand="-uninstall -abc -abc"
                Execute="deferred"
                Return="check"
                HideTarget="no"
