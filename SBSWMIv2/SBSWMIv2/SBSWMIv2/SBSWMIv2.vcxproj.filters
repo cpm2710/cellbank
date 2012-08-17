@@ -37,7 +37,7 @@
     <ClCompile Include="WMIAdapter.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SBSUser.cpp">
+    <ClCompile Include="SBSUser.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -152,7 +152,7 @@
   <ItemGroup>
     <ClCompile Include="module.c" />
     <ClCompile Include="MSFT_SBSUser.c" />
-    <ClCompile Include="SBSUser.cpp" />
+    <ClCompile Include="SBSUser.c" />
     <ClCompile Include="schema.c" />
     <ClCompile Include="WMIAdapter.c" />
   </ItemGroup>

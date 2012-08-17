@@ -11,13 +11,13 @@ MI_Result EnumerateSBSUsers(
 {
 	 
     MI_Result result = MI_RESULT_OK;
-
+	int i=0;
     // -*- use it later
     MI_UNREFERENCED_PARAMETER(keysOnly);
 
 
     // Print the names of the modules for each process.
-	int i=0;
+	
     for ( i = 0; i < 20; i++ )
     {
 		MSFT_SBSUser instance;
