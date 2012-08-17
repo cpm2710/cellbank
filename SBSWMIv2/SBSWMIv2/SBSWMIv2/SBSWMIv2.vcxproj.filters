@@ -18,22 +18,29 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="sbsuser.mof" />
+    <None Include="MSFT_Qualifiers.mof" />
+    <None Include="Provider.DEF">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="module.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SBSWMIv2.cpp">
+    <ClCompile Include="MSFT_SBSUser.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp">
+    <ClCompile Include="schema.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WMIAdapter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MSFT_SBSUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
