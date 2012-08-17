@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSWebApi", "SBSWebApi\SBSW
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SBSUserWMI", "SBSUserWMI\SBSUserWMI.vcxproj", "{CF29419C-6F12-4119-A04A-FDFD66D70B83}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestP", "TestP\TestP.vcxproj", "{7306BEDD-EB4E-47E4-B77F-638B21225D30}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -143,22 +141,6 @@ Global
 		{CF29419C-6F12-4119-A04A-FDFD66D70B83}.Release|x64.Build.0 = Release|x64
 		{CF29419C-6F12-4119-A04A-FDFD66D70B83}.Release|x86.ActiveCfg = Release|Win32
 		{CF29419C-6F12-4119-A04A-FDFD66D70B83}.Release|x86.Build.0 = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|Win32.Build.0 = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|x64.ActiveCfg = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|x86.ActiveCfg = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Debug|x86.Build.0 = Debug|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|Any CPU.ActiveCfg = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|Win32.ActiveCfg = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|Win32.Build.0 = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|x64.ActiveCfg = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|x86.ActiveCfg = Release|Win32
-		{7306BEDD-EB4E-47E4-B77F-638B21225D30}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
