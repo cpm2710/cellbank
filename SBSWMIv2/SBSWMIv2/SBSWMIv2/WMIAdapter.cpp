@@ -2,7 +2,6 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <mi.h>
-
 #define STR_HELPERDLLNAME L"wmitomi.dll"
 #define STR_REGISTERDLL "Adapter_RegisterDLL"
 #define STR_UNREGISTERDLL "Adapter_UnRegisterDLL"
@@ -24,7 +23,7 @@ volatile HMODULE g_hHelper = NULL;
 
 // Main provider entry point for MI provider. The framework
 // needs to call into this to get all run time type information.
-MI_EXTERN_C MI_Module* MI_MAIN_CALL MI_Main(_In_ MI_Server* server);
+MI_Module* MI_MAIN_CALL MI_Main(_In_ MI_Server* server);
 
 // DLL module handle, needed for COM registration
 HINSTANCE g_hModule = NULL;
@@ -34,7 +33,7 @@ HINSTANCE g_hModule = NULL;
 CLSID g_providerClassID = { 0x2df1716e, 0x28f9, 0x4dd3, { 0xbd, 0x06, 0x4e, 0xbd, 0x47, 0x8e, 0xae, 0x6b } };
 
 // DllMain is needed to get the module handle for registration.
-EXTERN_C BOOL WINAPI DllMain(_In_ HINSTANCE hInstance,
+BOOL WINAPI DllMain(_In_ HINSTANCE hInstance,
                              _In_ ULONG ulReason,
                              _In_opt_ LPVOID pvReserved)
 {

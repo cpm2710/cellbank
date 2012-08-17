@@ -5,6 +5,16 @@
 #include "MSFT_SBSUser.h"
 #include "SBSUser.h"
 
+
+
+
+// Ignoring the server namespace and using named guids:
+#if defined (USINGPROJECTSYSTEM)
+#import "../Library/DotNetAPI.tlb" no_namespace named_guids
+#else  // Compiling from the command line, all files in the same directory
+#import "DotNetAPI.tlb" no_namespace named_guids
+#endif  
+
 MI_Result EnumerateSBSUsers(
     _In_ MI_Context* context,
     _In_ MI_Boolean keysOnly)

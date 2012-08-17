@@ -8,5 +8,9 @@ namespace DotNetAPI
 {
     public class DotNetApi
     {
+        public int Add(int a)
+        {
+            return a + 1;
+        }
     }
 }

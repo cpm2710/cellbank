@@ -23,21 +23,22 @@
     <None Include="Provider.DEF">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="DotNetAPI.tlb" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="module.c">
+    <ClCompile Include="module.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MSFT_SBSUser.c">
+    <ClCompile Include="MSFT_SBSUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="schema.c">
+    <ClCompile Include="SBSUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WMIAdapter.c">
+    <ClCompile Include="schema.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SBSUser.c">
+    <ClCompile Include="WMIAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

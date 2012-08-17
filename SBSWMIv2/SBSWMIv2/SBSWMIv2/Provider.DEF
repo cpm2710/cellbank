@@ -4,6 +4,7 @@
 LIBRARY         %ProviderName%.DLL
 
 EXPORTS
+	MI_Main				= MI_Main			  PRIVATE
     DllMain             = DllMain             PRIVATE
     GetProviderClassID  = GetProviderClassID  PRIVATE
     DllGetClassObject   = DllGetClassObject   PRIVATE
