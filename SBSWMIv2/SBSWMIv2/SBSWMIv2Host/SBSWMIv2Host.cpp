@@ -258,7 +258,7 @@ int _tmain(int argc, LPCWSTR argv[])
     if (!ParseArgument(argc, argv, &argument))
     {
         fprintf(stderr, "%s\r\n",
-            "Usage: DcupHost.exe -Namespace <namespace>"\
+            "Usage: SBSWMIv2Host.exe -Namespace <namespace>"\
             " -ProviderName <provider name> -ProviderPath <provider dll path>");
 
         CleanupArgument(&argument);
