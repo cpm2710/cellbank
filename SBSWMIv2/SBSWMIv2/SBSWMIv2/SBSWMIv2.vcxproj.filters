@@ -37,9 +37,15 @@
     <ClCompile Include="WMIAdapter.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SBSUser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MSFT_SBSUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SBSUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

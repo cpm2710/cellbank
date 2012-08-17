@@ -22,7 +22,6 @@
     <ProjectGuid>{24F61C75-D08A-4A70-8F9E-D1DA1B6A94BA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SBSWMIv2</RootNamespace>
-    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and $(VisualStudioVersion) == ''">$(VCTargetsPath11)</VCTargetsPath>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,11 +152,13 @@
   <ItemGroup>
     <ClCompile Include="module.c" />
     <ClCompile Include="MSFT_SBSUser.c" />
+    <ClCompile Include="SBSUser.cpp" />
     <ClCompile Include="schema.c" />
     <ClCompile Include="WMIAdapter.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MSFT_SBSUser.h" />
+    <ClInclude Include="SBSUser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
