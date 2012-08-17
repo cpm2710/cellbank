@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <atlbase.h>
 #include <combaseapi.h>
 #include "MSFT_SBSUser.h"
 #include "SBSUser.h"
@@ -22,10 +23,17 @@ MI_Result EnumerateSBSUsers(
 	 
     MI_Result result = MI_RESULT_OK;
 	int i=0;
+	HRESULT hr = E_FAIL; 
+
     // -*- use it later
     MI_UNREFERENCED_PARAMETER(keysOnly);
 
+	//DotNetAPI::DotNetApiPtr
+	//apifff.Add((long)123);
 
+	CComPtr<DotNetApi> spTmp; 
+	hr = spTmp.CoCreateInstance(__uuidof(DotNetApi)); 
+	spTmp->Add((long)123);
     // Print the names of the modules for each process.
 	
     for ( i = 0; i < 20; i++ )
