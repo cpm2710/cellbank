@@ -1,0 +1,22 @@
+//
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//
+// Copyright (c) Microsoft Corporation. All rights reserved
+//
+
+#pragma include ("cim_schema_2.26.0.mof")
+#pragma include ("MSFT_Qualifiers.mof")
+
+// MSFT_WindowsProcess class derives from CIM_Process class,
+// which defines the schema for the processes running on windows OS.
+[ClassVersion("1.0.0")]
+class MSFT_SBSUser
+{
+[Key,Description("N/A")]
+string UserName;
+
+string PassWord;
+};
