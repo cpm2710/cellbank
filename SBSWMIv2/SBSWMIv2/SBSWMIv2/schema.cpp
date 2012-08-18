@@ -9,6 +9,7 @@
 #include <ctype.h>
 #include <MI.h>
 #include "MSFT_SBSUser.h"
+#include "MSFT_SBSMedia.h"
 
 /*
 **==============================================================================
@@ -1031,6 +1032,192 @@ MI_CONST MI_ClassDecl MSFT_SBSUser_rtti =
 /*
 **==============================================================================
 **
+** MSFT_SBSMedia
+**
+**==============================================================================
+*/
+
+
+static MI_CONST MI_Boolean MSFT_SBSMedia_EnableMediaServer_Static_qual_value = 1;
+
+static MI_CONST MI_Qualifier MSFT_SBSMedia_EnableMediaServer_Static_qual =
+{
+    MI_T("Static"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &MSFT_SBSMedia_EnableMediaServer_Static_qual_value
+};
+
+static MI_CONST MI_Char* MSFT_SBSMedia_EnableMediaServer_Description_qual_value = MI_T("N/A");
+
+static MI_CONST MI_Qualifier MSFT_SBSMedia_EnableMediaServer_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &MSFT_SBSMedia_EnableMediaServer_Description_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST MSFT_SBSMedia_EnableMediaServer_quals[] =
+{
+    &MSFT_SBSMedia_EnableMediaServer_Static_qual,
+    &MSFT_SBSMedia_EnableMediaServer_Description_qual,
+};
+
+static MI_CONST MI_Boolean MSFT_SBSMedia_EnableMediaServer_CommandLine_In_qual_value = 1;
+
+static MI_CONST MI_Qualifier MSFT_SBSMedia_EnableMediaServer_CommandLine_In_qual =
+{
+    MI_T("In"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &MSFT_SBSMedia_EnableMediaServer_CommandLine_In_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST MSFT_SBSMedia_EnableMediaServer_CommandLine_quals[] =
+{
+    &MSFT_SBSMedia_EnableMediaServer_CommandLine_In_qual,
+};
+
+/* parameter MSFT_SBSMedia.EnableMediaServer(): CommandLine */
+static MI_CONST MI_ParameterDecl MSFT_SBSMedia_EnableMediaServer_CommandLine_param =
+{
+    MI_FLAG_PARAMETER|MI_FLAG_IN, /* flags */
+    0x0063650B, /* code */
+    MI_T("CommandLine"), /* name */
+    MSFT_SBSMedia_EnableMediaServer_CommandLine_quals, /* qualifiers */
+    MI_COUNT(MSFT_SBSMedia_EnableMediaServer_CommandLine_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(MSFT_SBSMedia_EnableMediaServer, CommandLine), /* offset */
+};
+
+static MI_CONST MI_Boolean MSFT_SBSMedia_EnableMediaServer_MIReturn_Static_qual_value = 1;
+
+static MI_CONST MI_Qualifier MSFT_SBSMedia_EnableMediaServer_MIReturn_Static_qual =
+{
+    MI_T("Static"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &MSFT_SBSMedia_EnableMediaServer_MIReturn_Static_qual_value
+};
+
+static MI_CONST MI_Char* MSFT_SBSMedia_EnableMediaServer_MIReturn_Description_qual_value = MI_T("N/A");
+
+static MI_CONST MI_Qualifier MSFT_SBSMedia_EnableMediaServer_MIReturn_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &MSFT_SBSMedia_EnableMediaServer_MIReturn_Description_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST MSFT_SBSMedia_EnableMediaServer_MIReturn_quals[] =
+{
+    &MSFT_SBSMedia_EnableMediaServer_MIReturn_Static_qual,
+    &MSFT_SBSMedia_EnableMediaServer_MIReturn_Description_qual,
+};
+
+/* parameter MSFT_SBSMedia.EnableMediaServer(): MIReturn */
+static MI_CONST MI_ParameterDecl MSFT_SBSMedia_EnableMediaServer_MIReturn_param =
+{
+    MI_FLAG_PARAMETER|MI_FLAG_OUT, /* flags */
+    0x006D6E08, /* code */
+    MI_T("MIReturn"), /* name */
+    MSFT_SBSMedia_EnableMediaServer_MIReturn_quals, /* qualifiers */
+    MI_COUNT(MSFT_SBSMedia_EnableMediaServer_MIReturn_quals), /* numQualifiers */
+    MI_UINT32, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(MSFT_SBSMedia_EnableMediaServer, MIReturn), /* offset */
+};
+
+static MI_ParameterDecl MI_CONST* MI_CONST MSFT_SBSMedia_EnableMediaServer_params[] =
+{
+    &MSFT_SBSMedia_EnableMediaServer_MIReturn_param,
+    &MSFT_SBSMedia_EnableMediaServer_CommandLine_param,
+};
+
+/* method MSFT_SBSMedia.EnableMediaServer() */
+MI_CONST MI_MethodDecl MSFT_SBSMedia_EnableMediaServer_rtti =
+{
+    MI_FLAG_METHOD|MI_FLAG_STATIC, /* flags */
+    0x00657211, /* code */
+    MI_T("EnableMediaServer"), /* name */
+    MSFT_SBSMedia_EnableMediaServer_quals, /* qualifiers */
+    MI_COUNT(MSFT_SBSMedia_EnableMediaServer_quals), /* numQualifiers */
+    MSFT_SBSMedia_EnableMediaServer_params, /* parameters */
+    MI_COUNT(MSFT_SBSMedia_EnableMediaServer_params), /* numParameters */
+    sizeof(MSFT_SBSMedia_EnableMediaServer), /* size */
+    MI_UINT32, /* returnType */
+    MI_T("MSFT_SBSMedia"), /* origin */
+    MI_T("MSFT_SBSMedia"), /* propagator */
+    &schemaDecl, /* schema */
+    (MI_ProviderFT_Invoke)MSFT_SBSMedia_Invoke_EnableMediaServer, /* method */
+};
+
+static MI_MethodDecl MI_CONST* MI_CONST MSFT_SBSMedia_meths[] =
+{
+    &MSFT_SBSMedia_EnableMediaServer_rtti,
+};
+
+static MI_CONST MI_ProviderFT MSFT_SBSMedia_funcs =
+{
+  (MI_ProviderFT_Load)MSFT_SBSMedia_Load,
+  (MI_ProviderFT_Unload)MSFT_SBSMedia_Unload,
+  (MI_ProviderFT_GetInstance)NULL,
+  (MI_ProviderFT_EnumerateInstances)NULL,
+  (MI_ProviderFT_CreateInstance)NULL,
+  (MI_ProviderFT_ModifyInstance)NULL,
+  (MI_ProviderFT_DeleteInstance)NULL,
+  (MI_ProviderFT_AssociatorInstances)NULL,
+  (MI_ProviderFT_ReferenceInstances)NULL,
+  (MI_ProviderFT_EnableIndications)NULL,
+  (MI_ProviderFT_DisableIndications)NULL,
+  (MI_ProviderFT_Subscribe)NULL,
+  (MI_ProviderFT_Unsubscribe)NULL,
+  (MI_ProviderFT_Invoke)NULL,
+};
+
+static MI_CONST MI_Char* MSFT_SBSMedia_ClassVersion_qual_value = MI_T("1.0.0");
+
+static MI_CONST MI_Qualifier MSFT_SBSMedia_ClassVersion_qual =
+{
+    MI_T("ClassVersion"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_RESTRICTED,
+    &MSFT_SBSMedia_ClassVersion_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST MSFT_SBSMedia_quals[] =
+{
+    &MSFT_SBSMedia_ClassVersion_qual,
+};
+
+/* class MSFT_SBSMedia */
+MI_CONST MI_ClassDecl MSFT_SBSMedia_rtti =
+{
+    MI_FLAG_CLASS, /* flags */
+    0x006D610D, /* code */
+    MI_T("MSFT_SBSMedia"), /* name */
+    MSFT_SBSMedia_quals, /* qualifiers */
+    MI_COUNT(MSFT_SBSMedia_quals), /* numQualifiers */
+    NULL, /* properties */
+    0, /* numProperties */
+    sizeof(MSFT_SBSMedia), /* size */
+    NULL, /* superClass */
+    NULL, /* superClassDecl */
+    MSFT_SBSMedia_meths, /* methods */
+    MI_COUNT(MSFT_SBSMedia_meths), /* numMethods */
+    &schemaDecl, /* schema */
+    &MSFT_SBSMedia_funcs, /* functions */
+    NULL /* owningClass */
+};
+
+/*
+**==============================================================================
+**
 ** __mi_server
 **
 **==============================================================================
@@ -1047,6 +1234,7 @@ MI_Server* __mi_server;
 
 static MI_ClassDecl MI_CONST* MI_CONST classes[] =
 {
+    &MSFT_SBSMedia_rtti,
     &MSFT_SBSUser_rtti,
 };
 

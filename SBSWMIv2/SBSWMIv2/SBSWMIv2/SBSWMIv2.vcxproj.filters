@@ -35,9 +35,6 @@
     <ClCompile Include="SBSUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="schema.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WMIAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MSFT_SBSMedia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="schema.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
