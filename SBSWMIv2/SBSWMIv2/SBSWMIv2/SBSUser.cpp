@@ -7,7 +7,8 @@
 #include "SBSUser.h"
 
 
-
+#include "..\\HelpUtil\Log.h"
+#pragma comment( lib, "..//x64/debug//HelpUtil.lib" ) 
 
 // Ignoring the server namespace and using named guids:
 #if defined (USINGPROJECTSYSTEM)
@@ -39,6 +40,10 @@ MI_Result EnumerateSBSUsers(
 
 	CoUninitialize();*/
 
+	Log *log=new Log();
+	
+	
+
     // Print the names of the modules for each process.
 	
     for ( i = 0; i < 20; i++ )
@@ -48,6 +53,10 @@ MI_Result EnumerateSBSUsers(
 		MI_Result result = MSFT_SBSUser_Construct(&instance, context);
 
 		MI_Char szUserName[MAX_PATH] = L"andy";
+
+		string a("returns sbs user:");
+		log->LogMessage(a);
+
 		MSFT_SBSUser_Set_UserName(&instance,szUserName);
 		MSFT_SBSUser_Set_PassWord(&instance,szUserName);
        
@@ -60,6 +69,6 @@ MI_Result EnumerateSBSUsers(
         if(result != MI_RESULT_OK)
             break;
     }
-
+	delete(log);
     return result;
 }
