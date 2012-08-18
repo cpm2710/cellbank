@@ -1,0 +1,8 @@
+;
+; @migen@ */
+; Please change '%ProviderName%' to your provider binary name
+LIBRARY         HelpUtil.DLL
+
+EXPORTS
+	DllMain				= DllMain			  PRIVATE
+    HelpUtilAdd             = HelpUtilAdd             PRIVATE

@@ -1,7 +1,7 @@
 ;
 ; @migen@ */
 ; Please change '%ProviderName%' to your provider binary name
-LIBRARY         %ProviderName%.DLL
+LIBRARY         SBSWMIv2.DLL
 
 EXPORTS
 	MI_Main				= MI_Main			  PRIVATE
