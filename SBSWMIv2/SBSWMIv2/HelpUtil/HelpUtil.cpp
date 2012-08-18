@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 
+
 int HelpUtilAdd(int a,int b){
 	return a+b;
 };
