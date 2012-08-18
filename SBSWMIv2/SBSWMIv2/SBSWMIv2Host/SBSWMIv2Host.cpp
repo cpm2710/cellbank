@@ -260,45 +260,16 @@ int HostDecoupledProvider(__in DecoupledHostArgument * pArgument)
 
 int _tmain(int argc, LPCWSTR argv[])
 {
-	CoInitialize(NULL);
+	/*CoInitialize(NULL);
 	CLSID ID=__uuidof(DotNetApi::DotNetApiImpl);
 
 	DotNetApi::DotNetApiPtr ptr(ID);
 
 	long asss=ptr->Add(112);
 	
-	//CComPtr<DotNetApi::DotNetApi> spTmp; 
+	
 
-	//DotNetApi::DotNetApiPtr ptr(__uuidof(DotNetApi::DotNetApiImpl));
-	//CLSID ID=__uuidof(DotNetApi::DotNetApiImpl);
-	//HRESULT ABC=ptr.CreateInstance(ID);
-	////HRESULT abc=spTmp.CoCreateInstance(__uuidof(DotNetApi::DotNetApi));
-
-	//if(SUCCEEDED(ABC)){
-	//long rrrr=0;
-	////spTmp->((long)123);
-	//}
-	/*DotNetApi::DotNetApiPtr ptr;
-
-	CLSID ID=__uuidof(DotNetApi::DotNetApi);
-	HRESULT ABC=ptr.CreateInstance(ID);
-	if(SUCCEEDED(ABC)){
-	long rrrr=0;
-	ptr->Add((long)123);
-	}*/
-	//DotNetAPI::DotNetApiImpl
-	//CComPtr<DotNetApi::DotNetApi> spTmp; 
-	//DotNetApi
-	//DotNetAPI::_DotNetApiImpl ABBB(__uuidof(DotNetAPI::DotNetApiImpl));
-	//;
-	//HRESULT abc=spTmp.CoCreateInstance(__uuidof(DotNetApi::DotNetApiImpl),NULL,
-	//	CLSCTX_INPROC_SERVER,DotNetApi::DotNetApiPtr);
-	//if(SUCCEEDED(abc)){
-	//long rrrr=0;
-	//spTmp->Add((long)123);
-	//}
-
-	CoUninitialize();
+	CoUninitialize();*/
 	 DecoupledHostArgument argument;
     int result;
 

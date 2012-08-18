@@ -23,27 +23,35 @@ MI_Result EnumerateSBSUsers(
 	 
     MI_Result result = MI_RESULT_OK;
 	int i=0;
-	HRESULT hr = E_FAIL; 
+	//HRESULT hr = E_FAIL; 
 
     // -*- use it later
     MI_UNREFERENCED_PARAMETER(keysOnly);
 
-	//DotNetAPI::DotNetApiPtr
-	//apifff.Add((long)123);
+	/*CoInitialize(NULL);
+	CLSID ID=__uuidof(DotNetApi::DotNetApiImpl);
 
-	CComPtr<DotNetApi> spTmp; 
-	hr = spTmp.CoCreateInstance(__uuidof(DotNetApi)); 
-	spTmp->Add((long)123);
+	DotNetApi::DotNetApiPtr ptr(ID);
+
+	long asss=ptr->Add(112);
+	
+	
+
+	CoUninitialize();*/
+
     // Print the names of the modules for each process.
 	
     for ( i = 0; i < 20; i++ )
     {
 		MSFT_SBSUser instance;
 
-		 MSFT_SBSUser_Construct(&instance, context);
-		
-       
+		MI_Result result = MSFT_SBSUser_Construct(&instance, context);
 
+		MI_Char szUserName[MAX_PATH] = L"andy";
+		MSFT_SBSUser_Set_UserName(&instance,szUserName);
+		MSFT_SBSUser_Set_PassWord(&instance,szUserName);
+       
+//		 instance.UserName="";
         // Post instance to wmi server
         result = MSFT_SBSUser_Post(&instance, context);
             

@@ -7,3 +7,6 @@ Register-CimProvider.exe -Namespace root/Standardcimv2/sbs -ProviderName sbsuser
 
 
 Register-CimProvider.exe -Namespace root/Standardcimv2/sbs -ProviderName sbsuser -Path sbswmiv2.dll -Decoupled O:BAG:BAD:(A;;0x1;;;BA)(A;;0x1;;;NS) -Impersonation True -verbose -ForceUpdate
+
+
+SBSWMIv2Host.exe -Namespace root/Standardcimv2/sbs -ProviderName sbsuser -ProviderPath sbswmiv2.dll

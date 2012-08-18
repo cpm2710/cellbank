@@ -151,6 +151,7 @@
     <None Include="sbsuser.mof" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="module.cpp" />
     <ClCompile Include="MSFT_SBSUser.cpp" />
     <ClCompile Include="SBSUser.cpp" />
