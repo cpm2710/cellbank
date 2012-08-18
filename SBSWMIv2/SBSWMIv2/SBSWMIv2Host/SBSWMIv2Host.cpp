@@ -252,42 +252,28 @@ int HostDecoupledProvider(__in DecoupledHostArgument * pArgument)
     return 0;
 }
 
-#if defined (USINGPROJECTSYSTEM)
-#import "../Library/DotNetApi.tlb" raw_interfaces_only
-#else  // Compiling from the command line, all files in the same directory
-#import "DotNetApi.tlb" //raw_interfaces_only
-#endif  
+
 
 int _tmain(int argc, LPCWSTR argv[])
 {
-	/*CoInitialize(NULL);
-	CLSID ID=__uuidof(DotNetApi::DotNetApiImpl);
+	DecoupledHostArgument argument;
+	int result;
 
-	DotNetApi::DotNetApiPtr ptr(ID);
+	// parse commandline to get namespace, providername, and providerpath
+	if (!ParseArgument(argc, argv, &argument))
+	{
+		fprintf(stderr, "%s\r\n",
+			"Usage: SBSWMIv2Host.exe -Namespace <namespace>"\
+			" -ProviderName <provider name> -ProviderPath <provider dll path>");
 
-	long asss=ptr->Add(112);
-	
-	
+		CleanupArgument(&argument);
+		return ERROR_INVALID_PARAMETER;
+	}
 
-	CoUninitialize();*/
-	 DecoupledHostArgument argument;
-    int result;
+	result = HostDecoupledProvider(&argument);
 
-    // parse commandline to get namespace, providername, and providerpath
-    if (!ParseArgument(argc, argv, &argument))
-    {
-        fprintf(stderr, "%s\r\n",
-            "Usage: SBSWMIv2Host.exe -Namespace <namespace>"\
-            " -ProviderName <provider name> -ProviderPath <provider dll path>");
-
-        CleanupArgument(&argument);
-        return ERROR_INVALID_PARAMETER;
-    }
-
-    result = HostDecoupledProvider(&argument);
-
-    // clean up the memory
-    CleanupArgument(&argument);
-    return result;
+	// clean up the memory
+	CleanupArgument(&argument);
+	return result;
 }
 

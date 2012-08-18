@@ -6,16 +6,16 @@
 #include "MSFT_SBSUser.h"
 #include "SBSUser.h"
 
+#include   "IAds.h"
+#include   "Adshlp.h"
+#include   "activeds.h"
 
 #include "..\\HelpUtil\Log.h"
 #pragma comment( lib, "..//x64/debug//HelpUtil.lib" ) 
 
-// Ignoring the server namespace and using named guids:
-#if defined (USINGPROJECTSYSTEM)
-#import "../Library/DotNetAPI.tlb" no_namespace named_guids
-#else  // Compiling from the command line, all files in the same directory
-#import "DotNetAPI.tlb" no_namespace named_guids
-#endif  
+#pragma comment( lib,  "ActiveDS.lib")
+
+
 
 MI_Result EnumerateSBSUsers(
     _In_ MI_Context* context,
@@ -29,16 +29,9 @@ MI_Result EnumerateSBSUsers(
     // -*- use it later
     MI_UNREFERENCED_PARAMETER(keysOnly);
 
-	/*CoInitialize(NULL);
-	CLSID ID=__uuidof(DotNetApi::DotNetApiImpl);
 
-	DotNetApi::DotNetApiPtr ptr(ID);
 
-	long asss=ptr->Add(112);
 	
-	
-
-	CoUninitialize();*/
 
 	Log *log=new Log();
 	
