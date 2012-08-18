@@ -153,12 +153,14 @@
   <ItemGroup>
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="module.cpp" />
+    <ClCompile Include="MSFT_SBSMedia.cpp" />
     <ClCompile Include="MSFT_SBSUser.cpp" />
     <ClCompile Include="SBSUser.cpp" />
     <ClCompile Include="schema.cpp" />
     <ClCompile Include="WMIAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MSFT_SBSMedia.h" />
     <ClInclude Include="MSFT_SBSUser.h" />
     <ClInclude Include="SBSUser.h" />
   </ItemGroup>

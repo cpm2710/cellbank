@@ -44,12 +44,18 @@
     <ClCompile Include="Helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MSFT_SBSMedia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MSFT_SBSUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SBSUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MSFT_SBSMedia.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

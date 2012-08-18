@@ -1,4 +1,4 @@
-convert-moftoprovider.exe -MofFile SBSUser.mof -ClassList MSFT_SBSUser -IncludePath %CIM2260DIR% . -OutPath . -SkipLocalize
+convert-moftoprovider.exe -MofFile SBSUser.mof -ClassList MSFT_SBSUser MSFT_SBSMedia -IncludePath ..\cim_schema_2.26.0Final-MOFs . -OutPath . -SkipLocalize
 
 
 

@@ -19,4 +19,15 @@ class MSFT_SBSUser
 string UserName;
 
 string PassWord;
+
+};
+
+// MSFT_WindowsProcess class derives from CIM_Process class,
+// which defines the schema for the processes running on windows OS.
+[ClassVersion("1.0.0")]
+class MSFT_SBSMedia
+{
+[static,
+	Description("N/A")]
+	uint32 EnableMediaServer([In] string CommandLine);
 };
