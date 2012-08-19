@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define BUILDTARGET="C:\WorkSpace\Microsoft\SBSWMIv2\SBSWMIv2\x64\Debug\" ?>
+	<Product Id="395809E2-E14F-49C2-ADCD-8CC28F9440EF" Name="SBSWMIv2Setup" Language="1033" Version="1.0.0.0" 
+           Manufacturer="SBSWMIv2Setup" UpgradeCode="d3421971-6602-4ce6-a1fa-47069ff09081">
+    <Package InstallerVersion="200" Compressed="yes" Platform="x64" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+    <Condition Message="You must have administrator privileges to install the application.">
+      <![CDATA[Privileged]]>
+    </Condition>
+
+
+    <CustomAction Id="InstallBinaryAction"
+               FileKey="install_binaries_exe"
+               ExeCommand="-install -abc -abc"
+               Execute="deferred"
+               Return="check"
+               HideTarget="no"
+               Impersonate="no" />
+    
+
+
+    <InstallExecuteSequence>
+      <Custom Action="InstallBinaryAction" After="InstallFiles"/>
+    </InstallExecuteSequence>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLLOCATION" Name="SBSWMIv2">
+          <Component Id="SBSWMIv2Component" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2" Win64="yes">
+            <File Id="service_exe" Name="SBSWMIv2Host.exe" Source="$(var.BUILDTARGET)SBSWMIv2Host.exe" KeyPath="yes"></File>
+            <File Id="user_business_object" Name="sbswmiv2.dll" Source="$(var.BUILDTARGET)sbswmiv2.dll"></File>
+            <File Id="install_binaries_exe" Name="InstallationActions.exe" Source="$(var.BUILDTARGET)InstallationActions.exe"></File>
+            <!--<File Id="sbs_wmi_notification" Name="SBSWMINotifications.dll" Source="$(var.BUILDTARGET)SBSWMINotifications.dll"></File>-->
+
+            <ServiceInstall Id="SBSWMIv2ServiceInstaller" Type="ownProcess" Vital="yes" Name="sbswmiv2host"
+                            DisplayName="Windows Server 2012 WMI V2 Host"
+                            Description="This service provides the wmi part of the windows server 2012 essentials."
+                            Start="demand"
+                            Arguments="-Namespace root/Standardcimv2/sbs -ProviderName sbsuser -ProviderPath sbswmiv2.dll >> abc.txt"
+                            Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+              <!--NT Authority\Network Service-->
+            </ServiceInstall>
+            <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="sbswmiv2host"/>
+<!-- "C:\Program Files\SBSWMIv2\SBSWMIv2Host.exe" -Namespace root/Standardcimv2/sbs -ProviderName sbsuser -ProviderPath sbswmiv2.dll -->
+          </Component>         
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="SBSWMIv2" Level="1">
+      <ComponentRef Id="SBSWMIv2Component" />
+    </Feature>
+  </Product>
+</Wix>

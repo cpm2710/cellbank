@@ -1,0 +1,18 @@
+// SBSWMIv2Service.idl : IDL source for SBSWMIv2Service
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SBSWMIv2Service.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(F17AE448-5487-4DB4-AFE0-6B6127A76EF9),
+	version(1.0),
+]
+library SBSWMIv2ServiceLib
+{
+	importlib("stdole2.tlb");
+};
+

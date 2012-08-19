@@ -11,7 +11,7 @@
 #include <strsafe.h>
 #include <assert.h>
 #include <atlbase.h>
-
+#include <WinSvc.h>
 
 #define STR_NAMESPACE       L"-Namespace"
 #define STR_PROVIDERNAME    L"-ProviderName"
@@ -256,6 +256,11 @@ int HostDecoupledProvider(__in DecoupledHostArgument * pArgument)
 
 int _tmain(int argc, LPCWSTR argv[])
 {
+
+	SERVICE_STATUS ServiceStatus;
+
+¡¡¡¡SERVICE_STATUS_HANDLE hStatus;
+
 	DecoupledHostArgument argument;
 	int result;
 
@@ -275,5 +280,6 @@ int _tmain(int argc, LPCWSTR argv[])
 	// clean up the memory
 	CleanupArgument(&argument);
 	return result;
+	return 1;
 }
 
