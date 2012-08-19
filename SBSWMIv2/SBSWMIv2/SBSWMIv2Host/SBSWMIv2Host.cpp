@@ -256,10 +256,10 @@ int HostDecoupledProvider(__in DecoupledHostArgument * pArgument)
 
 int _tmain(int argc, LPCWSTR argv[])
 {
-
+/*
 	SERVICE_STATUS ServiceStatus;
 
-　　SERVICE_STATUS_HANDLE hStatus;
+　　SERVICE_STATUS_HANDLE hStatus;*/
 
 	DecoupledHostArgument argument;
 	int result;
