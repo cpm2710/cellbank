@@ -201,7 +201,93 @@ public :
 		//可以在适当的时候调用Uninstall函数来卸载掉服务
 		//__super::Uninstall();
 		return hr;
+	}
+	inline HRESULT RegisterAppId(_In_ bool bService = false) throw()
+	{
+		if (!Uninstall())
+			return E_FAIL;
+
+		HRESULT hr = UpdateRegistryAppId(TRUE);
+		if (FAILED(hr))
+			return hr;
+
+		CRegKey keyAppID;
+		LONG lRes = keyAppID.Open(HKEY_CLASSES_ROOT, _T("AppID"), KEY_WRITE);
+		if (lRes != ERROR_SUCCESS)
+			return AtlHresultFromWin32(lRes);
+
+		CRegKey key;
+
+		lRes = key.Create(keyAppID,GetAppIdT());
+		if (lRes != ERROR_SUCCESS)
+			return AtlHresultFromWin32(lRes);
+
+		key.DeleteValue(_T("LocalService"));
+
+		if (!bService)
+			return S_OK;
+
+		key.SetStringValue(_T("LocalService"), m_szServiceName);
+
+		// Create service
+		if (!Install())
+			return E_FAIL;
+		return S_OK;
+	}
+	BOOL Install() throw()
+	{
+		if (IsInstalled())
+			return TRUE;
+
+		// Get the executable file path
+		TCHAR szFilePath[MAX_PATH + _ATL_QUOTES_SPACE];
+		DWORD dwFLen = ::GetModuleFileName(NULL, szFilePath + 1, MAX_PATH);
+		if( dwFLen == 0 || dwFLen == MAX_PATH )
+			return FALSE;
+
+		// Quote the FilePath before calling CreateService
+		szFilePath[0] = _T('\"');
+		szFilePath[dwFLen + 1] = _T('\"');
+		szFilePath[dwFLen + 2] = 0;
+
+		SC_HANDLE hSCM = ::OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
+		if (hSCM == NULL)
+		{
+			TCHAR szBuf[1024];
+			if (AtlLoadString(ATL_SERVICE_MANAGER_OPEN_ERROR, szBuf, 1024) == 0)
+#ifdef UNICODE
+				Checked::wcscpy_s(szBuf, _countof(szBuf), _T("Could not open Service Manager"));
+#else
+				Checked::strcpy_s(szBuf, _countof(szBuf), _T("Could not open Service Manager"));
+#endif
+			MessageBox(NULL, szBuf, m_szServiceName, MB_OK);
+			return FALSE;
 		}
+		WCHAR accoun[]=(L"NT AUTHORITY\\NetworkService");
+		SC_HANDLE hService = ::CreateService(
+			hSCM, m_szServiceName, m_szServiceName,
+			SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
+			SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,
+			szFilePath, NULL, NULL, _T("RPCSS\0"), accoun, NULL);
+
+		if (hService == NULL)
+		{
+			::CloseServiceHandle(hSCM);
+			TCHAR szBuf[1024];
+			if (AtlLoadString(ATL_SERVICE_START_ERROR, szBuf, 1024) == 0)
+#ifdef UNICODE
+				Checked::wcscpy_s(szBuf, _countof(szBuf), _T("Could not start service"));
+#else
+				Checked::strcpy_s(szBuf, _countof(szBuf), _T("Could not start service"));
+#endif
+			MessageBox(NULL, szBuf, m_szServiceName, MB_OK);
+			return FALSE;
+		}
+
+		::CloseServiceHandle(hService);
+		::CloseServiceHandle(hSCM);
+		return TRUE;
+	}
 };
 
 CSBSWMIv2ServiceModule _AtlModule;

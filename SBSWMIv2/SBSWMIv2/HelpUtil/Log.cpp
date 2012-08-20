@@ -25,7 +25,7 @@ ios::trunc：　　如果文件存在，把文件长度设为0
 2：隐含文件
 4：系统文件*/
 	ofstream file1; 
-	file1.open(".\\record_log.txt" ,ios::app|ios::ate|ios::out);
+	file1.open("c:\\record_log.txt" ,ios::app|ios::ate|ios::out);
 	file1<<a<<endl;
 	file1.close();
 		/*char *str="haha";
