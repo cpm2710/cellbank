@@ -24,9 +24,15 @@ ios::trunc：　　如果文件存在，把文件长度设为0
 1：只读文件
 2：隐含文件
 4：系统文件*/
-	ofstream file1; 
+	ofstream file1;
+
 	file1.open("c:\\record_log.txt" ,ios::app|ios::ate|ios::out);
-	file1<<a<<endl;
+	if(file1.is_open()){
+		file1<<a<<endl;
+	}else{
+		cout<<"Error"<<GetLastError()<<endl;
+	}
+
 	file1.close();
 		/*char *str="haha";
 		HANDLE hFile=CreateFile(TEXT(".\\record_log.txt"),GENERIC_WRITE,0,NULL,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL); 

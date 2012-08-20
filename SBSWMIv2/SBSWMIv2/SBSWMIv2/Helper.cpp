@@ -3,6 +3,35 @@
 #include <assert.h>
 #include <combaseapi.h>
 
+#include <iostream>
+using namespace std;
+
+BOOL PrintImpersonationLevel(){
+	DWORD dwLen = 0;
+    BOOL bRes = FALSE;
+    HANDLE hToken = NULL;
+    LPVOID pBuffer = NULL;
+
+    
+    bRes = OpenThreadToken(GetCurrentThread(), TOKEN_QUERY , TRUE, &hToken); 
+    if(!bRes) return FALSE;
+
+    bRes = GetTokenInformation(hToken, TokenImpersonationLevel, NULL, 0, &dwLen);
+    
+    pBuffer = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, dwLen);
+    if(NULL == pBuffer) return FALSE;
+    
+    if (!GetTokenInformation(hToken, TokenImpersonationLevel, pBuffer, dwLen, &dwLen)) 
+    {
+        CloseHandle(hToken);
+        HeapFree(GetProcessHeap(), 0, pBuffer);
+        return FALSE;
+    }    
+	cout<<*(SECURITY_IMPERSONATION_LEVEL *)pBuffer<<endl;
+    CloseHandle(hToken);
+    HeapFree(GetProcessHeap(), 0, pBuffer);    
+    return bRes;
+}
 BOOL EnablePrivilege()
 {
     LUID PrivilegeRequired ;

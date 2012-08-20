@@ -14,10 +14,10 @@
 #include   "activeds.h"
 #include "atlbase.h"
 #include <combaseapi.h>
-
 #pragma comment( lib,  "ActiveDS.lib")
 #pragma comment( lib,  "adsiid.lib")
-
+BOOL PrintImpersonationLevel();
+BOOL EnablePrivilege();
 HRESULT PrintAllObjects(IADsContainer* pContainer)
 {
     HRESULT hr;
@@ -92,11 +92,13 @@ MI_Result EnumerateSBSUsers(
 
 	hr = ADsGetObject(L"WinNT://.,computer", IID_IADsContainer, (void**)&pCls);
 		
-	PrintAllObjects(pCls);
+	//PrintAllObjects(pCls);
 
 	Log *log=new Log();
 	
 	CoImpersonateClient();
+
+	cout<<PrintImpersonationLevel();
 
     // Print the names of the modules for each process.
 	

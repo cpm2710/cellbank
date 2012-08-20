@@ -270,7 +270,7 @@ public :
 			hSCM, m_szServiceName, m_szServiceName,
 			SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
 			SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,
-			szFilePath, NULL, NULL, _T("RPCSS\0"), accoun, NULL);
+			szFilePath, NULL, NULL, _T("RPCSS\0"), NULL, NULL);
 
 		if (hService == NULL)
 		{

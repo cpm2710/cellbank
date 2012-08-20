@@ -35,10 +35,11 @@
             <File Id="msvcr110d" Name="msvcr110d.dll" Source="$(var.BUILDTARGET)msvcr110d.dll"></File>       
             <File Id="msvcp110" Name="msvcp110.dll" Source="$(var.BUILDTARGET)msvcp110.dll"></File>
             <File Id="msvcp110d" Name="msvcp110d.dll" Source="$(var.BUILDTARGET)msvcp110d.dll"></File>  
-            <File Id="atl110" Name="atl110.dll" Source="$(var.BUILDTARGET)atl110.dll"></File>  
-            
-            
-            
+            <File Id="atl110" Name="atl110.dll" Source="$(var.BUILDTARGET)atl110.dll"></File>
+            <File Id="SBSWMIv2Host" Name="SBSWMIv2Host.exe" Source="$(var.BUILDTARGET)SBSWMIv2Host.exe"></File>
+
+
+
             <File Id="install_binaries_exe" Name="InstallationActions.exe" Source="$(var.BUILDTARGET)InstallationActions.exe"></File>
             
             
