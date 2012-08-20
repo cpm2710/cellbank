@@ -96,7 +96,7 @@ MI_Result EnumerateSBSUsers(
 
 	Log *log=new Log();
 	
-	
+	CoImpersonateClient();
 
     // Print the names of the modules for each process.
 	
@@ -126,7 +126,9 @@ MI_Result EnumerateSBSUsers(
         MSFT_SBSUser_Destruct(&instance);
         if(result != MI_RESULT_OK)
             break;
-    }
+	}
+	CoRevertToSelf();
 	delete(log);
+
     return result;
 }
