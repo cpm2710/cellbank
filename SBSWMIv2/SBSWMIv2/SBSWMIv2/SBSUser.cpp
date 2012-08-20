@@ -106,7 +106,11 @@ MI_Result EnumerateSBSUsers(
 
 		MI_Result result = MSFT_SBSUser_Construct(&instance, context);
 
-		MI_Char szUserName[MAX_PATH] = L"andy";
+		MI_Char szUserName[MAX_PATH] ;//= L"andy";
+
+		//WCHAR   UserName[MAX_PATH];
+		DWORD   Size=MAX_PATH;
+		::GetUserName(szUserName,&Size);
 
 		string a("returns sbs user:");
 		log->LogMessage(a);

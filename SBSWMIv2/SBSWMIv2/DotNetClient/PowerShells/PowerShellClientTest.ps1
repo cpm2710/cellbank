@@ -6,12 +6,12 @@
 
 
 #Find Classes 
-Get-CimClass -Namespace root/StandardCimv2/sample
-Get-CimClass -Namespace root/StandardCimv2/sample -ClassName *Service
+Get-CimClass -Namespace root/StandardCimv2/sbs
+Get-CimClass -Namespace root/StandardCimv2/sbs -ClassName *Service
 
 
 #Enumerate instances
-Get-CimInstance -ClassName MSFT_WindowsService -Namespace root/StandardCimv2/sample
+Get-CimInstance -ClassName MSFT_SBSUser -Namespace root/StandardCimv2/sbs
 
 #Enumerate instances with keys only 
 Get-CimInstance -ClassName MSFT_WindowsService -Namespace root/StandardCimv2/sample -KeyOnly

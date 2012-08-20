@@ -264,6 +264,8 @@ public :
 			return FALSE;
 		}
 		WCHAR accoun[]=(L"NT AUTHORITY\\NetworkService");
+		//if you want to run as Local System, just set the accoun to null
+
 		SC_HANDLE hService = ::CreateService(
 			hSCM, m_szServiceName, m_szServiceName,
 			SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
