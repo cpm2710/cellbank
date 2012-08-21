@@ -172,9 +172,7 @@ public :
 		{
 			if (m_bService)
 			{
-				//可以在这里启动线程，或者什么其他东西来做自己的工作的啦
-				//这里是什么都没有做了，只输出一条信息
-				LogEvent(_T("widebright 的服务启动咯，呵呵 "));
+				LogEvent(_T("andy's event"));
 
 				DecoupledHostArgument argument;
 				int result;
