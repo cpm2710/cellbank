@@ -1,12 +1,7 @@
-#include <windows.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <combaseapi.h>
-
-#include <iostream>
+#include "Helper.h"
 using namespace std;
-
-BOOL PrintImpersonationLevel(){
+BOOL ImpersonateUtil::
+	 PrintImpersonationLevel(){
 	DWORD dwLen = 0;
     BOOL bRes = FALSE;
     HANDLE hToken = NULL;
@@ -31,8 +26,8 @@ BOOL PrintImpersonationLevel(){
     CloseHandle(hToken);
     HeapFree(GetProcessHeap(), 0, pBuffer);    
     return bRes;
-}
-BOOL EnablePrivilege()
+};
+BOOL ImpersonateUtil:: EnablePrivilege()
 {
     LUID PrivilegeRequired ;
     DWORD dwLen = 0, iCount = 0;
@@ -81,4 +76,4 @@ BOOL EnablePrivilege()
     CloseHandle(hToken);
     HeapFree(GetProcessHeap(), 0, pBuffer);    
     return bRes;
-}
+};

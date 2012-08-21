@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <?define BUILDTARGET="C:\WorkSpace\Microsoft\SBSWMIv2\SBSWMIv2\x64\Debug\" ?>
+  <?define BUILDTARGET="C:\WorkSpace\Microsoft\SBSWMIv2\SBSWMIv2\x64\Release\" ?>
 	<Product Id="DD32984E-511D-4F82-BCE7-6E471439AE49" Name="SBSWMIv2Setup" Language="1033" Version="1.0.0.0" 
            Manufacturer="SBSWMIv2Setup" UpgradeCode="20D89AEB-EAEB-4C2D-8514-E5386E220C27">
     <Package InstallerVersion="200" Compressed="yes" Platform="x64" />
@@ -31,10 +31,10 @@
           <Component Id="SBSWMIv2Component" Guid="08D9CCF3-FCB3-43CA-9460-8527138718D2" Win64="yes">
             <File Id="service_exe" Name="SBSWMIv2Service.exe" Source="$(var.BUILDTARGET)SBSWMIv2Service.exe" KeyPath="yes"></File>
             <File Id="user_business_object" Name="sbswmiv2.dll" Source="$(var.BUILDTARGET)sbswmiv2.dll"></File>
-            <File Id="msvcr110" Name="msvcr110.dll" Source="$(var.BUILDTARGET)msvcr110.dll"></File>
+            <!--<File Id="msvcr110" Name="msvcr110.dll" Source="$(var.BUILDTARGET)msvcr110.dll"></File>
             <File Id="msvcr110d" Name="msvcr110d.dll" Source="$(var.BUILDTARGET)msvcr110d.dll"></File>       
             <File Id="msvcp110" Name="msvcp110.dll" Source="$(var.BUILDTARGET)msvcp110.dll"></File>
-            <File Id="msvcp110d" Name="msvcp110d.dll" Source="$(var.BUILDTARGET)msvcp110d.dll"></File>  
+            <File Id="msvcp110d" Name="msvcp110d.dll" Source="$(var.BUILDTARGET)msvcp110d.dll"></File>-->
             <File Id="atl110" Name="atl110.dll" Source="$(var.BUILDTARGET)atl110.dll"></File>
             <File Id="SBSWMIv2Host" Name="SBSWMIv2Host.exe" Source="$(var.BUILDTARGET)SBSWMIv2Host.exe"></File>
 

@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "..\\HelpUtil\\Log.h"
-#pragma comment( lib, "..//x64/debug//HelpUtil.lib" ) 
+#pragma comment( lib, "..//x64/release//HelpUtil.lib" ) 
 
 
 #if defined (USINGPROJECTSYSTEM)
@@ -18,6 +18,8 @@
 #include   "activeds.h"
 #include "atlbase.h"
 #include <combaseapi.h>
+#include <iostream>
+using namespace std;
 
 #pragma comment( lib,  "ActiveDS.lib")
 #pragma comment( lib,  "adsiid.lib")
@@ -93,6 +95,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	CLSID ID=__uuidof(DotNetApi::DotNetApiImpl);
 	DotNetApi::DotNetApiPtr ptr(ID);
 	long asss=ptr->Add(112);
+	asss++;
+	cout<<asss<<endl;
+	long result=asss;
 	CoUninitialize();
 	//DotNet COM Interface ends
 

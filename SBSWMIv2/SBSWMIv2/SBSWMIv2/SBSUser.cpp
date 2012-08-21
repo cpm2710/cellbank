@@ -5,9 +5,9 @@
 #include <combaseapi.h>
 #include "MSFT_SBSUser.h"
 #include "SBSUser.h"
-
+#include "Helper.h"
 #include "..\\HelpUtil\Log.h"
-#pragma comment( lib, "..//x64/debug//HelpUtil.lib" ) 
+#pragma comment( lib, "..//x64/release//HelpUtil.lib" ) 
 
 #include   "IAds.h"
 #include   "Adshlp.h"
@@ -16,8 +16,8 @@
 #include <combaseapi.h>
 #pragma comment( lib,  "ActiveDS.lib")
 #pragma comment( lib,  "adsiid.lib")
-BOOL PrintImpersonationLevel();
-BOOL EnablePrivilege();
+
+
 HRESULT PrintAllObjects(IADsContainer* pContainer)
 {
     HRESULT hr;
@@ -97,8 +97,8 @@ MI_Result EnumerateSBSUsers(
 	Log *log=new Log();
 	
 	CoImpersonateClient();
-
-	cout<<PrintImpersonationLevel();
+	ImpersonateUtil *util=new ImpersonateUtil();
+	cout<<util->PrintImpersonationLevel()<<endl;
 
     // Print the names of the modules for each process.
 	
