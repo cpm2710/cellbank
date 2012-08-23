@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <mi.h>
+
 #define STR_HELPERDLLNAME L"wmitomi.dll"
 #define STR_REGISTERDLL "Adapter_RegisterDLL"
 #define STR_UNREGISTERDLL "Adapter_UnRegisterDLL"
@@ -29,8 +30,8 @@ MI_Module* MI_MAIN_CALL MI_Main(_In_ MI_Server* server);
 HINSTANCE g_hModule = NULL;
 
 // Unique provider ID
-// {2DF1716E-28F9-4DD3-BD06-4EBD478EAE6B}
-CLSID g_providerClassID = { 0x2df1716e, 0x28f9, 0x4dd3, { 0xbd, 0x06, 0x4e, 0xbd, 0x47, 0x8e, 0xae, 0x6b } };
+// {78A63839-FD2E-4FF2-B17C-02E19A91D2E7}
+CLSID g_providerClassID = { 0x78a63839, 0xfd2e, 0x4ff2, { 0xb1, 0x7c, 0x02, 0xe1, 0x9a, 0x91, 0xd2, 0xe7 } };
 
 // DllMain is needed to get the module handle for registration.
 BOOL WINAPI DllMain(_In_ HINSTANCE hInstance,

@@ -161,15 +161,20 @@
     <ClCompile Include="module.cpp" />
     <ClCompile Include="MSFT_SBSMedia.cpp" />
     <ClCompile Include="MSFT_SBSUser.cpp" />
+    <ClCompile Include="MSFT_SBSUserCreated.cpp" />
     <ClCompile Include="SBSMedia.cpp" />
     <ClCompile Include="SBSUser.cpp" />
     <ClCompile Include="schema.cpp" />
     <ClCompile Include="WMIAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CIM_Indication.h" />
+    <ClInclude Include="CIM_InstIndication.h" />
+    <ClInclude Include="CIM_InstModification.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="MSFT_SBSMedia.h" />
     <ClInclude Include="MSFT_SBSUser.h" />
+    <ClInclude Include="MSFT_SBSUserCreated.h" />
     <ClInclude Include="SBSMedia.h" />
     <ClInclude Include="SBSUser.h" />
   </ItemGroup>

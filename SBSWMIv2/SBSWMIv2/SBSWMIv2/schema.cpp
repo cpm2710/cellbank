@@ -10,6 +10,7 @@
 #include <MI.h>
 #include "MSFT_SBSUser.h"
 #include "MSFT_SBSMedia.h"
+#include "MSFT_SBSUserCreated.h"
 
 /*
 **==============================================================================
@@ -1218,6 +1219,1022 @@ MI_CONST MI_ClassDecl MSFT_SBSMedia_rtti =
 /*
 **==============================================================================
 **
+** CIM_Indication
+**
+**==============================================================================
+*/
+
+static MI_CONST MI_Char* CIM_Indication_IndicationIdentifier_Description_qual_value = MI_T("An identifier for the Indication. This property is similar to a key value in that it can be used for identification, when correlating Indications (see the CorrelatedIndications array). Its value SHOULD be unique as long as correlations are reported, but MAY be reused or left NULL if no future Indications will reference it in their CorrelatedIndications array.To ensure uniqueness, the value of IndicationIdentifier should be constructed using the following \"preferred\" algorithm: \n<OrgID>:<LocalID> \nWhere <OrgID> and <LocalID> are separated by a colon (:), and where <OrgID> must include a copyrighted, trademarked, or otherwise unique name that is owned by the business entity that is creating or defining the IndicationIdentifier or that is a recognized ID that is assigned to the business entity by a recognized global authority. (This requirement is similar to the <Schema Name>_<Class Name> structure of Schema class names.) In addition, to ensure uniqueness <OrgID> must not contain a colon (:). When using this algorithm, the first colon to appear in IndicationIdentifier must appear between <OrgID> and <LocalID>. \n<LocalID> is chosen by the business entity and should not be re-used to identify different underlying (real-world) elements. \nIf the above \"preferred\" algorithm is not used, the defining entity should assure that the resulting IndicationIdentifier is not re-used across any IndicationIdentifiers that are produced by this or other providers for the NameSpace of this instance. \nFor DMTF-defined instances, the \"preferred\" algorithm should be used with the <OrgID> set to CIM.");
+
+static MI_CONST MI_Qualifier CIM_Indication_IndicationIdentifier_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_IndicationIdentifier_Description_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_IndicationIdentifier_quals[] =
+{
+    &CIM_Indication_IndicationIdentifier_Description_qual,
+};
+
+/* property CIM_Indication.IndicationIdentifier */
+static MI_CONST MI_PropertyDecl CIM_Indication_IndicationIdentifier_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00697214, /* code */
+    MI_T("IndicationIdentifier"), /* name */
+    CIM_Indication_IndicationIdentifier_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_IndicationIdentifier_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, IndicationIdentifier), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_CorrelatedIndications_Description_qual_value = MI_T("A list of IndicationIdentifiers whose notifications are correlated with (related to) this one.");
+
+static MI_CONST MI_Qualifier CIM_Indication_CorrelatedIndications_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_CorrelatedIndications_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_Indication.IndicationIdentifier"),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual_value =
+{
+    CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_CorrelatedIndications_quals[] =
+{
+    &CIM_Indication_CorrelatedIndications_Description_qual,
+    &CIM_Indication_CorrelatedIndications_ModelCorrespondence_qual,
+};
+
+/* property CIM_Indication.CorrelatedIndications */
+static MI_CONST MI_PropertyDecl CIM_Indication_CorrelatedIndications_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00637315, /* code */
+    MI_T("CorrelatedIndications"), /* name */
+    CIM_Indication_CorrelatedIndications_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_CorrelatedIndications_quals), /* numQualifiers */
+    MI_STRINGA, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, CorrelatedIndications), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_IndicationTime_Description_qual_value = MI_T("The time and date of creation of the Indication. The property may be set to NULL if the entity creating the Indication is not capable of determining this information. Note that IndicationTime may be the same for two Indications that are generated in rapid succession.");
+
+static MI_CONST MI_Qualifier CIM_Indication_IndicationTime_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_IndicationTime_Description_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_IndicationTime_quals[] =
+{
+    &CIM_Indication_IndicationTime_Description_qual,
+};
+
+/* property CIM_Indication.IndicationTime */
+static MI_CONST MI_PropertyDecl CIM_Indication_IndicationTime_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x0069650E, /* code */
+    MI_T("IndicationTime"), /* name */
+    CIM_Indication_IndicationTime_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_IndicationTime_quals), /* numQualifiers */
+    MI_DATETIME, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, IndicationTime), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_PerceivedSeverity_Description_qual_value = MI_T("An enumerated value that describes the severity of the Indication from the notifier\'s point of view: \n1 - Other, by CIM convention, is used to indicate that the Severity\'s value can be found in the OtherSeverity property. \n3 - Degraded/Warning should be used when its appropriate to let the user decide if action is needed. \n4 - Minor should be used to indicate action is needed, but the situation is not serious at this time. \n5 - Major should be used to indicate action is needed NOW. \n6 - Critical should be used to indicate action is needed NOW and the scope is broad (perhaps an imminent outage to a critical resource will result). \n7 - Fatal/NonRecoverable should be used to indicate an error occurred, but it\'s too late to take remedial action. \n2 and 0 - Information and Unknown (respectively) follow common usage. Literally, the Indication is purely informational or its severity is simply unknown.");
+
+static MI_CONST MI_Qualifier CIM_Indication_PerceivedSeverity_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_PerceivedSeverity_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_PerceivedSeverity_ValueMap_qual_data_value[] =
+{
+    MI_T("0"),
+    MI_T("1"),
+    MI_T("2"),
+    MI_T("3"),
+    MI_T("4"),
+    MI_T("5"),
+    MI_T("6"),
+    MI_T("7"),
+    MI_T(".."),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_PerceivedSeverity_ValueMap_qual_value =
+{
+    CIM_Indication_PerceivedSeverity_ValueMap_qual_data_value,
+    MI_COUNT(CIM_Indication_PerceivedSeverity_ValueMap_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_PerceivedSeverity_ValueMap_qual =
+{
+    MI_T("ValueMap"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_PerceivedSeverity_ValueMap_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_PerceivedSeverity_Values_qual_data_value[] =
+{
+    MI_T("Unknown"),
+    MI_T("Other"),
+    MI_T("Information"),
+    MI_T("Degraded/Warning"),
+    MI_T("Minor"),
+    MI_T("Major"),
+    MI_T("Critical"),
+    MI_T("Fatal/NonRecoverable"),
+    MI_T("DMTF Reserved"),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_PerceivedSeverity_Values_qual_value =
+{
+    CIM_Indication_PerceivedSeverity_Values_qual_data_value,
+    MI_COUNT(CIM_Indication_PerceivedSeverity_Values_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_PerceivedSeverity_Values_qual =
+{
+    MI_T("Values"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_PerceivedSeverity_Values_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_PerceivedSeverity_quals[] =
+{
+    &CIM_Indication_PerceivedSeverity_Description_qual,
+    &CIM_Indication_PerceivedSeverity_ValueMap_qual,
+    &CIM_Indication_PerceivedSeverity_Values_qual,
+};
+
+/* property CIM_Indication.PerceivedSeverity */
+static MI_CONST MI_PropertyDecl CIM_Indication_PerceivedSeverity_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00707911, /* code */
+    MI_T("PerceivedSeverity"), /* name */
+    CIM_Indication_PerceivedSeverity_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_PerceivedSeverity_quals), /* numQualifiers */
+    MI_UINT16, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, PerceivedSeverity), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_OtherSeverity_Description_qual_value = MI_T("Holds the value of the user defined severity value when \'PerceivedSeverity\' is 1 (\"Other\").");
+
+static MI_CONST MI_Qualifier CIM_Indication_OtherSeverity_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_OtherSeverity_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_OtherSeverity_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_AlertIndication.PerceivedSeverity"),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_OtherSeverity_ModelCorrespondence_qual_value =
+{
+    CIM_Indication_OtherSeverity_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_Indication_OtherSeverity_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_OtherSeverity_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_OtherSeverity_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_OtherSeverity_quals[] =
+{
+    &CIM_Indication_OtherSeverity_Description_qual,
+    &CIM_Indication_OtherSeverity_ModelCorrespondence_qual,
+};
+
+/* property CIM_Indication.OtherSeverity */
+static MI_CONST MI_PropertyDecl CIM_Indication_OtherSeverity_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x006F790D, /* code */
+    MI_T("OtherSeverity"), /* name */
+    CIM_Indication_OtherSeverity_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_OtherSeverity_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, OtherSeverity), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_IndicationFilterName_Description_qual_value = MI_T("An identifier for the indication filter that selects this indication and causes it to be sent. This property is to be filled out by the indication sending service. The value shall be correlatable with the Name property of the instance of CIM_IndicationFilter describing the criteria of the indication. The value of the IndicationFilterName should be formatted using the following algorithm: < OrgID > : < LocalID >, where < OrgID > and < LocalID > are separated by a colon (:) and < OrgID > shall include a copyrighted, trademarked, or otherwise unique name that is owned by the business entity that is creating or defining the value or that is a registered ID assigned to the business entity by a recognized global authority. In addition, to ensure uniqueness, < OrgID > shall not contain a colon (:).When using this algorithm, the first colon to appear in the value shall appear between < OrgID > and < LocalID >. < LocalID > is chosen by the business entity and shall be used uniquely.");
+
+static MI_CONST MI_Qualifier CIM_Indication_IndicationFilterName_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_IndicationFilterName_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_IndicationFilterName_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_IndicationFilter.Name"),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_IndicationFilterName_ModelCorrespondence_qual_value =
+{
+    CIM_Indication_IndicationFilterName_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_Indication_IndicationFilterName_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_IndicationFilterName_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_IndicationFilterName_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_IndicationFilterName_quals[] =
+{
+    &CIM_Indication_IndicationFilterName_Description_qual,
+    &CIM_Indication_IndicationFilterName_ModelCorrespondence_qual,
+};
+
+/* property CIM_Indication.IndicationFilterName */
+static MI_CONST MI_PropertyDecl CIM_Indication_IndicationFilterName_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00696514, /* code */
+    MI_T("IndicationFilterName"), /* name */
+    CIM_Indication_IndicationFilterName_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_IndicationFilterName_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, IndicationFilterName), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_SequenceContext_Description_qual_value = MI_T("The sequence context portion of a sequence identifier for the indication. The sequence number portion of the sequence identifier is provided by the SequenceNumber property. The combination of both property values represents the sequence identifier for the indication.\nThe sequence identifier for the indication enables a CIM listener to identify duplicate indications when the CIM service attempts the delivery retry of indications, to reorder indications that arrive out-of-order, and to detect lost indications.\nIf a CIM service does not support sequence identifiers for indications, this property shall be NULL.\nIf a CIM service supports sequence identifiers for indications, this property shall be maintained by the CIM service for each registered listener destination, and its value shall uniquely identify the CIM service and the indication service within the CIM service such that restarts of the CIM service and deregistration of listener destinations to the CIM service cause the value to change, without reusing earlier values for a sufficiently long time.\nWhen retrying the delivery of an indication, this property shall have the same value as in the original delivery.\nTo guarantee this uniqueness, the property value should be constructed using the following format (defined in ABNF): sequence-context = indication-service-name \"#\" cim-service-start-id \"#\" listener-destination-creation-time\nWhere: indication-service-name is the value of the Name property of the CIM_IndicationService instance responsible for delivering the indication. cim-service-start-id is an identifier that uniquely identifies the CIM service start, for example via a timestamp of the start time, or via a counter that increases for each start or restart. listener-destination-creation-time is a timestamp of the creation time of the CIM_ListenerDestination instance representing the listener destination.\nSince this format is only a recommendation, CIM clients shall treat the value as an opaque identifier for the sequence context and shall not rely on this format.");
+
+static MI_CONST MI_Qualifier CIM_Indication_SequenceContext_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_SequenceContext_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_SequenceContext_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_Indication.SequenceNumber"),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_SequenceContext_ModelCorrespondence_qual_value =
+{
+    CIM_Indication_SequenceContext_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_Indication_SequenceContext_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_SequenceContext_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_SequenceContext_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_SequenceContext_quals[] =
+{
+    &CIM_Indication_SequenceContext_Description_qual,
+    &CIM_Indication_SequenceContext_ModelCorrespondence_qual,
+};
+
+/* property CIM_Indication.SequenceContext */
+static MI_CONST MI_PropertyDecl CIM_Indication_SequenceContext_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x0073740F, /* code */
+    MI_T("SequenceContext"), /* name */
+    CIM_Indication_SequenceContext_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_SequenceContext_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, SequenceContext), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_Indication_SequenceNumber_Description_qual_value = MI_T("The sequence number portion of a sequence identifier for the indication. The sequence context portion of the sequence identifier is provided by the SequenceContext property. The combination of both property values represents the sequence identifier for the indication.\nThe sequence identifier for the indication enables a CIM listener to identify duplicate indications when the CIM service attempts the delivery retry of indications, to reorder indications that arrive out-of-order, and to detect lost indications.\nIf a CIM service does not support sequence identifiers for indications, this property shall be NULL.\nIf a CIM service supports sequence identifiers for indications, this property shall be maintained by the CIM service for each registered listener destination, and its value shall uniquely identify the indication within the sequence context provided by SequenceContext. It shall start at 0 whenever the sequence context string changes. Otherwise, it shall be increased by 1 for every new indication to that listener destination, and it shall wrap to 0 when the value range is exceeded.\nWhen retrying the delivery of an indication, this property shall have the same value as in the original delivery.");
+
+static MI_CONST MI_Qualifier CIM_Indication_SequenceNumber_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_SequenceNumber_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_SequenceNumber_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_Indication.SequenceContext"),
+};
+
+static MI_CONST MI_ConstStringA CIM_Indication_SequenceNumber_ModelCorrespondence_qual_value =
+{
+    CIM_Indication_SequenceNumber_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_Indication_SequenceNumber_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_Indication_SequenceNumber_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_SequenceNumber_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_SequenceNumber_quals[] =
+{
+    &CIM_Indication_SequenceNumber_Description_qual,
+    &CIM_Indication_SequenceNumber_ModelCorrespondence_qual,
+};
+
+/* property CIM_Indication.SequenceNumber */
+static MI_CONST MI_PropertyDecl CIM_Indication_SequenceNumber_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x0073720E, /* code */
+    MI_T("SequenceNumber"), /* name */
+    CIM_Indication_SequenceNumber_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_SequenceNumber_quals), /* numQualifiers */
+    MI_SINT64, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_Indication, SequenceNumber), /* offset */
+    MI_T("CIM_Indication"), /* origin */
+    MI_T("CIM_Indication"), /* propagator */
+    NULL,
+};
+
+static MI_PropertyDecl MI_CONST* MI_CONST CIM_Indication_props[] =
+{
+    &CIM_Indication_IndicationIdentifier_prop,
+    &CIM_Indication_CorrelatedIndications_prop,
+    &CIM_Indication_IndicationTime_prop,
+    &CIM_Indication_PerceivedSeverity_prop,
+    &CIM_Indication_OtherSeverity_prop,
+    &CIM_Indication_IndicationFilterName_prop,
+    &CIM_Indication_SequenceContext_prop,
+    &CIM_Indication_SequenceNumber_prop,
+};
+
+static MI_CONST MI_Boolean CIM_Indication_Indication_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_Indication_Indication_qual =
+{
+    MI_T("Indication"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_Indication_qual_value
+};
+
+static MI_CONST MI_Boolean CIM_Indication_Abstract_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_Indication_Abstract_qual =
+{
+    MI_T("Abstract"),
+    MI_BOOLEAN,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_RESTRICTED,
+    &CIM_Indication_Abstract_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_Version_qual_value = MI_T("2.24.0");
+
+static MI_CONST MI_Qualifier CIM_Indication_Version_qual =
+{
+    MI_T("Version"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TRANSLATABLE|MI_FLAG_RESTRICTED,
+    &CIM_Indication_Version_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_UMLPackagePath_qual_value = MI_T("CIM::Event");
+
+static MI_CONST MI_Qualifier CIM_Indication_UMLPackagePath_qual =
+{
+    MI_T("UMLPackagePath"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_Indication_UMLPackagePath_qual_value
+};
+
+static MI_CONST MI_Char* CIM_Indication_Description_qual_value = MI_T("CIM_Indication is the abstract root class for all notifications about changes in schema, objects and their data, and about events detected by providers and instrumentation. Subclasses represent specific types of notifications. \n\nTo receive an Indication, a consumer (or subscriber) must create an instance of CIM_IndicationFilter describing the criteria of the notification, an instance of CIM_ListenerDestination describing the delivery of the notification, and an instance of CIM_IndicationSubscription associating the Filter and Handler.");
+
+static MI_CONST MI_Qualifier CIM_Indication_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_Indication_Description_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_Indication_quals[] =
+{
+    &CIM_Indication_Indication_qual,
+    &CIM_Indication_Abstract_qual,
+    &CIM_Indication_Version_qual,
+    &CIM_Indication_UMLPackagePath_qual,
+    &CIM_Indication_Description_qual,
+};
+
+/* class CIM_Indication */
+MI_CONST MI_ClassDecl CIM_Indication_rtti =
+{
+    MI_FLAG_CLASS|MI_FLAG_INDICATION|MI_FLAG_ABSTRACT, /* flags */
+    0x00636E0E, /* code */
+    MI_T("CIM_Indication"), /* name */
+    CIM_Indication_quals, /* qualifiers */
+    MI_COUNT(CIM_Indication_quals), /* numQualifiers */
+    CIM_Indication_props, /* properties */
+    MI_COUNT(CIM_Indication_props), /* numProperties */
+    sizeof(CIM_Indication), /* size */
+    NULL, /* superClass */
+    NULL, /* superClassDecl */
+    NULL, /* methods */
+    0, /* numMethods */
+    &schemaDecl, /* schema */
+    NULL, /* functions */
+    NULL /* owningClass */
+};
+
+/*
+**==============================================================================
+**
+** CIM_InstIndication
+**
+**==============================================================================
+*/
+
+static MI_CONST MI_Boolean CIM_InstIndication_SourceInstance_Required_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstance_Required_qual =
+{
+    MI_T("Required"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstIndication_SourceInstance_Required_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_SourceInstance_Description_qual_value = MI_T("A copy of the instance that changed to generate the Indication. SourceInstance contains the current values of the properties selected by the Indication Filter\'s Query. In the case of CIM_InstDeletion, the property values are copied before the instance is deleted.");
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstance_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_InstIndication_SourceInstance_Description_qual_value
+};
+
+static MI_CONST MI_Boolean CIM_InstIndication_SourceInstance_EmbeddedObject_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstance_EmbeddedObject_qual =
+{
+    MI_T("EmbeddedObject"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstIndication_SourceInstance_EmbeddedObject_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_InstIndication_SourceInstance_quals[] =
+{
+    &CIM_InstIndication_SourceInstance_Required_qual,
+    &CIM_InstIndication_SourceInstance_Description_qual,
+    &CIM_InstIndication_SourceInstance_EmbeddedObject_qual,
+};
+
+/* property CIM_InstIndication.SourceInstance */
+static MI_CONST MI_PropertyDecl CIM_InstIndication_SourceInstance_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_REQUIRED|MI_FLAG_READONLY, /* flags */
+    0x0073650E, /* code */
+    MI_T("SourceInstance"), /* name */
+    CIM_InstIndication_SourceInstance_quals, /* qualifiers */
+    MI_COUNT(CIM_InstIndication_SourceInstance_quals), /* numQualifiers */
+    MI_INSTANCE, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_InstIndication, SourceInstance), /* offset */
+    MI_T("CIM_InstIndication"), /* origin */
+    MI_T("CIM_InstIndication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_SourceInstanceModelPath_Description_qual_value = MI_T("The Model Path of the SourceInstance. The following format MUST be used to encode the Model Path: \n<NamespacePath>:<ClassName>.<Prop1>=\"<Value1>\", \n<Prop2>=\"<Value2>\", ...");
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstanceModelPath_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_InstIndication_SourceInstanceModelPath_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_InstIndication.SourceInstance"),
+};
+
+static MI_CONST MI_ConstStringA CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual_value =
+{
+    CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_InstIndication_SourceInstanceModelPath_quals[] =
+{
+    &CIM_InstIndication_SourceInstanceModelPath_Description_qual,
+    &CIM_InstIndication_SourceInstanceModelPath_ModelCorrespondence_qual,
+};
+
+/* property CIM_InstIndication.SourceInstanceModelPath */
+static MI_CONST MI_PropertyDecl CIM_InstIndication_SourceInstanceModelPath_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00736817, /* code */
+    MI_T("SourceInstanceModelPath"), /* name */
+    CIM_InstIndication_SourceInstanceModelPath_quals, /* qualifiers */
+    MI_COUNT(CIM_InstIndication_SourceInstanceModelPath_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_InstIndication, SourceInstanceModelPath), /* offset */
+    MI_T("CIM_InstIndication"), /* origin */
+    MI_T("CIM_InstIndication"), /* propagator */
+    NULL,
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_SourceInstanceHost_Description_qual_value = MI_T("The host name or IP address of the SourceInstance.");
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstanceHost_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_InstIndication_SourceInstanceHost_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual_data_value[] =
+{
+    MI_T("CIM_InstIndication.SourceInstance"),
+};
+
+static MI_CONST MI_ConstStringA CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual_value =
+{
+    CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual_data_value,
+    MI_COUNT(CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual_data_value),
+};
+
+static MI_CONST MI_Qualifier CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual =
+{
+    MI_T("ModelCorrespondence"),
+    MI_STRINGA,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_InstIndication_SourceInstanceHost_quals[] =
+{
+    &CIM_InstIndication_SourceInstanceHost_Description_qual,
+    &CIM_InstIndication_SourceInstanceHost_ModelCorrespondence_qual,
+};
+
+/* property CIM_InstIndication.SourceInstanceHost */
+static MI_CONST MI_PropertyDecl CIM_InstIndication_SourceInstanceHost_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00737412, /* code */
+    MI_T("SourceInstanceHost"), /* name */
+    CIM_InstIndication_SourceInstanceHost_quals, /* qualifiers */
+    MI_COUNT(CIM_InstIndication_SourceInstanceHost_quals), /* numQualifiers */
+    MI_STRING, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_InstIndication, SourceInstanceHost), /* offset */
+    MI_T("CIM_InstIndication"), /* origin */
+    MI_T("CIM_InstIndication"), /* propagator */
+    NULL,
+};
+
+static MI_PropertyDecl MI_CONST* MI_CONST CIM_InstIndication_props[] =
+{
+    &CIM_Indication_IndicationIdentifier_prop,
+    &CIM_Indication_CorrelatedIndications_prop,
+    &CIM_Indication_IndicationTime_prop,
+    &CIM_Indication_PerceivedSeverity_prop,
+    &CIM_Indication_OtherSeverity_prop,
+    &CIM_Indication_IndicationFilterName_prop,
+    &CIM_Indication_SequenceContext_prop,
+    &CIM_Indication_SequenceNumber_prop,
+    &CIM_InstIndication_SourceInstance_prop,
+    &CIM_InstIndication_SourceInstanceModelPath_prop,
+    &CIM_InstIndication_SourceInstanceHost_prop,
+};
+
+static MI_CONST MI_Boolean CIM_InstIndication_Indication_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_InstIndication_Indication_qual =
+{
+    MI_T("Indication"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstIndication_Indication_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_UMLPackagePath_qual_value = MI_T("CIM::Event");
+
+static MI_CONST MI_Qualifier CIM_InstIndication_UMLPackagePath_qual =
+{
+    MI_T("UMLPackagePath"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstIndication_UMLPackagePath_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_Description_qual_value = MI_T("CIM_InstIndication is an abstract superclass describing changes to instances. Subclasses represent specific types of change notifications, such as instance creation, deletion and modification.");
+
+static MI_CONST MI_Qualifier CIM_InstIndication_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_InstIndication_Description_qual_value
+};
+
+static MI_CONST MI_Boolean CIM_InstIndication_Abstract_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_InstIndication_Abstract_qual =
+{
+    MI_T("Abstract"),
+    MI_BOOLEAN,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_RESTRICTED,
+    &CIM_InstIndication_Abstract_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstIndication_Version_qual_value = MI_T("2.9.0");
+
+static MI_CONST MI_Qualifier CIM_InstIndication_Version_qual =
+{
+    MI_T("Version"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TRANSLATABLE|MI_FLAG_RESTRICTED,
+    &CIM_InstIndication_Version_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_InstIndication_quals[] =
+{
+    &CIM_InstIndication_Indication_qual,
+    &CIM_InstIndication_UMLPackagePath_qual,
+    &CIM_InstIndication_Description_qual,
+    &CIM_InstIndication_Abstract_qual,
+    &CIM_InstIndication_Version_qual,
+};
+
+/* class CIM_InstIndication */
+MI_CONST MI_ClassDecl CIM_InstIndication_rtti =
+{
+    MI_FLAG_CLASS|MI_FLAG_INDICATION|MI_FLAG_ABSTRACT, /* flags */
+    0x00636E12, /* code */
+    MI_T("CIM_InstIndication"), /* name */
+    CIM_InstIndication_quals, /* qualifiers */
+    MI_COUNT(CIM_InstIndication_quals), /* numQualifiers */
+    CIM_InstIndication_props, /* properties */
+    MI_COUNT(CIM_InstIndication_props), /* numProperties */
+    sizeof(CIM_InstIndication), /* size */
+    MI_T("CIM_Indication"), /* superClass */
+    &CIM_Indication_rtti, /* superClassDecl */
+    NULL, /* methods */
+    0, /* numMethods */
+    &schemaDecl, /* schema */
+    NULL, /* functions */
+    NULL /* owningClass */
+};
+
+/*
+**==============================================================================
+**
+** CIM_InstModification
+**
+**==============================================================================
+*/
+
+static MI_CONST MI_Char* CIM_InstModification_PreviousInstance_Description_qual_value = MI_T("A copy of the \'previous\' instance whose change generated the Indication. PreviousInstance contains \'older\' values of an instance\'s properties (as compared to SourceInstance), selected by the IndicationFilter\'s Query.");
+
+static MI_CONST MI_Qualifier CIM_InstModification_PreviousInstance_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_InstModification_PreviousInstance_Description_qual_value
+};
+
+static MI_CONST MI_Boolean CIM_InstModification_PreviousInstance_EmbeddedObject_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_InstModification_PreviousInstance_EmbeddedObject_qual =
+{
+    MI_T("EmbeddedObject"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstModification_PreviousInstance_EmbeddedObject_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_InstModification_PreviousInstance_quals[] =
+{
+    &CIM_InstModification_PreviousInstance_Description_qual,
+    &CIM_InstModification_PreviousInstance_EmbeddedObject_qual,
+};
+
+/* property CIM_InstModification.PreviousInstance */
+static MI_CONST MI_PropertyDecl CIM_InstModification_PreviousInstance_prop =
+{
+    MI_FLAG_PROPERTY|MI_FLAG_READONLY, /* flags */
+    0x00706510, /* code */
+    MI_T("PreviousInstance"), /* name */
+    CIM_InstModification_PreviousInstance_quals, /* qualifiers */
+    MI_COUNT(CIM_InstModification_PreviousInstance_quals), /* numQualifiers */
+    MI_INSTANCE, /* type */
+    NULL, /* className */
+    0, /* subscript */
+    offsetof(CIM_InstModification, PreviousInstance), /* offset */
+    MI_T("CIM_InstModification"), /* origin */
+    MI_T("CIM_InstModification"), /* propagator */
+    NULL,
+};
+
+static MI_PropertyDecl MI_CONST* MI_CONST CIM_InstModification_props[] =
+{
+    &CIM_Indication_IndicationIdentifier_prop,
+    &CIM_Indication_CorrelatedIndications_prop,
+    &CIM_Indication_IndicationTime_prop,
+    &CIM_Indication_PerceivedSeverity_prop,
+    &CIM_Indication_OtherSeverity_prop,
+    &CIM_Indication_IndicationFilterName_prop,
+    &CIM_Indication_SequenceContext_prop,
+    &CIM_Indication_SequenceNumber_prop,
+    &CIM_InstIndication_SourceInstance_prop,
+    &CIM_InstIndication_SourceInstanceModelPath_prop,
+    &CIM_InstIndication_SourceInstanceHost_prop,
+    &CIM_InstModification_PreviousInstance_prop,
+};
+
+static MI_CONST MI_Boolean CIM_InstModification_Indication_qual_value = 1;
+
+static MI_CONST MI_Qualifier CIM_InstModification_Indication_qual =
+{
+    MI_T("Indication"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstModification_Indication_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstModification_UMLPackagePath_qual_value = MI_T("CIM::Event");
+
+static MI_CONST MI_Qualifier CIM_InstModification_UMLPackagePath_qual =
+{
+    MI_T("UMLPackagePath"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &CIM_InstModification_UMLPackagePath_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstModification_Description_qual_value = MI_T("CIM_InstModification notifies when an instance is modified.");
+
+static MI_CONST MI_Qualifier CIM_InstModification_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &CIM_InstModification_Description_qual_value
+};
+
+static MI_CONST MI_Char* CIM_InstModification_Version_qual_value = MI_T("2.10.0");
+
+static MI_CONST MI_Qualifier CIM_InstModification_Version_qual =
+{
+    MI_T("Version"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TRANSLATABLE|MI_FLAG_RESTRICTED,
+    &CIM_InstModification_Version_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST CIM_InstModification_quals[] =
+{
+    &CIM_InstModification_Indication_qual,
+    &CIM_InstModification_UMLPackagePath_qual,
+    &CIM_InstModification_Description_qual,
+    &CIM_InstModification_Version_qual,
+};
+
+/* class CIM_InstModification */
+MI_CONST MI_ClassDecl CIM_InstModification_rtti =
+{
+    MI_FLAG_CLASS|MI_FLAG_INDICATION, /* flags */
+    0x00636E14, /* code */
+    MI_T("CIM_InstModification"), /* name */
+    CIM_InstModification_quals, /* qualifiers */
+    MI_COUNT(CIM_InstModification_quals), /* numQualifiers */
+    CIM_InstModification_props, /* properties */
+    MI_COUNT(CIM_InstModification_props), /* numProperties */
+    sizeof(CIM_InstModification), /* size */
+    MI_T("CIM_InstIndication"), /* superClass */
+    &CIM_InstIndication_rtti, /* superClassDecl */
+    NULL, /* methods */
+    0, /* numMethods */
+    &schemaDecl, /* schema */
+    NULL, /* functions */
+    NULL /* owningClass */
+};
+
+/*
+**==============================================================================
+**
+** MSFT_SBSUserCreated
+**
+**==============================================================================
+*/
+
+static MI_PropertyDecl MI_CONST* MI_CONST MSFT_SBSUserCreated_props[] =
+{
+    &CIM_Indication_IndicationIdentifier_prop,
+    &CIM_Indication_CorrelatedIndications_prop,
+    &CIM_Indication_IndicationTime_prop,
+    &CIM_Indication_PerceivedSeverity_prop,
+    &CIM_Indication_OtherSeverity_prop,
+    &CIM_Indication_IndicationFilterName_prop,
+    &CIM_Indication_SequenceContext_prop,
+    &CIM_Indication_SequenceNumber_prop,
+    &CIM_InstIndication_SourceInstance_prop,
+    &CIM_InstIndication_SourceInstanceModelPath_prop,
+    &CIM_InstIndication_SourceInstanceHost_prop,
+    &CIM_InstModification_PreviousInstance_prop,
+};
+
+static MI_CONST MI_ProviderFT MSFT_SBSUserCreated_funcs =
+{
+  (MI_ProviderFT_Load)MSFT_SBSUserCreated_Load,
+  (MI_ProviderFT_Unload)MSFT_SBSUserCreated_Unload,
+  (MI_ProviderFT_GetInstance)NULL,
+  (MI_ProviderFT_EnumerateInstances)NULL,
+  (MI_ProviderFT_CreateInstance)NULL,
+  (MI_ProviderFT_ModifyInstance)NULL,
+  (MI_ProviderFT_DeleteInstance)NULL,
+  (MI_ProviderFT_AssociatorInstances)NULL,
+  (MI_ProviderFT_ReferenceInstances)NULL,
+  (MI_ProviderFT_EnableIndications)MSFT_SBSUserCreated_EnableIndications,
+  (MI_ProviderFT_DisableIndications)MSFT_SBSUserCreated_DisableIndications,
+  (MI_ProviderFT_Subscribe)MSFT_SBSUserCreated_Subscribe,
+  (MI_ProviderFT_Unsubscribe)MSFT_SBSUserCreated_Unsubscribe,
+  (MI_ProviderFT_Invoke)NULL,
+};
+
+static MI_CONST MI_Boolean MSFT_SBSUserCreated_Indication_qual_value = 1;
+
+static MI_CONST MI_Qualifier MSFT_SBSUserCreated_Indication_qual =
+{
+    MI_T("Indication"),
+    MI_BOOLEAN,
+    MI_FLAG_DISABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &MSFT_SBSUserCreated_Indication_qual_value
+};
+
+static MI_CONST MI_Char* MSFT_SBSUserCreated_UMLPackagePath_qual_value = MI_T("CIM::Event");
+
+static MI_CONST MI_Qualifier MSFT_SBSUserCreated_UMLPackagePath_qual =
+{
+    MI_T("UMLPackagePath"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS,
+    &MSFT_SBSUserCreated_UMLPackagePath_qual_value
+};
+
+static MI_CONST MI_Char* MSFT_SBSUserCreated_Description_qual_value = MI_T("CIM_InstModification notifies when an instance is modified.");
+
+static MI_CONST MI_Qualifier MSFT_SBSUserCreated_Description_qual =
+{
+    MI_T("Description"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_TOSUBCLASS|MI_FLAG_TRANSLATABLE,
+    &MSFT_SBSUserCreated_Description_qual_value
+};
+
+static MI_CONST MI_Char* MSFT_SBSUserCreated_ClassVersion_qual_value = MI_T("1.0.0");
+
+static MI_CONST MI_Qualifier MSFT_SBSUserCreated_ClassVersion_qual =
+{
+    MI_T("ClassVersion"),
+    MI_STRING,
+    MI_FLAG_ENABLEOVERRIDE|MI_FLAG_RESTRICTED,
+    &MSFT_SBSUserCreated_ClassVersion_qual_value
+};
+
+static MI_Qualifier MI_CONST* MI_CONST MSFT_SBSUserCreated_quals[] =
+{
+    &MSFT_SBSUserCreated_Indication_qual,
+    &MSFT_SBSUserCreated_UMLPackagePath_qual,
+    &MSFT_SBSUserCreated_Description_qual,
+    &MSFT_SBSUserCreated_ClassVersion_qual,
+};
+
+/* class MSFT_SBSUserCreated */
+MI_CONST MI_ClassDecl MSFT_SBSUserCreated_rtti =
+{
+    MI_FLAG_CLASS|MI_FLAG_INDICATION, /* flags */
+    0x006D6413, /* code */
+    MI_T("MSFT_SBSUserCreated"), /* name */
+    MSFT_SBSUserCreated_quals, /* qualifiers */
+    MI_COUNT(MSFT_SBSUserCreated_quals), /* numQualifiers */
+    MSFT_SBSUserCreated_props, /* properties */
+    MI_COUNT(MSFT_SBSUserCreated_props), /* numProperties */
+    sizeof(MSFT_SBSUserCreated), /* size */
+    MI_T("CIM_InstModification"), /* superClass */
+    &CIM_InstModification_rtti, /* superClassDecl */
+    NULL, /* methods */
+    0, /* numMethods */
+    &schemaDecl, /* schema */
+    &MSFT_SBSUserCreated_funcs, /* functions */
+    NULL /* owningClass */
+};
+
+/*
+**==============================================================================
+**
 ** __mi_server
 **
 **==============================================================================
@@ -1234,8 +2251,12 @@ MI_Server* __mi_server;
 
 static MI_ClassDecl MI_CONST* MI_CONST classes[] =
 {
+    &CIM_Indication_rtti,
+    &CIM_InstIndication_rtti,
+    &CIM_InstModification_rtti,
     &MSFT_SBSMedia_rtti,
     &MSFT_SBSUser_rtti,
+    &MSFT_SBSUserCreated_rtti,
 };
 
 MI_SchemaDecl schemaDecl =

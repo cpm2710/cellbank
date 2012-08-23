@@ -33,14 +33,14 @@ void MI_CALL MSFT_SBSUser_EnumerateInstances(
     _In_opt_ const MI_Filter* filter)
 {
 	MI_Result result = MI_RESULT_OK;
-
     MI_UNREFERENCED_PARAMETER(self);
     MI_UNREFERENCED_PARAMETER(nameSpace);
     MI_UNREFERENCED_PARAMETER(className);
     MI_UNREFERENCED_PARAMETER(propertySet);
     MI_UNREFERENCED_PARAMETER(keysOnly);
     MI_UNREFERENCED_PARAMETER(filter);
-	result = EnumerateSBSUsers(context, keysOnly);
+
+    result = EnumerateSBSUsers(context, keysOnly);
 
 
     MI_Context_PostResult(context, result);

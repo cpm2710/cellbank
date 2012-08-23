@@ -31,3 +31,11 @@ class MSFT_SBSMedia
 	Description("N/A")]
 	uint32 EnableMediaServer([In] string CommandLine);
 };
+
+// MSFT_SBSUserCreated class derives from CIM_InstModification class,
+// which presents the notification of sbs user created.
+[ClassVersion("1.0.0")]
+class MSFT_SBSUserCreated : CIM_InstModification
+{
+};
+

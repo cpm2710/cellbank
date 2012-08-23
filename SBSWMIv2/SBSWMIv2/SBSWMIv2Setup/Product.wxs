@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define BUILDTARGET="C:\WorkSpace\Microsoft\SBSWMIv2\SBSWMIv2\x64\Release\" ?>
-	<Product Id="DD32984E-511D-4F82-BCE7-6E471439AE49" Name="SBSWMIv2Setup" Language="1033" Version="1.0.0.0" 
-           Manufacturer="SBSWMIv2Setup" UpgradeCode="20D89AEB-EAEB-4C2D-8514-E5386E220C27">
+	<Product Id="DD32984E-511D-4F82-BCE7-6E471439AE29" Name="SBSWMIv2Setup" Language="1033" Version="1.0.0.0" 
+           Manufacturer="SBSWMIv2Setup" UpgradeCode="20D89AEB-EAEB-4C2D-8514-E5386E220C17">
     <Package InstallerVersion="200" Compressed="yes" Platform="x64" />
 
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
