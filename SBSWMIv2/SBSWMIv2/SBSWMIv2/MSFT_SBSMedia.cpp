@@ -1,7 +1,7 @@
 /* @migen@ */
 #include <MI.h>
 #include "MSFT_SBSMedia.h"
-
+#include "SBSMedia.h"
 void MI_CALL MSFT_SBSMedia_Load(
     _Outptr_result_maybenull_ MSFT_SBSMedia_Self** self,
     _In_opt_ MI_Module_Self* selfModule,
@@ -38,6 +38,10 @@ void MI_CALL MSFT_SBSMedia_Invoke_EnableMediaServer(
     MI_UNREFERENCED_PARAMETER(instanceName);
     MI_UNREFERENCED_PARAMETER(in);
 
-    MI_Context_PostResult(context, MI_RESULT_NOT_SUPPORTED);
+	MI_Result result;
+	result = EnableMediaServer(context, NULL);
+
+
+    MI_Context_PostResult(context, result);
 }
 

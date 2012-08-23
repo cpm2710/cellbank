@@ -3,6 +3,18 @@
 
 
 using namespace std;
+void Log::LogMessage(const wchar_t * a){
+	ofstream file1;
+
+	file1.open("c:\\record_log.txt" ,ios::app|ios::ate|ios::out);
+	if(file1.is_open()){
+		file1<<a<<endl;
+	}else{
+		cout<<"Error"<<GetLastError()<<endl;
+	}
+
+	file1.close();
+}
 void Log::LogMessage(string a){
 
 	/*
@@ -28,9 +40,9 @@ ios::trunc：　　如果文件存在，把文件长度设为0
 
 	file1.open("c:\\record_log.txt" ,ios::app|ios::ate|ios::out);
 	if(file1.is_open()){
-		file1<<a<<endl;
+		file1<<"###########"<<a<<endl;
 	}else{
-		cout<<"Error"<<GetLastError()<<endl;
+		cout<<"Error:"<<GetLastError()<<endl;
 	}
 
 	file1.close();

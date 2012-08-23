@@ -12,3 +12,7 @@ Register-CimProvider.exe -Namespace root/Standardcimv2/sbs -ProviderName sbsuser
 SBSWMIv2Host.exe -Namespace root/Standardcimv2/sbs -ProviderName sbsuser -ProviderPath .\sbswmiv2.dll
 
 ..\x64\Debug\SBSWMIv2Host.exe -Namespace root/Standardcimv2/sbs -ProviderName sbsuser -ProviderPath ..\x64\Debug\sbswmiv2.dll
+
+
+
+Invoke-CimMethod -MethodName EnableMediaServer -ClassName MSFT_SBSMedia -Arguments @{Status=[string]abc} -Namespace root/Standardcimv2/sbs
