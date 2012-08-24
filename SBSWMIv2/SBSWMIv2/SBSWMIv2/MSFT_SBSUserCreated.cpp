@@ -1,6 +1,7 @@
 /* @migen@ */
 #include <MI.h>
 #include "MSFT_SBSUserCreated.h"
+#include "SBSUser.h"
 
 void MI_CALL MSFT_SBSUserCreated_Load(
     _Outptr_result_maybenull_ MSFT_SBSUserCreated_Self** self,
@@ -36,6 +37,7 @@ void MI_CALL MSFT_SBSUserCreated_EnableIndications(
     MI_UNREFERENCED_PARAMETER(nameSpace);
     MI_UNREFERENCED_PARAMETER(className);
 
+	EnableSBSUserCreatedIndication(indicationsContext, nameSpace);
 }
 
 void MI_CALL MSFT_SBSUserCreated_DisableIndications(
@@ -71,7 +73,9 @@ void MI_CALL MSFT_SBSUserCreated_Subscribe(
     MI_UNREFERENCED_PARAMETER(subscriptionID);
     MI_UNREFERENCED_PARAMETER(subscriptionSelf);
 
-    MI_Context_PostResult(context, MI_RESULT_NOT_SUPPORTED);
+	*subscriptionSelf = NULL;
+	SBSUserCreatedSubscribe(context);
+    MI_Context_PostResult(context, MI_RESULT_OK);
 }
 
 void MI_CALL MSFT_SBSUserCreated_Unsubscribe(

@@ -134,3 +134,22 @@ MI_Result EnumerateSBSUsers(
 
     return result;
 }
+
+MI_Result EnableSBSUserCreatedIndication(__in MI_Context *context,
+                                         _In_opt_z_ const MI_Char *lpwszNamespace)
+{
+	Log *log=new Log();
+	log->LogMessage("#########EnableServiceStartedIndication");
+	delete(log);
+    
+    return MI_RESULT_OK;
+}
+
+MI_Result SBSUserCreatedSubscribe(__in MI_Context *context){
+
+
+	Log *log=new Log();
+	log->LogMessage("#########SBSUserCreatedSubscribe");
+	delete(log);
+	return MI_RESULT_OK;
+}
