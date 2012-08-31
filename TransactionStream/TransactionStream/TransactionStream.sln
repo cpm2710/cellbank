@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionStream", "TransactionStream\TransactionStream.csproj", "{ACCD296A-9B82-4A76-A02B-78BEAAC1D807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionStreamTest", "TransactionStreamTest\TransactionStreamTest.csproj", "{A7213B54-7893-435A-A9B5-5CBBA12B40F3}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACCD296A-9B82-4A76-A02B-78BEAAC1D807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACCD296A-9B82-4A76-A02B-78BEAAC1D807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACCD296A-9B82-4A76-A02B-78BEAAC1D807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACCD296A-9B82-4A76-A02B-78BEAAC1D807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7213B54-7893-435A-A9B5-5CBBA12B40F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7213B54-7893-435A-A9B5-5CBBA12B40F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7213B54-7893-435A-A9B5-5CBBA12B40F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7213B54-7893-435A-A9B5-5CBBA12B40F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
