@@ -74,5 +74,8 @@ namespace TransactionStream
         {
             throw new NotImplementedException();
         }
+        public override void Close()
+        {
+        }
     }
 }
