@@ -9,73 +9,111 @@ namespace TransactionStream
 {
     public class TransactionFileStream : Stream
     {
-        private FileMode fileMode;
-        private FileAccess fileAccess;
-        private byte[] buffer;
-        public TransactionFileStream(string path, FileMode mode, FileAccess access, int bufferSize)
+        private FileStream fileStream;
+        private const String ORIGIN_CONSTANT = "ORIGIN";
+        private const String FILE_FLAG_CONSTANT = "{7B8ED1B5-14BE-4728-9359-D86D9AC90641}";
+        private String BACKED_UP_PATH;
+        private String LOG_PATH;
+        private String PATH;
+        public TransactionFileStream(string path)
         {
-            this.fileMode = mode;
-            this.fileAccess = access;
-            buffer = new byte[bufferSize];
+            PATH = path;
+            BACKED_UP_PATH = Path.Combine(new string[] { path + ORIGIN_CONSTANT });
+            LOG_PATH = Path.Combine(new string[] { path + FILE_FLAG_CONSTANT });
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+            }
+            if (!File.Exists(path) && File.Exists(BACKED_UP_PATH))
+            {
+                recoverBackup();
+            }
+            else
+            {
+                fileStream = new FileStream(LOG_PATH, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            }
+        }
+        public override void Close()
+        {
+            Commit();
+        }
+        private void Commit()
+        {
+            if (File.Exists(PATH) && File.Exists(BACKED_UP_PATH))
+            {
+                File.Delete(BACKED_UP_PATH);
+            }
+            File.Move(PATH, BACKED_UP_PATH);
+            fileStream.Close();
+            File.Move(LOG_PATH, PATH);
+            if (File.Exists(BACKED_UP_PATH))
+            {
+                File.Delete(BACKED_UP_PATH);
+            }
+        }
+        
+
+        private void recoverBackup()
+        {
+            File.Move(BACKED_UP_PATH, PATH);
         }
         public override bool CanRead
         {
-            get { throw new NotImplementedException(); }
+            get { return this.fileStream.CanRead; }
         }
 
         public override bool CanSeek
         {
-            get { throw new NotImplementedException(); }
+            get { return this.fileStream.CanSeek; }
         }
 
         public override bool CanWrite
         {
-            get { throw new NotImplementedException(); }
+            get { return this.fileStream.CanWrite; }
         }
 
         public override void Flush()
         {
-            throw new NotImplementedException();
+            fileStream.Flush();
+            //throw new NotImplementedException();
         }
 
         public override long Length
         {
-            get { throw new NotImplementedException(); }
+            get { return fileStream.Length; }
         }
 
         public override long Position
         {
             get
             {
-                throw new NotImplementedException();
+                return fileStream.Position;
             }
             set
             {
-                throw new NotImplementedException();
+                fileStream.Position = value;
             }
         }
 
         public override int Read(byte[] buffer, int offset, int count)
         {
-            throw new NotImplementedException();
+            return fileStream.Read(buffer, offset, count);
         }
 
         public override long Seek(long offset, SeekOrigin origin)
         {
-            throw new NotImplementedException();
+            return fileStream.Seek(offset, origin);
         }
 
         public override void SetLength(long value)
         {
-            throw new NotImplementedException();
+            fileStream.SetLength(value);
         }
 
         public override void Write(byte[] buffer, int offset, int count)
         {
-            throw new NotImplementedException();
+            fileStream.Write(buffer, offset, count);
         }
-        public override void Close()
-        {
-        }
+
     }
 }
