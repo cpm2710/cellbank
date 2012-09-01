@@ -35,6 +35,7 @@ namespace TransactionStream
         }
         public override void Close()
         {
+            fileStream.Close();
             Commit();
         }
         private void Commit()
@@ -44,7 +45,7 @@ namespace TransactionStream
                 File.Delete(BACKED_UP_PATH);
             }
             File.Move(PATH, BACKED_UP_PATH);
-            fileStream.Close();
+            
             File.Move(LOG_PATH, PATH);
             if (File.Exists(BACKED_UP_PATH))
             {
