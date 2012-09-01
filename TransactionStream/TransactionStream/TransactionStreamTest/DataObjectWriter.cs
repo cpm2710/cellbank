@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.IO;
 using TransactionStream;
 
 namespace TransactionStreamTest
@@ -63,7 +64,7 @@ namespace TransactionStreamTest
             {
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
-                TransactionFileStream stream = new TransactionFileStream(path);
+                TransactionFileStream stream = new TransactionFileStream(path, FileAccess.Write);
                 using (XmlWriter writer = XmlWriter.Create(stream, settings))
                 {
                     DataContractSerializer serializer = new DataContractSerializer(typeof(Dictionary<string, List<DeviceProperty>>), knownTypes);

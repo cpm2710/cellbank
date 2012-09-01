@@ -15,23 +15,39 @@ namespace TransactionStream
         private String BACKED_UP_PATH;
         private String LOG_PATH;
         private String PATH;
-        public TransactionFileStream(string path)
+        public TransactionFileStream(string path, FileAccess fileAccess)
         {
-            PATH = path;
-            BACKED_UP_PATH = Path.Combine(new string[] { path + ORIGIN_CONSTANT });
-            LOG_PATH = Path.Combine(new string[] { path + FILE_FLAG_CONSTANT });
-            if (!File.Exists(path))
+            switch (fileAccess)
             {
-                File.Create(path);
+                case FileAccess.Read:
+                    {
+                        fileStream = new FileStream(LOG_PATH, FileMode.OpenOrCreate, fileAccess);
+                        break;
+                    }
+                case FileAccess.Write:
+                    {
+                        PATH = path;
+                        BACKED_UP_PATH = Path.Combine(new string[] { path + ORIGIN_CONSTANT });
+                        LOG_PATH = Path.Combine(new string[] { path + FILE_FLAG_CONSTANT });
+                        if (!File.Exists(path))
+                        {
+                            File.Create(path);
+                        }
+                        if (!File.Exists(path) && File.Exists(BACKED_UP_PATH))
+                        {
+                            recoverBackup();
+                        }
+                        else
+                        {
+                            fileStream = new FileStream(LOG_PATH, FileMode.OpenOrCreate, fileAccess);
+                        }
+                        break;
+                    }
+                default:{
+                    throw new Exception();
+                }
             }
-            if (!File.Exists(path) && File.Exists(BACKED_UP_PATH))
-            {
-                recoverBackup();
-            }
-            else
-            {
-                fileStream = new FileStream(LOG_PATH, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            }
+           
         }
         public override void Close()
         {
@@ -45,14 +61,14 @@ namespace TransactionStream
                 File.Delete(BACKED_UP_PATH);
             }
             File.Move(PATH, BACKED_UP_PATH);
-            
+
             File.Move(LOG_PATH, PATH);
             if (File.Exists(BACKED_UP_PATH))
             {
                 File.Delete(BACKED_UP_PATH);
             }
         }
-        
+
 
         private void recoverBackup()
         {
