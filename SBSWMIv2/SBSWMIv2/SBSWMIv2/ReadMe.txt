@@ -20,4 +20,4 @@ Invoke-CimMethod -MethodName EnableMediaServer -ClassName MSFT_SBSMedia -Argumen
 
 
 
-select * from MSFT_SBSUserCreatedEvent
+select * from MSFT_SBSUserCreated

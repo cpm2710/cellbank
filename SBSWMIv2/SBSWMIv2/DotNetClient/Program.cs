@@ -62,8 +62,9 @@ namespace DotNetClient
                             cimSession.Close();
                         }
                         
-
-                        cimSession = CimSession.Create(computerName,new WMIDCOMCimSessionOptions());
+                        WMIDCOMCimSessionOptions sessionOptions=new WMIDCOMCimSessionOptions();
+                        
+                        cimSession = CimSession.Create(computerName, sessionOptions);
                         hasComputerNameChanged = false;
                     }
 
