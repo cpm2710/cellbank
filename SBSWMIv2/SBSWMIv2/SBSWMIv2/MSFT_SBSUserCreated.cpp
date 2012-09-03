@@ -74,6 +74,10 @@ void MI_CALL MSFT_SBSUserCreated_Subscribe(
     MI_UNREFERENCED_PARAMETER(subscriptionSelf);
 
 	*subscriptionSelf = NULL;
+	// whenever a client start a subscription to this indication class,
+    // this function will be invoked, query expression can be retrieved
+    // from filter parameter.
+
 	SBSUserCreatedSubscribe(context);
     MI_Context_PostResult(context, MI_RESULT_OK);
 }
@@ -91,7 +95,10 @@ void MI_CALL MSFT_SBSUserCreated_Unsubscribe(
     MI_UNREFERENCED_PARAMETER(className);
     MI_UNREFERENCED_PARAMETER(subscriptionID);
     MI_UNREFERENCED_PARAMETER(subscriptionSelf);
-
+	// whenever a client stop a subscription to this indication class,
+    // this function will be invoked. The subscription can be identified
+    // by subscriptionID, which is passed along with the call to
+    // MSFT_SBSUserCreated_Subscribe
     MI_Context_PostResult(context, MI_RESULT_NOT_SUPPORTED);
 }
 
