@@ -17,18 +17,19 @@ namespace TransactionStream
         private String PATH;
         public TransactionFileStream(string path, FileAccess fileAccess)
         {
+            PATH = path;
+            BACKED_UP_PATH = Path.Combine(new string[] { path + ORIGIN_CONSTANT });
+            LOG_PATH = Path.Combine(new string[] { path + FILE_FLAG_CONSTANT });
             switch (fileAccess)
             {
                 case FileAccess.Read:
                     {
-                        fileStream = new FileStream(LOG_PATH, FileMode.OpenOrCreate, fileAccess);
+                        fileStream = new FileStream(PATH, FileMode.OpenOrCreate, fileAccess);
                         break;
                     }
                 case FileAccess.Write:
                     {
-                        PATH = path;
-                        BACKED_UP_PATH = Path.Combine(new string[] { path + ORIGIN_CONSTANT });
-                        LOG_PATH = Path.Combine(new string[] { path + FILE_FLAG_CONSTANT });
+                        
                         if (!File.Exists(path))
                         {
                             File.Create(path);
