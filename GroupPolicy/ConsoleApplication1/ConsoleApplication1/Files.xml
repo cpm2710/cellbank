@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Files clsid="{215B2E53-57CE-475c-80FE-9EEC14635851}">
+
+<File clsid="{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}" name="ff" status="ff" image="2" 
+changed="2012-09-20 07:37:58" uid="{3C70A679-A81A-4C3E-8928-5BDC8ED0EE31}">
+<Properties action="U" fromPath="ff" targetPath="ff" readOnly="0" archive="1" hidden="0" suppress="0"/>
+</File>
+	<File clsid="{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}" name="ggg" status="ggg" image="0" changed="2012-09-20 07:38:43" uid="{8F79CDFA-23A5-44CF-849F-80E270F2301D}"><Properties action="C" fromPath="ggg" targetPath="ggg" readOnly="0" archive="1" hidden="0"/></File>
+
+</Files>
