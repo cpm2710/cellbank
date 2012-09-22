@@ -56,7 +56,7 @@ namespace ConsoleApplication1
         /// <typeparam name="T"></typeparam>
         /// <param name="obje"></param>
         /// <param name="filePath"></param>
-        public static void XmlSerializeToFile<T>(T obje,string filePath)
+        public static void XmlSerializeToFile<T>(T obje, string filePath)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             using (TextWriter textWriter = new StreamWriter(filePath, false, Encoding.UTF8))
@@ -79,19 +79,21 @@ namespace ConsoleApplication1
         }
         #endregion
 
-        
-        
+
+
 
         static void Main(string[] args)
         {
             Files files = new Files();
             files.clsid = "abc";
-            XmlSerializeToFile(files,"Files2.xml");
+            XmlSerializeToFile(files, "Files2.xml");
 
 
             Files loadedFiles = (Files)XmlDeserializeFromFile<Files>(@"SampleXmls\Files.xml");
+
+            XmlSerializeToFile<Files>(loadedFiles, "Files2.xml");
             //FilePushPolicyCollection collection = new FilePushPolicyCollection();
-            
+
             //collection.LoadFromPolicy("Files.xml");
             //collection.WritePolicy("Files2.xml");
 
