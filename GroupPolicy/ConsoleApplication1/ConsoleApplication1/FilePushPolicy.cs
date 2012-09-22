@@ -14,6 +14,7 @@ namespace ConsoleApplication1
     {
         private const string FilesClsid = "{215B2E53-57CE-475c-80FE-9EEC14635851}";
         private const string FileClsid = "{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}";
+        [DataMember]
         public List<FilePushPolicy> FilePushPolicies { get; set; }
 
         public FilePushPolicyCollection()
