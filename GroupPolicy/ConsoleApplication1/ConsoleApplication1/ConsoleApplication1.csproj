@@ -52,7 +52,7 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test\FilePushPolicy.cs" />
+    <Compile Include="GroupPlicyUtil.cs" />
     <Compile Include="Schemas\Devices.cs">
       <DependentUpon>Devices.xsd</DependentUpon>
     </Compile>
@@ -76,11 +76,11 @@
     <Compile Include="Schemas\NetworkShareSettings.cs">
       <DependentUpon>NetworkShareSettings.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Test\ShortcutPolicy.cs" />
     <Compile Include="Schemas\Shortcuts.cs">
       <DependentUpon>Shortcuts.xsd</DependentUpon>
     </Compile>
     <Compile Include="WSSGGroupPolicyException.cs" />
+    <Compile Include="XmlSerializeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
