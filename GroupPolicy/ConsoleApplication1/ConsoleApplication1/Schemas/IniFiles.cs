@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class IniFiles {
     
-    private IniFilesIni iniField;
+    private IniFilesIni[] iniField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class IniFiles {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public IniFilesIni Ini {
+    [System.Xml.Serialization.XmlElementAttribute("Ini")]
+    public IniFilesIni[] Ini {
         get {
             return this.iniField;
         }

@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class Folders {
     
-    private FoldersFolder folderField;
+    private FoldersFolder[] folderField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class Folders {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public FoldersFolder Folder {
+    [System.Xml.Serialization.XmlElementAttribute("Folder")]
+    public FoldersFolder[] Folder {
         get {
             return this.folderField;
         }

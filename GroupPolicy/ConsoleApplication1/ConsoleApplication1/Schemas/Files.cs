@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class Files {
     
-    private FilesFile fileField;
+    private FilesFile[] fileField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class Files {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public FilesFile File {
+    [System.Xml.Serialization.XmlElementAttribute("File")]
+    public FilesFile[] File {
         get {
             return this.fileField;
         }

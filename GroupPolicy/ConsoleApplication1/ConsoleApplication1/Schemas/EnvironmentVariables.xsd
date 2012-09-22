@@ -2,7 +2,7 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="EnvironmentVariables">
     <xs:complexType>
-      <xs:sequence>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
         <xs:element maxOccurs="unbounded" name="EnvironmentVariable">
           <xs:complexType>
             <xs:sequence>

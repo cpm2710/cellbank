@@ -3,7 +3,7 @@
                          xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="IniFiles">
     <xs:complexType>
-      <xs:sequence>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Ini">
           <xs:complexType>
             <xs:sequence>

@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class NetworkShareSettings {
     
-    private NetworkShareSettingsNetShare netShareField;
+    private NetworkShareSettingsNetShare[] netShareField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class NetworkShareSettings {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public NetworkShareSettingsNetShare NetShare {
+    [System.Xml.Serialization.XmlElementAttribute("NetShare")]
+    public NetworkShareSettingsNetShare[] NetShare {
         get {
             return this.netShareField;
         }

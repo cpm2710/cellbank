@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class Devices {
     
-    private DevicesDevice deviceField;
+    private DevicesDevice[] deviceField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class Devices {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public DevicesDevice Device {
+    [System.Xml.Serialization.XmlElementAttribute("Device")]
+    public DevicesDevice[] Device {
         get {
             return this.deviceField;
         }

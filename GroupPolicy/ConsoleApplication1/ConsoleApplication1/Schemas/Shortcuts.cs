@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class Shortcuts {
     
-    private ShortcutsShortcut shortcutField;
+    private ShortcutsShortcut[] shortcutField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class Shortcuts {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public ShortcutsShortcut Shortcut {
+    [System.Xml.Serialization.XmlElementAttribute("Shortcut")]
+    public ShortcutsShortcut[] Shortcut {
         get {
             return this.shortcutField;
         }

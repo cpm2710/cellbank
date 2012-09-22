@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class Drives {
     
-    private DrivesDrive driveField;
+    private DrivesDrive[] driveField;
     
     private string clsidField;
     
@@ -33,7 +33,8 @@ public partial class Drives {
     private bool disabledFieldSpecified;
     
     /// <remarks/>
-    public DrivesDrive Drive {
+    [System.Xml.Serialization.XmlElementAttribute("Drive")]
+    public DrivesDrive[] Drive {
         get {
             return this.driveField;
         }
