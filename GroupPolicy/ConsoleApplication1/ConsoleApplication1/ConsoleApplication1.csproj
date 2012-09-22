@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemas\FilesPolicy.cs" />
     <Compile Include="Schemas\Folders.cs">
       <DependentUpon>Folders.xsd</DependentUpon>
     </Compile>
@@ -79,6 +80,7 @@
     <Compile Include="Schemas\Shortcuts.cs">
       <DependentUpon>Shortcuts.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Schemas\ShortcutsPolicy.cs" />
     <Compile Include="WSSGGroupPolicyException.cs" />
     <Compile Include="XmlSerializeHelper.cs" />
   </ItemGroup>
