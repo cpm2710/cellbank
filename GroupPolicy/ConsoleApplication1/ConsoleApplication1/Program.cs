@@ -19,14 +19,18 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
-            Files files = new Files();
-            files.clsid = "abc";
-            XmlSerializeHelper.XmlSerializeToFile(files, "Files2.xml");
+            FilesFile filePolicy=new FilesFile();
+            filePolicy.clsid = "{}";
+            filePolicy.name = "shit";
+            GroupPlicyUtil.CreateFileGroupPolicy(@"SampleXmls\Files.xml", filePolicy);
+           // Files files = new Files();
+           // files.clsid = "abc";
+           // XmlSerializeHelper.XmlSerializeToFile(files, "Files2.xml");
 
 
-            Files loadedFiles = (Files)XmlSerializeHelper.XmlDeserializeFromFile<Files>(@"SampleXmls\Files.xml");
+           // Files loadedFiles = (Files)XmlSerializeHelper.XmlDeserializeFromFile<Files>(@"SampleXmls\Files.xml");
 
-           XmlSerializeHelper.XmlSerializeToFile<Files>(loadedFiles, "Files2.xml");
+           //XmlSerializeHelper.XmlSerializeToFile<Files>(loadedFiles, "Files2.xml");
             //FilePushPolicyCollection collection = new FilePushPolicyCollection();
 
             //collection.LoadFromPolicy("Files.xml");
