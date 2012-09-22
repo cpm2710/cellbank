@@ -1,0 +1,855 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0064)http://msdn.microsoft.com/en-us/library/cc422946(v=prot.13).aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="canonical" href="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/2.2.1.1.2 Outer and Inner Element Names and CLSIDs.htm"><title>
+	
+  2.2.1.1.2   Outer and Inner Element Names and CLSIDs
+
+</title>
+    
+
+
+
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/cc422946(d=lightweight,l=en-us,v=prot.13).aspx">
+
+<meta name="NormalizedUrl" content="http://msdn.microsoft.com/en-us/library/cc422946(d=lightweight,l=en-us,v=prot.13).aspx">
+
+<meta name="DCSext.MSDNLibOpenProtocol" content="WINDOWS">
+
+<meta name="VotingContextUrl" content="http://msdn.microsoft.com/en-us/library/cc422946(d=lightweight,l=en-us,v=prot.13).aspx">
+
+<meta name="MN" content="9C2B51B6-12:55:07 AM">
+
+<meta name="Search.ShortId" content="cc422946">
+
+<meta name="Ms.Locale" content="en-us">
+<link rel="stylesheet" type="text/css" href="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Combined.css" xmlns="http://www.w3.org/1999/xhtml"><link rel="stylesheet" type="text/css" href="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/printview.css" media="print"><link rel="alternate" media="print" href="http://msdn.microsoft.com/en-us/library/cc422946(d=printer,v=prot.13).aspx"><script type="text/javascript" async="" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/ms2.js"></script><script src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/broker.js"></script></head>
+<body>
+    
+        
+        
+  <div class="header">
+    
+
+<table border="0" cellpadding="0" cellspacing="0" class="headerBar cl_lightweight_topnav_slice">
+		<tbody><tr>
+			<td class="leftSection cl_lightweight_header_leftSection_wave leftSectionImageClusterOverride">
+        <div class="tabContainer">
+          <a href="http://msdn.microsoft.com/en-us/default.aspx" title="Home" class=" headerTab">Home</a>
+          <a href="http://msdn.microsoft.com/en-us/library/default.aspx" title="Library" class="headerTabSelected cl_lightweight_selected_tab_repeatX ">Library</a>
+          <a href="http://msdn.microsoft.com/en-us/bb188199.aspx" title="Learn" class=" headerTab">Learn</a>
+          <a href="http://msdn.microsoft.com/en-us/aa570309.aspx" title="Downloads" class=" headerTab">Downloads</a>
+          <a href="http://msdn.microsoft.com/en-us/hh361695.aspx" title="Support" class=" headerTab">Support</a>
+          <a href="http://msdn.microsoft.com/en-us/aa497440.aspx" title="Community" class=" headerTab">Community</a>
+          
+        </div>
+      </td>
+			<td class="rightSection cl_lightweight_header_rightSection_wave rightSectionImageClusterOverride">
+        <div class="tabContainer">
+            
+            <a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=11&ct=1348300507&rver=6.0.5276.0&wp=MCLBI&wlcxt=msdn%24msdn%24msdn&wreply=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fcc422946%2528v%3dprot.13%2529.aspx&lc=1033&id=254354&mkt=en-US" title="Sign in" rel="nofollow">Sign in </a>
+            <span class="pipe">|</span>
+            <a href="http://msdn.microsoft.com/en-us/library/preferences/locale/?returnurl=%252fen-us%252flibrary%252fcc422946(v%253dprot.13).aspx" title="United States - English" rel="nofollow">United States - English </a>
+            <span class="pipe">|</span>
+            <a class="dispinline clip15x15" href="http://msdn.microsoft.com/en-us/library/preferences/experience/?returnurl=%252fen-us%252flibrary%252fcc422946(v%253dprot.13).aspx" title="Preferences" rel="nofollow"><img class="head_gear" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" alt=""></a>
+            <span class="pipe">|</span>
+            <a id="exportPrintLink" class="dispinline clip30x15 moveToDown" href="http://msdn.microsoft.com/en-us/library/cc422946(d=printer,v=prot.13).aspx" title="Print/Export"><img class="head_print_noarrow" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" alt=""></a>
+            
+            <div id="exportPrintLinkArrowDiv" class="exportPrintLinkArrow">
+            <a id="exportPrintLinkArrow" class="dispinline clip30x15 moveToDown" href="javascript:void(0);" title="Print/Export"><img class="head_print_arrow" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" alt=""></a>
+            </div>
+            
+        </div>
+			</td>
+	</tr>
+</tbody></table>
+
+  </div>
+  <div class="contentPlaceHolder">
+    
+    
+  <div class="navigation" id="Navigation" style="width:380px;padding-bottom:96px;">
+    <div class="searchcontainer">
+      
+<form id="SearchForm" action="http://social.msdn.microsoft.com/search/en-us" method="get" style="margin: 0; padding: 0;" onsubmit="return checkSearchBox()">
+<div class="searchBoxContainer" style="">
+  <table class="searchBox" cellpadding="0" cellspacing="0" border="0">
+    <tbody><tr>
+      <td class="searchTextBoxTd">
+        <input id="SearchInput" type="text" maxlength="200" class="searchTextBox" name="query">
+        
+      </td>
+      <td class="searchButtonTd">
+        <a href="javascript:void(0)" class="clip20x20" style="display: block; overflow: hidden; position: relative;           padding: 0; margin: 0;" onclick="javascript:if(document.getElementById(&#39;SearchInput&#39;).value == &#39;Search MSDN with Bing&#39;)document.getElementById(&#39;SearchInput&#39;).value=&#39;&#39;; document.getElementById(&#39;SearchForm&#39;).submit();">
+          <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" style="position: relative;" title="Search " class="isd_search" alt="Search"></a>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    if (!MTPS) var MTPS = {};
+    if (!MTPS.Watermarks) MTPS.Watermarks = {};
+    MTPS.Watermarks.SearchInput = {
+        "control": "SearchInput",
+        "defaultValue": "Search MSDN with Bing",
+        "defaultCSS": "searchTextBox",
+        "focusCSS": "searchTextBoxTrue"
+    };
+    function checkSearchBox() {
+        if (document.getElementById("SearchInput").value == MTPS.Watermarks.SearchInput.defaultValue) {
+            document.getElementById("SearchInput").value = "";
+        }
+    }
+ //]]>
+</script>
+
+
+    </div>
+    <div class="navcontainer">
+      
+
+<div class="nav">
+    
+    <div id="tocnav">
+        
+        <div class="toclevel0 ancestry">
+            
+            <div class="clip5x9 nav_root">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_bullet" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/ms123401.aspx" id="ms310241_MSDN.10_en-us" title="MSDN Library">MSDN Library</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/dd208104(v=prot.10).aspx" id="cc203350_PROT.10_en-us" title="Open Specifications">Open Specifications</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg685446.aspx" id="gg257988_PROT.10_en-us" title="Protocols">Protocols</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/cc216517(v=prot.10).aspx" id="gg257989_PROT.10_en-us" title="Windows Protocols">Windows Protocols</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/gg258393(v=prot.13).aspx" id="hh237247_PROT.10_en-us" title="Windows Server Protocols (WSPP)">Windows Server Protocols (WSPP)</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/cc232587(v=prot.13).aspx" id="ee879140_PROT.13_en-us" title="[MS-GPPREF]: Group Policy: Preferences Extension Data Structure">[MS-GPPREF]: Group Policy: Preferences Extension Data Structure</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/cc232601(v=prot.13).aspx" id="ee915449_PROT.13_en-us" title="2 Messages">2 Messages</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/cc232603(v=prot.13).aspx" id="ee878204_PROT.13_en-us" title="2.2 Message Syntax">2.2 Message Syntax</a>
+            </div>
+            
+            <div class="clip5x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_arrow" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/cc232604(v=prot.13).aspx" id="ee916639_PROT.13_en-us" title="2.2.1 Preferences Policy Message Syntax">2.2.1 Preferences Policy Message Syntax</a>
+            </div>
+            
+            <div class="clip13x9 nav_arrows">
+                <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+            </div>
+            
+            <div class="nav_div_currentroot">
+                <a data-tochassubtree="true" href="http://msdn.microsoft.com/en-us/library/cc422923(v=prot.13).aspx" id="ee916783_PROT.13_en-us" title="2.2.1.1 Preferences Policy File Format">2.2.1.1 Preferences Policy File Format</a>
+            </div>
+            
+        </div>
+        
+        <div class="toclevel1 children" style="border-bottom: 1px solid #bbbbbb;">
+            
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/en-us/library/cc422945(v=prot.13).aspx" title="2.2.1.1.1 Common XML Schema">2.2.1.1.1 Common XML Schema</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div class="toclevel1 current">
+                    <a href="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/2.2.1.1.2 Outer and Inner Element Names and CLSIDs.htm" title="2.2.1.1.2 Outer and Inner Element Names and CLSIDs">2.2.1.1.2 Outer and Inner Element Names and CLSIDs</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/en-us/library/cc422944(v=prot.13).aspx" title="2.2.1.1.3 Common XML Attributes">2.2.1.1.3 Common XML Attributes</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/en-us/library/cc422924(v=prot.13).aspx" title="2.2.1.1.4 Password Encryption">2.2.1.1.4 Password Encryption</a>
+                </div>
+                
+                <div class="clip13x9 nav_dots_current">
+                    <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="cl_nav_dots" alt="">
+                </div>
+                
+                <div>
+                    <a href="http://msdn.microsoft.com/en-us/library/cc422925(v=prot.13).aspx" title="2.2.1.1.5 Expanding Environment Variables">2.2.1.1.5 Expanding Environment Variables</a>
+                </div>
+                
+        </div>
+        
+    </div>
+    
+    
+    
+        <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/clear.gif" alt="Separator" class="communityContentNavigationSeparator cl_lt_cc_line_top">
+    
+</div>
+
+<script type="text/javascript"> 
+  //<![CDATA[
+  if (!MTPS) var MTPS = {};
+  MTPS.TopicNodes= {
+  
+            "_last": ''
+    };
+  //]]>
+</script>
+
+    </div>
+    
+  </div>
+  <div id="tocResizeContainer" style="visibility: visible; ">
+  <a href="javascript:void(0)" class="tocResize" id="TocResize" style="left:380px">
+    <img id="ResizeImageIncrease" class="cl_nav_resize_open" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" title="Expand" alt="Expand">
+      <img id="ResizeImageReset" class="cl_nav_resize_close" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" style="display:none" title="Minimize" alt="Minimize">
+  </a>
+  </div>
+  <div class="content">
+    
+    
+
+<div class="clip75x25 logo">
+  <a href="http://msdn.microsoft.com/en-us/default.aspx">
+    <img src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" class="msdn_body_logo" alt="MSDN" title="MSDN">
+  </a>
+</div>
+
+    <div class="topicContainer">
+        
+    
+    
+
+    <div id="ratingCounterSeperator" class="cl_lw_vs_seperator" style="display: none;"></div>
+
+    
+<div xmlns="http://www.w3.org/1999/xhtml">
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:mtps="http://msdn2.microsoft.com/mtps">
+  <h1 class="title">2.2.1.1.2 Outer and Inner Element Names and CLSIDs</h1><div id="ratingCounter" style="display: block; ">
+        <span id="rcA" class="ratingText">
+            This topic has not yet been rated <span id="rateThisPrefix">- </span><a id="rateThisTopic" href="http://msdn.microsoft.com/en-us/library/cc422946(v=prot.13).aspx#feedback" title="Rate this topic">Rate this topic</a>
+            
+        </span>
+    </div>
+  
+  <div id="mainSection">
+    <div id="mainBody">
+      <div id="sectionSection0" class="section"></div>
+      <div id="sectionSection1" class="section">
+        <p>The following table shows the outer and inner elements in each Preference Policy file schema and the applicable clsid values. The meaning of each element is described in the appropriate section for the protocol.</p>
+        <p>
+        </p><table class="ProtocolAuthoredTable">
+          <tbody><tr>
+            <td id="ShadedCell">
+              <p>Preference type</p>
+            </td>
+            <td id="ShadedCell1">
+              <p>Outer element name and CLSID</p>
+            </td>
+            <td id="ShadedCell2">
+              <p>Inner element names and CLSIDs</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Applications</p>
+            </td>
+            <td>
+              <p>Applications</p>
+              <p>{16DB8EC4-EBFC-4958-98EE-712E9DD3A966}</p>
+            </td>
+            <td>
+              <p>Application</p>
+              <p>{C8535E2E-148D-494d-8E9A-71FC46649B5E} </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Control Panel</p>
+            </td>
+            <td>
+              <p>ComputerControlPanel (for computer policy)</p>
+              <p>{C2DC0825-BA13-4f79-9C58-7BC6B5AE0DF2}</p>
+              <p>UserControlPanel (for user policy)</p>
+              <p>{8502BEE0-089D-46d3-95FF-53D824ABA49F}</p>
+            </td>
+            <td>
+              <p>There are no settings configurable for the Control Panel preference type, although when the administrative tool plug-in loads, it MAY check for the existence of a settings file.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Data Sources</p>
+            </td>
+            <td>
+              <p>DataSources</p>
+              <p>{380F820F-F21B-41ac-A3CC-24D4F80F067B}</p>
+            </td>
+            <td>
+              <p>DataSource</p>
+              <p>{5C209626-D820-4d69-8D50-1FACD6214488}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Devices</p>
+            </td>
+            <td>
+              <p>Devices</p>
+              <p>{4DD26924-3F32-47aa-BF33-36D51BD1E54E}</p>
+            </td>
+            <td>
+              <p>Device</p>
+              <p>{2E1C95D0-85FB-403a-A57C-A508854FB7C8}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Drives</p>
+            </td>
+            <td>
+              <p>Drives</p>
+              <p>{8FDDCC1A-0C3C-43cd-A6B4-71A6DF20DA8C}</p>
+            </td>
+            <td>
+              <p>Drive</p>
+              <p>{935D1B74-9CB8-4e3c-9914-7DD559B7A417}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Environment Variables</p>
+            </td>
+            <td>
+              <p>EnvironmentVariables</p>
+              <p>{BF141A63-327B-438a-B9BF-2C188F13B7AD}</p>
+            </td>
+            <td>
+              <p>EnvironmentVariable</p>
+              <p>{78570023-8373-4a19-BA80-2F150738EA19}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Files</p>
+            </td>
+            <td>
+              <p>Files</p>
+              <p>{215B2E53-57CE-475c-80FE-9EEC14635851}</p>
+            </td>
+            <td>
+              <p>File</p>
+              <p>{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Folder Options</p>
+            </td>
+            <td>
+              <p>FolderOptions</p>
+              <p>{8AB5F5D7-F676-48ab-A94E-1186E120EFDC}</p>
+            </td>
+            <td>
+              <p>GlobalFolderOptions</p>
+              <p>{E7632293-E3FC-4fee-9CD3-584C95D8D2A0}</p>
+              <p>GlobalFolderOptionsVista</p>
+              <p>{DBF1E3CD-4CA2-407c-BE84-5F67D3BE754D}</p>
+              <p>OpenWith</p>
+              <p>{100B9C09-906A-4f5a-9C41-1BD98B6CA022}</p>
+              <p>FileType</p>
+              <p>{580C4D3B-7A89-44d0-92D2-C105702C7BD0}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Folders</p>
+            </td>
+            <td>
+              <p>Folders</p>
+              <p>{77CC39E7-3D16-4f8f-AF86-EC0BBEE2C861}</p>
+            </td>
+            <td>
+              <p>Folder</p>
+              <p>{07DA02F5-F9CD-4397-A550-4AE21B6B4BD3}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>IniFiles</p>
+            </td>
+            <td>
+              <p>IniFiles</p>
+              <p>{694C651A-08F2-47fa-A427-34C4F62BA207}</p>
+            </td>
+            <td>
+              <p>Ini</p>
+              <p>{EEFACE84-D3D8-4680-8D4B-BF103E759448}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Internet Settings</p>
+            </td>
+            <td>
+              <p>InternetSettings</p>
+              <p>{B611EB48-F531-42cd-A1F6-5E0D015377BA}</p>
+            </td>
+            <td>
+              <p>Internet</p>
+              <p>{8C0FE68F-E8A2-4f17-99E7-C6EFED208917}</p>
+              <p>IE7</p>
+              <p>{683F7AD7-E782-4232-8A6D-F22431F12DB5}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Local Users and Groups</p>
+            </td>
+            <td>
+              <p>Groups</p>
+              <p>{3125E937-EB16-4b4c-9934-544FC6D24D26}</p>
+            </td>
+            <td>
+              <p>User</p>
+              <p>{DF5F1855-51E5-4d24-8B1A-D9BDE98BA1D1}</p>
+              <p>Group</p>
+              <p>{6D4A79E4-529C-4481-ABD0-F5BD7EA93BA7}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Network Options</p>
+            </td>
+            <td>
+              <p>NetworkOptions</p>
+              <p>{09686AD1-5D80-48ee-A940-690A6DF02A90}</p>
+            </td>
+            <td>
+              <p>VPN</p>
+              <p>{0532F359-3205-4d32-ADB7-9AEC6402BECF}</p>
+              <p>DUN</p>
+              <p>{9B0D030D-9396-49c1-8DEF-08B35B5BB79E}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Network Shares</p>
+            </td>
+            <td>
+              <p>NetworkShareSettings</p>
+              <p>{520870D8-A6E7-47e8-A8D8-E6A4E76EAEC2}</p>
+            </td>
+            <td>
+              <p>NetShare</p>
+              <p>{2888C5E7-94FC-4739-90AA-2C1536D68BC0}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Power Options</p>
+            </td>
+            <td>
+              <p>PowerOptions</p>
+              <p>{7B0F9381-C3B8-4525-8167-87349B671D94}</p>
+            </td>
+            <td>
+              <p>GlobalPowerOptions</p>
+              <p>{46D0DCC4-FC14-48fb-829B-854868C7DC16}</p>
+              <p>GlobalPowerOptionsV2</p>
+              <p>{2B130A62-fc14-4572-91C3-5435C6A0C3FC}</p>
+              <p>PowerScheme</p>
+              <p>{DE828AFA-7E71-480e-8081-5447CBE87754}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Printers</p>
+            </td>
+            <td>
+              <p>Printers</p>
+              <p>{1F577D12-3D1B-471e-A1B7-060317597B9C}</p>
+            </td>
+            <td>
+              <p>SharedPrinter</p>
+              <p>{9A5E9697-9095-436d-A0EE-4D128FDFBCE5}</p>
+              <p>PortPrinter</p>
+              <p>{C3A739D2-4A44-401e-9F9D-88E5E77DFB3E}</p>
+              <p>LocalPrinter</p>
+              <p>{F08996D5-568B-45f5-BB7A-D3FB1E370B0A}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Regional Options</p>
+            </td>
+            <td>
+              <p>Regional</p>
+              <p>{BDBA23C2-DE02-434e-8D89-13E53CB6710B}</p>
+            </td>
+            <td>
+              <p>RegionalOptions</p>
+              <p>{C126A328-BECF-4acc-BA8D-C9C7F6B84E49}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Registry</p>
+            </td>
+            <td>
+              <p>RegistrySettings</p>
+              <p>{A3CCFC41-DFDB-43a5-8D26-0FE8B954DA51}</p>
+            </td>
+            <td>
+              <p>Registry</p>
+              <p>{9CD4B2F4-923D-47f5-A062-E897DD1DAD50}</p>
+              <p>Collection</p>
+              <p>{53B533F5-224C-47e3-B01B-CA3B3F3FF4BF}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Scheduled Tasks</p>
+            </td>
+            <td>
+              <p>ScheduledTasks</p>
+              <p>{CC63F200-7309-4ba0-B154-A71CD118DBCC}</p>
+            </td>
+            <td>
+              <p>Task</p>
+              <p>{2DEECB1C-261F-4e13-9B21-16FB83BC03BD}</p>
+              <p>ImmediateTask</p>
+              <p>{9F030D12-DDA3-4C26-8548-B7CE9151166A}</p>
+              <p>TaskV2</p>
+              <p>{D8896631-B747-47a7-84A6-C155337F3BC8}</p>
+              <p>ImmediateTaskV2</p>
+              <p>{9756B581-76EC-4169-9AFC-0CA8D43ADB5F}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Services</p>
+            </td>
+            <td>
+              <p>NTServices</p>
+              <p>{2CFB484A-4E96-4b5d-A0B6-093D2F91E6AE}</p>
+            </td>
+            <td>
+              <p>NTService</p>
+              <p>{AB6F0B67-341F-4e51-92F9-005FBFBA1A43}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Shortcuts</p>
+            </td>
+            <td>
+              <p>Shortcuts</p>
+              <p>{872ECB34-B2EC-401b-A585-D32574AA90EE}</p>
+            </td>
+            <td>
+              <p>Shortcut</p>
+              <p>{4F2F7C55-2790-433e-8127-0739D1CFA327}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Start Menu</p>
+            </td>
+            <td>
+              <p>StartMenuTaskbar</p>
+              <p>{4C4059E4-2F6E-4630-9CB8-5D9A89252C3B}</p>
+            </td>
+            <td>
+              <p>StartMenu</p>
+              <p>{F722CC65-E38A-496b-BA76-49EBF9571415}</p>
+              <p>StartMenuVista</p>
+              <p>{8B03851A-1210-4621-80B6-C334A4F1C941}</p>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+    </div>
+    <span>&nbsp;</span>
+  </div>
+</div></div>
+
+        
+
+
+
+<div id="contentFeedback">
+    <form method="post" action="http://msdn.microsoft.com/en-us/library/feedback/add/cc422946(v=prot.13).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="P3K99y6nxYMojuJwI2j2Tn16CGlA73Ut2TZaXFY1QMKWGlH0ghAyEWurNqADsHM7XC/FRhug9HKWAs9FvFkrm39xP5Hiiy13MPx3NvKURTq9B7WnIwDlCwrvsu1F8eQoEXFmkA==">
+    <div id="contentFeedbackContainer">
+        <div class="FeedbackTitleContainer">
+            <a name="feedback"></a>
+        Did you find this helpful?
+            <input id="rdIsUsefulYes" name="rdIsUseful" type="radio" value="1" onclick="toggleContentFeedback(&#39;Yes&#39;);"><label for="rdIsUsefulYes">Yes</label>
+            <input id="rdIsUsefulNo" name="rdIsUseful" type="radio" value="0" onclick="toggleContentFeedback(&#39;No&#39;);"><label for="rdIsUsefulNo">No</label>
+        
+        </div>
+        
+            <div id="contentFeedbackQAContainer">
+                
+                    <div id="feedbackListNoContainer" class="FeedbackListContainer">
+                        
+                            <div>
+                                <input id="chkbxNo201" name="chkbxNo" type="checkbox" value="201">
+                                <label for="chkbxNo201">Not accurate</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo202" name="chkbxNo" type="checkbox" value="202">
+                                <label for="chkbxNo202">Not enough depth</label>
+                            </div>
+                        
+                            <div>
+                                <input id="chkbxNo203" name="chkbxNo" type="checkbox" value="203">
+                                <label for="chkbxNo203">Need more code examples</label>
+                            </div>
+                        
+                    </div>
+                
+                <div class="FeedbackTellUsMoreContainer">
+                    <textarea id="feedbackText" name="feedbackText" class="TellUsMoreTextBoxSearchLoaded" onfocus="WatermarkFocus(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)" onblur="WatermarkBlur(this, &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearchLoaded&#39;)" onmouseover="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeydown="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)" onkeyup="TextBoxCharactersCounter(this, document.getElementById(&#39;feedbackTextCounter&#39;), 1500)">Tell us more...</textarea>
+                </div>
+                <span class="counter">(<span id="feedbackTextCounter">1500</span> characters remaining)</span>
+                <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/en-us/library/cc422946(v=prot.13).aspx">
+                <input type="submit" id="submit" value="Submit" title="Click to Submit Feedback" onclick="WatermarkOnSubmit(document.getElementById(&#39;feedbackText&#39;), &#39;Tell us more...&#39;, &#39;TellUsMoreTextBoxSearch&#39;)">
+                <div style="clear: both;"></div>
+            </div>  
+        
+    </div>
+    </form>
+</div>
+
+    </div>
+    
+  </div>
+        
+  </div>
+  <div class="footer">
+    
+
+<div id="footer" class="msdn footerContainer cl_footer_slice">
+  <div class="footerLogoContainer">
+    <div class="footerContent">
+    <div class="copyright">
+      © 2012 Microsoft. All rights reserved.</div>
+    <div class="footerLogo cl_footer_logo"></div>
+    <a href="http://msdn.microsoft.com/cc300389.aspx">Terms of Use</a><span class="pipe"> | </span>
+    <a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a><span class="pipe"> | </span>
+    <a href="http://go.microsoft.com/fwlink/?LinkId=248681">Privacy Statement</a>
+    <span class="pipe">| </span>
+    <span class="FeedbacklinkDisabled" id="FeedbacklinkDisabled">Site Feedback</span>
+    <a id="Feedbacklink" title="Site Feedback" class="FeedbackLink" href="javascript:void(0)">
+      Site Feedback
+        <span class="FeedbackButton clip20x21" id="FeedbackButton">
+          <img id="feedBackImg" class="cl_footer_feedback_icon" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Msdn_ImageSprite.png" alt="Site Feedback">
+        </span>
+      </a>
+    
+  <div id="FeedbackContainer" class="FeedbackContainer">
+    <form id="siteFeedbackForm" method="post" action="http://msdn.microsoft.com/en-us/library/feedback/add/cc422946(v=prot.13).aspx">
+        <input name="__RequestVerificationToken" type="hidden" value="ZvPuOEH+djJOpOIQXsvPuisQ79o8SvvEnqyBQRsMd02xvHfwODmECeN21O+0moioMRy6pIDwifc16VihI1b6RQKmPKzttQ2ShuWGjHO8nTEs/5M/uZibSW+6HJ9vB+V4h/ho2w==">
+    <div class="FeedbackTitleContainer">
+        <div class="FeedbackTitle">
+            Site Feedback</div>
+        <div class="FeedbackCancel">
+            <a href="javascript:;" onclick="document.getElementById(&#39;FeedbackContainer&#39;).style.display = &#39;none&#39;;">x</a>
+            </div>
+    </div>
+    <div class="FeedbackData">
+        <div class="FeedbackInfoText">
+            Tell us about your experience...
+        </div>
+        <div class="QuestionText">
+            Did the page load quickly?
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                Yes<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="1"></span></span>
+            
+            <span>
+                No<span>
+                    <input id="searchBox" name="searchBox" type="radio" value="0"></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            Do you like the page design?
+        </div>
+        <div class="AnswerText">
+            
+            <span>
+                Yes<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="1"></span></span>
+            
+            <span>
+                No<span>
+                    <input id="tabbedCode" name="tabbedCode" type="radio" value="0"></span></span>
+            
+        </div>
+        <div class="QuestionText">
+            Tell us more
+        </div>
+        <div class="FeedbackTextAreaContainer">
+            <textarea id="feedbackText" data-maxlength="4000" name="feedbackText" cols="25" rows="5" class="FeedbackTextArea"></textarea>
+            
+            <textarea id="feedbackDescription" name="feedbackDescription" cols="25" rows="10" style="display:none;">Enter description here.</textarea>
+            <input type="hidden" id="feedbackPriority" name="feedbackPriority" value="">
+            <input type="hidden" id="feedbackSourceUrl" name="feedbackSourceUrl" value="">
+            <input type="hidden" id="ClientIP" name="ClientIP" value="">
+            <input type="hidden" id="ClientOS" name="ClientOS" value="">
+            <input type="hidden" id="ClientBrowser" name="ClientBrowser" value="">
+            <input type="hidden" id="ClientTime" name="ClientTime" value="">
+            <input type="hidden" id="ClientTimeZone" name="ClientTimeZone" value="">
+            
+            
+        </div>
+        <div>
+            <input id="siteFeedbackSubmit" type="submit" value="Send" class="FeedbackSubmit" onclick="submitSiteFeedback(&#39;-1&#39;);">
+        </div>
+    </div>
+    <input type="hidden" id="returnUrl" name="returnUrl" value="http://msdn.microsoft.com/en-us/library/cc422946(v=prot.13).aspx">
+    
+    
+    <input type="hidden" id="feedBackVersion" name="feedBackVersion" value="1">
+    
+  </form> 
+</div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+
+    
+        <div class="MetricsContainer">
+            
+    <div class="WebtrendsContainer">
+      
+
+<script type="text/javascript">
+//<![CDATA[
+  var literalNormalizedUrl = '/en-us/library/cc422946(d=lightweight,l=en-us,v=prot.13).aspx';
+  var wt_nvr_ru = 'WT_NVR_RU';
+  var wt_fpcdom = '.microsoft.com';
+  var wt_domlist = 'msdn.microsoft.com';
+  var wt_pathlist = '';
+  var wt_paramlist = 'DCSext.mtps_devcenter';
+  var wt_siteid = 'MSDN';
+  var gDomain = 'm.webtrends.com';
+  var gDcsId = 'dcsmgru7m99k7mqmgrhudo0k8_8c6m';
+  var gFpc = 'WT_FPC';
+  if (document.cookie.indexOf(gFpc + "=") == -1) {
+    var wtidJs = document.createElement("script");
+    wtidJs.src = "//" + gDomain + "/" + gDcsId + "/wtid.js";
+    document.getElementsByTagName("head")[0].appendChild(wtidJs);
+  }
+  var detectedLocale = 'en-us';
+  var wtsp = '_msdnlib_doj_win_protocols_';
+  var gTrackEvents = '0';
+/*]]>*/
+</script>
+<noscript>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" /&gt;&lt;/div&gt;</noscript>
+
+
+    </div>
+    
+    <div class="OmnitureContainer">
+      
+
+
+
+<script type="text/javascript">
+  var omni_guid = '7c4b3062-be6c-4500-9346-e6e755749fdc'; 
+</script>
+
+
+
+<noscript>
+    &lt;a href="http://www.omniture.com" title="Web Analytics"&gt;
+        &lt;img src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" width="1" border="0" alt="" /&gt;&lt;/a&gt;
+</noscript>
+
+
+    </div>
+    
+        </div>
+        
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+<script type="text/javascript" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/Combined.js" xmlns="http://www.w3.org/1999/xhtml"></script>
+
+<script src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/broker-config.js"></script><div style="display: none; " id="_WEDCSInsertedData"><iframe id="_msnFrame" src="./2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files/c.gif" style="z-index:-1;height:1px;width:1px;display:none;visibility:hidden;" onload="javascript:MscomBeacon();"></iframe></div></body></html>

@@ -108,11 +108,22 @@
     <None Include="Schemas\Shortcuts.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Test\OutElementInnerElementClsIds.docx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SampleXmls\Files.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs.htm" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\broker-config.js" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\broker.js" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\c.gif" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\clear.gif" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\Combined.css" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\Combined.js" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\ms2.js" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\Msdn_ImageSprite.png" />
+    <Content Include="Test\2.2.1.1.2 Outer and Inner Element Names and CLSIDs_files\printview.css" />
     <Content Include="Test\Files2.xml" />
     <Content Include="SampleXmls\Shortcuts.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
