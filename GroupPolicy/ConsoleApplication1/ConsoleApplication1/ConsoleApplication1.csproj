@@ -53,32 +53,50 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FilePushPolicy.cs" />
-    <Compile Include="Files.cs">
+    <Compile Include="Schemas\Files.cs">
       <DependentUpon>Files.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShortcutPolicy.cs" />
-    <Compile Include="Shortcuts.cs">
+    <Compile Include="Schemas\Shortcuts.cs">
       <DependentUpon>Shortcuts.xsd</DependentUpon>
     </Compile>
     <Compile Include="WSSGGroupPolicyException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Files.xsd">
+    <None Include="Schemas\Devices.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Shortcuts.xsd">
+    <None Include="Schemas\Drives.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\EnvironmentVariables.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Files.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Folders.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\IniFiles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\NetworkShareSettings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schemas\Shortcuts.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files.xml">
+    <Content Include="SampleXmls\Files.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files2.xml" />
-    <Content Include="Shortcuts.xml">
+    <Content Include="Test\Files2.xml" />
+    <Content Include="SampleXmls\Shortcuts.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
