@@ -52,7 +52,7 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FilePushPolicy.cs" />
+    <Compile Include="Test\FilePushPolicy.cs" />
     <Compile Include="Schemas\Devices.cs">
       <DependentUpon>Devices.xsd</DependentUpon>
     </Compile>
@@ -76,7 +76,7 @@
     <Compile Include="Schemas\NetworkShareSettings.cs">
       <DependentUpon>NetworkShareSettings.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ShortcutPolicy.cs" />
+    <Compile Include="Test\ShortcutPolicy.cs" />
     <Compile Include="Schemas\Shortcuts.cs">
       <DependentUpon>Shortcuts.xsd</DependentUpon>
     </Compile>
@@ -118,9 +118,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
