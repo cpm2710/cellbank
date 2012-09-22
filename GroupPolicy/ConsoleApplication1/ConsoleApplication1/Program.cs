@@ -20,11 +20,14 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             FilesFile filePolicy=new FilesFile();
-            GroupPlicyUtil.CreateFileGroupPolicy(@"SampleXmls\Files.xml", filePolicy);
+            GroupPlicyUtil.CreateFileGroupPolicy(Guid.NewGuid(), false,filePolicy);
 
 
             ShortcutsShortcut shortcut = new ShortcutsShortcut();
-            GroupPlicyUtil.CreateShortcutGroupPolicy(@"SampleXmls\Shortcuts.xml", shortcut);
+            GroupPlicyUtil.CreateShortcutGroupPolicy(Guid.NewGuid(), false, shortcut);
+
+
+            GroupPlicyUtil.SetSecurityTemplatePolicy(Guid.NewGuid(), true, new Dictionary<string, string>());
            // Files files = new Files();
            // files.clsid = "abc";
            // XmlSerializeHelper.XmlSerializeToFile(files, "Files2.xml");

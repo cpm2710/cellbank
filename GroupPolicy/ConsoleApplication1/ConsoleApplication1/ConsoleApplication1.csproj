@@ -65,7 +65,9 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FolderRedirectionFlags.cs" />
     <Compile Include="GroupPlicyUtil.cs" />
+    <Compile Include="IniFile.cs" />
     <Compile Include="Schemas\Devices.cs">
       <DependentUpon>Devices.xsd</DependentUpon>
     </Compile>
