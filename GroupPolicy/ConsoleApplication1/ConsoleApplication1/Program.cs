@@ -20,8 +20,6 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             FilesFile filePolicy=new FilesFile();
-            filePolicy.clsid = "{}";
-            filePolicy.name = "shit";
             GroupPlicyUtil.CreateFileGroupPolicy(@"SampleXmls\Files.xml", filePolicy);
            // Files files = new Files();
            // files.clsid = "abc";
