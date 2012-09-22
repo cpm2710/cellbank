@@ -53,11 +53,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FilePushPolicy.cs" />
+    <Compile Include="Schemas\Devices.cs">
+      <DependentUpon>Devices.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schemas\Drives.cs">
+      <DependentUpon>Drives.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schemas\EnvironmentVariables.cs">
+      <DependentUpon>EnvironmentVariables.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Schemas\Files.cs">
       <DependentUpon>Files.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schemas\Folders.cs">
+      <DependentUpon>Folders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schemas\IniFiles.cs">
+      <DependentUpon>IniFiles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schemas\NetworkShareSettings.cs">
+      <DependentUpon>NetworkShareSettings.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ShortcutPolicy.cs" />
     <Compile Include="Schemas\Shortcuts.cs">
       <DependentUpon>Shortcuts.xsd</DependentUpon>

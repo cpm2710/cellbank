@@ -19,15 +19,15 @@
                   <xs:attribute name="hidden"
                     type="xs:boolean" use="required" />
                   <xs:attribute name="deleteSubFolders"
-                    type="xs: unsignedByte " use="optional" />
+                    type="xs:unsignedByte " use="optional" />
                   <xs:attribute name="deleteFiles"
-                    type="xs: unsignedByte " use="optional" />
+                    type="xs:unsignedByte " use="optional" />
                   <xs:attribute name="deleteFolder"
-                    type="xs: unsignedByte " use="optional" />
+                    type="xs:unsignedByte " use="optional" />
                   <xs:attribute name="deleteReadOnly"
-                   type="xs: unsignedByte " use="optional" />
+                   type="xs:unsignedByte " use="optional" />
                   <xs:attribute name="deleteIgnoreErrors"
-                   type="xs: unsignedByte " use="optional" />
+                   type="xs:unsignedByte " use="optional" />
                   <xs:attribute name="disabled"
                     type="xs:boolean" use="optional" />
                 </xs:complexType>
