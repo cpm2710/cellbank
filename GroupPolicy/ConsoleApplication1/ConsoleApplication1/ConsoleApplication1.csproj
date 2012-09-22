@@ -36,6 +36,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="microsoft.grouppolicy.commands, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\microsoft.grouppolicy.commands.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.grouppolicy.management, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\microsoft.grouppolicy.management.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.grouppolicy.management.interop, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\microsoft.grouppolicy.management.interop.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -86,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="microsoft.grouppolicy.commands.dll" />
+    <None Include="microsoft.grouppolicy.management.dll" />
+    <None Include="microsoft.grouppolicy.management.interop.dll" />
     <None Include="Schemas\Devices.xsd">
       <SubType>Designer</SubType>
     </None>
