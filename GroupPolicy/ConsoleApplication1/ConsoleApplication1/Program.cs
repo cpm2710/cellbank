@@ -1,19 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ConsoleApplication1
 {
     class Program
     {
+        static public void SerializeToXML(FilePushPolicyCollection movie)
+        {
+            DataContractSerializer serializer = new DataContractSerializer(typeof(FilePushPolicyCollection));
+            FileStream fs = new FileStream(@"serialized.xml", FileMode.Create);
+            serializer.WriteObject(fs, movie);
+            fs.Close();
+        }
         static void Main(string[] args)
         {
             FilePushPolicyCollection collection = new FilePushPolicyCollection();
+            
             collection.LoadFromPolicy("Files.xml");
             collection.WritePolicy("Files2.xml");
+
+
+            SerializeToXML(collection);
+
             //ConnectionOptions options = new ConnectionOptions();
             //ManagementScope scope = new ManagementScope(@"\\.\root\RSOP\Computer", options);
 

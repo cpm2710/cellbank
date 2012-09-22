@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
 namespace ConsoleApplication1
 {
+
+    [DataContract(Name="Files")]
     public class FilePushPolicyCollection
     {
         private const string FilesClsid = "{215B2E53-57CE-475c-80FE-9EEC14635851}";
         private const string FileClsid = "{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}";
-        private List<FilePushPolicy> FilePushPolicies { get; set; }
+        public List<FilePushPolicy> FilePushPolicies { get; set; }
 
         public FilePushPolicyCollection()
         {
@@ -92,11 +95,13 @@ namespace ConsoleApplication1
             doc.Save(xmlWriter);
         }
     }
+    [DataContract(Name="File")]
     public class FilePushPolicy
     {
         //<Files clsid="{215B2E53-57CE-475c-80FE-9EEC14635851}">
         //<File clsid="{50BE44C8-567A-4ed1-B1D0-9234FE1F38AF}" name="ggg" status="ggg" image="0" changed="2012-09-20 07:38:43" 
         //uid="{8F79CDFA-23A5-44CF-849F-80E270F2301D}"><Properties action="C" fromPath="ggg" targetPath="ggg" readOnly="0" archive="1" hidden="0"/></File>
+        [DataMember(Name="clsid")]
         public string clsid { get; set; }
         public string name { get; set; }
         public string status { get; set; }
