@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -97,6 +98,48 @@ namespace AddPermission
 //End Function
         static void Main(string[] args)
         {
+
+
+            ConnectionOptions options = new ConnectionOptions();
+            options.EnablePrivileges = true;
+            options.Impersonation = ImpersonationLevel.Impersonate;
+            ManagementScope scope = new ManagementScope("\\\\.\\ROOT\\cimv2", options);
+
+            ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_Account WHERE Name='" + "andyl_000" + "'");
+            ManagementObjectSearcher searcher =
+                                    new ManagementObjectSearcher(scope, query);
+            ManagementObjectCollection queryCollection = searcher.Get();
+            string sidToGet = string.Empty;
+            foreach (ManagementObject m in queryCollection)
+            {
+                // access properties of the WMI object
+                //Console.WriteLine("AccountName : {0}", m["AccountName"]);
+                sidToGet = m["SID"].ToString();
+            }
+
+            //SELECT * FROM Win32_Account WHERE Name='"&strUser&"'
+            ManagementObject objectt = new ManagementObject("Win32_SID.SID='"+sidToGet+"'");
+
+
+            //classs
+            //create object query
+            //ObjectQuery query = new ObjectQuery("SELECT * FROM WIN32_SID");
+
+            ////create object searcher
+            //ManagementObjectSearcher searcher =
+            //                        new ManagementObjectSearcher(scope, query);
+
+            ////get collection of WMI objects
+            //ManagementObjectCollection queryCollection = searcher.Get();
+
+            ////enumerate the collection.
+            //foreach (ManagementObject m in queryCollection)
+            //{
+            //    // access properties of the WMI object
+            //    Console.WriteLine("AccountName : {0}", m["AccountName"]);
+
+            //}
+            Console.Read();
         }
     }
 }
