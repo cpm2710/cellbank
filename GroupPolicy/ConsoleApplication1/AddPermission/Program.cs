@@ -110,30 +110,53 @@ namespace AddPermission
                                     new ManagementObjectSearcher(scope, query);
             ManagementObjectCollection queryCollection = searcher.Get();
             string sidToGet = string.Empty;
-            ManagementObject sidInstance=null;
+            ManagementObject accountInstance=null;
             foreach (ManagementObject m in queryCollection)
             {
                 // access properties of the WMI object
                 //Console.WriteLine("AccountName : {0}", m["AccountName"]);
                 sidToGet = m["SID"].ToString();
-                sidInstance=m;
+                accountInstance = m;
             }
 
             //SELECT * FROM Win32_Account WHERE Name='"&strUser&"'
-            ManagementObject objectt = new ManagementObject("Win32_SID.SID='"+sidToGet+"'");
+            ManagementObject sidInstance = new ManagementObject("Win32_SID.SID='" + sidToGet + "'");
 
             ManagementClass trustee = new ManagementClass("Win32_Trustee");
-            ManagementObject trusteeInstance = trustee.CreateInstance();
-            trusteeInstance["Domain"] = sidInstance["ReferencedDomainName"];
-            trusteeInstance["Name"] = sidInstance["AccountName"];
-            trusteeInstance["SID"] = sidInstance["BinaryRepresentation"];
-            trusteeInstance["SidLength"] = sidInstance["SidLength"];
-            trusteeInstance["SIDString"] = sidInstance["Sid"];
+            ManagementObject objTrustee = trustee.CreateInstance();
+            objTrustee["Domain"] = sidInstance["ReferencedDomainName"];//sidInstance["ReferencedDomainName"];
+            objTrustee["Name"] = sidInstance["AccountName"];
+            objTrustee["SID"] = sidInstance["BinaryRepresentation"];
+            objTrustee["SidLength"] = sidInstance["SidLength"];
+            objTrustee["SIDString"] = sidInstance["Sid"];
+
+            ManagementClass ace = new ManagementClass("Win32_ACE");
+            ManagementObject objNewACE = ace.CreateInstance();
+
+            objNewACE["Trustee"] = objTrustee;
+            objNewACE["AceType"] = 0;
+            objNewACE["AccessMask"] = 2032127;
+            objNewACE["AceFlags"] = 19;
 
 
-            //Set objNewACE = objWMIService.Get("Win32_ACE").SpawnInstance_()
+            ManagementObject secDescriptor = new ManagementClass(new ManagementPath("Win32_SecurityDescriptor"), null);
+            secDescriptor["ControlFlags"] = 4; //SE_DACL_PRESENT 
+            secDescriptor["DACL"] = new object[] { objNewACE };
+
+
+            ManagementObject share = new ManagementObject(@"\\.\root\cimv2:Win32_Share.Name='ShareFolder'");
+            object invodeResult = share.InvokeMethod("SetShareInfo", new object[] { Int32.MaxValue, "This is John's share", secDescriptor });
+            Console.WriteLine(invodeResult);
+           //Set objNewACE = objWMIService.Get("Win32_ACE").SpawnInstance_()
 //        objNewACE.Trustee = objTrustee
 //        objNewACE.AceType = 0
+//        If InStr(UCase(strAccess),"R") > 0 Then objNewACE.AccessMask = 1179817
+//        If InStr(UCase(strAccess),"C") > 0 Then objNewACE.AccessMask = 1245631
+//        If InStr(UCase(strAccess),"F") > 0 Then objNewACE.AccessMask = 2032127
+//        If pathType = "FILE" And blInherit = True Then objNewACE.AceFlags = 16
+//        If pathType = "FILE" And blInherit = False Then objNewACE.AceFlags = 0
+//        If pathType = "FOLDER" And blInherit = True Then objNewACE.AceFlags = 19
+//        If pathType = "FOLDER" And blInherit = False Then objNewACE.AceFlags = 3
 
 
             //classs
