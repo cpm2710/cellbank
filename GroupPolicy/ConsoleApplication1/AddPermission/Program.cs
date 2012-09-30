@@ -96,6 +96,9 @@ namespace AddPermission
 //        AddPermission = 0
 //        Set fso = Nothing
 //End Function
+
+        
+
         static void Main(string[] args)
         {
 
@@ -140,8 +143,21 @@ namespace AddPermission
 
 
             ManagementObject localFileSecuritySetting = new ManagementObject("Win32_LogicalFileSecuritySetting.Path='" + @"D:\ShareFolder"+ "'");
+            ManagementBaseObject outParams = localFileSecuritySetting.InvokeMethod("GetSecurityDescriptor", null, null);
+            if (((uint)(outParams.Properties["ReturnValue"].Value)) == 0)
+            {
+                ManagementBaseObject secDescriptor =
+((ManagementBaseObject)(outParams.Properties["Descriptor"].Value));
+                //The DACL is an array of Win32_ACE objects.
+                ManagementBaseObject[] dacl =
+                ((ManagementBaseObject[])(secDescriptor.Properties["Dacl"].Value));
+                List<ManagementBaseObject> newDacl = new List<ManagementBaseObject>(dacl);
+                newDacl.Add(objNewACE);
+                secDescriptor.Properties["Dacl"]=newDacl.ToArray();
 
-
+            }
+            objFileSecSetting.SetSecurityDescriptor(objSD)
+            //securityDescriptor["Dacl"];
             //        Set objFileSecSetting = objWMIService.Get("Win32_LogicalFileSecuritySetting.Path='"&strPath&"'")
             //        Call objFileSecSetting.GetSecurityDescriptor(objSD)
             //        blSE_DACL_AUTO_INHERITED = True
