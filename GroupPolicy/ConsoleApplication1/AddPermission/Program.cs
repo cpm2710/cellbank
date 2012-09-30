@@ -139,14 +139,49 @@ namespace AddPermission
             objNewACE["AceFlags"] = 19;
 
 
-            ManagementObject secDescriptor = new ManagementClass(new ManagementPath("Win32_SecurityDescriptor"), null);
-            secDescriptor["ControlFlags"] = 4; //SE_DACL_PRESENT 
-            secDescriptor["DACL"] = new object[] { objNewACE };
+            ManagementObject localFileSecuritySetting = new ManagementObject("Win32_LogicalFileSecuritySetting.Path='" + @"D:\ShareFolder"+ "'");
 
 
-            ManagementObject share = new ManagementObject(@"\\.\root\cimv2:Win32_Share.Name='ShareFolder'");
-            object invodeResult = share.InvokeMethod("SetShareInfo", new object[] { Int32.MaxValue, "This is John's share", secDescriptor });
-            Console.WriteLine(invodeResult);
+            //        Set objFileSecSetting = objWMIService.Get("Win32_LogicalFileSecuritySetting.Path='"&strPath&"'")
+            //        Call objFileSecSetting.GetSecurityDescriptor(objSD)
+            //        blSE_DACL_AUTO_INHERITED = True
+            //        If (objSD.ControlFlags And &H400) = 0 Then
+            //                blSE_DACL_AUTO_INHERITED = False
+            //                objSD.ControlFlags = (objSD.ControlFlags Or &H400)                '自动继承位置位,如果是刚创建的目录或文件该位是不置位的,需要置位
+            //        End If
+            //        If blInherit = True Then
+            //                objSD.ControlFlags = (objSD.ControlFlags And &HEFFF)        '阻止继承复位
+            //        Else
+            //                objSD.ControlFlags = (objSD.ControlFlags Or &H1400)                '阻止继承位置位,自动继承位置位
+            //        End If
+            //        objOldDacl = objSD.Dacl
+            //        ReDim objNewDacl(0)
+            //        Set objNewDacl(0) = objNewACE
+            //        If IsArray(objOldDacl) Then                '权限为空时objOldDacl不是集合不可遍历
+            //                For Each objACE In objOldDacl
+            //                        If (blSE_DACL_AUTO_INHERITED=False And blInherit=True) Or ((objACE.AceFlags And 16)>0 And (blInherit=True) Or (LCase(objACE.Trustee.Name)=LCase(strUser))) Then
+            //                                'Do nothing
+            //                                '当自动继承位置位为0时即使时继承的权限也会显示为非继承,这时所有权限都不设置
+            //                                '当自动继承位置位为0时,在继承父目录权限的情况下不设置继承的权限.账户和需要加权限的账户一样时不设置权限
+            //                        Else
+            //                                Ubd = UBound(objNewDacl)
+            //                                ReDim preserve objNewDacl(Ubd+1)
+            //                                Set objNewDacl(Ubd+1) = objACE
+            //                        End If
+            //                Next
+            //        End If
+            //        objSD.Dacl = objNewDacl
+            //        '提交设置修改
+            //        Call objFileSecSetting.SetSecurityDescriptor(objSD)
+
+           // ManagementObject secDescriptor = new ManagementClass(new ManagementPath("Win32_LogicalFileSecuritySetting"), null);
+            //secDescriptor["ControlFlags"] = 4; //SE_DACL_PRESENT 
+            //secDescriptor["DACL"] = new object[] { objNewACE };
+
+
+           // ManagementObject share = new ManagementObject(@"\\.\root\cimv2:Win32_Share.Name='ShareFolder'");
+            //object invodeResult = share.InvokeMethod("SetShareInfo", new object[] { Int32.MaxValue, "This is John's share", secDescriptor });
+            //Console.WriteLine(invodeResult);
            //Set objNewACE = objWMIService.Get("Win32_ACE").SpawnInstance_()
 //        objNewACE.Trustee = objTrustee
 //        objNewACE.AceType = 0
