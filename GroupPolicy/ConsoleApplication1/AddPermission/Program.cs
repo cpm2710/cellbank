@@ -110,15 +110,30 @@ namespace AddPermission
                                     new ManagementObjectSearcher(scope, query);
             ManagementObjectCollection queryCollection = searcher.Get();
             string sidToGet = string.Empty;
+            ManagementObject sidInstance=null;
             foreach (ManagementObject m in queryCollection)
             {
                 // access properties of the WMI object
                 //Console.WriteLine("AccountName : {0}", m["AccountName"]);
                 sidToGet = m["SID"].ToString();
+                sidInstance=m;
             }
 
             //SELECT * FROM Win32_Account WHERE Name='"&strUser&"'
             ManagementObject objectt = new ManagementObject("Win32_SID.SID='"+sidToGet+"'");
+
+            ManagementClass trustee = new ManagementClass("Win32_Trustee");
+            ManagementObject trusteeInstance = trustee.CreateInstance();
+            trusteeInstance["Domain"] = sidInstance["ReferencedDomainName"];
+            trusteeInstance["Name"] = sidInstance["AccountName"];
+            trusteeInstance["SID"] = sidInstance["BinaryRepresentation"];
+            trusteeInstance["SidLength"] = sidInstance["SidLength"];
+            trusteeInstance["SIDString"] = sidInstance["Sid"];
+
+
+            //Set objNewACE = objWMIService.Get("Win32_ACE").SpawnInstance_()
+//        objNewACE.Trustee = objTrustee
+//        objNewACE.AceType = 0
 
 
             //classs
