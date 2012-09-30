@@ -153,10 +153,15 @@ namespace AddPermission
                 ((ManagementBaseObject[])(secDescriptor.Properties["Dacl"].Value));
                 List<ManagementBaseObject> newDacl = new List<ManagementBaseObject>(dacl);
                 newDacl.Add(objNewACE);
-                secDescriptor.Properties["Dacl"]=newDacl.ToArray();
+                secDescriptor["Dacl"]=newDacl.ToArray();
 
+                ManagementBaseObject inParams =
+localFileSecuritySetting.GetMethodParameters("SetSecurityDescriptor");
+                inParams["Descriptor"] = secDescriptor;
+
+                localFileSecuritySetting.InvokeMethod("SetSecurityDescriptor", inParams, null);
             }
-            objFileSecSetting.SetSecurityDescriptor(objSD)
+            
             //securityDescriptor["Dacl"];
             //        Set objFileSecSetting = objWMIService.Get("Win32_LogicalFileSecuritySetting.Path='"&strPath&"'")
             //        Call objFileSecSetting.GetSecurityDescriptor(objSD)
