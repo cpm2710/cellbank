@@ -104,8 +104,8 @@ namespace AddPermission
 
 
             ConnectionOptions options = new ConnectionOptions();
-            options.EnablePrivileges = true;
-            options.Impersonation = ImpersonationLevel.Impersonate;
+            //options.EnablePrivileges = true;
+            //options.Impersonation = ImpersonationLevel.Impersonate;
             ManagementScope scope = new ManagementScope("\\\\.\\ROOT\\cimv2", options);
 
             ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_Account WHERE Name='" + "andyl_000" + "'");
