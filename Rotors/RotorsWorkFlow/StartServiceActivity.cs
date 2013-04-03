@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace RotorsWorkFlow
 {
 
-    public sealed class StopServiceActivity : CodeActivity
+    public sealed class StartServiceActivity : CodeActivity
     {
         // Define an activity input argument of type string
         public InArgument<string> Text { get; set; }
@@ -26,11 +26,10 @@ namespace RotorsWorkFlow
                     string[] services = (string[])pd.GetValue(context.DataContext);
                     foreach (string service in services)
                     {
-                        ServiceControlHelper.ShutdownService(service);
+                        ServiceControlHelper.StartService(service);
                     }
                 }
             }
-
             // Obtain the runtime value of the Text input argument
             string text = context.GetValue(this.Text);
         }

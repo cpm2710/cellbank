@@ -48,10 +48,16 @@
                   <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_2">
                     <Transition.To>
                       <State x:Name="__ReferenceID2" DisplayName="Replace Files" sap2010:WorkflowViewState.IdRef="State_3">
+                        <State.Entry>
+                          <local:ReplaceFilesActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="ReplaceFilesActivity_1" />
+                        </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="T3" sap2010:WorkflowViewState.IdRef="Transition_3">
                             <Transition.To>
                               <State x:Name="__ReferenceID3" DisplayName="Start Services" sap2010:WorkflowViewState.IdRef="State_4">
+                                <State.Entry>
+                                  <local:StartServiceActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="StartServiceActivity_1" />
+                                </State.Entry>
                                 <State.Transitions>
                                   <Transition DisplayName="T4" sap2010:WorkflowViewState.IdRef="Transition_4">
                                     <Transition.To>
@@ -82,12 +88,14 @@
       <Variable x:TypeArguments="s:String[]" Name="services" />
       <Variable x:TypeArguments="local:FileItem[]" Name="files" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>d0lEOlxXb3JrU3BhY2VcTWljcm9zb2Z0XGNlbGxiYW5rXFJvdG9yc1xSb3RvcnNXb3JrRmxvd1xSb3RvcnNXb3JrRmxvdy54YW1sCCIDVhICAQEkB0oPAgEOKw9GFwIBCjIXQh8CAQc2Hz4nAgEEOic6nQECAQImCyZ6AgERLRMteAIBDQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0lEOlxXb3JrU3BhY2VcTWljcm9zb2Z0XGNlbGxiYW5rXFJvdG9yc1xSb3RvcnNXb3JrRmxvd1xSb3RvcnNXb3JrRmxvdy54YW1sCiIDXBICAQEkB1APAgEQKw9MFwIBDDIXSB8CAQg5H0QnAgEEQCdAnQECAQImCyZ6AgETLRMteAIBDzQbNIIBAgELOyM7igECAQc=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="PrepareVariablesActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="StopServiceActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ReplaceFilesActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="StartServiceActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="114,61">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -106,7 +114,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="239,112">
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="326,472">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">250.5,454</av:Point>

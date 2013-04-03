@@ -11,7 +11,10 @@ namespace Rotors
     {
         static void Main(string[] args)
         {
-            WorkflowApplication wfa = new WorkflowApplication(new RotorsWorkFlow.RotorsWorkFlow());
+            RotorsWorkFlow.RotorsWorkFlow workFlow = new RotorsWorkFlow.RotorsWorkFlow();
+            
+            WorkflowApplication wfa = new WorkflowApplication(workFlow);
+
             wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((e) =>
             {
                 Console.WriteLine(e.ToString());
@@ -19,11 +22,11 @@ namespace Rotors
             });
             wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((e) =>
             {
-                Console.WriteLine("ssss" + e.ToString());
+                Console.WriteLine("Completed" + e.ToString());
             });
             wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((e) =>
             {
-                Console.WriteLine("ssss2" + e.ToString());
+                Console.WriteLine("Idle" + e.ToString());
             });
 
             wfa.Run();

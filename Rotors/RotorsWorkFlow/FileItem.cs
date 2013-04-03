@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace RotorsWorkFlow
 {
-    
+
     public class FileItem
     {
+        public FileItem(string sourceFullName, string destinationFullName)
+        {
+            this.SourceFullName = sourceFullName; 
+            this.DestinationFullName = destinationFullName;
+        }
         public string SourceFullName { get; set; }
         public string DestinationFullName { get; set; }
         public override string ToString()

@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace RotorsWorkFlow
 {
 
-    public sealed class StopServiceActivity : CodeActivity
+    public sealed class ReplaceFilesActivity : CodeActivity
     {
         // Define an activity input argument of type string
         public InArgument<string> Text { get; set; }
@@ -21,16 +21,15 @@ namespace RotorsWorkFlow
 
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
-                if (string.Equals(pd.Name, Constants.ServiceVariableName))
+                if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
-                    string[] services = (string[])pd.GetValue(context.DataContext);
-                    foreach (string service in services)
+                    FileItem[] services = (FileItem[])pd.GetValue(context.DataContext);
+                    foreach (FileItem service in services)
                     {
-                        ServiceControlHelper.ShutdownService(service);
+                        ReplaceFileHelper.ReplaceFile(service);
                     }
                 }
             }
-
             // Obtain the runtime value of the Text input argument
             string text = context.GetValue(this.Text);
         }
