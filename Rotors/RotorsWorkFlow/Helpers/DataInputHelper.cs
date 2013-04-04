@@ -69,7 +69,7 @@ namespace RotorsWorkFlow.Helpers
                 using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                 {
                     targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
-                    //targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
+                    targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
                 }
             }
             catch (Exception e)
