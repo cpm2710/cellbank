@@ -49,8 +49,8 @@ namespace RotorsWorkFlow.Helpers
         public static FileItem[] BuildFileItems()
         {
             // get source file list.
-            List<string> fileFullNames = GetFileListRecursively(Constants.SourceRootPath);
-
+            List<string> sourceFullNames = GetFileListRecursively(Constants.SourceRootPath);
+            sourceFullNames.Sort();
             // get destination file list.
             List<string> targetFiles = new List<string>();
             try
@@ -67,9 +67,15 @@ namespace RotorsWorkFlow.Helpers
             {
                 Logger.Error("exception encounterred: {0}", e);
             }
-
+            targetFiles.Sort();
             // merge the two list into one array of FileItem
-
+            foreach (string sourceFile in sourceFullNames)
+            {
+                foreach (string targetFile in targetFiles)
+                {
+                    
+                }
+            }
 
             return new FileItem[] { new FileItem("a.dll", @"c:\windows\system32\Essentials\a.dll") };
         }
