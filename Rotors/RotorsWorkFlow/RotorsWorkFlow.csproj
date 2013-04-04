@@ -50,6 +50,7 @@
     <Compile Include="Helpers\DataInputHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Activities\PrepareVariablesActivity.cs" />
+    <Compile Include="Helpers\NetworkConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\FileItem.cs" />
     <Compile Include="Helpers\ReplaceFileHelper.cs" />
