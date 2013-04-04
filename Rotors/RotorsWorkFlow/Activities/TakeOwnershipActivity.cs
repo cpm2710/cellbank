@@ -24,9 +24,9 @@ namespace RotorsWorkFlow.Activities
                 if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
                     FileItem[] files = (FileItem[])pd.GetValue(context.DataContext);
-                    foreach (FileItem service in files)
+                    foreach (FileItem file in files)
                     {
-                        ReplaceFileHelper.TakeOwnership(service);
+                        ReplaceFileHelper.TakeOwnership(file);
                     }
                 }
             }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Activities;
 using System.ComponentModel;
+using System.Net;
+using RotorsWorkFlow.Helpers;
 
 namespace RotorsWorkFlow.Activities
 {
@@ -23,10 +25,24 @@ namespace RotorsWorkFlow.Activities
             {
                 if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
-                    FileItem[] fileItems = (FileItem[])pd.GetValue(context.DataContext);
-                    foreach (FileItem fileItem in fileItems)
+                    try
                     {
-                        ReplaceFileHelper.ReplaceFile(fileItem);
+                        NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
+
+                        string sharePath = Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
+
+                        using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
+                        {
+                            FileItem[] fileItems = (FileItem[])pd.GetValue(context.DataContext);
+                            foreach (FileItem fileItem in fileItems)
+                            {
+                                ReplaceFileHelper.ReplaceFile(fileItem);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error("exception encounterred: {0}", e);
                     }
                 }
             }

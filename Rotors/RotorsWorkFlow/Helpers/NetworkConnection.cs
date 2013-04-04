@@ -34,7 +34,7 @@ namespace RotorsWorkFlow.Helpers
                 netResource,
                 credentials.Password,
                 userName,
-                0);
+                0x00000004);
 
             if (result != 0)
             {

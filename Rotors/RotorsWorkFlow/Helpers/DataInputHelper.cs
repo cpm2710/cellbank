@@ -63,11 +63,13 @@ namespace RotorsWorkFlow.Helpers
             try
             {
                 NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
-                string sharePath = @"\\andess1server\c$\windows";
+
+                string sharePath = Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
+
                 using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                 {
                     targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
-                    targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
+                    //targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
                 }
             }
             catch (Exception e)
@@ -91,7 +93,7 @@ namespace RotorsWorkFlow.Helpers
                     foreach (string targetFile in targetFiles)
                     {
                         string destFileName = ExtractFileName(targetFile);
-                        if (string.Equals(sourceFileName, destFileName))
+                        if (string.Equals(sourceFileName, destFileName, StringComparison.OrdinalIgnoreCase))
                         {
                             fileItemsList.Add(new FileItem(sourceFile, targetFile));
                         }
