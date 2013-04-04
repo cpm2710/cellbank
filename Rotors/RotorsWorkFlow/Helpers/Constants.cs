@@ -15,6 +15,10 @@ namespace RotorsWorkFlow
         public const string MachineName = "andess1server";
         public const string Domain = "andess1.local";
 
-        public const string RootPath = "";
+        public const string SourceRootPath = @"D:\WorkSpace\BinaryRootPath";
+
+        public const string System32EssentialsPath = @"\\andess1server\c$\windows\system32\Essentials";
+
+        public const string GacEssentialsPath = @"\\andess1server\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
     }
 }
