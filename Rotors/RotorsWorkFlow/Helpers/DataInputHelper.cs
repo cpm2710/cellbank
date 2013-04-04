@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,11 +49,17 @@ namespace RotorsWorkFlow.Helpers
 
         public static FileItem[] BuildFileItems()
         {
+            List<FileItem> fileItemsList = new List<FileItem>();
             // get source file list.
             List<string> sourceFullNames = GetFileListRecursively(Constants.SourceRootPath);
             sourceFullNames.Sort();
             // get destination file list.
             List<string> targetFiles = new List<string>();
+
+
+            //this is mock, once mock works, please uncomment the setences below.
+           // targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
+
             try
             {
                 NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
@@ -67,17 +74,42 @@ namespace RotorsWorkFlow.Helpers
             {
                 Logger.Error("exception encounterred: {0}", e);
             }
+
             targetFiles.Sort();
+
+
             // merge the two list into one array of FileItem
             foreach (string sourceFile in sourceFullNames)
             {
-                foreach (string targetFile in targetFiles)
+                if (sourceFile.EndsWith(".dll") || sourceFile.EndsWith(".exe"))
                 {
-                    
-                }
+                    string sourceFileName = ExtractFileName(sourceFile);
+
+                    //Assembly sourceAssembly = Assembly.ReflectionOnlyLoadFrom(sourceFile);
+
+                    ////Assembly.
+                    foreach (string targetFile in targetFiles)
+                    {
+                        string destFileName = ExtractFileName(targetFile);
+                        if (string.Equals(sourceFileName, destFileName))
+                        {
+                            fileItemsList.Add(new FileItem(sourceFile, targetFile));
+                        }
+                        //Assembly targetAssembly = Assembly.ReflectionOnlyLoadFrom(sourceFile);
+                        //if (string.Equals(sourceAssembly.FullName, targetAssembly.FullName))
+                        //{
+                        //    fileItemsList.Add(new FileItem(sourceFile, targetFile));
+                        //}
+                    }
+                }                
             }
 
-            return new FileItem[] { new FileItem("a.dll", @"c:\windows\system32\Essentials\a.dll") };
+            return fileItemsList.ToArray();
+        }
+
+        private static string ExtractFileName(string fullName)
+        {
+            return fullName.Substring(fullName.LastIndexOf(@"\"));
         }
     }
 }

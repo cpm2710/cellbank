@@ -32,6 +32,10 @@ namespace RotorsWorkFlow
                 string sharePath = administrativeFullName.Substring(0, administrativeFullName.LastIndexOf("\\"));
                 using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                 {
+                    if (!File.Exists(administrativeFullName + ".bak"))
+                    {
+                        File.Copy(administrativeFullName, administrativeFullName + ".bak");
+                    }
                     File.Copy(fileItem.SourceFullName, administrativeFullName, true);
                 }
             }
