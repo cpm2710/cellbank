@@ -29,15 +29,15 @@ namespace RotorsWorkFlow
             try
             {
                 NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
-                string sharePath=administrativeFullName.Substring(0,administrativeFullName.LastIndexOf("\\"));
-                using (NetworkConnection nc = new NetworkConnection(sharePath,networkCredential))
+                string sharePath = administrativeFullName.Substring(0, administrativeFullName.LastIndexOf("\\"));
+                using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                 {
-                    File.Replace(fileItem.SourceFullName, administrativeFullName, administrativeFullName + ".bak");
+                    File.Copy(fileItem.SourceFullName, administrativeFullName, true);
                 }
             }
             catch (Exception e)
             {
-                Logger.Log("exception encounterred: {0}", e);
+                Logger.Error("exception encounterred: {0}", e);
             }
             Logger.Log("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, administrativeFullName);
         }
@@ -66,14 +66,13 @@ namespace RotorsWorkFlow
                 try
                 {
                     ManagementBaseObject outParams = serviceObj.InvokeMethod("TakeOwnerShip", null, null);
-
-
                     uint returnValue = (uint)outParams["ReturnValue"];
+                    Logger.Log("take ownership for file: {0} result: {1}", fileItem.DestinationFullName, returnValue);
                 }
                 catch (Exception ex)
                 {
-
-                    throw ex;
+                    Logger.Error("could not take ownership of file {0} , {1}", fileItem.DestinationFullName, ex);
+                    //throw ex;
                 }
             }
 

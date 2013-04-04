@@ -28,15 +28,5 @@ namespace RotorsWorkFlow.Helpers
         {
             return new FileItem[] { new FileItem("a", @"c:\windows\system32\Essentials\ConfigTasks.dll") };
         }
-        //if (string.Equals(pd.Name, Constants.ServiceVariableName))
-        //        {
-        //            pd.SetValue(context.DataContext, new string[] { "WseComputerBackupSvc" });
-        //        }
-
-        //        if (string.Equals(pd.Name, Constants.FileVariableName))
-        //        {
-        //            //@"\\andess1server\c$\windows\system32\Essentials\ConfigTasks.dll"
-        //            pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a", @"c:\windows\system32\Essentials\ConfigTasks.dll")});
-        //        }
     }
 }
