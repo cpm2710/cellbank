@@ -24,22 +24,34 @@ namespace RotorsWorkFlow.Helpers
             }
             return services.ToArray();
         }
+
         //\\andliudevs\d$\winmain\fbl_srv4_sh_dev.binaries.amd64fre\Admin\ServerEssentials
+
+        private static List<string> GetFileListRecursively(string directoryPath)
+        {
+            List<string> fileFullNames = new List<string>();
+            DirectoryInfo di = new DirectoryInfo(directoryPath);
+
+            FileInfo[] files = di.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                fileFullNames.Add(file.FullName);
+            }
+            DirectoryInfo[] subDirectories = di.GetDirectories();
+            foreach (DirectoryInfo subDi in subDirectories)
+            {
+                fileFullNames.AddRange(GetFileListRecursively(subDi.FullName));
+            }
+            return fileFullNames;
+        }
 
 
         public static FileItem[] BuildFileItems()
         {
             // get source file list.
-            List<string> sourceFiles = new List<string>();
-            DirectoryInfo di = new DirectoryInfo(Constants.SourceRootPath);
+            List<string> fileFullNames = GetFileListRecursively(Constants.SourceRootPath);
 
             // get destination file list.
-
-
-            //public const string System32EssentialsPath = @"\\andess1server\c$\windows\system32\Essentials";
-
-            //public const string GacEssentialsPath = @"\\andess1server\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
-
             List<string> targetFiles = new List<string>();
             try
             {
@@ -47,19 +59,14 @@ namespace RotorsWorkFlow.Helpers
                 string sharePath = @"\\andess1server\c$\windows";
                 using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                 {
-                    DirectoryInfo system32Dest = new DirectoryInfo(Constants.System32EssentialsPath);
-
-
-                    DirectoryInfo gacDest = new DirectoryInfo(Constants.GacEssentialsPath);
-
-                    //File.Copy(fileItem.SourceFullName, administrativeFullName, true);
+                    targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
+                    targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
                 }
             }
             catch (Exception e)
             {
                 Logger.Error("exception encounterred: {0}", e);
             }
-
 
             // merge the two list into one array of FileItem
 
