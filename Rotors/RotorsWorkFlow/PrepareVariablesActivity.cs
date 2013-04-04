@@ -35,14 +35,14 @@ namespace RotorsWorkFlow
         // and return the value from the Execute method.
         protected override void Execute(CodeActivityContext context)
         {
-            Console.WriteLine("Now We Are Executing PrepareVariablesActivity");
+            Logger.Log("Now We Are Executing PrepareVariablesActivity");
             PropertyDescriptorCollection propertyDescriptorCol = context.DataContext.GetProperties();
             
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
                 if (string.Equals(pd.Name, Constants.ServiceVariableName))
                 {
-                    pd.SetValue(context.DataContext, new string[] { "shit", "shit2" });
+                    pd.SetValue(context.DataContext, new string[] { "AlipaySecSvc" });
                 }
 
                 if (string.Equals(pd.Name, Constants.FileVariableName))

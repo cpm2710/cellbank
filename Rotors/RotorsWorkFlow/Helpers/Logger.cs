@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace RotorsWorkFlow
 {
-    public static class Constants
+    public static class Logger
     {
-        public const string ServiceVariableName = "services";
-        public const string FileVariableName = "files";
+        public static void Log(string format, params object[] arg)
+        {
+            Console.WriteLine(format, arg);
+        }
     }
 }

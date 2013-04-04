@@ -33,6 +33,8 @@
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activities" />
     <Reference Include="System.Xaml" />
@@ -43,13 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="PrepareVariablesActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FileItem.cs" />
-    <Compile Include="ReplaceFileHelper.cs" />
+    <Compile Include="Domain\FileItem.cs" />
+    <Compile Include="Helpers\ReplaceFileHelper.cs" />
     <Compile Include="ReplaceFilesActivity.cs" />
-    <Compile Include="ServiceControlHelper.cs" />
+    <Compile Include="Helpers\ServiceControlHelper.cs" />
     <Compile Include="StartServiceActivity.cs" />
     <Compile Include="StopServiceActivity.cs" />
   </ItemGroup>
