@@ -19,6 +19,8 @@ namespace RotorsWorkFlow
         {
             Logger.Log("taking ownership of file begins: source: {0} destination: {1}", fileItem.DestinationFullName);
 
+
+
             Logger.Log("taking ownership of file ends: source: {0} destination: {1}", fileItem.DestinationFullName);
         }
 

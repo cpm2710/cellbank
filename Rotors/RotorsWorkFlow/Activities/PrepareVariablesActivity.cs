@@ -8,26 +8,8 @@ using System.Collections.ObjectModel;
 
 namespace RotorsWorkFlow.Activities
 {
-
     public sealed class PrepareVariablesActivity : CodeActivity
     {
-        //private Collection<Variable> variables;
-        //public Collection<Variable> Variables
-        //{
-        //    get
-        //    {
-        //        if (this.variables == null)
-        //        {
-        //            this.variables = new Collection<Variable>();
-        //        }
-        //        return this.variables;
-        //    }
-        //} 
-        //protected override void CacheMetadata(CodeActivityMetadata metadata)
-        //{
-        //    metadata.SetArgumentsCollection(this.Variables);
-        //    base.CacheMetadata(metadata);
-        //} 
         //// Define an activity input argument of type string
         public InArgument<string> Text { get; set; }
 
@@ -42,15 +24,14 @@ namespace RotorsWorkFlow.Activities
             {
                 if (string.Equals(pd.Name, Constants.ServiceVariableName))
                 {
-                    pd.SetValue(context.DataContext, new string[] { "AlipaySecSvc" });
+                    pd.SetValue(context.DataContext, new string[] { "WseComputerBackupSvc" });
                 }
 
                 if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
-                    pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a", "b"), new FileItem("a2", "b2") });
+                    pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a", @"\\andess1server\c$\windows\system32\Essentials\ConfigTasks.dll")});
                 }
             }
-            //context.SetValue(
             // Obtain the runtime value of the Text input argument
             string text = context.GetValue(this.Text);
         }

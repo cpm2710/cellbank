@@ -10,7 +10,7 @@ namespace RotorsWorkFlow
     {
         public const string ServiceVariableName = "services";
         public const string FileVariableName = "files";
-        public const string UserName = "a";
+        public const string UserName = @"a";
         public const string PassWord = "User@123";
         public const string MachineName = "andess1server";
     }
