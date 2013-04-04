@@ -6,7 +6,7 @@ using System.Activities;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace RotorsWorkFlow
+namespace RotorsWorkFlow.Activities
 {
 
     public sealed class PrepareVariablesActivity : CodeActivity

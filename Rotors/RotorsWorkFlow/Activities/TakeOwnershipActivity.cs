@@ -5,10 +5,10 @@ using System.Text;
 using System.Activities;
 using System.ComponentModel;
 
-namespace RotorsWorkFlow
+namespace RotorsWorkFlow.Activities
 {
 
-    public sealed class StartServiceActivity : CodeActivity
+    public sealed class TakeOwnershipActivity : CodeActivity
     {
         // Define an activity input argument of type string
         public InArgument<string> Text { get; set; }
@@ -21,12 +21,12 @@ namespace RotorsWorkFlow
 
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
-                if (string.Equals(pd.Name, Constants.ServiceVariableName))
+                if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
-                    string[] services = (string[])pd.GetValue(context.DataContext);
-                    foreach (string service in services)
+                    FileItem[] files = (FileItem[])pd.GetValue(context.DataContext);
+                    foreach (FileItem service in files)
                     {
-                        ServiceControlHelper.StartService(service);
+                        ReplaceFileHelper.TakeOwnership(service);
                     }
                 }
             }

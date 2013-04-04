@@ -45,16 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\TakeOwnershipActivity.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Logger.cs" />
-    <Compile Include="PrepareVariablesActivity.cs" />
+    <Compile Include="Activities\PrepareVariablesActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\FileItem.cs" />
     <Compile Include="Helpers\ReplaceFileHelper.cs" />
-    <Compile Include="ReplaceFilesActivity.cs" />
+    <Compile Include="Activities\ReplaceFilesActivity.cs" />
     <Compile Include="Helpers\ServiceControlHelper.cs" />
-    <Compile Include="StartServiceActivity.cs" />
-    <Compile Include="StopServiceActivity.cs" />
+    <Compile Include="Activities\StartServiceActivity.cs" />
+    <Compile Include="Activities\StopServiceActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamlAppDef Include="RotorsWorkFlow.xaml">
