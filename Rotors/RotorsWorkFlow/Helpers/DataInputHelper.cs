@@ -23,10 +23,12 @@ namespace RotorsWorkFlow.Helpers
             }
             return services.ToArray();
         }
-
+        //\\andliudevs\d$\winmain\fbl_srv4_sh_dev.binaries.amd64fre\Admin\ServerEssentials
         public static FileItem[] BuildFileItems()
         {
-            return new FileItem[] { new FileItem("a", @"c:\windows\system32\Essentials\ConfigTasks.dll") };
+            //DirectoryInfo di = new DirectoryInfo(Constants.RootPath);
+
+            return new FileItem[] { new FileItem("a.dll", @"c:\windows\system32\Essentials\a.dll") };
         }
     }
 }

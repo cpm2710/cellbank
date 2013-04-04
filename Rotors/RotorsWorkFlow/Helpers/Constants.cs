@@ -14,5 +14,7 @@ namespace RotorsWorkFlow
         public const string PassWord = "User@123";
         public const string MachineName = "andess1server";
         public const string Domain = "andess1.local";
+
+        public const string RootPath = "";
     }
 }
