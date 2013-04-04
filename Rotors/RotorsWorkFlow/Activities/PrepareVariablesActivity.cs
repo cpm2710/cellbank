@@ -29,7 +29,8 @@ namespace RotorsWorkFlow.Activities
 
                 if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
-                    pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a", @"\\andess1server\c$\windows\system32\Essentials\ConfigTasks.dll")});
+                    //@"\\andess1server\c$\windows\system32\Essentials\ConfigTasks.dll"
+                    pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a", @"c:\windows\system32\Essentials\ConfigTasks.dll")});
                 }
             }
             // Obtain the runtime value of the Text input argument

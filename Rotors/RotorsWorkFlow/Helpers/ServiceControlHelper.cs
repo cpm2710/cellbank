@@ -27,7 +27,6 @@ namespace RotorsWorkFlow
             {
                 try
                 {
-
                     foreach (var a in serviceObj.Properties)
                     {
                         Console.WriteLine(a.Value);
@@ -46,7 +45,6 @@ namespace RotorsWorkFlow
                         throw ex;
                 }
             }
-            //AlipaySecSvc
             Logger.Log("shutting down service ends: {0}", service);
         }
         public static void StartService(string service)
