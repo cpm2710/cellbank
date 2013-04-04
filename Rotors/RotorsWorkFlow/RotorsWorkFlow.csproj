@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Activities\TakeOwnershipActivity.cs" />
     <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\DataInputHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Activities\PrepareVariablesActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="a.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\services.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

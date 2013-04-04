@@ -5,6 +5,7 @@ using System.Text;
 using System.Activities;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using RotorsWorkFlow.Helpers;
 
 namespace RotorsWorkFlow.Activities
 {
@@ -24,13 +25,13 @@ namespace RotorsWorkFlow.Activities
             {
                 if (string.Equals(pd.Name, Constants.ServiceVariableName))
                 {
-                    pd.SetValue(context.DataContext, new string[] { "WseComputerBackupSvc" });
+                    pd.SetValue(context.DataContext, DataInputHelper.BuildServiceNames());
                 }
 
                 if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
                     //@"\\andess1server\c$\windows\system32\Essentials\ConfigTasks.dll"
-                    pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a", @"c:\windows\system32\Essentials\ConfigTasks.dll")});
+                    pd.SetValue(context.DataContext, new FileItem[] { new FileItem("a.dll", @"c:\windows\system32\Essentials\a.dll")});
                 }
             }
             // Obtain the runtime value of the Text input argument

@@ -23,10 +23,10 @@ namespace RotorsWorkFlow.Activities
             {
                 if (string.Equals(pd.Name, Constants.FileVariableName))
                 {
-                    FileItem[] services = (FileItem[])pd.GetValue(context.DataContext);
-                    foreach (FileItem service in services)
+                    FileItem[] fileItems = (FileItem[])pd.GetValue(context.DataContext);
+                    foreach (FileItem fileItem in fileItems)
                     {
-                        ReplaceFileHelper.ReplaceFile(service);
+                        ReplaceFileHelper.ReplaceFile(fileItem);
                     }
                 }
             }

@@ -24,9 +24,14 @@ namespace RotorsWorkFlow
         {
             string administrativeFullName = ConstructAdministrativeDestination(fileItem.DestinationFullName);
             Logger.Log("replacing file begins: source: {0} destination: {1}", fileItem.SourceFullName, administrativeFullName);
-
-            File.Replace(fileItem.SourceFullName, administrativeFullName, administrativeFullName + ".bak");
-
+            try
+            {
+                File.Replace(fileItem.SourceFullName, administrativeFullName, administrativeFullName + ".bak");
+            }
+            catch (Exception e)
+            {
+                Logger.Log("exception encounterred: {0}", e);
+            }
             Logger.Log("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, administrativeFullName);
         }
 

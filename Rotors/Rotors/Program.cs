@@ -17,7 +17,7 @@ namespace Rotors
 
             wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((e) =>
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.UnhandledException.ToString());
                 return UnhandledExceptionAction.Terminate;
             });
             wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((e) =>
