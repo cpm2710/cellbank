@@ -22,16 +22,12 @@ namespace RotorsGui
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IReportObserver
     {
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
+            Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(this);
         }
 
         private void StartMonitorButton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +71,14 @@ namespace RotorsGui
             {
                 this.BinaryHomeTextBox.Text = dialog.SelectedPath;
             }
+        }
+
+        public void ReportStatus(string statusMsg)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                this.ActionStatus.Text = statusMsg;
+            });
         }
     }
 }

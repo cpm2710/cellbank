@@ -21,12 +21,27 @@ namespace RotorsWorkFlow
                 return LogLevel.Warning;
             }
         }
+        public static void Log(string msg)
+        {
+            if (CurrentLogLevel <= LogLevel.Information)
+            {
+                Console.WriteLine(msg);
+            }
+        }
         public static void Log(string format, params object[] arg)
         {
             if (CurrentLogLevel <= LogLevel.Information)
             {
                 Console.WriteLine(format, arg);
             }
+        }
+
+        public static void Error(string msg)
+        {
+            ConsoleColor defaultColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(msg);
+            Console.ForegroundColor = defaultColor;
         }
 
         public static void Error(string format, params object[] arg)
