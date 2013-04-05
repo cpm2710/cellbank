@@ -35,7 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -97,6 +99,10 @@
     <ProjectReference Include="..\RotorsLib\RotorsLib.csproj">
       <Project>{19c722ac-08fe-4692-8850-13a8c852a496}</Project>
       <Name>RotorsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RotorsWorkFlow\RotorsWorkFlow.csproj">
+      <Project>{10150ef5-3a81-4584-8d68-f5c659ae8443}</Project>
+      <Name>RotorsWorkFlow</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

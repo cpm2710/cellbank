@@ -51,6 +51,8 @@
     <Compile Include="Activities\ReplaceFilesActivity.cs" />
     <Compile Include="Activities\StartServiceActivity.cs" />
     <Compile Include="Activities\StopServiceActivity.cs" />
+    <Compile Include="RotorsWorkFlowStarter.cs" />
+    <Compile Include="SingletonTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamlAppDef Include="RotorsWorkFlow.xaml">
