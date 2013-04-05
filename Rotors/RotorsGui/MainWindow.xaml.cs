@@ -48,37 +48,33 @@ namespace RotorsGui
 
         private void ReplaceItButton_Click(object sender, RoutedEventArgs e)
         {
+            this.ReplaceItButton.IsEnabled = false;
             Constants.MachineName = this.TargetMachineNameTextBox.Text;
             Constants.UserName = this.UserNameTextBox.Text;
             Constants.PassWord = this.PassWordTextBox.Text;
             Constants.SourceRootPath = this.BinaryHomeTextBox.Text;
 
+            Singleton<RotorsWorkFlowStarter>.UniqueInstance.WorkFlowEnded += UniqueInstance_WorkFlowEnded;
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();
-            //RotorsWorkFlow.RotorsWorkFlow workFlow = new RotorsWorkFlow.RotorsWorkFlow();
+        }
 
-            //WorkflowApplication wfa = new WorkflowApplication(workFlow);
+        void UniqueInstance_WorkFlowEnded(object sender, EventArgs e)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                this.ReplaceItButton.IsEnabled = true;
+            });
 
-            //wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((wfE) =>
-            //{
-            //    Console.WriteLine(wfE.UnhandledException.ToString());
-            //    return UnhandledExceptionAction.Terminate;
-            //});
-            //wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((wfE) =>
-            //{
-            //    Console.WriteLine("Completed" + wfE.ToString());
-            //});
-            //wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((wfE) =>
-            //{
-            //    Console.WriteLine("Idle" + wfE.ToString());
-            //});
-
-            //wfa.Run();
         }
 
         private void BrowseBinaryHomeButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new FolderBrowserDialog();
             DialogResult result = dialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                this.BinaryHomeTextBox.Text = dialog.SelectedPath;
+            }
         }
     }
 }
