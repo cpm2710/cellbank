@@ -1,7 +1,8 @@
 ﻿<Window x:Class="RotorsGui.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Steal Binary Cat" Height="513.542" Width="617.708">
+        Icon=".\Images\Icon.png"
+        Title="Steal Binary Cat" Height="510.417" Width="588.541">
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <TransformGroup>
@@ -11,18 +12,18 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <TextBox Name="BinaryHomeTextBox" HorizontalAlignment="Left" Height="23" Margin="116,68,0,0" TextWrapping="Wrap" Text="D:\WorkSpace\BinaryRootSourcePath" VerticalAlignment="Top" Width="272"/>
+        <TextBox Name="BinaryHomeTextBox" HorizontalAlignment="Left" Height="23" Margin="116,68,0,0" TextWrapping="Wrap" Text="D:\WorkSpace\BinaryRootSourcePath" VerticalAlignment="Top" Width="355"/>
         <Label Content="BinaryHome:" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top"/>
         <Label Content="TargetMachine:" HorizontalAlignment="Left" Margin="15,114,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TargetMachineNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,114,0,0" TextWrapping="Wrap" Text="andess1server" VerticalAlignment="Top" Width="272"/>
-        <Button Name="BrowseBinaryHomeButton" Content="Browse" HorizontalAlignment="Left" Margin="406,68,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BrowseBinaryHomeButton_Click" />
+        <TextBox Name="TargetMachineNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,114,0,0" TextWrapping="Wrap" Text="andess1server" VerticalAlignment="Top" Width="355"/>
+        <Button Name="BrowseBinaryHomeButton" Content="Browse" HorizontalAlignment="Left" Margin="489,68,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BrowseBinaryHomeButton_Click" />
         <Label Content="UserName:" HorizontalAlignment="Left" Margin="15,161,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="UserNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,163,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Width="272"/>
-        <Button Name="StartMonitorButton" Content="Start Monitor" HorizontalAlignment="Left" Margin="116,252,0,0" VerticalAlignment="Top" Width="178" Click="StartMonitorButton_Click"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="15,202,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="PassWordTextBox" HorizontalAlignment="Left" Height="23" Margin="116,202,0,0" TextWrapping="Wrap" Text="User@123" VerticalAlignment="Top" Width="272"/>
-        <Button Name="ReplaceItButton" Content="ReplaceIt" HorizontalAlignment="Left" Margin="337,252,0,0" VerticalAlignment="Top" Width="144" Click="ReplaceItButton_Click" />
-        <TextBlock Name="ActionStatus" HorizontalAlignment="Left" Margin="90,291,0,0" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Width="391" Height="158"/>
+        <TextBox Name="UserNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,162,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Width="355"/>
+        <Button Name="StartMonitorButton" Content="Start Monitor" HorizontalAlignment="Left" Margin="116,252,0,0" VerticalAlignment="Top" Width="178" Click="StartMonitorButton_Click" Height="25"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="15,205,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="PassWordTextBox" HorizontalAlignment="Left" Height="23" Margin="116,207,0,0" TextWrapping="Wrap" Text="User@123" VerticalAlignment="Top" Width="355"/>
+        <Button Name="ReplaceItButton" Content="ReplaceIt" HorizontalAlignment="Left" Margin="337,252,0,0" VerticalAlignment="Top" Width="134" Click="ReplaceItButton_Click" Height="25" />
+        <TextBlock Name="ActionStatus" HorizontalAlignment="Left" Margin="116,291,0,0" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Width="391" Height="158"/>
         <Label Content="Status: " HorizontalAlignment="Left" Margin="15,286,0,0" VerticalAlignment="Top"/>
 
     </Grid>
