@@ -1,0 +1,8 @@
+﻿WseComputerBackupSvc
+WseEmailSvc
+WseHealthSvc
+WseMgmtSvc
+WseMediaSvc
+WseNtfSvc
+WsePRSvc
+WseStorageSvc

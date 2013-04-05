@@ -52,25 +52,27 @@ namespace RotorsGui
             Constants.UserName = this.UserNameTextBox.Text;
             Constants.PassWord = this.PassWordTextBox.Text;
             Constants.SourceRootPath = this.BinaryHomeTextBox.Text;
-            RotorsWorkFlow.RotorsWorkFlow workFlow = new RotorsWorkFlow.RotorsWorkFlow();
 
-            WorkflowApplication wfa = new WorkflowApplication(workFlow);
+            Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();
+            //RotorsWorkFlow.RotorsWorkFlow workFlow = new RotorsWorkFlow.RotorsWorkFlow();
 
-            wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((wfE) =>
-            {
-                Console.WriteLine(wfE.UnhandledException.ToString());
-                return UnhandledExceptionAction.Terminate;
-            });
-            wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((wfE) =>
-            {
-                Console.WriteLine("Completed" + wfE.ToString());
-            });
-            wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((wfE) =>
-            {
-                Console.WriteLine("Idle" + wfE.ToString());
-            });
+            //WorkflowApplication wfa = new WorkflowApplication(workFlow);
 
-            wfa.Run();
+            //wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((wfE) =>
+            //{
+            //    Console.WriteLine(wfE.UnhandledException.ToString());
+            //    return UnhandledExceptionAction.Terminate;
+            //});
+            //wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((wfE) =>
+            //{
+            //    Console.WriteLine("Completed" + wfE.ToString());
+            //});
+            //wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((wfE) =>
+            //{
+            //    Console.WriteLine("Idle" + wfE.ToString());
+            //});
+
+            //wfa.Run();
         }
 
         private void BrowseBinaryHomeButton_Click(object sender, RoutedEventArgs e)
