@@ -1,4 +1,5 @@
-﻿using RotorsWorkFlow.Helpers;
+﻿using RotorsLib;
+using RotorsWorkFlow.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,24 +25,20 @@ namespace RotorsWorkFlow
 
         public static void ReplaceFile(FileItem fileItem)
         {
-            //string administrativeFullName = ConstructAdministrativeDestination(fileItem.DestinationFullName);
             Logger.Log("replacing file begins: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
             try
             {
-                //NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
-                //string sharePath = administrativeFullName.Substring(0, administrativeFullName.LastIndexOf("\\"));
-                //using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
-                //{
-                if(!File.Exists(fileItem.DestinationFullName + ".bak"))
-                    {
-                        File.Copy(fileItem.DestinationFullName, fileItem.DestinationFullName + ".bak");
-                    }
+                if (!File.Exists(fileItem.DestinationFullName + ".bak"))
+                {
+                    File.Copy(fileItem.DestinationFullName, fileItem.DestinationFullName + ".bak");
+                }
                 File.Copy(fileItem.SourceFullName, fileItem.DestinationFullName, true);
-                //}
             }
             catch (Exception e)
             {
-                Logger.Error("exception encounterred: {0}", e);
+                string msg = string.Format("exception encounterred  when replacing file: {0}, exception:{1}", fileItem.DestinationFullName, e);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Logger.Error(msg);
             }
             Logger.Log("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
         }
@@ -93,38 +90,14 @@ namespace RotorsWorkFlow
             AccessDenied = 1,
             Audit = 2
         }
-        /// <summary>
-        /// the fileItem.DestinationFullName is like this \\computername\c$\aaa\xx.dll
-        /// </summary>
-        /// <param name="fileItem"></param>
-        public static void TakeOwnership(FileItem fileItem)
+
+        private static ManagementObject everyOneSecDescriptor;
+        private static ManagementObject EveryOneSecDescriptor
         {
-            Logger.Log("taking ownership of file begins: destination: {0} ", fileItem.DestinationFullName);
-
-            string localFormatPath = @"C:" + fileItem.DestinationFullName.Substring(fileItem.DestinationFullName.IndexOf("c$", StringComparison.OrdinalIgnoreCase) + 2);
-
-            string objPath = string.Format("CIM_DataFile.Name='{0}'", localFormatPath);
-
-            ConnectionOptions connectionOptions = new ConnectionOptions();
-            connectionOptions.Authentication = AuthenticationLevel.Packet;
-            connectionOptions.EnablePrivileges = true;
-            connectionOptions.Username = Constants.UserName;
-            connectionOptions.Password = Constants.PassWord;
-            connectionOptions.Impersonation = ImpersonationLevel.Impersonate;
-
-            ManagementScope scope = new ManagementScope(string.Format(@"\\{0}\root\cimv2", Constants.MachineName), connectionOptions);
-            scope.Connect();
-            using (ManagementObject serviceObj = new ManagementObject(scope, new ManagementPath(objPath), null))
+            get
             {
-                try
+                if (everyOneSecDescriptor == null)
                 {
-                    ManagementBaseObject outParams = serviceObj.InvokeMethod("TakeOwnerShip", null, null);
-                    uint returnValue = (uint)outParams["ReturnValue"];
-                    Logger.Log("take ownership for file: {0} result: {1}", localFormatPath, returnValue);
-
-
-
-
                     ManagementClass trustee = new ManagementClass("Win32_Trustee");
                     trustee.Properties["Name"].Value = "Everyone";
                     trustee.Properties["Domain"].Value = null;
@@ -144,23 +117,56 @@ namespace RotorsWorkFlow
                     secDescriptor["ControlFlags"] = 4;
                     secDescriptor["DACL"] = new ManagementObject[] { ace };
 
+                    everyOneSecDescriptor = secDescriptor;
+                }
+                return everyOneSecDescriptor;
+            }
+        }
+        /// <summary>
+        /// the fileItem.DestinationFullName is like this \\computername\c$\aaa\xx.dll
+        /// </summary>
+        /// <param name="fileItem"></param>
+        public static void TakeOwnership(FileItem fileItem)
+        {
+            Logger.Log("taking ownership of file begins: destination: {0} ", fileItem.DestinationFullName);
+
+            string localFormatPath = @"C:" + fileItem.DestinationFullName.Substring(fileItem.DestinationFullName.IndexOf("c$", StringComparison.OrdinalIgnoreCase) + 2);
+
+            string objPath = string.Format("CIM_DataFile.Name='{0}'", localFormatPath);
+
+            ConnectionOptions connectionOptions = new ConnectionOptions();
+            connectionOptions.Authentication = AuthenticationLevel.Packet;
+            connectionOptions.EnablePrivileges = true;
+            connectionOptions.Username = Constants.UserName;
+            connectionOptions.Password = Constants.PassWord;
+            connectionOptions.Impersonation = ImpersonationLevel.Impersonate;
+            try
+            {
+                ManagementScope scope = new ManagementScope(string.Format(@"\\{0}\root\cimv2", Constants.MachineName), connectionOptions);
+                scope.Connect();
+                using (ManagementObject serviceObj = new ManagementObject(scope, new ManagementPath(objPath), null))
+                {
+
+                    ManagementBaseObject outParams = serviceObj.InvokeMethod("TakeOwnerShip", null, null);
+                    uint returnValue = (uint)outParams["ReturnValue"];
+                    Logger.Log("take ownership for file: {0} result: {1}", localFormatPath, returnValue);
+
                     ManagementBaseObject inParams = serviceObj.GetMethodParameters("ChangeSecurityPermissions");
 
                     inParams["Option"] = 4;
-                    inParams["SecurityDescriptor"] = secDescriptor;
+                    inParams["SecurityDescriptor"] = EveryOneSecDescriptor;
 
                     ManagementBaseObject outParamsOfChangingPermission = serviceObj.InvokeMethod("ChangeSecurityPermissions", inParams, null);
                     uint returnValueOfChangingPermission = (uint)outParamsOfChangingPermission["ReturnValue"];
                     Logger.Log("changing permission for file: {0} result: {1}", localFormatPath, returnValueOfChangingPermission);
                 }
-                catch (Exception ex)
-                {
-                    Logger.Error("could not take ownership of file {0} , {1}", localFormatPath, ex);
-                    //throw ex;
-                }
             }
-
-
+            catch (Exception ex)
+            {
+                string msg = string.Format("could not take ownership of file {0} , {1}", localFormatPath, ex);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Logger.Error(msg);
+            }
             Logger.Log("taking ownership of file ends: destination: {0}", localFormatPath);
         }
 
