@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace RotorsWorkFlow
 {
-
     public class FileItem
     {
         public FileItem(string sourceFullName, string destinationFullName)

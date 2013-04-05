@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10150EF5-3A81-4584-8D68-F5C659AE8443}</ProjectGuid>
+    <ProjectGuid>{19C722AC-08FE-4692-8850-13A8C852A496}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RotorsWorkFlow</RootNamespace>
-    <AssemblyName>RotorsWorkFlow</AssemblyName>
+    <RootNamespace>RotorsLib</RootNamespace>
+    <AssemblyName>RotorsLib</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,13 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Instrumentation" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activities" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,24 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\TakeOwnershipActivity.cs" />
-    <Compile Include="Activities\PrepareVariablesActivity.cs" />
+    <Compile Include="Domain\FileItem.cs" />
+    <Compile Include="Exceptions\RotorsException.cs" />
+    <Compile Include="FileSystemEventMonitor.cs" />
+    <Compile Include="Helpers\AssemblyMatcher.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\DataInputHelper.cs" />
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\NetworkConnection.cs" />
+    <Compile Include="Helpers\ReplaceFileHelper.cs" />
+    <Compile Include="Helpers\ServiceControlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Activities\ReplaceFilesActivity.cs" />
-    <Compile Include="Activities\StartServiceActivity.cs" />
-    <Compile Include="Activities\StopServiceActivity.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="RotorsWorkFlow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RotorsLib\RotorsLib.csproj">
-      <Project>{19c722ac-08fe-4692-8850-13a8c852a496}</Project>
-      <Name>RotorsLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

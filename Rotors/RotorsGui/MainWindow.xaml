@@ -1,0 +1,19 @@
+﻿<Window x:Class="RotorsGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="116,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="272"/>
+        <Label Content="BinaryHome:" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top"/>
+        <Label Content="TargetMachine:" HorizontalAlignment="Left" Margin="15,114,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="116,114,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="272"/>
+        <Button Content="Browse" HorizontalAlignment="Left" Margin="406,68,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="Button_Click_1"/>
+        <Label Content="UserName:" HorizontalAlignment="Left" Margin="15,161,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="116,163,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="272"/>
+        <Button Content="Start Monitor" HorizontalAlignment="Left" Margin="116,252,0,0" VerticalAlignment="Top" Width="178" Click="Button_Click_2"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="15,202,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="116,202,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="272"/>
+        <Button Content="ReplaceIt" HorizontalAlignment="Left" Margin="337,252,0,0" VerticalAlignment="Top" Width="144" Click="Button_Click_3"/>
+
+    </Grid>
+</Window>
