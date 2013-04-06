@@ -42,7 +42,7 @@ namespace RotorsLib.Helpers
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
             }
             msg = string.Format("shutting down service ends: {0}", service);
-            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
         }
         public static void StartService(string service)
         {
@@ -76,7 +76,7 @@ namespace RotorsLib.Helpers
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
             }
             msg = string.Format("starting up service ends: {0}", service);
-            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
         }
     }
 }

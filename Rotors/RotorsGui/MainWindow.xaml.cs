@@ -28,15 +28,29 @@ namespace RotorsGui
         public MainWindow()
         {
             InitializeComponent();
+            this.StartMonitorButton.Content = StartMonitor;
             Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(Singleton<Logger>.UniqueInstance);
             Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(this);
         }
 
+        private const string StopMonitor = "Stop Monitor";
+        private const string StartMonitor = "Start Monitoe";
         private void StartMonitorButton_Click(object sender, RoutedEventArgs e)
         {
-            FileSystemEventMonitor monitor = new FileSystemEventMonitor(this.BinaryHomeTextBox.Text);
-            monitor.Triggered += monitor_Triggered;
-            monitor.StartMonitoring();
+            if (string.Equals(this.StartMonitorButton.Content, StartMonitor))
+            {
+                Singleton<FileSystemEventMonitor>.UniqueInstance.FileSystemPath = (this.BinaryHomeTextBox.Text);
+                Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered -= monitor_Triggered;
+                Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered += monitor_Triggered;
+                Singleton<FileSystemEventMonitor>.UniqueInstance.StartMonitoring();
+
+                this.StartMonitorButton.Content = StopMonitor;
+            }
+            else
+            {
+                Singleton<FileSystemEventMonitor>.UniqueInstance.StopMonitoring();
+                this.StartMonitorButton.Content = StartMonitor;
+            }
         }
 
         void monitor_Triggered(object sender, EventArgs e)

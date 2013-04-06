@@ -12,17 +12,26 @@ namespace RotorsLib
     public class FileSystemEventMonitor
     {
 
-        private TimeSpan defaultTimeOut = TimeSpan.FromMinutes(1);
+        private int defaultTimeOut = 60000;
         private string fileSystemPath;
+
+        public string FileSystemPath
+        {
+            get { return fileSystemPath; }
+            set { fileSystemPath = value; }
+        }
 
         public event EventHandler Triggered;
 
         private Timer timer = null;
 
-        public FileSystemEventMonitor(string fileSystemPath)
+        public FileSystemEventMonitor()
         {
-            this.fileSystemPath = fileSystemPath;
+            InitializeTimer();
+        }
 
+        private void InitializeTimer()
+        {
             if (timer == null)
             {
                 timer = new Timer(new TimerCallback((o) =>
@@ -33,6 +42,11 @@ namespace RotorsLib
                     }
                 }));
             }
+        }
+        public FileSystemEventMonitor(string fileSystemPath)
+        {
+            this.fileSystemPath = fileSystemPath;
+            InitializeTimer();
         }
 
 
@@ -71,7 +85,7 @@ namespace RotorsLib
         private void OnChanged(object source, FileSystemEventArgs e)
         {
             Singleton<ReportMediator>.UniqueInstance.ReportStatus("File: " + e.FullPath + " " + e.ChangeType);
-            timer.Change(defaultTimeOut, TimeSpan.MaxValue);
+            timer.Change(defaultTimeOut, System.Threading.Timeout.Infinite);
         }
     }
 }

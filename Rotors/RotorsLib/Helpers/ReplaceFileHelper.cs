@@ -26,7 +26,7 @@ namespace RotorsLib.Helpers
         public static void ReplaceFile(FileItem fileItem)
         {
             string msg = string.Format("replacing file begins: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
-            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
             try
             {
                 if (!File.Exists(fileItem.DestinationFullName + ".bak"))
@@ -42,7 +42,7 @@ namespace RotorsLib.Helpers
             }
 
             msg = string.Format("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
-            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
         }
 
         [Flags]
