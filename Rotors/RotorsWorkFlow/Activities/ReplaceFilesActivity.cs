@@ -32,7 +32,8 @@ namespace RotorsWorkFlow.Activities
                     {
                         NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
 
-                        string sharePath = Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
+                        string sharePath = string.Format(@"\\{0}\c$", Constants.MachineName);
+                            //Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
 
                         using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                         {

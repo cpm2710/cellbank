@@ -86,47 +86,47 @@ namespace RotorsLib.Helpers
 
         //@"\\andess1server\c$\windows\system32\Essentials"
         //public const string System32EssentialsPath = @"D:\WorkSpace\DestinationSystem32Files\Essentials";
-        public static string system32EssentialsPath = @"\\andess1server\c$\windows\system32\Essentials";
-        public static string System32EssentialsPath
-        {
-            get { return system32EssentialsPath; }
-            set
-            {
-                system32EssentialsPath = value;
-            }
-        }
+        //public static string system32EssentialsPath = @"\\andess1server\c$\windows\system32\Essentials";
+        //public static string System32EssentialsPath
+        //{
+        //    get { return system32EssentialsPath; }
+        //    set
+        //    {
+        //        system32EssentialsPath = value;
+        //    }
+        //}
 
-        public static string system32EssentialsPathFormat = @"\\{0}\c$\windows\system32\Essentials";
-        public static string System32EssentialsPathFormat
-        {
-            get { return system32EssentialsPathFormat; }
-            set
-            {
-                system32EssentialsPathFormat = value;
-            }
-        }
+        //public static string system32EssentialsPathFormat = @"\\{0}\c$\windows\system32\Essentials";
+        //public static string System32EssentialsPathFormat
+        //{
+        //    get { return system32EssentialsPathFormat; }
+        //    set
+        //    {
+        //        system32EssentialsPathFormat = value;
+        //    }
+        //}
 
-        public static string gacEssentialsPath = @"\\andess1server\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
+        //public static string gacEssentialsPath = @"\\andess1server\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
 
-        public static string GacEssentialsPath
-        {
-            get { return gacEssentialsPath; }
-            set
-            {
-                gacEssentialsPath = value;
-            }
+        //public static string GacEssentialsPath
+        //{
+        //    get { return gacEssentialsPath; }
+        //    set
+        //    {
+        //        gacEssentialsPath = value;
+        //    }
 
-        }
+        //}
 
-        public static string gacEssentialsPathFormat = @"\\{0}\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
+        //public static string gacEssentialsPathFormat = @"\\{0}\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
 
-        public static string GacEssentialsPathFormat
-        {
-            get { return gacEssentialsPathFormat; }
-            set
-            {
-                gacEssentialsPathFormat = value;
-            }
-        }
+        //public static string GacEssentialsPathFormat
+        //{
+        //    get { return gacEssentialsPathFormat; }
+        //    set
+        //    {
+        //        gacEssentialsPathFormat = value;
+        //    }
+        //}
     }
 }

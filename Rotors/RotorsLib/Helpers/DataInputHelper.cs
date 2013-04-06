@@ -30,6 +30,23 @@ namespace RotorsLib.Helpers
             return services.ToArray();
         }
 
+        public static string[] BuildTargetDirectories()
+        {
+            string msg = "building the service list...";
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+            List<string> services = new List<string>();
+            using (FileStream fs = File.Open(@".\Data\targetdirectory.txt", FileMode.Open, FileAccess.Read))
+            {
+                StreamReader sr = new StreamReader(fs);
+                string service = string.Empty;
+                while ((service = sr.ReadLine()) != null)
+                {
+                    services.Add(service);
+                }
+            }
+            return services.ToArray();
+        }
+
         //\\andliudevs\d$\winmain\fbl_srv4_sh_dev.binaries.amd64fre\Admin\ServerEssentials
 
         private static List<string> GetFileListRecursively(string directoryPath)
@@ -66,12 +83,18 @@ namespace RotorsLib.Helpers
             {
                 NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
 
-                string sharePath = Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
+                string sharePath = string.Format(@"\\{0}\c$", Constants.MachineName);
+                    //Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
 
                 using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                 {
-                    targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
-                    targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
+                    string [] targetDirectories = BuildTargetDirectories();
+                    foreach (string targetDictory in targetDirectories)
+                    {
+                        targetFiles.AddRange(GetFileListRecursively(string.Format(targetDictory, Constants.MachineName)));
+                    }
+                    //targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
+                    //targetFiles.AddRange(GetFileListRecursively(Constants.GacEssentialsPath));
                 }
             }
             catch (Exception e)

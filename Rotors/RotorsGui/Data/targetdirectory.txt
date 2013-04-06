@@ -1,0 +1,2 @@
+﻿\\{0}\c$\windows\system32\Essentials
+\\{0}\c$\Windows\Microsoft.NET\assembly\GAC_MSIL

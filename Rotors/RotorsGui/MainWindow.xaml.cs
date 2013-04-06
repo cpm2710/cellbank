@@ -65,8 +65,8 @@ namespace RotorsGui
             Constants.UserName = this.UserNameTextBox.Text;
             Constants.PassWord = this.PassWordTextBox.Text;
             Constants.SourceRootPath = this.BinaryHomeTextBox.Text;
-            Constants.GacEssentialsPath = string.Format(Constants.GacEssentialsPathFormat, Constants.MachineName);
-            Constants.System32EssentialsPath = string.Format(Constants.System32EssentialsPathFormat, Constants.MachineName);
+            //Constants.GacEssentialsPath = string.Format(Constants.GacEssentialsPathFormat, Constants.MachineName);
+            //Constants.System32EssentialsPath = string.Format(Constants.System32EssentialsPathFormat, Constants.MachineName);
         }
 
         private void ReplaceItButton_Click(object sender, RoutedEventArgs e)
