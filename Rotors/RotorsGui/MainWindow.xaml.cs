@@ -41,7 +41,6 @@ namespace RotorsGui
             if (string.Equals(this.StartMonitorButton.Content, StartMonitor))
             {
                 InitializeConstants();
-                Singleton<FileSystemEventMonitor>.UniqueInstance.FileSystemPath = (this.BinaryHomeTextBox.Text);
                 Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered -= monitor_Triggered;
                 Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered += monitor_Triggered;
                 Singleton<FileSystemEventMonitor>.UniqueInstance.StartMonitoring();
