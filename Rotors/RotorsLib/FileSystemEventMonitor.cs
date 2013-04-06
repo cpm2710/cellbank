@@ -85,7 +85,7 @@ namespace RotorsLib
         // Define the event handlers. 
         private void OnChanged(object source, FileSystemEventArgs e)
         {
-            Singleton<ReportMediator>.UniqueInstance.ReportStatus("File: " + e.FullPath + " " + e.ChangeType);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus("File changes: " + e.FullPath + " ");
             timer.Change(defaultTimeOut, System.Threading.Timeout.Infinite);
         }
     }
