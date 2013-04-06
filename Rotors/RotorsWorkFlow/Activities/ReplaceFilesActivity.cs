@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Net;
 using RotorsLib.Helpers;
 using RotorsLib.Domain;
+using RotorsLib;
 
 namespace RotorsWorkFlow.Activities
 {
@@ -43,7 +44,8 @@ namespace RotorsWorkFlow.Activities
                     }
                     catch (Exception e)
                     {
-                        Logger.Error("exception encounterred: {0}", e);
+                        string msg = string.Format("exception encounterred: {0} when executing replacefilesactivity", e);
+                        Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                     }
                 }
             }

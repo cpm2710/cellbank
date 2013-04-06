@@ -14,6 +14,8 @@ namespace RotorsLib.Helpers
     {
         public static string[] BuildServiceNames()
         {
+            string msg = "building the service list...";
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
             List<string> services = new List<string>();
             using (FileStream fs = File.Open(@".\Data\services.txt", FileMode.Open, FileAccess.Read))
             {
@@ -50,16 +52,14 @@ namespace RotorsLib.Helpers
 
         public static FileItem[] BuildFileItems()
         {
+            string msg = "building the file item list...";
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
             List<FileItem> fileItemsList = new List<FileItem>();
             // get source file list.
             List<string> sourceFullNames = GetFileListRecursively(Constants.SourceRootPath);
             sourceFullNames.Sort();
             // get destination file list.
             List<string> targetFiles = new List<string>();
-
-
-            //this is mock, once mock works, please uncomment the setences below.
-           // targetFiles.AddRange(GetFileListRecursively(Constants.System32EssentialsPath));
 
             try
             {
@@ -75,9 +75,8 @@ namespace RotorsLib.Helpers
             }
             catch (Exception e)
             {
-                string msg = string.Format("error building file items. {0}", e);
+                msg = string.Format("error building file items. {0}", e);
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
-                Logger.Error(msg);
             }
 
             targetFiles.Sort();

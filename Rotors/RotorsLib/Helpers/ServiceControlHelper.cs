@@ -12,9 +12,9 @@ namespace RotorsLib.Helpers
     {
         public static void ShutdownService(string service)
         {
-            Logger.Log("shutting down service begins: {0}", service);
+            string msg = string.Format("shutting down service begins: {0}", service);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
             string objPath = string.Format("Win32_Service.Name='{0}'", service);
-
             try
             {
                 ConnectionOptions connectionOptions = new ConnectionOptions();
@@ -32,23 +32,22 @@ namespace RotorsLib.Helpers
                         null, null);
 
                     uint returnValue = (uint)outParams["ReturnValue"];
-                    string msg = string.Format("shutting result for service {0} is {1}", service, returnValue);
+                    msg = string.Format("shutting result for service {0} is {1}", service, returnValue);
                     Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
-                    Logger.Log(msg);
                 }
             }
             catch (Exception ex)
             {
-                string msg = string.Format("error stopping service: {0}, {1}", service, ex);
+                msg = string.Format("error stopping service: {0}, {1}", service, ex);
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
-                Logger.Error(msg);
             }
-            Logger.Log("shutting down service ends: {0}", service);
+            msg = string.Format("shutting down service ends: {0}", service);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
         }
         public static void StartService(string service)
         {
-            Logger.Log("starting up service begins: {0}", service);
-
+            string msg = string.Format("starting up service begins: {0}", service);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
             string objPath = string.Format("Win32_Service.Name='{0}'", service);
             try
             {
@@ -67,18 +66,17 @@ namespace RotorsLib.Helpers
                         null, null);
                     uint returnValue = (uint)outParams["ReturnValue"];
 
-                    string msg = string.Format("starting up result for service {0} is {1}", service, returnValue);
+                    msg = string.Format("starting up result for service {0} is {1}", service, returnValue);
                     Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
-                    Logger.Log(msg);
                 }
             }
             catch (Exception ex)
             {
-                string msg = string.Format("error starting up service: {0}, {1}", service, ex);
+                msg = string.Format("error starting up service: {0}, {1}", service, ex);
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
-                Logger.Error(msg);
             }
-            Logger.Log("starting up service ends: {0}", service);
+            msg = string.Format("starting up service ends: {0}", service);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
         }
     }
 }

@@ -12,23 +12,31 @@ namespace RotorsLib.Helpers
         Warning = 1,
         Error = 2
     }
-    public static class Logger
+    public class Logger : IReportObserver
     {
-        public static LogLevel CurrentLogLevel
+        public void ReportStatus(string statusMsg, LogLevel logLevel = LogLevel.Information)
+        {
+            if (logLevel > LogLevel.Warning)
+            {
+                this.Error(statusMsg);
+            }
+            this.Log(statusMsg);
+        }
+        public LogLevel CurrentLogLevel
         {
             get
             {
                 return LogLevel.Warning;
             }
         }
-        public static void Log(string msg)
+        public void Log(string msg)
         {
             if (CurrentLogLevel <= LogLevel.Information)
             {
                 Console.WriteLine(msg);
             }
         }
-        public static void Log(string format, params object[] arg)
+        public void Log(string format, params object[] arg)
         {
             if (CurrentLogLevel <= LogLevel.Information)
             {
@@ -36,7 +44,7 @@ namespace RotorsLib.Helpers
             }
         }
 
-        public static void Error(string msg)
+        public void Error(string msg)
         {
             ConsoleColor defaultColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -44,7 +52,7 @@ namespace RotorsLib.Helpers
             Console.ForegroundColor = defaultColor;
         }
 
-        public static void Error(string format, params object[] arg)
+        public void Error(string format, params object[] arg)
         {
             ConsoleColor defaultColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;

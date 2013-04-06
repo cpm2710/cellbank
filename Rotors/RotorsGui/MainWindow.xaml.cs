@@ -28,6 +28,7 @@ namespace RotorsGui
         public MainWindow()
         {
             InitializeComponent();
+            Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(Singleton<Logger>.UniqueInstance);
             Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(this);
         }
 

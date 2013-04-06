@@ -25,7 +25,8 @@ namespace RotorsLib.Helpers
 
         public static void ReplaceFile(FileItem fileItem)
         {
-            Logger.Log("replacing file begins: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
+            string msg = string.Format("replacing file begins: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
             try
             {
                 if (!File.Exists(fileItem.DestinationFullName + ".bak"))
@@ -36,11 +37,12 @@ namespace RotorsLib.Helpers
             }
             catch (Exception e)
             {
-                string msg = string.Format("exception encounterred  when replacing file: {0}, exception:{1}", fileItem.DestinationFullName, e);
+                msg = string.Format("exception encounterred  when replacing file: {0}, exception:{1}", fileItem.DestinationFullName, e);
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
-                Logger.Error(msg);
             }
-            Logger.Log("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
+
+            msg = string.Format("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
         }
 
         [Flags]
@@ -128,7 +130,8 @@ namespace RotorsLib.Helpers
         /// <param name="fileItem"></param>
         public static void TakeOwnership(FileItem fileItem)
         {
-            Logger.Log("taking ownership of file begins: destination: {0} ", fileItem.DestinationFullName);
+            string msg = string.Format("taking ownership of file begins: destination: {0} ", fileItem.DestinationFullName);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);            
 
             string localFormatPath = @"C:" + fileItem.DestinationFullName.Substring(fileItem.DestinationFullName.IndexOf("c$", StringComparison.OrdinalIgnoreCase) + 2);
 
@@ -149,8 +152,10 @@ namespace RotorsLib.Helpers
 
                     ManagementBaseObject outParams = serviceObj.InvokeMethod("TakeOwnerShip", null, null);
                     uint returnValue = (uint)outParams["ReturnValue"];
-                    Logger.Log("take ownership for file: {0} result: {1}", localFormatPath, returnValue);
 
+                    msg = string.Format("take ownership for file: {0} result: {1}", localFormatPath, returnValue);
+                    Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);   
+                    
                     ManagementBaseObject inParams = serviceObj.GetMethodParameters("ChangeSecurityPermissions");
 
                     inParams["Option"] = 4;
@@ -158,17 +163,18 @@ namespace RotorsLib.Helpers
 
                     ManagementBaseObject outParamsOfChangingPermission = serviceObj.InvokeMethod("ChangeSecurityPermissions", inParams, null);
                     uint returnValueOfChangingPermission = (uint)outParamsOfChangingPermission["ReturnValue"];
-                    Logger.Log("changing permission for file: {0} result: {1}", localFormatPath, returnValueOfChangingPermission);
+
+                    msg = string.Format("changing permission for file: {0} result: {1}", localFormatPath, returnValueOfChangingPermission);
+                    Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
                 }
             }
             catch (Exception ex)
             {
-                string msg = string.Format("could not take ownership of file {0} , {1}", localFormatPath, ex);
+                msg = string.Format("could not take ownership of file {0} , {1}", localFormatPath, ex);
                 Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
-                Logger.Error(msg);
             }
-            Logger.Log("taking ownership of file ends: destination: {0}", localFormatPath);
+            msg = string.Format("taking ownership of file ends: destination: {0}", localFormatPath);
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
         }
-
     }
 }

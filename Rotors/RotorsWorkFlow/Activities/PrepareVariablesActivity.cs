@@ -6,6 +6,7 @@ using System.Activities;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using RotorsLib.Helpers;
+using RotorsLib;
 
 namespace RotorsWorkFlow.Activities
 {
@@ -18,7 +19,8 @@ namespace RotorsWorkFlow.Activities
         // and return the value from the Execute method.
         protected override void Execute(CodeActivityContext context)
         {
-            Logger.Log("Now We Are Executing PrepareVariablesActivity");
+            string msg =("Now We Are Executing PrepareVariablesActivity");
+            Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
             PropertyDescriptorCollection propertyDescriptorCol = context.DataContext.GetProperties();
             
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
