@@ -34,7 +34,7 @@ namespace RotorsLib.Helpers
 
                     uint returnValue = (uint)outParams["ReturnValue"];
                     msg = string.Format("shutting result for service {0} is {1}", service, returnValue);
-                    Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
+                    Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
                 }
             }
             catch (Exception ex)
