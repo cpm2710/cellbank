@@ -26,6 +26,6 @@
         <TextBlock Name="ActionStatus" HorizontalAlignment="Left" Margin="116,291,0,0" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Width="391" Height="20"/>
         <Label Content="Status: " HorizontalAlignment="Left" Margin="15,286,0,0" VerticalAlignment="Top"/>
         <Label Content="Error:" HorizontalAlignment="Left" Margin="15,326,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBlock Name="ErrorResultTextBlock" HorizontalAlignment="Left" Margin="116,326,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Height="199" Width="355"/>
+        <TextBlock Name="ErrorResultTextBlock" HorizontalAlignment="Left" Margin="116,326,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Height="199" Width="355"/>
     </Grid>
 </Window>

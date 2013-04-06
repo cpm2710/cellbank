@@ -76,7 +76,7 @@ namespace RotorsLib.Helpers
             catch (Exception e)
             {
                 string msg = string.Format("error building file items. {0}", e);
-                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                 Logger.Error(msg);
             }
 

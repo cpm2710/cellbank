@@ -33,14 +33,14 @@ namespace RotorsLib.Helpers
 
                     uint returnValue = (uint)outParams["ReturnValue"];
                     string msg = string.Format("shutting result for service {0} is {1}", service, returnValue);
-                    Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                    Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                     Logger.Log(msg);
                 }
             }
             catch (Exception ex)
             {
                 string msg = string.Format("error stopping service: {0}, {1}", service, ex);
-                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                 Logger.Error(msg);
             }
             Logger.Log("shutting down service ends: {0}", service);
@@ -75,7 +75,7 @@ namespace RotorsLib.Helpers
             catch (Exception ex)
             {
                 string msg = string.Format("error starting up service: {0}, {1}", service, ex);
-                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                 Logger.Error(msg);
             }
             Logger.Log("starting up service ends: {0}", service);

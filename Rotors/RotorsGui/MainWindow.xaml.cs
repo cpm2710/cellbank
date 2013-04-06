@@ -79,6 +79,11 @@ namespace RotorsGui
             this.Dispatcher.Invoke(() =>
             {
                 this.ActionStatus.Text = statusMsg;
+
+                if (logLevel > LogLevel.Information)
+                {
+                    this.ErrorResultTextBlock.Text += ("\n" + statusMsg);
+                }
             });
         }
     }

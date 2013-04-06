@@ -37,7 +37,7 @@ namespace RotorsLib.Helpers
             catch (Exception e)
             {
                 string msg = string.Format("exception encounterred  when replacing file: {0}, exception:{1}", fileItem.DestinationFullName, e);
-                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                 Logger.Error(msg);
             }
             Logger.Log("replacing file ends: source: {0} destination: {1}", fileItem.SourceFullName, fileItem.DestinationFullName);
@@ -164,7 +164,7 @@ namespace RotorsLib.Helpers
             catch (Exception ex)
             {
                 string msg = string.Format("could not take ownership of file {0} , {1}", localFormatPath, ex);
-                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg, LogLevel.Warning);
                 Logger.Error(msg);
             }
             Logger.Log("taking ownership of file ends: destination: {0}", localFormatPath);
