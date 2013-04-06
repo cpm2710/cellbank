@@ -51,6 +51,8 @@ namespace RotorsGui
             Constants.UserName = this.UserNameTextBox.Text;
             Constants.PassWord = this.PassWordTextBox.Text;
             Constants.SourceRootPath = this.BinaryHomeTextBox.Text;
+            Constants.GacEssentialsPath = string.Format(Constants.GacEssentialsPathFormat, Constants.MachineName);
+            Constants.System32EssentialsPath = string.Format(Constants.System32EssentialsPathFormat, Constants.MachineName);
 
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.WorkFlowEnded += UniqueInstance_WorkFlowEnded;
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();

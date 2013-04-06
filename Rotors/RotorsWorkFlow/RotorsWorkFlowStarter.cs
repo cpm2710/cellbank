@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RotorsLib.Exceptions;
+using System;
 using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +11,60 @@ namespace RotorsWorkFlow
     public class RotorsWorkFlowStarter
     {
         public event EventHandler WorkFlowEnded;
+
+        private bool running = false;
+
+        public bool Running
+        {
+            get { return running; }
+            private set { running = value; }
+        }
+        private object workFlowLock = new object();
+
         public void StartRotorsWorkFlow()
         {
-            RotorsWorkFlow workFlow = new RotorsWorkFlow();
-
-            WorkflowApplication wfa = new WorkflowApplication(workFlow);
-
-            wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((e) =>
+            lock (workFlowLock)
             {
-                Console.WriteLine(e.UnhandledException.ToString());
-
-                if (WorkFlowEnded != null)
+                if (running)
                 {
-                    WorkFlowEnded(this, null);
+                    throw new RotorsException("already one workflow is executing.");
                 }
-                return UnhandledExceptionAction.Terminate;
-            });
-            wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((e) =>
-            {
-                if (WorkFlowEnded != null)
+                else
                 {
-                    WorkFlowEnded(this, null);
-                }
-                Console.WriteLine("Completed" + e.ToString());
-            });
-            wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((e) =>
-            {
-                Console.WriteLine("Idle" + e.ToString());
-            });
+                    RotorsWorkFlow workFlow = new RotorsWorkFlow();
 
-            wfa.Run();
+                    running = true;
+                    WorkflowApplication wfa = new WorkflowApplication(workFlow);
+
+                    wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((e) =>
+                    {
+                        running = false;
+                        Console.WriteLine(e.UnhandledException.ToString());
+
+                        if (WorkFlowEnded != null)
+                        {
+                            WorkFlowEnded(this, null);
+                        }
+                        return UnhandledExceptionAction.Terminate;
+                    });
+                    wfa.Completed += new Action<WorkflowApplicationCompletedEventArgs>((e) =>
+                    {
+                        running = false;
+                        if (WorkFlowEnded != null)
+                        {
+                            WorkFlowEnded(this, null);
+                        }
+                        Console.WriteLine("Completed" + e.ToString());
+                    });
+                    wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((e) =>
+                    {
+                        Console.WriteLine("Idle" + e.ToString());
+                    });
+
+                    wfa.Run();
+                }
+            }
+
         }
     }
 }

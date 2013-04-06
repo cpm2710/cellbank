@@ -95,6 +95,16 @@ namespace RotorsLib.Helpers
             }
         }
 
+        public static string system32EssentialsPathFormat = @"\\{0}\c$\windows\system32\Essentials";
+        public static string System32EssentialsPathFormat
+        {
+            get { return system32EssentialsPathFormat; }
+            set
+            {
+                system32EssentialsPathFormat = value;
+            }
+        }
+
         public static string gacEssentialsPath = @"\\andess1server\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
 
         public static string GacEssentialsPath
@@ -103,6 +113,18 @@ namespace RotorsLib.Helpers
             set
             {
                 gacEssentialsPath = value;
+            }
+
+        }
+
+        public static string gacEssentialsPathFormat = @"\\{0}\c$\Windows\Microsoft.NET\assembly\GAC_MSIL";
+
+        public static string GacEssentialsPathFormat
+        {
+            get { return gacEssentialsPathFormat; }
+            set
+            {
+                gacEssentialsPathFormat = value;
             }
 
         }
