@@ -127,7 +127,6 @@ namespace RotorsLib.Helpers
             {
                 gacEssentialsPathFormat = value;
             }
-
         }
     }
 }

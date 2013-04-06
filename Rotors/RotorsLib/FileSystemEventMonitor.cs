@@ -1,5 +1,6 @@
 ﻿// author: andyliuliming@outlook.com
 using RotorsLib.Exceptions;
+using RotorsLib.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,13 +15,6 @@ namespace RotorsLib
     {
 
         private int defaultTimeOut = 60000;
-        private string fileSystemPath;
-
-        public string FileSystemPath
-        {
-            get { return fileSystemPath; }
-            set { fileSystemPath = value; }
-        }
 
         public event EventHandler Triggered;
 
@@ -44,21 +38,14 @@ namespace RotorsLib
                 }));
             }
         }
-        public FileSystemEventMonitor(string fileSystemPath)
-        {
-            this.fileSystemPath = fileSystemPath;
-            InitializeTimer();
-        }
+        
 
 
         public void StartMonitoring()
         {
-            if (string.IsNullOrEmpty(fileSystemPath))
-            {
-                throw new RotorsException("file system path is null or empty");
-            }
+           
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = fileSystemPath;
+            watcher.Path = Constants.SourceRootPath;
             /* Watch for changes in LastAccess and LastWrite times, and
                the renaming of files or directories. */
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite

@@ -40,6 +40,7 @@ namespace RotorsGui
         {
             if (string.Equals(this.StartMonitorButton.Content, StartMonitor))
             {
+                InitializeConstants();
                 Singleton<FileSystemEventMonitor>.UniqueInstance.FileSystemPath = (this.BinaryHomeTextBox.Text);
                 Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered -= monitor_Triggered;
                 Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered += monitor_Triggered;
@@ -59,16 +60,21 @@ namespace RotorsGui
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();
         }
 
-        private void ReplaceItButton_Click(object sender, RoutedEventArgs e)
+        private void InitializeConstants()
         {
-            this.ReplaceItButton.IsEnabled = false;
             Constants.MachineName = this.TargetMachineNameTextBox.Text;
             Constants.UserName = this.UserNameTextBox.Text;
             Constants.PassWord = this.PassWordTextBox.Text;
             Constants.SourceRootPath = this.BinaryHomeTextBox.Text;
             Constants.GacEssentialsPath = string.Format(Constants.GacEssentialsPathFormat, Constants.MachineName);
             Constants.System32EssentialsPath = string.Format(Constants.System32EssentialsPathFormat, Constants.MachineName);
+        }
 
+        private void ReplaceItButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.ReplaceItButton.IsEnabled = false;
+
+            InitializeConstants();
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.WorkFlowEnded += UniqueInstance_WorkFlowEnded;
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();
         }
