@@ -1,4 +1,6 @@
-﻿using System;
+﻿// author: andyliuliming@outlook.com
+
+using System;
 using System.Activities;
 using System.Collections.Generic;
 using System.Linq;

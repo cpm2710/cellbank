@@ -1,4 +1,5 @@
-﻿using RotorsLib.Exceptions;
+﻿// author: andyliuliming@outlook.com
+using RotorsLib.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;

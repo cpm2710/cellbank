@@ -1,4 +1,5 @@
-﻿using RotorsLib.Domain;
+﻿// author: andyliuliming@outlook.com
+using RotorsLib.Domain;
 using System;
 using System.Collections.Generic;
 using System.IO;

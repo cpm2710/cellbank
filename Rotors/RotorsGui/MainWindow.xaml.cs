@@ -1,4 +1,5 @@
-﻿using RotorsLib;
+﻿// author: andyliuliming@outlook.com
+using RotorsLib;
 using RotorsLib.Helpers;
 using RotorsWorkFlow;
 using System;
