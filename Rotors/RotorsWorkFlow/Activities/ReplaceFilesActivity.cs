@@ -5,7 +5,8 @@ using System.Text;
 using System.Activities;
 using System.ComponentModel;
 using System.Net;
-using RotorsWorkFlow.Helpers;
+using RotorsLib.Helpers;
+using RotorsLib.Domain;
 
 namespace RotorsWorkFlow.Activities
 {

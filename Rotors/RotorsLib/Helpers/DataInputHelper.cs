@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RotorsLib.Domain;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RotorsWorkFlow.Helpers
+namespace RotorsLib.Helpers
 {
     public static class DataInputHelper
     {
@@ -74,7 +75,9 @@ namespace RotorsWorkFlow.Helpers
             }
             catch (Exception e)
             {
-                Logger.Error("exception encounterred: {0}", e);
+                string msg = string.Format("error building file items. {0}", e);
+                Singleton<ReportMediator>.UniqueInstance.ReportStatus(msg);
+                Logger.Error(msg);
             }
 
             targetFiles.Sort();

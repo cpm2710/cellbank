@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RotorsLib.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace RotorsLib
 {
     public interface IReportObserver
     {
-        void ReportStatus(string statusMsg);
+        void ReportStatus(string statusMsg, LogLevel logLevel = LogLevel.Information);
     }
 }

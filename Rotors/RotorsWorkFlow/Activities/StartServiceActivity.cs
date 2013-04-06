@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Activities;
 using System.ComponentModel;
+using RotorsLib.Helpers;
 
 namespace RotorsWorkFlow.Activities
 {

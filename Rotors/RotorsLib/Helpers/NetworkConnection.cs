@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RotorsWorkFlow.Helpers
+namespace RotorsLib.Helpers
 {
     public class NetworkConnection : IDisposable
     {

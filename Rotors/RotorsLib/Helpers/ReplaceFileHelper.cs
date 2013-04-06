@@ -1,5 +1,5 @@
 ﻿using RotorsLib;
-using RotorsWorkFlow.Helpers;
+using RotorsLib.Domain;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RotorsWorkFlow
+namespace RotorsLib.Helpers
 {
     public static class ReplaceFileHelper
     {

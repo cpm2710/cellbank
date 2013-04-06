@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon=".\Images\Icon.png"
-        Title="Steal Binary Cat" Height="510.417" Width="588.541">
+        Title="Steal Binary Cat" Height="594.417" Width="574.541">
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.RenderTransform>
             <TransformGroup>
@@ -23,8 +23,9 @@
         <Label Content="Password:" HorizontalAlignment="Left" Margin="15,205,0,0" VerticalAlignment="Top"/>
         <TextBox Name="PassWordTextBox" HorizontalAlignment="Left" Height="23" Margin="116,207,0,0" TextWrapping="Wrap" Text="User@123" VerticalAlignment="Top" Width="355"/>
         <Button Name="ReplaceItButton" Content="ReplaceIt" HorizontalAlignment="Left" Margin="337,252,0,0" VerticalAlignment="Top" Width="134" Click="ReplaceItButton_Click" Height="25" />
-        <TextBlock Name="ActionStatus" HorizontalAlignment="Left" Margin="116,291,0,0" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Width="391" Height="158"/>
+        <TextBlock Name="ActionStatus" HorizontalAlignment="Left" Margin="116,291,0,0" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Width="391" Height="20"/>
         <Label Content="Status: " HorizontalAlignment="Left" Margin="15,286,0,0" VerticalAlignment="Top"/>
-
+        <Label Content="Error:" HorizontalAlignment="Left" Margin="15,326,0,0" VerticalAlignment="Top" Width="84"/>
+        <TextBlock Name="ErrorResultTextBlock" HorizontalAlignment="Left" Margin="116,326,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="N/A" VerticalAlignment="Top" Height="199" Width="355"/>
     </Grid>
 </Window>

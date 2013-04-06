@@ -1,4 +1,5 @@
 ﻿using RotorsLib;
+using RotorsLib.Helpers;
 using RotorsWorkFlow;
 using System;
 using System.Activities;
@@ -73,7 +74,7 @@ namespace RotorsGui
             }
         }
 
-        public void ReportStatus(string statusMsg)
+        public void ReportStatus(string statusMsg, LogLevel logLevel = LogLevel.Information)
         {
             this.Dispatcher.Invoke(() =>
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RotorsLib.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,11 @@ namespace RotorsLib
             ReportObservers.Add(observer);
         }
 
-        public void ReportStatus(string statusMsg)
+        public void ReportStatus(string statusMsg, LogLevel logLevel = LogLevel.Information)
         {
             foreach (IReportObserver reportObserver in ReportObservers)
             {
-                reportObserver.ReportStatus(statusMsg);
+                reportObserver.ReportStatus(statusMsg, logLevel);
             }
         }
     }
