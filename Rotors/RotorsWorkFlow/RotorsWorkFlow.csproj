@@ -7,7 +7,7 @@
     <ProjectGuid>{10150EF5-3A81-4584-8D68-F5C659AE8443}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RotorsWorkFlow</RootNamespace>
+    <RootNamespace>Rotors.RotorsWorkFlow</RootNamespace>
     <AssemblyName>RotorsWorkFlow</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

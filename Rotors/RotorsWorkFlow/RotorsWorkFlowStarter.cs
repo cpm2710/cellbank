@@ -1,5 +1,6 @@
 ﻿// author: andyliuliming@outlook.com
 using RotorsLib.Exceptions;
+using RotorsLib.Helpers;
 using System;
 using System.Activities;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace RotorsWorkFlow
         }
         private object workFlowLock = new object();
 
-        public void StartRotorsWorkFlow()
+        public void StartRotorsWorkFlow(List<string> sourceFileList)
         {
             lock (workFlowLock)
             {
@@ -35,7 +36,14 @@ namespace RotorsWorkFlow
                     RotorsWorkFlow workFlow = new RotorsWorkFlow();
 
                     running = true;
-                    WorkflowApplication wfa = new WorkflowApplication(workFlow);
+                    IDictionary<string, object> variables = new Dictionary<string, object>();
+                    if (sourceFileList != null)
+                    {
+                        variables = new Dictionary<string, object>();
+                        variables.Add(Constants.FileVariableName, sourceFileList.ToArray());
+                    }
+
+                    WorkflowApplication wfa = new WorkflowApplication(workFlow, variables);
 
                     wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((e) =>
                     {

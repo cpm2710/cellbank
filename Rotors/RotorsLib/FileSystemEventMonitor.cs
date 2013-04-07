@@ -11,15 +11,22 @@ using System.Threading.Tasks;
 
 namespace RotorsLib
 {
+
+    public class FilesChangedEventArgs : EventArgs
+    {
+        public List<string> FilesChanged { get; set; }
+    }
+
     public class FileSystemEventMonitor
     {
 
         private int defaultTimeOut = 60000;
 
-        public event EventHandler Triggered;
+        public event EventHandler<FilesChangedEventArgs> Triggered;
 
         private Timer timer = null;
-
+        private List<string> changedFiles = new List<string>();
+        private object lockForFileList = new object();
         public FileSystemEventMonitor()
         {
             InitializeTimer();
@@ -33,25 +40,37 @@ namespace RotorsLib
                 {
                     if (Triggered != null)
                     {
-                        Triggered(this, null);
+                        FilesChangedEventArgs args = new FilesChangedEventArgs();
+                        List<string> newList = new List<string>(changedFiles.Count);
+
+                        changedFiles.ForEach((item) =>
+                        {
+                            newList.Add(item);
+                        });
+                        changedFiles.Clear();
+                        args.FilesChanged = newList;
+                        Triggered(this, args);
                     }
                 }));
             }
         }
-        
+
 
 
         public void StartMonitoring()
         {
-           
             FileSystemWatcher watcher = new FileSystemWatcher();
             watcher.Path = Constants.SourceRootPath;
             /* Watch for changes in LastAccess and LastWrite times, and
                the renaming of files or directories. */
-            watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-               | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+            watcher.NotifyFilter = 
+                NotifyFilters.LastAccess|
+                NotifyFilters.LastWrite|
+                NotifyFilters.FileName|
+                NotifyFilters.DirectoryName|
+                NotifyFilters.Attributes;
             // Only watch text files.
-
+            watcher.IncludeSubdirectories = true;
             // Add event handlers.
             watcher.Changed += new FileSystemEventHandler(OnChanged);
             watcher.Created += new FileSystemEventHandler(OnChanged);
@@ -64,15 +83,19 @@ namespace RotorsLib
 
         public void StopMonitoring()
         {
-
+            timer.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
         }
 
-
+        
 
         // Define the event handlers. 
         private void OnChanged(object source, FileSystemEventArgs e)
         {
             Singleton<ReportMediator>.UniqueInstance.ReportStatus("File changes: " + e.FullPath + " ");
+            if (!changedFiles.Contains(e.FullPath) && e.FullPath.EndsWith(".dll") || e.FullPath.EndsWith(".exe"))
+            {
+                changedFiles.Add(e.FullPath);
+            }
             timer.Change(defaultTimeOut, System.Threading.Timeout.Infinite);
         }
     }

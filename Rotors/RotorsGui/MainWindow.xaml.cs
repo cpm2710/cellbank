@@ -54,9 +54,9 @@ namespace RotorsGui
             }
         }
 
-        void monitor_Triggered(object sender, EventArgs e)
+        void monitor_Triggered(object sender, FilesChangedEventArgs e)
         {
-            Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();
+            Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow(e.FilesChanged);
         }
 
         private void InitializeConstants()
@@ -73,7 +73,7 @@ namespace RotorsGui
 
             InitializeConstants();
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.WorkFlowEnded += UniqueInstance_WorkFlowEnded;
-            Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow();
+            Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow(null);
         }
 
         void UniqueInstance_WorkFlowEnded(object sender, EventArgs e)
