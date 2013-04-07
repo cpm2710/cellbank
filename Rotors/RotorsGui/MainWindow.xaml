@@ -15,10 +15,10 @@
         <TextBox Name="BinaryHomeTextBox" HorizontalAlignment="Left" Height="23" Margin="116,68,0,0" TextWrapping="Wrap" Text="D:\WorkSpace\BinaryRootSourcePath" VerticalAlignment="Top" Width="412" FontFamily="Segoe Script" FontWeight="Bold"/>
         <Label Content="BinaryHome:" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" FontFamily="Segoe Script" FontWeight="Bold"/>
         <Label Content="TargetMachine:" HorizontalAlignment="Left" Margin="15,114,0,0" VerticalAlignment="Top" FontFamily="Segoe Script" FontWeight="Bold"/>
-        <TextBox Name="TargetMachineNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,114,0,0" TextWrapping="Wrap" Text="andess1server" VerticalAlignment="Top" Width="412" FontFamily="Segoe Script" FontWeight="Bold"/>
+        <TextBox Name="TargetMachineNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,114,0,0" TextWrapping="Wrap" Text="andess1serverxx" VerticalAlignment="Top" Width="412" FontFamily="Segoe Script" FontWeight="Bold"/>
         <Button Name="BrowseBinaryHomeButton" Content="Browse" HorizontalAlignment="Left" Margin="549,65,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="BrowseBinaryHomeButton_Click" FontFamily="Segoe Script" />
         <Label Content="UserName:" HorizontalAlignment="Left" Margin="15,161,0,0" VerticalAlignment="Top" FontFamily="Segoe Script" FontWeight="Bold"/>
-        <TextBox Name="UserNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,162,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Width="412" FontFamily="Segoe Script" FontWeight="Bold"/>
+        <TextBox Name="UserNameTextBox" HorizontalAlignment="Left" Height="23" Margin="116,162,0,0" TextWrapping="Wrap" Text="aurorauser" VerticalAlignment="Top" Width="412" FontFamily="Segoe Script" FontWeight="Bold"/>
         <Button Name="StartMonitorButton" Content="Start Monitor" HorizontalAlignment="Left" Margin="116,252,0,0" VerticalAlignment="Top" Width="178" Click="StartMonitorButton_Click" Height="25" FontFamily="Segoe Script" FontWeight="Bold"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="15,205,0,0" VerticalAlignment="Top" FontFamily="Segoe Script" FontWeight="Bold"/>
         <TextBox Name="PassWordTextBox" HorizontalAlignment="Left" Height="23" Margin="116,207,0,0" TextWrapping="Wrap" Text="User@123" VerticalAlignment="Top" Width="412" FontFamily="Segoe Script" FontWeight="Bold"/>
