@@ -53,8 +53,18 @@
     <Compile Include="Helpers\ServiceControlHelper.cs" />
     <Compile Include="IReportStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registry\enums.cs" />
+    <Compile Include="Registry\RegistryConnection.cs" />
+    <Compile Include="Registry\RegistryLocal.cs" />
+    <Compile Include="Registry\RegistryMethod.cs" />
+    <Compile Include="Registry\RegistryObject.cs" />
+    <Compile Include="Registry\RegistryRemote.cs" />
+    <Compile Include="Registry\StrongNameHelper.cs" />
     <Compile Include="ReportMediator.cs" />
     <Compile Include="SingletonTemplate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Registry\disablestrongname.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
