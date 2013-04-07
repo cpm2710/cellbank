@@ -11,7 +11,7 @@ namespace RotorsLib.Registry
     {
         public static void DisableStrongName()
         {
-            RotorsLib.Wmi.Registry.RegistryRemote remote = new Wmi.Registry.RegistryRemote(Constants.UserName, Constants.PassWord, Constants.MachineName);
+            RotorsLib.Wmi.Registry.RegistryRemote remote = new Wmi.Registry.RegistryRemote(Singleton<Constants>.UniqueInstance.UserName, Singleton<Constants>.UniqueInstance.PassWord, Singleton<Constants>.UniqueInstance.MachineName);
 
             remote.DeleteValue(Wmi.Registry.baseKey.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\StrongName\Verification\*,31bf3856ad364e35", "TestPublicKey");
             remote.DeleteKey(Wmi.Registry.baseKey.HKEY_LOCAL_MACHINE, @"SOFTWARE\Microsoft\StrongName\Verification\*,31bf3856ad364e35");

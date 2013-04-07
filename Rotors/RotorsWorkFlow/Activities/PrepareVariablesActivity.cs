@@ -26,12 +26,12 @@ namespace RotorsWorkFlow.Activities
             
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
-                if (string.Equals(pd.Name, Constants.ServiceVariableName))
+                if (string.Equals(pd.Name, Singleton<Constants>.UniqueInstance.ServiceVariableName))
                 {
                     pd.SetValue(context.DataContext, DataInputHelper.BuildServiceNames());
                 }
 
-                if (string.Equals(pd.Name, Constants.FileVariableName))
+                if (string.Equals(pd.Name, Singleton<Constants>.UniqueInstance.FileVariableName))
                 {
                     object v = pd.GetValue(context.DataContext);
                     if (v == null || ((string[])v).Length == 0)

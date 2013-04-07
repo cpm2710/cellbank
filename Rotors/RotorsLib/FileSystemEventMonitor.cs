@@ -60,7 +60,7 @@ namespace RotorsLib
         public void StartMonitoring()
         {
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = Constants.SourceRootPath;
+            watcher.Path = Singleton<Constants>.UniqueInstance.SourceRootPath;
             /* Watch for changes in LastAccess and LastWrite times, and
                the renaming of files or directories. */
             watcher.NotifyFilter = 

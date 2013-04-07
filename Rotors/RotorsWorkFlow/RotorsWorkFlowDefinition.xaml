@@ -1,8 +1,6 @@
 ﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="RotorsWorkFlow.RotorsWorkFlowDefinition" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="RotorsWorkFlow.RotorsWorkFlow_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
- xmlns:local="clr-namespace:RotorsWorkFlow.Activities"
- xmlns:local1="clr-namespace:Rotors.RotorsWorkFlow.Activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:rd="clr-namespace:RotorsLib.Domain;assembly=RotorsLib"
  xmlns:s="clr-namespace:System;assembly=mscorlib"
@@ -37,42 +35,42 @@
     <StateMachine.InitialState>
       <State x:Name="__ReferenceID0" DisplayName="Prepare Data" sap2010:WorkflowViewState.IdRef="State_1">
         <State.Entry>
-          <local:PrepareVariablesActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="PrepareVariablesActivity_1" />
+          <local:PrepareVariablesActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="PrepareVariablesActivity_1" xmlns:local="clr-namespace:RotorsWorkFlow.Activities" xmlns:local1="clr-namespace:Rotors.RotorsWorkFlow.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" />
         </State.Entry>
         <State.Transitions>
           <Transition DisplayName="T1" sap2010:WorkflowViewState.IdRef="Transition_1">
             <Transition.To>
               <State x:Name="__ReferenceID1" DisplayName="Stop Services" sap2010:WorkflowViewState.IdRef="State_2">
                 <State.Entry>
-                  <local:StopServiceActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="StopServiceActivity_1" />
+                  <local:StopServiceActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="StopServiceActivity_1" xmlns:local="clr-namespace:RotorsWorkFlow.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" />
                 </State.Entry>
                 <State.Transitions>
                   <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_2">
                     <Transition.To>
                       <State x:Name="__ReferenceID5" DisplayName="Take Ownership" sap2010:WorkflowViewState.IdRef="State_6">
                         <State.Entry>
-                          <local:TakeOwnershipActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="TakeOwnershipActivity_1" />
+                          <local:TakeOwnershipActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="TakeOwnershipActivity_1" xmlns:local="clr-namespace:RotorsWorkFlow.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" />
                         </State.Entry>
                         <State.Transitions>
                           <Transition DisplayName="T5" sap2010:WorkflowViewState.IdRef="Transition_5">
                             <Transition.To>
                               <State x:Name="__ReferenceID2" DisplayName="Replace Files" sap2010:WorkflowViewState.IdRef="State_3">
                                 <State.Entry>
-                                  <local:ReplaceFilesActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="ReplaceFilesActivity_1" />
+                                  <local:ReplaceFilesActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="ReplaceFilesActivity_1" xmlns:local="clr-namespace:RotorsWorkFlow.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" />
                                 </State.Entry>
                                 <State.Transitions>
                                   <Transition DisplayName="T3" sap2010:WorkflowViewState.IdRef="Transition_7">
                                     <Transition.To>
                                       <State x:Name="__ReferenceID6" DisplayName="Disable StrongName" sap2010:WorkflowViewState.IdRef="State_7">
                                         <State.Entry>
-                                          <local1:DisableStrongNameActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="DisableStrongNameActivity_1" />
+                                          <local1:DisableStrongNameActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="DisableStrongNameActivity_1" xmlns:local1="clr-namespace:Rotors.RotorsWorkFlow.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" />
                                         </State.Entry>
                                         <State.Transitions>
-                                          <Transition DisplayName="T6" sap2010:WorkflowViewState.IdRef="Transition_6">
+                                          <Transition DisplayName="T7">
                                             <Transition.To>
                                               <State x:Name="__ReferenceID3" DisplayName="Start Services" sap2010:WorkflowViewState.IdRef="State_4">
                                                 <State.Entry>
-                                                  <local:StartServiceActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="StartServiceActivity_1" />
+                                                  <local:StartServiceActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="StartServiceActivity_1" xmlns:local="clr-namespace:RotorsWorkFlow.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" />
                                                 </State.Entry>
                                                 <State.Transitions>
                                                   <Transition DisplayName="T4" sap2010:WorkflowViewState.IdRef="Transition_4">
@@ -83,6 +81,7 @@
                                                 </State.Transitions>
                                               </State>
                                             </Transition.To>
+                                            <sap2010:WorkflowViewState.IdRef>Transition_8</sap2010:WorkflowViewState.IdRef>
                                           </Transition>
                                         </State.Transitions>
                                       </State>
@@ -114,7 +113,7 @@
       <Variable x:TypeArguments="s:String[]" Name="services" />
       <Variable x:TypeArguments="rd:FileItem[]" Name="files" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dz5EOlxhbmR5em9uZVxjZWxsYmFua1xSb3RvcnNcUm90b3JzV29ya0Zsb3dcUm90b3JzV29ya0Zsb3cueGFtbA4kA3YSAgEBJgdoDwIBGC0PZBcCARQ7H1wnAgEQSS9UNwIBDFA3UK0BAgEKNBdgHwIBBkInWC8CAQIoCyh6AgEbLxMveAIBFz0jPYoBAgETSzNLmgECAQ82GzaEAQIBCUQrRJ0BAgEF</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1NEOlxXb3JrU3BhY2VcTWljcm9zb2Z0XGNlbGxiYW5rXFJvdG9yc1xSb3RvcnNXb3JrRmxvd1xSb3RvcnNXb3JrRmxvd0RlZmluaXRpb24ueGFtbAgiA3USAgEBJAdnDwIBGCsPYxcCARQ5H1snAgEQRy9SNwIBDE43Tq0BAgEKMhdfHwIBBkAnVy8CAQI=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -124,28 +123,30 @@
       <sap2010:ViewStateData Id="ReplaceFilesActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="DisableStrongNameActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="StartServiceActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="114,61">
+      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="175,84">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">23,409.5</av:Point>
-            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <av:Point x:Key="ShapeLocation">33,599.5</av:Point>
+            <av:Size x:Key="ShapeSize">175,84</av:Size>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Double x:Key="StateContainerWidth">161</x:Double>
+            <x:Double x:Key="StateContainerHeight">48</x:Double>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Transition_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:PointCollection x:Key="ConnectorLocation">293,485.85 263,485.85 263,430.85 137,430.85</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">293,638.35 263,638.35 263,645.7 208,645.7</av:PointCollection>
             <x:Int32 x:Key="SrcConnectionPointIndex">33</x:Int32>
-            <x:Int32 x:Key="DestConnectionPointIndex">24</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">40</x:Int32>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="194,83">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">293,448.5</av:Point>
+            <av:Point x:Key="ShapeLocation">293,601</av:Point>
             <av:Size x:Key="ShapeSize">194,83</av:Size>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
             <x:Double x:Key="StateContainerWidth">180</x:Double>
@@ -153,30 +154,30 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_6">
+      <sap2010:ViewStateData Id="Transition_8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:PointCollection x:Key="ConnectorLocation">186,364.5 186,418.5 399.7,418.5 399.7,448.5</av:PointCollection>
-            <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
-            <x:Int32 x:Key="DestConnectionPointIndex">42</x:Int32>
+            <av:PointCollection x:Key="ConnectorLocation">338.85,535.5 338.85,565.5 370.6,565.5 370.6,601</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">27</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">30</x:Int32>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_7" sap:VirtualizedContainerService.HintSize="326,472">
+      <sap2010:ViewStateData Id="State_7" sap:VirtualizedContainerService.HintSize="201,95">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">120,262.5</av:Point>
-            <av:Size x:Key="ShapeSize">132,102</av:Size>
+            <av:Point x:Key="ShapeLocation">268.5,440.5</av:Point>
+            <av:Size x:Key="ShapeSize">201,95</av:Size>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            <x:Double x:Key="StateContainerWidth">118</x:Double>
-            <x:Double x:Key="StateContainerHeight">66.04000000000002</x:Double>
+            <x:Double x:Key="StateContainerWidth">187</x:Double>
+            <x:Double x:Key="StateContainerHeight">59</x:Double>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Transition_7">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:PointCollection x:Key="ConnectorLocation">370.25,411.5 370.25,441.5 263,441.5 263,232.5 199.2,232.5 199.2,262.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">360.25,401.5 360.25,431.5 389.1,431.5 389.1,440.5</av:PointCollection>
             <x:Int32 x:Key="SrcConnectionPointIndex">35</x:Int32>
             <x:Int32 x:Key="DestConnectionPointIndex">46</x:Int32>
           </scg:Dictionary>
@@ -185,7 +186,7 @@
       <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="195,83">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">282.5,328.5</av:Point>
+            <av:Point x:Key="ShapeLocation">272.5,318.5</av:Point>
             <av:Size x:Key="ShapeSize">195,83</av:Size>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
             <x:Double x:Key="StateContainerWidth">181</x:Double>
@@ -196,7 +197,7 @@
       <sap2010:ViewStateData Id="Transition_5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:PointCollection x:Key="ConnectorLocation">360.6,284.5 360.6,314.5 389.75,314.5 389.75,328.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">360.6,284.5 360.6,314.5 379.75,314.5 379.75,318.5</av:PointCollection>
             <x:Int32 x:Key="SrcConnectionPointIndex">27</x:Int32>
             <x:Int32 x:Key="DestConnectionPointIndex">42</x:Int32>
           </scg:Dictionary>
@@ -253,18 +254,18 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="StateMachine_1" sap:VirtualizedContainerService.HintSize="614,636">
+      <sap2010:ViewStateData Id="StateMachine_1" sap:VirtualizedContainerService.HintSize="700,777">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">10,2.5</av:Point>
-            <x:Double x:Key="StateContainerWidth">600</x:Double>
-            <x:Double x:Key="StateContainerHeight">600</x:Double>
+            <x:Double x:Key="StateContainerWidth">686.5</x:Double>
+            <x:Double x:Key="StateContainerHeight">741</x:Double>
             <av:PointCollection x:Key="ConnectorLocation">70,17.5 100,17.5 100,-14 380.6,-14 380.6,16</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="RotorsWorkFlow.RotorsWorkFlow_1" sap:VirtualizedContainerService.HintSize="654,716" />
+      <sap2010:ViewStateData Id="RotorsWorkFlow.RotorsWorkFlow_1" sap:VirtualizedContainerService.HintSize="740,857" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

@@ -21,7 +21,7 @@ namespace RotorsLib.Helpers
         /// <param name="destinationFullName"></param>
         private static string ConstructAdministrativeDestination(string destinationFullName)
         {
-            return string.Format(@"\\{0}\{1}", Constants.MachineName, destinationFullName.Replace(":", "$"));
+            return string.Format(@"\\{0}\{1}", Singleton<Constants>.UniqueInstance.MachineName, destinationFullName.Replace(":", "$"));
         }
 
         public static void ReplaceFile(FileItem fileItem)
@@ -141,12 +141,12 @@ namespace RotorsLib.Helpers
             ConnectionOptions connectionOptions = new ConnectionOptions();
             connectionOptions.Authentication = AuthenticationLevel.Packet;
             connectionOptions.EnablePrivileges = true;
-            connectionOptions.Username = Constants.UserName;
-            connectionOptions.Password = Constants.PassWord;
+            connectionOptions.Username = Singleton<Constants>.UniqueInstance.UserName;
+            connectionOptions.Password = Singleton<Constants>.UniqueInstance.PassWord;
             connectionOptions.Impersonation = ImpersonationLevel.Impersonate;
             try
             {
-                ManagementScope scope = new ManagementScope(string.Format(@"\\{0}\root\cimv2", Constants.MachineName), connectionOptions);
+                ManagementScope scope = new ManagementScope(string.Format(@"\\{0}\root\cimv2", Singleton<Constants>.UniqueInstance.MachineName), connectionOptions);
                 scope.Connect();
                 using (ManagementObject serviceObj = new ManagementObject(scope, new ManagementPath(objPath), null))
                 {

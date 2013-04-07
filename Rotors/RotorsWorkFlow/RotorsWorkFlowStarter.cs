@@ -1,4 +1,5 @@
-﻿// author: andyliuliming@outlook.com
+﻿using RotorsLib;
+// author: andyliuliming@outlook.com
 using RotorsLib.Exceptions;
 using RotorsLib.Helpers;
 using System;
@@ -40,7 +41,7 @@ namespace RotorsWorkFlow
                     if (sourceFileList != null)
                     {
                         variables = new Dictionary<string, object>();
-                        variables.Add(Constants.FileVariableName, sourceFileList.ToArray());
+                        variables.Add(Singleton<Constants>.UniqueInstance.FileVariableName, sourceFileList.ToArray());
                     }
 
                     WorkflowApplication wfa = new WorkflowApplication(workFlow, variables);

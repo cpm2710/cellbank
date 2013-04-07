@@ -6,6 +6,7 @@ using System.Text;
 using System.Activities;
 using System.ComponentModel;
 using RotorsLib.Helpers;
+using RotorsLib;
 
 namespace RotorsWorkFlow.Activities
 {
@@ -23,7 +24,7 @@ namespace RotorsWorkFlow.Activities
 
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
-                if (string.Equals(pd.Name, Constants.ServiceVariableName))
+                if (string.Equals(pd.Name, Singleton<Constants>.UniqueInstance.ServiceVariableName))
                 {
                     string[] services = (string[])pd.GetValue(context.DataContext);
                     foreach (string service in services)

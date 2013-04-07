@@ -7,6 +7,7 @@ using System.Activities;
 using System.ComponentModel;
 using RotorsLib.Helpers;
 using RotorsLib.Domain;
+using RotorsLib;
 
 namespace RotorsWorkFlow.Activities
 {
@@ -24,7 +25,7 @@ namespace RotorsWorkFlow.Activities
 
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
-                if (string.Equals(pd.Name, Constants.FileVariableName))
+                if (string.Equals(pd.Name, Singleton<Constants>.UniqueInstance.FileVariableName))
                 {
                     FileItem[] files = (FileItem[])pd.GetValue(context.DataContext);
                     foreach (FileItem file in files)

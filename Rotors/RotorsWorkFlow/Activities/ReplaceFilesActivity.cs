@@ -26,14 +26,14 @@ namespace RotorsWorkFlow.Activities
 
             foreach (PropertyDescriptor pd in propertyDescriptorCol)
             {
-                if (string.Equals(pd.Name, Constants.FileVariableName))
+                if (string.Equals(pd.Name, Singleton<Constants>.UniqueInstance.FileVariableName))
                 {
                     try
                     {
-                        NetworkCredential networkCredential = new NetworkCredential(Constants.UserName, Constants.PassWord, Constants.Domain);
+                        NetworkCredential networkCredential = new NetworkCredential(Singleton<Constants>.UniqueInstance.UserName, Singleton<Constants>.UniqueInstance.PassWord, Singleton<Constants>.UniqueInstance.Domain);
 
-                        string sharePath = string.Format(@"\\{0}\c$", Constants.MachineName);
-                            //Constants.GacEssentialsPath.Substring(0, Constants.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
+                        string sharePath = string.Format(@"\\{0}\c$", Singleton<Constants>.UniqueInstance.MachineName);
+                            //Singleton<Constants>.UniqueInstance.GacEssentialsPath.Substring(0, Singleton<Constants>.UniqueInstance.GacEssentialsPath.IndexOf(@"c$\Windows") + @"c$\Windows".Length);
 
                         using (NetworkConnection nc = new NetworkConnection(sharePath, networkCredential))
                         {

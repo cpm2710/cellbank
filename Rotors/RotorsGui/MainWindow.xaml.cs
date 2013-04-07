@@ -61,10 +61,10 @@ namespace RotorsGui
 
         private void InitializeConstants()
         {
-            Constants.MachineName = this.TargetMachineNameTextBox.Text;
-            Constants.UserName = this.UserNameTextBox.Text;
-            Constants.PassWord = this.PassWordTextBox.Text;
-            Constants.SourceRootPath = this.BinaryHomeTextBox.Text;
+            Singleton<Constants>.UniqueInstance.MachineName = this.TargetMachineNameTextBox.Text;
+            Singleton<Constants>.UniqueInstance.UserName = this.UserNameTextBox.Text;
+            Singleton<Constants>.UniqueInstance.PassWord = this.PassWordTextBox.Text;
+            Singleton<Constants>.UniqueInstance.SourceRootPath = this.BinaryHomeTextBox.Text;
         }
 
         private void ReplaceItButton_Click(object sender, RoutedEventArgs e)
