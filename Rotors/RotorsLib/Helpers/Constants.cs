@@ -64,7 +64,7 @@ namespace RotorsLib.Helpers
 
         }
 
-        public static string domain = "andess1.local";
+        public static string domain = "";
         public static string Domain
         {
             get { return domain; }

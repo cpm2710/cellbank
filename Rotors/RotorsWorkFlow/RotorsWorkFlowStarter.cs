@@ -33,7 +33,7 @@ namespace RotorsWorkFlow
                 }
                 else
                 {
-                    RotorsWorkFlow workFlow = new RotorsWorkFlow();
+                    RotorsWorkFlowDefinition workFlow = new RotorsWorkFlowDefinition();
 
                     running = true;
                     IDictionary<string, object> variables = new Dictionary<string, object>();

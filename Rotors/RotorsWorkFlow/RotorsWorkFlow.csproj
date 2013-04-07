@@ -56,7 +56,7 @@
     <Compile Include="RotorsWorkFlowStarter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="RotorsWorkFlow.xaml">
+    <XamlAppDef Include="RotorsWorkFlowDefinition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>

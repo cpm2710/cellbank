@@ -1,5 +1,6 @@
 ﻿// author: andyliuliming@outlook.com
 
+using RotorsWorkFlow;
 using System;
 using System.Activities;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Rotors
     {
         static void Main(string[] args)
         {
-            RotorsWorkFlow workFlow = new RotorsWorkFlow();
+            RotorsWorkFlowDefinition workFlow = new RotorsWorkFlowDefinition();
             
             WorkflowApplication wfa = new WorkflowApplication(workFlow);
 
