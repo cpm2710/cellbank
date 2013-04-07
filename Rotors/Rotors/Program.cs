@@ -13,7 +13,7 @@ namespace Rotors
     {
         static void Main(string[] args)
         {
-            RotorsWorkFlow.RotorsWorkFlow workFlow = new RotorsWorkFlow.RotorsWorkFlow();
+            RotorsWorkFlow workFlow = new RotorsWorkFlow();
             
             WorkflowApplication wfa = new WorkflowApplication(workFlow);
 
