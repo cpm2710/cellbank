@@ -1,0 +1,4 @@
+﻿reg add HKLM\Software\Microsoft\StrongName\Verification\*,31BF3856AD364E35 /ve /f
+reg delete HKLM\Software\Microsoft\StrongName\Verification\*,31BF3856AD364E35 /va /f
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\StrongName\Verification\*,31BF3856AD364E35 /ve /f
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\StrongName\Verification\*,31BF3856AD364E35 /va /f
