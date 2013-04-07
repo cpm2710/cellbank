@@ -5,6 +5,7 @@ using RotorsWorkFlow;
 using System;
 using System.Activities;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,15 +33,19 @@ namespace RotorsGui
             this.StartMonitorButton.Content = StartMonitor;
             Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(Singleton<Logger>.UniqueInstance);
             Singleton<ReportMediator>.UniqueInstance.RegisterReportObserver(this);
+
+            ConfigHelper.LoadConfig();
+            SyncConstantsToUI();
         }
 
         private const string StopMonitor = "Stop Monitor";
         private const string StartMonitor = "Start Monitoe";
         private void StartMonitorButton_Click(object sender, RoutedEventArgs e)
         {
+            SyncConstantsFromUI();
+            ConfigHelper.SaveConfig();
             if (string.Equals(this.StartMonitorButton.Content, StartMonitor))
             {
-                InitializeConstants();
                 Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered -= monitor_Triggered;
                 Singleton<FileSystemEventMonitor>.UniqueInstance.Triggered += monitor_Triggered;
                 Singleton<FileSystemEventMonitor>.UniqueInstance.StartMonitoring();
@@ -59,7 +64,7 @@ namespace RotorsGui
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow(e.FilesChanged);
         }
 
-        private void InitializeConstants()
+        private void SyncConstantsFromUI()
         {
             Singleton<Constants>.UniqueInstance.MachineName = this.TargetMachineNameTextBox.Text;
             Singleton<Constants>.UniqueInstance.UserName = this.UserNameTextBox.Text;
@@ -67,11 +72,22 @@ namespace RotorsGui
             Singleton<Constants>.UniqueInstance.SourceRootPath = this.BinaryHomeTextBox.Text;
         }
 
+        private void SyncConstantsToUI()
+        {
+            this.TargetMachineNameTextBox.Text = Singleton<Constants>.UniqueInstance.MachineName;
+            this.UserNameTextBox.Text = Singleton<Constants>.UniqueInstance.UserName;
+            this.PassWordTextBox.Text = Singleton<Constants>.UniqueInstance.PassWord;
+            this.BinaryHomeTextBox.Text = Singleton<Constants>.UniqueInstance.SourceRootPath;
+        }
+
         private void ReplaceItButton_Click(object sender, RoutedEventArgs e)
         {
+            SyncConstantsFromUI();
+            ConfigHelper.SaveConfig();
+
             this.ReplaceItButton.IsEnabled = false;
 
-            InitializeConstants();
+            SyncConstantsFromUI();
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.WorkFlowEnded += UniqueInstance_WorkFlowEnded;
             Singleton<RotorsWorkFlowStarter>.UniqueInstance.StartRotorsWorkFlow(null);
         }
@@ -88,6 +104,10 @@ namespace RotorsGui
         private void BrowseBinaryHomeButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new FolderBrowserDialog();
+            if (Directory.Exists(Singleton<Constants>.UniqueInstance.SourceRootPath))
+            {
+                dialog.SelectedPath = Singleton<Constants>.UniqueInstance.SourceRootPath;
+            } 
             DialogResult result = dialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {

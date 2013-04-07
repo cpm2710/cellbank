@@ -46,6 +46,7 @@
     <Compile Include="Exceptions\RotorsException.cs" />
     <Compile Include="FileSystemEventMonitor.cs" />
     <Compile Include="Helpers\AssemblyMatcher.cs" />
+    <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\DataInputHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />

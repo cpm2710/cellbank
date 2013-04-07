@@ -29,7 +29,6 @@ namespace RotorsLib.Helpers
             {
                 fileVariableName = value;
             }
-
         }
 
         private string userName = @"a";
@@ -83,6 +82,17 @@ namespace RotorsLib.Helpers
             {
                 sourceRootPath = value;
             }
-        }        
+        }
+
+        public void CopyFrom(Constants constants)
+        {
+            this.domain = constants.domain;
+            this.fileVariableName = constants.fileVariableName;
+            this.machineName = constants.machineName;
+            this.passWord = constants.passWord;
+            this.sourceRootPath = constants.sourceRootPath;
+            this.userName = constants.userName;
+            this.serviceVariableName = constants.serviceVariableName;
+        }
     }
 }
