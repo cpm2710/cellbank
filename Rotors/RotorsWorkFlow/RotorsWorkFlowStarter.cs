@@ -49,7 +49,7 @@ namespace RotorsWorkFlow
                     wfa.OnUnhandledException += new Func<WorkflowApplicationUnhandledExceptionEventArgs, UnhandledExceptionAction>((e) =>
                     {
                         running = false;
-                        Console.WriteLine(e.UnhandledException.ToString());
+                        Singleton<ReportMediator>.UniqueInstance.ReportStatus(e.UnhandledException.ToString());
 
                         if (WorkFlowEnded != null)
                         {
@@ -64,7 +64,7 @@ namespace RotorsWorkFlow
                         {
                             WorkFlowEnded(this, null);
                         }
-                        Console.WriteLine("Completed" + e.ToString());
+                        Singleton<ReportMediator>.UniqueInstance.ReportStatus("Completed!");
                     });
                     wfa.Idle += new Action<WorkflowApplicationIdleEventArgs>((e) =>
                     {
