@@ -16,14 +16,41 @@ namespace Rotors
         [STAThread]
         static void Main(string[] args)
         {
+            if (args.Length == 0)
+            {
+                App app = new App();
 
+                app.MainWindow = new MainWindow();
+                app.MainWindow.Show();
+                app.Run();
+            }
+            else
+            {
+                // now we came into command line mode.
+                if (args[0] == "/?" || args[0] == "/h")
+                {
 
-            App app = new App();
+                }
+            }
+        }
 
-            app.MainWindow = new MainWindow();
-            app.MainWindow.Show();
-            app.Run();
-            
+        static void ParseParameter(string[] args)
+        {
+            for (int i = 0; i < args.Length; i++)
+            {
+                switch (args[i])
+                {
+                    case "":
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        static void PrintHelp()
+        {
+            Console.WriteLine("");
         }
     }
 }
