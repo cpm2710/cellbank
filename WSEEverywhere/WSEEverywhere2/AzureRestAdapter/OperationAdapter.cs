@@ -41,9 +41,9 @@ namespace AzureRestAdapter
         public string Message { get; set; }
     }
 
-    public class OperationHelper : RequestInvoker
+    public class OperationAdapter : RequestInvoker
     {
-        public OperationHelper(string publishSettings)
+        public OperationAdapter(string publishSettings)
             : base(publishSettings)
         {
 

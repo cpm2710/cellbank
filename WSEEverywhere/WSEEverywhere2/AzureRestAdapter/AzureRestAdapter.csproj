@@ -44,12 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureRestAdapterConstants.cs" />
-    <Compile Include="CertificationHelper.cs" />
-    <Compile Include="OperationHelper.cs" />
+    <Compile Include="util\CertificationHelper.cs" />
+    <Compile Include="OperationAdapter.cs" />
     <Compile Include="RequestInvoker.cs" />
     <Compile Include="StorageAccountAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtensions.cs" />
+    <Compile Include="util\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\Windows Azure MSDN - Visual Studio Ultimate-5-28-2013-credentials.publishsettings" />
