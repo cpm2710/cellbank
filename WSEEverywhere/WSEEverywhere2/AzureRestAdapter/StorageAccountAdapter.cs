@@ -12,37 +12,7 @@ using System.Xml.Linq;
 
 namespace AzureRestAdapter
 {
-    /// <summary>
-    /// The operation status values from PollGetOperationStatus.
-    /// </summary>
-    public enum OperationStatus
-    {
-        InProgress,
-        Failed,
-        Succeeded,
-        TimedOut
-    }
-
-    /// <summary>
-    /// The results from PollGetOperationStatus are passed in this struct.
-    /// </summary>
-    public struct OperationResult
-    {
-        // The status: InProgress, Failed, Succeeded, or TimedOut.
-        public OperationStatus Status { get; set; }
-
-        // The http status code of the requestId operation, if any.
-        public HttpStatusCode StatusCode { get; set; }
-
-        // The approximate running time for PollGetOperationStatus.
-        public TimeSpan RunningTime { get; set; }
-
-        // The error code for the failed operation.
-        public string Code { get; set; }
-
-        // The message for the failed operation.
-        public string Message { get; set; }
-    }
+    
 
     public class StorageAccountAdapter
     {
@@ -326,34 +296,6 @@ namespace AzureRestAdapter
             }
 
             return requestId;
-        }
-    }
-
-    /// <summary>
-    /// Helpful extension methods for converting strings to and from Base-64.
-    /// </summary>
-    public static class StringExtensions
-    {
-        /// <summary>
-        /// Converts a UTF-8 string to a Base-64 version of the string.
-        /// </summary>
-        /// <param name="s">The string to convert to Base-64.</param>
-        /// <returns>The Base-64 converted string.</returns>
-        public static string ToBase64(this string s)
-        {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(s);
-            return Convert.ToBase64String(bytes);
-        }
-
-        /// <summary>
-        /// Converts a Base-64 encoded string to UTF-8.
-        /// </summary>
-        /// <param name="s">The string to convert from Base-64.</param>
-        /// <returns>The converted UTF-8 string.</returns>
-        public static string FromBase64(this string s)
-        {
-            byte[] bytes = Convert.FromBase64String(s);
-            return System.Text.Encoding.UTF8.GetString(bytes);
         }
     }
 }
