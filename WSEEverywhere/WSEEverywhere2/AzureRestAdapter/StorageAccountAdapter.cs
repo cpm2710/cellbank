@@ -47,7 +47,7 @@ namespace AzureRestAdapter
     public class StorageAccountAdapter
     {
         // Set these constants with your values to run the sample.
-        private const string Version = "2013-03-01";
+        private const string Version = "2012-03-01";
         private string SubscriptionId = "subscription-identifier";
         private string SubscriptionName = "unique-storage-account-name";
         
@@ -265,7 +265,7 @@ namespace AzureRestAdapter
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
             request.Method = method;
-            request.Headers.Add("x-ms-Version", Version);
+            request.Headers.Add("x-ms-version", Version);
             request.ClientCertificates.Add(Certificate);
             request.ContentType = "application/xml";
 

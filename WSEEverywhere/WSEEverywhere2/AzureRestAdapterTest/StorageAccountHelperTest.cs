@@ -41,8 +41,8 @@ namespace AzureRestAdapterTest
                 // Create the new storage account with the following values:
                 string description = "Description for my example storage account";
                 string label = "My example storage account label";
-                string location = "North Central US";
-                string ServiceName = "shitazureone";
+                string location = "East Asia";
+                string ServiceName = "andyliuservicename";
                 bool? enableGeoReplication = true;
                 string requestId = storageAccountAdapter.CreateStorageAccount(
                     ServiceName,
