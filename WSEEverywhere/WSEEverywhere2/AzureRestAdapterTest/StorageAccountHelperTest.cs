@@ -19,6 +19,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AzureRestAdapter.DotNetAdapter;
 
 namespace AzureRestAdapterTest
 {
@@ -125,7 +126,7 @@ namespace AzureRestAdapterTest
             {
                 string keys = reader.ReadToEnd();
                 string[] args = keys.Split('\n');
-                string storageAccount = args[0].Trim(new char[]{'\r','\n'});
+                string storageAccount = args[0].Trim(new char[] { '\r', '\n' });
                 string storageKey = args[1].Trim(new char[] { '\r', '\n' });
 
                 StorageAccountAdapter storageAccountAdapter = new StorageAccountAdapter(storageAccount, storageKey);
@@ -133,5 +134,22 @@ namespace AzureRestAdapterTest
                 //OperationAdapter operationHelper = new OperationAdapter(publishSettings);
             }
         }
+
+        [TestMethod]
+        public void TestCreateStorageBlob()
+        {
+            using (StreamReader reader = new StreamReader(new FileStream(@"D:\andyzone\WSEEverywhere2\AzureRestAdapter\data\storagekey.txt", FileMode.Open, FileAccess.Read)))
+            {
+                string keys = reader.ReadToEnd();
+                string[] args = keys.Split('\n');
+                string storageAccount = args[0].Trim(new char[] { '\r', '\n' });
+                string storageKey = args[1].Trim(new char[] { '\r', '\n' });
+
+                VhdUploader vhdUploader = new VhdUploader();
+                vhdUploader.UploadVhd(storageAccount, storageKey, @"d:\w7zh-twx86sta_disk_0.vhd");
+                //OperationAdapter operationHelper = new OperationAdapter(publishSettings);
+            }
+        }
+
     }
 }

@@ -31,6 +31,7 @@ namespace AzureRestAdapter
 
         public string CreateStorageContainer(string container)
         {
+            string requestId = string.Empty;
             DateTime now = DateTime.UtcNow;
             string uri = "https://" + StorageAccount + ".blob.core.windows.net/" + container + "?restype=container";
             string method = "PUT";
@@ -45,9 +46,19 @@ namespace AzureRestAdapter
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
             response.Close();
+            if (response.Headers != null)
+            {
+                requestId = response.Headers["x-ms-request-id"];
+            }
+            return requestId;
+        }
+
+        public string CreateStorageBlob(string blob)
+        {
 
             return string.Empty;
         }
+
         /// <summary>
         /// Calls the Create Storage Account operation in the Service Management 
         /// REST API for the specified subscription, storage account name, 
