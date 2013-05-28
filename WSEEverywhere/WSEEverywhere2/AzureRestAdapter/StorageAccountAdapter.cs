@@ -12,51 +12,11 @@ using System.Xml.Linq;
 
 namespace AzureRestAdapter
 {
-    
-
-    public class StorageAccountAdapter
+    public class StorageAccountAdapter : RequestInvoker
     {
-        // Set these constants with your values to run the sample.
-        private const string Version = "2012-03-01";
-        private string SubscriptionId = "subscription-identifier";
-        private string SubscriptionName = "unique-storage-account-name";
-        
-
-        private X509Certificate2 Certificate { get; set; }
-
         public StorageAccountAdapter(string publishSettings)
+            : base(publishSettings)
         {
-            XmlDocument xmlPublicSetting = new XmlDocument();
-            xmlPublicSetting.LoadXml(publishSettings);
-
-            X509Certificate2 cert = new X509Certificate2();
-            XmlNode publishProfile = xmlPublicSetting.SelectSingleNode("/PublishData/PublishProfile");
-            string certificateString = publishProfile.Attributes["ManagementCertificate"].Value;
-            cert.Import(Convert.FromBase64String(certificateString));
-            this.Certificate = cert;
-
-            XmlNode subscriptionNode = xmlPublicSetting.SelectSingleNode("/PublishData/PublishProfile/Subscription");
-            this.SubscriptionId = subscriptionNode.Attributes["Id"].Value;
-            this.SubscriptionName = subscriptionNode.Attributes["Name"].Value;
-        }
-
-
-        /// <summary>
-        /// Calls the Get Storage Account Properties operation in the Service 
-        /// Management REST API for the specified subscription and storage account 
-        /// name and returns the StorageService XML element from the response.
-        /// </summary>
-        /// <param name="serviceName">The name of the storage account.</param>
-        /// <returns>The StorageService XML element from the response.</returns>
-        public XElement GetStorageAccountProperties(
-            string serviceName)
-        {
-            string uriFormat = "https://management.core.windows.net/{0}" +
-                "/services/storageservices/{1}";
-            Uri uri = new Uri(String.Format(uriFormat, SubscriptionId, serviceName));
-            XDocument responseBody;
-            InvokeRequest(uri, "GET", HttpStatusCode.OK, null, out responseBody);
-            return responseBody.Element(AzureRestAdapterConstants.NameSpaceWA + "StorageService");
         }
 
         /// <summary>
@@ -103,7 +63,7 @@ namespace AzureRestAdapter
 
             // Add the GeoReplicationEnabled element if the version supports it.
             if ((geoReplicationEnabled != null) &&
-                (String.CompareOrdinal(Version, "2011-12-01") >= 0))
+                (String.CompareOrdinal(AzureRestAdapterConstants.Version, "2011-12-01") >= 0))
             {
                 requestBody.Element(
                     AzureRestAdapterConstants.NameSpaceWA + "CreateStorageServiceInput").Add(
@@ -117,185 +77,23 @@ namespace AzureRestAdapter
                 uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
         }
 
+
         /// <summary>
-        /// Calls the Get Operation Status operation in the Service 
-        /// Management REST API for the specified subscription and requestId 
-        /// and returns the Operation XML element from the response.
+        /// Calls the Get Storage Account Properties operation in the Service 
+        /// Management REST API for the specified subscription and storage account 
+        /// name and returns the StorageService XML element from the response.
         /// </summary>
-        /// <param name="requestId">The requestId of the operation to track.</param>
-        /// <returns>The Operation XML element from the response.</returns>
-        private XElement GetOperationStatus(
-            string requestId)
+        /// <param name="serviceName">The name of the storage account.</param>
+        /// <returns>The StorageService XML element from the response.</returns>
+        public XElement GetStorageAccountProperties(
+            string serviceName)
         {
             string uriFormat = "https://management.core.windows.net/{0}" +
-                "/operations/{1}";
-            Uri uri = new Uri(String.Format(uriFormat, SubscriptionId, requestId));
+                "/services/storageservices/{1}";
+            Uri uri = new Uri(String.Format(uriFormat, SubscriptionId, serviceName));
             XDocument responseBody;
             InvokeRequest(uri, "GET", HttpStatusCode.OK, null, out responseBody);
-            return responseBody.Element(AzureRestAdapterConstants.NameSpaceWA + "Operation");
-        }
-
-
-
-        /// <summary>
-        /// Polls Get Operation Status for the operation specified by requestId
-        /// every pollIntervalSeconds until timeoutSeconds have passed or the
-        /// operation has returned a Failed or Succeeded status. 
-        /// </summary>
-        /// <param name="requestId">The requestId of the operation to get status for.</param>
-        /// <param name="pollIntervalSeconds">The interval between calls to Get Operation Status.</param>
-        /// <param name="timeoutSeconds">The maximum number of seconds to poll.</param>
-        /// <returns>An OperationResult structure with status or error information.</returns>
-        public OperationResult PollGetOperationStatus(
-            string requestId,
-            int pollIntervalSeconds,
-            int timeoutSeconds)
-        {
-            OperationResult result = new OperationResult();
-            DateTime beginPollTime = DateTime.UtcNow;
-            TimeSpan pollInterval = new TimeSpan(0, 0, pollIntervalSeconds);
-            DateTime endPollTime = beginPollTime + new TimeSpan(0, 0, timeoutSeconds);
-
-            bool done = false;
-            while (!done)
-            {
-                XElement operation = GetOperationStatus(requestId);
-                result.RunningTime = DateTime.UtcNow - beginPollTime;
-                try
-                {
-                    // Turn the Status string into an OperationStatus value
-                    result.Status = (OperationStatus)Enum.Parse(
-                        typeof(OperationStatus),
-                        operation.Element(AzureRestAdapterConstants.NameSpaceWA + "Status").Value);
-                }
-                catch (Exception)
-                {
-                    throw new ApplicationException(string.Format(
-                        "Get Operation Status {0} returned unexpected status: {1}{2}",
-                        requestId,
-                        Environment.NewLine,
-                        operation.ToString(SaveOptions.OmitDuplicateNamespaces)));
-                }
-
-                switch (result.Status)
-                {
-                    case OperationStatus.InProgress:
-                        Console.WriteLine(
-                            "In progress for {0} seconds",
-                            (int)result.RunningTime.TotalSeconds);
-                        Thread.Sleep((int)pollInterval.TotalMilliseconds);
-                        break;
-
-                    case OperationStatus.Failed:
-                        result.StatusCode = (HttpStatusCode)Convert.ToInt32(
-                            operation.Element(AzureRestAdapterConstants.NameSpaceWA + "HttpStatusCode").Value);
-                        XElement error = operation.Element(AzureRestAdapterConstants.NameSpaceWA + "Error");
-                        result.Code = error.Element(AzureRestAdapterConstants.NameSpaceWA + "Code").Value;
-                        result.Message = error.Element(AzureRestAdapterConstants.NameSpaceWA + "Message").Value;
-                        done = true;
-                        break;
-
-                    case OperationStatus.Succeeded:
-                        result.StatusCode = (HttpStatusCode)Convert.ToInt32(
-                            operation.Element(AzureRestAdapterConstants.NameSpaceWA + "HttpStatusCode").Value);
-                        done = true;
-                        break;
-                }
-
-                if (!done && DateTime.UtcNow > endPollTime)
-                {
-                    result.Status = OperationStatus.TimedOut;
-                    done = true;
-                }
-            }
-
-            return result;
-        }
-
-
-        /// <summary>
-        /// A helper function to invoke a Service Management REST API operation.
-        /// Throws an ApplicationException on unexpected status code results.
-        /// </summary>
-        /// <param name="uri">The URI of the operation to invoke using a web request.</param>
-        /// <param name="method">The method of the web request, GET, PUT, POST, or DELETE.</param>
-        /// <param name="expectedCode">The expected status code.</param>
-        /// <param name="requestBody">The XML body to send with the web request. Use null to send no request body.</param>
-        /// <param name="responseBody">The XML body returned by the request, if any.</param>
-        /// <returns>The requestId returned by the operation.</returns>
-        private string InvokeRequest(
-            Uri uri,
-            string method,
-            HttpStatusCode expectedCode,
-            XDocument requestBody,
-            out XDocument responseBody)
-        {
-            responseBody = null;
-            string requestId = String.Empty;
-
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
-            request.Method = method;
-            request.Headers.Add("x-ms-version", Version);
-            request.ClientCertificates.Add(Certificate);
-            request.ContentType = "application/xml";
-
-            if (requestBody != null)
-            {
-                using (Stream requestStream = request.GetRequestStream())
-                {
-                    using (StreamWriter streamWriter = new StreamWriter(
-                        requestStream, System.Text.UTF8Encoding.UTF8))
-                    {
-                        requestBody.Save(streamWriter, SaveOptions.DisableFormatting);
-                    }
-                }
-            }
-
-            HttpWebResponse response;
-            HttpStatusCode statusCode = HttpStatusCode.Unused;
-            try
-            {
-                response = (HttpWebResponse)request.GetResponse();
-            }
-            catch (WebException ex)
-            {
-                // GetResponse throws a WebException for 4XX and 5XX status codes
-                response = (HttpWebResponse)ex.Response;
-            }
-
-            try
-            {
-                statusCode = response.StatusCode;
-                if (response.ContentLength > 0)
-                {
-                    using (XmlReader reader = XmlReader.Create(response.GetResponseStream()))
-                    {
-                        responseBody = XDocument.Load(reader);
-                    }
-                }
-
-                if (response.Headers != null)
-                {
-                    requestId = response.Headers["x-ms-request-id"];
-                }
-            }
-            finally
-            {
-                response.Close();
-            }
-
-            if (!statusCode.Equals(expectedCode))
-            {
-                throw new ApplicationException(string.Format(
-                    "Call to {0} returned an error:{1}Status Code: {2} ({3}):{1}{4}",
-                    uri.ToString(),
-                    Environment.NewLine,
-                    (int)statusCode,
-                    statusCode,
-                    responseBody.ToString(SaveOptions.OmitDuplicateNamespaces)));
-            }
-
-            return requestId;
+            return responseBody.Element(AzureRestAdapterConstants.NameSpaceWA + "StorageService");
         }
     }
 }

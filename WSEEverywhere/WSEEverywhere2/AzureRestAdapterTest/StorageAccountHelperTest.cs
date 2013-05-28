@@ -32,10 +32,12 @@ namespace AzureRestAdapterTest
             try
             {
                 StorageAccountAdapter storageAccountAdapter = null;
+                OperationHelper operationHelper = null;
                 using (StreamReader reader = new StreamReader(new FileStream(@"D:\andyzone\WSEEverywhere2\AzureRestAdapter\data\Windows Azure MSDN - Visual Studio Ultimate-5-28-2013-credentials.publishsettings", FileMode.Open, FileAccess.Read)))
                 {
                     string publishSettings = reader.ReadToEnd();
                     storageAccountAdapter = new StorageAccountAdapter(publishSettings);
+                    operationHelper = new OperationHelper(publishSettings);
                 }
 
                 // Create the new storage account with the following values:
@@ -56,7 +58,7 @@ namespace AzureRestAdapterTest
                     requestId);
 
                 // Loop on Get Operation Status for result of storage creation
-                OperationResult result = storageAccountAdapter.PollGetOperationStatus(
+                OperationResult result = operationHelper.PollGetOperationStatus(
                     requestId,
                     pollIntervalSeconds: 20,
                     timeoutSeconds: 180);
