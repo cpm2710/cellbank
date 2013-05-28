@@ -27,17 +27,17 @@ namespace AzureRestAdapterTest
     public class StorageAccountHelperTest
     {
         [TestMethod]
-        public void StorageAccountHelperTestMethod1()
+        public void TestCreateStorageAccount()
         {
             try
             {
                 StorageAccountAdapter storageAccountAdapter = null;
-                OperationHelper operationHelper = null;
+                OperationAdapter operationHelper = null;
                 using (StreamReader reader = new StreamReader(new FileStream(@"D:\andyzone\WSEEverywhere2\AzureRestAdapter\data\Windows Azure MSDN - Visual Studio Ultimate-5-28-2013-credentials.publishsettings", FileMode.Open, FileAccess.Read)))
                 {
                     string publishSettings = reader.ReadToEnd();
                     storageAccountAdapter = new StorageAccountAdapter(publishSettings);
-                    operationHelper = new OperationHelper(publishSettings);
+                    operationHelper = new OperationAdapter(publishSettings);
                 }
 
                 // Create the new storage account with the following values:
@@ -118,5 +118,20 @@ namespace AzureRestAdapterTest
 
         }
 
+        [TestMethod]
+        public void TestCreateStorageContainer()
+        {
+            using (StreamReader reader = new StreamReader(new FileStream(@"D:\andyzone\WSEEverywhere2\AzureRestAdapter\data\storagekey.txt", FileMode.Open, FileAccess.Read)))
+            {
+                string keys = reader.ReadToEnd();
+                string[] args = keys.Split('\n');
+                string storageAccount = args[0].Trim(new char[]{'\r','\n'});
+                string storageKey = args[1].Trim(new char[] { '\r', '\n' });
+
+                StorageAccountAdapter storageAccountAdapter = new StorageAccountAdapter(storageAccount, storageKey);
+                storageAccountAdapter.CreateStorageContainer("anddyyyycontainer");
+                //OperationAdapter operationHelper = new OperationAdapter(publishSettings);
+            }
+        }
     }
 }

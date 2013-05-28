@@ -13,9 +13,9 @@ namespace AzureRestAdapter
 {
     public class RequestInvoker
     {
-        protected string SubscriptionId = "subscription-identifier";
-        protected string SubscriptionName = "unique-storage-account-name";
-        protected X509Certificate2 Certificate { get; set; }
+        public string SubscriptionId = "subscription-identifier";
+        public string SubscriptionName = "unique-storage-account-name";
+        private X509Certificate2 Certificate { get; set; }
 
         public RequestInvoker(string publishSettings)
         {
@@ -32,6 +32,8 @@ namespace AzureRestAdapter
             this.SubscriptionId = subscriptionNode.Attributes["Id"].Value;
             this.SubscriptionName = subscriptionNode.Attributes["Name"].Value;
         }
+
+        
 
         /// <summary>
         /// A helper function to invoke a Service Management REST API operation.
