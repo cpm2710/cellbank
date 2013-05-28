@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DiskLib;
 
 namespace DiskLibTest
 {
@@ -7,8 +8,9 @@ namespace DiskLibTest
     public class DiskHelperTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestConvertToVhd()
         {
+            DiskHelper.ConvertDiskToVhd(@"d:\abcdefghijklmnopqrstuvwzyz.vhd");
         }
     }
 }

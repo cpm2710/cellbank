@@ -53,6 +53,12 @@
     <Compile Include="DiskHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiskLib\DiskLib.csproj">
+      <Project>{b0b1aad9-2ec8-4cee-9abe-03cc9a4267a3}</Project>
+      <Name>DiskLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
