@@ -29,36 +29,6 @@ namespace AzureRestAdapter
             StorageKey = storageKey;
         }
 
-        public string CreateStorageContainer(string container)
-        {
-            string requestId = string.Empty;
-            DateTime now = DateTime.UtcNow;
-            string uri = "https://" + StorageAccount + ".blob.core.windows.net/" + container + "?restype=container";
-            string method = "PUT";
-            HttpWebRequest request = HttpWebRequest.Create(uri) as HttpWebRequest;
-            request.Method = method;
-            request.ContentLength = 0;
-            request.Headers.Add("x-ms-date", now.ToString("R", System.Globalization.CultureInfo.InvariantCulture));
-            request.Headers.Add("x-ms-version", "2009-09-19");
-
-            request.Headers.Add("Authorization", WebHelper.AuthorizationHeader(StorageAccount, StorageKey, method, now, request, false, "", ""));
-
-            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-
-            response.Close();
-            if (response.Headers != null)
-            {
-                requestId = response.Headers["x-ms-request-id"];
-            }
-            return requestId;
-        }
-
-        public string CreateStorageBlob(string blob)
-        {
-
-            return string.Empty;
-        }
-
         /// <summary>
         /// Calls the Create Storage Account operation in the Service Management 
         /// REST API for the specified subscription, storage account name, 
@@ -117,6 +87,29 @@ namespace AzureRestAdapter
                 uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
         }
 
+        public string CreateStorageContainer(string container)
+        {
+            string requestId = string.Empty;
+            DateTime now = DateTime.UtcNow;
+            string uri = "https://" + StorageAccount + ".blob.core.windows.net/" + container + "?restype=container";
+            string method = "PUT";
+            HttpWebRequest request = HttpWebRequest.Create(uri) as HttpWebRequest;
+            request.Method = method;
+            request.ContentLength = 0;
+            request.Headers.Add("x-ms-date", now.ToString("R", System.Globalization.CultureInfo.InvariantCulture));
+            request.Headers.Add("x-ms-version", "2009-09-19");
+
+            request.Headers.Add("Authorization", WebHelper.AuthorizationHeader(StorageAccount, StorageKey, method, now, request, false, "", ""));
+
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
+            response.Close();
+            if (response.Headers != null)
+            {
+                requestId = response.Headers["x-ms-request-id"];
+            }
+            return requestId;
+        }
 
         /// <summary>
         /// Calls the Get Storage Account Properties operation in the Service 

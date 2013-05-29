@@ -55,6 +55,7 @@
     <Compile Include="CertificationHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageAccountHelperTest.cs" />
+    <Compile Include="AzureMachineAdapterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AzureRestAdapter\AzureRestAdapter.csproj">

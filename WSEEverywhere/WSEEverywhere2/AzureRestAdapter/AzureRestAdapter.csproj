@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureMachineAdapter.cs" />
     <Compile Include="AzureRestAdapterConstants.cs" />
     <Compile Include="DotNetAdapter\VhdUploader.cs" />
     <Compile Include="util\CertificationHelper.cs" />
