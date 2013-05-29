@@ -10,14 +10,14 @@ namespace AzureRestAdapter.DotNetAdapter
 {
     public class VhdUploader
     {
-        public void UploadVhd(string storageAccount, string storageKey, string filePath)
+        public void UploadVhd(string storageAccount, string storageKey, string blobName, string filePath)
         {
             CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey);
             CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
             CloudBlobContainer container = blobClient.GetContainerReference("anddyyyycontainer");
 
             // Retrieve reference to a blob named "myblob".
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.vhd");
+            CloudPageBlob blockBlob = container.GetPageBlobReference(blobName);
 
             // Create or overwrite the "myblob" blob with contents from a local file.
             using (var fileStream = System.IO.File.OpenRead(filePath))

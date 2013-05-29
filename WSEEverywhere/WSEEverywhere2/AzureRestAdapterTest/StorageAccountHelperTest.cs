@@ -146,7 +146,9 @@ namespace AzureRestAdapterTest
                 string storageKey = args[1].Trim(new char[] { '\r', '\n' });
 
                 VhdUploader vhdUploader = new VhdUploader();
-                vhdUploader.UploadVhd(storageAccount, storageKey, @"d:\w7zh-twx86sta_disk_0.vhd");
+                //wssg - Copy.vhd
+                //vhdUploader.UploadVhd(storageAccount, storageKey, "a.vhd", @"D:\data\a.vhd");
+                vhdUploader.UploadVhd(storageAccount, storageKey, "w7zh-twx86sta_disk_0.vhd", @"d:\w7zh-twx86sta_disk_0.vhd");
                 //OperationAdapter operationHelper = new OperationAdapter(publishSettings);
             }
         }

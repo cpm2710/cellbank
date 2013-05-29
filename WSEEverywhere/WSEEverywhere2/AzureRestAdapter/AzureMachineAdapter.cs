@@ -18,6 +18,34 @@ namespace AzureRestAdapter
             requestInvoker = new RequestInvoker(publishSettings);
         }
 
+        public string NewAzureDisk(string name,string label, string mediaLink)
+        {
+            string uriFormat = "https://management.core.windows.net/{0}/services/disks";
+            Uri uri = new Uri(String.Format(uriFormat, requestInvoker.SubscriptionId));
+
+            
+  //          xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  //<OS>Linux|Windows</OS>
+  //<Label>disk-description</Label>
+  //<MediaLink>uri-of-the-containing-blob</MediaLink>
+  //<Name>disk-mame</Name>
+
+            // Create the request XML document
+            XDocument requestBody = new XDocument(
+                new XDeclaration("1.0", "UTF-8", "no"),
+                new XElement(
+                    AzureRestAdapterConstants.NameSpaceWA + "Disk",
+                    new XElement(AzureRestAdapterConstants.NameSpaceWA + "OS", "Windows"),
+                    new XElement(AzureRestAdapterConstants.NameSpaceWA + "Label", label.ToBase64()),
+                    new XElement(AzureRestAdapterConstants.NameSpaceWA + "MediaLink", mediaLink),
+                    new XElement(AzureRestAdapterConstants.NameSpaceWA + "Name", name)                    ));
+            
+            XDocument responseBody;
+            return requestInvoker.InvokeRequest(
+                uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
+            return string.Empty;
+        }
+
         public string NewAzureVMDeployment(String ServiceName, String VMName, String VNETName, XDocument VMXML, XDocument DNSXML)
         {
             String requestID = String.Empty;
