@@ -33,7 +33,7 @@ namespace AzureRestAdapter
             this.SubscriptionName = subscriptionNode.Attributes["Name"].Value;
         }
 
-        
+
 
         /// <summary>
         /// A helper function to invoke a Service Management REST API operation.
@@ -50,14 +50,14 @@ namespace AzureRestAdapter
             string method,
             HttpStatusCode expectedCode,
             XDocument requestBody,
-            out XDocument responseBody)
+            out XDocument responseBody, string version = AzureRestAdapterConstants.Version)
         {
             responseBody = null;
             string requestId = String.Empty;
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
             request.Method = method;
-            request.Headers.Add("x-ms-version", AzureRestAdapterConstants.Version);
+            request.Headers.Add("x-ms-version", version);
             request.ClientCertificates.Add(Certificate);
             request.ContentType = "application/xml";
 

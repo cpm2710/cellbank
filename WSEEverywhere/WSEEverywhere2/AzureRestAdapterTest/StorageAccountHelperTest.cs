@@ -64,7 +64,7 @@ namespace AzureRestAdapterTest
                 OperationResult result = operationHelper.PollGetOperationStatus(
                     requestId,
                     pollIntervalSeconds: 20,
-                    timeoutSeconds: 180);
+                    timeoutSeconds: 600);
                 switch (result.Status)
                 {
                     case OperationStatus.TimedOut:
@@ -115,10 +115,6 @@ namespace AzureRestAdapterTest
                 Console.WriteLine("Exception caught in Main:");
                 Console.WriteLine(ex.Message);
             }
-
-            Console.Write("Press any key to continue:");
-            Console.ReadKey();
-
         }
 
         [TestMethod]

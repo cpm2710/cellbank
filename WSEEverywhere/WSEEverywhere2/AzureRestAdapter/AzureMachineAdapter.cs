@@ -43,15 +43,15 @@ namespace AzureRestAdapter
 
             String requestID = String.Empty;
 
-            XElement srcTree = new XElement("OSImage",
+            XElement srcTree = new XElement(AzureRestAdapterConstants.NameSpaceWA + "OSImage",
             new XAttribute(XNamespace.Xmlns + "i", AzureRestAdapterConstants.SchemaInstance),
-            new XElement("Label", label.ToBase64()),
-            new XElement("MediaLink", mediaLink), 
-            new XElement("Name", name),
-            new XElement("OS", "Windows"),
-            new XElement("IsPremium",false),
-            new XElement("ShowInGui",true),
-            new XElement("Language","en-us")
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "Label", label.ToBase64()),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "MediaLink", mediaLink),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "Name", name),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "OS", "Windows"),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "IsPremium", false),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "ShowInGui", true)//,
+                //new XElement("Language","en-us")
             );
 
 
@@ -60,7 +60,7 @@ namespace AzureRestAdapter
 
             XDocument responseBody;
             return requestInvoker.InvokeRequest(
-                uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
+                uri, "POST", HttpStatusCode.OK, requestBody, out responseBody, AzureRestAdapterConstants.Version8_1);
 
         }
 
@@ -117,7 +117,7 @@ namespace AzureRestAdapter
                 uri, "POST", HttpStatusCode.Created, requestBody, out responseBody);
         }
 
-        public string CreateMachine(string serviceName,string label)
+        public string CreateMachine(string serviceName, string label)
         {
             Uri uri = new Uri("https://management.core.windows.net/" + requestInvoker.SubscriptionId
             + "/services/hostedservices/" + serviceName + "/deployments");
