@@ -8,8 +8,9 @@ namespace AzureRestAdapterTest
     [TestClass]
     public class AzureMachineAdapterTest
     {
+        private const string vmImageName="andyliuimagename";
         [TestMethod]
-        public void TestCreateMachine()
+        public void TestCreateCloudService()
         {
             AzureMachineAdapter azureMachineAdapter = null;
             OperationAdapter operationHelper = null;
@@ -24,12 +25,44 @@ namespace AzureRestAdapterTest
             string label = "My example storage account label";
             string location = "East Asia";
             string ServiceName = "andyliudeploymentservicename";
-            string requestId = azureMachineAdapter.NewAzureCloudService(ServiceName,location,label,null);
-                
-                
+            string requestId = azureMachineAdapter.NewAzureCloudService(ServiceName, location, label, null);
+
+
             Console.WriteLine(
                 "Called Create Storage Account operation: requestId {0}",
                 requestId);
+        }
+
+        private const string mediaLink = "http://andyliustorageaccount.blob.core.windows.net/andyliustoragecontainer/forupload-fixed.vhd";
+        [TestMethod]
+        public void TestNewAzureVMImage()
+        {
+            AzureMachineAdapter azureMachineAdapter = null;
+            OperationAdapter operationHelper = null;
+            using (StreamReader reader = new StreamReader(new FileStream(@"D:\andyzone\WSEEverywhere2\AzureRestAdapter\data\Windows Azure MSDN - Visual Studio Ultimate-5-28-2013-credentials.publishsettings", FileMode.Open, FileAccess.Read)))
+            {
+                string publishSettings = reader.ReadToEnd();
+                azureMachineAdapter = new AzureMachineAdapter(publishSettings);
+                operationHelper = new OperationAdapter(publishSettings);
+            }
+            string label = "andy liu vm image label";
+            string requestId = azureMachineAdapter.NewAzureVMImage("vmImageName", mediaLink, label);
+
+        }
+
+        [TestMethod]
+        public void TestCreateMachine()
+        {
+            AzureMachineAdapter azureMachineAdapter = null;
+            OperationAdapter operationHelper = null;
+            using (StreamReader reader = new StreamReader(new FileStream(@"D:\andyzone\WSEEverywhere2\AzureRestAdapter\data\Windows Azure MSDN - Visual Studio Ultimate-5-28-2013-credentials.publishsettings", FileMode.Open, FileAccess.Read)))
+            {
+                string publishSettings = reader.ReadToEnd();
+                azureMachineAdapter = new AzureMachineAdapter(publishSettings);
+                operationHelper = new OperationAdapter(publishSettings);
+            }
+            string label = "My example service";
+            azureMachineAdapter.CreateMachine("ssssshitServiceName", label);
         }
 
         [TestMethod]

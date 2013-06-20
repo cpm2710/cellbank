@@ -10,25 +10,16 @@ namespace AzureRestAdapter
 {
     public class AzureMachineAdapter
     {
-        private string StorageAccount = null;
-        private string StorageKey = null;
         RequestInvoker requestInvoker = null;
         public AzureMachineAdapter(string publishSettings)
         {
             requestInvoker = new RequestInvoker(publishSettings);
         }
 
-        public string NewAzureDisk(string name,string label, string mediaLink)
+        public string NewAzureDisk(string name, string label, string mediaLink)
         {
             string uriFormat = "https://management.core.windows.net/{0}/services/disks";
             Uri uri = new Uri(String.Format(uriFormat, requestInvoker.SubscriptionId));
-
-            
-  //          xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-  //<OS>Linux|Windows</OS>
-  //<Label>disk-description</Label>
-  //<MediaLink>uri-of-the-containing-blob</MediaLink>
-  //<Name>disk-mame</Name>
 
             // Create the request XML document
             XDocument requestBody = new XDocument(
@@ -38,12 +29,39 @@ namespace AzureRestAdapter
                     new XElement(AzureRestAdapterConstants.NameSpaceWA + "OS", "Windows"),
                     new XElement(AzureRestAdapterConstants.NameSpaceWA + "Label", label.ToBase64()),
                     new XElement(AzureRestAdapterConstants.NameSpaceWA + "MediaLink", mediaLink),
-                    new XElement(AzureRestAdapterConstants.NameSpaceWA + "Name", name)                    ));
-            
+                    new XElement(AzureRestAdapterConstants.NameSpaceWA + "Name", name)));
+
             XDocument responseBody;
             return requestInvoker.InvokeRequest(
                 uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
-            return string.Empty;
+        }
+
+        public string NewAzureVMImage(string name, string mediaLink, string label)
+        {
+            string uriFormat = "https://management.core.windows.net/{0}/services/images";
+            Uri uri = new Uri(String.Format(uriFormat, requestInvoker.SubscriptionId));
+
+            String requestID = String.Empty;
+
+            XElement srcTree = new XElement("OSImage",
+            new XAttribute(XNamespace.Xmlns + "i", AzureRestAdapterConstants.SchemaInstance),
+            new XElement("Label", label.ToBase64()),
+            new XElement("MediaLink", mediaLink), 
+            new XElement("Name", name),
+            new XElement("OS", "Windows"),
+            new XElement("IsPremium",false),
+            new XElement("ShowInGui",true),
+            new XElement("Language","en-us")
+            );
+
+
+            // Create the request XML document
+            XDocument requestBody = new XDocument(srcTree);
+
+            XDocument responseBody;
+            return requestInvoker.InvokeRequest(
+                uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
+
         }
 
         public string NewAzureVMDeployment(String ServiceName, String VMName, String VNETName, XDocument VMXML, XDocument DNSXML)
@@ -99,55 +117,70 @@ namespace AzureRestAdapter
                 uri, "POST", HttpStatusCode.Created, requestBody, out responseBody);
         }
 
-        public string CreateMachine()
+        public string CreateMachine(string serviceName,string label)
         {
-            //string uriFormat = "https://management.core.windows.net/{0}/services/images";
-            //Uri uri = new Uri(String.Format(uriFormat, requestInvoker.SubscriptionId));
+            Uri uri = new Uri("https://management.core.windows.net/" + requestInvoker.SubscriptionId
+            + "/services/hostedservices/" + serviceName + "/deployments");
 
-            //// Location and Affinity Group are mutually exclusive. 
-            //// Use the location if it isn't null or empty.
-            //XElement locationOrAffinityGroup = String.IsNullOrEmpty(location) ?
-            //    new XElement(AzureRestAdapterConstants.NameSpaceWA + "AffinityGroup", affinityGroup) :
-            //    new XElement(AzureRestAdapterConstants.NameSpaceWA + "Location", location);
+            XElement srcTree = new XElement("Deployment",
+            new XAttribute(XNamespace.Xmlns + "i", AzureRestAdapterConstants.SchemaInstance),
+            new XElement("Name", serviceName),
+            new XElement("DeploymentSlot", "Production"),
+            new XElement("Label", label.ToBase64()),
+            new XElement("RoleList", null)
+            );
 
-            //// Create the request XML document
-            //XDocument requestBody = new XDocument(
-            //    new XDeclaration("1.0", "UTF-8", "no"),
-            //    new XElement(
-            //        AzureRestAdapterConstants.NameSpaceWA + "OSImage",
-            //        new XElement(AzureRestAdapterConstants.NameSpaceWA + "ServiceName", serviceName),
-            //        new XElement(AzureRestAdapterConstants.NameSpaceWA + "Description", description),
-            //        new XElement(AzureRestAdapterConstants.NameSpaceWA + "Label", label.ToBase64()),
-            //        locationOrAffinityGroup));
 
-            //            <OSImage xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            //   <Label>image-label</Label>
-            //   <MediaLink>uri-of-the-containing-blob</MediaLink>
-            //   <Name>image-name</Name>
-            //   <OS>Linux|Windows</OS>
-            //   <Eula>image-eula</Eula>
-            //   <Description>image-description</Description>
-            //   <ImageFamily>image-family</ImageFamily>
-            //   <PublishedDate>published-date</PublishedDate>
-            //   <IsPremium>true/false</IsPremium>
-            //   <ShowInGui>true/false</ShowInGui>
-            //   <PrivacyUri>http://www.example.com/privacypolicy.html</PrivacyUri>
-            //   <IconUri>http://www.example.com/favicon.png</IconUri>
-            //   <RecommendedVMSize>Small/Large/Medium/ExtraLarge</RecommendedVMSize>
-            //   <SmallIconUri>http://www.example.com/smallfavicon.png</SmallIconUri>
-            //   <Language>language-of-image</Language>
-            //</OSImage>
+            XDocument requestBody = new XDocument(srcTree);
+            XElement roleListEle = requestBody.Descendants(AzureRestAdapterConstants.NameSpaceWA + "RoleList").FirstOrDefault();
+            //XElement 
 
-            //// Add the GeoReplicationEnabled element if the version supports it.
-            //if ((geoReplicationEnabled != null) &&
-            //    (String.CompareOrdinal(AzureRestAdapterConstants.Version, "2011-12-01") >= 0))
-            //{
-            //    requestBody.Element(
-            //        AzureRestAdapterConstants.NameSpaceWA + "CreateStorageServiceInput").Add(
-            //            new XElement(
-            //                AzureRestAdapterConstants.NameSpaceWA + "GeoReplicationEnabled",
-            //                geoReplicationEnabled.ToString().ToLowerInvariant()));
-            //}
+            XDocument responseBody;
+            string result = requestInvoker.InvokeRequest(uri, "POST", HttpStatusCode.Created, requestBody, out responseBody);
+            return result;
+            //            <Deployment xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+            //  <!--Your host service name-->
+            //  <Name>SERVICE_NAME</Name>
+            //  <DeploymentSlot>Production</DeploymentSlot>
+            //  <Label>SERVICE_NAME</Label>
+            //  <RoleList>
+            //    <Role i:type="PersistentVMRole">
+            //      <!--Your virtual Machine Name-->
+            //      <RoleName>MyWinVM</RoleName>
+            //      <OsVersion i:nil="true"/>
+            //      <RoleType>PersistentVMRole</RoleType>
+            //      <ConfigurationSets>
+            //        <ConfigurationSet i:type="WindowsProvisioningConfigurationSet">
+            //          <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>
+            //          <!--Your Computer Name-->
+            //          <ComputerName>MyWinVM</ComputerName>
+            //          <!--Computer pass word-->
+            //          <AdminPassword>Password1!</AdminPassword>
+            //          <EnableAutomaticUpdates>true</EnableAutomaticUpdates>
+            //          <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>
+            //        </ConfigurationSet>
+            //        <ConfigurationSet i:type="NetworkConfigurationSet">
+            //          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>
+            //          <InputEndpoints>
+            //            <InputEndpoint>
+            //              <LocalPort>3389</LocalPort>
+            //              <Name>RemoteDesktop</Name>
+            //              <Protocol>tcp</Protocol>
+            //            </InputEndpoint>
+            //          </InputEndpoints>
+            //        </ConfigurationSet>
+            //      </ConfigurationSets>
+            //      <DataVirtualHardDisks/>
+            //      <Label>bXlzdmMxZGlubzY=</Label>
+            //      <OSVirtualHardDisk>
+            //        <!--VHD address and  source image name-->
+            //        <!--replace these two properties to avaliable value-->
+            //        <MediaLink>https://portalvhds54h52qsyb55v4.blob.core.windows.net/vhds/mysvc-MyWinVM-2012-12-1-107.vhd</MediaLink>
+            //        <SourceImageName>a699494373c04fc0bc8f2bb1389d6106__Win2K8R2SP1-Datacenter-201212.01-en.us-30GB.vhd</SourceImageName>
+            //      </OSVirtualHardDisk>
+            //    </Role>
+            //  </RoleList>
+            //</Deployment>
 
             //XDocument responseBody;
             //return requestInvoker.InvokeRequest(

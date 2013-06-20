@@ -23,10 +23,12 @@ using AzureRestAdapter.DotNetAdapter;
 
 namespace AzureRestAdapterTest
 {
-
+    
     [TestClass]
     public class StorageAccountHelperTest
     {
+        private const string storageAccountName = "andyliustorageaccount";
+        private const string storageStorageContainerName = "andyliustoragecontainer";
         [TestMethod]
         public void TestCreateStorageAccount()
         {
@@ -45,7 +47,7 @@ namespace AzureRestAdapterTest
                 string description = "Description for my example storage account";
                 string label = "My example storage account label";
                 string location = "East Asia";
-                string ServiceName = "andyliuservicename";
+                string ServiceName = storageAccountName;
                 bool? enableGeoReplication = true;
                 string requestId = storageAccountAdapter.CreateStorageAccount(
                     ServiceName,
@@ -126,11 +128,12 @@ namespace AzureRestAdapterTest
             {
                 string keys = reader.ReadToEnd();
                 string[] args = keys.Split('\n');
-                string storageAccount = args[0].Trim(new char[] { '\r', '\n' });
+                // if you want to fetch the storage account from the storagekey.txt pls use :: args[0].Trim(new char[] { '\r', '\n' });
+                string storageAccount = storageAccountName;
                 string storageKey = args[1].Trim(new char[] { '\r', '\n' });
 
                 StorageAccountAdapter storageAccountAdapter = new StorageAccountAdapter(storageAccount, storageKey);
-                storageAccountAdapter.CreateStorageContainer("anddyyyycontainer");
+                storageAccountAdapter.CreateStorageContainer(storageStorageContainerName);
                 //OperationAdapter operationHelper = new OperationAdapter(publishSettings);
             }
         }
@@ -142,13 +145,15 @@ namespace AzureRestAdapterTest
             {
                 string keys = reader.ReadToEnd();
                 string[] args = keys.Split('\n');
-                string storageAccount = args[0].Trim(new char[] { '\r', '\n' });
+
+                // if you want to fetch the storage account from the storagekey.txt pls use :: args[0].Trim(new char[] { '\r', '\n' });
+                string storageAccount = storageAccountName;
                 string storageKey = args[1].Trim(new char[] { '\r', '\n' });
 
                 VhdUploader vhdUploader = new VhdUploader();
                 //wssg - Copy.vhd
                 //vhdUploader.UploadVhd(storageAccount, storageKey, "a.vhd", @"D:\data\a.vhd");
-                vhdUploader.UploadVhd(storageAccount, storageKey, "w7zh-twx86sta_disk_0.vhd", @"d:\w7zh-twx86sta_disk_0.vhd");
+                vhdUploader.UploadVhd(storageAccount, storageStorageContainerName, storageKey, "forupload-fixed.vhd", @"D:\data\forupload-fixed.vhd");
                 //OperationAdapter operationHelper = new OperationAdapter(publishSettings);
             }
         }
