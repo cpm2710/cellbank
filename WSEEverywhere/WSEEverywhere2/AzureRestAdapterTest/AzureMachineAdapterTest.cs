@@ -9,6 +9,10 @@ namespace AzureRestAdapterTest
     public class AzureMachineAdapterTest
     {
         private const string vmImageName="andyliuimagename";
+        private const string mediaLink = "http://andyliustorageaccount.blob.core.windows.net/andyliustoragecontainer/forupload-fixed.vhd";
+        private const string machineName = "andyliumachinename";
+        private const string serviceName = "andyliudeploymentservicename";
+
         [TestMethod]
         public void TestCreateCloudService()
         {
@@ -22,10 +26,10 @@ namespace AzureRestAdapterTest
             }
 
             // Create the new storage account with the following values:
-            string label = "My example storage account label";
+            string label = "My example cloud service label";
             string location = "East Asia";
-            string ServiceName = "andyliudeploymentservicename";
-            string requestId = azureMachineAdapter.NewAzureCloudService(ServiceName, location, label, null);
+            
+            string requestId = azureMachineAdapter.NewAzureCloudService(serviceName, location, label, null);
 
 
             Console.WriteLine(
@@ -33,7 +37,6 @@ namespace AzureRestAdapterTest
                 requestId);
         }
 
-        private const string mediaLink = "http://andyliustorageaccount.blob.core.windows.net/andyliustoragecontainer/forupload-fixed.vhd";
         [TestMethod]
         public void TestNewAzureVMImage()
         {
@@ -46,7 +49,7 @@ namespace AzureRestAdapterTest
                 operationHelper = new OperationAdapter(publishSettings);
             }
             string label = "andy liu vm image label";
-            string requestId = azureMachineAdapter.NewAzureVMImage("vmImageName", mediaLink, label);
+            string requestId = azureMachineAdapter.NewAzureVMImage(vmImageName, mediaLink, label);
 
         }
 
@@ -62,7 +65,7 @@ namespace AzureRestAdapterTest
                 operationHelper = new OperationAdapter(publishSettings);
             }
             string label = "My example service";
-            azureMachineAdapter.CreateMachine("ssssshitServiceName", label);
+            azureMachineAdapter.CreateMachine(serviceName, label, machineName, "aurorauser", "Quattro!", mediaLink, vmImageName);
         }
 
         [TestMethod]

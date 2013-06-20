@@ -64,35 +64,35 @@ namespace AzureRestAdapter
 
         }
 
-        public string NewAzureVMDeployment(String ServiceName, String VMName, String VNETName, XDocument VMXML, XDocument DNSXML)
-        {
-            String requestID = String.Empty;
-            Uri uri = new Uri(String.Format("https://management.core.windows.net/{0}/services/hostedservices/{1}/deployments", requestInvoker.SubscriptionId, ServiceName));
+        //public string NewAzureVMDeployment(String ServiceName, String VMName, String VNETName, XDocument VMXML, XDocument DNSXML)
+        //{
+        //    String requestID = String.Empty;
+        //    Uri uri = new Uri(String.Format("https://management.core.windows.net/{0}/services/hostedservices/{1}/deployments", requestInvoker.SubscriptionId, ServiceName));
 
-            XElement srcTree = new XElement("Deployment",
-            new XAttribute(XNamespace.Xmlns + "i", AzureRestAdapterConstants.SchemaInstance),
-            new XElement("Name", ServiceName),
-            new XElement("DeploymentSlot", "Production"),
-            new XElement("Label", ServiceName),
-            new XElement("RoleList", null)
-            );
+        //    XElement srcTree = new XElement("Deployment",
+        //    new XAttribute(XNamespace.Xmlns + "i", AzureRestAdapterConstants.SchemaInstance),
+        //    new XElement("Name", ServiceName),
+        //    new XElement("DeploymentSlot", "Production"),
+        //    new XElement("Label", ServiceName),
+        //    new XElement("RoleList", null)
+        //    );
 
-            if (String.IsNullOrEmpty(VNETName) == false)
-            {
-                srcTree.Add(new XElement("VirtualNetworkName", VNETName));
-            }
-            if (DNSXML != null)
-            {
-                srcTree.Add(new XElement("DNS", new XElement("DNSServers", DNSXML)));
-            }
+        //    if (String.IsNullOrEmpty(VNETName) == false)
+        //    {
+        //        srcTree.Add(new XElement("VirtualNetworkName", VNETName));
+        //    }
+        //    if (DNSXML != null)
+        //    {
+        //        srcTree.Add(new XElement("DNS", new XElement("DNSServers", DNSXML)));
+        //    }
 
-            XDocument deploymentXML = new XDocument(srcTree);
-            deploymentXML.Descendants(AzureRestAdapterConstants.NameSpaceWA + "RoleList").FirstOrDefault().Add(VMXML.Root);
+        //    XDocument deploymentXML = new XDocument(srcTree);
+        //    deploymentXML.Descendants(AzureRestAdapterConstants.NameSpaceWA + "RoleList").FirstOrDefault().Add(VMXML.Root);
 
-            XDocument responseBody;
-            return requestInvoker.InvokeRequest(
-                uri, "POST", HttpStatusCode.Created, deploymentXML, out responseBody);
-        }
+        //    XDocument responseBody;
+        //    return requestInvoker.InvokeRequest(
+        //        uri, "POST", HttpStatusCode.Created, deploymentXML, out responseBody);
+        //}
 
         public string NewAzureCloudService(String serviceName, String location, string label, String affinityGroup)
         {
@@ -117,60 +117,52 @@ namespace AzureRestAdapter
                 uri, "POST", HttpStatusCode.Created, requestBody, out responseBody);
         }
 
-        public string CreateMachine(string serviceName, string label)
+        public string CreateMachine(string cloudServiceName, string label, string machineRoleName, string adminUserName, string adminPassword, string mediaLink, string sourceImageName)
         {
             Uri uri = new Uri("https://management.core.windows.net/" + requestInvoker.SubscriptionId
-            + "/services/hostedservices/" + serviceName + "/deployments");
+            + "/services/hostedservices/" + cloudServiceName + "/deployments");
 
-            XElement srcTree = new XElement("Deployment",
+            XElement srcTree = new XElement(AzureRestAdapterConstants.NameSpaceWA + "Deployment",
             new XAttribute(XNamespace.Xmlns + "i", AzureRestAdapterConstants.SchemaInstance),
-            new XElement("Name", serviceName),
-            new XElement("DeploymentSlot", "Production"),
-            new XElement("Label", label.ToBase64()),
-            new XElement("RoleList", null)
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "Name", cloudServiceName),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "DeploymentSlot", "Production"),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "Label", label.ToBase64()),
+            new XElement(AzureRestAdapterConstants.NameSpaceWA + "RoleList", null)
             );
 
 
             XDocument requestBody = new XDocument(srcTree);
             XElement roleListEle = requestBody.Descendants(AzureRestAdapterConstants.NameSpaceWA + "RoleList").FirstOrDefault();
-            //XElement 
+
+            XElement persistentVMRoleEle = new XElement(AzureRestAdapterConstants.NameSpaceWA + "Role");
+            persistentVMRoleEle.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "RoleName", machineRoleName));
+            persistentVMRoleEle.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "RoleType", "PersistentVMRole"));
+            persistentVMRoleEle.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "Label", label.ToBase64()));
+            // persistentVMRoleEle.SetAttributeValue(AzureRestAdapterConstants.SchemaInstance + "type", "PersistentVMRole");
+            roleListEle.Add(persistentVMRoleEle);
+
+            XElement configurationSets = new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSets");
+            XElement windowsConfigurationSet = new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSet");
+            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSetType", "WindowsProvisioningConfiguration"));
+
+            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "ComputerName", machineRoleName));
+            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "AdminPassword", adminPassword));
+            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "AdminUsername", adminUserName));
+
+            configurationSets.Add(windowsConfigurationSet);
+            persistentVMRoleEle.Add(configurationSets);
+
+            XElement oSVirtualHardDisk = new XElement(AzureRestAdapterConstants.NameSpaceWA + "OSVirtualHardDisk");
+            oSVirtualHardDisk.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "MediaLink", mediaLink));
+            //oSVirtualHardDisk.Add(AzureRestAdapterConstants.NameSpaceWA + "SourceImageName", sourceImageName);
+
+            persistentVMRoleEle.Add(oSVirtualHardDisk);
 
             XDocument responseBody;
             string result = requestInvoker.InvokeRequest(uri, "POST", HttpStatusCode.Created, requestBody, out responseBody);
+
             return result;
-            //            <Deployment xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-            //  <!--Your host service name-->
-            //  <Name>SERVICE_NAME</Name>
-            //  <DeploymentSlot>Production</DeploymentSlot>
-            //  <Label>SERVICE_NAME</Label>
-            //  <RoleList>
-            //    <Role i:type="PersistentVMRole">
-            //      <!--Your virtual Machine Name-->
-            //      <RoleName>MyWinVM</RoleName>
-            //      <OsVersion i:nil="true"/>
-            //      <RoleType>PersistentVMRole</RoleType>
-            //      <ConfigurationSets>
-            //        <ConfigurationSet i:type="WindowsProvisioningConfigurationSet">
-            //          <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>
-            //          <!--Your Computer Name-->
-            //          <ComputerName>MyWinVM</ComputerName>
-            //          <!--Computer pass word-->
-            //          <AdminPassword>Password1!</AdminPassword>
-            //          <EnableAutomaticUpdates>true</EnableAutomaticUpdates>
-            //          <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>
-            //        </ConfigurationSet>
-            //        <ConfigurationSet i:type="NetworkConfigurationSet">
-            //          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>
-            //          <InputEndpoints>
-            //            <InputEndpoint>
-            //              <LocalPort>3389</LocalPort>
-            //              <Name>RemoteDesktop</Name>
-            //              <Protocol>tcp</Protocol>
-            //            </InputEndpoint>
-            //          </InputEndpoints>
-            //        </ConfigurationSet>
-            //      </ConfigurationSets>
-            //      <DataVirtualHardDisks/>
+
             //      <Label>bXlzdmMxZGlubzY=</Label>
             //      <OSVirtualHardDisk>
             //        <!--VHD address and  source image name-->
@@ -181,11 +173,6 @@ namespace AzureRestAdapter
             //    </Role>
             //  </RoleList>
             //</Deployment>
-
-            //XDocument responseBody;
-            //return requestInvoker.InvokeRequest(
-            //    uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
-            return string.Empty;
         }
     }
 }
