@@ -88,6 +88,7 @@ namespace AzureRestAdapter
             try
             {
                 statusCode = response.StatusCode;
+                string respStr = response.ToString();
                 if (response.ContentLength > 0)
                 {
                     using (XmlReader reader = XmlReader.Create(response.GetResponseStream()))

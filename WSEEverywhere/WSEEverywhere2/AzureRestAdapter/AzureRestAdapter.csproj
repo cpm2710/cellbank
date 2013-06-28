@@ -77,10 +77,13 @@
     <Compile Include="util\WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\andliu.cer" />
     <None Include="data\Windows Azure MSDN - Visual Studio Ultimate-5-28-2013-credentials.publishsettings" />
+    <None Include="migrate-vm-azure.ps1" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\example.xml" />
     <Content Include="data\storagekey.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

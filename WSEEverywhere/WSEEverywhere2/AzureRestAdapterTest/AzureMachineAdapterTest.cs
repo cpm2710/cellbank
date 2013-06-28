@@ -9,6 +9,7 @@ namespace AzureRestAdapterTest
     public class AzureMachineAdapterTest
     {
         private const string vmImageName="andyliuimagename";
+        private const string osDiskName = "andyliuosdisk";
         private const string mediaLink = "http://andyliustorageaccount.blob.core.windows.net/andyliustoragecontainer/forupload-fixed.vhd";
         private const string machineName = "andyliumachinename";
         private const string serviceName = "andyliudeploymentservicename";
@@ -65,7 +66,7 @@ namespace AzureRestAdapterTest
                 operationHelper = new OperationAdapter(publishSettings);
             }
             string label = "My example service";
-            azureMachineAdapter.CreateMachine(serviceName, label, machineName, "aurorauser", "Quattro!", mediaLink, vmImageName);
+            azureMachineAdapter.CreateMachine(serviceName, label, machineName, "aurorauser", "Quattro!", mediaLink, osDiskName);
         }
 
         [TestMethod]
@@ -81,9 +82,8 @@ namespace AzureRestAdapterTest
             }
 
             // Create the new storage account with the following values:
-            string label = "My example storage account label";
-            string diskName = "andyliudiskname";
-            string mediaLink = "http://andyliuservicename.blob.core.windows.net/anddyyyycontainer/a.vhd";
+            string label = "andyliu os disk label";
+            string diskName = "andyliuosdisk";
             string requestId = azureMachineAdapter.NewAzureDisk(diskName, label, mediaLink);
 
 

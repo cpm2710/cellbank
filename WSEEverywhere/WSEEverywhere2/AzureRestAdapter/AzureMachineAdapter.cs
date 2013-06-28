@@ -33,7 +33,7 @@ namespace AzureRestAdapter
 
             XDocument responseBody;
             return requestInvoker.InvokeRequest(
-                uri, "POST", HttpStatusCode.Accepted, requestBody, out responseBody);
+                uri, "POST", HttpStatusCode.OK, requestBody, out responseBody);
         }
 
         public string NewAzureVMImage(string name, string mediaLink, string label)
@@ -117,7 +117,7 @@ namespace AzureRestAdapter
                 uri, "POST", HttpStatusCode.Created, requestBody, out responseBody);
         }
 
-        public string CreateMachine(string cloudServiceName, string label, string machineRoleName, string adminUserName, string adminPassword, string mediaLink, string sourceImageName)
+        public string CreateMachine(string cloudServiceName, string label, string machineRoleName, string adminUserName, string adminPassword, string mediaLink, string diskName)
         {
             Uri uri = new Uri("https://management.core.windows.net/" + requestInvoker.SubscriptionId
             + "/services/hostedservices/" + cloudServiceName + "/deployments");
@@ -141,20 +141,20 @@ namespace AzureRestAdapter
             // persistentVMRoleEle.SetAttributeValue(AzureRestAdapterConstants.SchemaInstance + "type", "PersistentVMRole");
             roleListEle.Add(persistentVMRoleEle);
 
-            XElement configurationSets = new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSets");
-            XElement windowsConfigurationSet = new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSet");
-            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSetType", "WindowsProvisioningConfiguration"));
+            //XElement configurationSets = new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSets");
+            //XElement windowsConfigurationSet = new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSet");
+            //windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "ConfigurationSetType", "WindowsProvisioningConfiguration"));
 
-            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "ComputerName", machineRoleName));
-            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "AdminPassword", adminPassword));
-            windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "AdminUsername", adminUserName));
+            //windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "ComputerName", machineRoleName));
+            //windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "AdminPassword", adminPassword));
+            //windowsConfigurationSet.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "AdminUsername", adminUserName));
 
-            configurationSets.Add(windowsConfigurationSet);
-            persistentVMRoleEle.Add(configurationSets);
+            //configurationSets.Add(windowsConfigurationSet);
+            //persistentVMRoleEle.Add(configurationSets);
 
             XElement oSVirtualHardDisk = new XElement(AzureRestAdapterConstants.NameSpaceWA + "OSVirtualHardDisk");
-            oSVirtualHardDisk.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "MediaLink", mediaLink));
-            //oSVirtualHardDisk.Add(AzureRestAdapterConstants.NameSpaceWA + "SourceImageName", sourceImageName);
+            //oSVirtualHardDisk.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "MediaLink", mediaLink));
+            oSVirtualHardDisk.Add(new XElement(AzureRestAdapterConstants.NameSpaceWA + "DiskName", diskName));
 
             persistentVMRoleEle.Add(oSVirtualHardDisk);
 
