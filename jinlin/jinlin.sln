@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jinlin", "jinlin\jinlin.csproj", "{72B1B565-3BCD-4988-903E-B2239F183D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jinlinService", "jinlinService\jinlinService.csproj", "{91E55495-A987-4DCF-AE84-A2D1F85101FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jinlin2", "jinlin2\jinlin2.csproj", "{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|ARM.ActiveCfg = Debug|ARM
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|ARM.Build.0 = Debug|ARM
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|ARM.Deploy.0 = Debug|ARM
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|x86.ActiveCfg = Debug|x86
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|x86.Build.0 = Debug|x86
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Debug|x86.Deploy.0 = Debug|x86
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|ARM.ActiveCfg = Release|ARM
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|ARM.Build.0 = Release|ARM
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|ARM.Deploy.0 = Release|ARM
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|x86.ActiveCfg = Release|x86
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|x86.Build.0 = Release|x86
+		{72B1B565-3BCD-4988-903E-B2239F183D5B}.Release|x86.Deploy.0 = Release|x86
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{91E55495-A987-4DCF-AE84-A2D1F85101FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|ARM.Build.0 = Debug|ARM
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|ARM.Deploy.0 = Debug|ARM
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|x86.ActiveCfg = Debug|x86
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|x86.Build.0 = Debug|x86
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Debug|x86.Deploy.0 = Debug|x86
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|ARM.ActiveCfg = Release|ARM
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|ARM.Build.0 = Release|ARM
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|ARM.Deploy.0 = Release|ARM
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|x86.ActiveCfg = Release|x86
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|x86.Build.0 = Release|x86
+		{DA87904C-419A-4E8F-8C73-E3B1B4C48CD4}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

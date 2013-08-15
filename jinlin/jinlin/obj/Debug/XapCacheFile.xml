@@ -1,0 +1,16 @@
+﻿<xapCache source="L:\Phone\jinlin\jinlin\Bin\Debug\jinlin_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="8/15/2013 10:50:50 AM">
+  <file source="L:\Phone\jinlin\jinlin\obj\Debug\jinlin.dll" archivePath="jinlin.dll" lastWriteTime="8/15/2013 10:50:49 AM" />
+  <file source="L:\Phone\jinlin\jinlin\obj\Debug\zh-CHS\jinlin.resources.dll" archivePath="zh-CHS\jinlin.resources.dll" lastWriteTime="8/15/2013 10:50:49 AM" />
+  <file source="L:\Phone\jinlin\jinlin\obj\Debug\zh-CN\jinlin.resources.dll" archivePath="zh-CN\jinlin.resources.dll" lastWriteTime="8/15/2013 10:50:49 AM" />
+  <file source="L:\Phone\jinlin\jinlin\obj\Debug\zh-Hans\jinlin.resources.dll" archivePath="zh-Hans\jinlin.resources.dll" lastWriteTime="8/15/2013 10:50:49 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="8/15/2013 10:42:18 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="L:\Phone\jinlin\jinlin\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="8/15/2013 10:04:55 AM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\Libraries\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="3/3/2013 7:40:38 PM" />
+  <file source="L:\Phone\jinlin\jinlin\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="8/15/2013 10:34:31 AM" />
+</xapCache>
