@@ -17,7 +17,7 @@ namespace jinlin
         public MainPage()
         {
             InitializeComponent();
-
+            //jinlinMap.a
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
