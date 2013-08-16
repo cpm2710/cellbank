@@ -83,7 +83,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="..\jinlinModelPublic\Antennule.cs">
+      <Link>Antennule.cs</Link>
+    </Compile>
+    <Compile Include="..\jinlinModelPublic\Circle.cs">
+      <Link>Circle.cs</Link>
+    </Compile>
+    <Compile Include="..\jinlinModelPublic\Line.cs">
+      <Link>Line.cs</Link>
+    </Compile>
+    <Compile Include="..\jinlinModelPublic\Point.cs">
+      <Link>Point.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

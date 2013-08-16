@@ -3,3 +3,5 @@ L:\Phone\jinlin\jinlinService\bin\jinlinService.pdb
 L:\Phone\jinlin\jinlinService\obj\Debug\jinlinService.csprojResolveAssemblyReference.cache
 L:\Phone\jinlin\jinlinService\obj\Debug\jinlinService.dll
 L:\Phone\jinlin\jinlinService\obj\Debug\jinlinService.pdb
+L:\Phone\jinlin\jinlinService\bin\jinlinModelPublic.dll
+L:\Phone\jinlin\jinlinService\bin\jinlinModelPublic.pdb
