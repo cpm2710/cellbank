@@ -13,6 +13,7 @@ using mockDataGenerator;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Microsoft.Phone.Maps.Toolkit;
+using Microsoft.Phone.Maps.Controls;
 
 namespace jinlin.View
 {
@@ -21,6 +22,41 @@ namespace jinlin.View
         public MainPage()
         {
             InitializeComponent();
+            this.MapExtensionsSetup(this.Map);
+            //this.DataContext = this.mainViewModel;
+            this.Loaded += Page_Loaded;
+        }
+        /// <summary>
+        /// Setup the map extensions objects.
+        /// All named objects inside the map extensions will have its references properly set
+        /// </summary>
+        /// <param name="map">The map that uses the map extensions</param>
+        private void MapExtensionsSetup(Map map)
+        {
+            ObservableCollection<DependencyObject> children = MapExtensions.GetChildren(map);
+            var runtimeFields = this.GetType().GetRuntimeFields();
+
+            foreach (DependencyObject i in children)
+            {
+                var info = i.GetType().GetProperty("Name");
+
+                if (info != null)
+                {
+                    string name = (string)info.GetValue(i);
+
+                    if (name != null)
+                    {
+                        foreach (FieldInfo j in runtimeFields)
+                        {
+                            if (j.Name == name)
+                            {
+                                j.SetValue(this, i);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         ObservableCollection<jinlinModel.Point> Points = new ObservableCollection<jinlinModel.Point>();
