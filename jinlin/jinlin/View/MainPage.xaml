@@ -13,7 +13,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" Loaded="Page_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -21,7 +21,7 @@
         <phone:Pivot Title="MY APPLICATION">
             <!--Pivot item one-->
             <phone:PivotItem Header="item1">
-                <maps:Map HorizontalAlignment="Left" Height="603" VerticalAlignment="Top" Width="456">
+                <maps:Map Name="Map" HorizontalAlignment="Left" Height="603" VerticalAlignment="Top" Width="456">
                     <maptk:MapExtensions.Children>
                         <maptk:MapItemsControl Name="StoresMapItemsControl">
                             <maptk:MapItemsControl.ItemTemplate>
@@ -42,5 +42,9 @@
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>
-
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/app_bar_me_icon.png" Text="Me" Click="OnMe"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

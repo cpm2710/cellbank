@@ -1,5 +1,6 @@
 ﻿using jinlinService;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +17,10 @@ namespace mockDataGenerator
     {
         public System.Collections.Generic.List<jinlinModel.Point> GetPointsNearBy()
         {
-            throw new NotImplementedException();
+            List<jinlinModel.Point> points = new List<jinlinModel.Point>();
+
+            return points;
+
         }
 
         public System.Collections.Generic.List<jinlinModel.Antennule> GetAntennules(System.Collections.Generic.List<jinlinModel.Point> points)
