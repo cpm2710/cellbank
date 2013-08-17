@@ -128,5 +128,10 @@ namespace jinlin.View
                 
             }
         }
+
+        private void pointClicked(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            int a = 0;
+        }
     }
 }
