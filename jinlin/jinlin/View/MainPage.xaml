@@ -27,9 +27,16 @@
                             <maptk:MapItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <maptk:Pushpin GeoCoordinate="{Binding GeoCoordinate}" 
-                                                   Visibility="{Binding Visibility}" 
-                                                   Content="{Binding Name}"/>
-                                    
+                                                   Visibility="{Binding Visibility}" Height="200">
+                                        
+                                            <StackPanel>
+                                                <Grid Grid.Row="1">
+                                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                                </Grid>
+                                            </StackPanel>
+                                    </maptk:Pushpin>
+
                                 </DataTemplate>
                             </maptk:MapItemsControl.ItemTemplate>
                         </maptk:MapItemsControl>
