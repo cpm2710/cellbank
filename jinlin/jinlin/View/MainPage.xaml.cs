@@ -109,24 +109,16 @@ namespace jinlin.View
             this.Map.SetView(this.UserLocationMarker.GeoCoordinate, this.userLocationMarkerZoomLevel);
         }
 
-        /// <summary>
-        /// Event handler for the Me button. It will show the user location marker and set the view on the map
-        /// </summary>
-        /// <param name="sender">Sender of the event</param>
-        /// <param name="e">Event arguments</param>
-        private async void ZoomUp(object sender, EventArgs e)
+        
+
+        private void ZoomUp(object sender, EventArgs e)
         {
-            this.Map.ZoomLevel++;
+            Map.ZoomLevel = Math.Min(Map.ZoomLevel + 1, 20);
         }
 
-        /// <summary>
-        /// Event handler for the Me button. It will show the user location marker and set the view on the map
-        /// </summary>
-        /// <param name="sender">Sender of the event</param>
-        /// <param name="e">Event arguments</param>
-        private async void ZoomDown(object sender, EventArgs e)
+        private void ZoomDown(object sender, EventArgs e)
         {
-            this.Map.ZoomLevel--;
+            Map.ZoomLevel = Math.Max(Map.ZoomLevel - 1, 1);
         }
 
         private void mouseWheeled(object sender, System.Windows.Input.MouseWheelEventArgs e)

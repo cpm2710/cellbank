@@ -19,9 +19,33 @@ namespace mockDataGenerator
         {
             List<jinlinModel.Point> points = new List<jinlinModel.Point>();
             jinlinModel.Point p = new jinlinModel.Point();
-            p.GeoCoordinate = new jinlinModelPublic.JinLinGeoCoordinate();
-            p.GeoCoordinate.Latitude = 47.6050338745117;
-            p.GeoCoordinate.Longitude = -122.334243774414;
+            p.JinLinGeoCoordinate = new jinlinModelPublic.JinLinGeoCoordinate();
+            p.JinLinGeoCoordinate.Latitude = 47.6050338745117;
+            p.JinLinGeoCoordinate.Longitude = -122.334243774414;
+            p.Name = "andy";
+            points.Add(p);
+
+            p = new jinlinModel.Point();
+            p.JinLinGeoCoordinate = new jinlinModelPublic.JinLinGeoCoordinate();
+            p.JinLinGeoCoordinate.Latitude = 47.6050338745117;
+            p.JinLinGeoCoordinate.Longitude = -90.334243774414;
+            p.Name = "andy2";
+            points.Add(p);
+
+            p = new jinlinModel.Point();
+            p.JinLinGeoCoordinate = new jinlinModelPublic.JinLinGeoCoordinate();
+            p.JinLinGeoCoordinate.Latitude = 47.6050338745117;
+            p.JinLinGeoCoordinate.Longitude = -95.334243774414;
+            p.Name = "andy3";
+            points.Add(p);
+
+            p = new jinlinModel.Point();
+            p.JinLinGeoCoordinate = new jinlinModelPublic.JinLinGeoCoordinate();
+            p.JinLinGeoCoordinate.Latitude = 47.6050338745117;
+            p.JinLinGeoCoordinate.Longitude = -89.334243774414;
+            p.Name = "andy4";
+            points.Add(p);
+
             return points;
         }
 

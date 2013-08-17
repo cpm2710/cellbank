@@ -26,7 +26,10 @@
                         <maptk:MapItemsControl Name="StoresMapItemsControl">
                             <maptk:MapItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <maptk:Pushpin GeoCoordinate="{Binding GeoCoordinate}" Visibility="{Binding Visibility}" Content="{Binding Address}"/>
+                                    <maptk:Pushpin GeoCoordinate="{Binding GeoCoordinate}" 
+                                                   Visibility="{Binding Visibility}" 
+                                                   Content="{Binding Name}"/>
+                                    
                                 </DataTemplate>
                             </maptk:MapItemsControl.ItemTemplate>
                         </maptk:MapItemsControl>
