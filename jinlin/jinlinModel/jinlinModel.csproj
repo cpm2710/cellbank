@@ -89,6 +89,9 @@
     <Compile Include="..\jinlinModelPublic\Circle.cs">
       <Link>Circle.cs</Link>
     </Compile>
+    <Compile Include="..\jinlinModelPublic\JinLinGeoCoordinate.cs">
+      <Link>JinLinGeoCoordinate.cs</Link>
+    </Compile>
     <Compile Include="..\jinlinModelPublic\Line.cs">
       <Link>Line.cs</Link>
     </Compile>

@@ -21,7 +21,7 @@
         <phone:Pivot Title="MY APPLICATION">
             <!--Pivot item one-->
             <phone:PivotItem Header="item1">
-                <maps:Map Name="Map" HorizontalAlignment="Left" Height="603" VerticalAlignment="Top" Width="456">
+                <maps:Map Name="Map" HorizontalAlignment="Left" Height="603" VerticalAlignment="Top" Width="456" MouseWheel="mouseWheeled">
                     <maptk:MapExtensions.Children>
                         <maptk:MapItemsControl Name="StoresMapItemsControl">
                             <maptk:MapItemsControl.ItemTemplate>
@@ -45,6 +45,9 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Images/app_bar_me_icon.png" Text="Me" Click="OnMe"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/ApplicationBar.Add.png" Text="ZoomUp" Click="ZoomUp"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/ApplicationBar.Minus.png" Text="ZoomUp" Click="ZoomDown"/>
         </shell:ApplicationBar>
+        
     </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

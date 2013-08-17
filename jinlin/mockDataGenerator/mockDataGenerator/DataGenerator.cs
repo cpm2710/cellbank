@@ -18,9 +18,11 @@ namespace mockDataGenerator
         public System.Collections.Generic.List<jinlinModel.Point> GetPointsNearBy()
         {
             List<jinlinModel.Point> points = new List<jinlinModel.Point>();
-
+            jinlinModel.Point p = new jinlinModel.Point();
+            p.GeoCoordinate = new jinlinModelPublic.JinLinGeoCoordinate();
+            p.GeoCoordinate.Latitude = 47.6050338745117;
+            p.GeoCoordinate.Longitude = -122.334243774414;
             return points;
-
         }
 
         public System.Collections.Generic.List<jinlinModel.Antennule> GetAntennules(System.Collections.Generic.List<jinlinModel.Point> points)
