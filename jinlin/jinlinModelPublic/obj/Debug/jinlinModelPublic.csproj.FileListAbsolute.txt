@@ -1,0 +1,5 @@
+L:\Phone\jinlin\jinlinModelPublic\bin\Debug\jinlinModelPublic.dll
+L:\Phone\jinlin\jinlinModelPublic\bin\Debug\jinlinModelPublic.pdb
+L:\Phone\jinlin\jinlinModelPublic\obj\Debug\jinlinModelPublic.dll
+L:\Phone\jinlin\jinlinModelPublic\obj\Debug\jinlinModelPublic.pdb
+L:\Phone\jinlin\jinlinModelPublic\obj\Debug\jinlinModelPublic.csprojResolveAssemblyReference.cache
